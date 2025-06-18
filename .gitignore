@@ -1,32 +1,50 @@
-## Visual Studio
-.vs/
-*.user
-*.suo
-
-## Build output
+## Build results
 bin/
 obj/
+out/
 *.dll
 *.exe
-
-## Package management
-packages/
-*.nupkg
-*.snupkg
-
-## Logs
-*.log
-
-## User-specific files
-*.dbmdl
 *.pdb
+*.appx
+*.appxbundle
 
-## Entity Framework
-Migrations/
+## VS-specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
 ## Rider
 .idea/
 
-## Others
+## Logs
+*.log
+
+## NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Entity Framework
+Migrations/
+
+## Temporary files
 *.cache
 *.tmp
+*.temp
+
+## Web-specific
+wwwroot/lib/
+node_modules/
+bower_components/
+
+## OS generated
+.DS_Store
+Thumbs.db
+
+## dotenv
+.env
