@@ -13,5 +13,15 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<Server> Servers { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.Entity<Order>()
+            .HasOne(o => o.User)
+            .WithMany()
+            .HasForeignKey(o => o.UserId);
+    }
 }
 
