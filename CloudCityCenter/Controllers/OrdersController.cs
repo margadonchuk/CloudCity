@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
@@ -6,6 +7,7 @@ using CloudCityCenter.Models;
 
 namespace CloudCityCenter.Controllers;
 
+[Authorize]
 public class OrdersController : Controller
 {
     private readonly ApplicationDbContext _context;
