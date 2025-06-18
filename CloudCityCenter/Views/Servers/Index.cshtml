@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Servers";
+    var dummy = new CloudCityCenter.Models.Server();
 }
 
 <h1>Servers</h1>
@@ -13,19 +14,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.First().Name)
+                @Html.DisplayNameFor(model => dummy.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Location)
+                @Html.DisplayNameFor(model => dummy.Location)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().PricePerMonth)
+                @Html.DisplayNameFor(model => dummy.PricePerMonth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Configuration)
+                @Html.DisplayNameFor(model => dummy.Configuration)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().IsAvailable)
+                @Html.DisplayNameFor(model => dummy.IsAvailable)
             </th>
             <th></th>
         </tr>
