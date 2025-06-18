@@ -30,7 +30,7 @@ project.fragment.lock.json
 artifacts/
 
 ## Entity Framework
-Migrations/
+# Migrations folder is tracked to allow database schema changes
 
 ## Temporary files
 *.cache

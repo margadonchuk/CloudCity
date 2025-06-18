@@ -12,5 +12,6 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<Server> Servers { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
 }
 
