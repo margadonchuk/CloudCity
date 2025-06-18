@@ -69,3 +69,18 @@ dotnet test
 ```bash
 dotnet run --project CloudCityCenter -- seed
 ```
+
+## 🔗 Изменение строки подключения
+
+Строка подключения `DefaultConnection` по умолчанию указывает на LocalDB. Вы можете отредактировать её в файле `CloudCityCenter/appsettings.json` или передать значение через переменную окружения:
+
+```bash
+export ConnectionStrings__DefaultConnection="Server=...;Database=...;Trusted_Connection=True;"
+```
+
+После изменения строки подключения примените миграции и, при необходимости, заполните базу примерами:
+
+```bash
+dotnet ef database update
+dotnet run --project CloudCityCenter -- seed
+```
