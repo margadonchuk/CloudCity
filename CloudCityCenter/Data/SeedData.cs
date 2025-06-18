@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CloudCityCenter.Data;
 
-public static class DbInitializer
+public static class SeedData
 {
     public static void Initialize(ApplicationDbContext context)
     {
