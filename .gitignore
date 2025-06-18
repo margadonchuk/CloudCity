@@ -1,0 +1,32 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Build output
+bin/
+obj/
+*.dll
+*.exe
+
+## Package management
+packages/
+*.nupkg
+*.snupkg
+
+## Logs
+*.log
+
+## User-specific files
+*.dbmdl
+*.pdb
+
+## Entity Framework
+Migrations/
+
+## Rider
+.idea/
+
+## Others
+*.cache
+*.tmp
