@@ -21,7 +21,7 @@ if (args.Contains("seed"))
 {
     using var scope = app.Services.CreateScope();
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    DbInitializer.Initialize(context);
+    SeedData.Initialize(context);
 }
 
 // Configure the HTTP request pipeline.
