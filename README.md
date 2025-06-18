@@ -30,3 +30,7 @@ git clone https://github.com/yourusername/CloudCityCenter.git
 3. Убедиться, что настроена строка подключения к SQL Server.
 4. Запустить `Update-Database` через Package Manager Console.
 5. Запустить проект (F5).
+
+## 📚 Frontend библиотеки
+
+Bootstrap и jQuery подключены через CDN в файле `_Layout.cshtml`. Локальная папка `wwwroot/lib` не используется.
