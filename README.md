@@ -1,4 +1,4 @@
-# CloudCity Shop
+# CloudCity Center
 
 🌐 Интернет-магазин по аренде серверов, созданный с нуля на ASP.NET MVC и Entity Framework Core.
 
@@ -24,7 +24,7 @@
 
 1. Клонировать репозиторий:
 ```bash
-git clone https://github.com/yourusername/CloudCityShop.git
+git clone https://github.com/yourusername/CloudCityCenter.git
 ```
 2. Открыть проект в Visual Studio.
 3. Убедиться, что настроена строка подключения к SQL Server.
