@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace CloudCityCenter.Models;
 
@@ -8,7 +10,10 @@ public class Order
     public int Id { get; set; }
 
     [Required]
+    [ForeignKey(nameof(User))]
     public string UserId { get; set; } = string.Empty;
+
+    public IdentityUser? User { get; set; }
 
     [Required]
     public int ServerId { get; set; }
