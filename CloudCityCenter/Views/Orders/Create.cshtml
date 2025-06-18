@@ -1,0 +1,33 @@
+@model CloudCityCenter.Models.Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="ServerId" class="form-label"></label>
+                <select asp-for="ServerId" class="form-select" asp-items="ViewBag.ServerId"></select>
+                <span asp-validation-for="ServerId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TotalPrice" class="form-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
