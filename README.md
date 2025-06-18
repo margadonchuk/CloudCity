@@ -24,9 +24,16 @@
 
 1. Клонировать репозиторий:
 ```bash
-git clone https://github.com/yourusername/CloudCityShop.git
+git clone https://github.com/margadonchuk/CloudCity.git
 ```
 2. Открыть проект в Visual Studio.
 3. Убедиться, что настроена строка подключения к SQL Server.
 4. Запустить `Update-Database` через Package Manager Console.
 5. Запустить проект (F5).
+
+### Использование .NET CLI
+
+```bash
+dotnet build
+dotnet run
+```
