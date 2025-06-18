@@ -31,11 +31,16 @@ git clone https://github.com/yourusername/CloudCityCenter.git
 ```bash
 dotnet restore
 ```
-4. Перейдите в папку `CloudCityCenter` и примените миграции:
+4. Установите инструмент командной строки Entity Framework Core:
+```bash
+dotnet tool install --global dotnet-ef
+```
+   Этот шаг необходим перед выполнением `dotnet ef database update`.
+5. Перейдите в папку `CloudCityCenter` и примените миграции:
 ```bash
 dotnet ef database update
 ```
-5. Запустите проект:
+6. Запустите проект:
 ```bash
 dotnet run --project CloudCityCenter
 ```
