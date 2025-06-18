@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CloudCityCenter.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudCityCenter.Data;
 
@@ -8,7 +9,7 @@ public static class DbInitializer
 {
     public static void Initialize(ApplicationDbContext context)
     {
-        context.Database.EnsureCreated();
+        context.Database.Migrate();
 
         if (context.Servers.Any())
         {
