@@ -26,10 +26,19 @@
 ```bash
 git clone https://github.com/yourusername/CloudCityCenter.git
 ```
-2. Открыть проект в Visual Studio.
-3. Убедиться, что настроена строка подключения к SQL Server.
-4. Запустить `Update-Database` через Package Manager Console.
-5. Запустить проект (F5).
+2. Убедитесь, что установлены [.NET SDK 8.0](https://dotnet.microsoft.com/) и SQL Server LocalDB.
+3. В корне репозитория выполните восстановление зависимостей:
+```bash
+dotnet restore
+```
+4. Перейдите в папку `CloudCityCenter` и примените миграции:
+```bash
+dotnet ef database update
+```
+5. Запустите проект:
+```bash
+dotnet run --project CloudCityCenter
+```
 
 ## 📚 Frontend библиотеки
 
