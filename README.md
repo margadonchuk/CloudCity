@@ -75,7 +75,7 @@ dotnet run --project CloudCityCenter -- seed
 Строка подключения `DefaultConnection` по умолчанию указывает на LocalDB. Вы можете отредактировать её в файле `CloudCityCenter/appsettings.json` или передать значение через переменную окружения:
 
 ```bash
-export ConnectionStrings__DefaultConnection="Server=...;Database=...;Trusted_Connection=True;"
+export ConnectionStrings__DefaultConnection="Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"
 ```
 
 После изменения строки подключения примените миграции и, при необходимости, заполните базу примерами:
