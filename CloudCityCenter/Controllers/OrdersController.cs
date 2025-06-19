@@ -58,7 +58,7 @@ public class OrdersController : Controller
     // POST: Orders/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ServerId,TotalPrice")] Order order)
+    public async Task<IActionResult> Create([Bind("ServerId,TotalPrice,Status")] Order order)
     {
         order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
         order.OrderDate = DateTime.UtcNow;
@@ -93,7 +93,7 @@ public class OrdersController : Controller
     // POST: Orders/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,ServerId,TotalPrice")] Order order)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,ServerId,TotalPrice,Status")] Order order)
     {
         if (id != order.Id)
         {

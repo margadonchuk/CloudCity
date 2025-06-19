@@ -4,6 +4,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CloudCityCenter.Models;
 
+public enum OrderStatus
+{
+    Pending,
+    Completed,
+    Canceled
+}
+
 public class Order
 {
     [Key]
@@ -24,4 +31,6 @@ public class Order
 
     [Range(0, double.MaxValue)]
     public decimal TotalPrice { get; set; }
+
+    public OrderStatus Status { get; set; } = OrderStatus.Pending;
 }

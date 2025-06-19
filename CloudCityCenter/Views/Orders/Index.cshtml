@@ -15,6 +15,7 @@
             <th>Server</th>
             <th>Order Date</th>
             <th>Total Price</th>
+            <th>Status</th>
             <th></th>
         </tr>
     </thead>
@@ -25,6 +26,7 @@
             <td>@item.Server?.Name</td>
             <td>@item.OrderDate</td>
             <td>@item.TotalPrice</td>
+            <td>@item.Status</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
