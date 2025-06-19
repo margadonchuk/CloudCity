@@ -1,11 +1,9 @@
-<section class="hero text-center text-white py-5 mb-4">
-    <div class="container">
+<section class="hero position-relative mb-5">
+    <img src="https://via.placeholder.com/1920x600" class="w-100" style="max-height:500px; object-fit:cover; filter: brightness(60%);" alt="Hero image" />
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
         <h1 class="display-4 fw-bold">Добро пожаловать в CloudCity Center</h1>
         <p class="lead">Арендуйте сервера по всему миру по честным ценам и без лишних хлопот.</p>
-        <p>
-            <a class="btn btn-light btn-lg me-2" asp-controller="Servers" asp-action="Index">Каталог серверов</a>
-            <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Register">Регистрация</a>
-        </p>
+        <a class="btn btn-light btn-lg me-2" asp-controller="Servers" asp-action="Index">Каталог серверов</a>
+        <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Register">Регистрация</a>
     </div>
 </section>
-
