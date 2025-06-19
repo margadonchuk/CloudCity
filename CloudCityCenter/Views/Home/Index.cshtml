@@ -2,30 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 
-<section class="hero text-center text-white py-5 mb-4">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Добро пожаловать в CloudCity Center</h1>
-        <p class="lead">Арендуйте сервера по всему миру по честным ценам и без лишних хлопот.</p>
-        <p>
-            <a class="btn btn-light btn-lg me-2" asp-controller="Servers" asp-action="Index">Каталог серверов</a>
-            <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Register">Регистрация</a>
-        </p>
-    </div>
-</section>
+@await Html.PartialAsync("_Hero")
+@await Html.PartialAsync("_Welcome")
+@await Html.PartialAsync("_About")
+@await Html.PartialAsync("_Services")
+@await Html.PartialAsync("_Partners")
+@await Html.PartialAsync("_Testimonials")
 
-<div class="container marketing">
-    <div class="row text-center">
-        <div class="col-lg-4 mb-4">
-            <h2 class="fw-normal">Доступные цены</h2>
-            <p>Гибкие тарифы и оплата помесячно без скрытых комиссий.</p>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <h2 class="fw-normal">Отзывы клиентов</h2>
-            <p>«CloudCity помог нам запустить проект за считанные минуты.» – Анна</p>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <h2 class="fw-normal">Поддержка 24/7</h2>
-            <p>Наша команда всегда готова ответить на ваши вопросы и помочь с настройкой.</p>
-        </div>
-    </div>
-</div>
