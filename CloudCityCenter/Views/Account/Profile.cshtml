@@ -1,0 +1,14 @@
+@model Microsoft.AspNetCore.Identity.IdentityUser
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1 class="mb-4">Profile</h1>
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+        </dl>
+    </div>
+</div>
