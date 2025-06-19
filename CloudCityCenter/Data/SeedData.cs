@@ -16,9 +16,33 @@ public static class SeedData
         {
             var servers = new List<Server>
             {
-                new() { Name = "Starter US", Location = "US", PricePerMonth = 5, Configuration = "1 vCPU, 1GB RAM", IsAvailable = true },
-                new() { Name = "Pro EU", Location = "EU", PricePerMonth = 15, Configuration = "2 vCPU, 4GB RAM", IsAvailable = true },
-                new() { Name = "Enterprise Asia", Location = "Asia", PricePerMonth = 30, Configuration = "4 vCPU, 8GB RAM", IsAvailable = true }
+                new()
+                {
+                    Name = "Starter US",
+                    Location = "US",
+                    PricePerMonth = 5,
+                    Configuration = "1 vCPU, 1GB RAM",
+                    IsAvailable = true,
+                    ImageUrl = "https://via.placeholder.com/300x200?text=Starter+US"
+                },
+                new()
+                {
+                    Name = "Pro EU",
+                    Location = "EU",
+                    PricePerMonth = 15,
+                    Configuration = "2 vCPU, 4GB RAM",
+                    IsAvailable = true,
+                    ImageUrl = "https://via.placeholder.com/300x200?text=Pro+EU"
+                },
+                new()
+                {
+                    Name = "Enterprise Asia",
+                    Location = "Asia",
+                    PricePerMonth = 30,
+                    Configuration = "4 vCPU, 8GB RAM",
+                    IsAvailable = true,
+                    ImageUrl = "https://via.placeholder.com/300x200?text=Enterprise+Asia"
+                }
             };
 
             context.Servers.AddRange(servers);
