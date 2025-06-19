@@ -61,6 +61,8 @@ dotnet run --project CloudCityCenter -- seed
 dotnet run --project CloudCityCenter
 ```
 
+После запуска поместите нужные изображения в папку `CloudCityCenter/wwwroot/images`, иначе на сайте они не отобразятся.
+
 ## 📚 Frontend библиотеки
 
 Bootstrap и jQuery подключены через CDN в файле `_Layout.cshtml`. Локальная папка `wwwroot/lib` не используется.
