@@ -22,6 +22,10 @@ public class ApplicationDbContext : IdentityDbContext
             .HasOne(o => o.User)
             .WithMany()
             .HasForeignKey(o => o.UserId);
+
+        builder.Entity<Order>()
+            .Property(o => o.Status)
+            .HasDefaultValue(OrderStatus.Pending);
     }
 }
 
