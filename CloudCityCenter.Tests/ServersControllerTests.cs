@@ -23,8 +23,8 @@ public class ServersControllerTests
         // Arrange
         var context = GetInMemoryDbContext(nameof(Index_ReturnsViewResult_WithListOfServers));
         context.Servers.AddRange(
-            new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true },
-            new Server { Id = 2, Name = "Server2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true }
+            new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img" },
+            new Server { Id = 2, Name = "Server2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true, ImageUrl = "img" }
         );
         await context.SaveChangesAsync();
         var controller = new ServersController(context);
@@ -57,7 +57,7 @@ public class ServersControllerTests
     {
         // Arrange
         var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenServerDoesNotExist));
-        context.Servers.Add(new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true });
+        context.Servers.Add(new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img" });
         await context.SaveChangesAsync();
         var controller = new ServersController(context);
 
@@ -81,7 +81,8 @@ public class ServersControllerTests
             Location = "US",
             PricePerMonth = 10,
             Configuration = "Conf1",
-            IsAvailable = true
+            IsAvailable = true,
+            ImageUrl = "img"
         };
         seedContext.Servers.Add(server);
         await seedContext.SaveChangesAsync();
@@ -110,7 +111,8 @@ public class ServersControllerTests
             Location = "EU",
             PricePerMonth = 5,
             Configuration = "Conf",
-            IsAvailable = true
+            IsAvailable = true,
+            ImageUrl = "img"
         };
 
         // Act
@@ -138,7 +140,8 @@ public class ServersControllerTests
             Location = "US",
             PricePerMonth = 10,
             Configuration = "Conf1",
-            IsAvailable = true
+            IsAvailable = true,
+            ImageUrl = "img"
         });
         await seedContext.SaveChangesAsync();
 
@@ -150,7 +153,8 @@ public class ServersControllerTests
             Location = "US",
             PricePerMonth = 20,
             Configuration = "Conf2",
-            IsAvailable = false
+            IsAvailable = false,
+            ImageUrl = "img"
         };
 
         // Act
@@ -179,7 +183,8 @@ public class ServersControllerTests
             Location = "US",
             PricePerMonth = 10,
             Configuration = "Conf1",
-            IsAvailable = true
+            IsAvailable = true,
+            ImageUrl = "img"
         });
         await seedContext.SaveChangesAsync();
 

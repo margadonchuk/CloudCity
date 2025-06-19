@@ -24,4 +24,7 @@ public class Server
     public string Configuration { get; set; } = string.Empty;
 
     public bool IsAvailable { get; set; }
+
+    [StringLength(300)]
+    public string? ImageUrl { get; set; }
 }
