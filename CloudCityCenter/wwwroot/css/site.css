@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --accent-color: #198754;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+}
+
 html {
   font-size: 14px;
 }
@@ -19,6 +27,8 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
 }
 
 .hero {
@@ -32,4 +42,28 @@ body {
 
 .marketing {
   margin-top: 2rem;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Card formatting */
+.card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
