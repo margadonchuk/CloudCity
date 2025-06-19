@@ -1,5 +1,6 @@
 using CloudCityCenter.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CloudCityCenter.Controllers;
@@ -32,7 +33,7 @@ public class AccountController : Controller
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Profile");
             }
             foreach (var error in result.Errors)
             {
@@ -40,5 +41,16 @@ public class AccountController : Controller
             }
         }
         return View(model);
+    }
+
+    [Authorize]
+    public async Task<IActionResult> Profile()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return Challenge();
+        }
+        return View(user);
     }
 }
