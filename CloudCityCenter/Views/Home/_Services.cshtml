@@ -16,7 +16,12 @@
                                 @foreach (var server in groups[i])
                                 {
                                     <div class="col-md-4 mb-4 text-center">
-                                        <img src="@server.ImageUrl" class="d-block w-100" alt="@server.Name" />
+                                        @{
+                                            var imageUrl = string.IsNullOrWhiteSpace(server.ImageUrl)
+                                                ? "https://via.placeholder.com/300x200?text=No+Image"
+                                                : server.ImageUrl;
+                                        }
+                                        <img src="@imageUrl" class="d-block w-100" alt="@server.Name" />
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5>@server.Name</h5>
                                             <p>@server.Location - $@server.PricePerMonth / month</p>
