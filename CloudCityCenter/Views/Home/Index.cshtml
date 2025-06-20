@@ -1,3 +1,4 @@
+@model IEnumerable<CloudCityCenter.Models.Server>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -5,7 +6,7 @@
 @await Html.PartialAsync("_Hero")
 @await Html.PartialAsync("_Welcome")
 @await Html.PartialAsync("_About")
-@await Html.PartialAsync("_Services")
+@await Html.PartialAsync("_Services", Model)
 @await Html.PartialAsync("_Partners")
 @await Html.PartialAsync("_Testimonials")
 
