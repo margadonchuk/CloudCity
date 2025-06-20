@@ -7,7 +7,7 @@ using CloudCityCenter.Models;
 
 namespace CloudCityCenter.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class ServersController : Controller
 {
     private readonly ApplicationDbContext _context;
