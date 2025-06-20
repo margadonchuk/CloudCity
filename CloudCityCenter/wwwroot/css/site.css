@@ -107,3 +107,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 80px;
   object-fit: cover;
 }
+
+/* Ensure carousel controls remain visible */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
