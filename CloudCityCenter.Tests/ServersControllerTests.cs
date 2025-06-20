@@ -3,6 +3,8 @@ using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace CloudCityCenter.Tests;
 
@@ -17,6 +19,19 @@ public class ServersControllerTests
         return context;
     }
 
+    private static ServersController GetController(ApplicationDbContext context, bool authenticated = true)
+    {
+        var controller = new ServersController(context);
+        var httpContext = new DefaultHttpContext();
+        if (authenticated)
+        {
+            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, "user1") }, "Test"));
+            httpContext.User = user;
+        }
+        controller.ControllerContext = new ControllerContext { HttpContext = httpContext };
+        return controller;
+    }
+
     [Fact]
     public async Task Index_ReturnsViewResult_WithListOfServers()
     {
@@ -27,7 +42,7 @@ public class ServersControllerTests
             new Server { Id = 2, Name = "Server2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true, ImageUrl = "img" }
         );
         await context.SaveChangesAsync();
-        var controller = new ServersController(context);
+        var controller = GetController(context, authenticated: false);
 
         // Act
         var result = await controller.Index();
@@ -43,7 +58,7 @@ public class ServersControllerTests
     {
         // Arrange
         var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenIdIsNull));
-        var controller = new ServersController(context);
+        var controller = GetController(context, authenticated: false);
 
         // Act
         var result = await controller.Details(null);
@@ -59,7 +74,7 @@ public class ServersControllerTests
         var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenServerDoesNotExist));
         context.Servers.Add(new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img" });
         await context.SaveChangesAsync();
-        var controller = new ServersController(context);
+        var controller = GetController(context);
 
         // Act
         var result = await controller.Details(2);
@@ -87,7 +102,7 @@ public class ServersControllerTests
         seedContext.Servers.Add(server);
         await seedContext.SaveChangesAsync();
 
-        var controller = new ServersController(GetInMemoryDbContext(dbName));
+        var controller = GetController(GetInMemoryDbContext(dbName), authenticated: false);
 
         // Act
         var result = await controller.Details(1);
@@ -104,7 +119,7 @@ public class ServersControllerTests
         // Arrange
         var dbName = nameof(Create_AddsServerAndRedirects_WhenModelStateValid);
         var context = GetInMemoryDbContext(dbName);
-        var controller = new ServersController(context);
+        var controller = GetController(context);
         var server = new Server
         {
             Name = "NewServer",
@@ -145,7 +160,7 @@ public class ServersControllerTests
         });
         await seedContext.SaveChangesAsync();
 
-        var controller = new ServersController(GetInMemoryDbContext(dbName));
+        var controller = GetController(GetInMemoryDbContext(dbName));
         var updatedServer = new Server
         {
             Id = 1,
@@ -188,7 +203,7 @@ public class ServersControllerTests
         });
         await seedContext.SaveChangesAsync();
 
-        var controller = new ServersController(GetInMemoryDbContext(dbName));
+        var controller = GetController(GetInMemoryDbContext(dbName));
 
         // Act
         var result = await controller.DeleteConfirmed(1);
@@ -199,4 +214,5 @@ public class ServersControllerTests
         using var verifyContext = GetInMemoryDbContext(dbName);
         Assert.Empty(verifyContext.Servers);
     }
+
 }
