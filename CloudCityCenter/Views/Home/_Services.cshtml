@@ -7,19 +7,25 @@
             <div class="carousel-inner">
                 @if (Model?.Any() == true)
                 {
-                    var index = 0;
-                    foreach (var server in Model)
+                    var groups = Model.Chunk(3).ToList();
+                    for (var i = 0; i < groups.Count; i++)
                     {
-                        var active = index == 0 ? "active" : string.Empty;
-                        <div class="carousel-item @active text-center">
-                            <img src="@server.ImageUrl" class="d-block w-100" alt="@server.Name" />
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>@server.Name</h5>
-                                <p>@server.Location - $@server.PricePerMonth / month</p>
-                                <a asp-controller="Servers" asp-action="Details" asp-route-id="@server.Id" class="btn btn-sm btn-primary">Подробнее</a>
+                        var active = i == 0 ? "active" : string.Empty;
+                        <div class="carousel-item @active">
+                            <div class="row">
+                                @foreach (var server in groups[i])
+                                {
+                                    <div class="col-md-4 mb-4 text-center">
+                                        <img src="@server.ImageUrl" class="d-block w-100" alt="@server.Name" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>@server.Name</h5>
+                                            <p>@server.Location - $@server.PricePerMonth / month</p>
+                                            <a asp-controller="Servers" asp-action="Details" asp-route-id="@server.Id" class="btn btn-sm btn-primary">Подробнее</a>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
-                        index++;
                     }
                 }
                 else
