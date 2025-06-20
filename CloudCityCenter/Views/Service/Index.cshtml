@@ -1,0 +1,23 @@
+@model CloudCityCenter.Models.ViewModels.ServiceIndexViewModel
+
+@{
+    ViewData["Title"] = "Service";
+}
+
+<h1 class="mb-4">Service</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+@foreach (var server in Model.Servers)
+{
+    <div class="col">
+        <div class="card h-100">
+            <img src="@(string.IsNullOrWhiteSpace(server.ImageUrl) ? "https://via.placeholder.com/300x200?text=No+Image" : server.ImageUrl)" class="card-img-top" alt="@server.Name" />
+            <div class="card-body">
+                <h5 class="card-title">@server.Name</h5>
+                <p class="card-text">@server.Configuration</p>
+                <p class="card-text fw-semibold">$@server.PricePerMonth / month</p>
+            </div>
+        </div>
+    </div>
+}
+</div>
