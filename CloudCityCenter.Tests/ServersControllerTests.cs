@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using System.Collections.Generic;
 
 namespace CloudCityCenter.Tests;
 
@@ -25,7 +26,8 @@ public class ServersControllerTests
         var httpContext = new DefaultHttpContext();
         if (authenticated)
         {
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.NameIdentifier, "user1") }, "Test"));
+            var claims = new List<Claim> { new Claim(ClaimTypes.NameIdentifier, "user1"), new Claim(ClaimTypes.Role, "Admin") };
+            var user = new ClaimsPrincipal(new ClaimsIdentity(claims, "Test"));
             httpContext.User = user;
         }
         controller.ControllerContext = new ControllerContext { HttpContext = httpContext };
