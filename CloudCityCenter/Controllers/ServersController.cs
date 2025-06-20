@@ -1,11 +1,13 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 
 namespace CloudCityCenter.Controllers;
 
+[Authorize]
 public class ServersController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -16,12 +18,14 @@ public class ServersController : Controller
     }
 
     // GET: Servers
+    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         return View(await _context.Servers.ToListAsync());
     }
 
     // GET: Servers/Details/5
+    [AllowAnonymous]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
