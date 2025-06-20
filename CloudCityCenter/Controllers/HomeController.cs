@@ -21,6 +21,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var servers = await _context.Servers
+            .AsNoTracking()
             .Where(s => s.IsAvailable)
             .ToListAsync();
         return View(servers);
