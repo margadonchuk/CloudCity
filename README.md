@@ -4,7 +4,8 @@
 
 An online shop for renting servers built from scratch with ASP.NET MVC and Entity Framework Core.
 
-## ⚙️ Используемые технологии / Technologies Used
+## ⚙️ Используемые технологии
+**Technologies Used**
 
 - ASP.NET MVC (.NET 6/8)
 - Entity Framework Core
@@ -14,7 +15,8 @@ An online shop for renting servers built from scratch with ASP.NET MVC and Entit
 - Bootstrap / Tailwind CSS (frontend)
 - AdminLTE (панель администратора)
 
-## ✅ Предварительные требования / Prerequisites
+## ✅ Предварительные требования
+**Prerequisites**
 
 - Установлен [.NET SDK 8.0](https://dotnet.microsoft.com/).  
   [.NET SDK 8.0](https://dotnet.microsoft.com/) installed.
@@ -22,14 +24,21 @@ An online shop for renting servers built from scratch with ASP.NET MVC and Entit
   SQL Server LocalDB or another compatible database server.
 
 ## 🔧 Возможности (будут реализованы)
+**Planned Features**
 
 - Каталог серверов по странам и характеристикам
+- Server catalog by country and specs
 - Личный кабинет клиента
+- Client dashboard
 - Панель администратора
+- Admin panel
 - Онлайн-оплата аренды
+- Online rental payments
 - Автоматизация выдачи доступов
+- Automated access provisioning
 
-## 📦 Установка / Installation
+## 📦 Установка
+**Installation**
 
 1. Клонировать репозиторий:  
    Clone the repository:
@@ -78,12 +87,14 @@ By default placeholder images from `via.placeholder.com` are used for servers.
 Вы можете заменить их, загрузив собственные файлы в каталог `CloudCityCenter/wwwroot/images` и указав соответствующие URL в базе данных.  
 You can replace them by uploading your own files to `CloudCityCenter/wwwroot/images` and updating the URLs in the database.
 
-## 📚 Frontend библиотеки / Frontend libraries
+## 📚 Frontend библиотеки
+**Frontend libraries**
 
 Bootstrap и jQuery подключены через CDN в файле `_Layout.cshtml`. Локальная папка `wwwroot/lib` не используется.  
 Bootstrap and jQuery are referenced from a CDN in `_Layout.cshtml`. The local `wwwroot/lib` folder is not used.
 
-## 🧪 Запуск тестов / Running tests
+## 🧪 Запуск тестов
+**Running tests**
 
 Все модульные тесты находятся в проекте `CloudCityCenter.Tests`. Запустите их командой:  
 All unit tests live in the `CloudCityCenter.Tests` project. Run them with:
@@ -91,7 +102,8 @@ All unit tests live in the `CloudCityCenter.Tests` project. Run them with:
 dotnet test
 ```
 
-## 🌱 Заполнение базы примерами / Seeding the database
+## 🌱 Заполнение базы примерами
+**Seeding the database**
 
 После применения миграций можно заполнить базу данных тестовыми серверами и заказами с помощью класса `SeedData`. Выполните:  
 After applying migrations you can seed the database with test servers and orders using the `SeedData` class:
@@ -101,7 +113,8 @@ dotnet run --project CloudCityCenter -- seed
 При этом будет создан тестовый пользователь `test@example.com` с паролем `Pa$$w0rd` и несколько примерных заказов.  
 This will create the test user `test@example.com` with password `Pa$$w0rd` and a few example orders.
 
-## 🔗 Изменение строки подключения / Changing the connection string
+## 🔗 Изменение строки подключения
+**Changing the connection string**
 
 Строка подключения `DefaultConnection` по умолчанию указывает на LocalDB.  
 The `DefaultConnection` connection string points to LocalDB by default.  
