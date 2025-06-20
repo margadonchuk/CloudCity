@@ -18,7 +18,12 @@
 {
     <div class="col">
         <div class="card h-100">
-            <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name">
+            @{
+                var imageUrl = string.IsNullOrWhiteSpace(item.ImageUrl)
+                    ? "https://via.placeholder.com/300x200?text=No+Image"
+                    : item.ImageUrl;
+            }
+            <img src="@imageUrl" class="card-img-top" alt="@item.Name">
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
                 <p class="card-text">@item.Configuration</p>
