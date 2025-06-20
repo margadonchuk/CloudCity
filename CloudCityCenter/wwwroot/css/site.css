@@ -88,6 +88,11 @@ h1, h2, h3, h4, h5, h6 {
   filter: brightness(60%);
 }
 
+/* Default hero background */
+.hero-media.default {
+  background-image: url('https://via.placeholder.com/1920x600');
+}
+
 /* Extra vertical padding utility */
 .py-6 {
   padding-top: 6rem !important;
