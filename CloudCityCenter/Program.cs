@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // ✅ Чтение строки подключения из переменной окружения
-var connectionString = Environment.GetEnvironmentVariable("CLOUDCITY_DB_CONNECTION");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 if (string.IsNullOrWhiteSpace(connectionString))
 {
