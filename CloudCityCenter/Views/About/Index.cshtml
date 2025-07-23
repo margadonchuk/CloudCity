@@ -3,4 +3,45 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<p>Information .</p>
+<section id="about-us">
+    <h2>About Us</h2>
+    <p>We are CloudCity Center  a modern hosting company delivering secure and high-performance server solutions worldwide.</p>
+</section>
+
+<section id="our-expertise">
+    <h2>Our Expertise</h2>
+    <p>Our team specializes in dedicated servers, VPS, DDoS protection, VPN tunneling, and enterprise-level support infrastructure.</p>
+</section>
+
+<section id="what-drives-us">
+    <h2>What Drives Us?</h2>
+    <p>We are driven by a passion for innovation, a commitment to data security, and the mission to provide reliable infrastructure for businesses of any size.</p>
+</section>
+
+<section id="client-testimonials">
+    <h2>Client Testimonials</h2>
+    <blockquote>
+        <p>"CloudCity Center helped us scale our infrastructure with zero downtime. Highly recommended!"</p>
+        <footer>— IT Manager, GlobalTech</footer>
+    </blockquote>
+    <blockquote>
+        <p>"Excellent support and blazing-fast servers. Their VPN solution saved our operations."</p>
+        <footer>— CTO, FinSecure</footer>
+    </blockquote>
+</section>
+
+<section id="complete-form">
+    <h2>Complete the Form</h2>
+    <form asp-controller="Contact" asp-action="Submit" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="Message" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+</section>
