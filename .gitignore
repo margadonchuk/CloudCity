@@ -49,3 +49,6 @@ Thumbs.db
 
 ## dotenv
 .env
+
+appsettings.json
+appsettings.Development.json
