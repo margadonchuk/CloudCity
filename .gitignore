@@ -41,7 +41,6 @@ artifacts/
 wwwroot/lib/
 node_modules/
 bower_components/
-CloudCityCenter/wwwroot/images/*
 
 ## OS generated
 .DS_Store
