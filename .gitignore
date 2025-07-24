@@ -49,5 +49,8 @@ Thumbs.db
 
 ## dotenv
 .env
-CloudCityCenter/appsettings.json
-CloudCityCenter/appsettings.Development.json
+
+
+appsettings.json
+appsettings.Development.json
+
