@@ -1,280 +1,133 @@
+
 @{
     ViewData["Title"] = "About";
 }
 
 <h1>@ViewData["Title"]</h1>
-<section id="about-us" style="display: flex; align-items: center; gap: 40px; padding: 40px;">
-    <div style="flex: 1;">
-        <h2 style="font-size: 2.5rem;">About us</h2>
-        <p style="font-size: 1.1rem; line-height: 1.6;">
-            Ready to discover what truly sets us apart in the competitive landscape of server solutions?
-            At <strong>CloudCity Center</strong>, we’ve not only redefined server solutions but also elevated the standards
-            by seamlessly merging exceptional reliability, top-notch security, and unbeatable affordability to meet the
-            diverse needs of our clients.
-        </p>
-    </div>
-    <div style="flex: 1;">
-       <img src="/images/about.png" alt="about"
-     style="width: 100%; max-width: 50vw; height: auto; border-radius: 10px;
-            transition: transform 0.3s ease; 
-            cursor: pointer;"
-     onmouseover="this.style.transform='scale(1.05)'"
-     onmouseout="this.style.transform='scale(1)'"
-    </div>
-</section>
+
+<!-- ABOUT SECTION -->
+<div class="aboutus-section">
+  <section id="about-us" style="display: flex; align-items: center; gap: 40px; padding: 40px;">
+      <div style="flex: 1;">
+          <h2 style="font-size: 2.5rem;">About us</h2>
+          <p style="font-size: 1.1rem; line-height: 1.6;">
+              Ready to discover what truly sets us apart in the competitive landscape of server solutions?
+              At <strong>CloudCity Center</strong>, we’ve not only redefined server solutions but also elevated the standards
+              by seamlessly merging exceptional reliability, top-notch security, and unbeatable affordability.
+          </p>
+      </div>
+      <div style="flex: 1;">
+          <img src="/images/about.png" alt="about" class="responsive-img" />
+      </div>
+  </section>
+</div>
+
+<!-- EXPERTISE SECTION -->
+<div class="expertise-section">
+  <section id="our-expertise" style="display: flex; align-items: center; justify-content: center; gap: 40px; padding: 80px 5%;">
+      <div style="flex: 1;">
+          <img src="/images/expertise.png" alt="Server rack" class="responsive-img" />
+      </div>
+      <div style="flex: 1;">
+          <h2 style="font-size: 48px; font-weight: bold; color: #1d1e4c;">Our Expertise</h2>
+          <p style="font-size: 18px; color: #666;">
+              With cutting-edge tech and tailor-made solutions, we’re not just another server provider — we’re your partner in growth.
+              <br><br>Need global reach? We’ve got it. Whether you’re in Europe, the Americas, or Asia.
+          </p>
+      </div>
+  </section>
+</div>
 
 
-<section id="our-expertise" style="display: flex; align-items: center; justify-content: center; gap: 40px; padding: 80px 5%;">
-    <div style="flex: 1;">
-        <img src="/images/expertise.png" alt="Server rack"
-             style="width: 100%; max-width: 50vw; height: auto; border-radius: 10px;
-                    transition: transform 0.3s ease; cursor: pointer;"
-             onmouseover="this.style.transform='scale(1.05)'"
-             onmouseout="this.style.transform='scale(1)'"
-        />
-    </div>
-    <div style="flex: 1;">
-        <h2 style="font-size: 48px; font-weight: bold; color: #1d1e4c;">Our Expertise</h2>
-        <p style="font-size: 18px; color: #666;">
-            With cutting-edge tech and tailor-made solutions, we’re not just another server provider — we’re your partner in growth.
-            <br><br>
-            Need global reach? We’ve got it. Whether you’re in Europe, the Americas, or Asia, our solutions are ready to support you anywhere.
-        </p>
-    </div>
-</section>
-
-
-<style>
-  .card-hover {
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  .card-hover:hover {
-    transform: scale(1.05);
-  }
-</style>
-
+<!-- VALUES SECTION -->
 <section style="padding: 60px 20px; text-align: center; font-family: sans-serif; background-color: #fff;">
   <h2 style="font-size: 2.5rem; color: #1a1a1a;">What drives us?</h2>
 
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px;">
-
-    <!-- Block 1 -->
     <div class="card-hover" style="max-width: 300px; text-align: center;">
-      <img src="/images/reliability.png" alt="reliability" style="width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1); transition: inherit;">
-      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a; transition: inherit;">Reliability</h3>
-      <p style="font-size: 0.95rem; color: #555; transition: inherit;">Your servers, running 24/7. Always.</p>
+      <img src="/images/reliability.png" alt="reliability" class="hover-zoom">
+      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a;">Reliability</h3>
+      <p style="font-size: 0.95rem; color: #555;">Your servers, running 24/7. Always.</p>
     </div>
 
-    <!-- Block 2 -->
     <div class="card-hover" style="max-width: 300px; text-align: center;">
-      <img src="/images/security.png" alt="security" style="width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1); transition: inherit;">
-      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a; transition: inherit;">Security</h3>
-      <p style="font-size: 0.95rem; color: #555; transition: inherit;">Advanced Firewall protection and VPN tunneling keep your data safe from any threats.</p>
+      <img src="/images/security.png" alt="security" class="hover-zoom">
+      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a;">Security</h3>
+      <p style="font-size: 0.95rem; color: #555;">Advanced Firewall protection and VPN tunneling keep your data safe from any threats.</p>
     </div>
 
-    <!-- Block 3 -->
     <div class="card-hover" style="max-width: 300px; text-align: center;">
-      <img src="/images/affordability.png" alt="affordability" style="width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1); transition: inherit;">
-      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a; transition: inherit;">Affordability</h3>
-      <p style="font-size: 0.95rem; color: #555; transition: inherit;">High-quality service, without breaking the bank.</p>
+      <img src="/images/affordability.png" alt="affordability" class="hover-zoom">
+      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a;">Affordability</h3>
+      <p style="font-size: 0.95rem; color: #555;">High-quality service, without breaking the bank.</p>
     </div>
-
   </div>
 
   <div style="margin-top: 40px;">
-    <a href="#learn-more" style="background-color: #3B82F6; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;">
+    <a href="#contact-form" style="background-color: #3B82F6; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;">
       👁 Learn More
     </a>
   </div>
 </section>
 
-<section id="homepage-banner"
-         style="position: relative; width: 95%; height: 90vh; margin: 0 auto; background-image: url('/images/banner.png'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 20px; overflow: hidden;">
-
-    <div class="banner-content fade-in-on-scroll" style="color: white;">
-        <div style="font-size: 4rem; margin-bottom: 20px;">💻</div>
-        <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 10px; color: #00FF00;">
-            Unleashing the power of secure connections.
-        </h1>
-        <p style="font-size: 1.2rem; color: #00FF00;">CloudCity Center</p>
-    </div>
-
-</section>
-
 <style>
-    @@keyframes fadeInUp {
-        from {
-            transform: translateY(30px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
+  .card-hover {
+    transition: transform 0.3s ease;
+  }
 
-    .banner-content {
-        font-family: 'Segoe UI', 'Roboto', sans-serif;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 1s ease-out, transform 1s ease-out;
-    }
+  .card-hover:hover {
+    transform: scale(1.05);
+  }
 
-    .banner-content.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  .hover-zoom {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
 </style>
 
-<script>
-    window.addEventListener('scroll', () => {
-        const banner = document.querySelector('.fade-in-on-scroll');
-        const rect = banner.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            banner.classList.add('visible');
-        }
-    });
-</script>
 
-
-
-
+<!-- TESTIMONIALS SECTION -->
 <section id="testimonial-carousel" style="padding: 60px 5%; background-color: #f9f9f9; border-radius: 20px;">
-  <h2 style="text-align: center; font-size: 2.5rem; color: #222; font-family: 'Segoe UI', sans-serif; margin-bottom: 40px;">
-    What Our Clients Say
-  </h2>
+  <h2 style="text-align: center; font-size: 2.5rem;">What Our Clients Say</h2>
 
-  <div class="carousel-container">
-    <div class="carousel-track">
+  <div class="carousel-container" style="overflow: hidden; width: 100%;">
+    <div class="carousel-track" style="display: flex; transition: transform 0.5s ease;">
+
       <!-- Слайд 1 -->
-      <div class="testimonial-slide">
-        <img src="/images/client1.png" alt="Client 1" class="testimonial-img">
-        <div class="testimonial-text">
-          <blockquote>"CloudCity Center helped us scale our infrastructure with zero downtime. Highly recommended!"</blockquote>
-          <footer>— IT Manager, GlobalTech</footer>
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client1.png" alt="Client 1" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"CloudCity helped us scale infrastructure with zero downtime."</blockquote>
+          <footer style="color: #666;">— IT Manager, GlobalTech</footer>
         </div>
       </div>
 
       <!-- Слайд 2 -->
-      <div class="testimonial-slide">
-        <img src="/images/client2.png" alt="Client 2" class="testimonial-img">
-        <div class="testimonial-text">
-          <blockquote>"Excellent support and blazing-fast servers. Their VPN solution saved our operations."</blockquote>
-          <footer>— CTO, FinSecure</footer>
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client2.png" alt="Client 2" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"We migrated 12 servers to CloudCity with no disruption."</blockquote>
+          <footer style="color: #666;">— CTO, StartSys</footer>
         </div>
       </div>
 
-     <!-- Слайд 3 -->
-<div class="testimonial-slide">
-  <img src="/images/client3.png" alt="Client 3" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"CloudCity exceeded our expectations. Their DDoS protection is unmatched."</blockquote>
-    <footer>— Network Engineer, SecureWave</footer>
+      <!-- Слайд 3 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client3.png" alt="Client 3" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"Security and uptime are unmatched. Highly recommend CloudCity."</blockquote>
+          <footer style="color: #666;">— DevOps Lead, NetReach</footer>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
-
-<!-- Слайд 4 -->
-<div class="testimonial-slide">
-  <img src="/images/client4.png" alt="Client 4" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"We moved to CloudCity for affordability. Stayed for the reliability and support."</blockquote>
-    <footer>— CEO, StartupNest</footer>
-  </div>
-</div>
-
-<!-- Слайд 5 -->
-<div class="testimonial-slide">
-  <img src="/images/client5.png" alt="Client 5" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"I’ve worked with many providers, and CloudCity is the most stable I’ve seen."</blockquote>
-    <footer>— DevOps Lead, CodeEngine</footer>
-  </div>
-</div>
-
-<!-- Слайд 6 -->
-<div class="testimonial-slide">
-  <img src="/images/client6.png" alt="Client 6" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"Fast setup, secure connections, and great customer service."</blockquote>
-    <footer>— Product Manager, DataLink</footer>
-  </div>
-</div>
-
-<!-- Слайд 7 -->
-<div class="testimonial-slide">
-  <img src="/images/client7.png" alt="Client 7" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"Thanks to CloudCity, we finally have peace of mind with our infrastructure."</blockquote>
-    <footer>— IT Director, HealthSphere</footer>
-  </div>
-</div>
-
-<!-- Слайд 8 -->
-<div class="testimonial-slide">
-  <img src="/images/client8.png" alt="Client 8" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"CloudCity’s VPN is fast and reliable, even under load."</blockquote>
-    <footer>— Infrastructure Engineer, TradeNet</footer>
-  </div>
-</div>
-
-<!-- Слайд 9 -->
-<div class="testimonial-slide">
-  <img src="/images/client9.png" alt="Client 9" class="testimonial-img">
-  <div class="testimonial-text">
-    <blockquote>"We needed European servers with low latency. CloudCity delivered perfectly."</blockquote>
-    <footer>— Lead Developer, WebCore</footer>
-  </div>
-</div>
-
-
-<style>
-  .carousel-container {
-    overflow: hidden;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .carousel-track {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-  }
-
-  .testimonial-slide {
-    flex: 0 0 100%;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-sizing: border-box;
-    padding: 20px;
-  }
-
-  .testimonial-img {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .testimonial-text blockquote {
-    font-size: 1.1rem;
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-    margin: 0 0 10px;
-  }
-
-  .testimonial-text footer {
-    font-style: italic;
-    color: #555;
-  }
-</style>
+</section>
 
 <script>
-  const track = document.querySelector('.carousel-track');
-  const slides = document.querySelectorAll('.testimonial-slide');
+  const track = document.querySelector('#testimonial-carousel .carousel-track');
+  const slides = document.querySelectorAll('#testimonial-carousel .testimonial-slide');
   let index = 0;
 
   function updateCarousel() {
@@ -284,28 +137,54 @@
   setInterval(() => {
     index = (index + 1) % slides.length;
     updateCarousel();
-  }, 7000); // Автопрокрутка каждые 7 секунд
+  }, 7000); // каждые 7 секунд
 </script>
 
-<section id="contact" style="padding: 60px 5%; background-color: #f5f5f5; border-radius: 20px; max-width: 700px; margin: 0 auto;">
-    <h2 style="text-align: center; font-size: 2.2rem; color: #222;">Contact Us</h2>
+<!-- CAROUSEL SCRIPTS -->
+<style>
+.carousel-container { overflow: hidden; max-width: 900px; margin: 0 auto; }
+.carousel-track { display: flex; transition: transform 0.6s ease-in-out; }
+.testimonial-slide { flex: 0 0 100%; display: flex; align-items: center; gap: 20px; box-sizing: border-box; padding: 20px; }
+.testimonial-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+.testimonial-text blockquote { font-size: 1.1rem; color: #333; margin: 0 0 10px; }
+.testimonial-text footer { font-style: italic; color: #555; }
+</style>
 
-    <form asp-controller="Contact" asp-action="Submit" method="post">
-        <div style="margin-bottom: 20px;">
-            <label for="name" style="display: block; margin-bottom: 6px;">Name</label>
-            <input type="text" id="name" name="Name" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" />
-        </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    let index = 0;
+    if (!track || slides.length === 0) return;
+    function updateCarousel() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    setInterval(() => {
+        index = (index + 1) % slides.length;
+        updateCarousel();
+    }, 7000); // Автопрокрутка каждые 7 секунд
+});
+</script>
 
-        <div style="margin-bottom: 20px;">
-            <label for="email" style="display: block; margin-bottom: 6px;">Email</label>
-            <input type="email" id="email" name="Email" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" />
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <label for="message" style="display: block; margin-bottom: 6px;">Message</label>
-            <textarea id="message" name="Message" rows="5" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-        </div>
-
-        <button type="submit" style="background-color: #3B82F6; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600;">Send Message</button>
+<!-- CONTACT FORM -->
+<section id="contact-form" style="padding: 60px 5%;">
+    <h2 style="font-size: 2rem; margin-bottom: 20px;">Contact Us</h2>
+    <form asp-controller="Contact" asp-action="Submit" method="post"
+          style="display: flex; flex-direction: column; gap: 15px; max-width: 500px;">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" required class="form-control" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" required class="form-control" />
+        <label for="message">Message</label>
+        <textarea id="message" name="Message" rows="5" required class="form-control"></textarea>
+        <button type="submit" class="btn btn-primary">Send</button>
     </form>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success" style="margin-top: 15px;">
+            @TempData["Success"]
+        </div>
+    }
 </section>
+
