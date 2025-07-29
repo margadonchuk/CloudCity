@@ -118,3 +118,112 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-control-next-icon {
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }
+
+/* About and expertise sections */
+@media (max-width: 768px) {
+  .aboutus-section > section,
+  .expertise-section > section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px !important;
+  }
+
+  .expertise-section > section {
+    flex-direction: column-reverse !important;
+  }
+
+  .aboutus-section > section > div,
+  .expertise-section > section > div {
+    width: 100% !important;
+  }
+
+  .aboutus-section img,
+  .expertise-section img {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 20px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .aboutus-section img:hover,
+  .expertise-section img:hover {
+    transform: scale(1.05);
+  }
+}
+
+.aboutus-section,
+.expertise-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.aboutus-section img,
+.expertise-section img {
+  max-width: 50vw;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* About page card hover effects */
+.card-hover {
+  transition: transform 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+}
+
+.hover-zoom {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonial carousel */
+.carousel-container {
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.testimonial-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.testimonial-text blockquote {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.testimonial-text footer {
+  font-style: italic;
+  color: #555;
+}
+
