@@ -121,6 +121,60 @@
         </div>
       </div>
 
+      <!-- Слайд 4 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client4.png" alt="Client 4" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"Reliable infrastructure and fast support team."</blockquote>
+          <footer style="color: #666;">— System Admin, BlueNet</footer>
+        </div>
+      </div>
+
+      <!-- Слайд 5 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client5.png" alt="Client 5" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"Their servers handle our peak traffic without a hiccup."</blockquote>
+          <footer style="color: #666;">— Marketing Lead, BrightAds</footer>
+        </div>
+      </div>
+
+      <!-- Слайд 6 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client6.png" alt="Client 6" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"I sleep better knowing our data is safe with CloudCity."</blockquote>
+          <footer style="color: #666;">— Founder, FinSafe</footer>
+        </div>
+      </div>
+
+      <!-- Слайд 7 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client7.png" alt="Client 7" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"Impressed by their uptime. Zero outages in 18 months!"</blockquote>
+          <footer style="color: #666;">— Network Engineer, RapidCom</footer>
+        </div>
+      </div>
+
+      <!-- Слайд 8 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client8.png" alt="Client 8" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"Support is quick and helpful. Best hosting partner we've had."</blockquote>
+          <footer style="color: #666;">— Product Manager, SmartSoft</footer>
+        </div>
+      </div>
+
+      <!-- Слайд 9 -->
+      <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
+        <img src="/images/client9.png" alt="Client 9" style="width: 120px; height: 120px; border-radius: 8px; object-fit: cover;">
+        <div>
+          <blockquote style="font-size: 1.2rem; color: #333;">"Simple to scale, simple to use. Great pricing too."</blockquote>
+          <footer style="color: #666;">— Operations Lead, WebSprint</footer>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -167,24 +221,30 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <!-- CONTACT FORM -->
-<section id="contact-form" style="padding: 60px 5%;">
-    <h2 style="font-size: 2rem; margin-bottom: 20px;">Contact Us</h2>
-    <form asp-controller="Contact" asp-action="Submit" method="post"
-          style="display: flex; flex-direction: column; gap: 15px; max-width: 500px;">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="Name" required class="form-control" />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="Email" required class="form-control" />
-        <label for="message">Message</label>
-        <textarea id="message" name="Message" rows="5" required class="form-control"></textarea>
-        <button type="submit" class="btn btn-primary">Send</button>
+<section style="background-color: #fff8f4; padding: 40px; display: flex; justify-content: center;">
+  <div style="max-width: 1200px; width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
+    
+    <!-- Текст слева -->
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="font-size: 1.8rem; color: #0b1c49;">Please enter your<br>email address, and<br>we will get in touch<br>with you soon.</h2>
+    </div>
+
+    <!-- Форма справа -->
+    <form method="post" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" name="Name" placeholder="Your Name" required
+             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
+      <input type="email" name="Email" placeholder="Your Email" required
+             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
+      <input type="text" name="Subject" placeholder="Subject"
+             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
+      <textarea name="Message" placeholder="Your Message" rows="4"
+                style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
+      <button type="submit" style="background-color: #0b1c49; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer;">
+        Send Message
+      </button>
     </form>
 
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success" style="margin-top: 15px;">
-            @TempData["Success"]
-        </div>
-    }
+  </div>
 </section>
+
 
