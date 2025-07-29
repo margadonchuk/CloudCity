@@ -142,10 +142,13 @@ h1, h2, h3, h4, h5, h6 {
 
   .aboutus-section img,
   .expertise-section img {
-    width: 100% !important;
-    height: auto !important;
-    margin-top: 20px !important;
+    width: auto !important;
   }
+  .standard-image {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
 }
 
 @media (min-width: 769px) {
@@ -153,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
   .expertise-section img:hover {
     transform: scale(1.05);
   }
+ 
 }
 
 .aboutus-section,
@@ -167,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
 .expertise-section img {
   max-width: 50vw;
   width: 100%;
-  height: auto;
+
   border-radius: 10px;
   transition: transform 0.3s ease;
   cursor: pointer;
@@ -230,12 +234,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Standardized image sizing */
 .standard-image {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+ width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 12px;
+  margin: 20px auto;
   display: block;
-  margin: 0 auto;
 }
 
+
+.slide-image {
+  width: 120px; 
+  height: 120px; 
+  border-radius: 8px; 
+  object-fit: cover;
+}
