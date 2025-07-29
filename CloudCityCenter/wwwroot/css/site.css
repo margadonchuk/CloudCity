@@ -29,6 +29,7 @@ body {
   margin-bottom: 60px;
   background-color: var(--light-color);
   color: var(--dark-color);
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .hero {
@@ -225,5 +226,16 @@ h1, h2, h3, h4, h5, h6 {
 .testimonial-text footer {
   font-style: italic;
   color: #555;
+}
+
+/* Standardized image sizing */
+.standard-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto;
 }
 
