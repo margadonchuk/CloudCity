@@ -148,8 +148,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .aboutus-section,
 .expertise-section {
-  margin: 0;
-  padding: 0;
+ padding: 60px 20px;
 }
 
 /* Consistent image sizing */
@@ -229,4 +228,36 @@ h1, h2, h3, h4, h5, h6 {
   height: 120px; 
   border-radius: 8px; 
   object-fit: cover;
+}
+
+.full-visual-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+  .full-visual-img {
+    max-width: 100%;
+  }
+}
+
+.expertise-section h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.expertise-section p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .expertise-section {
+    padding: 40px 16px;
+  }
 }
