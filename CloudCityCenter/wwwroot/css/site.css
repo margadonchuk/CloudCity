@@ -120,61 +120,53 @@ h1, h2, h3, h4, h5, h6 {
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }
 
-/* About and expertise sections */
-@media (max-width: 768px) {
-  .aboutus-section > section,
-  .expertise-section > section {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 20px !important;
-  }
-
-  .expertise-section > section {
-    flex-direction: column-reverse !important;
-  }
-
-  .aboutus-section > section > div,
-  .expertise-section > section > div {
-    width: 100% !important;
-  }
-
-  .aboutus-section img,
-  .expertise-section img {
-    width: auto !important;
-  }
-  .standard-image {
-    width: 90vw;
-    max-width: 90vw;
-  }
-
+/* Image/text section layout */
+.image-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 5%;
 }
 
-@media (min-width: 769px) {
-  .aboutus-section img:hover,
-  .expertise-section img:hover {
-    transform: scale(1.05);
+.image-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.image-section > div {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .image-section {
+    flex-direction: column;
+    text-align: center;
   }
- 
+  .image-section.reverse {
+    flex-direction: column;
+  }
 }
 
 .aboutus-section,
 .expertise-section {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  padding: 40px;
+  margin: 0;
+  padding: 0;
 }
 
-.aboutus-section img,
-.expertise-section img {
-  max-width: 50vw;
-  width: 100%;
+/* Consistent image sizing */
+.standard-image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 1rem auto;
+  display: block;
+}
 
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .standard-image {
+    width: 70vw;
+    height: 70vw;
+  }
 }
 
 /* About page card hover effects */
@@ -231,18 +223,6 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   color: #555;
 }
-
-/* Standardized image sizing */
-.standard-image {
- width: 100%;
-  max-width: 320px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-  margin: 20px auto;
-  display: block;
-}
-
 
 .slide-image {
   width: 120px; 
