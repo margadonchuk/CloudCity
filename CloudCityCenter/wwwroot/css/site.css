@@ -261,3 +261,141 @@ h1, h2, h3, h4, h5, h6 {
     padding: 40px 16px;
   }
 }
+
+/* Services section shared styling */
+.services-section {
+  padding: 60px 5%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1d1e4c;
+  margin-bottom: 50px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.service-item img {
+  width: 320px;
+  max-width: 100%;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.service-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #1d1e4c;
+}
+
+.service-text p {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .service-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .service-item img {
+    width: 100%;
+  }
+
+  .service-text {
+    padding: 0 10px;
+  }
+}
+
+.services-button-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.services-button {
+  background-color: #3B82F6;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.services-button:hover {
+  background-color: #2563eb;
+}
+
+.faq-section {
+  padding: 60px 5%;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.faq-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1d1e4c;
+  margin-bottom: 40px;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.faq-item input {
+  display: none;
+}
+
+.faq-question {
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  color: #222;
+}
+
+.faq-question::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #3B82F6;
+  font-size: 1.2rem;
+}
+
+.faq-item input:checked + .faq-question::before {
+  content: "–";
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  font-size: 1rem;
+  color: #555;
+  padding-left: 25px;
+}
+
+.faq-item input:checked + .faq-question + .faq-answer {
+  max-height: 200px;
+  margin-top: 10px;
+}
