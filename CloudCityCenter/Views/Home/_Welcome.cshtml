@@ -1,14 +1,21 @@
 <section class="py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 mb-3 mb-md-0">
-                <img src="https://via.placeholder.com/600x400" class="img-fluid" alt="Welcome image" />
-            </div>
-            <div class="col-md-6 text-center">
-                <h2 class="display-5 fw-bold">Добро пожаловать!</h2>
-                <p class="mb-4">CloudCity Center упрощает аренду серверов по всему миру. Мы предлагаем простые тарифы и мгновенную поддержку.</p>
-                <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-primary">Contact Us</a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Левая часть с текстом -->
+      <div class="col-md-6 text-center text-md-start">
+        <h1 class="fw-bold display-5 mb-3">Welcome to <br>CloudCity Center</h1>
+        <p class="mb-4" style="font-size: 1.1rem; color: #555;">
+          Our company offers an extensive and diverse range of high-quality solutions that are meticulously tailored specifically for your unique business needs. We are committed to delivering these top-tier services at competitive and affordable prices that ensure exceptional value without breaking the bank, allowing you to maximize your investment and achieve your business goals effectively.
+        </p>
+        <a asp-controller="Contact" asp-action="Index" class="btn btn-primary px-4 py-2" style="border-radius: 999px;">Contact Us</a>
+      </div>
+
+      <!-- Правая часть с изображением -->
+      <div class="col-md-6 text-center">
+        <img src="/images/Home1.png" class="img-fluid" alt="Welcome to CloudCity" style="border-radius: 20px;" />
+      </div>
+
     </div>
+  </div>
 </section>
