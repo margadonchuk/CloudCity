@@ -1,43 +1,45 @@
 <section class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Отзывы клиентов</h2>
-        <div id="testimonialCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="card text-center border-0 p-4">
-                        <img src="https://via.placeholder.com/80" class="rounded-circle mx-auto mb-3 testimonial-photo" alt="Client 1" />
-                        <p class="mb-0">«Лучший сервис для аренды серверов!»</p>
-                        <footer class="blockquote-footer mt-2">Иван</footer>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="card text-center border-0 p-4">
-                        <img src="https://via.placeholder.com/80" class="rounded-circle mx-auto mb-3 testimonial-photo" alt="Client 2" />
-                        <p class="mb-0">«Отличная поддержка и быстрый запуск.»</p>
-                        <footer class="blockquote-footer mt-2">Мария</footer>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="card text-center border-0 p-4">
-                        <img src="https://via.placeholder.com/80" class="rounded-circle mx-auto mb-3 testimonial-photo" alt="Client 3" />
-                        <p class="mb-0">«Надежные сервера без перебоев.»</p>
-                        <footer class="blockquote-footer mt-2">Алексей</footer>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+  <div class="container">
+    <h2 class="text-center mb-4">Отзывы клиентов</h2>
+
+    <div id="testimonialCarousel" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card text-center border-0 p-4">
+            <img src="/images/client7.png" class="rounded-circle mx-auto mb-3 testimonial-photo" alt="Client 7" style="width: 80px; height: 80px; object-fit: cover;" />
+            <blockquote style="font-size: 1.2rem; color: #333;">"Impressed by their uptime. Zero outages in 18 months!"</blockquote>
+            <footer style="color: #666;">— Network Engineer, RapidCom</footer>
+          </div>
         </div>
-        <div class="text-center">
-            <a class="btn btn-outline-primary mt-3" asp-controller="About" asp-action="Index">
-                Learn More About Us
-            </a>
+        <div class="carousel-item">
+          <div class="card text-center border-0 p-4">
+            <img src="/images/client8.png" class="rounded-circle mx-auto mb-3 testimonial-photo" alt="Client 8" style="width: 80px; height: 80px; object-fit: cover;" />
+            <blockquote style="font-size: 1.2rem; color: #333;">"Support is quick and helpful. Best hosting partner we've had."</blockquote>
+            <footer style="color: #666;">— Product Manager, SmartSoft</footer>
+          </div>
         </div>
+        <div class="carousel-item">
+          <div class="card text-center border-0 p-4">
+            <img src="/images/client9.png" class="rounded-circle mx-auto mb-3 testimonial-photo" alt="Client 9" style="width: 80px; height: 80px; object-fit: cover;" />
+            <blockquote style="font-size: 1.2rem; color: #333;">"Simple to scale, simple to use. Great pricing too."</blockquote>
+            <footer style="color: #666;">— Operations Lead, WebSprint</footer>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+
+    <div class="text-center">
+      <a class="btn btn-outline-primary mt-3" asp-controller="About" asp-action="Index">
+        Learn More About Us
+      </a>
+    </div>
+  </div>
 </section>
