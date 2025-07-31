@@ -4,7 +4,7 @@
     ViewData["Title"] = "Service";
 }
 
-<h1 class="mb-4">Service</h1>
+@* <h1 class="mb-4">Service</h1>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 @foreach (var server in Model.Servers)
@@ -20,4 +20,196 @@
         </div>
     </div>
 }
+</div> *@
+
+
+<!-- SERVICES SECTION -->
+<div class="services-section image-section reverse">
+  <section id="our-services" style="display: flex; align-items: center; justify-content: center; gap: 40px; padding: 80px 5%;">
+    
+    <div>
+      <h2 style="font-size: 48px; font-weight: bold; color: #1d1e4c;">Our Services</h2>
+      <p style="font-size: 18px; color: #666;">
+        At <strong>CloudCity Center</strong>, we provide a range of advanced services tailored to meet your business needs. From high-performance server hosting and secured VPN access to robust DDoS protection and global infrastructure scaling — we ensure maximum reliability and performance at affordable costs.
+      </p>
+    <div>
+      <img src="/images/services.png" alt="Cloud services" class="full-visual-img" />
+    </div>
+    </div>
+  </section>
 </div>
+
+<div class="service-item">
+    <img src="/images/service1.png" alt="Service 1">
+    <div class="service-text">
+      <h3>24/7 Server Support Service</h3>
+      <p>
+        Ensure smooth operations with CloudCity Center's 24/7 server support. Our dedicated team is always available to monitor and resolve server issues, guaranteeing optimal performance. With real-time monitoring and proactive maintenance, we provide seamless support tailored to your business needs. Trust CloudCity Center to keep your servers running smoothly.
+      </p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service2.png" alt="Service 2">
+    <div class="service-text">
+      <h3>Complete Client and Data Anonymity</h3>
+      <p>
+        At CloudCity Center, your privacy is our priority. We ensure complete anonymity for both your identity and your data through advanced encryption technologies and secure VPN tunneling. Our services are designed to protect your sensitive information from unauthorized access, ensuring your activities remain confidential. Trust CloudCity Center to deliver a secure and private environment for your business operations, safeguarding your reputation and peace of mind.
+      </p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service3.png" alt="Service 3">
+    <div class="service-text">
+      <h3>DDoS Protection Service</h3>
+      <p>
+        Experience unparalleled security with CloudCity Center's advanced DDoS protection. Our cutting-edge technology effectively shields your servers from a wide range of malicious traffic, ensuring uninterrupted performance and the utmost safety of your valuable data. With real-time monitoring and robust, multi-layered defense mechanisms, we provide a reliable and secure environment tailored for your business operations. Our dedicated team works around the clock to ensure continued protection against evolving threats. Stay protected, secure, and confident in your choice with CloudCity Center, where your security is our top priority.
+      </p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service4.png" alt="Service 4">
+    <div class="service-text">
+      <h3>Cybersecurity-Driven Server Solutions</h3>
+      <p>
+        At CloudCity Center, we combine cutting-edge cybersecurity measures with robust server technology to provide unmatched protection for your data and operations. Our servers are fortified with advanced firewalls, encrypted data streams, and real-time threat monitoring, ensuring your business remains secure against cyberattacks. By seamlessly integrating cybersecurity into every aspect of our server solutions, we guarantee a safe, reliable, and efficient environment for your business needs. Trust CloudCity Center to keep your data and operations secure.
+      </p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service5.png" alt="Service 5">
+    <div class="service-text">
+      <h3>Human Firewall Service</h3>
+      <p>
+        Protect your data with CloudCity Center's Human Firewall service. Featuring a high-tech humanoid shield and lock symbol, our service neutralizes threats like malware and DDoS attacks. With advanced technology and real-time management, we keep your business secure and operational. Experience robust cybersecurity with CloudCity Center.
+      </p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service6.png" alt="Service 6">
+    <div class="service-text">
+      <h3>VPN Tunneling Service</h3>
+      <p>
+        Secure your online activities and enhance your privacy with CloudCity Center's exceptional VPN tunneling service. Our comprehensive solution ensures encrypted connections, effectively keeping your sensitive data protected while you browse the web. With our VPN, you can enjoy global access to content and services, supported by robust security protocols that provide peace of mind. Whether for personal use or business requirements, our VPN guarantees a safe and secure connection for all your online endeavors. Trust us to safeguard your data and privacy, allowing you to surf the internet confidently and stress-free, knowing you are shielded from potential threats.
+      </p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service7.png" alt="Service 7">
+    <div class="service-text">
+      <h3>Backup & Restore</h3>
+      <p>Server Backup is a reliable way to keep your data safe. We provide a service for regular data backups from your server, ensuring protection against failures and data loss. All backups are stored on secure servers with a high level of security, and in case of necessity, you can quickly restore your data. With us, your data is always protected!</p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <img src="/images/service8.png" alt="Service 8">
+    <div class="service-text">
+      <h3>Configuration of Physical Network Equipment</h3>
+      <p>A service for configuring and optimizing network equipment, including WiFi routers, Mikrotik, Fortinet, and Cisco. It includes network setup, wireless access configuration, routing, firewalls, and security systems. Ensures connection stability, traffic control, load balancing, and the implementation of cybersecurity protection mechanisms. Configuration is carried out in accordance with infrastructure requirements and security standards.</p>
+    </div>
+  </div>
+
+    <div class="services-button-wrapper">
+  <a href="/servers" class="services-button">
+    View All Servers 🚀
+  </a>
+</div>
+</section>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq-item">
+    <input type="checkbox" id="q1">
+    <label for="q1" class="faq-question">What services does CloudCity offer?</label>
+    <div class="faq-answer">CloudCity provides affordable and secure server rental services in multiple locations worldwide, including advanced DDoS protection, VPN tunneling, and firewall security for your business needs.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q2">
+    <label for="q2" class="faq-question">In which countries are your servers available?</label>
+    <div class="faq-answer">Our servers are available in the Netherlands, Germany, France, Poland, the UK, the USA, Singapore, India, and Australia, ensuring global coverage and reliability.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q3">
+    <label for="q3" class="faq-question">What makes CloudCity servers secure?</label>
+    <div class="faq-answer">We implement advanced firewall protection, DDoS mitigation strategies, VPN tunneling for secure server connections, and external-to-internal IP address switching to ensure robust security for your data.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q4">
+    <label for="q4" class="faq-question">How can I set up my server after purchasing?</label>
+    <div class="faq-answer">Once you purchase a server, you’ll receive a detailed setup guide via email. Our support team is also available to assist you in configuring your server according to your requirements.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q5">
+    <label for="q5" class="faq-question">Do you offer flexible pricing plans?</label>
+    <div class="faq-answer">Yes, we offer a range of pricing plans to suit startups, small, and medium businesses. You can choose from monthly, quarterly, or annual billing options based on your needs.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q6">
+    <label for="q6" class="faq-question">What support options do you provide?</label>
+    <div class="faq-answer">We provide 24/7 customer support via live chat, email, and a dedicated knowledge base. Our team is always ready to help with technical issues or questions.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q7">
+    <label for="q7" class="faq-question">Can I upgrade my server plan later?</label>
+    <div class="faq-answer">Absolutely! You can upgrade your server plan at any time to match your growing business needs. Simply contact our support team, and we’ll guide you through the process.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q8">
+    <label for="q8" class="faq-question">How do I monitor the performance of my server?</label>
+    <div class="faq-answer">CloudCity provides an intuitive control panel where you can monitor server performance in real time. You can track CPU usage, memory, and bandwidth to ensure your server runs efficiently.
+
+</div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section style="background-color: #fff8f4; padding: 40px; display: flex; justify-content: center;">
+  <div style="max-width: 1200px; width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
+    
+    <!-- Текст слева -->
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="font-size: 1.8rem; color: #0b1c49;">Please enter your<br>email address, and<br>we will get in touch<br>with you soon.</h2>
+    </div>
+
+    <!-- Форма справа -->
+    <form method="post" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" name="Name" placeholder="Your Name" required
+             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
+      <input type="email" name="Email" placeholder="Your Email" required
+             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
+      <input type="text" name="Subject" placeholder="Subject"
+             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
+      <textarea name="Message" placeholder="Your Message" rows="4"
+                style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
+      <button type="submit" style="background-color: #0b1c49; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer;">
+        Send Message
+      </button>
+    </form>
+
+  </div>
+</section>
