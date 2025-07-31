@@ -305,3 +305,66 @@ section.home-about {
     background-color: #1e40af;
     color: #fff;
 }
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.logo-scroll {
+  display: flex;
+  gap: 10px;
+  animation: scroll-left 80s linear infinite;
+  width: max-content;
+  align-items: center;
+}
+
+.logo-scroll img {
+  height: 70px; /* было 50px */
+  margin: 0 40px; /* добавим расстояние между логотипами */
+  opacity: 0.95;
+  object-fit: contain;
+}
+
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+  .service-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    background: #ffffff;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* 🔹 постоянная тень */
+  }
+
+  .service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15); /* 🔹 усиливается при наведении */
+  }
+
+  .service-box img {
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+  }
+
+  .service-box h5,
+  .service-box p {
+    transition: transform 0.3s ease;
+  }
+
+  .service-box:hover img,
+  .service-box:hover h5,
+  .service-box:hover p {
+    transform: scale(1.03);
+  }
+
