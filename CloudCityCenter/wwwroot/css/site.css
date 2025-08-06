@@ -508,4 +508,13 @@ section.home-about {
     transform: scale(1.03);
   }
 
-
+.background {
+  background: url('/images/contact.png') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
