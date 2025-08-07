@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CloudCityCenter.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("Styles", required: false)
+
 
 </head>
 <body>
@@ -62,11 +64,25 @@
             </div>
         </nav>
     </header>
+    @{
+    var isContactPage = Context.Request.Path.Value?.ToLower().Contains("/contact") ?? false;
+}
+
+@if (isContactPage)
+{
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+}
+else
+{
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+}
+
 
     @await Html.PartialAsync("_Footer")
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

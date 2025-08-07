@@ -518,3 +518,8 @@ section.home-about {
   text-align: center;
   color: white;
 }
+
+.full-width-override {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
