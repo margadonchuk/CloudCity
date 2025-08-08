@@ -523,3 +523,37 @@ section.home-about {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
 }
+
+/* Общая раскладка секций (ПК) */
+.image-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Чтобы текст и картинка делили ширину пополам на десктопе */
+.image-section > .text-col,
+.image-section > .image-col {
+  flex: 1 1 0;
+}
+
+/* Адаптив: на мобильных складываем в колонку и переносим картинку наверх */
+@media (max-width: 768px) {
+  .image-section {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .image-section .image-col {
+    order: -1;           /* картинка станет над текстом */
+    width: 100%;
+  }
+}
+
+/* Картинки адаптивные + лёгкое скругление */
+.full-visual-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
