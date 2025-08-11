@@ -16,7 +16,8 @@
             by seamlessly merging exceptional reliability, top-notch security, and unbeatable affordability.
         </p>
     </div>
-    <div>
+    
+  <div class="image-col">
         <img src="/images/about.png" alt="about" class="full-visual-img" />
     </div>
     
@@ -24,34 +25,45 @@
 
 <!-- EXPERTISE SECTION -->
 <section id="our-expertise" class="expertise-section image-section">
-  <div class="text-col">
-    <h2 style="font-size: 2.5rem; color:#1a1a1a;">Our Expertise</h2>
-    <p style="font-size:18px; color:#666;">
-      With cutting-edge tech and tailor-made solutions, we’re not just another server provider — we’re your partner in growth.
-      <br><br>Need global reach? We’ve got it. Whether you’re in Europe, the Americas, or Asia.
-    </p>
-  </div>
+    <div class="image-col">
+        <img src="/images/expertise.png" alt="Server rack" class="full-visual-img" />
+    </div>
 
-  <div class="image-col">
-    <img src="/images/expertise.png" alt="Server rack" class="full-visual-img" />
-  </div>
+    <div class="text-col">
+        <h2 style="font-size: 2.5rem; color: #1a1a1a;">Our Expertise</h2>
+        <p style="font-size:18px; color: #666;">
+            With cutting-edge tech and tailor-made solutions, we’re not just another server provider — we’re your partner in growth.
+            <br><br>
+            Need global reach? We’ve got it. Whether you’re in Europe, the Americas, or Asia.
+        </p>
+    </div>
 </section>
 
-<!-- ABOUT SECTION -->
-<section id="about-us" class="aboutus-section image-section">
-  <div class="text-col">
-    <h2 style="font-size: 2.5rem; color:#1a1a1a;">About us</h2>
-    <p style="font-size:18px; color:#666;">
-      Ready to discover what truly sets us apart in the competitive landscape of server solutions?
-      At <strong>CloudCity Center</strong>, we’ve not only redefined server solutions but also elevated the standards by
-      seamlessly merging exceptional reliability, top‑notch security, and unbeatable affordability.
-    </p>
-  </div>
+<style>
+.expertice-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
 
-  <div class="image-col">
-    <img src="/images/about.png" alt="about" class="full-visual-img" />
-  </div>
-</section>
+.image-col, .text-col {
+    flex: 1;
+}
+
+.full-visual-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Адаптив для мобильных */
+@@media (max-width: 768px) {
+    .expertise-section {
+        flex-direction: column;
+    }
+}
+</style>
 
 
 
