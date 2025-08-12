@@ -558,3 +558,43 @@ section.home-about {
 }
 
 
+@media (max-width: 768px) {
+    .img-spacing {
+        margin-top: 20px; /* Отступ сверху */
+    }
+}
+
+/* секция на всю ширину окна */
+.hero-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+
+ #our-services img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.service-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+
+.service-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* закругление как у Firewall */
+}
