@@ -48,7 +48,7 @@ body {
 /* Heading styles */
 h1, h2, h3, h4, h5, h6 {
   color: var(--dark-color);
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
@@ -272,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #1d1e4c;
   margin-bottom: 50px;
 }
@@ -597,4 +597,25 @@ section.home-about {
     max-width: 100%;
     height: auto;
     border-radius: 10px; /* закругление как у Firewall */
+}
+
+.service-image img[alt="VPS Hosting Service"] {
+    border-radius: 12px;
+}
+
+
+/* По умолчанию (десктоп) картинка не заходит за контейнер */
+.our-services-img {
+  width: 100%;
+  height: auto;
+}
+
+/* На мобильных — во всю ширину экрана */
+@media (max-width: 768px) {
+  .our-services-img {
+    width: 100vw;           /* ширина экрана */
+    margin-left: -15px;     /* убрать отступ контейнера */
+    margin-right: -15px;
+    max-width: 100vw;
+  }
 }
