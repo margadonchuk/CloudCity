@@ -619,3 +619,51 @@ section.home-about {
     max-width: 100vw;
   }
 }
+
+/* Обертка всей карусели специалистов */
+.experts-carousel {
+  margin-top: 3rem; /* увеличенный отступ сверху */
+}
+
+/* Карточка специалиста */
+.expert-card { 
+  padding-top: 1rem;           
+  margin: 0 1rem;              
+}
+
+.expert-avatar {
+  width: 120px;                 /* увеличенный размер круглой мини-картинки */
+  height: 120px;
+  margin: 0 auto 0.75rem;       /* больше отступ снизу под подпись */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  background: rgba(0,0,0,.03);
+}
+
+.expert-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.expert-title {
+  margin: 0;
+  font-style: italic;
+  color: #6c757d;              
+  white-space: nowrap;         
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.05rem;           /* чуть крупнее текст */
+}
+
+/* Больше аватарка на мобильных */
+@media (max-width: 576px) {
+  .expert-avatar { 
+    width: 140px; 
+    height: 140px; 
+  }
+  .expert-title { font-size: 1.1rem; }
+}
+
