@@ -667,3 +667,30 @@ section.home-about {
   .expert-title { font-size: 1.1rem; }
 }
 
+
+.server-card img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 14px 14px 0 0;
+}
+
+.badge-sale {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #b1c300;
+    color: #fff;
+    font-weight: 700;
+    padding: .4rem .6rem;
+    border-radius: 999px;
+    font-size: .9rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+
+@media (max-width: 576px) {
+    .server-card img {
+        aspect-ratio: 1/1;     /* квадрат на мобилках */
+        border-radius: 12px 12px 0 0;
+    }
+}
+
