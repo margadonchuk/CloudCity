@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
+using CloudCityCenter.Models.ViewModels;
 
 namespace CloudCityCenter.Controllers;
 
@@ -21,23 +22,37 @@ public class ServersController : Controller
     [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Products
-            .Where(p => p.Type == ProductType.DedicatedServer)
-            .ToListAsync());
+        var servers = await _context.Products
+            .Where(p => p.Type == ProductType.DedicatedServer && p.IsPublished)
+            .Select(p => new ProductCardVm
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Slug = p.Slug,
+                Location = p.Location,
+                PricePerMonth = p.PricePerMonth,
+                Configuration = p.Configuration,
+                ImageUrl = p.ImageUrl
+            })
+            .ToListAsync();
+
+        return View(servers);
     }
 
-    // GET: Servers/Details/5
+    // GET: Servers/Details/slug
     [AllowAnonymous]
-    public async Task<IActionResult> Details(int? id)
+    public async Task<IActionResult> Details(string? slug)
     {
-        if (id == null)
+        if (string.IsNullOrWhiteSpace(slug))
         {
             return NotFound();
         }
 
         var server = await _context.Products
-            .Where(p => p.Type == ProductType.DedicatedServer)
-            .FirstOrDefaultAsync(m => m.Id == id);
+            .Include(p => p.Variants)
+            .Include(p => p.Features)
+            .Where(p => p.Type == ProductType.DedicatedServer && p.IsPublished)
+            .FirstOrDefaultAsync(m => m.Slug == slug);
         if (server == null)
         {
             return NotFound();

@@ -52,6 +52,41 @@
             @Html.DisplayFor(model => model.IsAvailable)
         </dd>
     </dl>
+
+    @if (Model.Variants.Any())
+    {
+        <h4>Variants</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Billing Period</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var variant in Model.Variants)
+            {
+                <tr>
+                    <td>@variant.Name</td>
+                    <td>@variant.Price</td>
+                    <td>@variant.BillingPeriod</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+
+    @if (Model.Features.Any())
+    {
+        <h4>Features</h4>
+        <ul class="list-unstyled">
+        @foreach (var feature in Model.Features)
+        {
+            <li><strong>@feature.Name</strong>@(string.IsNullOrWhiteSpace(feature.Value) ? string.Empty : $": {feature.Value}")</li>
+        }
+        </ul>
+    }
 </div>
 <div>
     @if (User.IsInRole("Admin"))
