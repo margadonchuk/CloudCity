@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace CloudCityCenter.Controllers;
 
@@ -22,7 +24,8 @@ public class OrdersController : Controller
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var orders = await _context.Orders
-            .Include(o => o.Product)
+            .Include(o => o.Items).ThenInclude(i => i.Product)
+            .Include(o => o.Items).ThenInclude(i => i.ProductVariant)
             .Where(o => o.UserId == userId)
             .ToListAsync();
         return View(orders);
@@ -38,7 +41,8 @@ public class OrdersController : Controller
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var order = await _context.Orders
-            .Include(o => o.Product)
+            .Include(o => o.Items).ThenInclude(i => i.Product)
+            .Include(o => o.Items).ThenInclude(i => i.ProductVariant)
             .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
         if (order == null)
         {
@@ -51,24 +55,31 @@ public class OrdersController : Controller
     // GET: Orders/Create
     public IActionResult Create()
     {
-        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name");
-        return View();
+        ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name");
+        ViewData["ProductVariantId"] = new SelectList(_context.ProductVariants, "Id", "Name");
+        return View(new Order { Items = { new OrderItem() } });
     }
 
     // POST: Orders/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ProductId,TotalPrice,Status")] Order order)
+    public async Task<IActionResult> Create([Bind("Items,Total,Currency,Status")] Order order)
     {
         order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
-        order.OrderDate = DateTime.UtcNow;
+        order.CreatedAt = DateTime.UtcNow;
+        order.UpdatedAt = DateTime.UtcNow;
+        if (order.Items != null && order.Items.Count > 0 && order.Total == 0)
+        {
+            order.Total = order.Items.Sum(i => i.Price);
+        }
         if (ModelState.IsValid)
         {
             _context.Add(order);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name", order.ProductId);
+        ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.Items.FirstOrDefault()?.ProductId);
+        ViewData["ProductVariantId"] = new SelectList(_context.ProductVariants, "Id", "Name", order.Items.FirstOrDefault()?.ProductVariantId);
         return View(order);
     }
 
@@ -81,19 +92,20 @@ public class OrdersController : Controller
         }
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var order = await _context.Orders.FindAsync(id);
-        if (order == null || order.UserId != userId)
+        var order = await _context.Orders
+            .Include(o => o.Items)
+            .FirstOrDefaultAsync(o => o.Id == id && o.UserId == userId);
+        if (order == null)
         {
             return NotFound();
         }
-        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name", order.ProductId);
         return View(order);
     }
 
     // POST: Orders/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,ProductId,TotalPrice,Status")] Order order)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Total,Currency,Status")] Order order)
     {
         if (id != order.Id)
         {
@@ -101,7 +113,7 @@ public class OrdersController : Controller
         }
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var existing = await _context.Orders.AsNoTracking().FirstOrDefaultAsync(o => o.Id == id && o.UserId == userId);
+        var existing = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id && o.UserId == userId);
         if (existing == null)
         {
             return NotFound();
@@ -111,9 +123,10 @@ public class OrdersController : Controller
         {
             try
             {
-                order.UserId = existing.UserId;
-                order.OrderDate = existing.OrderDate;
-                _context.Update(order);
+                existing.Total = order.Total;
+                existing.Currency = order.Currency;
+                existing.Status = order.Status;
+                existing.UpdatedAt = DateTime.UtcNow;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -129,7 +142,6 @@ public class OrdersController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name", order.ProductId);
         return View(order);
     }
 
@@ -142,7 +154,7 @@ public class OrdersController : Controller
         }
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var order = await _context.Orders
-            .Include(o => o.Product)
+            .Include(o => o.Items).ThenInclude(i => i.Product)
             .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
         if (order == null)
         {
@@ -172,4 +184,3 @@ public class OrdersController : Controller
         return _context.Orders.Any(e => e.Id == id);
     }
 }
-

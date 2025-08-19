@@ -13,14 +13,31 @@
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="mb-3">
-                        <label asp-for="ProductId" class="form-label"></label>
-                        <select asp-for="ProductId" class="form-select" asp-items="ViewBag.ProductId"></select>
-                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                        <label asp-for="Items[0].ProductId" class="form-label"></label>
+                        <select asp-for="Items[0].ProductId" class="form-select" asp-items="ViewBag.ProductId"></select>
+                        <span asp-validation-for="Items[0].ProductId" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="TotalPrice" class="form-label"></label>
-                        <input asp-for="TotalPrice" class="form-control" />
-                        <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                        <label asp-for="Items[0].ProductVariantId" class="form-label"></label>
+                        <select asp-for="Items[0].ProductVariantId" class="form-select" asp-items="ViewBag.ProductVariantId">
+                            <option value="">-- None --</option>
+                        </select>
+                        <span asp-validation-for="Items[0].ProductVariantId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Items[0].Price" class="form-label"></label>
+                        <input asp-for="Items[0].Price" class="form-control" />
+                        <span asp-validation-for="Items[0].Price" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Total" class="form-label"></label>
+                        <input asp-for="Total" class="form-control" />
+                        <span asp-validation-for="Total" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Currency" class="form-label"></label>
+                        <input asp-for="Currency" class="form-control" />
+                        <span asp-validation-for="Currency" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label asp-for="Status" class="form-label"></label>

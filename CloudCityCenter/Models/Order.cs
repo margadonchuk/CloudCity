@@ -22,15 +22,17 @@ public class Order
 
     public IdentityUser? User { get; set; }
 
-    [Required]
-    public int ProductId { get; set; }
-
-    public Product? Product { get; set; }
-
-    public DateTime OrderDate { get; set; } = DateTime.UtcNow;
+    public List<OrderItem> Items { get; set; } = new();
 
     [Range(0, double.MaxValue)]
-    public decimal TotalPrice { get; set; }
+    public decimal Total { get; set; }
+
+    [StringLength(3)]
+    public string Currency { get; set; } = "USD";
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     public OrderStatus Status { get; set; } = OrderStatus.Pending;
 }
