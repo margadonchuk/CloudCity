@@ -25,10 +25,13 @@ public class HostingController : Controller
                 Id = p.Id,
                 Name = p.Name,
                 Slug = p.Slug,
-                Location = p.Location,
                 PricePerMonth = p.PricePerMonth,
-                Configuration = p.Configuration,
-                ImageUrl = p.ImageUrl
+                ImageUrl = p.ImageUrl,
+                TopFeatures = p.Features
+                    .OrderBy(f => f.Id)
+                    .Select(f => string.IsNullOrWhiteSpace(f.Value) ? f.Name : $"{f.Name}: {f.Value}")
+                    .Take(3)
+                    .ToList()
             })
             .ToListAsync();
 
@@ -39,10 +42,13 @@ public class HostingController : Controller
                 Id = p.Id,
                 Name = p.Name,
                 Slug = p.Slug,
-                Location = p.Location,
                 PricePerMonth = p.PricePerMonth,
-                Configuration = p.Configuration,
-                ImageUrl = p.ImageUrl
+                ImageUrl = p.ImageUrl,
+                TopFeatures = p.Features
+                    .OrderBy(f => f.Id)
+                    .Select(f => string.IsNullOrWhiteSpace(f.Value) ? f.Name : $"{f.Name}: {f.Value}")
+                    .Take(3)
+                    .ToList()
             })
             .ToListAsync();
 
