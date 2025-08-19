@@ -2,5 +2,7 @@ namespace CloudCityCenter.Models;
 
 public enum ProductType
 {
-    DedicatedServer
+    DedicatedServer,
+    Hosting,
+    Website
 }
