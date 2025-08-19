@@ -1,3 +1,4 @@
+@model CloudCityCenter.Models.ViewModels.HostingPageVm
 @{
     ViewData["Title"] = "Web Hosting";
 }
@@ -13,8 +14,32 @@
 
     <h5>Why choose us</h5>
     <ul>
-        <li>Optimized performance & bandwidth</li>
-        <li>Security hardening & backups</li>
+        <li>Optimized performance &amp; bandwidth</li>
+        <li>Security hardening &amp; backups</li>
         <li>Easy control panel</li>
     </ul>
+</section>
+
+<section class="container py-4">
+    <h2 class="mb-3">Hosting Plans</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.HostingPlans)
+        {
+            <div class="col">
+                @await Html.PartialAsync("_ProductCard", item)
+            </div>
+        }
+    </div>
+</section>
+
+<section class="container py-4">
+    <h2 class="mb-3">Create Website</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.WebsiteProducts)
+        {
+            <div class="col">
+                @await Html.PartialAsync("_ProductCard", item)
+            </div>
+        }
+    </div>
 </section>
