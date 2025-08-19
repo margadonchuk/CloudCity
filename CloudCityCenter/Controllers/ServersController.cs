@@ -21,7 +21,9 @@ public class ServersController : Controller
     [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Servers.ToListAsync());
+        return View(await _context.Products
+            .Where(p => p.Type == ProductType.DedicatedServer)
+            .ToListAsync());
     }
 
     // GET: Servers/Details/5
@@ -33,7 +35,8 @@ public class ServersController : Controller
             return NotFound();
         }
 
-        var server = await _context.Servers
+        var server = await _context.Products
+            .Where(p => p.Type == ProductType.DedicatedServer)
             .FirstOrDefaultAsync(m => m.Id == id);
         if (server == null)
         {
@@ -52,10 +55,11 @@ public class ServersController : Controller
     // POST: Servers/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Location,PricePerMonth,Configuration,IsAvailable,ImageUrl")] Server server)
+    public async Task<IActionResult> Create([Bind("Id,Name,Location,PricePerMonth,Configuration,IsAvailable,ImageUrl,Type")] Product server)
     {
         if (ModelState.IsValid)
         {
+            server.Type = ProductType.DedicatedServer;
             _context.Add(server);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -71,7 +75,9 @@ public class ServersController : Controller
             return NotFound();
         }
 
-        var server = await _context.Servers.FindAsync(id);
+        var server = await _context.Products
+            .Where(p => p.Type == ProductType.DedicatedServer)
+            .FirstOrDefaultAsync(p => p.Id == id);
         if (server == null)
         {
             return NotFound();
@@ -82,7 +88,7 @@ public class ServersController : Controller
     // POST: Servers/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Location,PricePerMonth,Configuration,IsAvailable,ImageUrl")] Server server)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Location,PricePerMonth,Configuration,IsAvailable,ImageUrl,Type")] Product server)
     {
         if (id != server.Id)
         {
@@ -93,6 +99,7 @@ public class ServersController : Controller
         {
             try
             {
+                server.Type = ProductType.DedicatedServer;
                 _context.Update(server);
                 await _context.SaveChangesAsync();
             }
@@ -120,7 +127,8 @@ public class ServersController : Controller
             return NotFound();
         }
 
-        var server = await _context.Servers
+        var server = await _context.Products
+            .Where(p => p.Type == ProductType.DedicatedServer)
             .FirstOrDefaultAsync(m => m.Id == id);
         if (server == null)
         {
@@ -135,10 +143,10 @@ public class ServersController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var server = await _context.Servers.FindAsync(id);
+        var server = await _context.Products.FindAsync(id);
         if (server != null)
         {
-            _context.Servers.Remove(server);
+            _context.Products.Remove(server);
             await _context.SaveChangesAsync();
         }
         return RedirectToAction(nameof(Index));
@@ -146,6 +154,6 @@ public class ServersController : Controller
 
     private bool ServerExists(int id)
     {
-        return _context.Servers.Any(e => e.Id == id);
+        return _context.Products.Any(e => e.Id == id && e.Type == ProductType.DedicatedServer);
     }
 }

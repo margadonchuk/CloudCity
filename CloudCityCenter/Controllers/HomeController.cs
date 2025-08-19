@@ -20,11 +20,11 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var servers = await _context.Servers
+        var products = await _context.Products
             .AsNoTracking()
-            .Where(s => s.IsAvailable)
+            .Where(p => p.IsAvailable && p.Type == ProductType.DedicatedServer)
             .ToListAsync();
-        return View(servers);
+        return View(products);
     }
 
     public IActionResult Privacy()

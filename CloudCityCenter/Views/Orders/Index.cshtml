@@ -14,10 +14,10 @@
 {
     <div class="col">
         <div class="card h-100">
-            <img src="@(item.Server?.ImageUrl ?? "https://via.placeholder.com/300x200?text=Server")" class="card-img-top" alt="@item.Server?.Name" />
+            <img src="@(item.Product?.ImageUrl ?? "https://via.placeholder.com/300x200?text=Server")" class="card-img-top" alt="@item.Product?.Name" />
             <div class="card-body">
-                <h5 class="card-title">@item.Server?.Name</h5>
-                <p class="card-text">@item.Server?.Configuration</p>
+                <h5 class="card-title">@item.Product?.Name</h5>
+                <p class="card-text">@item.Product?.Configuration</p>
                 <p class="card-text"><small class="text-muted">@item.OrderDate.ToString("yyyy-MM-dd")</small></p>
                 <p class="card-text fw-semibold">$@item.TotalPrice</p>
                 <span class="badge bg-secondary">@item.Status</span>

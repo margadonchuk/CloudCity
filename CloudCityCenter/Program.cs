@@ -8,17 +8,19 @@ var builder = WebApplication.CreateBuilder(args);
 // ✅ Чтение строки подключения из переменной окружения
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-if (string.IsNullOrWhiteSpace(connectionString))
-{
-    throw new InvalidOperationException("Missing environment variable: CLOUDCITY_DB_CONNECTION");
-}
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// ✅ Использование строки подключения из переменной окружения
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseInMemoryDatabase("DefaultConnection"));
+}
+else
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(connectionString));
+}
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.SignIn.RequireConfirmedAccount = false)

@@ -22,7 +22,7 @@ public class OrdersController : Controller
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var orders = await _context.Orders
-            .Include(o => o.Server)
+            .Include(o => o.Product)
             .Where(o => o.UserId == userId)
             .ToListAsync();
         return View(orders);
@@ -38,7 +38,7 @@ public class OrdersController : Controller
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var order = await _context.Orders
-            .Include(o => o.Server)
+            .Include(o => o.Product)
             .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
         if (order == null)
         {
@@ -51,14 +51,14 @@ public class OrdersController : Controller
     // GET: Orders/Create
     public IActionResult Create()
     {
-        ViewData["ServerId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Servers, "Id", "Name");
+        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name");
         return View();
     }
 
     // POST: Orders/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ServerId,TotalPrice,Status")] Order order)
+    public async Task<IActionResult> Create([Bind("ProductId,TotalPrice,Status")] Order order)
     {
         order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
         order.OrderDate = DateTime.UtcNow;
@@ -68,7 +68,7 @@ public class OrdersController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ServerId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Servers, "Id", "Name", order.ServerId);
+        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name", order.ProductId);
         return View(order);
     }
 
@@ -86,14 +86,14 @@ public class OrdersController : Controller
         {
             return NotFound();
         }
-        ViewData["ServerId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Servers, "Id", "Name", order.ServerId);
+        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name", order.ProductId);
         return View(order);
     }
 
     // POST: Orders/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,ServerId,TotalPrice,Status")] Order order)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,ProductId,TotalPrice,Status")] Order order)
     {
         if (id != order.Id)
         {
@@ -129,7 +129,7 @@ public class OrdersController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ServerId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Servers, "Id", "Name", order.ServerId);
+        ViewData["ProductId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Products.Where(p => p.Type == ProductType.DedicatedServer), "Id", "Name", order.ProductId);
         return View(order);
     }
 
@@ -142,7 +142,7 @@ public class OrdersController : Controller
         }
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var order = await _context.Orders
-            .Include(o => o.Server)
+            .Include(o => o.Product)
             .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
         if (order == null)
         {

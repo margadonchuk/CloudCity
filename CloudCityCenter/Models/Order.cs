@@ -23,9 +23,9 @@ public class Order
     public IdentityUser? User { get; set; }
 
     [Required]
-    public int ServerId { get; set; }
+    public int ProductId { get; set; }
 
-    public Server? Server { get; set; }
+    public Product? Product { get; set; }
 
     public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 
