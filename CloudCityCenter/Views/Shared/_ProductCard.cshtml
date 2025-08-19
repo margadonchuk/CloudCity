@@ -1,0 +1,17 @@
+@model CloudCityCenter.Models.ViewModels.ProductCardVm
+@{
+    var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
+        ? "https://via.placeholder.com/300x200?text=No+Image"
+        : Model.ImageUrl;
+}
+<img src="@imageUrl" class="card-img-top" alt="@Model.Name" />
+<div class="card-body">
+    <h5 class="card-title">@Model.Name</h5>
+    <ul class="list-unstyled small">
+    @foreach (var feature in Model.TopFeatures)
+    {
+        <li>@feature</li>
+    }
+    </ul>
+    <p class="card-text fw-semibold">$@Model.PricePerMonth / month</p>
+</div>
