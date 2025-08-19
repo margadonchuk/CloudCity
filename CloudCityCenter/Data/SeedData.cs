@@ -66,6 +66,7 @@ public static class SeedData
                 PricePerMonth = 5,
                 Configuration = "1 vCPU, 1GB RAM",
                 IsAvailable = true,
+                IsPublished = true,
                 ImageUrl = "https://via.placeholder.com/300x200?text=Starter+US",
                 Type = ProductType.DedicatedServer,
                 Variants = new List<ProductVariant>
@@ -92,6 +93,7 @@ public static class SeedData
                 PricePerMonth = 10,
                 Configuration = "Shared hosting",
                 IsAvailable = true,
+                IsPublished = true,
                 ImageUrl = "https://via.placeholder.com/300x200?text=Hosting",
                 Type = ProductType.Hosting,
                 Variants = new List<ProductVariant>
@@ -118,6 +120,7 @@ public static class SeedData
                 PricePerMonth = 20,
                 Configuration = "WordPress site",
                 IsAvailable = true,
+                IsPublished = true,
                 ImageUrl = "https://via.placeholder.com/300x200?text=Website",
                 Type = ProductType.Website,
                 Variants = new List<ProductVariant>
