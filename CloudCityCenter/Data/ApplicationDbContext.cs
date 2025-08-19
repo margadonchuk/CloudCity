@@ -34,5 +34,25 @@ public class ApplicationDbContext : IdentityDbContext
             .HasMany(o => o.Items)
             .WithOne(i => i.Order)
             .HasForeignKey(i => i.OrderId);
+
+        builder.Entity<Product>()
+            .Property(p => p.PricePerMonth)
+            .HasPrecision(18, 2);
+
+        builder.Entity<ProductVariant>()
+            .Property(v => v.Price)
+            .HasPrecision(18, 2);
+
+        builder.Entity<OrderItem>()
+            .Property(i => i.Price)
+            .HasPrecision(18, 2);
+
+        builder.Entity<Order>()
+            .Property(o => o.Total)
+            .HasPrecision(18, 2);
+
+        builder.Entity<Product>()
+            .HasIndex(p => p.Slug)
+            .IsUnique();
     }
 }

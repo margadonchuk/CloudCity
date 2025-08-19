@@ -12,6 +12,10 @@ public class Product
     [StringLength(100)]
     public string Name { get; set; } = string.Empty;
 
+    [Required]
+    [StringLength(100)]
+    public string Slug { get; set; } = string.Empty;
+
     public ProductType Type { get; set; }
 
     [StringLength(100)]
