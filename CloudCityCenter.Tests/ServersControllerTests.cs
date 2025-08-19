@@ -1,6 +1,7 @@
 using CloudCityCenter.Controllers;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
+using CloudCityCenter.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
@@ -35,13 +36,14 @@ public class ServersControllerTests
     }
 
     [Fact]
-    public async Task Index_ReturnsViewResult_WithListOfServers()
+    public async Task Index_ReturnsOnlyPublishedDedicatedServers()
     {
         // Arrange
-        var context = GetInMemoryDbContext(nameof(Index_ReturnsViewResult_WithListOfServers));
+        var context = GetInMemoryDbContext(nameof(Index_ReturnsOnlyPublishedDedicatedServers));
         context.Products.AddRange(
-            new Product { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer },
-            new Product { Id = 2, Name = "Server2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer }
+            new Product { Id = 1, Name = "Server1", Slug = "s1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer, IsPublished = true },
+            new Product { Id = 2, Name = "Server2", Slug = "s2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer, IsPublished = false },
+            new Product { Id = 3, Name = "Hosting", Slug = "h1", Location = "EU", PricePerMonth = 5, Configuration = "Conf3", IsAvailable = true, ImageUrl = "img", Type = ProductType.Hosting, IsPublished = true }
         );
         await context.SaveChangesAsync();
         var controller = GetController(context, authenticated: false);
@@ -51,15 +53,16 @@ public class ServersControllerTests
 
         // Assert
         var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsAssignableFrom<List<Product>>(viewResult.Model);
-        Assert.Equal(2, model.Count);
+        var model = Assert.IsAssignableFrom<List<ProductCardVm>>(viewResult.Model);
+        Assert.Single(model);
+        Assert.Equal("Server1", model[0].Name);
     }
 
     [Fact]
-    public async Task Details_ReturnsNotFound_WhenIdIsNull()
+    public async Task Details_ReturnsNotFound_WhenSlugIsNull()
     {
         // Arrange
-        var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenIdIsNull));
+        var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenSlugIsNull));
         var controller = GetController(context, authenticated: false);
 
         // Act
@@ -74,12 +77,12 @@ public class ServersControllerTests
     {
         // Arrange
         var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenServerDoesNotExist));
-        context.Products.Add(new Product { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer });
+        context.Products.Add(new Product { Id = 1, Name = "Server1", Slug = "s1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer, IsPublished = true });
         await context.SaveChangesAsync();
         var controller = GetController(context);
 
         // Act
-        var result = await controller.Details(2);
+        var result = await controller.Details("nope");
 
         // Assert
         Assert.IsType<NotFoundResult>(result);
@@ -95,12 +98,22 @@ public class ServersControllerTests
         {
             Id = 1,
             Name = "Server1",
+            Slug = "s1",
             Location = "US",
             PricePerMonth = 10,
             Configuration = "Conf1",
             IsAvailable = true,
             ImageUrl = "img",
-            Type = ProductType.DedicatedServer
+            Type = ProductType.DedicatedServer,
+            IsPublished = true,
+            Variants = new List<ProductVariant>
+            {
+                new ProductVariant { Id = 1, Name = "Basic", Price = 5, BillingPeriod = BillingPeriod.Monthly }
+            },
+            Features = new List<ProductFeature>
+            {
+                new ProductFeature { Id = 1, Name = "RAM", Value = "16GB" }
+            }
         };
         seedContext.Products.Add(server);
         await seedContext.SaveChangesAsync();
@@ -108,12 +121,14 @@ public class ServersControllerTests
         var controller = GetController(GetInMemoryDbContext(dbName), authenticated: false);
 
         // Act
-        var result = await controller.Details(1);
+        var result = await controller.Details("s1");
 
         // Assert
         var viewResult = Assert.IsType<ViewResult>(result);
         var model = Assert.IsType<Product>(viewResult.Model);
         Assert.Equal("Server1", model.Name);
+        Assert.Single(model.Variants);
+        Assert.Single(model.Features);
     }
 
     [Fact]

@@ -29,6 +29,8 @@ public class Product
 
     public bool IsAvailable { get; set; }
 
+    public bool IsPublished { get; set; }
+
     [StringLength(300)]
     public string? ImageUrl { get; set; }
 
