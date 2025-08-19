@@ -39,6 +39,10 @@ public class ApplicationDbContext : IdentityDbContext
             .Property(p => p.PricePerMonth)
             .HasPrecision(18, 2);
 
+        builder.Entity<Product>()
+            .Property(p => p.IsPublished)
+            .HasDefaultValue(false);
+
         builder.Entity<ProductVariant>()
             .Property(v => v.Price)
             .HasPrecision(18, 2);
