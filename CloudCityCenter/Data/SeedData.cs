@@ -19,6 +19,7 @@ public static class SeedData
                 new()
                 {
                     Name = "Starter US",
+                    Slug = "starter-us",
                     Location = "US",
                     PricePerMonth = 5,
                     Configuration = "1 vCPU, 1GB RAM",
@@ -29,6 +30,7 @@ public static class SeedData
                 new()
                 {
                     Name = "Pro EU",
+                    Slug = "pro-eu",
                     Location = "EU",
                     PricePerMonth = 15,
                     Configuration = "2 vCPU, 4GB RAM",
@@ -39,6 +41,7 @@ public static class SeedData
                 new()
                 {
                     Name = "Enterprise Asia",
+                    Slug = "enterprise-asia",
                     Location = "Asia",
                     PricePerMonth = 30,
                     Configuration = "4 vCPU, 8GB RAM",
