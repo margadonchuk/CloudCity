@@ -12,14 +12,20 @@
 <div class="row row-cols-1 row-cols-md-2 g-4">
 @foreach (var item in Model)
 {
+    var first = item.Items.FirstOrDefault();
     <div class="col">
         <div class="card h-100">
-            <img src="@(item.Product?.ImageUrl ?? "https://via.placeholder.com/300x200?text=Server")" class="card-img-top" alt="@item.Product?.Name" />
+            <img src="@(first?.Product?.ImageUrl ?? "https://via.placeholder.com/300x200?text=Server")" class="card-img-top" alt="@first?.Product?.Name" />
             <div class="card-body">
-                <h5 class="card-title">@item.Product?.Name</h5>
-                <p class="card-text">@item.Product?.Configuration</p>
-                <p class="card-text"><small class="text-muted">@item.OrderDate.ToString("yyyy-MM-dd")</small></p>
-                <p class="card-text fw-semibold">$@item.TotalPrice</p>
+                <h5 class="card-title">Order #@item.Id</h5>
+                <ul class="list-unstyled">
+                    @foreach (var i in item.Items)
+                    {
+                        <li>@i.Product?.Name @(i.ProductVariant != null ? $"- {i.ProductVariant.Name}" : "")</li>
+                    }
+                </ul>
+                <p class="card-text"><small class="text-muted">@item.CreatedAt.ToString("yyyy-MM-dd")</small></p>
+                <p class="card-text fw-semibold">@item.Currency @item.Total</p>
                 <span class="badge bg-secondary">@item.Status</span>
             </div>
             <div class="card-footer text-center">

@@ -77,9 +77,11 @@ public static class SeedData
                 .Select(p => new Order
                 {
                     UserId = user.Id,
-                    ProductId = p.Id,
-                    TotalPrice = p.PricePerMonth,
-                    OrderDate = DateTime.UtcNow,
+                    Items = new List<OrderItem> { new OrderItem { ProductId = p.Id, Price = p.PricePerMonth } },
+                    Total = p.PricePerMonth,
+                    Currency = "USD",
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow,
                     Status = OrderStatus.Completed
                 })
                 .ToList();
