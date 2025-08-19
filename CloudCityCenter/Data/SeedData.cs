@@ -12,8 +12,6 @@ public static class SeedData
 {
     public static void Initialize(ApplicationDbContext context)
     {
-        context.Database.Migrate();
-
         MigrateLegacyServers(context);
         SeedProducts(context);
 

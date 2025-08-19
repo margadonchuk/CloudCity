@@ -27,13 +27,25 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
-
-// Seed sample data when the "seed" argument is supplied
-if (args.Contains("seed"))
+using (var scope = app.Services.CreateScope())
 {
-    using var scope = app.Services.CreateScope();
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    SeedData.Initialize(context);
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        context.Database.Migrate();
+
+        // Seed sample data when the "seed" argument is supplied
+        if (args.Contains("seed"))
+        {
+            SeedData.Initialize(context);
+        }
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred during database migration.");
+    }
 }
 
 // Configure the HTTP request pipeline.
