@@ -12,9 +12,9 @@ public static class SeedData
     {
         context.Database.Migrate();
 
-        if (!context.Servers.Any())
+        if (!context.Products.Any())
         {
-            var servers = new List<Server>
+            var products = new List<Product>
             {
                 new()
                 {
@@ -23,7 +23,8 @@ public static class SeedData
                     PricePerMonth = 5,
                     Configuration = "1 vCPU, 1GB RAM",
                     IsAvailable = true,
-                    ImageUrl = "https://via.placeholder.com/300x200?text=Starter+US"
+                    ImageUrl = "https://via.placeholder.com/300x200?text=Starter+US",
+                    Type = ProductType.DedicatedServer
                 },
                 new()
                 {
@@ -32,7 +33,8 @@ public static class SeedData
                     PricePerMonth = 15,
                     Configuration = "2 vCPU, 4GB RAM",
                     IsAvailable = true,
-                    ImageUrl = "https://via.placeholder.com/300x200?text=Pro+EU"
+                    ImageUrl = "https://via.placeholder.com/300x200?text=Pro+EU",
+                    Type = ProductType.DedicatedServer
                 },
                 new()
                 {
@@ -41,11 +43,12 @@ public static class SeedData
                     PricePerMonth = 30,
                     Configuration = "4 vCPU, 8GB RAM",
                     IsAvailable = true,
-                    ImageUrl = "https://via.placeholder.com/300x200?text=Enterprise+Asia"
+                    ImageUrl = "https://via.placeholder.com/300x200?text=Enterprise+Asia",
+                    Type = ProductType.DedicatedServer
                 }
             };
 
-            context.Servers.AddRange(servers);
+            context.Products.AddRange(products);
             context.SaveChanges();
         }
 
@@ -69,12 +72,13 @@ public static class SeedData
                 context.SaveChanges();
             }
 
-            var orders = context.Servers
-                .Select(s => new Order
+            var orders = context.Products
+                .Where(p => p.Type == ProductType.DedicatedServer)
+                .Select(p => new Order
                 {
                     UserId = user.Id,
-                    ServerId = s.Id,
-                    TotalPrice = s.PricePerMonth,
+                    ProductId = p.Id,
+                    TotalPrice = p.PricePerMonth,
                     OrderDate = DateTime.UtcNow,
                     Status = OrderStatus.Completed
                 })

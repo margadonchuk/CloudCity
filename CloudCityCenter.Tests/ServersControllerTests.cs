@@ -39,9 +39,9 @@ public class ServersControllerTests
     {
         // Arrange
         var context = GetInMemoryDbContext(nameof(Index_ReturnsViewResult_WithListOfServers));
-        context.Servers.AddRange(
-            new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img" },
-            new Server { Id = 2, Name = "Server2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true, ImageUrl = "img" }
+        context.Products.AddRange(
+            new Product { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer },
+            new Product { Id = 2, Name = "Server2", Location = "EU", PricePerMonth = 20, Configuration = "Conf2", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer }
         );
         await context.SaveChangesAsync();
         var controller = GetController(context, authenticated: false);
@@ -51,7 +51,7 @@ public class ServersControllerTests
 
         // Assert
         var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsAssignableFrom<List<Server>>(viewResult.Model);
+        var model = Assert.IsAssignableFrom<List<Product>>(viewResult.Model);
         Assert.Equal(2, model.Count);
     }
 
@@ -74,7 +74,7 @@ public class ServersControllerTests
     {
         // Arrange
         var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenServerDoesNotExist));
-        context.Servers.Add(new Server { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img" });
+        context.Products.Add(new Product { Id = 1, Name = "Server1", Location = "US", PricePerMonth = 10, Configuration = "Conf1", IsAvailable = true, ImageUrl = "img", Type = ProductType.DedicatedServer });
         await context.SaveChangesAsync();
         var controller = GetController(context);
 
@@ -91,7 +91,7 @@ public class ServersControllerTests
         // Arrange
         var dbName = nameof(Details_ReturnsViewResult_WithServer);
         var seedContext = GetInMemoryDbContext(dbName);
-        var server = new Server
+        var server = new Product
         {
             Id = 1,
             Name = "Server1",
@@ -99,9 +99,10 @@ public class ServersControllerTests
             PricePerMonth = 10,
             Configuration = "Conf1",
             IsAvailable = true,
-            ImageUrl = "img"
+            ImageUrl = "img",
+            Type = ProductType.DedicatedServer
         };
-        seedContext.Servers.Add(server);
+        seedContext.Products.Add(server);
         await seedContext.SaveChangesAsync();
 
         var controller = GetController(GetInMemoryDbContext(dbName), authenticated: false);
@@ -111,7 +112,7 @@ public class ServersControllerTests
 
         // Assert
         var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsType<Server>(viewResult.Model);
+        var model = Assert.IsType<Product>(viewResult.Model);
         Assert.Equal("Server1", model.Name);
     }
 
@@ -122,14 +123,15 @@ public class ServersControllerTests
         var dbName = nameof(Create_AddsServerAndRedirects_WhenModelStateValid);
         var context = GetInMemoryDbContext(dbName);
         var controller = GetController(context);
-        var server = new Server
+        var server = new Product
         {
             Name = "NewServer",
             Location = "EU",
             PricePerMonth = 5,
             Configuration = "Conf",
             IsAvailable = true,
-            ImageUrl = "img"
+            ImageUrl = "img",
+            Type = ProductType.DedicatedServer
         };
 
         // Act
@@ -139,7 +141,7 @@ public class ServersControllerTests
         var redirect = Assert.IsType<RedirectToActionResult>(result);
         Assert.Equal("Index", redirect.ActionName);
         using var verifyContext = GetInMemoryDbContext(dbName);
-        var created = await verifyContext.Servers.FirstOrDefaultAsync();
+        var created = await verifyContext.Products.FirstOrDefaultAsync();
         Assert.NotNull(created);
         Assert.Equal("NewServer", created!.Name);
     }
@@ -150,7 +152,7 @@ public class ServersControllerTests
         // Arrange
         var dbName = nameof(Edit_UpdatesServerAndRedirects_WhenModelStateValid);
         var seedContext = GetInMemoryDbContext(dbName);
-        seedContext.Servers.Add(new Server
+        seedContext.Products.Add(new Product
         {
             Id = 1,
             Name = "Server1",
@@ -158,12 +160,13 @@ public class ServersControllerTests
             PricePerMonth = 10,
             Configuration = "Conf1",
             IsAvailable = true,
-            ImageUrl = "img"
+            ImageUrl = "img",
+            Type = ProductType.DedicatedServer
         });
         await seedContext.SaveChangesAsync();
 
         var controller = GetController(GetInMemoryDbContext(dbName));
-        var updatedServer = new Server
+        var updatedServer = new Product
         {
             Id = 1,
             Name = "Updated",
@@ -171,7 +174,8 @@ public class ServersControllerTests
             PricePerMonth = 20,
             Configuration = "Conf2",
             IsAvailable = false,
-            ImageUrl = "img"
+            ImageUrl = "img",
+            Type = ProductType.DedicatedServer
         };
 
         // Act
@@ -181,7 +185,7 @@ public class ServersControllerTests
         var redirect = Assert.IsType<RedirectToActionResult>(result);
         Assert.Equal("Index", redirect.ActionName);
         using var verifyContext = GetInMemoryDbContext(dbName);
-        var serverInDb = await verifyContext.Servers.FirstAsync();
+        var serverInDb = await verifyContext.Products.FirstAsync();
         Assert.Equal("Updated", serverInDb.Name);
         Assert.Equal(20, serverInDb.PricePerMonth);
         Assert.False(serverInDb.IsAvailable);
@@ -193,7 +197,7 @@ public class ServersControllerTests
         // Arrange
         var dbName = nameof(DeleteConfirmed_RemovesServerAndRedirects);
         var seedContext = GetInMemoryDbContext(dbName);
-        seedContext.Servers.Add(new Server
+        seedContext.Products.Add(new Product
         {
             Id = 1,
             Name = "Server1",
@@ -201,7 +205,8 @@ public class ServersControllerTests
             PricePerMonth = 10,
             Configuration = "Conf1",
             IsAvailable = true,
-            ImageUrl = "img"
+            ImageUrl = "img",
+            Type = ProductType.DedicatedServer
         });
         await seedContext.SaveChangesAsync();
 
@@ -214,7 +219,7 @@ public class ServersControllerTests
         var redirect = Assert.IsType<RedirectToActionResult>(result);
         Assert.Equal("Index", redirect.ActionName);
         using var verifyContext = GetInMemoryDbContext(dbName);
-        Assert.Empty(verifyContext.Servers);
+        Assert.Empty(verifyContext.Products);
     }
 
 }

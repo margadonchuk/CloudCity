@@ -12,16 +12,16 @@ namespace CloudCityCenter.Tests;
 public class HomeControllerTests
 {
     [Fact]
-    public async Task Index_ReturnsViewResult_WithServers()
+    public async Task Index_ReturnsViewResult_WithProducts()
     {
         var root = new InMemoryDatabaseRoot();
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase("Home_Index_ReturnsViewResult_WithServers", root)
+            .UseInMemoryDatabase("Home_Index_ReturnsViewResult_WithProducts", root)
             .Options;
         await using var context = new ApplicationDbContext(options);
         await context.Database.EnsureDeletedAsync();
         await context.Database.EnsureCreatedAsync();
-        context.Servers.Add(new Server
+        context.Products.Add(new Product
         {
             Id = 1,
             Name = "S1",
@@ -29,7 +29,8 @@ public class HomeControllerTests
             PricePerMonth = 10,
             Configuration = "C",
             IsAvailable = true,
-            ImageUrl = "img"
+            ImageUrl = "img",
+            Type = ProductType.DedicatedServer
         });
         await context.SaveChangesAsync();
         var controller = new HomeController(NullLogger<HomeController>.Instance, context);
@@ -37,7 +38,7 @@ public class HomeControllerTests
         var result = await controller.Index();
 
         var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsAssignableFrom<List<Server>>(viewResult.Model);
+        var model = Assert.IsAssignableFrom<List<Product>>(viewResult.Model);
         Assert.Single(model);
     }
 }

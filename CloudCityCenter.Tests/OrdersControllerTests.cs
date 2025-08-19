@@ -30,10 +30,10 @@ public class OrdersControllerTests
     public async Task Index_ReturnsOrdersForCurrentUser()
     {
         var context = GetInMemoryDbContext(nameof(Index_ReturnsOrdersForCurrentUser));
-        context.Servers.Add(new Server { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true });
+        context.Products.Add(new Product { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true, Type = ProductType.DedicatedServer });
         context.Orders.AddRange(
-            new Order { Id = 1, UserId = "user1", ServerId = 1, TotalPrice = 5, Status = OrderStatus.Pending },
-            new Order { Id = 2, UserId = "user2", ServerId = 1, TotalPrice = 6, Status = OrderStatus.Completed }
+            new Order { Id = 1, UserId = "user1", ProductId = 1, TotalPrice = 5, Status = OrderStatus.Pending },
+            new Order { Id = 2, UserId = "user2", ProductId = 1, TotalPrice = 6, Status = OrderStatus.Completed }
         );
         await context.SaveChangesAsync();
         var controller = GetController(context, "user1");
@@ -50,8 +50,8 @@ public class OrdersControllerTests
     public async Task Details_ReturnsNotFound_WhenOrderDoesNotExist()
     {
         var context = GetInMemoryDbContext(nameof(Details_ReturnsNotFound_WhenOrderDoesNotExist));
-        context.Servers.Add(new Server { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true });
-        context.Orders.Add(new Order { Id = 1, UserId = "user1", ServerId = 1, TotalPrice = 5 });
+        context.Products.Add(new Product { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true, Type = ProductType.DedicatedServer });
+        context.Orders.Add(new Order { Id = 1, UserId = "user1", ProductId = 1, TotalPrice = 5 });
         await context.SaveChangesAsync();
         var controller = GetController(context, "user1");
 
@@ -65,8 +65,8 @@ public class OrdersControllerTests
     {
         var dbName = nameof(Details_ReturnsViewResult_WithOrderForCurrentUser);
         var seedContext = GetInMemoryDbContext(dbName);
-        seedContext.Servers.Add(new Server { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true });
-        seedContext.Orders.Add(new Order { Id = 1, UserId = "user1", ServerId = 1, TotalPrice = 5, Status = OrderStatus.Pending });
+        seedContext.Products.Add(new Product { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true, Type = ProductType.DedicatedServer });
+        seedContext.Orders.Add(new Order { Id = 1, UserId = "user1", ProductId = 1, TotalPrice = 5, Status = OrderStatus.Pending });
         await seedContext.SaveChangesAsync();
 
         var controller = GetController(GetInMemoryDbContext(dbName), "user1");
@@ -83,10 +83,10 @@ public class OrdersControllerTests
     {
         var dbName = nameof(Create_PersistsOrderAndRedirectsToIndex);
         var context = GetInMemoryDbContext(dbName);
-        context.Servers.Add(new Server { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true });
+        context.Products.Add(new Product { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true, Type = ProductType.DedicatedServer });
         await context.SaveChangesAsync();
         var controller = GetController(context, "user1");
-        var order = new Order { ServerId = 1, TotalPrice = 10, Status = OrderStatus.Completed };
+        var order = new Order { ProductId = 1, TotalPrice = 10, Status = OrderStatus.Completed };
 
         var result = await controller.Create(order);
 
@@ -95,7 +95,7 @@ public class OrdersControllerTests
         using var verifyContext = GetInMemoryDbContext(dbName);
         var created = await verifyContext.Orders.FirstOrDefaultAsync();
         Assert.NotNull(created);
-        Assert.Equal(1, created!.ServerId);
+        Assert.Equal(1, created!.ProductId);
         Assert.Equal("user1", created.UserId);
         Assert.Equal(OrderStatus.Completed, created.Status);
     }
@@ -105,12 +105,12 @@ public class OrdersControllerTests
     {
         var dbName = nameof(Edit_UpdatesOrderAndRedirectsToIndex);
         var seedContext = GetInMemoryDbContext(dbName);
-        seedContext.Servers.Add(new Server { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true });
-        seedContext.Orders.Add(new Order { Id = 1, UserId = "user1", ServerId = 1, TotalPrice = 5, Status = OrderStatus.Pending });
+        seedContext.Products.Add(new Product { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true, Type = ProductType.DedicatedServer });
+        seedContext.Orders.Add(new Order { Id = 1, UserId = "user1", ProductId = 1, TotalPrice = 5, Status = OrderStatus.Pending });
         await seedContext.SaveChangesAsync();
 
         var controller = GetController(GetInMemoryDbContext(dbName), "user1");
-        var updated = new Order { Id = 1, ServerId = 1, TotalPrice = 20, Status = OrderStatus.Canceled };
+        var updated = new Order { Id = 1, ProductId = 1, TotalPrice = 20, Status = OrderStatus.Canceled };
 
         var result = await controller.Edit(1, updated);
 
@@ -127,8 +127,8 @@ public class OrdersControllerTests
     {
         var dbName = nameof(DeleteConfirmed_RemovesOrder);
         var seedContext = GetInMemoryDbContext(dbName);
-        seedContext.Servers.Add(new Server { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true });
-        seedContext.Orders.Add(new Order { Id = 1, UserId = "user1", ServerId = 1, TotalPrice = 5, Status = OrderStatus.Pending });
+        seedContext.Products.Add(new Product { Id = 1, Name = "S1", Location = "L", PricePerMonth = 1, Configuration = "C", IsAvailable = true, Type = ProductType.DedicatedServer });
+        seedContext.Orders.Add(new Order { Id = 1, UserId = "user1", ProductId = 1, TotalPrice = 5, Status = OrderStatus.Pending });
         await seedContext.SaveChangesAsync();
 
         var controller = GetController(GetInMemoryDbContext(dbName), "user1");

@@ -20,10 +20,11 @@ public class ServiceController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var servers = await _context.Servers
+        var products = await _context.Products
             .AsNoTracking()
+            .Where(p => p.Type == ProductType.DedicatedServer)
             .ToListAsync();
-        var viewModel = new ServiceIndexViewModel { Servers = servers };
+        var viewModel = new ServiceIndexViewModel { Products = products };
         return View(viewModel);
     }
 }
