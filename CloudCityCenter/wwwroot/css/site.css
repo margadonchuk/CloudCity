@@ -32,6 +32,12 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
+.nav-link.active {
+  color: var(--primary-color) !important;
+  text-decoration: underline;
+  border-bottom: 2px solid var(--primary-color);
+}
+
 .hero {
   background-color: #0d6efd;
   color: #fff;
