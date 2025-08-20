@@ -64,13 +64,13 @@ An online shop for renting servers built from scratch with ASP.NET MVC and Entit
    ```bash
    dotnet ef database update
    ```
-6. Убедитесь, что таблицы появились в базе данных. Выполните команду:  
-   Verify the tables were created in the database. Run:
+6. После чистой установки база должна соответствовать модели. Проверьте это:
+   After a clean install the database should match the model. Verify with:
    ```bash
    dotnet ef migrations list
    ```
-   либо проверьте базу вручную через SQL Server Management Studio или другой клиент.  
-   Or inspect the database manually using SQL Server Management Studio or another client.
+   и запросом `HomeController.Index`.
+   and by requesting `HomeController.Index`.
 7. При необходимости заполните её примерными серверами и заказами:  
    (Optional) Seed the database with sample servers and orders:
    ```bash
@@ -130,3 +130,31 @@ After changing the connection string, apply migrations and optionally seed the d
 dotnet ef database update
 dotnet run --project CloudCityCenter -- seed
 ```
+
+## 🗄️ Миграции БД
+**Database migrations**
+
+- Создание миграции:
+  Create a migration:
+  ```bash
+  dotnet ef migrations add <MigrationName>
+  ```
+
+- Применение миграций локально:
+  Apply migrations locally:
+  ```bash
+  dotnet ef database update --project CloudCityCenter
+  ```
+
+- Применение миграций на сервере:
+  Apply migrations on the server:
+  ```bash
+  export ConnectionStrings__DefaultConnection="Server=...;Database=...;User Id=...;Password=..."
+  dotnet ef database update --project CloudCityCenter
+  sudo systemctl restart cloudcity.service
+  ```
+  Строка подключения передаётся через переменные окружения, затем перезапускается systemd‑сервис.
+  The connection string is supplied via environment variables and the systemd service is restarted.
+
+После применения миграций не забудьте обновить сервис.
+Remember to update the service after applying migrations.
