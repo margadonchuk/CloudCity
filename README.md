@@ -158,3 +158,28 @@ dotnet run --project CloudCityCenter -- seed
 
 После применения миграций не забудьте обновить сервис.
 Remember to update the service after applying migrations.
+
+## 🖥️ Серверы (товары)
+**Servers (Products)**
+
+- Создание и применение миграций:
+  Create and apply migrations:
+  ```bash
+  dotnet ef migrations add <MigrationName> --project CloudCityCenter
+  dotnet ef database update --project CloudCityCenter
+  ```
+- Заполнение базы и администратора:
+  Seed sample data and an admin account:
+  ```bash
+  dotnet run --project CloudCityCenter -- --seed
+  dotnet run --project CloudCityCenter -- --seed-admin=admin@example.com
+  ```
+- URL панели администратора для серверов:
+  Admin panel URL for servers:
+  `/Admin/Servers`
+- Поля модели `Server` и изображения:
+  `Server` fields and image paths:
+  Ключевые поля: `Name`, `Slug` (auto), `Description`, `Location`, `PricePerMonth`, `CpuCores`, `RamGb`, `StorageGb`, `ImageUrl`, `IsActive`, `DDoSTier`, `Stock`, `CreatedUtc`.
+  Key fields: `Name`, `Slug` (auto), `Description`, `Location`, `PricePerMonth`, `CpuCores`, `RamGb`, `StorageGb`, `ImageUrl`, `IsActive`, `DDoSTier`, `Stock`, `CreatedUtc`.
+  `ImageUrl` сохраняется как `/images/servers/<файл>`, изображения размещайте в `wwwroot/images/servers`.
+  `ImageUrl` is stored as `/images/servers/<file>`; place images in `wwwroot/images/servers`.
