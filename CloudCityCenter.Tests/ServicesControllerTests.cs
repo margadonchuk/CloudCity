@@ -9,14 +9,14 @@ using System;
 
 namespace CloudCityCenter.Tests;
 
-public class ServiceControllerTests
+public class ServicesControllerTests
 {
     [Fact]
     public async Task Index_ReturnsViewResult_WithProducts()
     {
         var root = new InMemoryDatabaseRoot();
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase("Service_Index_ReturnsViewResult_WithProducts", root)
+            .UseInMemoryDatabase("Services_Index_ReturnsViewResult_WithProducts", root)
             .Options;
         await using var context = new ApplicationDbContext(options);
         await context.Database.EnsureDeletedAsync();
@@ -26,7 +26,7 @@ public class ServiceControllerTests
             new Product { Id = 2, Name = "S2", Location = "EU", PricePerMonth = 20, Configuration = "C2", IsAvailable = false, ImageUrl = "img", Type = ProductType.DedicatedServer }
         );
         await context.SaveChangesAsync();
-        var controller = new ServiceController(context);
+        var controller = new ServicesController(context);
 
         var result = await controller.Index();
 
