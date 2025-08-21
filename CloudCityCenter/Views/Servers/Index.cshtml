@@ -1,4 +1,4 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@model IEnumerable<CloudCityCenter.Models.ViewModels.ServerCardVm>
 
 @{
     ViewData["Title"] = "Servers";
@@ -6,28 +6,30 @@
 
 <h1>Servers</h1>
 
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>
-}
-
 <div class="row row-cols-1 row-cols-md-3 g-4">
 @foreach (var item in Model)
 {
     <div class="col">
         <div class="card h-100">
-            @await Html.PartialAsync("_ProductCard", item)
+            @{ var imageUrl = string.IsNullOrWhiteSpace(item.ImageUrl)
+                    ? "https://via.placeholder.com/300x200?text=No+Image"
+                    : item.ImageUrl; }
+            <img src="@imageUrl" class="card-img-top" alt="@item.Name" />
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <ul class="list-unstyled small">
+                    <li>CPU: @item.CpuCores cores</li>
+                    <li>RAM: @item.RamGb GB</li>
+                    <li>Storage: @item.StorageGb GB</li>
+                    <li>Location: @item.Location</li>
+                </ul>
+                <p class="card-text fw-semibold">$@item.PricePerMonth / month</p>
+            </div>
             <div class="card-footer text-center">
-                <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary me-2">Details</a>
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary me-2">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-                }
+                <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary">Details</a>
             </div>
         </div>
     </div>
 }
 </div>
+
