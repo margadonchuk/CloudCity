@@ -68,35 +68,137 @@
 
 
 <!-- VALUES SECTION -->
-<section style="padding: 60px 20px; text-align: center; background-color: #fff;">
-  <h2 style="font-size: 2.5rem; color: #1a1a1a;">What drives us?</h2>
+<section id="services" class="container py-5">
+  <h2 class="text-center mb-5">What drives us?</h2>
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px;">
-    <div class="card-hover" style="max-width: 300px; text-align: center;">
-      <img src="/images/reliability.png" alt="reliability" class="hover-zoom standard-image">
-      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a;">Reliability</h3>
-      <p style="font-size: 0.95rem; color: #555;">Your servers, running 24/7. Always.</p>
+  <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- СЛАЙД 1 — ТВОИ СТАРЫЕ ТРИ КАРТОЧКИ -->
+      <div class="carousel-item active">
+        <div class="row g-4 justify-content-center">
+          <!-- Reliability -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/reliability.png" class="card-img-top service-img" alt="Reliability">
+              <div class="card-body">
+                <h5 class="card-title">Reliability</h5>
+                <p class="card-text">Your servers, running 24/7. Always.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Security -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/security-center.png" class="card-img-top service-img" alt="Security">
+              <div class="card-body">
+                <h5 class="card-title">Security</h5>
+                <p class="card-text">Firewall, VPN tunneling, DDoS protection.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Affordability -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/affordability.png" class="card-img-top service-img" alt="Affordability">
+              <div class="card-body">
+                <h5 class="card-title">Affordability</h5>
+                <p class="card-text">High‑quality service without breaking the bank.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- СЛАЙД 2 — 3 НОВЫЕ СЕРВИСА -->
+      <div class="carousel-item">
+        <div class="row g-4 justify-content-center">
+          <!-- Network Equipment -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/service3.png" class="card-img-top service-img" alt="Network Equipment">
+              <div class="card-body">
+                <h5 class="card-title">Network Equipment</h5>
+                <p class="card-text">Setup & tuning: WiFi, Mikrotik, Fortinet, Cisco. Stable & secure.</p>
+              </div>
+            </div>
+          </div>
+          <!-- VPS Hosting -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/vps.png" class="card-img-top service-img" alt="VPS Hosting">
+              <div class="card-body">
+                <h5 class="card-title">VPS Hosting</h5>
+                <p class="card-text">SSD, root access, scalability for apps, sites & DBs.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Web Hosting -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/hosting.png" class="card-img-top service-img" alt="Web Hosting">
+              <div class="card-body">
+                <h5 class="card-title">Web Hosting</h5>
+                <p class="card-text">Fast, secure, and easy to manage — for any scale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- СЛАЙД 3 — ЕЩЁ 2 СЕРВИСА -->
+      <div class="carousel-item">
+        <div class="row g-4 justify-content-center">
+          <!-- Cloud Storage -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/storage.png" class="card-img-top service-img" alt="Cloud Storage">
+              <div class="card-body">
+                <h5 class="card-title">Cloud Storage</h5>
+                <p class="card-text">Secure, encrypted storage with fast access & backups.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Web Development -->
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+            <div class="card text-center h-100 service-card">
+              <img src="/images/webdev.png" class="card-img-top service-img" alt="Custom Web Development">
+              <div class="card-body">
+                <h5 class="card-title">Web Development</h5>
+                <p class="card-text">Custom sites & apps on C#, Python, PHP or builders.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="card-hover" style="max-width: 300px; text-align: center;">
-      <img src="/images/security.png" alt="security" class="hover-zoom standard-image">
-      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a;">Security</h3>
-      <p style="font-size: 0.95rem; color: #555;">Advanced Firewall protection and VPN tunneling keep your data safe from any threats.</p>
-    </div>
+    <!-- Стрелки -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
 
-    <div class="card-hover" style="max-width: 300px; text-align: center;">
-      <img src="/images/affordability.png" alt="affordability" class="hover-zoom standard-image">
-      <h3 style="margin-top: 20px; font-size: 1.2rem; font-weight: 600; color: #1a1a1a;">Affordability</h3>
-      <p style="font-size: 0.95rem; color: #555;">High-quality service, without breaking the bank.</p>
+    <!-- Точки -->
+    <div class="carousel-indicators mt-3">
+      <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+      <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2"></button>
     </div>
   </div>
 
-  <div style="margin-top: 40px;">
-    <a href="#contact-form" style="background-color: #3B82F6; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;">
-      👁 Learn More
+  <!-- Кнопка "все сервисы" -->
+  <div class="text-center mt-4">
+    <a class="btn btn-primary px-4" asp-controller="Service" asp-action="Index">
+     👁 Learn More
     </a>
   </div>
 </section>
+
+
 
 <section id="experts" class="container py-4">
   <div id="expertsCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -310,6 +412,72 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 7000); // Автопрокрутка каждые 7 секунд
 });
 </script>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq-item">
+    <input type="checkbox" id="q1">
+    <label for="q1" class="faq-question">What services does CloudCity offer?</label>
+    <div class="faq-answer">CloudCity provides affordable and secure server rental services in multiple locations worldwide, including advanced DDoS protection, VPN tunneling, and firewall security for your business needs.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q2">
+    <label for="q2" class="faq-question">In which countries are your servers available?</label>
+    <div class="faq-answer">Our servers are available in the Netherlands, Germany, France, Poland, the UK, the USA, Singapore, India, and Australia, ensuring global coverage and reliability.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q3">
+    <label for="q3" class="faq-question">What makes CloudCity servers secure?</label>
+    <div class="faq-answer">We implement advanced firewall protection, DDoS mitigation strategies, VPN tunneling for secure server connections, and external-to-internal IP address switching to ensure robust security for your data.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q4">
+    <label for="q4" class="faq-question">How can I set up my server after purchasing?</label>
+    <div class="faq-answer">Once you purchase a server, you’ll receive a detailed setup guide via email. Our support team is also available to assist you in configuring your server according to your requirements.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q5">
+    <label for="q5" class="faq-question">Do you offer flexible pricing plans?</label>
+    <div class="faq-answer">Yes, we offer a range of pricing plans to suit startups, small, and medium businesses. You can choose from monthly, quarterly, or annual billing options based on your needs.
+
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q6">
+    <label for="q6" class="faq-question">What support options do you provide?</label>
+    <div class="faq-answer">We provide 24/7 customer support via live chat, email, and a dedicated knowledge base. Our team is always ready to help with technical issues or questions.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q7">
+    <label for="q7" class="faq-question">Can I upgrade my server plan later?</label>
+    <div class="faq-answer">Absolutely! You can upgrade your server plan at any time to match your growing business needs. Simply contact our support team, and we’ll guide you through the process.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <input type="checkbox" id="q8">
+    <label for="q8" class="faq-question">How do I monitor the performance of my server?</label>
+    <div class="faq-answer">CloudCity provides an intuitive control panel where you can monitor server performance in real time. You can track CPU usage, memory, and bandwidth to ensure your server runs efficiently.
+
+</div>
+  </div>
+</section>
+
 
 <!-- CONTACT FORM -->
 <section style="background-color: #fff8f4; padding: 40px; display: flex; justify-content: center;">
