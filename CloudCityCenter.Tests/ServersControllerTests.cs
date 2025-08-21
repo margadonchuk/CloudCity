@@ -24,9 +24,9 @@ public class ServersControllerTests
     {
         var context = GetContext(nameof(Index_FiltersSortsAndPaginates));
         context.Servers.AddRange(
-            new Server { Name = "A", Slug = "a", Location = "US", CpuCores = 4, RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = true },
-            new Server { Name = "B", Slug = "b", Location = "EU", CpuCores = 8, RamGb = 32, StorageGb = 200, PricePerMonth = 50, IsActive = true },
-            new Server { Name = "C", Slug = "c", Location = "US", CpuCores = 2, RamGb = 8, StorageGb = 100, PricePerMonth = 150, IsActive = false }
+            new Server { Name = "A", Slug = "a", Location = "US", CPU = "4 cores", RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = true },
+            new Server { Name = "B", Slug = "b", Location = "EU", CPU = "8 cores", RamGb = 32, StorageGb = 200, PricePerMonth = 50, IsActive = true },
+            new Server { Name = "C", Slug = "c", Location = "US", CPU = "2 cores", RamGb = 8, StorageGb = 100, PricePerMonth = 150, IsActive = false }
         );
         await context.SaveChangesAsync();
 
@@ -45,8 +45,8 @@ public class ServersControllerTests
     {
         var context = GetContext(nameof(Details_ReturnsNotFound_ForMissingOrInactive));
         context.Servers.AddRange(
-            new Server { Name = "A", Slug = "a", Location = "US", CpuCores = 4, RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = true },
-            new Server { Name = "C", Slug = "c", Location = "US", CpuCores = 4, RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = false }
+            new Server { Name = "A", Slug = "a", Location = "US", CPU = "4 cores", RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = true },
+            new Server { Name = "C", Slug = "c", Location = "US", CPU = "4 cores", RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = false }
         );
         await context.SaveChangesAsync();
 

@@ -179,7 +179,7 @@ Remember to update the service after applying migrations.
   `/Admin/Servers`
 - Поля модели `Server` и изображения:
   `Server` fields and image paths:
-  Ключевые поля: `Name`, `Slug` (auto), `Description`, `Location`, `PricePerMonth`, `CpuCores`, `RamGb`, `StorageGb`, `ImageUrl`, `IsActive`, `DDoSTier`, `Stock`, `CreatedUtc`.
-  Key fields: `Name`, `Slug` (auto), `Description`, `Location`, `PricePerMonth`, `CpuCores`, `RamGb`, `StorageGb`, `ImageUrl`, `IsActive`, `DDoSTier`, `Stock`, `CreatedUtc`.
+  Ключевые поля: `Name`, `Slug` (auto), `Description`, `Location`, `PricePerMonth`, `CPU`, `RamGb`, `StorageGb`, `ImageUrl`, `IsActive`, `DDoSTier`, `Stock`, `CreatedUtc`.
+  Key fields: `Name`, `Slug` (auto), `Description`, `Location`, `PricePerMonth`, `CPU`, `RamGb`, `StorageGb`, `ImageUrl`, `IsActive`, `DDoSTier`, `Stock`, `CreatedUtc`.
   `ImageUrl` сохраняется как `/images/servers/<файл>`, изображения размещайте в `wwwroot/images/servers`.
   `ImageUrl` is stored as `/images/servers/<file>`; place images in `wwwroot/images/servers`.

@@ -13,7 +13,7 @@ public class Server
     private string _name = string.Empty;
 
     [Required]
-    [StringLength(100)]
+    [StringLength(200)]
     public string Name
     {
         get => _name;
@@ -40,19 +40,20 @@ public class Server
     [StringLength(200)]
     public string? Description { get; set; }
 
+    [Required]
     [StringLength(100)]
     public string? Location { get; set; }
 
     [Range(0, double.MaxValue)]
     public decimal PricePerMonth { get; set; }
 
-    [Range(1, int.MaxValue)]
-    public int CpuCores { get; set; }
+    [StringLength(100)]
+    public string CPU { get; set; } = string.Empty;
 
-    [Range(1, int.MaxValue)]
+    [Range(0, int.MaxValue)]
     public int RamGb { get; set; }
 
-    [Range(1, int.MaxValue)]
+    [Range(0, int.MaxValue)]
     public int StorageGb { get; set; }
 
     private string? _imageUrl;

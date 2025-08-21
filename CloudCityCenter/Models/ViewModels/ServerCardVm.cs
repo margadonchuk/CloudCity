@@ -7,7 +7,7 @@ public record ServerCardVm
 {
     public string? ImageUrl { get; init; }
     public string Name { get; init; } = string.Empty;
-    public int CpuCores { get; init; }
+    public string CPU { get; init; } = string.Empty;
     public int RamGb { get; init; }
     public int StorageGb { get; init; }
     public string? Location { get; init; }

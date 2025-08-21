@@ -73,11 +73,11 @@ public class ServersController : Controller
         var servers = await query
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Select(s => new ServerCardVm
+                .Select(s => new ServerCardVm
             {
                 ImageUrl = s.ImageUrl,
                 Name = s.Name,
-                CpuCores = s.CpuCores,
+                CPU = s.CPU,
                 RamGb = s.RamGb,
                 StorageGb = s.StorageGb,
                 Location = s.Location,
