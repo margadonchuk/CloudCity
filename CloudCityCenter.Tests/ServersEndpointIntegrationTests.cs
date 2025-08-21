@@ -16,9 +16,9 @@ public class ServersEndpointIntegrationTests
         using var scope = factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         db.Servers.AddRange(
-            new Server { Name = "ActiveUS", Slug = "a", Location = "US", CpuCores = 4, RamGb = 16, StorageGb = 100, PricePerMonth = 10, IsActive = true },
-            new Server { Name = "InactiveUS", Slug = "b", Location = "US", CpuCores = 4, RamGb = 16, StorageGb = 100, PricePerMonth = 10, IsActive = false },
-            new Server { Name = "ActiveEU", Slug = "c", Location = "EU", CpuCores = 4, RamGb = 16, StorageGb = 100, PricePerMonth = 10, IsActive = true }
+            new Server { Name = "ActiveUS", Slug = "a", Location = "US", CPU = "4 cores", RamGb = 16, StorageGb = 100, PricePerMonth = 10, IsActive = true },
+            new Server { Name = "InactiveUS", Slug = "b", Location = "US", CPU = "4 cores", RamGb = 16, StorageGb = 100, PricePerMonth = 10, IsActive = false },
+            new Server { Name = "ActiveEU", Slug = "c", Location = "EU", CPU = "4 cores", RamGb = 16, StorageGb = 100, PricePerMonth = 10, IsActive = true }
         );
         db.SaveChanges();
 

@@ -55,7 +55,7 @@ public class ServersController : Controller
     // POST: Admin/Servers/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Slug,Description,Location,PricePerMonth,CpuCores,RamGb,StorageGb,ImageUrl,IsActive,DDoSTier,Stock")] Server server)
+    public async Task<IActionResult> Create([Bind("Id,Name,Slug,Description,Location,PricePerMonth,CPU,RamGb,StorageGb,ImageUrl,IsActive,DDoSTier,Stock")] Server server)
     {
         if (!ModelState.IsValid)
         {
@@ -102,7 +102,7 @@ public class ServersController : Controller
     // POST: Admin/Servers/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Slug,Description,Location,PricePerMonth,CpuCores,RamGb,StorageGb,ImageUrl,IsActive,DDoSTier,Stock")] Server server)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Slug,Description,Location,PricePerMonth,CPU,RamGb,StorageGb,ImageUrl,IsActive,DDoSTier,Stock")] Server server)
     {
         if (id != server.Id)
         {

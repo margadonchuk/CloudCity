@@ -213,8 +213,10 @@ namespace CloudCityCenter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CpuCores")
-                        .HasColumnType("int");
+                    b.Property<string>("CPU")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("CreatedUtc")
                         .ValueGeneratedOnAdd()
@@ -242,13 +244,14 @@ namespace CloudCityCenter.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<string>("Location")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<decimal>("PricePerMonth")
                         .HasPrecision(18, 2)
