@@ -39,10 +39,10 @@
                             <a class="nav-link text-dark @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">@Localizer["Hosting"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Vpn" ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">@Localizer["VPN"]</a>
+                            <a class="nav-link text-dark @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">@Localizer["VPN"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Vps" ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">@Localizer["VPS"]</a>
+                            <a class="nav-link text-dark @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">@Localizer["VPS"]</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">@Localizer["Services"]</a>
