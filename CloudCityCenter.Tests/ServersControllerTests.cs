@@ -4,6 +4,7 @@ using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using Xunit;
 
 namespace CloudCityCenter.Tests;
@@ -34,9 +35,9 @@ public class ServersControllerTests
         var result = await controller.Index(location: "US", minRam: 10, maxRam: 64, q: null, sort: "price_asc", page: 1, pageSize: 12);
 
         var viewResult = Assert.IsType<ViewResult>(result);
-        var model = Assert.IsAssignableFrom<List<ServerCardVm>>(viewResult.Model);
-        Assert.Single(model);
-        Assert.Equal("A", model[0].Name);
+        var model = Assert.IsAssignableFrom<ServerIndexViewModel>(viewResult.Model);
+        Assert.Single(model.Servers);
+        Assert.Equal("A", model.Servers.First().Name);
     }
 
     [Fact]

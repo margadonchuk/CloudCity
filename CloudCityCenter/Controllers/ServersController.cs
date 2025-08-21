@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
+using System.Collections.Generic;
+using System;
 
 namespace CloudCityCenter.Controllers;
 
@@ -66,6 +68,8 @@ public class ServersController : Controller
             _ => query.OrderBy(s => s.Id)
         };
 
+        var totalCount = await query.CountAsync();
+
         var servers = await query
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -82,7 +86,39 @@ public class ServersController : Controller
             })
             .ToListAsync();
 
-        return View(servers);
+        var filters = new List<string>();
+        if (!string.IsNullOrWhiteSpace(location))
+        {
+            filters.Add($"Location: {location}");
+        }
+        if (minRam.HasValue)
+        {
+            filters.Add($"Min RAM: {minRam} GB");
+        }
+        if (maxRam.HasValue)
+        {
+            filters.Add($"Max RAM: {maxRam} GB");
+        }
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            filters.Add($"Search: {q}");
+        }
+
+        var vm = new ServerIndexViewModel
+        {
+            Servers = servers,
+            Location = location,
+            MinRam = minRam,
+            MaxRam = maxRam,
+            Q = q,
+            Sort = sort,
+            Page = page,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
+            FiltersSummary = filters.Count == 0 ? "None" : string.Join(", ", filters)
+        };
+
+        return View(vm);
     }
 
     /// <summary>
