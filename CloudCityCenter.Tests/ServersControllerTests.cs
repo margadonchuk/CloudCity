@@ -41,6 +41,29 @@ public class ServersControllerTests
     }
 
     [Fact]
+    public async Task Index_SearchesByCpuAndLocation()
+    {
+        var context = GetContext(nameof(Index_SearchesByCpuAndLocation));
+        context.Servers.AddRange(
+            new Server { Name = "Xeon", Slug = "xeon", Location = "US", CPU = "Xeon", RamGb = 16, StorageGb = 100, PricePerMonth = 100, IsActive = true },
+            new Server { Name = "Ryzen", Slug = "ryzen", Location = "EU", CPU = "Ryzen", RamGb = 32, StorageGb = 200, PricePerMonth = 50, IsActive = true }
+        );
+        await context.SaveChangesAsync();
+
+        var controller = new ServersController(context);
+
+        var cpuResult = await controller.Index(location: null, minRam: null, maxRam: null, q: "Xeon", sort: null, page: 1, pageSize: 12);
+        var cpuModel = Assert.IsAssignableFrom<ServerIndexViewModel>(Assert.IsType<ViewResult>(cpuResult).Model);
+        Assert.Single(cpuModel.Servers);
+        Assert.Equal("Xeon", cpuModel.Servers.First().Name);
+
+        var locationResult = await controller.Index(location: null, minRam: null, maxRam: null, q: "EU", sort: null, page: 1, pageSize: 12);
+        var locationModel = Assert.IsAssignableFrom<ServerIndexViewModel>(Assert.IsType<ViewResult>(locationResult).Model);
+        Assert.Single(locationModel.Servers);
+        Assert.Equal("Ryzen", locationModel.Servers.First().Name);
+    }
+
+    [Fact]
     public async Task Details_ReturnsNotFound_ForMissingOrInactive()
     {
         var context = GetContext(nameof(Details_ReturnsNotFound_ForMissingOrInactive));
