@@ -55,7 +55,7 @@ public class ServersController : Controller
     // POST: Admin/Servers/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Slug,Description,Location,PricePerMonth,CPU,RamGb,StorageGb,ImageUrl,IsActive,DDoSTier,Stock")] Server server)
+    public async Task<IActionResult> Create([Bind("Name,Slug,Description,Location,PricePerMonth,CPU,RamGb,StorageGb,ImageUrl,IsActive,DDoSTier,Stock")] Server server)
     {
         if (!ModelState.IsValid)
         {
