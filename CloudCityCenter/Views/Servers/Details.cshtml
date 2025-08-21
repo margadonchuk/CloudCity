@@ -1,97 +1,31 @@
-@model CloudCityCenter.Models.Product
+@model CloudCityCenter.Models.Server
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Server Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.Name</h1>
 
-<div>
-    <h4>Server</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PricePerMonth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PricePerMonth)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Configuration)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Configuration)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @{
-                var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
-                    ? "https://via.placeholder.com/300x200?text=No+Image"
-                    : Model.ImageUrl;
-            }
-            <img src="@imageUrl" class="img-fluid" alt="@Model.Name" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IsAvailable)
-        </dd>
-    </dl>
-
-    @if (Model.Variants.Any())
-    {
-        <h4>Variants</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Billing Period</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var variant in Model.Variants)
-            {
-                <tr>
-                    <td>@variant.Name</td>
-                    <td>@variant.Price</td>
-                    <td>@variant.BillingPeriod</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    }
-
-    @if (Model.Features.Any())
-    {
-        <h4>Features</h4>
+<div class="row">
+    <div class="col-md-6">
+        @{ var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
+                ? "https://via.placeholder.com/300x200?text=No+Image"
+                : Model.ImageUrl; }
+        <img src="@imageUrl" class="img-fluid" alt="@Model.Name" />
+    </div>
+    <div class="col-md-6">
         <ul class="list-unstyled">
-        @foreach (var feature in Model.Features)
-        {
-            <li><strong>@feature.Name</strong>@(string.IsNullOrWhiteSpace(feature.Value) ? string.Empty : $": {feature.Value}")</li>
-        }
+            <li><strong>CPU:</strong> @Model.CpuCores cores</li>
+            <li><strong>RAM:</strong> @Model.RamGb GB</li>
+            <li><strong>Storage:</strong> @Model.StorageGb GB</li>
+            <li><strong>Location:</strong> @Model.Location</li>
+            <li><strong>Price:</strong> $@Model.PricePerMonth / month</li>
         </ul>
-    }
+        <p>@Model.Description</p>
+    </div>
 </div>
+
 <div>
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> <text>|</text>
-    }
     <a asp-action="Index">Back to List</a>
 </div>
+
