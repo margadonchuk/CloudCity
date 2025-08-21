@@ -16,6 +16,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<ProductFeature> ProductFeatures { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<OrderItem> OrderItems { get; set; } = null!;
+    public DbSet<Server> Servers { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -58,5 +59,29 @@ public class ApplicationDbContext : IdentityDbContext
         builder.Entity<Product>()
             .HasIndex(p => p.Slug)
             .IsUnique();
+
+        builder.Entity<Server>()
+            .HasIndex(s => s.Slug)
+            .IsUnique();
+
+        builder.Entity<Server>()
+            .Property(s => s.PricePerMonth)
+            .HasPrecision(18, 2);
+
+        builder.Entity<Server>()
+            .Property(s => s.IsActive)
+            .HasDefaultValue(true);
+
+        builder.Entity<Server>()
+            .Property(s => s.DDoSTier)
+            .HasDefaultValue("Basic");
+
+        builder.Entity<Server>()
+            .Property(s => s.Stock)
+            .HasDefaultValue(9999);
+
+        builder.Entity<Server>()
+            .Property(s => s.CreatedUtc)
+            .HasDefaultValueSql("GETUTCDATE()");
     }
 }
