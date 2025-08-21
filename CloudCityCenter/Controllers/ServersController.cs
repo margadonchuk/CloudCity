@@ -57,7 +57,10 @@ public class ServersController : Controller
         if (!string.IsNullOrWhiteSpace(q))
         {
             query = query.Where(s =>
-                s.Name.Contains(q) || (s.Description != null && s.Description.Contains(q)));
+                s.Name.Contains(q) ||
+                (s.Description != null && s.Description.Contains(q)) ||
+                s.CPU.Contains(q) ||
+                (s.Location != null && s.Location.Contains(q)));
         }
 
         query = sort switch
