@@ -9,11 +9,11 @@ using CloudCityCenter.Models.ViewModels;
 namespace CloudCityCenter.Controllers;
 
 [AllowAnonymous]
-public class ServiceController : Controller
+public class ServicesController : Controller
 {
     private readonly ApplicationDbContext _context;
 
-    public ServiceController(ApplicationDbContext context)
+    public ServicesController(ApplicationDbContext context)
     {
         _context = context;
     }
