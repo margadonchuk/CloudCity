@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -65,13 +66,19 @@ public class ServersController : Controller
         {
             _context.Add(server);
             await _context.SaveChangesAsync();
-            _logger.LogInformation("Server {ServerId} created", server.Id);
+            _logger.LogInformation("Server {ServerSlug} created", server.Slug);
             return RedirectToAction(nameof(Index));
         }
-        catch (DbUpdateException)
+        catch (DbUpdateException ex)
         {
-            ModelState.AddModelError("Slug", "A server with the same slug already exists.");
-            return View(server);
+            if (ex.InnerException?.Message.Contains("duplicate", StringComparison.OrdinalIgnoreCase) == true ||
+                ex.InnerException?.Message.Contains("IX_Servers_Slug") == true)
+            {
+                ModelState.AddModelError("Slug", "Slug already exists.");
+                return View(server);
+            }
+
+            throw;
         }
     }
 
@@ -111,13 +118,19 @@ public class ServersController : Controller
         {
             _context.Update(server);
             await _context.SaveChangesAsync();
-            _logger.LogInformation("Server {ServerId} edited", server.Id);
+            _logger.LogInformation("Server {ServerSlug} edited", server.Slug);
             return RedirectToAction(nameof(Index));
         }
-        catch (DbUpdateException)
+        catch (DbUpdateException ex)
         {
-            ModelState.AddModelError("Slug", "A server with the same slug already exists.");
-            return View(server);
+            if (ex.InnerException?.Message.Contains("duplicate", StringComparison.OrdinalIgnoreCase) == true ||
+                ex.InnerException?.Message.Contains("IX_Servers_Slug") == true)
+            {
+                ModelState.AddModelError("Slug", "Slug already exists.");
+                return View(server);
+            }
+
+            throw;
         }
     }
 
@@ -148,7 +161,7 @@ public class ServersController : Controller
         {
             _context.Servers.Remove(server);
             await _context.SaveChangesAsync();
-            _logger.LogInformation("Server {ServerId} deleted", server.Id);
+            _logger.LogInformation("Server {ServerSlug} deleted", server.Slug);
         }
         return RedirectToAction(nameof(Index));
     }
