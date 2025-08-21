@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+<!DOCTYPE html>
 <html lang="en">
 <head>
     
@@ -32,31 +33,31 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark @(currentController == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">Servers</a>
+                            <a class="nav-link text-dark @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">@Localizer["Servers"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">Hosting</a>
+                            <a class="nav-link text-dark @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">@Localizer["Hosting"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Vpn" ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">VPN</a>
+                            <a class="nav-link text-dark @(currentController == "Vpn" ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">@Localizer["VPN"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Vps" ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">VPS</a>
+                            <a class="nav-link text-dark @(currentController == "Vps" ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">@Localizer["VPS"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">Services</a>
+                            <a class="nav-link text-dark @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">@Localizer["Services"]</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
                         </li>-->
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">About</a>
+                            <a class="nav-link text-dark @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">@Localizer["About"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                            <a class="nav-link text-dark @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">@Localizer["Contact"]</a>
                         </li>
                        <!-- <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -66,13 +67,13 @@
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">Profile</a>
+                                <a class="nav-link text-dark @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">@Localizer["Profile"]</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">Register</a>
+                                <a class="nav-link text-dark @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">@Localizer["Register"]</a>
                             </li>
                         }
                     </ul>

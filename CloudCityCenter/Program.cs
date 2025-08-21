@@ -1,7 +1,9 @@
 using System.Linq;
+using System.Globalization;
 using CloudCityCenter.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddControllersWithViews().AddViewLocalization();
 
 if (string.IsNullOrWhiteSpace(connectionString))
 {
@@ -27,6 +30,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
+
+var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("ru") };
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("en"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+};
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -58,6 +69,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseRequestLocalization(localizationOptions);
 app.UseRouting();
 
 app.UseAuthentication();
