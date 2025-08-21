@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Globalization;
 using CloudCityCenter.Data;
@@ -31,6 +32,25 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 
 var app = builder.Build();
 
+if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    await context.Database.MigrateAsync();
+
+    var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
+    var adminEmail = adminArg?.Split('=', 2)[1];
+
+    await SeedData.RunAsync(services, adminEmail);
+
+    if (args.Contains("--seed"))
+    {
+        SeedData.Initialize(context);
+    }
+    return;
+}
+
 var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("ru") };
 var localizationOptions = new RequestLocalizationOptions
 {
@@ -45,12 +65,6 @@ using (var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
         context.Database.Migrate();
-
-        // Seed sample data when the "seed" argument is supplied
-        if (args.Contains("seed"))
-        {
-            SeedData.Initialize(context);
-        }
     }
     catch (Exception ex)
     {
