@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="Home" xml:space="preserve">
-    <value>Главная</value>
-  </data>
   <data name="Servers" xml:space="preserve">
     <value>Серверы</value>
   </data>
