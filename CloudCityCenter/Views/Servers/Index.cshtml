@@ -1,4 +1,4 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@model CloudCityCenter.Models.ViewModels.ServerIndexViewModel
 
 @{
     ViewData["Title"] = "Servers";
@@ -6,28 +6,82 @@
 
 <h1>Servers</h1>
 
-@if (User.IsInRole("Admin"))
+@if (!Model.Servers.Any())
 {
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>
+    <p class="text-muted">No servers match your filters.</p>
 }
+else
+{
+    if (!string.IsNullOrWhiteSpace(Model.FiltersSummary))
+    {
+        <p class="text-muted">Filters: @Model.FiltersSummary</p>
+    }
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-@foreach (var item in Model)
-{
-    <div class="col">
-        <div class="card h-100">
-            @await Html.PartialAsync("_ProductCard", item)
-            <div class="card-footer text-center">
-                <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary me-2">Details</a>
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary me-2">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-                }
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.Servers)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    @{ var imageUrl = string.IsNullOrWhiteSpace(item.ImageUrl)
+                            ? "https://via.placeholder.com/300x200?text=No+Image"
+                            : item.ImageUrl; }
+                    <img src="@imageUrl" class="card-img-top" alt="@item.Name" />
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <ul class="list-unstyled small">
+                            <li>CPU: @item.CPU</li>
+                            <li>RAM: @item.RamGb GB</li>
+                            <li>Storage: @item.StorageGb GB</li>
+                            <li>Location: @item.Location</li>
+                        </ul>
+                        <p class="card-text fw-semibold">$@item.PricePerMonth / month</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary">Details</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
+
+    if (Model.TotalPages > 1)
+    {
+        <nav class="mt-4" aria-label="Server pages">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(Model.Page == 1 ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index"
+                       asp-route-location="@Model.Location"
+                       asp-route-minRam="@Model.MinRam"
+                       asp-route-maxRam="@Model.MaxRam"
+                       asp-route-q="@Model.Q"
+                       asp-route-sort="@Model.Sort"
+                       asp-route-page="@(Model.Page - 1)"
+                       asp-route-pageSize="@Model.PageSize">Previous</a>
+                </li>
+                @for (var i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                        <a class="page-link" asp-action="Index"
+                           asp-route-location="@Model.Location"
+                           asp-route-minRam="@Model.MinRam"
+                           asp-route-maxRam="@Model.MaxRam"
+                           asp-route-q="@Model.Q"
+                           asp-route-sort="@Model.Sort"
+                           asp-route-page="@i"
+                           asp-route-pageSize="@Model.PageSize">@i</a>
+                    </li>
+                }
+                <li class="page-item @(Model.Page == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index"
+                       asp-route-location="@Model.Location"
+                       asp-route-minRam="@Model.MinRam"
+                       asp-route-maxRam="@Model.MaxRam"
+                       asp-route-q="@Model.Q"
+                       asp-route-sort="@Model.Sort"
+                       asp-route-page="@(Model.Page + 1)"
+                       asp-route-pageSize="@Model.PageSize">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
 }
-</div>

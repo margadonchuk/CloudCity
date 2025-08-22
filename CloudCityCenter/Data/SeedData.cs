@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using CloudCityCenter.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +12,32 @@ namespace CloudCityCenter.Data;
 
 public static class SeedData
 {
+    public static async Task RunAsync(IServiceProvider serviceProvider, string? adminEmail = null)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var services = scope.ServiceProvider;
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+
+        string[] roles = { "Admin", "Manager", "Customer" };
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        if (!string.IsNullOrWhiteSpace(adminEmail))
+        {
+            var user = await userManager.FindByEmailAsync(adminEmail);
+            if (user != null && !await userManager.IsInRoleAsync(user, "Admin"))
+            {
+                await userManager.AddToRoleAsync(user, "Admin");
+            }
+        }
+    }
+
     public static void Initialize(ApplicationDbContext context)
     {
         MigrateLegacyServers(context);
