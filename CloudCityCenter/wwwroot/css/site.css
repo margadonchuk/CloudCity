@@ -738,3 +738,38 @@ section.home-about {
   height: 100%;
   object-fit: cover;  /* картинка равномерно заполняет квадрат */
 }
+
+
+
+/* Карточки как на скрине */
+.feature {
+  border: none;
+  background: #fff;
+  padding: 0 0 8px;
+}
+
+/* Большое квадратное изображение, мягкие углы и тень */
+.feature-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;                 /* сохраняет квадрат */
+  object-fit: cover;                   /* заполняет без искажений */
+  border-radius: 22px;                 /* мягкое скругление как на скрине */
+  box-shadow: 0 14px 28px rgba(0,0,0,.10), 0 10px 10px rgba(0,0,0,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Лёгкий hover‑эффект */
+.feature:hover .feature-img {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(0,0,0,.12), 0 12px 12px rgba(0,0,0,.08);
+}
+
+/* Заголовки и тексты под картинками */
+#services h4 { letter-spacing: .2px; }
+#services p  { line-height: 1.5; }
+
+/* Кнопка снизу по центру */
+#services .btn-lg {
+  border-radius: 14px;
+  box-shadow: 0 10px 18px rgba(31, 100, 255, .15);
+}

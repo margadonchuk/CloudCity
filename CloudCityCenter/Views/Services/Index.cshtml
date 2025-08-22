@@ -221,3 +221,30 @@
 
   </div>
 </section>
+
+/* Карточки под единый стиль */
+.feature {
+  padding: 8px;
+}
+
+.feature-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;        /* квадрат */
+  object-fit: cover;           /* обрезка без искажений */
+  border-radius: 22px;         /* скругление как на скрине */
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  background: #fff;
+}
+
+/* Убираем дёргание карусели на мобилках */
+#servicesCarousel .carousel-item {
+  transition: transform .6s ease;
+}
+
+/* Стрелки — чуть выше по вертикали на больших экранах */
+@@media (min-width: 992px) {
+  #servicesCarousel .carousel-control-prev,
+  #servicesCarousel .carousel-control-next {
+    width: 5%;
+  }
+}
