@@ -773,3 +773,57 @@ section.home-about {
   border-radius: 14px;
   box-shadow: 0 10px 18px rgba(31, 100, 255, .15);
 }
+
+/* Payments / badges */
+.payment-logos .pay-badge{
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #fff6dc;                 /* warm pastel circle like in the example */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 26px rgba(0,0,0,.06), 0 2px 10px rgba(0,0,0,.04);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.payment-logos .pay-badge img{
+  width: 42px;                          /* tweak if your SVGs are larger/smaller */
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.12));
+}
+.payment-logos .pay-badge:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.10), 0 4px 14px rgba(0,0,0,.06);
+}
+
+/* Small screens: slightly smaller badges */
+@media (max-width: 480px){
+  .payment-logos .pay-badge{
+    width: 82px; height: 82px;
+  }
+  .payment-logos .pay-badge img{
+    width: 36px; height: 36px;
+  }
+}
+
+
+
+
+.pay-badge {
+  width: 100px;              /* размер круга */
+  height: 100px;
+  border-radius: 50%;
+  background: #fff5d7;       /* цвет круга */
+  display: flex;
+  justify-content: center;   /* по горизонтали */
+  align-items: center;       /* по вертикали */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pay-badge img {
+  max-width: 60%;   /* иконка пропорционально */
+  max-height: 60%;  /* всегда по центру круга */
+  object-fit: contain;
+}
+
