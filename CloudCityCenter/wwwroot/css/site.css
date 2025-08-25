@@ -779,7 +779,7 @@ section.home-about {
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: #fff6dc;                 /* warm pastel circle like in the example */
+  background: #9a833d;                 /* warm pastel circle like in the example */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -808,22 +808,113 @@ section.home-about {
 }
 
 
-
-
-.pay-badge {
-  width: 100px;              /* размер круга */
-  height: 100px;
-  border-radius: 50%;
-  background: #fff5d7;       /* цвет круга */
+/* Лента с логотипами: в одну строку, с переносом и равными интервалами */
+.payment-logos{
   display: flex;
-  justify-content: center;   /* по горизонтали */
-  align-items: center;       /* по вертикали */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-wrap: wrap;                /* перенос при узком экране */
+  justify-content: center;        /* по центру по горизонтали */
+  align-items: center;            /* по центру по вертикали */
+  gap: 42px;                      /* расстояние между кругами */
+  width: 100%;
 }
 
-.pay-badge img {
-  max-width: 60%;   /* иконка пропорционально */
-  max-height: 60%;  /* всегда по центру круга */
-  object-fit: contain;
+/* Круглый бейдж */
+.payment-logos .pay-badge {
+  width: 100px;           /* размер круга */
+  height: 100px;
+  /*border-radius: 50%;*/
+  background: #fff1cc;    /* цвет фона */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.payment-logos .pay-badge img {
+  width: 100%;             /* иконка всегда заполняет круг */
+  height: 100%;
+  object-fit: contain;    /* не обрезает и сохраняет пропорции */
+}
+
+/* Карточки в стиле VPN: крупное изображение, мягкие тени, округлости */
+.plan-card{
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.plan-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+.plan-media{
+  position: relative;
+  aspect-ratio: 16/9; /* одинаковая высота всех “шапок” */
+  overflow: hidden;
+}
+
+.plan-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+  display: block;
+}
+
+.plan-body{
+  padding: 20px 22px 24px;
+}
+
+.plan-title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a; /* темно-синий, как в VPN‑картах */
+  margin: 2px 0 6px;
+}
+
+.plan-price{
+  margin: 0 0 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.plan-price span{
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.plan-specs{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  color: #334155;
+  font-size: .95rem;
+}
+
+.plan-specs li{
+  display: flex;
+  gap: .35rem;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(15,23,42,.08);
+}
+
+.plan-specs li:last-child{
+  border-bottom: 0;
+}
+
+.plan-btn{
+  width: 100%;
+  padding: .9rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.16);
+}
+
+.plan-btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(15,23,42,.20);
+}
