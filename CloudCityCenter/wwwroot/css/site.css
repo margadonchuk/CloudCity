@@ -919,4 +919,43 @@ section.home-about {
   box-shadow: 0 16px 28px rgba(15,23,42,.20);
 }
 
+/* высота твоего navbar ≈ 64–72px; подгони под себя */
+body {
+  padding-top: 72px; /* чтобы контент не заезжал под шапку */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  z-index: 1030; /* поверх контента */
+}
+
+#scrollTopBtn {
+  display: none; /* скрыта по умолчанию */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: #003366; /* тёмно-синий */
+  color: white;
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 8px; /* квадратная с лёгким скруглением */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background-color: #002244; /* ещё темнее при наведении */
+  transform: scale(1.05);
+}
+
+.navbar .nav-link img {
+  vertical-align: middle;
+  margin-top: -2px;
+}
 

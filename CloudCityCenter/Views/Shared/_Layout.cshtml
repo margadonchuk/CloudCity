@@ -15,12 +15,13 @@
 
 
 </head>
+
 <body>
     @{
         var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
     }
     <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-md navbar-light bg-white mb-3">
             <div class="container-fluid">
                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
     <img src="~/images/logo.png" alt="CloudCityCenter Logo" style="height:40px;">
@@ -32,6 +33,14 @@
                 </button>
                 <div class="navbar-collapse collapse d-md-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+    <a class="nav-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+        <img src="/images/logotg.png
+    " alt="Telegram Bot" style="width:22px; height:22px; margin-right:6px;">
+        Telegram Bot
+    </a>
+</li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">@Localizer["Servers"]</a>
                         </li>
@@ -107,6 +116,9 @@ else
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+<button id="scrollTopBtn" title="Go to top">↑</button>
 
 
 

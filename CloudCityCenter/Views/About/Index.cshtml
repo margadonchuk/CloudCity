@@ -74,11 +74,11 @@
   <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
 
-      <!-- Слайд 1 (4 карточки) -->
+      <!-- Слайд 1 -->
       <div class="carousel-item active">
         <div class="row g-5 justify-content-center">
           <!-- Reliability -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/reliability.png" alt="Reliability" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Reliability</h4>
@@ -87,7 +87,7 @@
           </div>
 
           <!-- Security -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/security.png" alt="Security" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Security</h4>
@@ -96,30 +96,30 @@
           </div>
 
           <!-- Affordability -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/affordability.png" alt="Affordability" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Affordability</h4>
-              <p class="text-muted mb-0">High‑quality service, without breaking the bank.</p>
+              <p class="text-muted mb-0">High-quality service, without breaking the bank.</p>
             </div>
           </div>
+        </div>
+      </div>
 
+      <!-- Слайд 2 -->
+      <div class="carousel-item">
+        <div class="row g-5 justify-content-center">
           <!-- Network Equipment -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/service3.png" alt="Network Equipment" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Network Equipment</h4>
               <p class="text-muted mb-0">Setup & tuning: WiFi, Mikrotik, Fortinet, Cisco.</p>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Слайд 2 (ещё 4 карточки) -->
-      <div class="carousel-item">
-        <div class="row g-5 justify-content-center">
           <!-- VPS Hosting -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/vps.png" alt="VPS Hosting" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">VPS Hosting</h4>
@@ -128,16 +128,21 @@
           </div>
 
           <!-- Web Hosting -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/hosting.png" alt="Web Hosting" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Web Hosting</h4>
               <p class="text-muted mb-0">Fast, secure, and easy to manage websites.</p>
             </div>
           </div>
+        </div>
+      </div>
 
+      <!-- Слайд 3 -->
+      <div class="carousel-item">
+        <div class="row g-5 justify-content-center">
           <!-- Cloud Storage -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/storage.png" alt="Cloud Storage" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Cloud Storage</h4>
@@ -146,16 +151,24 @@
           </div>
 
           <!-- Web Development -->
-          <div class="col-11 col-sm-6 col-lg-3">
+          <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/webdev.png" alt="Custom Web Development" class="feature-img">
               <h4 class="fw-semibold mt-4 mb-2">Web Development</h4>
               <p class="text-muted mb-0">Custom sites & apps: C#, Python, PHP.</p>
             </div>
           </div>
+
+          <!-- Reliability (чтобы цикл замкнулся) -->
+          <div class="col-10 col-md-4">
+            <div class="feature text-center h-100">
+              <img src="/images/reliability.png" alt="Reliability" class="feature-img">
+              <h4 class="fw-semibold mt-4 mb-2">Reliability</h4>
+              <p class="text-muted mb-0">Your servers, running 24/7. Always.</p>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
 
     <!-- Стрелки -->
@@ -167,19 +180,6 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-
-    <!-- Точки -->
-    <div class="carousel-indicators mt-3">
-      <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>
-  </div>
-
-  <!-- Кнопка "все сервисы" -->
-  <div class="text-center mt-4">
-    <a class="btn btn-primary btn-lg px-4" asp-controller="Services" asp-action="Index">
-      <span class="me-2">👁</span> Learn More
-    </a>
   </div>
 </section>
 
