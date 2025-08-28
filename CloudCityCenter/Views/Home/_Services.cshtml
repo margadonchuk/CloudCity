@@ -1,103 +1,68 @@
-<section class="py-5">
-  <div class="container text-center">
-    <h2 class="display-5 fw-bold mb-3">Services</h2>
-    <p class="mb-5">
-      We provide powerful servers equipped with robust DDoS protection, secure VPN tunnels, 
-      and a variety of flexible tariffs tailored to meet your unique needs.
-    </p>
+<section class="container py-5">
+  <h2 class="text-center display-5 fw-bold mb-4">What drives us?</h2>
 
-    <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-
-        <!-- Слайд 1 -->
-        <div class="carousel-item active">
-          <div class="row g-4 justify-content-center">
-            <div class="col-md-4">
-              <div class="service-box">
-                <img src="/images/ddos.png" alt="DDoS Protection">
-                <h5 class="fw-bold mt-3">DDoS Protection Service</h5>
-                <p class="small text-muted">
-                  Experience unparalleled security with CloudCity Center’s advanced DDoS protection. 
-                  Our cutting-edge technology shields your servers from malicious traffic, ensuring uninterrupted performance and data safety.
-                </p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="service-box">
-                <img src="/images/affordability.png" alt="VPN Tunneling">
-                <h5 class="fw-bold mt-3">VPN Tunneling Service</h5>
-                <p class="small text-muted">
-                  Secure your online activities and enhance privacy with CloudCity Center’s VPN tunneling service. 
-                  Our solution ensures encrypted connections, keeping your data protected while browsing.
-                </p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="service-box">
-                <img src="/images/humanfirewall.png" alt="Human Firewall">
-                <h5 class="fw-bold mt-3">Human Firewall Service</h5>
-                <p class="small text-muted">
-                  Protect your data with CloudCity Center’s Human Firewall service. 
-                  With advanced technology and real-time management, we keep your business secure and operational.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Слайд 2 -->
-        <div class="carousel-item">
-          <div class="row g-4 justify-content-center">
-            <div class="col-md-4">
-              <div class="service-box">
-                <img src="/images/reliability.png" alt="24/7 Support">
-                <h5 class="fw-bold mt-3">24/7 Server Support Service</h5>
-                <p class="small text-muted">
-                  Ensure smooth operations with CloudCity Center’s 24/7 server support. 
-                  Our dedicated team is always available to monitor and resolve server issues, guaranteeing optimal performance.
-                </p>
-              </div>
-            </div>
-            <!-- Чтобы цикл был замкнут – повторяем первые сервисы -->
-            <div class="col-md-4">
-              <div class="service-box">
-                <img src="/images/ddos.png" alt="DDoS Protection">
-                <h5 class="fw-bold mt-3">DDoS Protection Service</h5>
-                <p class="small text-muted">
-                  Experience unparalleled security with CloudCity Center’s advanced DDoS protection.
-                </p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="service-box">
-                <img src="/images/affordability.png" alt="VPN Tunneling">
-                <h5 class="fw-bold mt-3">VPN Tunneling Service</h5>
-                <p class="small text-muted">
-                  Secure your online activities and enhance privacy with CloudCity Center’s VPN tunneling service.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+  <!-- Лента сервисов: видим 3, остальные бегут по кругу -->
+  <div class="services-strip animate-scroll">
+    <div class="services-track">
+      <!-- Дублируем набор, чтобы лента была бесшовной -->
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/reliability.png" alt="Reliability">
+        <h4 class="fw-semibold mt-3">Reliability</h4>
+        <p class="text-muted mb-0">Your servers, running 24/7. Always.</p>
       </div>
 
-      <!-- Стрелки -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/security.png" alt="Security">
+        <h4 class="fw-semibold mt-3">Security</h4>
+        <p class="text-muted mb-0">Firewall, VPN tunneling, DDoS protection.</p>
+      </div>
 
-    <!-- Кнопка "все сервисы" -->
-    <div class="text-center mt-4">
-      <a href="/Service" class="btn btn-primary px-4 py-2" style="border-radius: 30px;">
-        View All Services
-      </a>
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/affordability.png" alt="Affordability">
+        <h4 class="fw-semibold mt-3">Affordability</h4>
+        <p class="text-muted mb-0">High-quality service, without breaking the bank.</p>
+      </div>
+
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/service3.png" alt="Network Equipment">
+        <h4 class="fw-semibold mt-3">Network Equipment</h4>
+        <p class="text-muted mb-0">WiFi, Mikrotik, Fortinet, Cisco.</p>
+      </div>
+
+      <!-- Повтор тот же самый (для бесшовности) -->
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/reliability.png" alt="Reliability">
+        <h4 class="fw-semibold mt-3">Reliability</h4>
+        <p class="text-muted mb-0">Your servers, running 24/7. Always.</p>
+      </div>
+
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/security.png" alt="Security">
+        <h4 class="fw-semibold mt-3">Security</h4>
+        <p class="text-muted mb-0">Firewall, VPN tunneling, DDoS protection.</p>
+      </div>
+
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/affordability.png" alt="Affordability">
+        <h4 class="fw-semibold mt-3">Affordability</h4>
+        <p class="text-muted mb-0">High-quality service, without breaking the bank.</p>
+      </div>
+
+      <div class="feature text-center">
+        <img class="feature-img" src="/images/service3.png" alt="Network Equipment">
+        <h4 class="fw-semibold mt-3">Network Equipment</h4>
+        <p class="text-muted mb-0">WiFi, Mikrotik, Fortinet, Cisco.</p>
+      </div>
     </div>
   </div>
+
+  <div class="text-center mt-4">
+    <a class="btn btn-primary btn-lg px-4" asp-controller="Services" asp-action="Index">
+      <span class="me-2">👁</span> Learn More
+    </a>
+  </div>
 </section>
+
+
 
 

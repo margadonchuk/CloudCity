@@ -959,3 +959,49 @@ body {
   margin-top: -2px;
 }
 
+
+/* Контейнер: показываем только 3 карточки, остальное обрезаем */
+.services-strip{
+  overflow: hidden;
+}
+
+/* Дорожка — используем существующую анимацию scroll-left
+   (она уже определена в файле как @keyframes scroll-left) */
+.services-track{
+  display: flex;
+  gap: 24px;                  /* расстояние между карточками */
+  width: max-content;
+  animation: scroll-left 70s linear infinite;  /* как у .logo-scroll */
+}
+
+/* Каждая карточка — строго 1/3 видимой ширины контейнера минус зазор */
+.services-strip .feature{
+  flex: 0 0 calc((100vw - 2*24px - 2*5%) / 3); 
+  /* пояснение:
+     100vw — ширина окна, 
+     - 2*24px — два промежутка между тремя карточками,
+     - 2*5% — чуть уменьшаем, если у родителя .container есть внутренние поля.
+     Если размер не устраивает, можно просто поставить фиксированную ширину, например: 360px */
+  min-width: 320px;           /* не даём ужаться слишком сильно */
+}
+
+/* На планшете/мобиле можно показывать 2 или 1 карточку */
+@media (max-width: 992px){
+  .services-strip .feature{
+    flex: 0 0 calc((100vw - 24px - 2*5%) / 2);
+    min-width: 280px;
+  }
+}
+@media (max-width: 576px){
+  .services-strip .feature{
+    flex: 0 0 calc(100vw - 2*5%); /* одна карточка во всю ширину контейнера */
+    min-width: 260px;
+  }
+}
+
+/* Остановка анимации при ховере (как у партнёрских логотипов) */
+.services-strip.animate-scroll:hover .services-track{
+  animation-play-state: paused;
+}
+
+

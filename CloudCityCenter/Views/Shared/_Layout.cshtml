@@ -120,6 +120,45 @@ else
 
 <button id="scrollTopBtn" title="Go to top">↑</button>
 
+<script>
+(function(){
+  const viewport = document.querySelector('.services-viewport');
+  const track = document.querySelector('.services-track');
+  if(!viewport || !track) return;
+
+  // Если дубликата нет — создаём
+  if (track.dataset.cloned !== '1') {
+    track.innerHTML = track.innerHTML + track.innerHTML; // дублируем набор А -> B
+    track.dataset.cloned = '1';
+  }
+
+  function recalc(){
+    const items = Array.from(track.children);
+    const half = items.length / 2;              // первая половина — исходный набор А
+    const gap = parseFloat(getComputedStyle(track).gap || '0');
+    let width = 0;
+
+    for (let i = 0; i < half; i++){
+      width += items[i].getBoundingClientRect().width;
+      if (i < half - 1) width += gap;          // между карточками
+    }
+
+    // проставляем точное расстояние сдвига и длительность по пикселям/секунду
+    track.style.setProperty('--loop-distance', width + 'px');
+    const pxPerSec = 120;                       // скорость: пикселей в секунду
+    const dur = Math.max(10, Math.round(width / pxPerSec));
+    track.style.setProperty('--dur', dur + 's');
+  }
+
+  // Стартовый расчёт и пересчёт при ресайзе
+  recalc();
+  let t;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = setTimeout(recalc, 120);
+  });
+})();
+</script>
 
 
 </body>
