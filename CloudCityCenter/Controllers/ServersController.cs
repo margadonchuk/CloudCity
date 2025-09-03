@@ -11,6 +11,7 @@ namespace CloudCityCenter.Controllers;
 /// <summary>
 /// Public controller for browsing available servers.
 /// </summary>
+[Route("[controller]")]
 public class ServersController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -23,6 +24,7 @@ public class ServersController : Controller
     /// <summary>
     /// Lists active servers with optional filtering, sorting and pagination.
     /// </summary>
+    [HttpGet]
     public async Task<IActionResult> Index(
         string? location,
         int? minRam,
@@ -127,6 +129,7 @@ public class ServersController : Controller
     /// <summary>
     /// Shows details for a server identified by slug.
     /// </summary>
+    [HttpGet("{slug}")]
     public async Task<IActionResult> Details(string? slug)
     {
         if (string.IsNullOrWhiteSpace(slug))

@@ -37,7 +37,7 @@ else
                         <p class="card-text fw-semibold">$@item.PricePerMonth / month</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary">Details</a>
+                        <a asp-controller="Servers" asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary">Details</a>
                     </div>
                 </div>
             </div>
