@@ -68,6 +68,10 @@ public class Server
             {
                 _imageUrl = null;
             }
+            else if (Uri.IsWellFormedUriString(value, UriKind.Absolute))
+            {
+                _imageUrl = value;
+            }
             else
             {
                 var fileName = Path.GetFileName(value);
