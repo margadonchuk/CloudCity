@@ -42,7 +42,7 @@ public class Server
 
     [Required]
     [StringLength(100)]
-    public string? Location { get; set; }
+    public string Location { get; set; } = string.Empty;
 
     [Range(0, double.MaxValue)]
     public decimal PricePerMonth { get; set; }
