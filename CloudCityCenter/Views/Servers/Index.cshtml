@@ -1,87 +1,175 @@
-@model CloudCityCenter.Models.ViewModels.ServerIndexViewModel
-
 @{
-    ViewData["Title"] = "Servers";
+    ViewData["Title"] = "Dedicated Servers";
 }
 
-<h1>Servers</h1>
+<section class="container py-4">
+    <h1 class="mb-3">Dedicated Servers</h1>
+    <p class="text-muted">
+        Our bare‑metal servers deliver uncompromised performance with full hardware control.
+        Ideal for large workloads, game hosting or any application that demands raw power.
+    </p>
 
-@if (!Model.Servers.Any())
-{
-    <p class="text-muted">No servers match your filters.</p>
-}
-else
-{
-    if (!string.IsNullOrWhiteSpace(Model.FiltersSummary))
-    {
-        <p class="text-muted">Filters: @Model.FiltersSummary</p>
-    }
+    <h5>What you get</h5>
+    <ul>
+        <li>Enterprise hardware & root access</li>
+        <li>Multiple datacenter locations</li>
+        <li>24/7 monitoring & support</li>
+    </ul>
+</section>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var item in Model.Servers)
-        {
-            <div class="col">
-                <div class="card h-100">
-                    @{ var imageUrl = string.IsNullOrWhiteSpace(item.ImageUrl)
-                            ? "https://via.placeholder.com/300x200?text=No+Image"
-                            : item.ImageUrl; }
-                    <img src="@imageUrl" class="card-img-top" alt="@item.Name" />
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        <ul class="list-unstyled small">
-                            <li>CPU: @item.CPU</li>
-                            <li>RAM: @item.RamGb GB</li>
-                            <li>Storage: @item.StorageGb GB</li>
-                            <li>Location: @item.Location</li>
-                        </ul>
-                        <p class="card-text fw-semibold">$@item.PricePerMonth / month</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a asp-controller="Servers" asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-sm btn-outline-primary">Details</a>
-                    </div>
-                </div>
-            </div>
-        }
+<section class="container my-5">
+  <div class="row g-4">
+
+    <!-- Server 1 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="plan-card shadow-lg">
+        <div class="plan-media">
+          <img src="/images/dell.png" alt="DS1-E3">
+        </div>
+
+        <div class="plan-body">
+          <h3 class="plan-title">DS1‑E3</h3>
+          <p class="plan-price">Starting at <span>$59</span>/month</p>
+
+          <ul class="plan-specs">
+            <li><strong>CPU:</strong> Xeon E3‑1270v6</li>
+            <li><strong>RAM:</strong> 32GB</li>
+            <li><strong>Storage:</strong> 2×240GB SSD</li>
+            <li><strong>Network:</strong> 1Gbps</li>
+            <li><strong>IPv4:</strong> 1</li>
+            <li><strong>Location:</strong> Germany</li>
+          </ul>
+
+          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+        </div>
+      </div>
     </div>
 
-    if (Model.TotalPages > 1)
-    {
-        <nav class="mt-4" aria-label="Server pages">
-            <ul class="pagination justify-content-center">
-                <li class="page-item @(Model.Page == 1 ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index"
-                       asp-route-location="@Model.Location"
-                       asp-route-minRam="@Model.MinRam"
-                       asp-route-maxRam="@Model.MaxRam"
-                       asp-route-q="@Model.Q"
-                       asp-route-sort="@Model.Sort"
-                       asp-route-page="@(Model.Page - 1)"
-                       asp-route-pageSize="@Model.PageSize">Previous</a>
-                </li>
-                @for (var i = 1; i <= Model.TotalPages; i++)
-                {
-                    <li class="page-item @(i == Model.Page ? "active" : "")">
-                        <a class="page-link" asp-action="Index"
-                           asp-route-location="@Model.Location"
-                           asp-route-minRam="@Model.MinRam"
-                           asp-route-maxRam="@Model.MaxRam"
-                           asp-route-q="@Model.Q"
-                           asp-route-sort="@Model.Sort"
-                           asp-route-page="@i"
-                           asp-route-pageSize="@Model.PageSize">@i</a>
-                    </li>
-                }
-                <li class="page-item @(Model.Page == Model.TotalPages ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index"
-                       asp-route-location="@Model.Location"
-                       asp-route-minRam="@Model.MinRam"
-                       asp-route-maxRam="@Model.MaxRam"
-                       asp-route-q="@Model.Q"
-                       asp-route-sort="@Model.Sort"
-                       asp-route-page="@(Model.Page + 1)"
-                       asp-route-pageSize="@Model.PageSize">Next</a>
-                </li>
-            </ul>
-        </nav>
-    }
-}
+    <!-- Server 2 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="plan-card shadow-lg">
+        <div class="plan-media">
+          <img src="/images/hp.png" alt="DS2-E5">
+        </div>
+
+        <div class="plan-body">
+          <h3 class="plan-title">DS2‑E5</h3>
+          <p class="plan-price">Starting at <span>$79</span>/month</p>
+
+          <ul class="plan-specs">
+            <li><strong>CPU:</strong> Xeon E5‑1650v4</li>
+            <li><strong>RAM:</strong> 64GB</li>
+            <li><strong>Storage:</strong> 2×480GB SSD</li>
+            <li><strong>Network:</strong> 1Gbps</li>
+            <li><strong>IPv4:</strong> 1</li>
+            <li><strong>Location:</strong> Netherlands</li>
+          </ul>
+
+          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Server 3 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="plan-card shadow-lg">
+        <div class="plan-media">
+          <img src="/images/ovh.png" alt="DS3-Ryzen">
+        </div>
+
+        <div class="plan-body">
+          <h3 class="plan-title">DS3‑Ryzen</h3>
+          <p class="plan-price">Starting at <span>$95</span>/month</p>
+
+          <ul class="plan-specs">
+            <li><strong>CPU:</strong> Ryzen 5 3600</li>
+            <li><strong>RAM:</strong> 64GB</li>
+            <li><strong>Storage:</strong> 2×1TB NVMe</li>
+            <li><strong>Network:</strong> 1Gbps</li>
+            <li><strong>IPv4:</strong> 1</li>
+            <li><strong>Location:</strong> France</li>
+          </ul>
+
+          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Server 4 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="plan-card shadow-lg">
+        <div class="plan-media">
+          <img src="/images/hetzner.png" alt="DS4-EPYC">
+        </div>
+
+        <div class="plan-body">
+          <h3 class="plan-title">DS4‑EPYC</h3>
+          <p class="plan-price">Starting at <span>$129</span>/month</p>
+
+          <ul class="plan-specs">
+            <li><strong>CPU:</strong> AMD EPYC 7501</li>
+            <li><strong>RAM:</strong> 128GB</li>
+            <li><strong>Storage:</strong> 2×1.92TB NVMe</li>
+            <li><strong>Network:</strong> 2Gbps</li>
+            <li><strong>IPv4:</strong> 1</li>
+            <li><strong>Location:</strong> Finland</li>
+          </ul>
+
+          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Server 5 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="plan-card shadow-lg">
+        <div class="plan-media">
+          <img src="/images/proxmox.png" alt="DS5-Storage">
+        </div>
+
+        <div class="plan-body">
+          <h3 class="plan-title">DS5‑Storage</h3>
+          <p class="plan-price">Starting at <span>$149</span>/month</p>
+
+          <ul class="plan-specs">
+            <li><strong>CPU:</strong> Xeon Silver 4210</li>
+            <li><strong>RAM:</strong> 64GB</li>
+            <li><strong>Storage:</strong> 4×4TB HDD</li>
+            <li><strong>Network:</strong> 1Gbps</li>
+            <li><strong>IPv4:</strong> 1</li>
+            <li><strong>Location:</strong> USA</li>
+          </ul>
+
+          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Server 6 -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="plan-card shadow-lg">
+        <div class="plan-media">
+          <img src="/images/ms.png" alt="DS6-HighMem">
+        </div>
+
+        <div class="plan-body">
+          <h3 class="plan-title">DS6‑HighMem</h3>
+          <p class="plan-price">Starting at <span>$169</span>/month</p>
+
+          <ul class="plan-specs">
+            <li><strong>CPU:</strong> Xeon Gold 6130</li>
+            <li><strong>RAM:</strong> 256GB</li>
+            <li><strong>Storage:</strong> 2×960GB SSD</li>
+            <li><strong>Network:</strong> 2Gbps</li>
+            <li><strong>IPv4:</strong> 1</li>
+            <li><strong>Location:</strong> Singapore</li>
+          </ul>
+
+          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
