@@ -140,6 +140,186 @@ public static class SeedData
             },
             new()
             {
+                Name = "VPS1-1-20",
+                Slug = "vps1-1-20",
+                Location = "Germany",
+                PricePerMonth = 10,
+                Configuration = "Intel 1 Core, 1GB RAM, 20GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vps1.png",
+                Type = ProductType.VPS,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 10,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "Intel 1 Core" },
+                    new() { Name = "RAM", Value = "1GB" },
+                    new() { Name = "Storage", Value = "20GB SSD" },
+                    new() { Name = "Network", Value = "100Mbps Bandwidth" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany | Poland | France" }
+                }
+            },
+            new()
+            {
+                Name = "VPS2-2-20",
+                Slug = "vps2-2-20",
+                Location = "Germany",
+                PricePerMonth = 12,
+                Configuration = "Intel 2 Cores, 2GB RAM, 20GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vps2.png",
+                Type = ProductType.VPS,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 12,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "Intel 2 Cores" },
+                    new() { Name = "RAM", Value = "2GB" },
+                    new() { Name = "Storage", Value = "20GB SSD" },
+                    new() { Name = "Network", Value = "250Mbps Bandwidth" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany | Poland | France" }
+                }
+            },
+            new()
+            {
+                Name = "VPS3-4-40",
+                Slug = "vps3-4-40",
+                Location = "Germany",
+                PricePerMonth = 19,
+                Configuration = "AMD | Intel 4 Cores, 4GB RAM, 40GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vps3.png",
+                Type = ProductType.VPS,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 19,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "AMD | Intel 4 Cores" },
+                    new() { Name = "RAM", Value = "4GB" },
+                    new() { Name = "Storage", Value = "40GB SSD" },
+                    new() { Name = "Network", Value = "250Mbps Bandwidth" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany | Poland | France | Netherlands" }
+                }
+            },
+            new()
+            {
+                Name = "VPS4-4-80",
+                Slug = "vps4-4-80",
+                Location = "Germany",
+                PricePerMonth = 24,
+                Configuration = "AMD | Intel 4 Cores, 4GB RAM, 80GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vps4.png",
+                Type = ProductType.VPS,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 24,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "AMD | Intel 4 Cores" },
+                    new() { Name = "RAM", Value = "4GB" },
+                    new() { Name = "Storage", Value = "80GB SSD" },
+                    new() { Name = "Network", Value = "500Mbps Bandwidth" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany | Poland | France | Netherlands | Singapore | USA" }
+                }
+            },
+            new()
+            {
+                Name = "VPS5-4-80",
+                Slug = "vps5-4-80",
+                Location = "Germany",
+                PricePerMonth = 28,
+                Configuration = "AMD | Intel 4 Cores, 4GB RAM, 80GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vps5.png",
+                Type = ProductType.VPS,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 28,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "AMD | Intel 4 Cores" },
+                    new() { Name = "RAM", Value = "4GB" },
+                    new() { Name = "Storage", Value = "80GB SSD" },
+                    new() { Name = "Network", Value = "1000Mbps Bandwidth" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany | Poland | France | Netherlands | Singapore | USA" }
+                }
+            },
+            new()
+            {
+                Name = "VPS6-6-100",
+                Slug = "vps6-6-100",
+                Location = "Germany",
+                PricePerMonth = 35,
+                Configuration = "AMD | Intel 4 Cores, 6GB RAM, 100GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vps6.png",
+                Type = ProductType.VPS,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 35,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "AMD | Intel 4 Cores" },
+                    new() { Name = "RAM", Value = "6GB" },
+                    new() { Name = "Storage", Value = "100GB SSD" },
+                    new() { Name = "Network", Value = "1000Mbps Bandwidth" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany | Poland | France | Netherlands | Singapore | USA" }
+                }
+            },
+            new()
+            {
                 Name = "Starter Website",
                 Slug = "starter-website",
                 Location = "US",
