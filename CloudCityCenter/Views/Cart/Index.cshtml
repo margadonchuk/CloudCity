@@ -15,20 +15,20 @@
     @for (int i = 0; i < Model.Items.Count; i++)
     {
         var item = Model.Items[i];
-        <div class="card mb-3">
-            <img src="@item.Product?.ImageUrl" alt="@item.Product?.Name" class="card-img-top" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=No+Image';" />
-            <div class="card-body">
+        <div class="cart-item mb-3">
+            <img src="@item.Product?.ImageUrl" alt="@item.Product?.Name" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=No+Image';" />
+            <div class="p-3">
                 <div class="row">
                     <div class="col">
-                        <h5 class="card-title mb-1">@item.Product?.Name</h5>
-                        <p class="card-text"><small class="text-muted">@item.ProductVariant?.Name</small></p>
+                        <h5 class="mb-1">@item.Product?.Name</h5>
+                        <p class="mb-0"><small class="text-muted">@item.ProductVariant?.Name</small></p>
                     </div>
                     <div class="col-auto text-end">
-                        <p class="card-text fw-semibold mb-0">@item.Item.Price.ToString("C")</p>
+                        <p class="fw-semibold mb-0">@item.Item.Price.ToString("C")</p>
                     </div>
                 </div>
             </div>
-            <div class="card-footer text-end">
+            <div class="p-2 text-end border-top">
                 <form asp-action="Remove" method="post">
                     @Html.AntiForgeryToken()
                     <input type="hidden" name="index" value="@i" />
@@ -37,13 +37,13 @@
             </div>
         </div>
     }
-    <div class="text-end">
-        <strong>Total: @Model.Total.ToString("C")</strong>
+    <div class="cart-summary">
+        <div class="total">Total: @Model.Total.ToString("C")</div>
+        <form asp-action="Checkout" method="post" class="mt-2">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-primary">Checkout</button>
+        </form>
     </div>
-    <form asp-action="Checkout" method="post" class="text-end">
-        @Html.AntiForgeryToken()
-        <button type="submit" class="btn btn-primary">Checkout</button>
-    </form>
 }
 else
 {
