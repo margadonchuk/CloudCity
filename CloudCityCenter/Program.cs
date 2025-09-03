@@ -9,15 +9,18 @@ using Microsoft.AspNetCore.Localization;
 var builder = WebApplication.CreateBuilder(args);
 
 // ✅ Чтение строки подключения из переменной окружения
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Data Source=cloudcity.db";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddControllersWithViews().AddViewLocalization();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+if (string.IsNullOrEmpty(connectionString))
+    builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+        opt.UseInMemoryDatabase("CloudCity"));
+else
+    builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+        opt.UseSqlite(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.SignIn.RequireConfirmedAccount = false)
@@ -38,7 +41,10 @@ if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
     using var scope = app.Services.CreateScope();
     var serviceProvider = scope.ServiceProvider;
     var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
-    await context.Database.MigrateAsync();
+    if (context.Database.IsRelational())
+        await context.Database.MigrateAsync();
+    else
+        await context.Database.EnsureCreatedAsync();
 
     var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
     var adminEmail = adminArg?.Split('=', 2)[1];
@@ -65,7 +71,10 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
-        context.Database.Migrate();
+        if (context.Database.IsRelational())
+            context.Database.Migrate();
+        else
+            context.Database.EnsureCreated();
         if (!context.Products.Any())
         {
             SeedData.Initialize(context);
