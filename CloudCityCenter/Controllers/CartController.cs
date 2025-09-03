@@ -62,8 +62,32 @@ public class CartController : Controller
     }
 
     [HttpPost]
-    public IActionResult Add(int productId, int? productVariantId, decimal price)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Add(int productId, int? productVariantId)
     {
+        var product = await _context.Products.FindAsync(productId);
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        decimal price;
+        if (productVariantId.HasValue)
+        {
+            var variant = await _context.ProductVariants
+                .FirstOrDefaultAsync(v => v.Id == productVariantId.Value && v.ProductId == productId);
+            if (variant == null)
+            {
+                return BadRequest();
+            }
+
+            price = variant.Price;
+        }
+        else
+        {
+            price = product.PricePerMonth;
+        }
+
         var cart = GetCart();
         cart.Add(new OrderItem { ProductId = productId, ProductVariantId = productVariantId, Price = price });
         SaveCart(cart);
