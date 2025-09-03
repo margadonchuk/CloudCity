@@ -6,6 +6,7 @@ namespace CloudCityCenter.Models.ViewModels;
 public record ProductCardVm
 {
     public int Id { get; init; }
+    public int? ProductVariantId { get; init; }
     public string Name { get; init; } = string.Empty;
     public string Slug { get; init; } = string.Empty;
     public decimal PricePerMonth { get; init; }

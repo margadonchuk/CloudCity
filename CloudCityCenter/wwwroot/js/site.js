@@ -43,4 +43,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    document.querySelectorAll('.add-to-cart-form').forEach(function (form) {
+        form.addEventListener('submit', async function (e) {
+            if (form.dataset.ajax === 'true') {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                });
+                if (response.ok) {
+                    const cartCountEl = document.getElementById('cart-count');
+                    if (cartCountEl) {
+                        let count = parseInt(cartCountEl.textContent || '0', 10);
+                        count++;
+                        cartCountEl.textContent = count;
+                        cartCountEl.style.display = count > 0 ? 'inline-block' : 'none';
+                    }
+                }
+            }
+        });
+    });
 });
