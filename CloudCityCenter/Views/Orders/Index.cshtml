@@ -9,11 +9,11 @@
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="row g-4">
 @foreach (var item in Model)
 {
     var first = item.Items.FirstOrDefault();
-    <div class="col">
+    <div class="col-12 col-md-6">
         <div class="card h-100">
             <img src="@(first?.Product?.ImageUrl ?? "https://via.placeholder.com/300x200?text=Server")" class="card-img-top" alt="@first?.Product?.Name" />
             <div class="card-body">

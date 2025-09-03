@@ -32,10 +32,10 @@
         <button type="submit" class="btn btn-success">Add All to Cart</button>
     </form>
     <h2 class="mb-3">Hosting Plans</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row g-4">
         @foreach (var item in Model.HostingPlans)
         {
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <div class="card h-100">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
@@ -46,10 +46,10 @@
 
 <section class="container py-4">
     <h2 class="mb-3">Create Website</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row g-4">
         @foreach (var item in Model.WebsiteProducts)
         {
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <div class="card h-100">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
@@ -60,10 +60,10 @@
 
 <section class="container py-4">
     <h2 class="mb-3">VPS Hosting</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row g-4">
         @foreach (var item in Model.VpsProducts)
         {
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <div class="card h-100">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
@@ -74,10 +74,10 @@
 
 <section class="container py-4">
     <h2 class="mb-3">VPN Tunneling</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row g-4">
         @foreach (var item in Model.VpnProducts)
         {
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <div class="card h-100">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
