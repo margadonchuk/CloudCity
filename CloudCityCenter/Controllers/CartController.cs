@@ -143,6 +143,14 @@ public class CartController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Clear()
+    {
+        HttpContext.Session.Remove(CartSessionKey);
+        return RedirectToAction(nameof(Index));
+    }
+
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
