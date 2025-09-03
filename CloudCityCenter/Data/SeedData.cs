@@ -320,6 +320,60 @@ public static class SeedData
             },
             new()
             {
+                Name = "VPN for a network",
+                Slug = "vpn-network",
+                Location = "Global",
+                PricePerMonth = 80,
+                Configuration = "Site-to-site VPN service",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vpn-network.png",
+                Type = ProductType.VPN,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 80,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "Devices", Value = "Up to 50" },
+                    new() { Name = "Traffic", Value = "Unlimited" },
+                    new() { Name = "Support", Value = "24/7" }
+                }
+            },
+            new()
+            {
+                Name = "VPN for a device",
+                Slug = "vpn-device",
+                Location = "Global",
+                PricePerMonth = 25,
+                Configuration = "Single device VPN",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vpn-device.png",
+                Type = ProductType.VPN,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 25,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "Traffic", Value = "Unlimited" },
+                    new() { Name = "Servers", Value = "50+ Countries" },
+                    new() { Name = "Encryption", Value = "AES-256" }
+                }
+            },
+            new()
+            {
                 Name = "Starter Website",
                 Slug = "starter-website",
                 Location = "US",
