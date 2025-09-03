@@ -32,11 +32,20 @@
                 <form asp-action="Remove" method="post">
                     @Html.AntiForgeryToken()
                     <input type="hidden" name="index" value="@i" />
-                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Удалить">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </form>
             </div>
         </div>
     }
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-controller="Servers" asp-action="Index" class="btn btn-outline-primary">Продолжить покупки</a>
+        <form asp-action="Clear" method="post" class="d-inline">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-outline-danger">Очистить корзину</button>
+        </form>
+    </div>
     <div class="cart-summary">
         <div class="total">Total: @Model.Total.ToString("C")</div>
         <form asp-action="Checkout" method="post" class="mt-2">
