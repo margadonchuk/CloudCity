@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
+using CloudCityCenter.Models.ViewModels;
 
 namespace CloudCityCenter.Controllers;
 
@@ -19,12 +20,28 @@ public class ServersController : Controller
     }
 
     /// <summary>
-    /// Displays static dedicated server plans.
+    /// Displays dedicated server products.
     /// </summary>
     [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var servers = await _context.Products
+            .Where(p => p.Type == ProductType.DedicatedServer && p.IsPublished)
+            .Select(p => new ProductCardVm
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Slug = p.Slug,
+                PricePerMonth = p.PricePerMonth,
+                ImageUrl = p.ImageUrl,
+                TopFeatures = p.Features
+                    .OrderBy(f => f.Id)
+                    .Select(f => string.IsNullOrWhiteSpace(f.Value) ? f.Name : $"{f.Name}: {f.Value}")
+                    .ToList(),
+            })
+            .ToListAsync();
+
+        return View(servers);
     }
 
     /// <summary>

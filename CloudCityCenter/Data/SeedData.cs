@@ -86,29 +86,182 @@ public static class SeedData
         {
             new()
             {
-                Name = "Starter US",
-                Slug = "starter-us",
-                Location = "US",
-                PricePerMonth = 5,
-                Configuration = "1 vCPU, 1GB RAM",
+                Name = "DS1-E3",
+                Slug = "ds1-e3",
+                Location = "Germany",
+                PricePerMonth = 59,
+                Configuration = "Xeon E3-1270v6, 32GB RAM, 2x240GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "https://via.placeholder.com/300x200?text=Starter+US",
+                ImageUrl = "/images/dell.png",
                 Type = ProductType.DedicatedServer,
                 Variants = new List<ProductVariant>
                 {
                     new()
                     {
                         Name = "Monthly",
-                        Price = 5,
+                        Price = 59,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
                 Features = new List<ProductFeature>
                 {
-                    new() { Name = "CPU", Value = "1 vCPU" },
-                    new() { Name = "RAM", Value = "1 GB" },
-                    new() { Name = "Storage", Value = "25 GB SSD" }
+                    new() { Name = "CPU", Value = "Xeon E3-1270v6" },
+                    new() { Name = "RAM", Value = "32GB" },
+                    new() { Name = "Storage", Value = "2x240GB SSD" },
+                    new() { Name = "Network", Value = "1Gbps" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Germany" }
+                }
+            },
+            new()
+            {
+                Name = "DS2-E5",
+                Slug = "ds2-e5",
+                Location = "Netherlands",
+                PricePerMonth = 79,
+                Configuration = "Xeon E5-1650v4, 64GB RAM, 2x480GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/hp.png",
+                Type = ProductType.DedicatedServer,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 79,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "Xeon E5-1650v4" },
+                    new() { Name = "RAM", Value = "64GB" },
+                    new() { Name = "Storage", Value = "2x480GB SSD" },
+                    new() { Name = "Network", Value = "1Gbps" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Netherlands" }
+                }
+            },
+            new()
+            {
+                Name = "DS3-Ryzen",
+                Slug = "ds3-ryzen",
+                Location = "France",
+                PricePerMonth = 95,
+                Configuration = "Ryzen 5 3600, 64GB RAM, 2x1TB NVMe",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/ovh.png",
+                Type = ProductType.DedicatedServer,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 95,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "Ryzen 5 3600" },
+                    new() { Name = "RAM", Value = "64GB" },
+                    new() { Name = "Storage", Value = "2x1TB NVMe" },
+                    new() { Name = "Network", Value = "1Gbps" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "France" }
+                }
+            },
+            new()
+            {
+                Name = "DS4-EPYC",
+                Slug = "ds4-epyc",
+                Location = "Finland",
+                PricePerMonth = 129,
+                Configuration = "AMD EPYC 7501, 128GB RAM, 2x1.92TB NVMe",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/hetzner.png",
+                Type = ProductType.DedicatedServer,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 129,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "AMD EPYC 7501" },
+                    new() { Name = "RAM", Value = "128GB" },
+                    new() { Name = "Storage", Value = "2x1.92TB NVMe" },
+                    new() { Name = "Network", Value = "2Gbps" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Finland" }
+                }
+            },
+            new()
+            {
+                Name = "DS5-Storage",
+                Slug = "ds5-storage",
+                Location = "USA",
+                PricePerMonth = 149,
+                Configuration = "Xeon Silver 4210, 64GB RAM, 4x4TB HDD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/proxmox.png",
+                Type = ProductType.DedicatedServer,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 149,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "Xeon Silver 4210" },
+                    new() { Name = "RAM", Value = "64GB" },
+                    new() { Name = "Storage", Value = "4x4TB HDD" },
+                    new() { Name = "Network", Value = "1Gbps" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "USA" }
+                }
+            },
+            new()
+            {
+                Name = "DS6-HighMem",
+                Slug = "ds6-highmem",
+                Location = "Singapore",
+                PricePerMonth = 169,
+                Configuration = "Xeon Gold 6130, 256GB RAM, 2x960GB SSD",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/ms.png",
+                Type = ProductType.DedicatedServer,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 169,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "Xeon Gold 6130" },
+                    new() { Name = "RAM", Value = "256GB" },
+                    new() { Name = "Storage", Value = "2x960GB SSD" },
+                    new() { Name = "Network", Value = "2Gbps" },
+                    new() { Name = "IPv4", Value = "1" },
+                    new() { Name = "Location", Value = "Singapore" }
                 }
             },
             new()
