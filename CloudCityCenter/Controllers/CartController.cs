@@ -71,6 +71,34 @@ public class CartController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddAll()
+    {
+        var products = await _context.Products
+            .Include(p => p.Variants)
+            .Where(p => p.IsPublished && p.IsAvailable)
+            .ToListAsync();
+
+        var cart = GetCart();
+
+        foreach (var product in products)
+        {
+            var defaultVariant = product.Variants.OrderBy(v => v.Id).FirstOrDefault();
+            var price = defaultVariant?.Price ?? product.PricePerMonth;
+            cart.Add(new OrderItem
+            {
+                ProductId = product.Id,
+                ProductVariantId = defaultVariant?.Id,
+                Price = price
+            });
+        }
+
+        SaveCart(cart);
+        TempData["Success"] = "All products added to cart.";
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
     public IActionResult Remove(int index)
     {
         var cart = GetCart();

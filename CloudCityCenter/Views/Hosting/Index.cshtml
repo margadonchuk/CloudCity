@@ -27,6 +27,10 @@
 </section>
 
 <section class="container py-4">
+    <form id="add-all-form" data-ajax="true" asp-controller="Cart" asp-action="AddAll" method="post" class="mb-3">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-success">Add All to Cart</button>
+    </form>
     <h2 class="mb-3">Hosting Plans</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var item in Model.HostingPlans)

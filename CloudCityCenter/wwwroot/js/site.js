@@ -27,4 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
             form.classList.add('was-validated');
         }, false);
     });
+
+    const addAllForm = document.getElementById('add-all-form');
+    if (addAllForm) {
+        addAllForm.addEventListener('submit', async function (e) {
+            if (addAllForm.dataset.ajax === 'true') {
+                e.preventDefault();
+                const formData = new FormData(addAllForm);
+                await fetch(addAllForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                });
+                window.location.href = '/Cart';
+            }
+        });
+    }
 });
