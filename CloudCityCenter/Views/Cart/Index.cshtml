@@ -1,0 +1,47 @@
+@model CloudCityCenter.Models.ViewModels.CartViewModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Cart</h1>
+
+@if (Model.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Variant</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            var item = Model.Items[i];
+            <tr>
+                <td>@item.Product?.Name</td>
+                <td>@item.ProductVariant?.Name</td>
+                <td>@item.Item.Price.ToString("C")</td>
+                <td>
+                    <form asp-action="Remove" method="post">
+                        <input type="hidden" name="index" value="@i" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="text-end">
+        <strong>Total: @Model.Total.ToString("C")</strong>
+    </div>
+    <form asp-action="Checkout" method="post" class="text-end">
+        <button type="submit" class="btn btn-primary">Checkout</button>
+    </form>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}
