@@ -38,9 +38,13 @@ public class CartController : Controller
         var productIds = cart.Select(c => c.ProductId).ToList();
         var variantIds = cart.Where(c => c.ProductVariantId.HasValue).Select(c => c.ProductVariantId!.Value).ToList();
 
-        var products = await _context.Products.Where(p => productIds.Contains(p.Id))
+        var products = await _context.Products
+            .AsNoTracking()
+            .Where(p => productIds.Contains(p.Id))
             .ToDictionaryAsync(p => p.Id);
-        var variants = await _context.ProductVariants.Where(v => variantIds.Contains(v.Id))
+        var variants = await _context.ProductVariants
+            .AsNoTracking()
+            .Where(v => variantIds.Contains(v.Id))
             .ToDictionaryAsync(v => v.Id);
 
         var items = cart.Select(c => new CartItemViewModel
@@ -65,7 +69,9 @@ public class CartController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Add(int productId, int? productVariantId)
     {
-        var product = await _context.Products.FindAsync(productId);
+        var product = await _context.Products
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Id == productId);
         if (product == null)
         {
             return NotFound();
@@ -75,6 +81,7 @@ public class CartController : Controller
         if (productVariantId.HasValue)
         {
             var variant = await _context.ProductVariants
+                .AsNoTracking()
                 .FirstOrDefaultAsync(v => v.Id == productVariantId.Value && v.ProductId == productId);
             if (variant == null)
             {
@@ -101,6 +108,7 @@ public class CartController : Controller
         var products = await _context.Products
             .Include(p => p.Variants)
             .Where(p => p.IsPublished && p.IsAvailable)
+            .AsNoTracking()
             .ToListAsync();
 
         var cart = GetCart();
