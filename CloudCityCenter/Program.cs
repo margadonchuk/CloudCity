@@ -43,14 +43,14 @@ var app = builder.Build();
 if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
 {
     using var scope = app.Services.CreateScope();
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<ApplicationDbContext>();
+    var serviceProvider = scope.ServiceProvider;
+    var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
     await context.Database.MigrateAsync();
 
     var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
     var adminEmail = adminArg?.Split('=', 2)[1];
 
-    await SeedData.RunAsync(services, adminEmail);
+    await SeedData.RunAsync(serviceProvider, adminEmail);
 
     if (args.Contains("--seed"))
     {

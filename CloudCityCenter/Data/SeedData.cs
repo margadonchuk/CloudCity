@@ -14,10 +14,8 @@ public static class SeedData
 {
     public static async Task RunAsync(IServiceProvider serviceProvider, string? adminEmail = null)
     {
-        using var scope = serviceProvider.CreateScope();
-        var services = scope.ServiceProvider;
-        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-        var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+        var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
         string[] roles = { "Admin", "Manager", "Customer" };
         foreach (var role in roles)
