@@ -62,7 +62,7 @@ public class ServersController : Controller
                 s.Name.Contains(q) ||
                 (s.Description != null && s.Description.Contains(q)) ||
                 s.CPU.Contains(q) ||
-                (s.Location != null && s.Location.Contains(q)));
+                s.Location.Contains(q));
         }
 
         query = sort switch

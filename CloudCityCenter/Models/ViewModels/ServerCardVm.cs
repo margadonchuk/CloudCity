@@ -10,7 +10,7 @@ public record ServerCardVm
     public string CPU { get; init; } = string.Empty;
     public int RamGb { get; init; }
     public int StorageGb { get; init; }
-    public string? Location { get; init; }
+    public string Location { get; init; } = string.Empty;
     public decimal PricePerMonth { get; init; }
     public string Slug { get; init; } = string.Empty;
 }
