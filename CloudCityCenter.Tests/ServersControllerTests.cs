@@ -5,6 +5,7 @@ using CloudCityCenter.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace CloudCityCenter.Tests;
@@ -82,6 +83,33 @@ public class ServersControllerTests
         var viewResult = Assert.IsType<ViewResult>(okResult);
         var model = Assert.IsType<Server>(viewResult.Model);
         Assert.Equal("A", model.Name);
+    }
+
+    [Fact]
+    public async Task Get_Server_BySlug_ReturnsDetailsView()
+    {
+        await using var factory = new CustomWebApplicationFactory();
+        var client = factory.CreateClient();
+
+        using var scope = factory.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        db.Servers.Add(new Server
+        {
+            Name = "Alpha",
+            Slug = "alpha",
+            Location = "US",
+            CPU = "4 cores",
+            RamGb = 16,
+            StorageGb = 100,
+            PricePerMonth = 10,
+            IsActive = true
+        });
+        db.SaveChanges();
+
+        var response = await client.GetAsync("/Servers/alpha");
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStringAsync();
+        Assert.Contains("Alpha", content);
     }
 }
 
