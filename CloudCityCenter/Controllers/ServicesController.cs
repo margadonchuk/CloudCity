@@ -22,7 +22,9 @@ public class ServicesController : Controller
     {
         var products = await _context.Products
             .AsNoTracking()
-            .Where(p => p.Type == ProductType.DedicatedServer)
+            .Where(p => p.Type == ProductType.DedicatedServer
+                        || p.Type == ProductType.VPS
+                        || p.Type == ProductType.VPN)
             .ToListAsync();
         var viewModel = new ServiceIndexViewModel { Products = products };
         return View(viewModel);

@@ -20,11 +20,15 @@ public class HostingController : Controller
     {
         var hostingPlans = await LoadProductCards(ProductType.Hosting);
         var websiteProducts = await LoadProductCards(ProductType.Website);
+        var vpsProducts = await LoadProductCards(ProductType.VPS);
+        var vpnProducts = await LoadProductCards(ProductType.VPN);
 
         var vm = new HostingPageVm
         {
             HostingPlans = hostingPlans,
-            WebsiteProducts = websiteProducts
+            WebsiteProducts = websiteProducts,
+            VpsProducts = vpsProducts,
+            VpnProducts = vpnProducts
         };
 
         return View(vm);
