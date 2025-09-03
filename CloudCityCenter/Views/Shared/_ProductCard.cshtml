@@ -14,4 +14,13 @@
     }
     </ul>
     <p class="card-text fw-semibold">$@Model.PricePerMonth / month</p>
+    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+        <input type="hidden" name="productId" value="@Model.Id" />
+        @if (Model.ProductVariantId.HasValue)
+        {
+            <input type="hidden" name="productVariantId" value="@Model.ProductVariantId" />
+        }
+        <input type="hidden" name="price" value="@Model.PricePerMonth" />
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
 </div>
