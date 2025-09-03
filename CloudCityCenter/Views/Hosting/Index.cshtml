@@ -57,3 +57,31 @@
         }
     </div>
 </section>
+
+<section class="container py-4">
+    <h2 class="mb-3">VPS Hosting</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.VpsProducts)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    @await Html.PartialAsync("_ProductCard", item)
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="container py-4">
+    <h2 class="mb-3">VPN Tunneling</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.VpnProducts)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    @await Html.PartialAsync("_ProductCard", item)
+                </div>
+            </div>
+        }
+    </div>
+</section>
