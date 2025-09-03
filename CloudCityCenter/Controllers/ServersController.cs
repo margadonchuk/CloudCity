@@ -2,9 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
-using CloudCityCenter.Models.ViewModels;
-using System.Collections.Generic;
-using System;
 
 namespace CloudCityCenter.Controllers;
 
@@ -22,109 +19,12 @@ public class ServersController : Controller
     }
 
     /// <summary>
-    /// Lists active servers with optional filtering, sorting and pagination.
+    /// Displays static dedicated server plans.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> Index(
-        string? location,
-        int? minRam,
-        int? maxRam,
-        string? q,
-        string? sort,
-        int page = 1,
-        int pageSize = 12)
+    public IActionResult Index()
     {
-        pageSize = Math.Clamp(pageSize, 1, 48);
-        if (page < 1) page = 1;
-
-        var query = _context.Servers
-            .AsNoTracking()
-            .Where(s => s.IsActive);
-
-        if (!string.IsNullOrWhiteSpace(location))
-        {
-            query = query.Where(s => s.Location == location);
-        }
-
-        if (minRam.HasValue)
-        {
-            query = query.Where(s => s.RamGb >= minRam.Value);
-        }
-
-        if (maxRam.HasValue)
-        {
-            query = query.Where(s => s.RamGb <= maxRam.Value);
-        }
-
-        if (!string.IsNullOrWhiteSpace(q))
-        {
-            var safeQ = q.Replace("!", "!!").Replace("%", "!%").Replace("_", "!_");
-            query = query.Where(s =>
-                EF.Functions.Like(s.Name, $"%{safeQ}%", "!") ||
-                (s.Description != null && EF.Functions.Like(s.Description, $"%{safeQ}%", "!")) ||
-                EF.Functions.Like(s.CPU, $"%{safeQ}%", "!") ||
-                EF.Functions.Like(s.Location, $"%{safeQ}%", "!"));
-        }
-
-        query = sort switch
-        {
-            "price_asc" => query.OrderBy(s => s.PricePerMonth),
-            "price_desc" => query.OrderByDescending(s => s.PricePerMonth),
-            "newest" => query.OrderByDescending(s => s.CreatedUtc),
-            _ => query.OrderBy(s => s.Id)
-        };
-
-        var totalCount = await query.CountAsync();
-
-        var servers = await query
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-                .Select(s => new ServerCardVm
-            {
-                ImageUrl = s.ImageUrl,
-                Name = s.Name,
-                CPU = s.CPU,
-                RamGb = s.RamGb,
-                StorageGb = s.StorageGb,
-                Location = s.Location,
-                PricePerMonth = s.PricePerMonth,
-                Slug = s.Slug
-            })
-            .ToListAsync();
-
-        var filters = new List<string>();
-        if (!string.IsNullOrWhiteSpace(location))
-        {
-            filters.Add($"Location: {location}");
-        }
-        if (minRam.HasValue)
-        {
-            filters.Add($"Min RAM: {minRam} GB");
-        }
-        if (maxRam.HasValue)
-        {
-            filters.Add($"Max RAM: {maxRam} GB");
-        }
-        if (!string.IsNullOrWhiteSpace(q))
-        {
-            filters.Add($"Search: {q}");
-        }
-
-        var vm = new ServerIndexViewModel
-        {
-            Servers = servers,
-            Location = location,
-            MinRam = minRam,
-            MaxRam = maxRam,
-            Q = q,
-            Sort = sort,
-            Page = page,
-            PageSize = pageSize,
-            TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
-            FiltersSummary = filters.Count == 0 ? "None" : string.Join(", ", filters)
-        };
-
-        return View(vm);
+        return View();
     }
 
     /// <summary>
