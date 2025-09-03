@@ -56,5 +56,7 @@
 }
 else
 {
-    <p>Your cart is empty.</p>
+    <div class="alert alert-info text-center">
+        Your cart is empty. <a asp-controller="Servers" asp-action="Index" class="alert-link">Продолжить покупки</a>
+    </div>
 }
