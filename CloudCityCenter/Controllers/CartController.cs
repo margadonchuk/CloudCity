@@ -123,6 +123,7 @@ public class CartController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Remove(int index)
     {
         var cart = GetCart();

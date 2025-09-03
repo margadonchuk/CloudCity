@@ -206,6 +206,7 @@ With secure VPN tunneling and global data centers strategically located across E
 
     <!-- Форма справа -->
     <form method="post" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+      @Html.AntiForgeryToken()
       <input type="text" name="Name" placeholder="Your Name" required
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
       <input type="email" name="Email" placeholder="Your Email" required
