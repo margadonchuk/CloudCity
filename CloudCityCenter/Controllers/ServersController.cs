@@ -58,11 +58,12 @@ public class ServersController : Controller
 
         if (!string.IsNullOrWhiteSpace(q))
         {
+            var safeQ = q.Replace("!", "!!").Replace("%", "!%").Replace("_", "!_");
             query = query.Where(s =>
-                s.Name.Contains(q) ||
-                (s.Description != null && s.Description.Contains(q)) ||
-                s.CPU.Contains(q) ||
-                s.Location.Contains(q));
+                EF.Functions.Like(s.Name, $"%{safeQ}%", "!") ||
+                (s.Description != null && EF.Functions.Like(s.Description, $"%{safeQ}%", "!")) ||
+                EF.Functions.Like(s.CPU, $"%{safeQ}%", "!") ||
+                EF.Functions.Like(s.Location, $"%{safeQ}%", "!"));
         }
 
         query = sort switch

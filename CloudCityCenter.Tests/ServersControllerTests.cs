@@ -65,6 +65,34 @@ public class ServersControllerTests
     }
 
     [Fact]
+    public async Task Index_Search_IsCaseInsensitive()
+    {
+        var context = GetContext(nameof(Index_Search_IsCaseInsensitive));
+        context.Servers.Add(new Server
+        {
+            Name = "Alpha",
+            Slug = "alpha",
+            Location = "US",
+            CPU = "4 cores",
+            RamGb = 16,
+            StorageGb = 100,
+            PricePerMonth = 100,
+            IsActive = true
+        });
+        await context.SaveChangesAsync();
+
+        var controller = new ServersController(context);
+
+        var lowerResult = await controller.Index(location: null, minRam: null, maxRam: null, q: "alpha", sort: null, page: 1, pageSize: 12);
+        var lowerModel = Assert.IsAssignableFrom<ServerIndexViewModel>(Assert.IsType<ViewResult>(lowerResult).Model);
+        Assert.Single(lowerModel.Servers);
+
+        var upperResult = await controller.Index(location: null, minRam: null, maxRam: null, q: "ALPHA", sort: null, page: 1, pageSize: 12);
+        var upperModel = Assert.IsAssignableFrom<ServerIndexViewModel>(Assert.IsType<ViewResult>(upperResult).Model);
+        Assert.Single(upperModel.Servers);
+    }
+
+    [Fact]
     public async Task Details_ReturnsNotFound_ForMissingOrInactive()
     {
         var context = GetContext(nameof(Details_ReturnsNotFound_ForMissingOrInactive));
