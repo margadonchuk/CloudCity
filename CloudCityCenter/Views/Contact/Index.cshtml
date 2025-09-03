@@ -183,12 +183,13 @@
 </style>
 <div class="form-container">
   <h2>Fill out the form and we will contact you as soon as possible</h2>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <input type="tel" placeholder="Phone Number" required>
-    <input type="text" placeholder="Service Type">
-    <textarea placeholder="Message"></textarea>
+  <form asp-action="Submit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Your Email" required>
+    <input type="tel" name="Phone" placeholder="Phone Number" required>
+    <input type="text" name="ServiceType" placeholder="Service Type">
+    <textarea name="Message" placeholder="Message"></textarea>
     <button type="submit">Send</button>
   </form>
 </div>

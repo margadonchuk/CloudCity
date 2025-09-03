@@ -10,6 +10,7 @@ namespace CloudCityCenter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Submit(string Name, string Email, string Message)
         {
             // Обработка сообщения: можно отправить на почту или в базу
