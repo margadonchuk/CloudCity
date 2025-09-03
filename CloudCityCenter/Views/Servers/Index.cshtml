@@ -40,7 +40,11 @@
             <li><strong>Location:</strong> Germany</li>
           </ul>
 
-          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+          <a asp-controller="Trials"
+             asp-action="Start"
+             asp-route-plan="DS1-E3"
+             data-plan="DS1-E3"
+             class="btn btn-dark plan-btn">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -65,7 +69,11 @@
             <li><strong>Location:</strong> Netherlands</li>
           </ul>
 
-          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+          <a asp-controller="Trials"
+             asp-action="Start"
+             asp-route-plan="DS2-E5"
+             data-plan="DS2-E5"
+             class="btn btn-dark plan-btn">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -90,7 +98,11 @@
             <li><strong>Location:</strong> France</li>
           </ul>
 
-          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+          <a asp-controller="Trials"
+             asp-action="Start"
+             asp-route-plan="DS3-Ryzen"
+             data-plan="DS3-Ryzen"
+             class="btn btn-dark plan-btn">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -115,7 +127,11 @@
             <li><strong>Location:</strong> Finland</li>
           </ul>
 
-          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+          <a asp-controller="Trials"
+             asp-action="Start"
+             asp-route-plan="DS4-EPYC"
+             data-plan="DS4-EPYC"
+             class="btn btn-dark plan-btn">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -140,7 +156,11 @@
             <li><strong>Location:</strong> USA</li>
           </ul>
 
-          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+          <a asp-controller="Trials"
+             asp-action="Start"
+             asp-route-plan="DS5-Storage"
+             data-plan="DS5-Storage"
+             class="btn btn-dark plan-btn">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -165,11 +185,30 @@
             <li><strong>Location:</strong> Singapore</li>
           </ul>
 
-          <a href="#" class="btn btn-dark plan-btn">Start Free Trial</a>
+          <a asp-controller="Trials"
+             asp-action="Start"
+             asp-route-plan="DS6-HighMem"
+             data-plan="DS6-HighMem"
+             class="btn btn-dark plan-btn">Start Free Trial</a>
         </div>
       </div>
     </div>
 
   </div>
 </section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.plan-btn').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    const plan = this.dataset.plan;
+                    if (!confirm(`Start free trial for ${plan}?`)) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+}
 
