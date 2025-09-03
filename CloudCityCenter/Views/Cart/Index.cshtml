@@ -5,6 +5,11 @@
 
 <h1>Cart</h1>
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
 @if (Model.Items.Any())
 {
     <table class="table">
