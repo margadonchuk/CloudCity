@@ -5,5 +5,6 @@ public enum ProductType
     DedicatedServer,
     Hosting,
     Website,
-    VPS
+    VPS,
+    VPN
 }

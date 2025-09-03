@@ -1,3 +1,4 @@
+@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
 @{
     ViewData["Title"] = "VPN Tunneling";
 }
@@ -26,36 +27,17 @@
   </div>
 </section>
 
-
 <section class="container py-5">
-    <div class="row g-4 justify-content-center">
-
-        <!-- VPN for a Network -->
-        <div class="col-12 col-sm-6 col-md-4">
-            <div class="card h-100 shadow text-center">
-                <img src="/images/vpn-network.png" class="card-img-top" alt="VPN for a network">
-                <div class="card-body">
-                    <h5 class="fw-semibold">VPN for a network</h5>
-                    <p class="text-muted">80.00$</p>
-                    <a href="#" class="btn btn-dark">Добавить в корзину</a>
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow text-center">
+                    @await Html.PartialAsync("_ProductCard", item)
                 </div>
             </div>
-        </div>
-
-        <!-- VPN for a Device -->
-        <div class="col-12 col-sm-6 col-md-4">
-            <div class="card h-100 shadow text-center">
-                <img src="/images/vpn-device.png" class="card-img-top" alt="VPN for a device">
-                <div class="card-body">
-                    <h5 class="fw-semibold">VPN for a device</h5>
-                    <p class="text-muted">25.00$</p>
-                    <a href="#" class="btn btn-dark">Добавить в корзину</a>
-                </div>
-            </div>
-        </div>
-
+        }
     </div>
-
 </section>
 
 <!-- Payments section -->
