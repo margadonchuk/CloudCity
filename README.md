@@ -116,10 +116,26 @@ This will create the test user `test@example.com` with password `Pa$$w0rd` and a
 ## 🔗 Изменение строки подключения
 **Changing the connection string**
 
-Строка подключения `DefaultConnection` по умолчанию указывает на LocalDB.  
-The `DefaultConnection` connection string points to LocalDB by default.  
-Вы можете отредактировать её в файле `CloudCityCenter/appsettings.json` или передать значение через переменную окружения:  
-You can edit it in `CloudCityCenter/appsettings.json` or provide it via an environment variable:
+Строка подключения `DefaultConnection` по умолчанию указывает на LocalDB.
+The `DefaultConnection` connection string points to LocalDB by default.
+
+Приложение автоматически выбирает провайдера: если в строке есть `Server=`, будет использован SQL Server, иначе — SQLite. Без строки подключения создаётся временная база в памяти.
+The application automatically selects the provider: if `Server=` is present, SQL Server is used; otherwise SQLite. When no connection string is supplied, an in-memory database is created.
+
+Укажите корректную строку подключения в `CloudCityCenter/appsettings.json`:
+Provide a valid connection string in `CloudCityCenter/appsettings.json`:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=cloudcity.db"
+  }
+}
+```
+
+Или передайте её через переменную окружения:
+Or supply it via an environment variable:
+
 ```bash
 export ConnectionStrings__DefaultConnection="Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"
 ```
