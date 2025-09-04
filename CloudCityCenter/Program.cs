@@ -15,12 +15,20 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddControllersWithViews().AddViewLocalization();
 
-if (string.IsNullOrEmpty(connectionString))
-    builder.Services.AddDbContext<ApplicationDbContext>(opt =>
-        opt.UseInMemoryDatabase("CloudCity"));
-else
-    builder.Services.AddDbContext<ApplicationDbContext>(opt =>
-        opt.UseSqlite(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+{
+    if (!string.IsNullOrEmpty(connectionString))
+    {
+        if (connectionString.Contains("Server=", StringComparison.OrdinalIgnoreCase))
+            opt.UseSqlServer(connectionString);
+        else
+            opt.UseSqlite(connectionString);
+    }
+    else
+    {
+        opt.UseInMemoryDatabase("CloudCity");
+    }
+});
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.SignIn.RequireConfirmedAccount = false)
