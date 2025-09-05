@@ -20,57 +20,40 @@ IF COL_LENGTH('dbo.Products','IsAvailable') IS NULL
     ALTER TABLE [dbo].[Products] ADD [IsAvailable] bit NOT NULL DEFAULT(0);
 ");
 
-            migrationBuilder.AddColumn<int>(
-                name: "Type",
-                table: "Products",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','Type') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [Type] int NOT NULL DEFAULT(0);
+");
 
-            migrationBuilder.AddColumn<string>(
-                name: "Configuration",
-                table: "Products",
-                type: "nvarchar(200)",
-                maxLength: 200,
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','Configuration') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [Configuration] nvarchar(200) NOT NULL DEFAULT('');
+");
 
-            migrationBuilder.AddColumn<string>(
-                name: "ImageUrl",
-                table: "Products",
-                type: "nvarchar(300)",
-                maxLength: 300,
-                nullable: true);
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','ImageUrl') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [ImageUrl] nvarchar(300) NULL DEFAULT(NULL);
+");
 
-            migrationBuilder.AddColumn<bool>(
-                name: "IsPublished",
-                table: "Products",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','IsPublished') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [IsPublished] bit NOT NULL DEFAULT(0);
+");
 
-            migrationBuilder.AddColumn<string>(
-                name: "Location",
-                table: "Products",
-                type: "nvarchar(100)",
-                maxLength: 100,
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','Location') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [Location] nvarchar(100) NOT NULL DEFAULT('');
+");
 
-            migrationBuilder.AddColumn<decimal>(
-                name: "PricePerMonth",
-                table: "Products",
-                type: "decimal(18,2)",
-                nullable: false,
-                defaultValue: 0m);
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','PricePerMonth') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [PricePerMonth] decimal(18,2) NOT NULL DEFAULT(0);
+");
 
-            migrationBuilder.AddColumn<string>(
-                name: "Slug",
-                table: "Products",
-                type: "nvarchar(100)",
-                maxLength: 100,
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','Slug') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [Slug] nvarchar(100) NOT NULL DEFAULT('');
+");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_Slug",
