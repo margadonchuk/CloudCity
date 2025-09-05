@@ -105,13 +105,13 @@ dotnet test
 ## 🌱 Заполнение базы примерами
 **Seeding the database**
 
-После применения миграций можно заполнить базу данных тестовыми серверами и заказами с помощью класса `SeedData`. Выполните:  
+После применения миграций можно заполнить базу данных тестовыми серверами и заказами с помощью класса `SeedData`. Выполните:
 After applying migrations you can seed the database with test servers and orders using the `SeedData` class:
 ```bash
 dotnet run --project CloudCityCenter -- seed
 ```
-При этом будет создан тестовый пользователь `test@example.com` с паролем `Pa$$w0rd` и несколько примерных заказов.
-This will create the test user `test@example.com` with password `Pa$$w0rd` and a few example orders.
+При этом будет создан тестовый пользователь `test@example.com` с паролем из переменной окружения `SEED_USER_PASSWORD` или случайно сгенерированным, а также несколько примерных заказов.
+This will create the test user `test@example.com` with a password from the `SEED_USER_PASSWORD` environment variable (or a random one is generated and printed) along with a few example orders.
 
 Если указать строку подключения к реальному SQL Server через переменную окружения `ConnectionStrings__DefaultConnection`, эта же команда заполнит именно его. После выполнения откройте `/Admin/Servers` (под аккаунтом администратора) и публичную страницу `/Servers`, чтобы убедиться, что товары созданы.
 Supplying a real SQL Server connection string via the `ConnectionStrings__DefaultConnection` environment variable lets the same command populate that database. When it finishes, visit `/Admin/Servers` while signed in as an admin and the public `/Servers` page to verify the products were seeded.
@@ -142,8 +142,15 @@ Or supply it via an environment variable:
 ```bash
 export ConnectionStrings__DefaultConnection="Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"
 ```
+Или сохраните её в [секретах пользователя](https://learn.microsoft.com/aspnet/core/security/app-secrets) .NET:
+Or store it using .NET [user secrets](https://learn.microsoft.com/aspnet/core/security/app-secrets):
 
-После изменения строки подключения примените миграции и, при необходимости, заполните базу примерами:  
+```bash
+dotnet user-secrets init --project CloudCityCenter
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User Id=...;Password=..."
+```
+
+После изменения строки подключения примените миграции и, при необходимости, заполните базу примерами:
 After changing the connection string, apply migrations and optionally seed the database:
 ```bash
 dotnet ef database update
