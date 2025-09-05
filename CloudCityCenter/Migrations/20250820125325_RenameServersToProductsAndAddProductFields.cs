@@ -70,37 +70,92 @@ IF COL_LENGTH('dbo.Products','Slug') IS NULL
                 table: "Products");
 
             migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'IsAvailable';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
 IF COL_LENGTH('dbo.Products','IsAvailable') IS NOT NULL
-    ALTER TABLE [dbo].[Products] DROP COLUMN [IsAvailable];
+    ALTER TABLE dbo.Products DROP COLUMN [IsAvailable];
 ");
 
-            migrationBuilder.DropColumn(
-                name: "Type",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'Type';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','Type') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [Type];
+");
 
-            migrationBuilder.DropColumn(
-                name: "Configuration",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'Configuration';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','Configuration') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [Configuration];
+");
 
-            migrationBuilder.DropColumn(
-                name: "ImageUrl",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'ImageUrl';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','ImageUrl') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [ImageUrl];
+");
 
-            migrationBuilder.DropColumn(
-                name: "IsPublished",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'IsPublished';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','IsPublished') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [IsPublished];
+");
 
-            migrationBuilder.DropColumn(
-                name: "Location",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'Location';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','Location') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [Location];
+");
 
-            migrationBuilder.DropColumn(
-                name: "PricePerMonth",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'PricePerMonth';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','PricePerMonth') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [PricePerMonth];
+");
 
-            migrationBuilder.DropColumn(
-                name: "Slug",
-                table: "Products");
+            migrationBuilder.Sql(@"
+DECLARE @dcName NVARCHAR(128);
+SELECT @dcName = d.name
+FROM sys.default_constraints d
+JOIN sys.columns c ON c.default_object_id = d.object_id
+WHERE c.object_id = OBJECT_ID('dbo.Products') AND c.name = 'Slug';
+IF @dcName IS NOT NULL EXEC('ALTER TABLE dbo.Products DROP CONSTRAINT ' + @dcName);
+IF COL_LENGTH('dbo.Products','Slug') IS NOT NULL
+    ALTER TABLE dbo.Products DROP COLUMN [Slug];
+");
 
             migrationBuilder.Sql(@"
 IF OBJECT_ID(N'dbo.Products', N'U') IS NOT NULL AND OBJECT_ID(N'dbo.Servers', N'U') IS NULL
