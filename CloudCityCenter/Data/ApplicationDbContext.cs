@@ -80,8 +80,17 @@ public class ApplicationDbContext : IdentityDbContext
             .Property(s => s.Stock)
             .HasDefaultValue(9999);
 
-        builder.Entity<Server>()
-            .Property(s => s.CreatedUtc)
-            .HasDefaultValueSql("GETUTCDATE()");
+        if (Database.IsSqlServer())
+        {
+            builder.Entity<Server>()
+                .Property(s => s.CreatedUtc)
+                .HasDefaultValueSql("GETUTCDATE()");
+        }
+        else
+        {
+            builder.Entity<Server>()
+                .Property(s => s.CreatedUtc)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        }
     }
 }
