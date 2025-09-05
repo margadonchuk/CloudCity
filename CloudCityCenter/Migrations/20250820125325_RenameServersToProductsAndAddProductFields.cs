@@ -69,21 +69,11 @@ namespace CloudCityCenter.Migrations
                 maxLength: 100,
                 nullable: false,
                 defaultValue: "");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_Slug",
-                table: "Products",
-                column: "Slug",
-                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
-                name: "IX_Products_Slug",
-                table: "Products");
-
             migrationBuilder.DropColumn(
                 name: "IsAvailable",
                 table: "Products");
