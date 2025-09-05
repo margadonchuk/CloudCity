@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Read environment before configuring EF
+var env = builder.Environment;
+
 // ✅ Чтение строки подключения из переменной окружения
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -24,9 +27,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
         else
             opt.UseSqlite(connectionString);
     }
-    else
+    else if (env.IsDevelopment())
     {
         opt.UseInMemoryDatabase("CloudCity");
+    }
+    else
+    {
+        throw new InvalidOperationException("Connection string is empty.");
     }
 });
 
