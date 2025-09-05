@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using CloudCityCenter.Models;
@@ -44,7 +45,12 @@ public static class SeedData
         if (!context.Orders.Any())
         {
             const string email = "test@example.com";
-            const string password = "Pa$$w0rd";
+            var password = Environment.GetEnvironmentVariable("SEED_USER_PASSWORD");
+            if (string.IsNullOrEmpty(password))
+            {
+                password = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+                Console.WriteLine($"Generated password for seed user {email}: {password}");
+            }
 
             var user = context.Users.FirstOrDefault(u => u.UserName == email);
             if (user == null)
