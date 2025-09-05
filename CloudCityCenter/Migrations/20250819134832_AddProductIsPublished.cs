@@ -13,7 +13,6 @@ namespace CloudCityCenter.Migrations
             migrationBuilder.AddColumn<bool>(
                 name: "IsPublished",
                 table: "Products",
-                type: "bit",
                 nullable: false,
                 defaultValue: false);
         }

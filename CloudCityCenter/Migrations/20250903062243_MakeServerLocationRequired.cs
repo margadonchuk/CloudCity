@@ -13,12 +13,10 @@ namespace CloudCityCenter.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Location",
                 table: "Servers",
-                type: "nvarchar(100)",
                 maxLength: 100,
                 nullable: false,
                 defaultValue: "",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(100)",
                 oldMaxLength: 100,
                 oldNullable: true);
         }
@@ -29,11 +27,9 @@ namespace CloudCityCenter.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Location",
                 table: "Servers",
-                type: "nvarchar(100)",
                 maxLength: 100,
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(100)",
                 oldMaxLength: 100,
                 oldNullable: false);
         }
