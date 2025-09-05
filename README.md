@@ -110,8 +110,11 @@ After applying migrations you can seed the database with test servers and orders
 ```bash
 dotnet run --project CloudCityCenter -- seed
 ```
-При этом будет создан тестовый пользователь `test@example.com` с паролем `Pa$$w0rd` и несколько примерных заказов.  
+При этом будет создан тестовый пользователь `test@example.com` с паролем `Pa$$w0rd` и несколько примерных заказов.
 This will create the test user `test@example.com` with password `Pa$$w0rd` and a few example orders.
+
+Если указать строку подключения к реальному SQL Server через переменную окружения `ConnectionStrings__DefaultConnection`, эта же команда заполнит именно его. После выполнения откройте `/Admin/Servers` (под аккаунтом администратора) и публичную страницу `/Servers`, чтобы убедиться, что товары созданы.
+Supplying a real SQL Server connection string via the `ConnectionStrings__DefaultConnection` environment variable lets the same command populate that database. When it finishes, visit `/Admin/Servers` while signed in as an admin and the public `/Servers` page to verify the products were seeded.
 
 ## 🔗 Изменение строки подключения
 **Changing the connection string**

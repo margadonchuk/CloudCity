@@ -53,20 +53,24 @@ var app = builder.Build();
 
 if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
 {
+    // Ensure connection string is provided via configuration/environment
+    var cs = app.Configuration.GetConnectionString("DefaultConnection");
+    if (string.IsNullOrEmpty(cs))
+        throw new InvalidOperationException("ConnectionStrings__DefaultConnection is not set.");
+
     using var scope = app.Services.CreateScope();
     var serviceProvider = scope.ServiceProvider;
     var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+
     if (context.Database.IsRelational())
         await context.Database.MigrateAsync();
-    else
-        await context.Database.EnsureCreatedAsync();
 
     var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
     var adminEmail = adminArg?.Split('=', 2)[1];
 
     await SeedData.RunAsync(serviceProvider, adminEmail);
 
-    if (args.Contains("--seed"))
+    if (args.Contains("--seed") && !context.Products.Any())
     {
         SeedData.Initialize(context);
     }
