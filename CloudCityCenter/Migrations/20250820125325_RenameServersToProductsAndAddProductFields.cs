@@ -10,9 +10,16 @@ namespace CloudCityCenter.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameTable(
-                name: "Servers",
-                newName: "Products");
+            if (migrationBuilder.ActiveProvider == "Microsoft.EntityFrameworkCore.SqlServer")
+            {
+                migrationBuilder.RenameTable(
+                    name: "Servers",
+                    newName: "Products");
+            }
+            else
+            {
+                migrationBuilder.Sql("ALTER TABLE Servers RENAME TO Products");
+            }
 
             migrationBuilder.AddColumn<bool>(
                 name: "IsAvailable",
@@ -106,9 +113,16 @@ namespace CloudCityCenter.Migrations
                 name: "Slug",
                 table: "Products");
 
-            migrationBuilder.RenameTable(
-                name: "Products",
-                newName: "Servers");
+            if (migrationBuilder.ActiveProvider == "Microsoft.EntityFrameworkCore.SqlServer")
+            {
+                migrationBuilder.RenameTable(
+                    name: "Products",
+                    newName: "Servers");
+            }
+            else
+            {
+                migrationBuilder.Sql("ALTER TABLE Products RENAME TO Servers");
+            }
         }
     }
 }
