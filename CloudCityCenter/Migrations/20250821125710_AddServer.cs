@@ -15,21 +15,22 @@ namespace CloudCityCenter.Migrations
                 name: "Servers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Slug = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    PricePerMonth = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    CpuCores = table.Column<int>(type: "int", nullable: false),
-                    RamGb = table.Column<int>(type: "int", nullable: false),
-                    StorageGb = table.Column<int>(type: "int", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    DDoSTier = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "Basic"),
-                    Stock = table.Column<int>(type: "int", nullable: false, defaultValue: 9999),
-                    CreatedUtc = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()")
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Slug = table.Column<string>(maxLength: 100, nullable: false),
+                    Description = table.Column<string>(maxLength: 200, nullable: true),
+                    Location = table.Column<string>(maxLength: 100, nullable: true),
+                    PricePerMonth = table.Column<decimal>(precision: 18, scale: 2, nullable: false),
+                    CpuCores = table.Column<int>(nullable: false),
+                    RamGb = table.Column<int>(nullable: false),
+                    StorageGb = table.Column<int>(nullable: false),
+                    ImageUrl = table.Column<string>(maxLength: 300, nullable: true),
+                    IsActive = table.Column<bool>(nullable: false, defaultValue: true),
+                    DDoSTier = table.Column<string>(maxLength: 50, nullable: false, defaultValue: "Basic"),
+                    Stock = table.Column<int>(nullable: false, defaultValue: 9999),
+                    CreatedUtc = table.Column<DateTime>(nullable: false, defaultValueSql: migrationBuilder.ActiveProvider == "Microsoft.EntityFrameworkCore.Sqlite" ? "CURRENT_TIMESTAMP" : "GETUTCDATE()")
                 },
                 constraints: table =>
                 {

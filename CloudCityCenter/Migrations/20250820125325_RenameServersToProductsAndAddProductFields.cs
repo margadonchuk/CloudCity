@@ -10,50 +10,53 @@ namespace CloudCityCenter.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(@"
+            if (migrationBuilder.ActiveProvider != "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                migrationBuilder.Sql(@"
 IF OBJECT_ID(N'dbo.Servers', N'U') IS NOT NULL AND OBJECT_ID(N'dbo.Products', N'U') IS NULL
     EXEC sp_rename N'dbo.Servers', N'Products';
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','IsAvailable') IS NULL
     ALTER TABLE [dbo].[Products] ADD [IsAvailable] bit NOT NULL DEFAULT(0);
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','Type') IS NULL
     ALTER TABLE [dbo].[Products] ADD [Type] int NOT NULL DEFAULT(0);
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','Configuration') IS NULL
     ALTER TABLE [dbo].[Products] ADD [Configuration] nvarchar(200) NOT NULL DEFAULT('');
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','ImageUrl') IS NULL
     ALTER TABLE [dbo].[Products] ADD [ImageUrl] nvarchar(300) NULL DEFAULT(NULL);
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','IsPublished') IS NULL
     ALTER TABLE [dbo].[Products] ADD [IsPublished] bit NOT NULL DEFAULT(0);
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','Location') IS NULL
     ALTER TABLE [dbo].[Products] ADD [Location] nvarchar(100) NOT NULL DEFAULT('');
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','PricePerMonth') IS NULL
     ALTER TABLE [dbo].[Products] ADD [PricePerMonth] decimal(18,2) NOT NULL DEFAULT(0);
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF COL_LENGTH('dbo.Products','Slug') IS NULL
     ALTER TABLE [dbo].[Products] ADD [Slug] nvarchar(100) NOT NULL DEFAULT('');
 ");
+            }
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_Slug",
@@ -69,7 +72,9 @@ IF COL_LENGTH('dbo.Products','Slug') IS NULL
                 name: "IX_Products_Slug",
                 table: "Products");
 
-            migrationBuilder.Sql(@"
+            if (migrationBuilder.ActiveProvider != "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -80,7 +85,7 @@ IF COL_LENGTH('dbo.Products','IsAvailable') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [IsAvailable];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -91,7 +96,7 @@ IF COL_LENGTH('dbo.Products','Type') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [Type];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -102,7 +107,7 @@ IF COL_LENGTH('dbo.Products','Configuration') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [Configuration];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -113,7 +118,7 @@ IF COL_LENGTH('dbo.Products','ImageUrl') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [ImageUrl];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -124,7 +129,7 @@ IF COL_LENGTH('dbo.Products','IsPublished') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [IsPublished];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -135,7 +140,7 @@ IF COL_LENGTH('dbo.Products','Location') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [Location];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -146,7 +151,7 @@ IF COL_LENGTH('dbo.Products','PricePerMonth') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [PricePerMonth];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 DECLARE @dcName NVARCHAR(128);
 SELECT @dcName = d.name
 FROM sys.default_constraints d
@@ -157,10 +162,11 @@ IF COL_LENGTH('dbo.Products','Slug') IS NOT NULL
     ALTER TABLE dbo.Products DROP COLUMN [Slug];
 ");
 
-            migrationBuilder.Sql(@"
+                migrationBuilder.Sql(@"
 IF OBJECT_ID(N'dbo.Products', N'U') IS NOT NULL AND OBJECT_ID(N'dbo.Servers', N'U') IS NULL
     EXEC sp_rename N'dbo.Products', N'Servers';
 ");
+            }
         }
     }
 }
