@@ -15,12 +15,10 @@ IF OBJECT_ID(N'dbo.Servers', N'U') IS NOT NULL AND OBJECT_ID(N'dbo.Products', N'
     EXEC sp_rename N'dbo.Servers', N'Products';
 ");
 
-            migrationBuilder.AddColumn<bool>(
-                name: "IsAvailable",
-                table: "Products",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','IsAvailable') IS NULL
+    ALTER TABLE [dbo].[Products] ADD [IsAvailable] bit NOT NULL DEFAULT(0);
+");
 
             migrationBuilder.AddColumn<int>(
                 name: "Type",
@@ -88,9 +86,10 @@ IF OBJECT_ID(N'dbo.Servers', N'U') IS NOT NULL AND OBJECT_ID(N'dbo.Products', N'
                 name: "IX_Products_Slug",
                 table: "Products");
 
-            migrationBuilder.DropColumn(
-                name: "IsAvailable",
-                table: "Products");
+            migrationBuilder.Sql(@"
+IF COL_LENGTH('dbo.Products','IsAvailable') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP COLUMN [IsAvailable];
+");
 
             migrationBuilder.DropColumn(
                 name: "Type",
