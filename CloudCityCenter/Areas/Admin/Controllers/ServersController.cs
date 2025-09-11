@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -62,17 +63,46 @@ public class ServersController : Controller
             return View(server);
         }
 
+        if (await _context.Servers.AnyAsync(s => s.Slug == server.Slug) ||
+            await _context.Products.AnyAsync(p => p.Slug == server.Slug))
+        {
+            ModelState.AddModelError("Slug", "Slug already exists.");
+            return View(server);
+        }
+
+        using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
             _context.Add(server);
             await _context.SaveChangesAsync();
+
+            var product = new Product
+            {
+                Name = server.Name,
+                Slug = server.Slug,
+                Type = ProductType.DedicatedServer,
+                Location = server.Location,
+                PricePerMonth = server.PricePerMonth,
+                Configuration = $"{server.CPU}, {server.RamGb} GB RAM, {server.StorageGb} GB storage",
+                ImageUrl = server.ImageUrl,
+                IsAvailable = server.IsActive,
+                IsPublished = server.IsActive,
+            };
+
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            await transaction.CommitAsync();
+
             _logger.LogInformation("Server {ServerSlug} created", server.Slug);
             return RedirectToAction(nameof(Index));
         }
         catch (DbUpdateException ex)
         {
+            await transaction.RollbackAsync();
             if (ex.InnerException?.Message.Contains("duplicate", StringComparison.OrdinalIgnoreCase) == true ||
-                ex.InnerException?.Message.Contains("IX_Servers_Slug") == true)
+                ex.InnerException?.Message.Contains("IX_Servers_Slug") == true ||
+                ex.InnerException?.Message.Contains("IX_Products_Slug") == true)
             {
                 ModelState.AddModelError("Slug", "Slug already exists.");
                 return View(server);
@@ -109,22 +139,77 @@ public class ServersController : Controller
             return NotFound();
         }
 
+        var existingServer = await _context.Servers.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
+        if (existingServer == null)
+        {
+            return NotFound();
+        }
+
+        var existingProduct = await _context.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Slug == existingServer.Slug);
+
         if (!ModelState.IsValid)
         {
             return View(server);
         }
 
+        bool slugExistsInServers = await _context.Servers.AnyAsync(s => s.Slug == server.Slug && s.Id != server.Id);
+        bool slugExistsInProducts = existingProduct == null
+            ? await _context.Products.AnyAsync(p => p.Slug == server.Slug)
+            : await _context.Products.AnyAsync(p => p.Slug == server.Slug && p.Id != existingProduct.Id);
+
+        if (slugExistsInServers || slugExistsInProducts)
+        {
+            ModelState.AddModelError("Slug", "Slug already exists.");
+            return View(server);
+        }
+
+        using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
             _context.Update(server);
             await _context.SaveChangesAsync();
+
+            if (existingProduct == null)
+            {
+                var product = new Product
+                {
+                    Name = server.Name,
+                    Slug = server.Slug,
+                    Type = ProductType.DedicatedServer,
+                    Location = server.Location,
+                    PricePerMonth = server.PricePerMonth,
+                    Configuration = $"{server.CPU}, {server.RamGb} GB RAM, {server.StorageGb} GB storage",
+                    ImageUrl = server.ImageUrl,
+                    IsAvailable = server.IsActive,
+                    IsPublished = server.IsActive,
+                };
+                _context.Products.Add(product);
+            }
+            else
+            {
+                existingProduct.Name = server.Name;
+                existingProduct.Slug = server.Slug;
+                existingProduct.Location = server.Location;
+                existingProduct.PricePerMonth = server.PricePerMonth;
+                existingProduct.Configuration = $"{server.CPU}, {server.RamGb} GB RAM, {server.StorageGb} GB storage";
+                existingProduct.ImageUrl = server.ImageUrl;
+                existingProduct.IsAvailable = server.IsActive;
+                existingProduct.IsPublished = server.IsActive;
+                _context.Update(existingProduct);
+            }
+
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+
             _logger.LogInformation("Server {ServerSlug} edited", server.Slug);
             return RedirectToAction(nameof(Index));
         }
         catch (DbUpdateException ex)
         {
+            await transaction.RollbackAsync();
             if (ex.InnerException?.Message.Contains("duplicate", StringComparison.OrdinalIgnoreCase) == true ||
-                ex.InnerException?.Message.Contains("IX_Servers_Slug") == true)
+                ex.InnerException?.Message.Contains("IX_Servers_Slug") == true ||
+                ex.InnerException?.Message.Contains("IX_Products_Slug") == true)
             {
                 ModelState.AddModelError("Slug", "Slug already exists.");
                 return View(server);
@@ -159,9 +244,26 @@ public class ServersController : Controller
         var server = await _context.Servers.FindAsync(id);
         if (server != null)
         {
-            _context.Servers.Remove(server);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("Server {ServerSlug} deleted", server.Slug);
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.Slug == server.Slug);
+                if (product != null)
+                {
+                    _context.Products.Remove(product);
+                }
+
+                _context.Servers.Remove(server);
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Server {ServerSlug} deleted", server.Slug);
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
         return RedirectToAction(nameof(Index));
     }
