@@ -125,19 +125,19 @@ The `DefaultConnection` connection string points to LocalDB by default.
 Приложение автоматически выбирает провайдера: если в строке есть `Server=`, будет использован SQL Server, иначе — SQLite. Без строки подключения создаётся временная база в памяти.
 The application automatically selects the provider: if `Server=` is present, SQL Server is used; otherwise SQLite. When no connection string is supplied, an in-memory database is created.
 
-Укажите корректную строку подключения в `CloudCityCenter/appsettings.json`:
-Provide a valid connection string in `CloudCityCenter/appsettings.json`:
+Укажите параметр `ConnectionStrings__DefaultConnection` в `CloudCityCenter/appsettings.Development.json` (этот файл не отслеживается системой контроля версий):
+Set the `ConnectionStrings__DefaultConnection` value in `CloudCityCenter/appsettings.Development.json` (this file is ignored by source control):
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Data Source=cloudcity.db"
+    "DefaultConnection": "Server=...;Database=...;User Id=...;Password=..."
   }
 }
 ```
 
-Или передайте её через переменную окружения:
-Or supply it via an environment variable:
+Или задайте переменную окружения `ConnectionStrings__DefaultConnection`:
+Or supply it via the `ConnectionStrings__DefaultConnection` environment variable:
 
 ```bash
 export ConnectionStrings__DefaultConnection="Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"
