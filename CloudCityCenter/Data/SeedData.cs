@@ -574,33 +574,48 @@ public static class SeedData
     {
         try
         {
-            using var connection = context.Database.GetDbConnection();
-            connection.Open();
-            using var command = connection.CreateCommand();
-            command.CommandText = "SELECT Name, Location, PricePerMonth, Configuration, IsAvailable, ImageUrl FROM Servers";
-            using var reader = command.ExecuteReader();
-            while (reader.Read())
+            var connection = context.Database.GetDbConnection();
+            var shouldClose = connection.State != System.Data.ConnectionState.Open;
+            if (shouldClose)
             {
-                var name = reader["Name"]?.ToString() ?? string.Empty;
-                var product = new Product
-                {
-                    Name = name,
-                    Slug = name.ToLower().Replace(' ', '-'),
-                    Location = reader["Location"]?.ToString() ?? string.Empty,
-                    PricePerMonth = reader.GetFieldValue<decimal>(reader.GetOrdinal("PricePerMonth")),
-                    Configuration = reader["Configuration"]?.ToString() ?? string.Empty,
-                    IsAvailable = reader.GetFieldValue<bool>(reader.GetOrdinal("IsAvailable")),
-                    ImageUrl = reader["ImageUrl"] as string,
-                    Type = ProductType.DedicatedServer
-                };
-
-                if (!context.Products.Any(p => p.Name == product.Name))
-                {
-                    context.Products.Add(product);
-                }
+                connection.Open();
             }
 
-            context.SaveChanges();
+            try
+            {
+                using var command = connection.CreateCommand();
+                command.CommandText = "SELECT Name, Location, PricePerMonth, Configuration, IsAvailable, ImageUrl FROM Servers";
+                using var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var name = reader["Name"]?.ToString() ?? string.Empty;
+                    var product = new Product
+                    {
+                        Name = name,
+                        Slug = name.ToLower().Replace(' ', '-'),
+                        Location = reader["Location"]?.ToString() ?? string.Empty,
+                        PricePerMonth = reader.GetFieldValue<decimal>(reader.GetOrdinal("PricePerMonth")),
+                        Configuration = reader["Configuration"]?.ToString() ?? string.Empty,
+                        IsAvailable = reader.GetFieldValue<bool>(reader.GetOrdinal("IsAvailable")),
+                        ImageUrl = reader["ImageUrl"] as string,
+                        Type = ProductType.DedicatedServer
+                    };
+
+                    if (!context.Products.Any(p => p.Name == product.Name))
+                    {
+                        context.Products.Add(product);
+                    }
+                }
+
+                context.SaveChanges();
+            }
+            finally
+            {
+                if (shouldClose)
+                {
+                    connection.Close();
+                }
+            }
         }
         catch (Exception)
         {
