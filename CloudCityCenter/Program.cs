@@ -117,10 +117,17 @@ using (var scope = app.Services.CreateScope())
 // Use forwarded headers before other middleware (for nginx reverse proxy)
 app.UseForwardedHeaders();
 
+// Check if we're behind a reverse proxy (nginx)
+var useReverseProxy = app.Configuration.GetValue<bool>("UseReverseProxy", false);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    // Don't use HSTS when behind reverse proxy - nginx handles HTTPS
+    if (!useReverseProxy)
+    {
+        app.UseHsts();
+    }
 }
 else
 {
@@ -129,7 +136,8 @@ else
 
 // Only redirect to HTTPS if not behind a reverse proxy (nginx handles HTTPS)
 // For production behind nginx, HTTPS redirection is disabled
-if (!app.Configuration.GetValue<bool>("UseReverseProxy", false))
+// This prevents ERR_TOO_MANY_REDIRECTS errors
+if (!useReverseProxy)
 {
     app.UseHttpsRedirection();
 }
