@@ -1,13 +1,15 @@
 # 🚨 СРОЧНОЕ ИСПРАВЛЕНИЕ - СЕРВИС НЕ ЗАПУСКАЕТСЯ
 
-## Выполните на сервере (прямо сейчас):
+## Быстрая проверка:
 
 ```bash
-cd /home/siteadmin/cloudcity
-git pull
-chmod +x fix-service.sh
-./fix-service.sh
+cd /home/siteadmin/cloudcity/CloudCityCenter
+sudo systemctl status cloudcity
+sudo journalctl -u cloudcity -n 30 --no-pager
+curl http://localhost:5000
 ```
+
+## Если скрипты не работают, выполните вручную:
 
 Этот скрипт:
 - ✅ Проверит логи
