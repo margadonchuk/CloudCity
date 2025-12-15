@@ -16,6 +16,7 @@ dotnet build --configuration Release
 echo "Устанавливаем переменные окружения..."
 export ASPNETCORE_ENVIRONMENT=Production
 export ASPNETCORE_URLS="http://localhost:5000"
+export USE_REVERSE_PROXY=true
 
 echo "Запускаем приложение..."
 echo "Приложение будет доступно на http://localhost:5000"
