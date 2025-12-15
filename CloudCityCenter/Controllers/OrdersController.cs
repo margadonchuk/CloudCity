@@ -78,8 +78,8 @@ public class OrdersController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.Items.FirstOrDefault()?.ProductId);
-        ViewData["ProductVariantId"] = new SelectList(_context.ProductVariants, "Id", "Name", order.Items.FirstOrDefault()?.ProductVariantId);
+        ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.Items?.FirstOrDefault()?.ProductId);
+        ViewData["ProductVariantId"] = new SelectList(_context.ProductVariants, "Id", "Name", order.Items?.FirstOrDefault()?.ProductVariantId);
         return View(order);
     }
 
