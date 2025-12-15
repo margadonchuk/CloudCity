@@ -26,6 +26,7 @@ dotnet build --configuration Release
 # Запустите (ВАЖНО: используйте --no-launch-profile!)
 export ASPNETCORE_ENVIRONMENT=Production
 export ASPNETCORE_URLS="http://localhost:5000"
+export USE_REVERSE_PROXY=true
 dotnet run --configuration Release --no-launch-profile
 ```
 
