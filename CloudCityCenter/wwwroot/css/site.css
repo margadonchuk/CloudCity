@@ -3257,23 +3257,22 @@ body {
   }
 
   .navbar-modern .container-fluid {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 8px;
     padding: 0 15px;
     width: 100%;
     position: relative;
   }
 
   .navbar-brand {
-    order: 1;
     flex: 0 0 auto;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-self: start;
+    z-index: 2;
   }
 
   .navbar-logo {
@@ -3282,17 +3281,21 @@ body {
   }
 
   .telegram-bot-link-mobile {
-    order: 2;
+    flex: 1 1 auto;
     margin: 0;
     padding: 0 !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-self: center;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     z-index: 1;
+    pointer-events: none;
+  }
+
+  .telegram-bot-link-mobile .telegram-bot-wrapper-mobile {
+    pointer-events: all;
   }
 
   .telegram-bot-wrapper-mobile {
@@ -3302,6 +3305,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
   }
 
   .telegram-icon-mobile {
@@ -3315,13 +3319,12 @@ body {
   }
 
   .navbar-toggler {
-    order: 3;
     flex: 0 0 auto;
     margin: 0;
     padding: 6px 10px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    justify-self: end;
+    z-index: 2;
   }
 
   .navbar-collapse {
