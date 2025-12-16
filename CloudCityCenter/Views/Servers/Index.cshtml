@@ -3,27 +3,82 @@
     ViewData["Title"] = "Dedicated Servers";
 }
 
-<section class="container py-4">
-    <h1 class="mb-3">Dedicated Servers</h1>
-    <p class="text-muted">
-        Our bare‑metal servers deliver uncompromised performance with full hardware control.
-        Ideal for large workloads, game hosting or any application that demands raw power.
-    </p>
-
-    <h5>What you get</h5>
-    <ul>
-        <li>Enterprise hardware & root access</li>
-        <li>Multiple datacenter locations</li>
-        <li>24/7 monitoring & support</li>
-    </ul>
+<!-- HERO SECTION -->
+<section class="servers-page-hero py-5 position-relative">
+  <div class="servers-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
+        <div class="section-badge mb-3">
+          <span class="badge-text">Servers</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 servers-page-title">
+          <span class="text-gradient-2">Dedicated</span> <span class="text-primary">Servers</span>
+        </h1>
+        <p class="servers-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          Our bare‑metal servers deliver uncompromised performance with full hardware control.
+          Ideal for large workloads, game hosting or any application that demands raw power.
+        </p>
+        <div class="servers-features mb-4">
+          <div class="servers-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Enterprise hardware & root access</span>
+          </div>
+          <div class="servers-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Multiple datacenter locations</span>
+          </div>
+          <div class="servers-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>24/7 monitoring & support</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">
+        <div class="servers-page-image-wrapper">
+          <div class="servers-icon-grid">
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-server"></i>
+              </div>
+              <span>Powerful</span>
+            </div>
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <span>Secure</span>
+            </div>
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <span>Fast</span>
+            </div>
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-globe"></i>
+              </div>
+              <span>Global</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- PRODUCTS SECTION -->
 <section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+      <h2 class="display-5 fw-bold mb-3">Available Servers</h2>
+      <p class="lead text-muted">Choose the perfect server for your needs</p>
+    </div>
     <div class="row g-4">
         @foreach (var item in Model)
         {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
+            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+                <div class="card h-100 servers-product-card">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
             </div>

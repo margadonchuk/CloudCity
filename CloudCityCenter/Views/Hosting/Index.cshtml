@@ -3,40 +3,59 @@
     ViewData["Title"] = "Web Hosting";
 }
 
-<section id="web-hosting" class="container my-5">
-  <!-- Картинка сверху -->
-  <div class="text-center mb-4">
-    <img src="/images/webhosting.png" alt="Web Hosting" class="img-fluid rounded shadow">
+<!-- HERO SECTION -->
+<section class="hosting-page-hero py-5 position-relative">
+  <div class="hosting-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-2 order-md-1 animate-on-scroll" data-animation="fade-in-left">
+        <div class="hosting-page-image-wrapper">
+          <img src="/images/webhosting.png" alt="Web Hosting" class="hosting-page-image" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
+        <div class="section-badge mb-3">
+          <span class="badge-text">Hosting</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 hosting-page-title">
+          <span class="text-gradient-2">Web</span> <span class="text-primary">Hosting</span>
+        </h1>
+        <p class="hosting-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          Web Hosting is the foundation of your online presence, providing reliable and fast solutions 
+          for websites of any size. At <strong>CloudCity Center</strong>, we focus on speed, security, and 
+          convenience — using the latest technologies to deliver the best hosting experience.
+        </p>
+        <div class="hosting-features mb-4">
+          <div class="hosting-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Custom design, functionality & high bandwidth</span>
+          </div>
+          <div class="hosting-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Support for C#, Python, PHP, and popular website builders</span>
+          </div>
+          <div class="hosting-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Automatic backups, adaptability, and SEO optimization</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- Заголовок и текст -->
-  <h2 class="fw-bold">Web Hosting</h2>
-  <p>
-    Web Hosting is the foundation of your online presence, providing reliable and fast solutions 
-    for websites of any size. At <b>CloudCity Center</b>, we focus on speed, security, and 
-    convenience — using the latest technologies to deliver the best hosting experience.
-  </p>
-
-  <!-- Подзаголовок и преимущества -->
-  <h4>Highlights</h4>
-  <ul>
-    <li>Custom design, functionality & high bandwidth</li>
-    <li>Support for C#, Python, PHP, and popular website builders</li>
-    <li>Automatic backups, adaptability, and SEO optimization</li>
-  </ul>
 </section>
 
-<section class="container py-4">
-    <form id="add-all-form" data-ajax="true" asp-controller="Cart" asp-action="AddAll" method="post" class="mb-3">
-        @Html.AntiForgeryToken()
-        <button type="submit" class="btn btn-success">Add All to Cart</button>
-    </form>
-    <h2 class="mb-3">Hosting Plans</h2>
+<!-- HOSTING PLANS SECTION -->
+<section class="container py-5">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+      <h2 class="display-5 fw-bold mb-3">Hosting Plans</h2>
+      <p class="lead text-muted">Choose the perfect hosting solution for your website</p>
+    </div>
     <div class="row g-4">
         @foreach (var item in Model.HostingPlans)
         {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
+            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+                <div class="card h-100 hosting-product-card">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
             </div>
@@ -44,33 +63,25 @@
     </div>
 </section>
 
-<section class="container py-4">
-    <h2 class="mb-3">Create Website</h2>
-    <div class="row g-4">
-        @foreach (var item in Model.WebsiteProducts)
-        {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    @await Html.PartialAsync("_ProductCard", item)
-                </div>
-            </div>
-        }
-    </div>
+<!-- WEBSITE PRODUCTS SECTION -->
+<section class="container py-5 position-relative">
+  <div class="hosting-page-background"></div>
+  <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <h2 class="display-5 fw-bold mb-3">Create Website</h2>
+    <p class="lead text-muted">Professional website development services</p>
+  </div>
+  <div class="row g-4">
+      @foreach (var item in Model.WebsiteProducts)
+      {
+          <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+              <div class="card h-100 hosting-product-card">
+                  @await Html.PartialAsync("_ProductCard", item)
+              </div>
+          </div>
+      }
+  </div>
 </section>
 
-<section class="container py-4">
-    <h2 class="mb-3">VPS Hosting</h2>
-    <div class="row g-4">
-        @foreach (var item in Model.VpsProducts)
-        {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    @await Html.PartialAsync("_ProductCard", item)
-                </div>
-            </div>
-        }
-    </div>
-</section>
 
 <section class="container py-4">
     <h2 class="mb-3">VPN Tunneling</h2>

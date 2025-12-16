@@ -2048,6 +2048,377 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
+  .servers-page-title,
+  .hosting-page-title,
+  .vpn-page-title,
+  .vps-page-title {
+    font-size: 2rem;
+  }
+}
+
+/* ============================================
+   SERVERS PAGE STYLES
+   ============================================ */
+.servers-page-hero {
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+}
+
+.servers-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.servers-page-title {
+  margin-bottom: 1.5rem;
+}
+
+.servers-page-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.servers-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.servers-feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.servers-feature-item i {
+  font-size: 1.3rem;
+}
+
+.servers-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.servers-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.servers-icon-item:hover {
+  transform: translateY(-10px);
+}
+
+.servers-icon-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+}
+
+.servers-icon-circle i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.servers-icon-item:hover .servers-icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+}
+
+.servers-icon-item span {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.servers-product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.servers-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   HOSTING PAGE STYLES
+   ============================================ */
+.hosting-page-hero {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+.hosting-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hosting-page-title {
+  margin-bottom: 1.5rem;
+}
+
+.hosting-page-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.hosting-page-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hosting-page-image {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.hosting-page-image:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+.hosting-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hosting-feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.hosting-feature-item i {
+  font-size: 1.3rem;
+}
+
+.hosting-product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.hosting-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   VPN PAGE STYLES
+   ============================================ */
+.vpn-page-hero {
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+}
+
+.vpn-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.vpn-page-title {
+  margin-bottom: 1.5rem;
+}
+
+.vpn-page-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.vpn-page-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.vpn-page-image {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.vpn-page-image:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+.vpn-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vpn-feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.vpn-feature-item i {
+  font-size: 1.3rem;
+}
+
+.vpn-product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.vpn-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.datacenter-map-image {
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.datacenter-map-image:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   VPS PAGE STYLES
+   ============================================ */
+.vps-page-hero {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+.vps-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.vps-page-title {
+  margin-bottom: 1.5rem;
+}
+
+.vps-page-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.vps-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vps-feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.vps-feature-item i {
+  font-size: 1.3rem;
+}
+
+.vps-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.vps-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.vps-icon-item:hover {
+  transform: translateY(-10px);
+}
+
+.vps-icon-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+}
+
+.vps-icon-circle i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.vps-icon-item:hover .vps-icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+}
+
+.vps-icon-item span {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.vps-product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.vps-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 
