@@ -159,13 +159,53 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        
+        // Проверяем тип базы данных
         if (context.Database.IsRelational())
-            context.Database.Migrate();
-        else
-            context.Database.EnsureCreated();
-        if (!context.Products.Any())
         {
+            var providerName = context.Database.ProviderName;
+            logger.LogInformation($"Database provider: {providerName}");
+            
+            // Проверяем, что это SQL Server, а не SQLite
+            if (providerName != null && providerName.Contains("SqlServer"))
+            {
+                logger.LogInformation("Applying migrations for SQL Server...");
+                try
+                {
+                    await context.Database.MigrateAsync();
+                    logger.LogInformation("Migrations applied successfully");
+                }
+                catch (Exception migEx)
+                {
+                    logger.LogError(migEx, "Error applying migrations. The migration might be for SQLite. Create a new migration for SQL Server.");
+                    logger.LogError("To fix: Set ASPNETCORE_ENVIRONMENT=Production and ConnectionStrings__DefaultConnection, then run: dotnet ef migrations add SqlServerInitialCreate");
+                    // Не прерываем выполнение, возможно таблицы уже созданы
+                }
+            }
+            else
+            {
+                logger.LogInformation("Applying migrations for non-SQL Server database...");
+                await context.Database.MigrateAsync();
+            }
+        }
+        else
+        {
+            context.Database.EnsureCreated();
+        }
+        
+        // Загружаем данные только если товаров нет
+        var productsCount = await context.Products.CountAsync();
+        if (productsCount == 0)
+        {
+            logger.LogInformation("No products found. Seeding database...");
             SeedData.Initialize(context);
+            productsCount = await context.Products.CountAsync();
+            logger.LogInformation($"Seeded {productsCount} products");
+        }
+        else
+        {
+            logger.LogInformation($"Database already contains {productsCount} products");
         }
     }
     catch (Exception ex)
