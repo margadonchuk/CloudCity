@@ -1,29 +1,58 @@
-<section class="py-5">
+<section class="welcome-section py-5 position-relative overflow-hidden">
+  <div class="welcome-background-pattern"></div>
   <div class="container">
     <div class="row align-items-center">
       
       <!-- Правая часть с изображением (на мобилке будет первой) -->
-     <div class="col-md-6 text-center mt-3 mt-md-0 order-1 order-md-2">
-  <img src="/images/Home1.png" alt="CloudCityCenter" class="img-fluid mb-4" />
-</div>
-
+      <div class="col-md-6 text-center mt-3 mt-md-0 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
+        <div class="welcome-image-wrapper">
+          <img src="/images/Home1.png" alt="CloudCityCenter" class="img-fluid welcome-image" />
+          <div class="image-glow"></div>
+        </div>
+      </div>
 
       <!-- Левая часть с текстом -->
-      <div class="col-md-6 text-md-start text-center order-2 order-md-1">
-        <h1 class="fw-bold display-5 mb-3">Welcome to <br>CloudCity Center</h1>
-        <p class="mb-4" style="font-size: 1rem; color: #555;">
+      <div class="col-md-6 text-md-start text-center order-2 order-md-1 animate-on-scroll" data-animation="fade-in-left">
+        <div class="section-badge mb-3">
+          <span class="badge-text">Why Choose Us</span>
+        </div>
+        <h1 class="fw-bold display-4 mb-4 welcome-title">
+          <span class="text-gradient-2">Premium Solutions</span><br>
+          <span class="text-primary">For Your Business</span>
+        </h1>
+        <p class="mb-4 welcome-description" style="font-size: 1.1rem; color: #555; line-height: 1.8;">
           Our company offers an extensive and diverse range of high-quality solutions that are meticulously tailored specifically for your unique business needs.
           We are committed to delivering these top-tier services at competitive and affordable prices that ensure exceptional value without breaking the bank,
           allowing you to maximize your investment and achieve your business goals effectively.
         </p>
 
+        <!-- Features List -->
+        <div class="welcome-features mb-4">
+          <div class="feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>24/7 Expert Support</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>99.9% Uptime Guarantee</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>Global Data Centers</span>
+          </div>
+        </div>
+
         <!-- Кнопки -->
         <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start">
-          <a class="btn btn-primary px-4 py-2" asp-controller="Servers" asp-action="Index" style="border-radius: 999px;">
-            Server catalog
+          <a class="btn btn-primary px-5 py-3 welcome-btn" 
+             asp-controller="Servers" asp-action="Index" 
+             style="border-radius: 50px; font-weight: 600; box-shadow: 0 8px 25px rgba(13, 110, 253, 0.25);">
+            <i class="bi bi-server me-2"></i>Server Catalog
           </a>
-          <a class="btn btn-outline-primary px-4 py-2" asp-controller="Account" asp-action="Register" style="border-radius: 999px;">
-            Registration
+          <a class="btn btn-outline-primary px-5 py-3 welcome-btn" 
+             asp-controller="Account" asp-action="Register" 
+             style="border-radius: 50px; font-weight: 600; border-width: 2px;">
+            <i class="bi bi-person-plus me-2"></i>Registration
           </a>
         </div>
       </div>

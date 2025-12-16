@@ -1,8 +1,17 @@
-<section class="container py-5">
-  <h2 class="text-center display-5 fw-bold mb-4">What drives us?</h2>
+<section class="services-section-main container py-5 position-relative">
+  <div class="services-background-pattern"></div>
+  <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <div class="section-badge mb-3">
+      <span class="badge-text">Our Values</span>
+    </div>
+    <h2 class="display-4 fw-bold mb-3 services-main-title">
+      <span class="text-gradient-2">What</span> <span class="text-primary">Drives Us?</span>
+    </h2>
+    <p class="lead text-muted">Core principles that guide everything we do</p>
+  </div>
 
   <!-- Лента сервисов: видим 3, остальные бегут по кругу -->
-  <div class="services-strip animate-scroll">
+  <div class="services-strip animate-scroll animate-on-scroll" data-animation="fade-in-up">
     <div class="services-track">
       <!-- Дублируем набор, чтобы лента была бесшовной -->
       <div class="feature text-center">
@@ -56,9 +65,11 @@
     </div>
   </div>
 
-  <div class="text-center mt-4">
-    <a class="btn btn-primary btn-lg px-4" asp-controller="Services" asp-action="Index">
-      <span class="me-2">👁</span> Learn More
+  <div class="text-center mt-5 animate-on-scroll" data-animation="fade-in-up">
+    <a class="btn btn-primary btn-lg px-5 py-3 services-main-btn" 
+       asp-controller="Services" asp-action="Index"
+       style="border-radius: 50px; font-weight: 600; box-shadow: 0 8px 25px rgba(13, 110, 253, 0.25);">
+      <i class="bi bi-eye me-2"></i> Learn More
     </a>
   </div>
 </section>
