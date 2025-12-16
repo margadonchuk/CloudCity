@@ -2955,12 +2955,19 @@ body {
 .navbar-modern {
   background: white;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-  padding: 15px 0;
+  padding: 12px 0;
   border-bottom: 1px solid #e0e0e0;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
+  margin: 0;
+}
+
+body {
+  padding-top: 70px;
 }
 
 .navbar-logo {
@@ -3036,7 +3043,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* Telegram Bot Link - Center */
+/* Telegram Bot Link - Center (Desktop) */
 .telegram-bot-link {
   padding: 0 !important;
   margin: 0 10px;
@@ -3046,13 +3053,13 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 20px;
+  padding: 12px 22px;
   background: linear-gradient(135deg, #0088cc, #0066aa);
-  border-radius: 25px;
+  border-radius: 30px;
   color: white !important;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+  box-shadow: 0 5px 20px rgba(0, 136, 204, 0.35);
   position: relative;
   overflow: hidden;
 }
@@ -3064,7 +3071,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
   animation: telegram-shine 3s ease-in-out infinite;
 }
 
@@ -3079,29 +3086,85 @@ body {
 
 .telegram-bot-wrapper:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 136, 204, 0.5);
   background: linear-gradient(135deg, #0099dd, #0077bb);
 }
 
-.telegram-bot-icon {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
+.telegram-icon {
+  font-size: 1.4rem;
   position: relative;
   z-index: 1;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .telegram-bot-text {
   position: relative;
   z-index: 1;
   font-size: 0.95rem;
+  letter-spacing: 0.3px;
 }
 
 .telegram-bot-arrow {
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 0.9;
   position: relative;
   z-index: 1;
+  margin-left: 2px;
+}
+
+/* Telegram Bot для мобильной версии */
+.telegram-bot-link-mobile {
+  padding: 0 !important;
+  margin: 0 10px;
+  order: 2;
+}
+
+.telegram-bot-wrapper-mobile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #0088cc, #0066aa);
+  border-radius: 25px;
+  color: white !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 136, 204, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.telegram-bot-wrapper-mobile::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
+  animation: telegram-shine 3s ease-in-out infinite;
+}
+
+.telegram-bot-wrapper-mobile:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 136, 204, 0.45);
+  background: linear-gradient(135deg, #0099dd, #0077bb);
+}
+
+.telegram-icon-mobile {
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.telegram-bot-text-mobile {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
 }
 
 /* Cart Link */
@@ -3176,10 +3239,30 @@ body {
 
 /* Mobile Menu */
 @media (max-width: 991px) {
+  body {
+    padding-top: 65px;
+  }
+
+  .navbar-modern {
+    padding: 10px 0;
+  }
+
+  .navbar-brand {
+    order: 1;
+    margin-right: auto;
+  }
+
+  .navbar-toggler {
+    order: 3;
+    margin-left: auto;
+  }
+
   .navbar-collapse {
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 15px;
+    padding-top: 15px;
     border-top: 1px solid #e0e0e0;
+    order: 4;
+    width: 100%;
   }
 
   .navbar-nav-left,
@@ -3190,17 +3273,7 @@ body {
   }
 
   .navbar-center {
-    order: -1;
-    margin: 15px 0;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .telegram-bot-wrapper {
-    width: 100%;
-    justify-content: center;
-    max-width: 300px;
-    margin: 0 auto;
+    display: none;
   }
 
   .nav-link {
