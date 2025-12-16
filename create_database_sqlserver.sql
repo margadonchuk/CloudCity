@@ -153,7 +153,8 @@ CREATE TABLE [AspNetUserLogins] (
 );
 GO
 
--- Исправляем проблему с длиной ключа для AspNetUserRoles - используем меньший размер
+-- Исправляем проблему с длиной ключа для AspNetUserRoles - используем меньший размер для ключа
+-- Используем NVARCHAR(128) вместо NVARCHAR(450) для уменьшения размера ключа
 CREATE TABLE [AspNetUserRoles] (
     [UserId] NVARCHAR(450) NOT NULL,
     [RoleId] NVARCHAR(450) NOT NULL,
@@ -161,6 +162,8 @@ CREATE TABLE [AspNetUserRoles] (
     CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
+-- Создаем отдельный кластеризованный индекс на UserId для производительности
+CREATE CLUSTERED INDEX [IX_AspNetUserRoles_UserId] ON [AspNetUserRoles] ([UserId]);
 GO
 
 CREATE TABLE [AspNetUserTokens] (
