@@ -1,62 +1,152 @@
 @model CloudCityCenter.Models.ViewModels.CartViewModel
 @{
-    ViewData["Title"] = "Cart";
+    ViewData["Title"] = "Shopping Cart";
 }
 
-<h1>Cart</h1>
+<!-- CART HERO SECTION -->
+<section class="cart-hero-section py-4 position-relative">
+  <div class="cart-hero-background"></div>
+  <div class="container">
+    <div class="text-center animate-on-scroll" data-animation="fade-in-up">
+      <h1 class="display-4 fw-bold mb-2 cart-hero-title">
+        <i class="bi bi-cart-check me-2"></i>
+        <span class="text-gradient-2">Shopping</span> <span class="text-primary">Cart</span>
+      </h1>
+      <p class="text-muted">Review your items and proceed to checkout</p>
+    </div>
+  </div>
+</section>
 
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success">@TempData["Success"]</div>
-}
-
-@if (Model.Items.Any())
-{
-    @for (int i = 0; i < Model.Items.Count; i++)
+<!-- CART CONTENT -->
+<section class="cart-content-section py-5">
+  <div class="container">
+    @if (TempData["Success"] != null)
     {
-        var item = Model.Items[i];
-        <div class="cart-item mb-3">
-            <img src="@item.Product?.ImageUrl" alt="@item.Product?.Name" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=No+Image';" />
-            <div class="p-3">
-                <div class="row">
-                    <div class="col">
-                        <h5 class="mb-1">@item.Product?.Name</h5>
-                        <p class="mb-0"><small class="text-muted">@item.ProductVariant?.Name</small></p>
-                    </div>
-                    <div class="col-auto text-end">
-                        <p class="fw-semibold mb-0">@item.Item.Price.ToString("C")</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2 text-end border-top">
-                <form asp-action="Remove" method="post">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="index" value="@i" />
-                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Удалить">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </form>
-            </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     }
-    <div class="d-flex justify-content-between mb-3">
-        <a asp-controller="Servers" asp-action="Index" class="btn btn-outline-primary">Продолжить покупки</a>
-        <form asp-action="Clear" method="post" class="d-inline">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-outline-danger">Очистить корзину</button>
-        </form>
-    </div>
-    <div class="cart-summary">
-        <div class="total">Total: @Model.Total.ToString("C")</div>
-        <form asp-action="Checkout" method="post" class="mt-2">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-primary">Checkout</button>
-        </form>
-    </div>
-}
-else
-{
-    <div class="alert alert-info text-center">
-        Your cart is empty. <a asp-controller="Servers" asp-action="Index" class="alert-link">Продолжить покупки</a>
-    </div>
-}
+
+    @if (Model.Items.Any())
+    {
+        <div class="row">
+          <!-- Cart Items -->
+          <div class="col-lg-8 mb-4">
+            <div class="cart-items-wrapper">
+              @for (int i = 0; i < Model.Items.Count; i++)
+              {
+                  var item = Model.Items[i];
+                  <div class="cart-item-card animate-on-scroll" data-animation="fade-in-up">
+                    <div class="cart-item-image-wrapper">
+                      <img src="@(item.Product?.ImageUrl ?? "https://via.placeholder.com/300x200?text=No+Image")" 
+                           alt="@item.Product?.Name" 
+                           class="cart-item-image"
+                           onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=No+Image';" />
+                      <div class="cart-item-badge">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                    <div class="cart-item-content">
+                      <div class="cart-item-header">
+                        <h3 class="cart-item-title">@item.Product?.Name</h3>
+                        @if (!string.IsNullOrEmpty(item.ProductVariant?.Name))
+                        {
+                            <span class="cart-item-variant badge bg-primary">@item.ProductVariant.Name</span>
+                        }
+                      </div>
+                      <div class="cart-item-footer">
+                        <div class="cart-item-price">
+                          <span class="price-label">Price:</span>
+                          <span class="price-value">@item.Item.Price.ToString("C")</span>
+                        </div>
+                        <form asp-action="Remove" method="post" class="cart-item-remove">
+                          @Html.AntiForgeryToken()
+                          <input type="hidden" name="index" value="@i" />
+                          <button type="submit" class="btn btn-danger btn-sm cart-remove-btn" title="Remove item">
+                            <i class="bi bi-trash me-1"></i>Remove
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+              }
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="cart-actions mt-4 animate-on-scroll" data-animation="fade-in-up">
+              <div class="d-flex flex-wrap gap-3">
+                <a asp-controller="Servers" asp-action="Index" class="btn btn-outline-primary btn-lg">
+                  <i class="bi bi-arrow-left me-2"></i>Continue Shopping
+                </a>
+                <form asp-action="Clear" method="post" class="d-inline">
+                  @Html.AntiForgeryToken()
+                  <button type="submit" class="btn btn-outline-danger btn-lg" onclick="return confirm('Are you sure you want to clear your cart?');">
+                    <i class="bi bi-x-circle me-2"></i>Clear Cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cart Summary -->
+          <div class="col-lg-4">
+            <div class="cart-summary-card animate-on-scroll" data-animation="fade-in-up">
+              <div class="cart-summary-header">
+                <h3 class="cart-summary-title">
+                  <i class="bi bi-receipt me-2"></i>Order Summary
+                </h3>
+              </div>
+              <div class="cart-summary-body">
+                <div class="cart-summary-item">
+                  <span class="summary-label">Items:</span>
+                  <span class="summary-value">@Model.Items.Count</span>
+                </div>
+                <div class="cart-summary-divider"></div>
+                <div class="cart-summary-total">
+                  <span class="total-label">Total:</span>
+                  <span class="total-value">@Model.Total.ToString("C")</span>
+                </div>
+              </div>
+              <div class="cart-summary-footer">
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <form asp-action="Checkout" method="post">
+                      @Html.AntiForgeryToken()
+                      <button type="submit" class="btn btn-primary btn-lg w-100 checkout-btn">
+                        <i class="bi bi-credit-card me-2"></i>Proceed to Checkout
+                      </button>
+                    </form>
+                }
+                else
+                {
+                    <div class="alert alert-info mb-3">
+                      <i class="bi bi-info-circle me-2"></i>
+                      Please <a asp-controller="Account" asp-action="Login" class="alert-link">sign in</a> to checkout
+                    </div>
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg w-100">
+                      <i class="bi bi-box-arrow-in-right me-2"></i>Sign In to Checkout
+                    </a>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+    }
+    else
+    {
+        <div class="cart-empty-wrapper animate-on-scroll" data-animation="fade-in-up">
+          <div class="cart-empty-card text-center">
+            <div class="cart-empty-icon mb-4">
+              <i class="bi bi-cart-x"></i>
+            </div>
+            <h2 class="cart-empty-title mb-3">Your cart is empty</h2>
+            <p class="text-muted mb-4">Looks like you haven't added any items to your cart yet.</p>
+            <a asp-controller="Servers" asp-action="Index" class="btn btn-primary btn-lg">
+              <i class="bi bi-arrow-left me-2"></i>Start Shopping
+            </a>
+          </div>
+        </div>
+    }
+  </div>
+</section>
