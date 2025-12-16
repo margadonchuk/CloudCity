@@ -565,17 +565,35 @@ public static class SeedData
         
         foreach (var product in products)
         {
-            // Используем синхронную проверку, так как мы уже в синхронном методе
-            // и контекст должен быть открыт
-            var exists = context.Products.Any(p => p.Slug == product.Slug);
-            if (!exists)
+            try
             {
-                context.Products.Add(product);
-                addedCount++;
+                // Используем синхронную проверку, так как мы уже в синхронном методе
+                // и контекст должен быть открыт
+                var exists = context.Products.Any(p => p.Slug == product.Slug);
+                if (!exists)
+                {
+                    context.Products.Add(product);
+                    addedCount++;
+                }
+                else
+                {
+                    skippedCount++;
+                }
             }
-            else
+            catch (Exception ex) when (ex.Message.Contains("Invalid column name") || ex.Message.Contains("slug"))
             {
-                skippedCount++;
+                // Если колонка slug не существует, проверяем по имени
+                Console.WriteLine($"⚠ Колонка 'slug' не найдена, проверяю по имени...");
+                var exists = context.Products.Any(p => p.Name == product.Name);
+                if (!exists)
+                {
+                    context.Products.Add(product);
+                    addedCount++;
+                }
+                else
+                {
+                    skippedCount++;
+                }
             }
         }
         
