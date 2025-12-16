@@ -76,7 +76,7 @@ CREATE TABLE [AspNetUserLogins] (
     [ProviderKey] NVARCHAR(128) NOT NULL,
     [ProviderDisplayName] NVARCHAR(MAX) NULL,
     [UserId] NVARCHAR(450) NOT NULL,
-    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY NONCLUSTERED ([LoginProvider], [ProviderKey]),
     CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
 GO
@@ -84,7 +84,7 @@ GO
 CREATE TABLE [AspNetUserRoles] (
     [UserId] NVARCHAR(450) NOT NULL,
     [RoleId] NVARCHAR(450) NOT NULL,
-    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY NONCLUSTERED ([UserId], [RoleId]),
     CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
@@ -95,7 +95,7 @@ CREATE TABLE [AspNetUserTokens] (
     [LoginProvider] NVARCHAR(128) NOT NULL,
     [Name] NVARCHAR(128) NOT NULL,
     [Value] NVARCHAR(MAX) NULL,
-    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY NONCLUSTERED ([UserId], [LoginProvider], [Name]),
     CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
 GO
