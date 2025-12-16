@@ -133,9 +133,9 @@
 }
 
 <div class="background">
-    <div class="contact-title">Contact Us</div>
+    <div class="contact-title animate-on-scroll" data-animation="fade-in-up">Contact Us</div>
     <div class="divider"></div>
-    <div class="contact-info">
+    <div class="contact-info animate-on-scroll" data-animation="fade-in-up">
         <div class="contact-item">
             <img src="/images/email.png" alt="Email icon" class="contact-icon">
             <a href="mailto:support@cloudcity.center">support@cloudcity.center</a>
@@ -181,7 +181,7 @@
         margin-right: 8px;
     }
 </style>
-<div class="form-container">
+<div class="form-container animate-on-scroll" data-animation="fade-in-up">
   <h2>Fill out the form and we will contact you as soon as possible</h2>
   <form asp-action="Submit" method="post">
     @Html.AntiForgeryToken()

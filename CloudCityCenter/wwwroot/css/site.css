@@ -1250,37 +1250,68 @@ body {
   pointer-events: none;
 }
 
-.welcome-image-wrapper {
-  position: relative;
-  display: inline-block;
+.welcome-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 40px 20px;
 }
 
-.welcome-image {
-  border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+.welcome-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   transition: transform 0.3s ease;
 }
 
-.welcome-image:hover {
-  transform: scale(1.05);
+.welcome-icon-item:hover {
+  transform: translateY(-10px);
 }
 
-.image-glow {
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  background: linear-gradient(135deg, rgba(13, 110, 253, 0.2), rgba(102, 126, 234, 0.2));
-  border-radius: 30px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  filter: blur(20px);
+.icon-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
 }
 
-.welcome-image-wrapper:hover .image-glow {
-  opacity: 1;
+.icon-circle i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.welcome-icon-item:hover .icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+}
+
+.welcome-icon-item span {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .welcome-icons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 30px 10px;
+  }
+  
+  .icon-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .icon-circle i {
+    font-size: 2rem;
+  }
 }
 
 .text-gradient-2 {
@@ -1716,6 +1747,239 @@ body {
   transform: scale(1.1);
 }
 
+/* ============================================
+   ABOUT PAGE STYLES
+   ============================================ */
+.about-page-section {
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+}
+
+.about-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.about-page-title {
+  margin-bottom: 1.5rem;
+}
+
+.about-page-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.about-page-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.about-page-image {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.about-page-image:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+.about-page-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.about-feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.about-feature-item i {
+  font-size: 1.3rem;
+}
+
+.about-page-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.about-stat-item {
+  text-align: center;
+}
+
+.about-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0d6efd;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.about-stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.expertise-page-section {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+.expertise-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 80% 30%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 20% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ============================================
+   SERVICES PAGE ENHANCEMENTS
+   ============================================ */
+.services-page-hero {
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+}
+
+.services-page-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.services-page-title {
+  margin-bottom: 1.5rem;
+}
+
+.services-page-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.services-page-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.services-page-image {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.services-page-image:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+.service-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 40px;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-item img {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover img {
+  transform: scale(1.05);
+}
+
+.service-text h3 {
+  color: #0d6efd;
+  margin-bottom: 15px;
+}
+
+/* ============================================
+   CONTACT PAGE ENHANCEMENTS
+   ============================================ */
+.background {
+  position: relative;
+  overflow: hidden;
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(102, 126, 234, 0.1));
+  animation: gradient-shift 15s ease infinite;
+}
+
+.contact-item {
+  transition: transform 0.3s ease;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-container {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.form-container input,
+.form-container textarea {
+  transition: all 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.2);
+  border-color: #0d6efd;
+}
+
+.form-container button {
+  transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+}
+
 @media (max-width: 768px) {
   .hero-section {
     min-height: auto;
@@ -1771,8 +2035,18 @@ body {
   }
 
   .welcome-title,
-  .about-title {
+  .about-title,
+  .about-page-title {
     font-size: 2rem;
+  }
+
+  .about-page-stats {
+    justify-content: center;
+  }
+
+  .welcome-icons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
