@@ -1005,47 +1005,97 @@ body {
 
 
 /* Контейнер: показываем только 3 карточки, остальное обрезаем */
-.services-strip{
+.services-strip-wrapper {
   overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+  background: transparent;
 }
 
-/* Дорожка — используем существующую анимацию scroll-left
-   (она уже определена в файле как @keyframes scroll-left) */
-.services-track{
+.services-strip {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.services-strip::before,
+.services-strip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.services-strip::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.services-strip::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.services-track {
   display: flex;
-  gap: 24px;                  /* расстояние между карточками */
+  gap: 30px;
+  animation: scroll-services 40s linear infinite;
   width: max-content;
-  animation: scroll-left 70s linear infinite;  /* как у .logo-scroll */
+  will-change: transform;
 }
 
-/* Каждая карточка — строго 1/3 видимой ширины контейнера минус зазор */
-.services-strip .feature{
-  flex: 0 0 calc((100vw - 2*24px - 2*5%) / 3); 
-  /* пояснение:
-     100vw — ширина окна, 
-     - 2*24px — два промежутка между тремя карточками,
-     - 2*5% — чуть уменьшаем, если у родителя .container есть внутренние поля.
-     Если размер не устраивает, можно просто поставить фиксированную ширину, например: 360px */
-  min-width: 320px;           /* не даём ужаться слишком сильно */
+.services-strip-wrapper:hover .services-track {
+  animation-play-state: paused;
 }
 
-/* На планшете/мобиле можно показывать 2 или 1 карточку */
-@media (max-width: 992px){
-  .services-strip .feature{
-    flex: 0 0 calc((100vw - 24px - 2*5%) / 2);
+.services-track .feature {
+  flex: 0 0 280px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.services-track .feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.services-track .feature-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+@keyframes scroll-services {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 15px));
+  }
+}
+
+/* Адаптивность для карусели */
+@media (max-width: 992px) {
+  .services-track .feature {
+    flex: 0 0 320px;
+    min-width: 320px;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-track .feature {
+    flex: 0 0 280px;
     min-width: 280px;
   }
-}
-@media (max-width: 576px){
-  .services-strip .feature{
-    flex: 0 0 calc(100vw - 2*5%); /* одна карточка во всю ширину контейнера */
-    min-width: 260px;
-  }
-}
-
-/* Остановка анимации при ховере (как у партнёрских логотипов) */
-.services-strip.animate-scroll:hover .services-track{
-  animation-play-state: paused;
 }
 
 
@@ -2096,7 +2146,10 @@ body {
 .contact-hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  min-height: 400px;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 .contact-hero-background {
@@ -2106,9 +2159,21 @@ body {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
   animation: particles-float 20s ease-in-out infinite;
+}
+
+.contact-hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.03) 10px, rgba(255, 255, 255, 0.03) 20px),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.03) 10px, rgba(255, 255, 255, 0.03) 20px);
+  pointer-events: none;
 }
 
 .contact-hero-title {
@@ -2784,16 +2849,35 @@ body {
 
 .payment-badge-inner {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #fff1cc, #ffe699);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   overflow: hidden;
+}
+
+.payment-paypal {
+  background: linear-gradient(135deg, #0070ba, #009cde);
+}
+
+.payment-bitcoin {
+  background: linear-gradient(135deg, #f7931a, #ffb84d);
+}
+
+.payment-ethereum {
+  background: linear-gradient(135deg, #627eea, #8a9ef5);
+}
+
+.payment-bank {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+}
+
+.payment-tether {
+  background: linear-gradient(135deg, #26a17b, #4ec9a8);
 }
 
 .payment-badge-item:hover .payment-badge-inner {
@@ -2824,8 +2908,8 @@ body {
 }
 
 .payment-badge-inner img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   position: relative;
   z-index: 1;
