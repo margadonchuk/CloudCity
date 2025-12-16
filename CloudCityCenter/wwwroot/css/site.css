@@ -2150,18 +2150,31 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
-.contact-hero-background {
+.contact-hero-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
-  animation: particles-float 20s ease-in-out infinite;
+  background-image: url('/images/contact.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+  z-index: 2;
 }
 
 .contact-hero-pattern {
@@ -2174,6 +2187,12 @@ body {
     repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.03) 10px, rgba(255, 255, 255, 0.03) 20px),
     repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.03) 10px, rgba(255, 255, 255, 0.03) 20px);
   pointer-events: none;
+  z-index: 3;
+}
+
+.contact-hero-section .container {
+  position: relative;
+  z-index: 4;
 }
 
 .contact-hero-title {
@@ -2327,6 +2346,243 @@ body {
 .contact-submit-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+}
+
+/* ============================================
+   REGISTER PAGE STYLES
+   ============================================ */
+.register-hero-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.register-hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(13, 110, 253, 0.02) 20px, rgba(13, 110, 253, 0.02) 40px);
+  pointer-events: none;
+}
+
+.register-card {
+  background: white;
+  border-radius: 30px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #0d6efd, #667eea, #764ba2);
+}
+
+.register-card-header {
+  margin-bottom: 30px;
+}
+
+.register-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 2.5rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+  }
+}
+
+.register-title {
+  margin-bottom: 10px;
+}
+
+.form-group-wrapper {
+  position: relative;
+}
+
+.register-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.register-label i {
+  color: #0d6efd;
+  font-size: 1.1rem;
+}
+
+.register-input {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.register-input:focus {
+  border-color: #0d6efd;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.password-toggle:hover {
+  color: #0d6efd;
+}
+
+.register-error {
+  font-size: 0.875rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.register-submit-btn {
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+}
+
+.register-divider {
+  position: relative;
+  text-align: center;
+}
+
+.register-divider::before,
+.register-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.register-divider::before {
+  left: 0;
+}
+
+.register-divider::after {
+  right: 0;
+}
+
+.register-divider span {
+  background: white;
+  padding: 0 15px;
+  color: #666;
+  position: relative;
+  z-index: 1;
+}
+
+.register-link {
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: #0b5ed7;
+  text-decoration: underline;
+}
+
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.form-check-label {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .register-card {
+    padding: 40px 30px;
+    border-radius: 25px;
+  }
+  
+  .register-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  .register-title {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
