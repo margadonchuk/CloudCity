@@ -58,7 +58,7 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 
 var app = builder.Build();
 
-if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
+if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=") || a == "--migrate-data"))
 {
     // Ensure connection string is provided via configuration/environment
     var cs = app.Configuration.GetConnectionString("DefaultConnection");
@@ -77,9 +77,19 @@ if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
 
     await SeedData.RunAsync(serviceProvider, adminEmail);
 
-    if (args.Contains("--seed") && !context.Products.Any())
+    if (args.Contains("--seed") || args.Contains("--migrate-data"))
     {
-        SeedData.Initialize(context);
+        if (!context.Products.Any())
+        {
+            Console.WriteLine("Загрузка товаров и услуг в базу данных...");
+            SeedData.Initialize(context);
+            var productsCount = await context.Products.CountAsync();
+            Console.WriteLine($"✓ Загружено товаров: {productsCount}");
+        }
+        else
+        {
+            Console.WriteLine("Товары уже загружены в базу данных.");
+        }
     }
     return;
 }
