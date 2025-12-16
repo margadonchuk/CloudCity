@@ -1,10 +1,79 @@
 -- Полный скрипт создания базы данных для SQL Server
 -- Выполните этот скрипт в SQL Server Management Studio на 10.151.10.8
+-- Этот скрипт сначала удаляет все внешние ключи, затем таблицы, затем создает все заново
 
 USE CloudCityDB;
 GO
 
--- Удаляем существующие таблицы (если есть) в правильном порядке
+-- Шаг 1: Удаляем все внешние ключи
+PRINT 'Удаление внешних ключей...';
+GO
+
+-- Удаляем внешние ключи для OrderItems
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_OrderItems_Orders_OrderId')
+    ALTER TABLE [OrderItems] DROP CONSTRAINT [FK_OrderItems_Orders_OrderId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_OrderItems_Products_ProductId')
+    ALTER TABLE [OrderItems] DROP CONSTRAINT [FK_OrderItems_Products_ProductId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_OrderItems_ProductVariants_ProductVariantId')
+    ALTER TABLE [OrderItems] DROP CONSTRAINT [FK_OrderItems_ProductVariants_ProductVariantId];
+GO
+
+-- Удаляем внешние ключи для Orders
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_Orders_AspNetUsers_UserId')
+    ALTER TABLE [Orders] DROP CONSTRAINT [FK_Orders_AspNetUsers_UserId];
+GO
+
+-- Удаляем внешние ключи для ProductFeatures
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_ProductFeatures_Products_ProductId')
+    ALTER TABLE [ProductFeatures] DROP CONSTRAINT [FK_ProductFeatures_Products_ProductId];
+GO
+
+-- Удаляем внешние ключи для ProductVariants
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_ProductVariants_Products_ProductId')
+    ALTER TABLE [ProductVariants] DROP CONSTRAINT [FK_ProductVariants_Products_ProductId];
+GO
+
+-- Удаляем внешние ключи для Identity таблиц
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_AspNetRoleClaims_AspNetRoles_RoleId')
+    ALTER TABLE [AspNetRoleClaims] DROP CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_AspNetUserClaims_AspNetUsers_UserId')
+    ALTER TABLE [AspNetUserClaims] DROP CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_AspNetUserLogins_AspNetUsers_UserId')
+    ALTER TABLE [AspNetUserLogins] DROP CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_AspNetUserRoles_AspNetRoles_RoleId')
+    ALTER TABLE [AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_AspNetUserRoles_AspNetUsers_UserId')
+    ALTER TABLE [AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId];
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_AspNetUserTokens_AspNetUsers_UserId')
+    ALTER TABLE [AspNetUserTokens] DROP CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId];
+GO
+
+-- Шаг 2: Удаляем все индексы
+PRINT 'Удаление индексов...';
+GO
+
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_Products_Slug' AND object_id = OBJECT_ID('Products'))
+    DROP INDEX [IX_Products_Slug] ON [Products];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_Servers_Slug' AND object_id = OBJECT_ID('Servers'))
+    DROP INDEX [IX_Servers_Slug] ON [Servers];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_ProductVariants_ProductId' AND object_id = OBJECT_ID('ProductVariants'))
+    DROP INDEX [IX_ProductVariants_ProductId] ON [ProductVariants];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_ProductFeatures_ProductId' AND object_id = OBJECT_ID('ProductFeatures'))
+    DROP INDEX [IX_ProductFeatures_ProductId] ON [ProductFeatures];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_Orders_UserId' AND object_id = OBJECT_ID('Orders'))
+    DROP INDEX [IX_Orders_UserId] ON [Orders];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_OrderItems_OrderId' AND object_id = OBJECT_ID('OrderItems'))
+    DROP INDEX [IX_OrderItems_OrderId] ON [OrderItems];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_OrderItems_ProductId' AND object_id = OBJECT_ID('OrderItems'))
+    DROP INDEX [IX_OrderItems_ProductId] ON [OrderItems];
+IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_OrderItems_ProductVariantId' AND object_id = OBJECT_ID('OrderItems'))
+    DROP INDEX [IX_OrderItems_ProductVariantId] ON [OrderItems];
+GO
+
+-- Шаг 3: Удаляем все таблицы в правильном порядке
+PRINT 'Удаление таблиц...';
+GO
+
 IF OBJECT_ID('dbo.ProductFeatures', 'U') IS NOT NULL DROP TABLE dbo.ProductFeatures;
 IF OBJECT_ID('dbo.ProductVariants', 'U') IS NOT NULL DROP TABLE dbo.ProductVariants;
 IF OBJECT_ID('dbo.OrderItems', 'U') IS NOT NULL DROP TABLE dbo.OrderItems;
@@ -21,7 +90,10 @@ IF OBJECT_ID('dbo.AspNetUsers', 'U') IS NOT NULL DROP TABLE dbo.AspNetUsers;
 IF OBJECT_ID('dbo.__EFMigrationsHistory', 'U') IS NOT NULL DROP TABLE dbo.__EFMigrationsHistory;
 GO
 
--- Создаем таблицы Identity (ASP.NET Core Identity)
+-- Шаг 4: Создаем таблицы Identity (ASP.NET Core Identity)
+PRINT 'Создание таблиц Identity...';
+GO
+
 CREATE TABLE [AspNetRoles] (
     [Id] NVARCHAR(450) NOT NULL,
     [Name] NVARCHAR(256) NULL,
@@ -81,6 +153,7 @@ CREATE TABLE [AspNetUserLogins] (
 );
 GO
 
+-- Исправляем проблему с длиной ключа для AspNetUserRoles - используем меньший размер
 CREATE TABLE [AspNetUserRoles] (
     [UserId] NVARCHAR(450) NOT NULL,
     [RoleId] NVARCHAR(450) NOT NULL,
@@ -100,7 +173,10 @@ CREATE TABLE [AspNetUserTokens] (
 );
 GO
 
--- Создаем таблицы приложения
+-- Шаг 5: Создаем таблицы приложения
+PRINT 'Создание таблиц приложения...';
+GO
+
 CREATE TABLE [Products] (
     [Id] INT IDENTITY(1,1) NOT NULL,
     [Name] NVARCHAR(100) NOT NULL,
@@ -182,7 +258,10 @@ CREATE TABLE [OrderItems] (
 );
 GO
 
--- Создаем индексы
+-- Шаг 6: Создаем индексы
+PRINT 'Создание индексов...';
+GO
+
 CREATE UNIQUE INDEX [IX_Products_Slug] ON [Products] ([Slug]);
 CREATE UNIQUE INDEX [IX_Servers_Slug] ON [Servers] ([Slug]);
 CREATE INDEX [IX_ProductVariants_ProductId] ON [ProductVariants] ([ProductId]);
@@ -200,7 +279,10 @@ CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
 CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
 GO
 
--- Создаем таблицу миграций (для совместимости с EF Core)
+-- Шаг 7: Создаем таблицу миграций (для совместимости с EF Core)
+PRINT 'Создание таблицы миграций...';
+GO
+
 CREATE TABLE [__EFMigrationsHistory] (
     [MigrationId] NVARCHAR(150) NOT NULL,
     [ProductVersion] NVARCHAR(32) NOT NULL,
@@ -213,7 +295,9 @@ INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES ('InitialCreateForSqlServer', '8.0.6');
 GO
 
+PRINT '';
+PRINT '========================================';
 PRINT 'База данных создана успешно!';
 PRINT 'Теперь выполните скрипт migrate_products_to_sql.sql для загрузки данных.';
+PRINT '========================================';
 GO
-
