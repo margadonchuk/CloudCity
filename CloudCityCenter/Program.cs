@@ -63,34 +63,86 @@ if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=") || a == "--migr
     // Ensure connection string is provided via configuration/environment
     var cs = app.Configuration.GetConnectionString("DefaultConnection");
     if (string.IsNullOrEmpty(cs))
+    {
+        Console.WriteLine("❌ ОШИБКА: ConnectionStrings__DefaultConnection не установлена.");
+        Console.WriteLine("Установите строку подключения через:");
+        Console.WriteLine("  - appsettings.Production.json");
+        Console.WriteLine("  - Переменную окружения: export ConnectionStrings__DefaultConnection=\"...\"");
         throw new InvalidOperationException("ConnectionStrings__DefaultConnection is not set.");
+    }
+
+    Console.WriteLine($"✓ Строка подключения найдена: {cs.Substring(0, Math.Min(50, cs.Length))}...");
 
     using var scope = app.Services.CreateScope();
     var serviceProvider = scope.ServiceProvider;
     var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
-    if (context.Database.IsRelational())
-        await context.Database.MigrateAsync();
-
-    var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
-    var adminEmail = adminArg?.Split('=', 2)[1];
-
-    await SeedData.RunAsync(serviceProvider, adminEmail);
-
-    if (args.Contains("--seed") || args.Contains("--migrate-data"))
+    try
     {
-        if (!context.Products.Any())
+        Console.WriteLine("Проверка подключения к базе данных...");
+        if (context.Database.IsRelational())
         {
-            Console.WriteLine("Загрузка товаров и услуг в базу данных...");
-            SeedData.Initialize(context);
-            var productsCount = await context.Products.CountAsync();
-            Console.WriteLine($"✓ Загружено товаров: {productsCount}");
+            var canConnect = await context.Database.CanConnectAsync();
+            if (!canConnect)
+            {
+                Console.WriteLine("❌ Не удалось подключиться к базе данных!");
+                Console.WriteLine("Проверьте:");
+                Console.WriteLine("  1. Доступность SQL Server на 10.151.10.8");
+                Console.WriteLine("  2. Правильность логина и пароля");
+                Console.WriteLine("  3. Существование базы данных CloudCityDB");
+                throw new InvalidOperationException("Cannot connect to database");
+            }
+            Console.WriteLine("✓ Подключение к базе данных успешно");
+
+            Console.WriteLine("Применение миграций...");
+            await context.Database.MigrateAsync();
+            Console.WriteLine("✓ Миграции применены");
         }
         else
         {
-            Console.WriteLine("Товары уже загружены в базу данных.");
+            Console.WriteLine("⚠ Используется нереляционная база данных");
+        }
+
+        var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
+        var adminEmail = adminArg?.Split('=', 2)[1];
+
+        Console.WriteLine("Создание ролей...");
+        await SeedData.RunAsync(serviceProvider, adminEmail);
+        Console.WriteLine("✓ Роли созданы");
+
+        if (args.Contains("--seed") || args.Contains("--migrate-data"))
+        {
+            Console.WriteLine("Проверка существующих товаров...");
+            var existingProductsCount = await context.Products.CountAsync();
+            Console.WriteLine($"Найдено товаров в базе: {existingProductsCount}");
+
+            if (existingProductsCount == 0)
+            {
+                Console.WriteLine("Загрузка товаров и услуг в базу данных...");
+                SeedData.Initialize(context);
+                var productsCount = await context.Products.CountAsync();
+                var variantsCount = await context.ProductVariants.CountAsync();
+                var featuresCount = await context.ProductFeatures.CountAsync();
+                Console.WriteLine($"✓ Загрузка завершена:");
+                Console.WriteLine($"  - Товаров: {productsCount}");
+                Console.WriteLine($"  - Вариантов: {variantsCount}");
+                Console.WriteLine($"  - Характеристик: {featuresCount}");
+            }
+            else
+            {
+                Console.WriteLine($"⚠ Товары уже загружены в базу данных ({existingProductsCount} товаров).");
+                Console.WriteLine("Для перезагрузки удалите товары из базы данных.");
+            }
         }
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ ОШИБКА при миграции: {ex.Message}");
+        Console.WriteLine($"Детали: {ex}");
+        throw;
+    }
+    
+    Console.WriteLine("\n✅ Миграция данных успешно завершена!");
     return;
 }
 

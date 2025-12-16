@@ -560,14 +560,34 @@ public static class SeedData
             }
         };
 
+        var addedCount = 0;
+        var skippedCount = 0;
+        
         foreach (var product in products)
         {
-            if (!context.Products.Any(p => p.Slug == product.Slug))
+            // Используем синхронную проверку, так как мы уже в синхронном методе
+            // и контекст должен быть открыт
+            var exists = context.Products.Any(p => p.Slug == product.Slug);
+            if (!exists)
             {
                 context.Products.Add(product);
+                addedCount++;
+            }
+            else
+            {
+                skippedCount++;
             }
         }
-        context.SaveChanges();
+        
+        if (addedCount > 0)
+        {
+            context.SaveChanges();
+            Console.WriteLine($"  Добавлено товаров: {addedCount}, пропущено (уже существуют): {skippedCount}");
+        }
+        else
+        {
+            Console.WriteLine($"  Все товары уже существуют в базе (пропущено: {skippedCount})");
+        }
     }
 
     private static void MigrateLegacyServers(ApplicationDbContext context)
