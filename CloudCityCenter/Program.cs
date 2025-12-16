@@ -170,23 +170,51 @@ using (var scope = app.Services.CreateScope())
             // Проверяем, что это SQL Server, а не SQLite
             if (providerName != null && providerName.Contains("SqlServer"))
             {
-                logger.LogInformation("Applying migrations for SQL Server...");
+                // Проверяем, существуют ли уже таблицы (пробуем выполнить простой запрос)
+                bool productsTableExists = false;
                 try
                 {
-                    await context.Database.MigrateAsync();
-                    logger.LogInformation("Migrations applied successfully");
+                    await context.Products.CountAsync();
+                    productsTableExists = true;
                 }
-                catch (Exception migEx)
+                catch
                 {
-                    logger.LogError(migEx, "Error applying migrations. The migration might be for SQLite. Create a new migration for SQL Server.");
-                    logger.LogError("To fix: Set ASPNETCORE_ENVIRONMENT=Production and ConnectionStrings__DefaultConnection, then run: dotnet ef migrations add SqlServerInitialCreate");
-                    // Не прерываем выполнение, возможно таблицы уже созданы
+                    // Если не удалось, значит таблицы нет
+                    productsTableExists = false;
+                }
+                
+                if (!productsTableExists)
+                {
+                    logger.LogInformation("Tables not found. Attempting to apply migrations...");
+                    try
+                    {
+                        await context.Database.MigrateAsync();
+                        logger.LogInformation("Migrations applied successfully");
+                    }
+                    catch (Exception migEx)
+                    {
+                        logger.LogWarning(migEx, "Could not apply migrations (migrations might be for SQLite).");
+                        logger.LogWarning("Solution: Create tables manually using create_database_sqlserver.sql script in SQL Server Management Studio.");
+                        logger.LogWarning("The application will continue, but database operations may fail until tables are created.");
+                        // Не прерываем выполнение, возможно таблицы будут созданы вручную
+                    }
+                }
+                else
+                {
+                    logger.LogInformation("Tables already exist. Skipping migrations.");
                 }
             }
             else
             {
                 logger.LogInformation("Applying migrations for non-SQL Server database...");
-                await context.Database.MigrateAsync();
+                try
+                {
+                    await context.Database.MigrateAsync();
+                }
+                catch
+                {
+                    // Игнорируем ошибки миграций для не-SQL Server баз
+                }
             }
         }
         else
