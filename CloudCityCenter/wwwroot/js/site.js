@@ -155,4 +155,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
+    // Анимация для payment badges
+    const paymentBadges = document.querySelectorAll('.payment-badge-item');
+    const paymentObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                paymentObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    paymentBadges.forEach(badge => {
+        paymentObserver.observe(badge);
+    });
+
+    // Анимация для datacenter pins при наведении
+    const datacenterPins = document.querySelectorAll('.datacenter-pin');
+    datacenterPins.forEach(pin => {
+        pin.addEventListener('mouseenter', function() {
+            this.style.animation = 'pin-pulse 0.5s ease-in-out';
+        });
+        pin.addEventListener('animationend', function() {
+            this.style.animation = 'pin-pulse 2s ease-in-out infinite';
+        });
+    });
 });

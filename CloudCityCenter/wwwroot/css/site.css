@@ -2730,4 +2730,414 @@ body {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* ============================================
+   PAYMENTS SECTION STYLES
+   ============================================ */
+.payments-section {
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+}
+
+.payments-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.payments-title {
+  margin-bottom: 1.5rem;
+}
+
+.payments-description {
+  line-height: 1.8;
+}
+
+.payment-logos-wrapper {
+  padding: 40px 20px;
+}
+
+.payment-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+}
+
+.payment-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.payment-badge-item:hover {
+  transform: translateY(-10px);
+}
+
+.payment-badge-inner {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff1cc, #ffe699);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.payment-badge-item:hover .payment-badge-inner {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.payment-badge-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  animation: payment-glow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes payment-glow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(20%, 20%) scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+.payment-badge-inner img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.payment-badge-item:hover .payment-badge-inner img {
+  transform: scale(1.1);
+}
+
+.payment-badge-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* ============================================
+   GLOBAL DATA CENTERS SECTION STYLES
+   ============================================ */
+.datacenter-section {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+.datacenter-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.datacenter-title {
+  margin-bottom: 1.5rem;
+}
+
+.datacenter-description {
+  line-height: 1.8;
+}
+
+.datacenter-map-wrapper {
+  padding: 40px 20px;
+}
+
+.datacenter-map-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: white;
+  padding: 30px;
+}
+
+.datacenter-map-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+}
+
+.datacenter-map-container:hover .datacenter-map-image {
+  transform: scale(1.02);
+}
+
+.datacenter-pins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.datacenter-pin {
+  position: absolute;
+  animation: pin-pulse 2s ease-in-out infinite;
+}
+
+.datacenter-pin:nth-child(1) { top: 25%; left: 20%; animation-delay: 0s; }
+.datacenter-pin:nth-child(2) { top: 30%; left: 30%; animation-delay: 0.3s; }
+.datacenter-pin:nth-child(3) { top: 20%; left: 50%; animation-delay: 0.6s; }
+.datacenter-pin:nth-child(4) { top: 35%; left: 75%; animation-delay: 0.9s; }
+.datacenter-pin:nth-child(5) { top: 70%; left: 85%; animation-delay: 1.2s; }
+
+.pin-dot {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.datacenter-pin:hover .pin-dot {
+  transform: scale(1.5);
+  box-shadow: 0 0 0 8px rgba(13, 110, 253, 0.2), 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pin-label {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0d6efd;
+  white-space: nowrap;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.datacenter-pin:hover .pin-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+@keyframes pin-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.datacenter-stats {
+  margin-top: 60px;
+}
+
+.datacenter-stat-item {
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.datacenter-stat-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.datacenter-stat-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 2rem;
+  color: white;
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.datacenter-stat-item:hover .datacenter-stat-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.datacenter-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0d6efd;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.datacenter-stat-label {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Дополнительные анимации для Payments */
+.payment-badge-item {
+  animation: payment-float 6s ease-in-out infinite;
+}
+
+.payment-badge-item:nth-child(1) { animation-delay: 0s; }
+.payment-badge-item:nth-child(2) { animation-delay: 0.5s; }
+.payment-badge-item:nth-child(3) { animation-delay: 1s; }
+.payment-badge-item:nth-child(4) { animation-delay: 1.5s; }
+.payment-badge-item:nth-child(5) { animation-delay: 2s; }
+.payment-badge-item:nth-child(6) { animation-delay: 2.5s; }
+
+@keyframes payment-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+/* Анимация появления для payment badges */
+.payment-badge-item {
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.payment-badge-item.animated {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.payment-badge-item.animated:nth-child(1) { transition-delay: 0.1s; }
+.payment-badge-item.animated:nth-child(2) { transition-delay: 0.2s; }
+.payment-badge-item.animated:nth-child(3) { transition-delay: 0.3s; }
+.payment-badge-item.animated:nth-child(4) { transition-delay: 0.4s; }
+.payment-badge-item.animated:nth-child(5) { transition-delay: 0.5s; }
+.payment-badge-item.animated:nth-child(6) { transition-delay: 0.6s; }
+
+/* Анимация для статистики Data Centers */
+.datacenter-stat-item {
+  animation: stat-appear 0.8s ease-out;
+}
+
+.datacenter-stat-item:nth-child(1) { animation-delay: 0.1s; }
+.datacenter-stat-item:nth-child(2) { animation-delay: 0.2s; }
+.datacenter-stat-item:nth-child(3) { animation-delay: 0.3s; }
+.datacenter-stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes stat-appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для Payments и Data Centers */
+@media (max-width: 992px) {
+  .payment-logos {
+    gap: 30px;
+  }
+  
+  .payment-badge-inner {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .payment-badge-inner img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .payment-logos {
+    gap: 25px;
+  }
+  
+  .payment-badge-inner {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .payment-badge-inner img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .payment-badge-label {
+    font-size: 0.9rem;
+  }
+  
+  .datacenter-map-container {
+    padding: 15px;
+  }
+  
+  .datacenter-pin {
+    display: none; /* Скрываем пины на мобильных для упрощения */
+  }
+  
+  .datacenter-stat-number {
+    font-size: 2rem;
+  }
+  
+  .datacenter-stat-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
 
