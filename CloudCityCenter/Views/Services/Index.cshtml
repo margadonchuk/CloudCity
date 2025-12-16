@@ -4,26 +4,7 @@
     ViewData["Title"] = "Services";
 }
 
-@* <h1 class="mb-4">Services</h1>
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-@foreach (var product in Model.Products)
-{
-    <div class="col">
-        <div class="card h-100">
-            <img src="@(string.IsNullOrWhiteSpace(product.ImageUrl) ? "https://via.placeholder.com/300x200?text=No+Image" : product.ImageUrl)" class="card-img-top" alt="@product.Name" />
-            <div class="card-body">
-                <h5 class="card-title">@product.Name</h5>
-                <p class="card-text">@product.Configuration</p>
-                <p class="card-text fw-semibold">$@product.PricePerMonth / month</p>
-            </div>
-        </div>
-    </div>
-}
-</div> *@
-
-
-<!-- SERVICES SECTION -->
+<!-- SERVICES HERO SECTION -->
 <section class="services-page-hero py-5 position-relative">
   <div class="services-page-background"></div>
   <div class="container">
@@ -39,7 +20,7 @@
           At <strong>CloudCity Center</strong>, we deliver a comprehensive range of advanced hosting and IT services designed to support businesses at every stage of growth. Our infrastructure is built on enterprise-grade hardware and cutting-edge technologies, ensuring maximum performance, stability, and security.
         </p>
         <p class="services-page-text" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          With secure VPN tunneling and global data centers strategically located across Europe, the United States, and Asia, we guarantee fast and stable connections for users worldwide. Whether you are launching a startup, scaling an online platform, or running mission-critical applications, our team of experts works around the clock to ensure that your business operates seamlessly.
+          With secure VPN tunneling and global data centers strategically located across Europe, the United States, and Asia, we guarantee fast and stable connections for users worldwide.
         </p>
       </div>
       <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">
@@ -52,179 +33,232 @@
   </div>
 </section>
 
-
-<div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/reliability.png" alt="Service 1">
-    <div class="service-text">
-      <h3>24/7 Server Support Service</h3>
-      <p>
-        Ensure smooth operations with CloudCity Center's 24/7 server support. Our dedicated team is always available to monitor and resolve server issues, guaranteeing optimal performance. With real-time monitoring and proactive maintenance, we provide seamless support tailored to your business needs. Trust CloudCity Center to keep your servers running smoothly.
-      </p>
-    </div>
-  </div>
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/webdev.png" alt="Custom Website Development">
-    <div class="service-text">
-        <h3>Custom Website Development</h3>
-        <p>
-            Bring your vision to life with CloudCity Center's professional website creation services. We design and develop tailored websites that combine stunning visuals with flawless functionality. Whether you need a corporate site, an e-commerce platform, or a custom web application, our team delivers solutions that reflect your brand and drive results. Using the latest technologies — including C#, Python, PHP, and top website builders — we ensure fast, secure, and responsive websites optimized for all devices. Partner with CloudCity Center to turn your ideas into an engaging online presence.
-        </p>
-    </div>
-</div>
-
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/service1.png" alt="Service 2">
-    <div class="service-text">
-      <h3>Complete Client and Data Anonymity</h3>
-      <p>
-        At CloudCity Center, your privacy is our priority. We ensure complete anonymity for both your identity and your data through advanced encryption technologies and secure VPN tunneling. Our services are designed to protect your sensitive information from unauthorized access, ensuring your activities remain confidential. Trust CloudCity Center to deliver a secure and private environment for your business operations, safeguarding your reputation and peace of mind.
-      </p>
-    </div>
-  </div>
-
-<div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/storage.png" alt="Cloud Storage Service">
-    <div class="service-text">
-        <h3>Cloud Storage Service</h3>
-        <p>
-            Keep your data safe, accessible, and secure with CloudCity Center’s cloud storage solutions. Our high-capacity, ultra-fast storage systems are built for businesses and individuals who need reliable, unlimited file access without speed limits. With advanced encryption and redundant backups, your information stays protected against loss or unauthorized access. Whether you’re storing documents, media files, or critical business data, CloudCity Center offers a seamless, scalable storage experience — ensuring your files are always just a click away.
-        </p>
-    </div>
-</div>
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/ddos.png" alt="Service 3">
-    <div class="service-text">
-      <h3>DDoS Protection Service</h3>
-      <p>
-        Experience unparalleled security with CloudCity Center's advanced DDoS protection. Our cutting-edge technology effectively shields your servers from a wide range of malicious traffic, ensuring uninterrupted performance and the utmost safety of your valuable data. With real-time monitoring and robust, multi-layered defense mechanisms, we provide a reliable and secure environment tailored for your business operations. Our dedicated team works around the clock to ensure continued protection against evolving threats. Stay protected, secure, and confident in your choice with CloudCity Center, where your security is our top priority.
-      </p>
-    </div>
-  </div>
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/hosting.png" alt="Web Hosting Service">
-    <div class="service-text">
-        <h3>Web Hosting Service</h3>
-        <p>
-            Simplify your online presence with CloudCity Center’s premium web hosting solutions. Designed for speed, security, and ease of use, our hosting plans ensure your website is always online and performing at its best. We provide robust server infrastructure, optimized bandwidth, and powerful control panels, making it simple to manage your site with confidence. From small business sites to high-traffic platforms, our hosting adapts to your needs. Choose CloudCity Center for reliable, secure, and scalable web hosting — where performance meets peace of mind.
-        </p>
-    </div>
-</div>
-
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/service2.png" alt="Service 4">
-    <div class="service-text">
-      <h3>Cybersecurity-Driven Server Solutions</h3>
-      <p>
-        At CloudCity Center, we combine cutting-edge cybersecurity measures with robust server technology to provide unmatched protection for your data and operations. Our servers are fortified with advanced firewalls, encrypted data streams, and real-time threat monitoring, ensuring your business remains secure against cyberattacks. By seamlessly integrating cybersecurity into every aspect of our server solutions, we guarantee a safe, reliable, and efficient environment for your business needs. Trust CloudCity Center to keep your data and operations secure.
-      </p>
-    </div>
-  </div>
-  
-  <!-- VPS block -->
-
-
-<div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <div class="service-image">
-        <img src="/images/vps.png" alt="VPS Hosting Service" class="img-fluid rounded">
-    </div>
-    <div class="service-text">
-        <h3>VPS Hosting Service</h3>
-        <p>
-            Experience unmatched flexibility and performance with CloudCity Center’s VPS hosting.
-            Our virtual private servers provide dedicated resources, full root access, and scalable configurations 
-            to suit your evolving business needs. With enterprise-grade hardware and SSD storage, we deliver 
-            lightning-fast performance and exceptional reliability. Whether you’re running applications, hosting 
-            websites, or managing databases, our VPS solutions give you complete control and the freedom to customize. 
-            Trust CloudCity Center to empower your business with secure, high-performance VPS hosting, backed by 24/7 
-            expert support.
-        </p>
-    </div>
-</div>
-
-
-
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/humanfirewall.png" alt="Service 5">
-    <div class="service-text">
-      <h3>Human Firewall Service</h3>
-      <p>
-        Protect your data with CloudCity Center's Human Firewall service. Featuring a high-tech humanoid shield and lock symbol, our service neutralizes threats like malware and DDoS attacks. With advanced technology and real-time management, we keep your business secure and operational. Experience robust cybersecurity with CloudCity Center.
-      </p>
-    </div>
-  </div>
-
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/affordability.png" alt="Service 6">
-    <div class="service-text">
-      <h3>VPN Tunneling Service</h3>
-      <p>
-        Secure your online activities and enhance your privacy with CloudCity Center's exceptional VPN tunneling service. Our comprehensive solution ensures encrypted connections, effectively keeping your sensitive data protected while you browse the web. With our VPN, you can enjoy global access to content and services, supported by robust security protocols that provide peace of mind. Whether for personal use or business requirements, our VPN guarantees a safe and secure connection for all your online endeavors. Trust us to safeguard your data and privacy, allowing you to surf the internet confidently and stress-free, knowing you are shielded from potential threats.
-      </p>
-    </div>
-  </div>
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/Backup.png" alt="Service 7">
-    <div class="service-text">
-      <h3>Backup & Restore</h3>
-      <p>Server Backup is a reliable way to keep your data safe. We provide a service for regular data backups from your server, ensuring protection against failures and data loss. All backups are stored on secure servers with a high level of security, and in case of necessity, you can quickly restore your data. With us, your data is always protected!</p>
-    </div>
-  </div>
-
-  <div class="service-item animate-on-scroll" data-animation="fade-in-up">
-    <img src="/images/service3.png" alt="Service 8">
-    <div class="service-text">
-      <h3>Configuration of Physical Network Equipment</h3>
-      <p>A service for configuring and optimizing network equipment, including WiFi routers, Mikrotik, Fortinet, and Cisco. It includes network setup, wireless access configuration, routing, firewalls, and security systems. Ensures connection stability, traffic control, load balancing, and the implementation of cybersecurity protection mechanisms. Configuration is carried out in accordance with infrastructure requirements and security standards.</p>
-    </div>
-  </div>
- 
-
-
-
-
-
-
-    <div class="services-button-wrapper">
-  <a href="/servers" class="services-button">
-    View All Servers 🚀
-  </a>
-</div>
-</section>
-
-
-<!-- CONTACT FORM -->
-<section style="background-color: #fff8f4; padding: 40px; display: flex; justify-content: center;">
-  <div style="max-width: 1200px; width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
+<!-- SERVICES LIST SECTION -->
+<section class="services-list-section py-5">
+  <div class="container">
     
-    <!-- Текст слева -->
-    <div style="flex: 1; min-width: 280px;">
-      <h2 style="font-size: 1.8rem; color: #0b1c49;">Please enter your<br>email address, and<br>we will get in touch<br>with you soon.</h2>
+    <!-- Service 1: 24/7 Server Support -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card">
+        <div class="service-item-image-wrapper">
+          <img src="/images/reliability.png" alt="24/7 Server Support" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-1">
+            <i class="bi bi-headset"></i>
+          </div>
+          <h3 class="service-item-title">24/7 Server Support Service</h3>
+          <p class="service-item-description">
+            Ensure smooth operations with CloudCity Center's 24/7 server support. Our dedicated team is always available to monitor and resolve server issues, guaranteeing optimal performance. With real-time monitoring and proactive maintenance, we provide seamless support tailored to your business needs. Trust CloudCity Center to keep your servers running smoothly.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- Форма справа -->
-    <form method="post" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
-      @Html.AntiForgeryToken()
-      <input type="text" name="Name" placeholder="Your Name" required
-             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <input type="email" name="Email" placeholder="Your Email" required
-             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <input type="text" name="Subject" placeholder="Subject"
-             style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <textarea name="Message" placeholder="Your Message" rows="4"
-                style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
-      <button type="submit" style="background-color: #0b1c49; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer;">
-        Send Message
-      </button>
-    </form>
+    <!-- Service 2: Custom Website Development -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card service-item-reverse">
+        <div class="service-item-image-wrapper">
+          <img src="/images/webdev.png" alt="Custom Website Development" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-2">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <h3 class="service-item-title">Custom Website Development</h3>
+          <p class="service-item-description">
+            Bring your vision to life with CloudCity Center's professional website creation services. We design and develop tailored websites that combine stunning visuals with flawless functionality. Whether you need a corporate site, an e-commerce platform, or a custom web application, our team delivers solutions that reflect your brand and drive results. Using the latest technologies — including C#, Python, PHP, and top website builders — we ensure fast, secure, and responsive websites optimized for all devices.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 3: Complete Client and Data Anonymity -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card">
+        <div class="service-item-image-wrapper">
+          <img src="/images/service1.png" alt="Complete Client and Data Anonymity" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-3">
+            <i class="bi bi-shield-lock"></i>
+          </div>
+          <h3 class="service-item-title">Complete Client and Data Anonymity</h3>
+          <p class="service-item-description">
+            At CloudCity Center, your privacy is our priority. We ensure complete anonymity for both your identity and your data through advanced encryption technologies and secure VPN tunneling. Our services are designed to protect your sensitive information from unauthorized access, ensuring your activities remain confidential. Trust CloudCity Center to deliver a secure and private environment for your business operations, safeguarding your reputation and peace of mind.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 4: Cloud Storage Service -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card service-item-reverse">
+        <div class="service-item-image-wrapper">
+          <img src="/images/storage.png" alt="Cloud Storage Service" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-4">
+            <i class="bi bi-cloud-upload"></i>
+          </div>
+          <h3 class="service-item-title">Cloud Storage Service</h3>
+          <p class="service-item-description">
+            Keep your data safe, accessible, and secure with CloudCity Center's cloud storage solutions. Our high-capacity, ultra-fast storage systems are built for businesses and individuals who need reliable, unlimited file access without speed limits. With advanced encryption and redundant backups, your information stays protected against loss or unauthorized access. Whether you're storing documents, media files, or critical business data, CloudCity Center offers a seamless, scalable storage experience — ensuring your files are always just a click away.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 5: DDoS Protection Service -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card">
+        <div class="service-item-image-wrapper">
+          <img src="/images/ddos.png" alt="DDoS Protection Service" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-5">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h3 class="service-item-title">DDoS Protection Service</h3>
+          <p class="service-item-description">
+            Experience unparalleled security with CloudCity Center's advanced DDoS protection. Our cutting-edge technology effectively shields your servers from a wide range of malicious traffic, ensuring uninterrupted performance and the utmost safety of your valuable data. With real-time monitoring and robust, multi-layered defense mechanisms, we provide a reliable and secure environment tailored for your business operations. Our dedicated team works around the clock to ensure continued protection against evolving threats.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 6: Web Hosting Service -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card service-item-reverse">
+        <div class="service-item-image-wrapper">
+          <img src="/images/hosting.png" alt="Web Hosting Service" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-6">
+            <i class="bi bi-globe"></i>
+          </div>
+          <h3 class="service-item-title">Web Hosting Service</h3>
+          <p class="service-item-description">
+            Simplify your online presence with CloudCity Center's premium web hosting solutions. Designed for speed, security, and ease of use, our hosting plans ensure your website is always online and performing at its best. We provide robust server infrastructure, optimized bandwidth, and powerful control panels, making it simple to manage your site with confidence. From small business sites to high-traffic platforms, our hosting adapts to your needs.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 7: Cybersecurity-Driven Server Solutions -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card">
+        <div class="service-item-image-wrapper">
+          <img src="/images/service2.png" alt="Cybersecurity-Driven Server Solutions" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-7">
+            <i class="bi bi-shield-fill-check"></i>
+          </div>
+          <h3 class="service-item-title">Cybersecurity-Driven Server Solutions</h3>
+          <p class="service-item-description">
+            At CloudCity Center, we combine cutting-edge cybersecurity measures with robust server technology to provide unmatched protection for your data and operations. Our servers are fortified with advanced firewalls, encrypted data streams, and real-time threat monitoring, ensuring your business remains secure against cyberattacks. By seamlessly integrating cybersecurity into every aspect of our server solutions, we guarantee a safe, reliable, and efficient environment for your business needs.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 8: VPS Hosting Service -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card service-item-reverse">
+        <div class="service-item-image-wrapper">
+          <img src="/images/vps.png" alt="VPS Hosting Service" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-8">
+            <i class="bi bi-server"></i>
+          </div>
+          <h3 class="service-item-title">VPS Hosting Service</h3>
+          <p class="service-item-description">
+            Experience unmatched flexibility and performance with CloudCity Center's VPS hosting. Our virtual private servers provide dedicated resources, full root access, and scalable configurations to suit your evolving business needs. With enterprise-grade hardware and SSD storage, we deliver lightning-fast performance and exceptional reliability. Whether you're running applications, hosting websites, or managing databases, our VPS solutions give you complete control and the freedom to customize.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 9: Human Firewall Service -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card">
+        <div class="service-item-image-wrapper">
+          <img src="/images/humanfirewall.png" alt="Human Firewall Service" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-9">
+            <i class="bi bi-person-shield"></i>
+          </div>
+          <h3 class="service-item-title">Human Firewall Service</h3>
+          <p class="service-item-description">
+            Protect your data with CloudCity Center's Human Firewall service. Featuring a high-tech humanoid shield and lock symbol, our service neutralizes threats like malware and DDoS attacks. With advanced technology and real-time management, we keep your business secure and operational. Experience robust cybersecurity with CloudCity Center.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 10: VPN Tunneling Service -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card service-item-reverse">
+        <div class="service-item-image-wrapper">
+          <img src="/images/affordability.png" alt="VPN Tunneling Service" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-10">
+            <i class="bi bi-lock"></i>
+          </div>
+          <h3 class="service-item-title">VPN Tunneling Service</h3>
+          <p class="service-item-description">
+            Secure your online activities and enhance your privacy with CloudCity Center's exceptional VPN tunneling service. Our comprehensive solution ensures encrypted connections, effectively keeping your sensitive data protected while you browse the web. With our VPN, you can enjoy global access to content and services, supported by robust security protocols that provide peace of mind. Whether for personal use or business requirements, our VPN guarantees a safe and secure connection for all your online endeavors.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 11: Backup & Restore -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card">
+        <div class="service-item-image-wrapper">
+          <img src="/images/Backup.png" alt="Backup & Restore" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-11">
+            <i class="bi bi-arrow-clockwise"></i>
+          </div>
+          <h3 class="service-item-title">Backup & Restore</h3>
+          <p class="service-item-description">
+            Server Backup is a reliable way to keep your data safe. We provide a service for regular data backups from your server, ensuring protection against failures and data loss. All backups are stored on secure servers with a high level of security, and in case of necessity, you can quickly restore your data. With us, your data is always protected!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 12: Configuration of Physical Network Equipment -->
+    <div class="service-item-wrapper animate-on-scroll" data-animation="fade-in-up">
+      <div class="service-item-card service-item-reverse">
+        <div class="service-item-image-wrapper">
+          <img src="/images/service3.png" alt="Configuration of Physical Network Equipment" class="service-item-image">
+        </div>
+        <div class="service-item-content">
+          <div class="service-item-icon service-icon-12">
+            <i class="bi bi-router"></i>
+          </div>
+          <h3 class="service-item-title">Configuration of Physical Network Equipment</h3>
+          <p class="service-item-description">
+            A service for configuring and optimizing network equipment, including WiFi routers, Mikrotik, Fortinet, and Cisco. It includes network setup, wireless access configuration, routing, firewalls, and security systems. Ensures connection stability, traffic control, load balancing, and the implementation of cybersecurity protection mechanisms. Configuration is carried out in accordance with infrastructure requirements and security standards.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-5 animate-on-scroll" data-animation="fade-in-up">
+      <a href="/servers" class="btn btn-primary btn-lg px-5 py-3 services-cta-btn">
+        <i class="bi bi-server me-2"></i>View All Servers
+      </a>
+    </div>
 
   </div>
 </section>
-
