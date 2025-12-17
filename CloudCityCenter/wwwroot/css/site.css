@@ -2970,8 +2970,8 @@ body {
 
 @media (max-width: 991px) {
   .navbar-modern {
-    min-height: 52px !important;
-    padding: 5px 0 !important;
+    min-height: 45px !important;
+    padding: 4px 0 !important;
   }
 }
 
@@ -3258,12 +3258,12 @@ body {
 /* Mobile Menu */
 @media (max-width: 991px) {
   .navbar-modern {
-    min-height: 52px !important;
-    padding: 5px 0 !important;
+    min-height: 45px !important;
+    padding: 4px 0 !important;
   }
   
   body {
-    padding-top: 60px !important;
+    padding-top: 50px !important;
   }
   
   /* Дополнительный отступ для контента, чтобы меню не перекрывало */
@@ -3288,8 +3288,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 5px;
-    padding: 0 12px;
+    gap: 4px;
+    padding: 0 10px;
     width: 100%;
     position: relative;
     height: 100%;
@@ -3306,7 +3306,7 @@ body {
   }
 
   .navbar-logo {
-    height: 28px;
+    height: 26px;
     width: auto;
   }
 
@@ -3327,42 +3327,42 @@ body {
   }
 
   .telegram-bot-wrapper-mobile {
-    padding: 5px 10px;
-    gap: 4px;
+    padding: 4px 8px;
+    gap: 3px;
     white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
   }
   
   .telegram-bot-text-mobile {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     white-space: nowrap;
   }
   
   .telegram-icon-mobile {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     flex-shrink: 0;
   }
 
   .navbar-toggler {
     flex: 0 0 auto;
     margin: 0;
-    padding: 5px 8px;
+    padding: 4px 7px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     z-index: 3;
     order: 3;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     line-height: 1;
   }
   
   .navbar-toggler-icon {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
   }
 
   .navbar-collapse {
