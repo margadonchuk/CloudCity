@@ -2968,6 +2968,14 @@ body {
   min-height: 70px;
 }
 
+@media (max-width: 991px) {
+  .navbar-modern {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 3px 0 !important;
+  }
+}
+
 .navbar-modern .container-fluid {
   display: flex;
   align-items: center;
@@ -3250,12 +3258,14 @@ body {
 /* Mobile Menu */
 @media (max-width: 991px) {
   .navbar-modern {
-    min-height: 50px;
-    padding: 4px 0;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 3px 0 !important;
+    max-height: 50px;
   }
   
   body {
-    padding-top: 90px !important;
+    padding-top: 100px !important;
   }
   
   /* Дополнительный отступ для контента, чтобы меню не перекрывало */
@@ -3266,28 +3276,35 @@ body {
   
   /* Убеждаемся, что первая секция не перекрывается */
   section:first-of-type {
-    padding-top: 20px !important;
-    margin-top: 0;
+    padding-top: 25px !important;
+    margin-top: 0 !important;
   }
   
   /* Hero секции должны иметь дополнительный отступ */
   .hero-section, .services-page-hero, section.py-5:first-of-type {
-    padding-top: 30px !important;
+    padding-top: 35px !important;
+    margin-top: 0 !important;
   }
   
   /* Дополнительный отступ для всех секций */
   section {
-    padding-top: 20px;
+    padding-top: 25px !important;
+  }
+  
+  /* Дополнительный отступ для main контента */
+  main {
+    padding-top: 20px !important;
   }
 
   .navbar-modern .container-fluid {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
-    padding: 0 12px;
+    gap: 4px;
+    padding: 0 10px;
     width: 100%;
     position: relative;
+    min-height: 45px;
   }
 
   .navbar-brand {
@@ -3301,7 +3318,7 @@ body {
   }
 
   .navbar-logo {
-    height: 28px;
+    height: 25px;
     width: auto;
   }
 
@@ -3322,14 +3339,22 @@ body {
   }
 
   .telegram-bot-wrapper-mobile {
-    padding: 6px 12px;
-    gap: 5px;
+    padding: 4px 10px;
+    gap: 4px;
     white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+  
+  .telegram-bot-text-mobile {
+    font-size: 0.7rem;
+  }
+  
+  .telegram-icon-mobile {
+    font-size: 0.9rem;
   }
 
   .telegram-icon-mobile {
@@ -3345,12 +3370,18 @@ body {
   .navbar-toggler {
     flex: 0 0 auto;
     margin: 0;
-    padding: 5px 8px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    padding: 4px 6px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
     z-index: 3;
     order: 3;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1;
+  }
+  
+  .navbar-toggler-icon {
+    width: 18px;
+    height: 18px;
   }
 
   .navbar-collapse {
