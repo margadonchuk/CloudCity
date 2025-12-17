@@ -56,11 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 if (response.ok) {
                     const cartCountEl = document.getElementById('cart-count');
+                    const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
+                    
                     if (cartCountEl) {
                         let count = parseInt(cartCountEl.textContent || '0', 10);
                         count++;
                         cartCountEl.textContent = count;
                         cartCountEl.style.display = count > 0 ? 'inline-block' : 'none';
+                    }
+                    
+                    if (cartCountMobileEl) {
+                        let count = parseInt(cartCountMobileEl.textContent || '0', 10);
+                        count++;
+                        cartCountMobileEl.textContent = count;
+                        cartCountMobileEl.style.display = count > 0 ? 'inline-block' : 'none';
                     }
                 }
             }
