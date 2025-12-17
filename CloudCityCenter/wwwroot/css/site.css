@@ -3269,6 +3269,17 @@ body {
     padding-top: 70px !important;
   }
   
+  /* Скрываем десктопное меню на мобильных устройствах */
+  .navbar-collapse.d-none.d-lg-block {
+    display: none !important;
+  }
+  
+  .navbar-nav-left,
+  .navbar-nav-right,
+  .navbar-center {
+    display: none !important;
+  }
+  
   /* Дополнительный отступ для контента, чтобы меню не перекрывало */
   main, .container, .container-fluid, section {
     position: relative;
