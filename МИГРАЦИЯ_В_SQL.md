@@ -146,3 +146,4 @@ SELECT Id, Name, Type, PricePerMonth, Location FROM Products;
 - Проверьте, что таблицы созданы (выполните миграции)
 - Проверьте логи приложения на наличие ошибок
 
+

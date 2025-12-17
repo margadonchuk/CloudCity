@@ -1,7 +1,8 @@
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @using Microsoft.AspNetCore.Http
+@using System.Globalization
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@CultureInfo.CurrentCulture.Name">
 <head>
     
     <meta charset="utf-8" />
@@ -101,6 +102,41 @@
                             <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">
                                 <i class="bi bi-envelope me-1"></i>@Localizer["Contact"]
                             </a>
+                        </li>
+                        <!-- Language Switcher -->
+                        <li class="nav-item dropdown">
+                            @{
+                                var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+                                var cultureNames = new Dictionary<string, string>
+                                {
+                                    { "en", "English" },
+                                    { "uk", "Українська" },
+                                    { "ru", "Русский" },
+                                    { "fr", "Français" },
+                                    { "de", "Deutsch" },
+                                    { "es", "Español" },
+                                    { "pl", "Polski" }
+                                };
+                                var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
+                            }
+                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-globe me-1"></i><span class="d-none d-lg-inline">@currentLanguage</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                                @foreach (var lang in cultureNames)
+                                {
+                                    <li>
+                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" style="display: inline;">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="culture" value="@lang.Key" />
+                                            <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                                            <button type="submit" class="dropdown-item @(currentCulture == lang.Key ? "active" : "")">
+                                                @lang.Value
+                                            </button>
+                                        </form>
+                                    </li>
+                                }
+                            </ul>
                         </li>
                         <li class="nav-item position-relative">
                             <a class="nav-link cart-link" asp-controller="Cart" asp-action="Index">

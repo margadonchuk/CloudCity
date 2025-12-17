@@ -146,12 +146,27 @@ if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=") || a == "--migr
     return;
 }
 
-var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("ru") };
+var supportedCultures = new[] 
+{ 
+    new CultureInfo("en"),  // English
+    new CultureInfo("uk"),  // Ukrainian
+    new CultureInfo("ru"),  // Russian
+    new CultureInfo("fr"),  // French
+    new CultureInfo("de"),  // German
+    new CultureInfo("es"),  // Spanish
+    new CultureInfo("pl")   // Polish
+};
 var localizationOptions = new RequestLocalizationOptions
 {
     DefaultRequestCulture = new RequestCulture("en"),
     SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures
+    SupportedUICultures = supportedCultures,
+    RequestCultureProviders = new List<IRequestCultureProvider>
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    }
 };
 using (var scope = app.Services.CreateScope())
 {
