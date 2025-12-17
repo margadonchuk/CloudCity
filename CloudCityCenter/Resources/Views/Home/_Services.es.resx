@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OurValues" xml:space="preserve">
+    <value>Nuestros valores</value>
+  </data>
+  <data name="WhatDrivesUs" xml:space="preserve">
+    <value>¿Qué nos impulsa?</value>
+  </data>
+  <data name="CorePrinciples" xml:space="preserve">
+    <value>Principios fundamentales que guían todo lo que hacemos</value>
+  </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Confiabilidad</value>
+  </data>
+  <data name="ReliabilityDesc" xml:space="preserve">
+    <value>Sus servidores funcionan 24/7. Siempre.</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="SecurityDesc" xml:space="preserve">
+    <value>Firewall, túnel VPN, protección DDoS.</value>
+  </data>
+  <data name="Affordability" xml:space="preserve">
+    <value>Asequibilidad</value>
+  </data>
+  <data name="AffordabilityDesc" xml:space="preserve">
+    <value>Servicio de alta calidad sin arruinarse.</value>
+  </data>
+  <data name="NetworkEquipment" xml:space="preserve">
+    <value>Equipamiento de red</value>
+  </data>
+  <data name="NetworkEquipmentDesc" xml:space="preserve">
+    <value>WiFi, Mikrotik, Fortinet, Cisco.</value>
+  </data>
+</root>
+

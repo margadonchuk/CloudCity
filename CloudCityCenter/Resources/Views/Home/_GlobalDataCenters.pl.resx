@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="GlobalNetwork" xml:space="preserve">
+    <value>Sieć globalna</value>
+  </data>
+  <data name="OurGlobal" xml:space="preserve">
+    <value>Nasze globalne</value>
+  </data>
+  <data name="DataCenters" xml:space="preserve">
+    <value>centra danych</value>
+  </data>
+  <data name="DataCentersDescription" xml:space="preserve">
+    <value>Zasięg globalny dla optymalnej wydajności. Nasze strategicznie zlokalizowane centra danych zapewniają niskie opóźnienia i wysoką dostępność dla Twoich aplikacji.</value>
+  </data>
+</root>
+

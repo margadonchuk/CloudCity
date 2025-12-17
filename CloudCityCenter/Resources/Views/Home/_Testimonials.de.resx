@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Testimonials" xml:space="preserve">
+    <value>Testimonials</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Kunden</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>bewertungen</value>
+  </data>
+  <data name="SeeWhatClientsSay" xml:space="preserve">
+    <value>Sehen Sie, was unsere Kunden über uns sagen</value>
+  </data>
+</root>
+

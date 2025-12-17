@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Koszyk zakupów</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>Koszyk zakupów</value>
+  </data>
+  <data name="ReviewItems" xml:space="preserve">
+    <value>Przejrzyj swoje przedmioty i przejdź do kasy</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Cena:</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="ContinueShopping" xml:space="preserve">
+    <value>Kontynuuj zakupy</value>
+  </data>
+  <data name="ClearCart" xml:space="preserve">
+    <value>Wyczyść koszyk</value>
+  </data>
+  <data name="ClearCartConfirm" xml:space="preserve">
+    <value>Czy na pewno chcesz wyczyścić koszyk?</value>
+  </data>
+  <data name="OrderSummary" xml:space="preserve">
+    <value>Podsumowanie zamówienia</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Przedmioty:</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Razem:</value>
+  </data>
+  <data name="ProceedToCheckout" xml:space="preserve">
+    <value>Przejdź do kasy</value>
+  </data>
+  <data name="PleaseSignIn" xml:space="preserve">
+    <value>Proszę</value>
+  </data>
+  <data name="ToCheckout" xml:space="preserve">
+    <value>aby przejść do kasy</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>zaloguj się</value>
+  </data>
+  <data name="SignInToCheckout" xml:space="preserve">
+    <value>Zaloguj się, aby przejść do kasy</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Twój koszyk jest pusty</value>
+  </data>
+  <data name="CartEmptyDescription" xml:space="preserve">
+    <value>Wygląda na to, że nie dodałeś jeszcze żadnych przedmiotów do koszyka.</value>
+  </data>
+  <data name="StartShopping" xml:space="preserve">
+    <value>Rozpocznij zakupy</value>
+  </data>
+</root>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="GlobalNetwork" xml:space="preserve">
+    <value>Глобальная сеть</value>
+  </data>
+  <data name="OurGlobal" xml:space="preserve">
+    <value>Наши глобальные</value>
+  </data>
+  <data name="DataCenters" xml:space="preserve">
+    <value>дата-центры</value>
+  </data>
+  <data name="DataCentersDescription" xml:space="preserve">
+    <value>Глобальное покрытие для оптимальной производительности. Наши стратегически расположенные дата-центры обеспечивают низкую задержку и высокую доступность для ваших приложений.</value>
+  </data>
+</root>
+

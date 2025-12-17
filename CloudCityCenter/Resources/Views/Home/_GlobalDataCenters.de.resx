@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="GlobalNetwork" xml:space="preserve">
+    <value>Globales Netzwerk</value>
+  </data>
+  <data name="OurGlobal" xml:space="preserve">
+    <value>Unsere globalen</value>
+  </data>
+  <data name="DataCenters" xml:space="preserve">
+    <value>Rechenzentren</value>
+  </data>
+  <data name="DataCentersDescription" xml:space="preserve">
+    <value>Weltweite Abdeckung für optimale Leistung. Unsere strategisch gelegenen Rechenzentren gewährleisten niedrige Latenz und hohe Verfügbarkeit für Ihre Anwendungen.</value>
+  </data>
+</root>
+

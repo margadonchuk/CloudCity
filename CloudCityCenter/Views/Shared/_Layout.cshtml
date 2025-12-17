@@ -119,7 +119,7 @@
                                 };
                                 var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
                             }
-                            <a class="nav-link language-switcher-btn" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link language-switcher-btn" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-globe"></i>
                                 <span class="d-none d-lg-inline language-text">@currentLanguage</span>
                             </a>
@@ -127,11 +127,11 @@
                                 @foreach (var lang in cultureNames)
                                 {
                                     <li>
-                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form">
+                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form" data-mobile-form="true">
                                             @Html.AntiForgeryToken()
                                             <input type="hidden" name="culture" value="@lang.Key" />
                                             <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
-                                            <button type="submit" class="dropdown-item language-option @(currentCulture == lang.Key ? "active" : "")">
+                                            <button type="submit" class="dropdown-item language-option @(currentCulture == lang.Key ? "active" : "")" data-language-code="@lang.Key">
                                                 <span class="language-name">@lang.Value</span>
                                                 @if (currentCulture == lang.Key)
                                                 {
@@ -245,6 +245,46 @@ else
     t = setTimeout(recalc, 120);
   });
 })();
+</script>
+
+<script>
+  // Обработка переключения языков в мобильной версии
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbarCollapse = document.querySelector('#navbarNav');
+    const languageForms = document.querySelectorAll('form[data-mobile-form="true"]');
+    
+    if (!navbarCollapse || languageForms.length === 0) return;
+    
+    // Используем делегирование событий для обработки кликов внутри collapse меню
+    navbarCollapse.addEventListener('click', function(e) {
+      // Если клик был на форму переключения языков или её кнопку
+      const clickedForm = e.target.closest('form[data-mobile-form="true"]');
+      const clickedButton = e.target.closest('form[data-mobile-form="true"] button[type="submit"]');
+      
+      if (clickedForm || clickedButton) {
+        // Останавливаем всплытие, чтобы Bootstrap не закрыл меню
+        e.stopPropagation();
+        
+        // Если это клик на кнопку submit, форма отправится автоматически
+        // Страница перезагрузится с новым языком, меню закроется при перезагрузке
+        if (clickedButton && window.innerWidth < 992) {
+          // Форма отправится, страница перезагрузится
+          return true;
+        }
+      }
+    }, true); // Используем capture phase для раннего перехвата
+    
+    // Также обрабатываем клики на кнопки напрямую
+    languageForms.forEach(function(form) {
+      const submitButton = form.querySelector('button[type="submit"]');
+      
+      if (submitButton) {
+        submitButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+        }, true);
+      }
+    });
+  });
 </script>
 
 

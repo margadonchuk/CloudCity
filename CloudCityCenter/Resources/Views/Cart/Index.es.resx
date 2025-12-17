@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Carrito de compras</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>Carrito de compras</value>
+  </data>
+  <data name="ReviewItems" xml:space="preserve">
+    <value>Revise sus artículos y proceda al pago</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Precio:</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="ContinueShopping" xml:space="preserve">
+    <value>Continuar comprando</value>
+  </data>
+  <data name="ClearCart" xml:space="preserve">
+    <value>Vaciar carrito</value>
+  </data>
+  <data name="ClearCartConfirm" xml:space="preserve">
+    <value>¿Está seguro de que desea vaciar su carrito?</value>
+  </data>
+  <data name="OrderSummary" xml:space="preserve">
+    <value>Resumen del pedido</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Artículos:</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="ProceedToCheckout" xml:space="preserve">
+    <value>Proceder al pago</value>
+  </data>
+  <data name="PleaseSignIn" xml:space="preserve">
+    <value>Por favor</value>
+  </data>
+  <data name="ToCheckout" xml:space="preserve">
+    <value>para pagar</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>inicie sesión</value>
+  </data>
+  <data name="SignInToCheckout" xml:space="preserve">
+    <value>Iniciar sesión para pagar</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Su carrito está vacío</value>
+  </data>
+  <data name="CartEmptyDescription" xml:space="preserve">
+    <value>Parece que aún no ha agregado artículos a su carrito.</value>
+  </data>
+  <data name="StartShopping" xml:space="preserve">
+    <value>Comenzar a comprar</value>
+  </data>
+</root>
+

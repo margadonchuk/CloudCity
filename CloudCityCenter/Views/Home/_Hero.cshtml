@@ -7,37 +7,36 @@
         <div class="row align-items-center min-vh-50">
             <div class="col-lg-6 hero-text animate-fade-in-up">
                 <h1 class="display-3 fw-bold mb-4 hero-title">
-                    <span class="text-gradient">Welcome to</span><br>
+                    <span class="text-gradient">@Localizer["WelcomeTo"]</span><br>
                     <span style="color: white;">CloudCity Center</span>
                 </h1>
                 <p class="lead mb-4 hero-description">
-                    Premium cloud infrastructure solutions tailored for your business. 
-                    Experience reliability, security, and performance at competitive prices.
+                    @Localizer["HeroDescription"]
                 </p>
                 <div class="hero-buttons d-flex flex-wrap gap-3">
                     <a class="btn btn-primary btn-lg px-5 py-3 hero-btn animate-scale-in" 
                        asp-controller="Servers" asp-action="Index"
                        style="border-radius: 50px; font-weight: 600; box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);">
-                        <i class="bi bi-server me-2"></i>Explore Servers
+                        <i class="bi bi-server me-2"></i>@Localizer["ExploreServers"]
                     </a>
                     <a class="btn btn-outline-light btn-lg px-5 py-3 hero-btn animate-scale-in" 
                        asp-controller="Account" asp-action="Register"
                        style="border-radius: 50px; font-weight: 600; border-width: 2px;">
-                        <i class="bi bi-person-plus me-2"></i>Get Started
+                        <i class="bi bi-person-plus me-2"></i>@Localizer["GetStarted"]
                     </a>
                 </div>
                 <div class="hero-stats mt-5 d-flex gap-5">
                     <div class="stat-item">
                         <div class="stat-number" data-count="99.9">0</div>
-                        <div class="stat-label">Uptime %</div>
+                        <div class="stat-label">@Localizer["UptimePercent"]</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number" data-count="24">0</div>
-                        <div class="stat-label">Support</div>
+                        <div class="stat-label">@Localizer["Support"]</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number" data-count="50">0</div>
-                        <div class="stat-label">Countries</div>
+                        <div class="stat-label">@Localizer["Countries"]</div>
                     </div>
                 </div>
             </div>
@@ -48,19 +47,19 @@
                         <div class="floating-card-icon">
                             <i class="bi bi-shield-check"></i>
                         </div>
-                        <span class="floating-card-text">Secure</span>
+                        <span class="floating-card-text">@Localizer["Secure"]</span>
                     </div>
                     <div class="floating-card card-2">
                         <div class="floating-card-icon">
                             <i class="bi bi-lightning-charge"></i>
                         </div>
-                        <span class="floating-card-text">Fast</span>
+                        <span class="floating-card-text">@Localizer["Fast"]</span>
                     </div>
                     <div class="floating-card card-3">
                         <div class="floating-card-icon">
                             <i class="bi bi-globe"></i>
                         </div>
-                        <span class="floating-card-text">Global</span>
+                        <span class="floating-card-text">@Localizer["Global"]</span>
                     </div>
                 </div>
             </div>

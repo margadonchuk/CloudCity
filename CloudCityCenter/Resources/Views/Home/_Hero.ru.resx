@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Добро пожаловать в</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Премиальные облачные инфраструктурные решения, адаптированные для вашего бизнеса. Обеспечиваем надежность, безопасность и производительность по конкурентным ценам.</value>
+  </data>
+  <data name="ExploreServers" xml:space="preserve">
+    <value>Изучить серверы</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Начать</value>
+  </data>
+  <data name="UptimePercent" xml:space="preserve">
+    <value>Время работы %</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Поддержка</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Страны</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безопасно</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Быстро</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобально</value>
+  </data>
+</root>
+

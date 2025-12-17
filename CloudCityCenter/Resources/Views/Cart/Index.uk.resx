@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Кошик покупок</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>Кошик покупок</value>
+  </data>
+  <data name="ReviewItems" xml:space="preserve">
+    <value>Перевірте ваші товари та перейдіть до оформлення замовлення</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Ціна:</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="ContinueShopping" xml:space="preserve">
+    <value>Продовжити покупки</value>
+  </data>
+  <data name="ClearCart" xml:space="preserve">
+    <value>Очистити кошик</value>
+  </data>
+  <data name="ClearCartConfirm" xml:space="preserve">
+    <value>Ви впевнені, що хочете очистити кошик?</value>
+  </data>
+  <data name="OrderSummary" xml:space="preserve">
+    <value>Підсумок замовлення</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Товари:</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Разом:</value>
+  </data>
+  <data name="ProceedToCheckout" xml:space="preserve">
+    <value>Перейти до оформлення</value>
+  </data>
+  <data name="PleaseSignIn" xml:space="preserve">
+    <value>Будь ласка,</value>
+  </data>
+  <data name="ToCheckout" xml:space="preserve">
+    <value>для оформлення замовлення</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>увійдіть</value>
+  </data>
+  <data name="SignInToCheckout" xml:space="preserve">
+    <value>Увійти для оформлення</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Ваш кошик порожній</value>
+  </data>
+  <data name="CartEmptyDescription" xml:space="preserve">
+    <value>Схоже, ви ще не додали товари в кошик.</value>
+  </data>
+  <data name="StartShopping" xml:space="preserve">
+    <value>Почати покупки</value>
+  </data>
+</root>
+

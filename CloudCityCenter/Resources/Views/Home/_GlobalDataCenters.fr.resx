@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="GlobalNetwork" xml:space="preserve">
+    <value>Réseau mondial</value>
+  </data>
+  <data name="OurGlobal" xml:space="preserve">
+    <value>Nos centres de données</value>
+  </data>
+  <data name="DataCenters" xml:space="preserve">
+    <value>mondiaux</value>
+  </data>
+  <data name="DataCentersDescription" xml:space="preserve">
+    <value>Couverture mondiale pour des performances optimales. Nos centres de données stratégiquement situés garantissent une faible latence et une haute disponibilité pour vos applications.</value>
+  </data>
+</root>
+

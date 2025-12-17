@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OurStory" xml:space="preserve">
+    <value>Наша історія</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Про нас</value>
+  </data>
+  <data name="AboutText1" xml:space="preserve">
+    <value>У CloudCity Center ми надаємо надійні, високопродуктивні серверні рішення, адаптовані для підприємств будь-якого розміру. З дата-центрами в Європі, США та Азії ми забезпечуємо найвищий рівень безпеки, включаючи розширені файрволи, захист від DDoS та VPN тунелювання.</value>
+  </data>
+  <data name="AboutText2" xml:space="preserve">
+    <value>Наша місія — надавати безшовний, безпечний хостинг, який сприяє вашому зростанню. Підтримувані корпоративним обладнанням та цілодобовою експертною підтримкою, ми тут, щоб ваш бізнес працював безперебійно. Виберіть CloudCity Center для надійних серверів, яким можна довіряти.</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Дізнатися більше</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Сервери</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Клієнти</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Країни</value>
+  </data>
+</root>
+
