@@ -93,6 +93,20 @@
 
                     <!-- Right Navigation -->
                     <ul class="navbar-nav navbar-nav-right">
+                        @{
+                            var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+                            var cultureNames = new Dictionary<string, string>
+                            {
+                                { "en", "English" },
+                                { "uk", "Українська" },
+                                { "ru", "Русский" },
+                                { "fr", "Français" },
+                                { "de", "Deutsch" },
+                                { "es", "Español" },
+                                { "pl", "Polski" }
+                            };
+                            var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
+                        }
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
                                 <i class="bi bi-info-circle me-1"></i>@Localizer["About"]
@@ -104,30 +118,16 @@
                             </a>
                         </li>
                         <!-- Language Switcher -->
-                        <li class="nav-item dropdown language-switcher">
-                            @{
-                                var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
-                                var cultureNames = new Dictionary<string, string>
-                                {
-                                    { "en", "English" },
-                                    { "uk", "Українська" },
-                                    { "ru", "Русский" },
-                                    { "fr", "Français" },
-                                    { "de", "Deutsch" },
-                                    { "es", "Español" },
-                                    { "pl", "Polski" }
-                                };
-                                var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
-                            }
+                        <li class="nav-item dropdown language-switcher d-none d-lg-block">
                             <a class="nav-link language-switcher-btn" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                 <i class="bi bi-globe"></i>
-                                <span class="d-none d-lg-inline language-text">@currentLanguage</span>
+                                <span class="language-text">@currentLanguage</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropdown">
                                 @foreach (var lang in cultureNames)
                                 {
                                     <li>
-                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form" data-mobile-form="true">
+                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form">
                                             @Html.AntiForgeryToken()
                                             <input type="hidden" name="culture" value="@lang.Key" />
                                             <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
@@ -142,6 +142,30 @@
                                     </li>
                                 }
                             </ul>
+                        </li>
+                        <!-- Language Switcher для мобильной версии - всегда видимый -->
+                        <li class="nav-item language-switcher-mobile d-lg-none">
+                            <div class="nav-link language-mobile-header">
+                                <i class="bi bi-globe me-2"></i>
+                                <span>@Localizer["Language"]</span>
+                            </div>
+                            <div class="language-mobile-list">
+                                @foreach (var lang in cultureNames)
+                                {
+                                    <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form-mobile">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="culture" value="@lang.Key" />
+                                        <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                                        <button type="submit" class="nav-link language-mobile-item @(currentCulture == lang.Key ? "active" : "")">
+                                            <span class="language-name">@lang.Value</span>
+                                            @if (currentCulture == lang.Key)
+                                            {
+                                                <i class="bi bi-check-lg ms-auto text-primary"></i>
+                                            }
+                                        </button>
+                                    </form>
+                                }
+                            </div>
                         </li>
                         <li class="nav-item position-relative">
                             <a class="nav-link cart-link" asp-controller="Cart" asp-action="Index">
@@ -252,106 +276,35 @@ else
   (function() {
     function initLanguageSwitcher() {
       const navbarCollapse = document.querySelector('#navbarNav');
-      const languageForms = document.querySelectorAll('form[data-mobile-form="true"]');
+      const languageFormsMobile = document.querySelectorAll('form.language-form-mobile');
       
-      if (!navbarCollapse || languageForms.length === 0) return;
+      if (!navbarCollapse || languageFormsMobile.length === 0) return;
       
-      // Обрабатываем клики на кнопки переключения языков
-      languageForms.forEach(function(form) {
+      // Обрабатываем клики на кнопки переключения языков в мобильной версии
+      languageFormsMobile.forEach(function(form) {
         const submitButton = form.querySelector('button[type="submit"]');
         
         if (submitButton) {
-          // Удаляем все предыдущие обработчики
-          const newButton = submitButton.cloneNode(true);
-          form.replaceChild(newButton, submitButton);
-          
-          // Добавляем обработчик на новую кнопку
-          newButton.addEventListener('click', function(e) {
-            // Только для мобильной версии
-            if (window.innerWidth < 992) {
-              // Полностью останавливаем событие
-              e.preventDefault();
-              e.stopPropagation();
-              e.stopImmediatePropagation();
-              
-              // Сохраняем данные формы
-              const formData = new FormData(form);
-              const culture = formData.get('culture');
-              const returnUrl = formData.get('returnUrl');
-              
-              // Закрываем dropdown через прямое манипулирование DOM
-              const dropdownElement = document.querySelector('#languageDropdown');
-              const dropdownMenu = document.querySelector('.language-dropdown');
-              
-              if (dropdownElement) {
-                dropdownElement.classList.remove('show');
-                dropdownElement.setAttribute('aria-expanded', 'false');
-              }
-              
-              if (dropdownMenu) {
-                dropdownMenu.classList.remove('show');
-              }
-              
-              // Закрываем collapse меню через прямое манипулирование DOM
-              if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-                navbarCollapse.style.display = 'none';
-                
-                // Обновляем aria атрибуты
-                const toggler = document.querySelector('.navbar-toggler');
-                if (toggler) {
-                  toggler.setAttribute('aria-expanded', 'false');
-                  toggler.classList.add('collapsed');
-                }
-              }
-              
-              // Создаем скрытую форму и отправляем её
-              const hiddenForm = document.createElement('form');
-              hiddenForm.method = 'POST';
-              hiddenForm.action = form.action;
-              hiddenForm.style.display = 'none';
-              
-              // Копируем токен
-              const token = form.querySelector('input[name="__RequestVerificationToken"]');
-              if (token) {
-                const tokenInput = document.createElement('input');
-                tokenInput.type = 'hidden';
-                tokenInput.name = '__RequestVerificationToken';
-                tokenInput.value = token.value;
-                hiddenForm.appendChild(tokenInput);
-              }
-              
-              // Добавляем culture
-              const cultureInput = document.createElement('input');
-              cultureInput.type = 'hidden';
-              cultureInput.name = 'culture';
-              cultureInput.value = culture;
-              hiddenForm.appendChild(cultureInput);
-              
-              // Добавляем returnUrl
-              const returnUrlInput = document.createElement('input');
-              returnUrlInput.type = 'hidden';
-              returnUrlInput.name = 'returnUrl';
-              returnUrlInput.value = returnUrl;
-              hiddenForm.appendChild(returnUrlInput);
-              
-              // Добавляем форму в body и отправляем
-              document.body.appendChild(hiddenForm);
-              hiddenForm.submit();
-            }
-          }, true); // Capture phase
-        }
-        
-        // Также перехватываем submit формы
-        form.addEventListener('submit', function(e) {
-          if (window.innerWidth < 992) {
-            // В мобильной версии закрываем меню перед отправкой
+          submitButton.addEventListener('click', function(e) {
+            // Останавливаем всплытие, но не предотвращаем submit
+            e.stopPropagation();
+            
+            // Закрываем collapse меню после небольшой задержки
             if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-              navbarCollapse.classList.remove('show');
-              navbarCollapse.style.display = 'none';
+              setTimeout(function() {
+                if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                  const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                  if (bsCollapse) {
+                    bsCollapse.hide();
+                  }
+                } else {
+                  navbarCollapse.classList.remove('show');
+                  navbarCollapse.style.display = 'none';
+                }
+              }, 200);
             }
-          }
-        }, true);
+          }, true);
+        }
       });
     }
     
@@ -359,7 +312,6 @@ else
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
     } else {
-      // Если DOM уже загружен, ждем немного для Bootstrap
       setTimeout(initLanguageSwitcher, 100);
     }
   })();

@@ -3255,7 +3255,7 @@ body {
   }
   
   body {
-    padding-top: 100px !important;
+    padding-top: 120px !important;
   }
   
   /* Дополнительный отступ для контента, чтобы меню не перекрывало */
@@ -4441,8 +4441,64 @@ body {
 }
 
 @media (max-width: 991px) {
-  .language-switcher {
+  /* Мобильная версия языков - всегда видима */
+  .language-switcher-mobile {
     width: 100%;
+    margin: 10px 0;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+  }
+  
+  .language-mobile-header {
+    font-weight: 600;
+    color: #0d6efd !important;
+    padding: 12px 20px !important;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .language-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .language-form-mobile {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .language-mobile-item {
+    width: 100%;
+    padding: 12px 20px !important;
+    text-align: left;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333 !important;
+    border-radius: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .language-mobile-item:hover {
+    background: rgba(13, 110, 253, 0.1) !important;
+    color: #0d6efd !important;
+  }
+  
+  .language-mobile-item.active {
+    background: rgba(13, 110, 253, 0.15) !important;
+    color: #0d6efd !important;
+    font-weight: 600;
+    border-left: 4px solid #0d6efd;
+  }
+  
+  .language-switcher {
+    display: none !important;
   }
   
   .language-switcher-btn {
