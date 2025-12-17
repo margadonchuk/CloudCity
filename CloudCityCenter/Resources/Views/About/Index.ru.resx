@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="OurStory" xml:space="preserve">
+    <value>Наша история</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="AboutText" xml:space="preserve">
+    <value>Готовы узнать, что действительно выделяет нас на конкурентном рынке серверных решений? В CloudCity Center мы не только переосмыслили серверные решения, но и повысили стандарты, безупречно объединив исключительную надежность, лучшую безопасность и непревзойденную доступность.</value>
+  </data>
+  <data name="EnterpriseInfrastructure" xml:space="preserve">
+    <value>Инфраструктура корпоративного уровня</value>
+  </data>
+  <data name="GlobalDataCenter" xml:space="preserve">
+    <value>Глобальная сеть дата-центров</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="Expertise" xml:space="preserve">
+    <value>Экспертиза</value>
+  </data>
+  <data name="OurExpertise" xml:space="preserve">
+    <value>Наша экспертиза</value>
+  </data>
+  <data name="ExpertiseText" xml:space="preserve">
+    <value>Благодаря передовым технологиям и индивидуальным решениям мы не просто другой поставщик серверов — мы ваш партнер в росте. Нужен глобальный охват? У нас это есть. Будь вы в Европе, Америке или Азии.</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Страны</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Серверы</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Клиенты</value>
+  </data>
+  <data name="WhatDrivesUs" xml:space="preserve">
+    <value>Что нас мотивирует?</value>
+  </data>
+</root>
+

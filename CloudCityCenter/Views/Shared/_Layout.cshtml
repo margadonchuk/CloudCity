@@ -104,7 +104,7 @@
                             </a>
                         </li>
                         <!-- Language Switcher -->
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown language-switcher">
                             @{
                                 var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
                                 var cultureNames = new Dictionary<string, string>
@@ -119,19 +119,24 @@
                                 };
                                 var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
                             }
-                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-globe me-1"></i><span class="d-none d-lg-inline">@currentLanguage</span>
+                            <a class="nav-link language-switcher-btn" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-globe"></i>
+                                <span class="d-none d-lg-inline language-text">@currentLanguage</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropdown">
                                 @foreach (var lang in cultureNames)
                                 {
                                     <li>
-                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" style="display: inline;">
+                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form">
                                             @Html.AntiForgeryToken()
                                             <input type="hidden" name="culture" value="@lang.Key" />
                                             <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
-                                            <button type="submit" class="dropdown-item @(currentCulture == lang.Key ? "active" : "")">
-                                                @lang.Value
+                                            <button type="submit" class="dropdown-item language-option @(currentCulture == lang.Key ? "active" : "")">
+                                                <span class="language-name">@lang.Value</span>
+                                                @if (currentCulture == lang.Key)
+                                                {
+                                                    <i class="bi bi-check-lg ms-auto text-primary"></i>
+                                                }
                                             </button>
                                         </form>
                                     </li>

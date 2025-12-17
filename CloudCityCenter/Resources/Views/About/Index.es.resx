@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="OurStory" xml:space="preserve">
+    <value>Nuestra historia</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Acerca de nosotros</value>
+  </data>
+  <data name="AboutText" xml:space="preserve">
+    <value>¿Listo para descubrir qué nos distingue realmente en el competitivo panorama de soluciones de servidores? En CloudCity Center, no solo hemos redefinido las soluciones de servidores, sino que también hemos elevado los estándares fusionando perfectamente una confiabilidad excepcional, seguridad de primer nivel y una asequibilidad inigualable.</value>
+  </data>
+  <data name="EnterpriseInfrastructure" xml:space="preserve">
+    <value>Infraestructura de nivel empresarial</value>
+  </data>
+  <data name="GlobalDataCenter" xml:space="preserve">
+    <value>Red global de centros de datos</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Soporte experto 24/7</value>
+  </data>
+  <data name="Expertise" xml:space="preserve">
+    <value>Experiencia</value>
+  </data>
+  <data name="OurExpertise" xml:space="preserve">
+    <value>Nuestra experiencia</value>
+  </data>
+  <data name="ExpertiseText" xml:space="preserve">
+    <value>Con tecnología de vanguardia y soluciones a medida, no somos solo otro proveedor de servidores — somos su socio en el crecimiento. ¿Necesita alcance global? Lo tenemos. Ya sea que esté en Europa, América o Asia.</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Países</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Servidores</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="WhatDrivesUs" xml:space="preserve">
+    <value>¿Qué nos impulsa?</value>
+  </data>
+</root>
+

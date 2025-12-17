@@ -1,6 +1,6 @@
 
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 
@@ -12,28 +12,26 @@
     <div class="row align-items-center">
       <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
         <div class="section-badge mb-3">
-          <span class="badge-text">Our Story</span>
+          <span class="badge-text">@Localizer["OurStory"]</span>
         </div>
         <h2 class="display-4 fw-bold mb-4 about-page-title">
-          <span class="text-gradient-2">About</span> <span class="text-primary">Us</span>
+          <span class="text-gradient-2">@Localizer["AboutUs"]</span>
         </h2>
         <p class="about-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          Ready to discover what truly sets us apart in the competitive landscape of server solutions?
-          At <strong>CloudCity Center</strong>, we've not only redefined server solutions but also elevated the standards
-          by seamlessly merging exceptional reliability, top-notch security, and unbeatable affordability.
+          @Localizer["AboutText"]
         </p>
         <div class="about-page-features">
           <div class="about-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Enterprise-grade infrastructure</span>
+            <span>@Localizer["EnterpriseInfrastructure"]</span>
           </div>
           <div class="about-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Global data center network</span>
+            <span>@Localizer["GlobalDataCenter"]</span>
           </div>
           <div class="about-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>24/7 expert support</span>
+            <span>@Localizer["ExpertSupport"]</span>
           </div>
         </div>
       </div>
@@ -60,28 +58,26 @@
       </div>
       <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
         <div class="section-badge mb-3">
-          <span class="badge-text">Expertise</span>
+          <span class="badge-text">@Localizer["Expertise"]</span>
         </div>
         <h2 class="display-4 fw-bold mb-4 about-page-title">
-          <span class="text-gradient-2">Our</span> <span class="text-primary">Expertise</span>
+          <span class="text-gradient-2">@Localizer["OurExpertise"]</span>
         </h2>
         <p class="about-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          With cutting-edge tech and tailor-made solutions, we're not just another server provider — we're your partner in growth.
-          <br><br>
-          Need global reach? We've got it. Whether you're in Europe, the Americas, or Asia.
+          @Localizer["ExpertiseText"]
         </p>
         <div class="about-page-stats">
           <div class="about-stat-item">
             <div class="about-stat-number">50+</div>
-            <div class="about-stat-label">Countries</div>
+            <div class="about-stat-label">@Localizer["Countries"]</div>
           </div>
           <div class="about-stat-item">
             <div class="about-stat-number">1000+</div>
-            <div class="about-stat-label">Servers</div>
+            <div class="about-stat-label">@Localizer["Servers"]</div>
           </div>
           <div class="about-stat-item">
             <div class="about-stat-number">5000+</div>
-            <div class="about-stat-label">Clients</div>
+            <div class="about-stat-label">@Localizer["Clients"]</div>
           </div>
         </div>
       </div>
@@ -119,7 +115,7 @@
 
 <!-- VALUES SECTION -->
 <section id="services" class="container py-5">
-  <h2 class="text-center display-5 fw-bold mb-5">What drives us?</h2>
+  <h2 class="text-center display-5 fw-bold mb-5">@Localizer["WhatDrivesUs"]</h2>
 
   <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
