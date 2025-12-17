@@ -255,35 +255,56 @@ else
     
     if (!navbarCollapse || languageForms.length === 0) return;
     
-    // Используем делегирование событий для обработки кликов внутри collapse меню
-    navbarCollapse.addEventListener('click', function(e) {
-      // Если клик был на форму переключения языков или её кнопку
-      const clickedForm = e.target.closest('form[data-mobile-form="true"]');
-      const clickedButton = e.target.closest('form[data-mobile-form="true"] button[type="submit"]');
-      
-      if (clickedForm || clickedButton) {
-        // Останавливаем всплытие, чтобы Bootstrap не закрыл меню
-        e.stopPropagation();
-        
-        // Если это клик на кнопку submit, форма отправится автоматически
-        // Страница перезагрузится с новым языком, меню закроется при перезагрузке
-        if (clickedButton && window.innerWidth < 992) {
-          // Форма отправится, страница перезагрузится
-          return true;
-        }
-      }
-    }, true); // Используем capture phase для раннего перехвата
+    let isLanguageFormSubmitting = false;
     
-    // Также обрабатываем клики на кнопки напрямую
+    // Предотвращаем закрытие collapse меню при отправке формы переключения языков
+    if (navbarCollapse) {
+      navbarCollapse.addEventListener('hide.bs.collapse', function(e) {
+        if (isLanguageFormSubmitting) {
+          e.preventDefault();
+          return false;
+        }
+      });
+    }
+    
+    // Обрабатываем клики на кнопки переключения языков
     languageForms.forEach(function(form) {
       const submitButton = form.querySelector('button[type="submit"]');
       
       if (submitButton) {
         submitButton.addEventListener('click', function(e) {
+          // Останавливаем всплытие события
           e.stopPropagation();
-        }, true);
+          
+          // В мобильной версии помечаем, что форма отправляется
+          if (window.innerWidth < 992) {
+            isLanguageFormSubmitting = true;
+            
+            // Небольшая задержка перед отправкой формы
+            setTimeout(function() {
+              form.submit();
+            }, 50);
+          }
+        }, true); // Используем capture phase
       }
+      
+      // Помечаем при отправке формы
+      form.addEventListener('submit', function() {
+        if (window.innerWidth < 992) {
+          isLanguageFormSubmitting = true;
+        }
+      });
     });
+    
+    // Предотвращаем закрытие dropdown при клике внутри
+    const languageDropdown = document.querySelector('.language-dropdown');
+    if (languageDropdown) {
+      languageDropdown.addEventListener('click', function(e) {
+        if (e.target.closest('form[data-mobile-form="true"]')) {
+          e.stopPropagation();
+        }
+      }, true);
+    }
   });
 </script>
 

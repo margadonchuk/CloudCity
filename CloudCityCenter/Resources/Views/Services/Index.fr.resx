@@ -7,13 +7,87 @@
     <value>Services</value>
   </data>
   <data name="OurServices" xml:space="preserve">
-    <value>Nos services</value>
+    <value>Nos Services</value>
   </data>
   <data name="ServicesDescription1" xml:space="preserve">
-    <value>Chez CloudCity Center, nous proposons une gamme complète de services d'hébergement et informatiques avancés conçus pour soutenir les entreprises à chaque étape de leur croissance. Notre infrastructure est construite sur du matériel de niveau entreprise et des technologies de pointe, garantissant des performances maximales, une stabilité et une sécurité.</value>
+    <value>Chez CloudCity Center, nous proposons une gamme complète de services d'hébergement et informatiques avancés conçus pour soutenir les entreprises à chaque étape de leur croissance. Notre infrastructure est construite sur du matériel de niveau entreprise et des technologies de pointe, garantissant des performances maximales, une stabilité et une sécurité optimales.</value>
   </data>
   <data name="ServicesDescription2" xml:space="preserve">
     <value>Avec le tunneling VPN sécurisé et des centres de données mondiaux stratégiquement situés en Europe, aux États-Unis et en Asie, nous garantissons des connexions rapides et stables pour les utilisateurs du monde entier.</value>
   </data>
+  <data name="Service1Title" xml:space="preserve">
+    <value>Service de Support Serveur 24/7</value>
+  </data>
+  <data name="Service1Description" xml:space="preserve">
+    <value>Assurez des opérations fluides avec le support serveur 24/7 de CloudCity Center. Notre équipe dédiée est toujours disponible pour surveiller et résoudre les problèmes de serveur, garantissant des performances optimales. Avec une surveillance en temps réel et une maintenance proactive, nous fournissons un support sans faille adapté aux besoins de votre entreprise. Faites confiance à CloudCity Center pour maintenir vos serveurs en fonctionnement optimal.</value>
+  </data>
+  <data name="Service2Title" xml:space="preserve">
+    <value>Développement de Sites Web Personnalisés</value>
+  </data>
+  <data name="Service2Description" xml:space="preserve">
+    <value>Donnez vie à votre vision avec les services professionnels de création de sites web de CloudCity Center. Nous concevons et développons des sites web sur mesure qui combinent des visuels époustouflants avec une fonctionnalité irréprochable. Que vous ayez besoin d'un site d'entreprise, d'une plateforme e-commerce ou d'une application web personnalisée, notre équipe fournit des solutions qui reflètent votre marque et génèrent des résultats. En utilisant les dernières technologies, notamment C#, Python, PHP et les meilleurs constructeurs de sites web, nous garantissons des sites web rapides, sécurisés et réactifs optimisés pour tous les appareils.</value>
+  </data>
+  <data name="Service3Title" xml:space="preserve">
+    <value>Anonymat Complet du Client et des Données</value>
+  </data>
+  <data name="Service3Description" xml:space="preserve">
+    <value>Chez CloudCity Center, votre confidentialité est notre priorité. Nous garantissons un anonymat complet pour votre identité et vos données grâce à des technologies de chiffrement avancées et un tunneling VPN sécurisé. Nos services sont conçus pour protéger vos informations sensibles contre tout accès non autorisé, garantissant que vos activités restent confidentielles. Faites confiance à CloudCity Center pour fournir un environnement sécurisé et privé pour vos opérations commerciales, protégeant votre réputation et votre tranquillité d'esprit.</value>
+  </data>
+  <data name="Service4Title" xml:space="preserve">
+    <value>Service de Stockage Cloud</value>
+  </data>
+  <data name="Service4Description" xml:space="preserve">
+    <value>Gardez vos données en sécurité, accessibles et sécurisées avec les solutions de stockage cloud de CloudCity Center. Nos systèmes de stockage haute capacité et ultra-rapides sont conçus pour les entreprises et les particuliers qui ont besoin d'un accès fiable et illimité aux fichiers sans limites de vitesse. Avec un chiffrement avancé et des sauvegardes redondantes, vos informations restent protégées contre la perte ou l'accès non autorisé. Que vous stockiez des documents, des fichiers multimédias ou des données commerciales critiques, CloudCity Center offre une expérience de stockage transparente et évolutive, garantissant que vos fichiers sont toujours à un clic.</value>
+  </data>
+  <data name="Service5Title" xml:space="preserve">
+    <value>Service de Protection DDoS</value>
+  </data>
+  <data name="Service5Description" xml:space="preserve">
+    <value>Découvrez une sécurité inégalée avec la protection DDoS avancée de CloudCity Center. Notre technologie de pointe protège efficacement vos serveurs contre une large gamme de trafic malveillant, garantissant des performances ininterrompues et la sécurité maximale de vos données précieuses. Avec une surveillance en temps réel et des mécanismes de défense robustes et multicouches, nous fournissons un environnement fiable et sécurisé adapté à vos opérations commerciales. Notre équipe dédiée travaille 24h/24 et 7j/7 pour assurer une protection continue contre les menaces en évolution.</value>
+  </data>
+  <data name="Service6Title" xml:space="preserve">
+    <value>Service d'Hébergement Web</value>
+  </data>
+  <data name="Service6Description" xml:space="preserve">
+    <value>Simplifiez votre présence en ligne avec les solutions d'hébergement web premium de CloudCity Center. Conçus pour la vitesse, la sécurité et la facilité d'utilisation, nos plans d'hébergement garantissent que votre site web est toujours en ligne et performe au mieux. Nous fournissons une infrastructure serveur robuste, une bande passante optimisée et des panneaux de contrôle puissants, facilitant la gestion de votre site en toute confiance. Des sites de petites entreprises aux plateformes à fort trafic, notre hébergement s'adapte à vos besoins.</value>
+  </data>
+  <data name="Service7Title" xml:space="preserve">
+    <value>Solutions Serveur Axées sur la Cybersécurité</value>
+  </data>
+  <data name="Service7Description" xml:space="preserve">
+    <value>Chez CloudCity Center, nous combinons des mesures de cybersécurité de pointe avec une technologie serveur robuste pour fournir une protection inégalée pour vos données et opérations. Nos serveurs sont renforcés avec des pare-feu avancés, des flux de données chiffrés et une surveillance des menaces en temps réel, garantissant que votre entreprise reste sécurisée contre les cyberattaques. En intégrant de manière transparente la cybersécurité dans chaque aspect de nos solutions serveur, nous garantissons un environnement sûr, fiable et efficace pour les besoins de votre entreprise.</value>
+  </data>
+  <data name="Service8Title" xml:space="preserve">
+    <value>Service d'Hébergement VPS</value>
+  </data>
+  <data name="Service8Description" xml:space="preserve">
+    <value>Découvrez une flexibilité et des performances inégalées avec l'hébergement VPS de CloudCity Center. Nos serveurs privés virtuels fournissent des ressources dédiées, un accès root complet et des configurations évolutives pour répondre à vos besoins commerciaux en évolution. Avec du matériel de niveau entreprise et un stockage SSD, nous offrons des performances ultra-rapides et une fiabilité exceptionnelle. Que vous exécutiez des applications, hébergiez des sites web ou gérez des bases de données, nos solutions VPS vous donnent un contrôle total et la liberté de personnaliser.</value>
+  </data>
+  <data name="Service9Title" xml:space="preserve">
+    <value>Service Pare-feu Humain</value>
+  </data>
+  <data name="Service9Description" xml:space="preserve">
+    <value>Protégez vos données avec le service Pare-feu Humain de CloudCity Center. Doté d'un symbole de bouclier humanoïde haute technologie et de verrouillage, notre service neutralise les menaces telles que les logiciels malveillants et les attaques DDoS. Avec une technologie avancée et une gestion en temps réel, nous maintenons votre entreprise sécurisée et opérationnelle. Découvrez une cybersécurité robuste avec CloudCity Center.</value>
+  </data>
+  <data name="Service10Title" xml:space="preserve">
+    <value>Service de Tunneling VPN</value>
+  </data>
+  <data name="Service10Description" xml:space="preserve">
+    <value>Sécurisez vos activités en ligne et améliorez votre confidentialité avec le service de tunneling VPN exceptionnel de CloudCity Center. Notre solution complète garantit des connexions chiffrées, protégeant efficacement vos données sensibles pendant que vous naviguez sur le web. Avec notre VPN, vous pouvez profiter d'un accès mondial au contenu et aux services, soutenu par des protocoles de sécurité robustes qui offrent une tranquillité d'esprit. Que ce soit pour un usage personnel ou professionnel, notre VPN garantit une connexion sûre et sécurisée pour tous vos efforts en ligne.</value>
+  </data>
+  <data name="Service11Title" xml:space="preserve">
+    <value>Sauvegarde et Restauration</value>
+  </data>
+  <data name="Service11Description" xml:space="preserve">
+    <value>La sauvegarde de serveur est un moyen fiable de garder vos données en sécurité. Nous fournissons un service de sauvegarde régulière des données de votre serveur, garantissant une protection contre les pannes et la perte de données. Toutes les sauvegardes sont stockées sur des serveurs sécurisés avec un haut niveau de sécurité, et en cas de nécessité, vous pouvez rapidement restaurer vos données. Avec nous, vos données sont toujours protégées !</value>
+  </data>
+  <data name="Service12Title" xml:space="preserve">
+    <value>Configuration d'Équipement Réseau Physique</value>
+  </data>
+  <data name="Service12Description" xml:space="preserve">
+    <value>Un service de configuration et d'optimisation d'équipement réseau, y compris les routeurs WiFi, Mikrotik, Fortinet et Cisco. Il comprend la configuration réseau, la configuration d'accès sans fil, le routage, les pare-feu et les systèmes de sécurité. Garantit la stabilité de la connexion, le contrôle du trafic, l'équilibrage de charge et la mise en œuvre de mécanismes de protection de la cybersécurité. La configuration est effectuée conformément aux exigences d'infrastructure et aux normes de sécurité.</value>
+  </data>
+  <data name="ViewAllServers" xml:space="preserve">
+    <value>Voir Tous les Serveurs</value>
+  </data>
 </root>
-

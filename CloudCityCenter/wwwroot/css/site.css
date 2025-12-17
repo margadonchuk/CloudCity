@@ -2976,7 +2976,7 @@ body {
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 .navbar-logo {
@@ -3249,7 +3249,7 @@ body {
 /* Mobile Menu */
 @media (max-width: 991px) {
   body {
-    padding-top: 70px;
+    padding-top: 80px;
   }
 
   .navbar-modern {
