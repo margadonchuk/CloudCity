@@ -3259,7 +3259,10 @@ body {
 @media (max-width: 991px) {
   .navbar-modern {
     min-height: 60px !important;
+    height: 60px !important;
+    max-height: 60px !important;
     padding: 8px 0 !important;
+    overflow: visible !important;
   }
   
   body {
@@ -3287,53 +3290,60 @@ body {
   .navbar-modern .container-fluid {
     display: flex !important;
     flex-direction: row !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 8px;
-    padding: 0 15px;
-    width: 100%;
-    position: relative;
-    height: 100%;
-    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    padding: 0 15px !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
   }
   
   .navbar-modern .container-fluid > * {
     display: inline-flex !important;
     flex-shrink: 0 !important;
+    flex-grow: 0 !important;
   }
 
   .navbar-brand {
-    flex: 0 0 auto;
-    margin: 0;
-    padding: 0;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: inline-flex !important;
-    align-items: center;
+    align-items: center !important;
     z-index: 2;
     order: 1;
-    margin-right: auto;
+    margin-right: auto !important;
+    width: auto !important;
   }
 
   .navbar-logo {
-    height: 32px;
-    width: auto;
+    height: 32px !important;
+    width: auto !important;
+    max-width: none !important;
   }
 
   .telegram-bot-link-mobile {
-    flex: 0 0 auto;
-    margin: 0;
-    padding: 0;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     z-index: 2;
     order: 2;
     width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
   }
   
   .navbar-modern .nav-link {
     display: inline-flex !important;
     width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
   }
 
   .telegram-bot-link-mobile .telegram-bot-wrapper-mobile {
@@ -3341,20 +3351,23 @@ body {
   }
 
   .telegram-bot-wrapper-mobile {
-    padding: 6px 12px;
-    gap: 4px;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #0d6efd, #667eea);
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    padding: 6px 12px !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    background: linear-gradient(135deg, #0d6efd, #667eea) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
   }
   
   .telegram-bot-wrapper-mobile:hover {
@@ -3377,67 +3390,73 @@ body {
   }
 
   .cart-link-mobile {
-    flex: 0 0 auto;
-    margin: 0;
-    padding: 8px;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 8px !important;
     display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     z-index: 2;
     order: 3;
-    color: #0d6efd;
-    font-size: 1.2rem;
-    text-decoration: none;
+    color: #0d6efd !important;
+    font-size: 1.2rem !important;
+    text-decoration: none !important;
     transition: color 0.2s;
     width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
   }
   
   .cart-link-mobile:hover {
-    color: #0b5ed7;
+    color: #0b5ed7 !important;
   }
   
   .cart-badge-mobile {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background: #dc3545;
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.65rem;
-    font-weight: 600;
-    border: 2px solid white;
+    position: absolute !important;
+    top: 2px !important;
+    right: 2px !important;
+    background: #dc3545 !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    border: 2px solid white !important;
     z-index: 3;
   }
 
   .navbar-toggler {
     flex: 0 0 auto !important;
-    margin: 0;
-    padding: 6px 10px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    margin: 0 !important;
+    padding: 6px 10px !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 8px !important;
     z-index: 3;
     order: 4;
-    font-size: 0.85rem;
-    line-height: 1;
-    background: white;
+    font-size: 0.85rem !important;
+    line-height: 1 !important;
+    background: white !important;
     display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
   }
   
   .navbar-toggler:hover {
-    border-color: #0d6efd;
-    background: #f8f9fa;
+    border-color: #0d6efd !important;
+    background: #f8f9fa !important;
   }
   
   .navbar-toggler-icon {
-    width: 18px;
-    height: 18px;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .navbar-collapse {
