@@ -261,69 +261,106 @@ else
         const submitButton = form.querySelector('button[type="submit"]');
         
         if (submitButton) {
-          // Удаляем старые обработчики если есть
+          // Удаляем все предыдущие обработчики
           const newButton = submitButton.cloneNode(true);
-          submitButton.parentNode.replaceChild(newButton, submitButton);
+          form.replaceChild(newButton, submitButton);
           
-          // Добавляем новый обработчик
+          // Добавляем обработчик на новую кнопку
           newButton.addEventListener('click', function(e) {
-            // В мобильной версии
+            // Только для мобильной версии
             if (window.innerWidth < 992) {
-              // Останавливаем все всплытие событий
+              // Полностью останавливаем событие
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();
               
-              // Закрываем dropdown если открыт
+              // Сохраняем данные формы
+              const formData = new FormData(form);
+              const culture = formData.get('culture');
+              const returnUrl = formData.get('returnUrl');
+              
+              // Закрываем dropdown через прямое манипулирование DOM
               const dropdownElement = document.querySelector('#languageDropdown');
-              if (dropdownElement && typeof bootstrap !== 'undefined') {
-                try {
-                  const dropdown = bootstrap.Dropdown.getInstance(dropdownElement);
-                  if (dropdown) {
-                    dropdown.hide();
-                  }
-                } catch(err) {
-                  // Если Bootstrap не загружен, просто скрываем через классы
-                  dropdownElement.classList.remove('show');
-                  const dropdownMenu = document.querySelector('.language-dropdown');
-                  if (dropdownMenu) {
-                    dropdownMenu.classList.remove('show');
-                  }
-                }
+              const dropdownMenu = document.querySelector('.language-dropdown');
+              
+              if (dropdownElement) {
+                dropdownElement.classList.remove('show');
+                dropdownElement.setAttribute('aria-expanded', 'false');
               }
               
-              // Закрываем collapse меню если открыто
+              if (dropdownMenu) {
+                dropdownMenu.classList.remove('show');
+              }
+              
+              // Закрываем collapse меню через прямое манипулирование DOM
               if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                if (typeof bootstrap !== 'undefined') {
-                  try {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) {
-                      bsCollapse.hide();
-                    }
-                  } catch(err) {
-                    // Если Bootstrap не загружен, просто скрываем через классы
-                    navbarCollapse.classList.remove('show');
-                  }
-                } else {
-                  navbarCollapse.classList.remove('show');
+                navbarCollapse.classList.remove('show');
+                navbarCollapse.style.display = 'none';
+                
+                // Обновляем aria атрибуты
+                const toggler = document.querySelector('.navbar-toggler');
+                if (toggler) {
+                  toggler.setAttribute('aria-expanded', 'false');
+                  toggler.classList.add('collapsed');
                 }
               }
               
-              // Небольшая задержка перед отправкой формы для закрытия меню
-              setTimeout(function() {
-                form.submit();
-              }, 100);
+              // Создаем скрытую форму и отправляем её
+              const hiddenForm = document.createElement('form');
+              hiddenForm.method = 'POST';
+              hiddenForm.action = form.action;
+              hiddenForm.style.display = 'none';
+              
+              // Копируем токен
+              const token = form.querySelector('input[name="__RequestVerificationToken"]');
+              if (token) {
+                const tokenInput = document.createElement('input');
+                tokenInput.type = 'hidden';
+                tokenInput.name = '__RequestVerificationToken';
+                tokenInput.value = token.value;
+                hiddenForm.appendChild(tokenInput);
+              }
+              
+              // Добавляем culture
+              const cultureInput = document.createElement('input');
+              cultureInput.type = 'hidden';
+              cultureInput.name = 'culture';
+              cultureInput.value = culture;
+              hiddenForm.appendChild(cultureInput);
+              
+              // Добавляем returnUrl
+              const returnUrlInput = document.createElement('input');
+              returnUrlInput.type = 'hidden';
+              returnUrlInput.name = 'returnUrl';
+              returnUrlInput.value = returnUrl;
+              hiddenForm.appendChild(returnUrlInput);
+              
+              // Добавляем форму в body и отправляем
+              document.body.appendChild(hiddenForm);
+              hiddenForm.submit();
             }
-          }, true); // Используем capture phase для раннего перехвата
+          }, true); // Capture phase
         }
+        
+        // Также перехватываем submit формы
+        form.addEventListener('submit', function(e) {
+          if (window.innerWidth < 992) {
+            // В мобильной версии закрываем меню перед отправкой
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+              navbarCollapse.classList.remove('show');
+              navbarCollapse.style.display = 'none';
+            }
+          }
+        }, true);
       });
     }
     
-    // Инициализируем при загрузке DOM
+    // Инициализируем после полной загрузки
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
     } else {
-      initLanguageSwitcher();
+      // Если DOM уже загружен, ждем немного для Bootstrap
+      setTimeout(initLanguageSwitcher, 100);
     }
   })();
 </script>

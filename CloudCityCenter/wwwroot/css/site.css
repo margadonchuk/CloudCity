@@ -2965,6 +2965,7 @@ body {
   backdrop-filter: blur(10px);
   margin: 0;
   width: 100%;
+  min-height: 70px;
 }
 
 .navbar-modern .container-fluid {
@@ -3248,8 +3249,13 @@ body {
 
 /* Mobile Menu */
 @media (max-width: 991px) {
+  .navbar-modern {
+    min-height: 70px;
+    padding: 10px 0;
+  }
+  
   body {
-    padding-top: 90px !important;
+    padding-top: 100px !important;
   }
   
   /* Дополнительный отступ для контента, чтобы меню не перекрывало */
@@ -3260,11 +3266,13 @@ body {
   
   /* Убеждаемся, что первая секция не перекрывается */
   section:first-of-type {
-    padding-top: 20px;
+    padding-top: 30px;
+    margin-top: 0;
   }
-
-  .navbar-modern {
-    padding: 10px 0;
+  
+  /* Hero секции должны иметь дополнительный отступ */
+  .hero-section, .services-page-hero, section.py-5:first-of-type {
+    padding-top: 40px !important;
   }
 
   .navbar-modern .container-fluid {
