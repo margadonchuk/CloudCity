@@ -23,13 +23,20 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   margin-bottom: 60px;
   background-color: var(--light-color);
   color: var(--dark-color);
   font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Navigation link styling */
@@ -3303,7 +3310,7 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: space-between !important;
     gap: 8px !important;
     padding: 0 15px !important;
     width: 100% !important;
@@ -3325,7 +3332,6 @@ body {
     align-items: center !important;
     z-index: 2;
     order: 1;
-    margin-right: auto !important;
     width: auto !important;
   }
 
@@ -3337,12 +3343,14 @@ body {
 
   .telegram-bot-link-mobile {
     flex: 0 0 auto !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     padding: 0 !important;
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
-    position: relative !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     z-index: 2;
     order: 2;
     width: auto !important;
@@ -3402,7 +3410,7 @@ body {
 
   .cart-link-mobile {
     flex: 0 0 auto !important;
-    margin: 0 !important;
+    margin: 0 0 0 auto !important;
     padding: 8px !important;
     display: inline-flex !important;
     justify-content: center !important;
