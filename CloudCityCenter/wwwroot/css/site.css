@@ -3250,12 +3250,12 @@ body {
 /* Mobile Menu */
 @media (max-width: 991px) {
   .navbar-modern {
-    min-height: 60px;
-    padding: 8px 0;
+    min-height: 55px;
+    padding: 5px 0;
   }
   
   body {
-    padding-top: 70px !important;
+    padding-top: 80px !important;
   }
   
   /* Дополнительный отступ для контента, чтобы меню не перекрывало */
@@ -3296,7 +3296,7 @@ body {
   }
 
   .navbar-logo {
-    height: 35px;
+    height: 30px;
     width: auto;
   }
 
@@ -3349,11 +3349,11 @@ body {
   .navbar-collapse {
     order: 4;
     width: 100%;
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px solid #e0e0e0;
     flex-basis: 100%;
-    max-height: calc(100vh - 70px);
+    max-height: calc(100vh - 60px);
     overflow-y: auto;
   }
 
@@ -4459,6 +4459,9 @@ body {
     margin: 5px 0;
     border-top: 1px solid #e0e0e0;
     padding-top: 5px;
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
   }
   
   .language-mobile-header {
@@ -4471,10 +4474,19 @@ body {
     user-select: none;
     font-size: 0.9rem;
     transition: all 0.2s ease;
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
   }
   
   .language-mobile-header:hover {
     background: rgba(13, 110, 253, 0.05);
+  }
+  
+  .language-mobile-list {
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
   }
   
   .language-chevron {
@@ -4505,7 +4517,7 @@ body {
   
   .language-mobile-item {
     width: 100%;
-    padding: 8px 15px 8px 35px !important;
+    padding: 10px 15px 10px 35px !important;
     text-align: left;
     border: none;
     background: transparent;
@@ -4517,17 +4529,26 @@ body {
     margin: 0;
     cursor: pointer;
     font-size: 0.9rem;
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
   }
   
   .language-mobile-item:hover {
-    background: rgba(13, 110, 253, 0.08) !important;
+    background: rgba(13, 110, 253, 0.1) !important;
     color: #0d6efd !important;
   }
   
   .language-mobile-item.active {
-    background: rgba(13, 110, 253, 0.12) !important;
+    background: rgba(13, 110, 253, 0.15) !important;
     color: #0d6efd !important;
     font-weight: 600;
+  }
+  
+  .language-form-mobile {
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
   }
   
   .language-switcher {

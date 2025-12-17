@@ -145,7 +145,7 @@
                         </li>
                         <!-- Language Switcher для мобильной версии - компактный аккордеон -->
                         <li class="nav-item language-switcher-mobile d-lg-none">
-                            <div class="nav-link language-mobile-header" onclick="toggleLanguageMenu(this)">
+                            <div class="nav-link language-mobile-header" style="pointer-events: auto !important;">
                                 <i class="bi bi-globe me-2"></i>
                                 <span>@Localizer["Language"]: @currentLanguage</span>
                                 <i class="bi bi-chevron-down ms-auto language-chevron"></i>
@@ -274,7 +274,12 @@ else
 
 <script>
   // Функция для переключения меню языков
-  function toggleLanguageMenu(header) {
+  function toggleLanguageMenu(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const header = event ? event.currentTarget : event;
     const switcher = header.closest('.language-switcher-mobile');
     const chevron = header.querySelector('.language-chevron');
     if (switcher) {
@@ -284,7 +289,20 @@ else
         chevron.classList.toggle('bi-chevron-up');
       }
     }
+    return false;
   }
+  
+  // Инициализация аккордеона языков при загрузке
+  document.addEventListener('DOMContentLoaded', function() {
+    const languageHeaders = document.querySelectorAll('.language-mobile-header');
+    languageHeaders.forEach(function(header) {
+      header.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleLanguageMenu(e);
+      }, true);
+    });
+  });
   
   // Обработка переключения языков в мобильной версии
   (function() {
