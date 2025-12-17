@@ -3249,7 +3249,18 @@ body {
 /* Mobile Menu */
 @media (max-width: 991px) {
   body {
-    padding-top: 80px;
+    padding-top: 90px !important;
+  }
+  
+  /* Дополнительный отступ для контента, чтобы меню не перекрывало */
+  main, .container, .container-fluid, section {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Убеждаемся, что первая секция не перекрывается */
+  section:first-of-type {
+    padding-top: 20px;
   }
 
   .navbar-modern {
@@ -3334,6 +3345,8 @@ body {
     padding-top: 15px;
     border-top: 1px solid #e0e0e0;
     flex-basis: 100%;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
   }
 
   .navbar-nav-left,

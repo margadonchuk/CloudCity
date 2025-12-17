@@ -249,63 +249,83 @@ else
 
 <script>
   // Обработка переключения языков в мобильной версии
-  document.addEventListener('DOMContentLoaded', function() {
-    const navbarCollapse = document.querySelector('#navbarNav');
-    const languageForms = document.querySelectorAll('form[data-mobile-form="true"]');
-    
-    if (!navbarCollapse || languageForms.length === 0) return;
-    
-    let isLanguageFormSubmitting = false;
-    
-    // Предотвращаем закрытие collapse меню при отправке формы переключения языков
-    if (navbarCollapse) {
-      navbarCollapse.addEventListener('hide.bs.collapse', function(e) {
-        if (isLanguageFormSubmitting) {
-          e.preventDefault();
-          return false;
-        }
-      });
-    }
-    
-    // Обрабатываем клики на кнопки переключения языков
-    languageForms.forEach(function(form) {
-      const submitButton = form.querySelector('button[type="submit"]');
+  (function() {
+    function initLanguageSwitcher() {
+      const navbarCollapse = document.querySelector('#navbarNav');
+      const languageForms = document.querySelectorAll('form[data-mobile-form="true"]');
       
-      if (submitButton) {
-        submitButton.addEventListener('click', function(e) {
-          // Останавливаем всплытие события
-          e.stopPropagation();
+      if (!navbarCollapse || languageForms.length === 0) return;
+      
+      // Обрабатываем клики на кнопки переключения языков
+      languageForms.forEach(function(form) {
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        if (submitButton) {
+          // Удаляем старые обработчики если есть
+          const newButton = submitButton.cloneNode(true);
+          submitButton.parentNode.replaceChild(newButton, submitButton);
           
-          // В мобильной версии помечаем, что форма отправляется
-          if (window.innerWidth < 992) {
-            isLanguageFormSubmitting = true;
-            
-            // Небольшая задержка перед отправкой формы
-            setTimeout(function() {
-              form.submit();
-            }, 50);
-          }
-        }, true); // Используем capture phase
-      }
-      
-      // Помечаем при отправке формы
-      form.addEventListener('submit', function() {
-        if (window.innerWidth < 992) {
-          isLanguageFormSubmitting = true;
+          // Добавляем новый обработчик
+          newButton.addEventListener('click', function(e) {
+            // В мобильной версии
+            if (window.innerWidth < 992) {
+              // Останавливаем все всплытие событий
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              
+              // Закрываем dropdown если открыт
+              const dropdownElement = document.querySelector('#languageDropdown');
+              if (dropdownElement && typeof bootstrap !== 'undefined') {
+                try {
+                  const dropdown = bootstrap.Dropdown.getInstance(dropdownElement);
+                  if (dropdown) {
+                    dropdown.hide();
+                  }
+                } catch(err) {
+                  // Если Bootstrap не загружен, просто скрываем через классы
+                  dropdownElement.classList.remove('show');
+                  const dropdownMenu = document.querySelector('.language-dropdown');
+                  if (dropdownMenu) {
+                    dropdownMenu.classList.remove('show');
+                  }
+                }
+              }
+              
+              // Закрываем collapse меню если открыто
+              if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                if (typeof bootstrap !== 'undefined') {
+                  try {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) {
+                      bsCollapse.hide();
+                    }
+                  } catch(err) {
+                    // Если Bootstrap не загружен, просто скрываем через классы
+                    navbarCollapse.classList.remove('show');
+                  }
+                } else {
+                  navbarCollapse.classList.remove('show');
+                }
+              }
+              
+              // Небольшая задержка перед отправкой формы для закрытия меню
+              setTimeout(function() {
+                form.submit();
+              }, 100);
+            }
+          }, true); // Используем capture phase для раннего перехвата
         }
       });
-    });
-    
-    // Предотвращаем закрытие dropdown при клике внутри
-    const languageDropdown = document.querySelector('.language-dropdown');
-    if (languageDropdown) {
-      languageDropdown.addEventListener('click', function(e) {
-        if (e.target.closest('form[data-mobile-form="true"]')) {
-          e.stopPropagation();
-        }
-      }, true);
     }
-  });
+    
+    // Инициализируем при загрузке DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+      initLanguageSwitcher();
+    }
+  })();
 </script>
 
 
