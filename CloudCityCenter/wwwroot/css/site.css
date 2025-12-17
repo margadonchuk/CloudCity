@@ -3285,21 +3285,28 @@ body {
   }
 
   .navbar-modern .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     gap: 8px;
     padding: 0 15px;
     width: 100%;
     position: relative;
     height: 100%;
+    flex-wrap: nowrap !important;
+  }
+  
+  .navbar-modern .container-fluid > * {
+    display: inline-flex !important;
+    flex-shrink: 0 !important;
   }
 
   .navbar-brand {
     flex: 0 0 auto;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: inline-flex !important;
     align-items: center;
     z-index: 2;
     order: 1;
@@ -3315,12 +3322,18 @@ body {
     flex: 0 0 auto;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: inline-flex !important;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 2;
     order: 2;
+    width: auto !important;
+  }
+  
+  .navbar-modern .nav-link {
+    display: inline-flex !important;
+    width: auto !important;
   }
 
   .telegram-bot-link-mobile .telegram-bot-wrapper-mobile {
@@ -3367,7 +3380,7 @@ body {
     flex: 0 0 auto;
     margin: 0;
     padding: 8px;
-    display: flex;
+    display: inline-flex !important;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -3377,6 +3390,7 @@ body {
     font-size: 1.2rem;
     text-decoration: none;
     transition: color 0.2s;
+    width: auto !important;
   }
   
   .cart-link-mobile:hover {
@@ -3402,7 +3416,7 @@ body {
   }
 
   .navbar-toggler {
-    flex: 0 0 auto;
+    flex: 0 0 auto !important;
     margin: 0;
     padding: 6px 10px;
     border: 2px solid #e0e0e0;
@@ -3412,6 +3426,8 @@ body {
     font-size: 0.85rem;
     line-height: 1;
     background: white;
+    display: inline-flex !important;
+    width: auto !important;
   }
   
   .navbar-toggler:hover {
