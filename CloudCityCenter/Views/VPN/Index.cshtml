@@ -1,6 +1,6 @@
 @model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
 @{
-    ViewData["Title"] = "VPN Tunneling";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <!-- HERO SECTION -->
@@ -10,28 +10,26 @@
     <div class="row align-items-center">
       <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
         <div class="section-badge mb-3">
-          <span class="badge-text">VPN</span>
+          <span class="badge-text">@Localizer["VPN"]</span>
         </div>
         <h1 class="display-4 fw-bold mb-4 vpn-page-title">
-          <span class="text-gradient-2">VPN</span> <span class="text-primary">Tunneling</span>
+          <span class="text-gradient-2">@Localizer["VPNTunneling"]</span>
         </h1>
         <p class="vpn-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          A VPN (Virtual Private Network) is a technology that provides a secure connection over the Internet. 
-          It hides your real IP address, encrypts all traffic, and allows you to work safely even on public Wi-Fi networks. 
-          A VPN is necessary to protect personal data, bypass blocks, maintain privacy, and ensure business security.
+          @Localizer["VPNDescription"]
         </p>
         <div class="vpn-features mb-4">
           <div class="vpn-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Encrypted traffic end-to-end</span>
+            <span>@Localizer["EncryptedTraffic"]</span>
           </div>
           <div class="vpn-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Stable cross-region connectivity</span>
+            <span>@Localizer["StableConnectivity"]</span>
           </div>
           <div class="vpn-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Easy management & monitoring</span>
+            <span>@Localizer["EasyManagement"]</span>
           </div>
         </div>
       </div>
@@ -48,8 +46,8 @@
 <!-- VPN PLANS SECTION -->
 <section class="container py-5">
     <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-      <h2 class="display-5 fw-bold mb-3">VPN Plans</h2>
-      <p class="lead text-muted">Choose the perfect VPN solution for your needs</p>
+      <h2 class="display-5 fw-bold mb-3">@Localizer["VPNPlans"]</h2>
+      <p class="lead text-muted">@Localizer["ChooseVPNSolution"]</p>
     </div>
     <div class="row g-4 justify-content-center">
         @foreach (var item in Model)

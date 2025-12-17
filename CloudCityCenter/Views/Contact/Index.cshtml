@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <!-- CONTACT HERO SECTION -->
@@ -11,13 +11,13 @@
   <div class="container">
     <div class="text-center py-5 animate-on-scroll" data-animation="fade-in-up">
       <div class="section-badge mb-4">
-        <span class="badge-text">Get In Touch</span>
+        <span class="badge-text">@Localizer["GetInTouch"]</span>
       </div>
       <h1 class="display-2 fw-bold mb-4 contact-hero-title">
-        <span class="text-gradient-2">Contact</span> <span class="text-white">Us</span>
+        <span class="text-gradient-2">@Localizer["ContactUs"]</span>
       </h1>
       <p class="lead contact-hero-text" style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.95); max-width: 800px; margin: 0 auto; line-height: 1.8;">
-        We're here to help! Reach out to us through any of the channels below. Our team is ready to assist you with any questions or support you may need.
+        @Localizer["ContactHeroText"]
       </p>
     </div>
   </div>
@@ -33,8 +33,8 @@
           <div class="contact-method-icon email-icon">
             <i class="bi bi-envelope-fill"></i>
           </div>
-          <h3 class="contact-method-title">Email</h3>
-          <p class="contact-method-description">Send us an email anytime</p>
+          <h3 class="contact-method-title">@Localizer["Email"]</h3>
+          <p class="contact-method-description">@Localizer["EmailDesc"]</p>
           <a href="mailto:support@cloudcity.center" class="contact-method-link">
             support@cloudcity.center
             <i class="bi bi-arrow-right ms-2"></i>
@@ -48,10 +48,10 @@
           <div class="contact-method-icon telegram-icon">
             <i class="bi bi-telegram"></i>
           </div>
-          <h3 class="contact-method-title">Technical Support</h3>
-          <p class="contact-method-description">Get technical assistance</p>
+          <h3 class="contact-method-title">@Localizer["TechnicalSupport"]</h3>
+          <p class="contact-method-description">@Localizer["TechnicalSupportDesc"]</p>
           <a href="https://t.me/tech_spec_cloudcity" target="_blank" class="contact-method-link">
-            Write to specialist
+            @Localizer["WriteToSpecialist"]
             <i class="bi bi-arrow-right ms-2"></i>
           </a>
         </div>
@@ -63,10 +63,10 @@
           <div class="contact-method-icon finance-icon">
             <i class="bi bi-wallet2"></i>
           </div>
-          <h3 class="contact-method-title">Financial Support</h3>
-          <p class="contact-method-description">Billing and payment questions</p>
+          <h3 class="contact-method-title">@Localizer["FinancialSupport"]</h3>
+          <p class="contact-method-description">@Localizer["FinancialSupportDesc"]</p>
           <a href="https://t.me/finance_cloudcity" target="_blank" class="contact-method-link">
-            Contact finance team
+            @Localizer["ContactFinanceTeam"]
             <i class="bi bi-arrow-right ms-2"></i>
           </a>
         </div>
@@ -78,10 +78,10 @@
           <div class="contact-method-icon main-telegram-icon">
             <i class="bi bi-chat-dots-fill"></i>
           </div>
-          <h3 class="contact-method-title">General Inquiries</h3>
-          <p class="contact-method-description">General questions and support</p>
+          <h3 class="contact-method-title">@Localizer["GeneralInquiries"]</h3>
+          <p class="contact-method-description">@Localizer["GeneralInquiriesDesc"]</p>
           <a href="https://t.me/CloudCityCenter" target="_blank" class="contact-method-link">
-            Message on Telegram
+            @Localizer["MessageOnTelegram"]
             <i class="bi bi-arrow-right ms-2"></i>
           </a>
         </div>
@@ -98,35 +98,35 @@
       <div class="col-lg-8">
         <div class="contact-form-card animate-on-scroll" data-animation="fade-in-up">
           <div class="text-center mb-4">
-            <h2 class="display-5 fw-bold mb-3">Send Us a Message</h2>
-            <p class="text-muted">Fill out the form below and we'll get back to you as soon as possible</p>
+            <h2 class="display-5 fw-bold mb-3">@Localizer["SendUsMessage"]</h2>
+            <p class="text-muted">@Localizer["ContactFormDesc"]</p>
           </div>
           <form asp-action="Submit" method="post" class="contact-form">
             @Html.AntiForgeryToken()
             <div class="row g-3">
               <div class="col-md-6">
-                <label class="form-label">Your Name <span class="text-danger">*</span></label>
-                <input type="text" name="Name" class="form-control contact-input" placeholder="John Doe" required>
+                <label class="form-label">@Localizer["YourName"] <span class="text-danger">*</span></label>
+                <input type="text" name="Name" class="form-control contact-input" placeholder="@Localizer["YourName"]" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Your Email <span class="text-danger">*</span></label>
-                <input type="email" name="Email" class="form-control contact-input" placeholder="john@example.com" required>
+                <label class="form-label">@Localizer["YourEmail"] <span class="text-danger">*</span></label>
+                <input type="email" name="Email" class="form-control contact-input" placeholder="@Localizer["YourEmail"]" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Phone Number <span class="text-danger">*</span></label>
-                <input type="tel" name="Phone" class="form-control contact-input" placeholder="+1 234 567 8900" required>
+                <label class="form-label">@Localizer["PhoneNumber"] <span class="text-danger">*</span></label>
+                <input type="tel" name="Phone" class="form-control contact-input" placeholder="@Localizer["PhoneNumber"]" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Service Type</label>
-                <input type="text" name="ServiceType" class="form-control contact-input" placeholder="Server, VPS, VPN, etc.">
+                <label class="form-label">@Localizer["ServiceType"]</label>
+                <input type="text" name="ServiceType" class="form-control contact-input" placeholder="@Localizer["ServiceType"]">
               </div>
               <div class="col-12">
-                <label class="form-label">Message</label>
-                <textarea name="Message" class="form-control contact-textarea" rows="5" placeholder="Tell us how we can help you..."></textarea>
+                <label class="form-label">@Localizer["Message"]</label>
+                <textarea name="Message" class="form-control contact-textarea" rows="5" placeholder="@Localizer["Message"]"></textarea>
               </div>
               <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary btn-lg contact-submit-btn">
-                  <i class="bi bi-send-fill me-2"></i>Send Message
+                  <i class="bi bi-send-fill me-2"></i>@Localizer["SendMessage"]
                 </button>
               </div>
             </div>

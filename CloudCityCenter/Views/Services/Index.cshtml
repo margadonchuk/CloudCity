@@ -1,7 +1,7 @@
 @model CloudCityCenter.Models.ViewModels.ServiceIndexViewModel
 
 @{
-    ViewData["Title"] = "Services";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <!-- SERVICES HERO SECTION -->
@@ -11,16 +11,16 @@
     <div class="row align-items-center">
       <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
         <div class="section-badge mb-3">
-          <span class="badge-text">Services</span>
+          <span class="badge-text">@Localizer["Services"]</span>
         </div>
         <h2 class="display-4 fw-bold mb-4 services-page-title">
-          <span class="text-gradient-2">Our</span> <span class="text-primary">Services</span>
+          <span class="text-gradient-2">@Localizer["OurServices"]</span>
         </h2>
         <p class="services-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          At <strong>CloudCity Center</strong>, we deliver a comprehensive range of advanced hosting and IT services designed to support businesses at every stage of growth. Our infrastructure is built on enterprise-grade hardware and cutting-edge technologies, ensuring maximum performance, stability, and security.
+          @Localizer["ServicesDescription1"]
         </p>
         <p class="services-page-text" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          With secure VPN tunneling and global data centers strategically located across Europe, the United States, and Asia, we guarantee fast and stable connections for users worldwide.
+          @Localizer["ServicesDescription2"]
         </p>
       </div>
       <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">

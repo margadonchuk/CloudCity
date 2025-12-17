@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Web-Hosting</value>
+  </data>
+  <data name="Hosting" xml:space="preserve">
+    <value>Hosting</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Web-Hosting</value>
+  </data>
+  <data name="HostingDescription" xml:space="preserve">
+    <value>Web-Hosting ist die Grundlage Ihrer Online-Präsenz und bietet zuverlässige und schnelle Lösungen für Websites jeder Größe. Bei CloudCity Center konzentrieren wir uns auf Geschwindigkeit, Sicherheit und Komfort — mit den neuesten Technologien für das beste Hosting-Erlebnis.</value>
+  </data>
+  <data name="CustomDesign" xml:space="preserve">
+    <value>Individuelles Design, Funktionalität und hohe Bandbreite</value>
+  </data>
+  <data name="SupportLanguages" xml:space="preserve">
+    <value>Unterstützung für C#, Python, PHP und beliebte Website-Builder</value>
+  </data>
+  <data name="BackupsSEO" xml:space="preserve">
+    <value>Automatische Backups, Anpassungsfähigkeit und SEO-Optimierung</value>
+  </data>
+  <data name="HostingPlans" xml:space="preserve">
+    <value>Hosting-Pläne</value>
+  </data>
+  <data name="ChooseHostingSolution" xml:space="preserve">
+    <value>Wählen Sie die perfekte Hosting-Lösung für Ihre Website</value>
+  </data>
+  <data name="CreateWebsite" xml:space="preserve">
+    <value>Website erstellen</value>
+  </data>
+  <data name="WebsiteDevelopmentServices" xml:space="preserve">
+    <value>Professionelle Website-Entwicklungsdienste</value>
+  </data>
+</root>
+

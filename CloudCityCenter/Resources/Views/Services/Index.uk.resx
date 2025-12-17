@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Послуги</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Послуги</value>
+  </data>
+  <data name="OurServices" xml:space="preserve">
+    <value>Наші послуги</value>
+  </data>
+  <data name="ServicesDescription1" xml:space="preserve">
+    <value>У CloudCity Center ми надаємо широкий спектр передових послуг хостингу та IT, розроблених для підтримки бізнесу на кожному етапі зростання. Наша інфраструктура побудована на корпоративному обладнанні та передових технологіях, забезпечуючи максимальну продуктивність, стабільність та безпеку.</value>
+  </data>
+  <data name="ServicesDescription2" xml:space="preserve">
+    <value>Завдяки безпечному VPN тунелюванню та глобальним дата-центрам, стратегічно розташованим у Європі, США та Азії, ми гарантуємо швидкі та стабільні з'єднання для користувачів по всьому світу.</value>
+  </data>
+</root>
+

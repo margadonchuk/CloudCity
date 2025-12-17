@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Веб-хостинг</value>
+  </data>
+  <data name="Hosting" xml:space="preserve">
+    <value>Хостинг</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Веб-хостинг</value>
+  </data>
+  <data name="HostingDescription" xml:space="preserve">
+    <value>Веб-хостинг — це основа вашого онлайн-присутності, що надає надійні та швидкі рішення для веб-сайтів будь-якого розміру. У CloudCity Center ми фокусуємося на швидкості, безпеці та зручності — використовуючи найновіші технології для забезпечення найкращого досвіду хостингу.</value>
+  </data>
+  <data name="CustomDesign" xml:space="preserve">
+    <value>Індивідуальний дизайн, функціональність та висока пропускна здатність</value>
+  </data>
+  <data name="SupportLanguages" xml:space="preserve">
+    <value>Підтримка C#, Python, PHP та популярних конструкторів сайтів</value>
+  </data>
+  <data name="BackupsSEO" xml:space="preserve">
+    <value>Автоматичні резервні копії, адаптивність та SEO-оптимізація</value>
+  </data>
+  <data name="HostingPlans" xml:space="preserve">
+    <value>Тарифи хостингу</value>
+  </data>
+  <data name="ChooseHostingSolution" xml:space="preserve">
+    <value>Виберіть ідеальне рішення для хостингу вашого сайту</value>
+  </data>
+  <data name="CreateWebsite" xml:space="preserve">
+    <value>Створити сайт</value>
+  </data>
+  <data name="WebsiteDevelopmentServices" xml:space="preserve">
+    <value>Професійні послуги з розробки веб-сайтів</value>
+  </data>
+</root>
+

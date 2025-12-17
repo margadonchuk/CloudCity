@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Hébergement VPS</value>
+  </data>
+  <data name="VPS" xml:space="preserve">
+    <value>VPS</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>Hébergement VPS</value>
+  </data>
+  <data name="VPSDescription" xml:space="preserve">
+    <value>VPS (serveur privé virtuel) est un serveur dédié virtuel qui combine les avantages de la location d'un serveur physique avec la commodité des technologies cloud. Chaque client reçoit son propre espace isolé avec des ressources dédiées — processeur, RAM, espace disque et accès root.</value>
+  </data>
+  <data name="DedicatedCPU" xml:space="preserve">
+    <value>CPU dédié</value>
+  </data>
+  <data name="IsolatedRAM" xml:space="preserve">
+    <value>RAM isolée</value>
+  </data>
+  <data name="SSDStorage" xml:space="preserve">
+    <value>Stockage SSD</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Sécurisé</value>
+  </data>
+  <data name="DedicatedResources" xml:space="preserve">
+    <value>Ressources dédiées et accès root complet</value>
+  </data>
+  <data name="SSDEnterprise" xml:space="preserve">
+    <value>Stockage SSD, matériel de niveau entreprise</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Support expert 24/7</value>
+  </data>
+  <data name="VPSPlans" xml:space="preserve">
+    <value>Plans VPS</value>
+  </data>
+  <data name="ChooseVPSSolution" xml:space="preserve">
+    <value>Choisissez la solution VPS parfaite pour vos besoins</value>
+  </data>
+</root>
+

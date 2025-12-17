@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VPS хостинг</value>
+  </data>
+  <data name="VPS" xml:space="preserve">
+    <value>VPS</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>VPS хостинг</value>
+  </data>
+  <data name="VPSDescription" xml:space="preserve">
+    <value>VPS (виртуальный выделенный сервер) — это виртуальный выделенный сервер, который сочетает преимущества аренды физического сервера с удобством облачных технологий. Каждый клиент получает свое изолированное пространство с выделенными ресурсами — процессор, RAM, дисковое пространство и root доступ.</value>
+  </data>
+  <data name="DedicatedCPU" xml:space="preserve">
+    <value>Выделенный CPU</value>
+  </data>
+  <data name="IsolatedRAM" xml:space="preserve">
+    <value>Изолированная RAM</value>
+  </data>
+  <data name="SSDStorage" xml:space="preserve">
+    <value>SSD хранилище</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безопасный</value>
+  </data>
+  <data name="DedicatedResources" xml:space="preserve">
+    <value>Выделенные ресурсы и полный root доступ</value>
+  </data>
+  <data name="SSDEnterprise" xml:space="preserve">
+    <value>SSD хранилище, корпоративное оборудование</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="VPSPlans" xml:space="preserve">
+    <value>Тарифы VPS</value>
+  </data>
+  <data name="ChooseVPSSolution" xml:space="preserve">
+    <value>Выберите идеальное VPS решение для ваших потребностей</value>
+  </data>
+</root>
+

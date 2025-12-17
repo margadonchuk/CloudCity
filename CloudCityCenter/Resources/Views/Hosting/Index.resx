@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Web Hosting</value>
+  </data>
+  <data name="Hosting" xml:space="preserve">
+    <value>Hosting</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Web Hosting</value>
+  </data>
+  <data name="HostingDescription" xml:space="preserve">
+    <value>Web Hosting is the foundation of your online presence, providing reliable and fast solutions for websites of any size. At CloudCity Center, we focus on speed, security, and convenience — using the latest technologies to deliver the best hosting experience.</value>
+  </data>
+  <data name="CustomDesign" xml:space="preserve">
+    <value>Custom design, functionality &amp; high bandwidth</value>
+  </data>
+  <data name="SupportLanguages" xml:space="preserve">
+    <value>Support for C#, Python, PHP, and popular website builders</value>
+  </data>
+  <data name="BackupsSEO" xml:space="preserve">
+    <value>Automatic backups, adaptability, and SEO optimization</value>
+  </data>
+  <data name="HostingPlans" xml:space="preserve">
+    <value>Hosting Plans</value>
+  </data>
+  <data name="ChooseHostingSolution" xml:space="preserve">
+    <value>Choose the perfect hosting solution for your website</value>
+  </data>
+  <data name="CreateWebsite" xml:space="preserve">
+    <value>Create Website</value>
+  </data>
+  <data name="WebsiteDevelopmentServices" xml:space="preserve">
+    <value>Professional website development services</value>
+  </data>
+</root>
+

@@ -42,5 +42,149 @@
   <data name="WhatDrivesUs" xml:space="preserve">
     <value>Was treibt uns an?</value>
   </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Zuverlässigkeit</value>
+  </data>
+  <data name="ReliabilityDesc" xml:space="preserve">
+    <value>Ihre Server laufen 24/7. Immer.</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Sicherheit</value>
+  </data>
+  <data name="SecurityDesc" xml:space="preserve">
+    <value>Firewall, VPN-Tunneling, DDoS-Schutz.</value>
+  </data>
+  <data name="Affordability" xml:space="preserve">
+    <value>Erschwinglichkeit</value>
+  </data>
+  <data name="AffordabilityDesc" xml:space="preserve">
+    <value>Hochwertiger Service ohne Bankrott.</value>
+  </data>
+  <data name="NetworkEquipment" xml:space="preserve">
+    <value>Netzwerkausrüstung</value>
+  </data>
+  <data name="NetworkEquipmentDesc" xml:space="preserve">
+    <value>Einrichtung und Abstimmung: WiFi, Mikrotik, Fortinet, Cisco.</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>VPS-Hosting</value>
+  </data>
+  <data name="VPSHostingDesc" xml:space="preserve">
+    <value>SSD, Root-Zugriff, skalierbar für Apps und Websites.</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Web-Hosting</value>
+  </data>
+  <data name="WebHostingDesc" xml:space="preserve">
+    <value>Schnelle, sichere und einfach zu verwaltende Websites.</value>
+  </data>
+  <data name="CloudStorage" xml:space="preserve">
+    <value>Cloud-Speicher</value>
+  </data>
+  <data name="CloudStorageDesc" xml:space="preserve">
+    <value>Sicherer Speicher mit Backups und schnellem Zugriff.</value>
+  </data>
+  <data name="WebDevelopment" xml:space="preserve">
+    <value>Webentwicklung</value>
+  </data>
+  <data name="WebDevelopmentDesc" xml:space="preserve">
+    <value>Maßgeschneiderte Websites und Apps: C#, Python, PHP.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Vorherige</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nächste</value>
+  </data>
+  <data name="BackendDeveloper" xml:space="preserve">
+    <value>Backend-Entwickler</value>
+  </data>
+  <data name="SupportSpecialists" xml:space="preserve">
+    <value>Support-Spezialisten und Manager</value>
+  </data>
+  <data name="FinanceSpecialist" xml:space="preserve">
+    <value>Finanzspezialist</value>
+  </data>
+  <data name="DatabaseDeveloper" xml:space="preserve">
+    <value>Datenbankentwickler</value>
+  </data>
+  <data name="FrontendDeveloper" xml:space="preserve">
+    <value>Frontend-Entwickler</value>
+  </data>
+  <data name="NetworkEngineer" xml:space="preserve">
+    <value>Netzwerktechniker</value>
+  </data>
+  <data name="WhatClientsSay" xml:space="preserve">
+    <value>Was unsere Kunden sagen</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Häufig gestellte Fragen</value>
+  </data>
+  <data name="FAQ1" xml:space="preserve">
+    <value>Welche Dienstleistungen bietet CloudCity an?</value>
+  </data>
+  <data name="FAQ1Answer" xml:space="preserve">
+    <value>CloudCity bietet erschwingliche und sichere Server-Mietdienste an mehreren Standorten weltweit, einschließlich erweitertem DDoS-Schutz, VPN-Tunneling und Firewall-Sicherheit für Ihre Geschäftsanforderungen.</value>
+  </data>
+  <data name="FAQ2" xml:space="preserve">
+    <value>In welchen Ländern sind Ihre Server verfügbar?</value>
+  </data>
+  <data name="FAQ2Answer" xml:space="preserve">
+    <value>Unsere Server sind in den Niederlanden, Deutschland, Frankreich, Polen, Großbritannien, den USA, Singapur, Indien und Australien verfügbar und gewährleisten globale Abdeckung und Zuverlässigkeit.</value>
+  </data>
+  <data name="FAQ3" xml:space="preserve">
+    <value>Was macht CloudCity-Server sicher?</value>
+  </data>
+  <data name="FAQ3Answer" xml:space="preserve">
+    <value>Wir implementieren erweiterte Firewall-Schutzmaßnahmen, DDoS-Minderungsstrategien, VPN-Tunneling für sichere Serververbindungen und extern-zu-intern IP-Adresswechsel, um robuste Sicherheit für Ihre Daten zu gewährleisten.</value>
+  </data>
+  <data name="FAQ4" xml:space="preserve">
+    <value>Wie kann ich meinen Server nach dem Kauf einrichten?</value>
+  </data>
+  <data name="FAQ4Answer" xml:space="preserve">
+    <value>Sobald Sie einen Server gekauft haben, erhalten Sie eine detaillierte Einrichtungsanleitung per E-Mail. Unser Support-Team steht Ihnen auch zur Verfügung, um Ihnen bei der Konfiguration Ihres Servers nach Ihren Anforderungen zu helfen.</value>
+  </data>
+  <data name="FAQ5" xml:space="preserve">
+    <value>Bieten Sie flexible Preispläne an?</value>
+  </data>
+  <data name="FAQ5Answer" xml:space="preserve">
+    <value>Ja, wir bieten eine Reihe von Preisplänen für Startups, kleine und mittlere Unternehmen. Sie können je nach Bedarf zwischen monatlichen, vierteljährlichen oder jährlichen Abrechnungsoptionen wählen.</value>
+  </data>
+  <data name="FAQ6" xml:space="preserve">
+    <value>Welche Support-Optionen bieten Sie an?</value>
+  </data>
+  <data name="FAQ6Answer" xml:space="preserve">
+    <value>Wir bieten 24/7-Kundensupport über Live-Chat, E-Mail und eine dedizierte Wissensdatenbank. Unser Team ist immer bereit, bei technischen Problemen oder Fragen zu helfen.</value>
+  </data>
+  <data name="FAQ7" xml:space="preserve">
+    <value>Kann ich meinen Server-Plan später upgraden?</value>
+  </data>
+  <data name="FAQ7Answer" xml:space="preserve">
+    <value>Absolut! Sie können Ihren Server-Plan jederzeit upgraden, um Ihren wachsenden Geschäftsanforderungen gerecht zu werden. Kontaktieren Sie einfach unser Support-Team, und wir führen Sie durch den Prozess.</value>
+  </data>
+  <data name="FAQ8" xml:space="preserve">
+    <value>Wie überwache ich die Leistung meines Servers?</value>
+  </data>
+  <data name="FAQ8Answer" xml:space="preserve">
+    <value>CloudCity bietet ein intuitives Control Panel, in dem Sie die Serverleistung in Echtzeit überwachen können. Sie können CPU-Auslastung, Speicher und Bandbreite verfolgen, um sicherzustellen, dass Ihr Server effizient läuft.</value>
+  </data>
+  <data name="ContactFormTitle" xml:space="preserve">
+    <value>Bitte geben Sie Ihre E-Mail-Adresse ein, und wir werden uns bald bei Ihnen melden.</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Ihr Name</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Ihre E-Mail</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Betreff</value>
+  </data>
+  <data name="YourMessage" xml:space="preserve">
+    <value>Ihre Nachricht</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Nachricht senden</value>
+  </data>
 </root>
 

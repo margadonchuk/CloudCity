@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="GetInTouch" xml:space="preserve">
+    <value>Póngase en contacto</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contáctenos</value>
+  </data>
+  <data name="ContactHeroText" xml:space="preserve">
+    <value>¡Estamos aquí para ayudar! Contáctenos a través de cualquiera de los canales a continuación. Nuestro equipo está listo para ayudarle con cualquier pregunta o soporte que pueda necesitar.</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="EmailDesc" xml:space="preserve">
+    <value>Enríenos un correo electrónico en cualquier momento</value>
+  </data>
+  <data name="TechnicalSupport" xml:space="preserve">
+    <value>Soporte técnico</value>
+  </data>
+  <data name="TechnicalSupportDesc" xml:space="preserve">
+    <value>Obtenga asistencia técnica</value>
+  </data>
+  <data name="WriteToSpecialist" xml:space="preserve">
+    <value>Escribir a un especialista</value>
+  </data>
+  <data name="FinancialSupport" xml:space="preserve">
+    <value>Soporte financiero</value>
+  </data>
+  <data name="FinancialSupportDesc" xml:space="preserve">
+    <value>Preguntas sobre facturación y pagos</value>
+  </data>
+  <data name="ContactFinanceTeam" xml:space="preserve">
+    <value>Contactar al equipo financiero</value>
+  </data>
+  <data name="GeneralInquiries" xml:space="preserve">
+    <value>Consultas generales</value>
+  </data>
+  <data name="GeneralInquiriesDesc" xml:space="preserve">
+    <value>Preguntas generales y soporte</value>
+  </data>
+  <data name="MessageOnTelegram" xml:space="preserve">
+    <value>Mensaje en Telegram</value>
+  </data>
+  <data name="SendUsMessage" xml:space="preserve">
+    <value>Enríenos un mensaje</value>
+  </data>
+  <data name="ContactFormDesc" xml:space="preserve">
+    <value>Complete el formulario a continuación y nos pondremos en contacto con usted lo antes posible</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Su nombre</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Su correo electrónico</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Número de teléfono</value>
+  </data>
+  <data name="ServiceType" xml:space="preserve">
+    <value>Tipo de servicio</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Enviar mensaje</value>
+  </data>
+</root>
+

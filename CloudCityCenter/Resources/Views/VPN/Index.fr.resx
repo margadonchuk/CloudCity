@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Tunnel VPN</value>
+  </data>
+  <data name="VPN" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="VPNTunneling" xml:space="preserve">
+    <value>Tunnel VPN</value>
+  </data>
+  <data name="VPNDescription" xml:space="preserve">
+    <value>Un VPN (réseau privé virtuel) est une technologie qui fournit une connexion sécurisée sur Internet. Il masque votre adresse IP réelle, crypte tout le trafic et vous permet de travailler en toute sécurité même sur les réseaux Wi-Fi publics. Un VPN est nécessaire pour protéger les données personnelles, contourner les blocages, maintenir la confidentialité et assurer la sécurité des entreprises.</value>
+  </data>
+  <data name="EncryptedTraffic" xml:space="preserve">
+    <value>Trafic crypté de bout en bout</value>
+  </data>
+  <data name="StableConnectivity" xml:space="preserve">
+    <value>Connectivité interrégionale stable</value>
+  </data>
+  <data name="EasyManagement" xml:space="preserve">
+    <value>Gestion et surveillance faciles</value>
+  </data>
+  <data name="VPNPlans" xml:space="preserve">
+    <value>Plans VPN</value>
+  </data>
+  <data name="ChooseVPNSolution" xml:space="preserve">
+    <value>Choisissez la solution VPN parfaite pour vos besoins</value>
+  </data>
+</root>
+

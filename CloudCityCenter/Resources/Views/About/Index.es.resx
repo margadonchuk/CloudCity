@@ -42,5 +42,149 @@
   <data name="WhatDrivesUs" xml:space="preserve">
     <value>¿Qué nos impulsa?</value>
   </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Confiabilidad</value>
+  </data>
+  <data name="ReliabilityDesc" xml:space="preserve">
+    <value>Sus servidores funcionan 24/7. Siempre.</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="SecurityDesc" xml:space="preserve">
+    <value>Firewall, túnel VPN, protección DDoS.</value>
+  </data>
+  <data name="Affordability" xml:space="preserve">
+    <value>Asequibilidad</value>
+  </data>
+  <data name="AffordabilityDesc" xml:space="preserve">
+    <value>Servicio de alta calidad sin arruinarse.</value>
+  </data>
+  <data name="NetworkEquipment" xml:space="preserve">
+    <value>Equipamiento de red</value>
+  </data>
+  <data name="NetworkEquipmentDesc" xml:space="preserve">
+    <value>Configuración y ajuste: WiFi, Mikrotik, Fortinet, Cisco.</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>Alojamiento VPS</value>
+  </data>
+  <data name="VPSHostingDesc" xml:space="preserve">
+    <value>SSD, acceso root, escalable para aplicaciones y sitios.</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Alojamiento web</value>
+  </data>
+  <data name="WebHostingDesc" xml:space="preserve">
+    <value>Sitios web rápidos, seguros y fáciles de gestionar.</value>
+  </data>
+  <data name="CloudStorage" xml:space="preserve">
+    <value>Almacenamiento en la nube</value>
+  </data>
+  <data name="CloudStorageDesc" xml:space="preserve">
+    <value>Almacenamiento seguro con copias de seguridad y acceso rápido.</value>
+  </data>
+  <data name="WebDevelopment" xml:space="preserve">
+    <value>Desarrollo web</value>
+  </data>
+  <data name="WebDevelopmentDesc" xml:space="preserve">
+    <value>Sitios y aplicaciones personalizados: C#, Python, PHP.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="BackendDeveloper" xml:space="preserve">
+    <value>Desarrollador Backend</value>
+  </data>
+  <data name="SupportSpecialists" xml:space="preserve">
+    <value>Especialistas y gerentes de soporte</value>
+  </data>
+  <data name="FinanceSpecialist" xml:space="preserve">
+    <value>Especialista financiero</value>
+  </data>
+  <data name="DatabaseDeveloper" xml:space="preserve">
+    <value>Desarrollador de bases de datos</value>
+  </data>
+  <data name="FrontendDeveloper" xml:space="preserve">
+    <value>Desarrollador Frontend</value>
+  </data>
+  <data name="NetworkEngineer" xml:space="preserve">
+    <value>Ingeniero de red</value>
+  </data>
+  <data name="WhatClientsSay" xml:space="preserve">
+    <value>Lo que dicen nuestros clientes</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="FAQ1" xml:space="preserve">
+    <value>¿Qué servicios ofrece CloudCity?</value>
+  </data>
+  <data name="FAQ1Answer" xml:space="preserve">
+    <value>CloudCity proporciona servicios de alquiler de servidores asequibles y seguros en múltiples ubicaciones en todo el mundo, incluyendo protección DDoS avanzada, túnel VPN y seguridad de firewall para sus necesidades comerciales.</value>
+  </data>
+  <data name="FAQ2" xml:space="preserve">
+    <value>¿En qué países están disponibles sus servidores?</value>
+  </data>
+  <data name="FAQ2Answer" xml:space="preserve">
+    <value>Nuestros servidores están disponibles en los Países Bajos, Alemania, Francia, Polonia, el Reino Unido, los EE. UU., Singapur, India y Australia, garantizando cobertura global y confiabilidad.</value>
+  </data>
+  <data name="FAQ3" xml:space="preserve">
+    <value>¿Qué hace seguros a los servidores de CloudCity?</value>
+  </data>
+  <data name="FAQ3Answer" xml:space="preserve">
+    <value>Implementamos protección avanzada de firewall, estrategias de mitigación DDoS, túnel VPN para conexiones de servidor seguras y cambio de direcciones IP externas a internas para garantizar una seguridad robusta para sus datos.</value>
+  </data>
+  <data name="FAQ4" xml:space="preserve">
+    <value>¿Cómo puedo configurar mi servidor después de comprarlo?</value>
+  </data>
+  <data name="FAQ4Answer" xml:space="preserve">
+    <value>Una vez que compre un servidor, recibirá una guía de configuración detallada por correo electrónico. Nuestro equipo de soporte también está disponible para ayudarle a configurar su servidor según sus requisitos.</value>
+  </data>
+  <data name="FAQ5" xml:space="preserve">
+    <value>¿Ofrecen planes de precios flexibles?</value>
+  </data>
+  <data name="FAQ5Answer" xml:space="preserve">
+    <value>Sí, ofrecemos una gama de planes de precios para adaptarse a startups, pequeñas y medianas empresas. Puede elegir entre opciones de facturación mensual, trimestral o anual según sus necesidades.</value>
+  </data>
+  <data name="FAQ6" xml:space="preserve">
+    <value>¿Qué opciones de soporte proporcionan?</value>
+  </data>
+  <data name="FAQ6Answer" xml:space="preserve">
+    <value>Proporcionamos soporte al cliente 24/7 a través de chat en vivo, correo electrónico y una base de conocimientos dedicada. Nuestro equipo siempre está listo para ayudar con problemas técnicos o preguntas.</value>
+  </data>
+  <data name="FAQ7" xml:space="preserve">
+    <value>¿Puedo actualizar mi plan de servidor más tarde?</value>
+  </data>
+  <data name="FAQ7Answer" xml:space="preserve">
+    <value>¡Absolutamente! Puede actualizar su plan de servidor en cualquier momento para satisfacer las necesidades crecientes de su negocio. Simplemente contacte a nuestro equipo de soporte, y lo guiaremos a través del proceso.</value>
+  </data>
+  <data name="FAQ8" xml:space="preserve">
+    <value>¿Cómo monitoreo el rendimiento de mi servidor?</value>
+  </data>
+  <data name="FAQ8Answer" xml:space="preserve">
+    <value>CloudCity proporciona un panel de control intuitivo donde puede monitorear el rendimiento del servidor en tiempo real. Puede rastrear el uso de CPU, memoria y ancho de banda para asegurar que su servidor funcione de manera eficiente.</value>
+  </data>
+  <data name="ContactFormTitle" xml:space="preserve">
+    <value>Por favor ingrese su dirección de correo electrónico, y nos pondremos en contacto con usted pronto.</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Su nombre</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Su correo electrónico</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="YourMessage" xml:space="preserve">
+    <value>Su mensaje</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Enviar mensaje</value>
+  </data>
 </root>
 

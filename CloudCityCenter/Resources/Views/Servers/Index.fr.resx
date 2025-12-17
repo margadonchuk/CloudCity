@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Serveurs dédiés</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Serveurs</value>
+  </data>
+  <data name="DedicatedServers" xml:space="preserve">
+    <value>Serveurs dédiés</value>
+  </data>
+  <data name="ServersDescription" xml:space="preserve">
+    <value>Nos serveurs bare-metal offrent des performances inégalées avec un contrôle matériel complet. Idéal pour les charges de travail importantes, l'hébergement de jeux ou toute application nécessitant une puissance brute.</value>
+  </data>
+  <data name="EnterpriseHardware" xml:space="preserve">
+    <value>Matériel d'entreprise et accès root</value>
+  </data>
+  <data name="MultipleDatacenters" xml:space="preserve">
+    <value>Plusieurs emplacements de centres de données</value>
+  </data>
+  <data name="MonitoringSupport" xml:space="preserve">
+    <value>Surveillance et support 24/7</value>
+  </data>
+  <data name="Powerful" xml:space="preserve">
+    <value>Puissant</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Sécurisé</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Rapide</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Mondial</value>
+  </data>
+  <data name="AvailableServers" xml:space="preserve">
+    <value>Serveurs disponibles</value>
+  </data>
+  <data name="ChoosePerfectServer" xml:space="preserve">
+    <value>Choisissez le serveur parfait pour vos besoins</value>
+  </data>
+</root>
+

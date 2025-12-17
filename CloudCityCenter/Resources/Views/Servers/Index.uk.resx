@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Виділені сервери</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Сервери</value>
+  </data>
+  <data name="DedicatedServers" xml:space="preserve">
+    <value>Виділені сервери</value>
+  </data>
+  <data name="ServersDescription" xml:space="preserve">
+    <value>Наші bare-metal сервери забезпечують неперевершену продуктивність з повним контролем обладнання. Ідеально підходять для великих навантажень, ігрового хостингу або будь-якої програми, що вимагає максимальної потужності.</value>
+  </data>
+  <data name="EnterpriseHardware" xml:space="preserve">
+    <value>Корпоративне обладнання та root доступ</value>
+  </data>
+  <data name="MultipleDatacenters" xml:space="preserve">
+    <value>Кілька локацій дата-центрів</value>
+  </data>
+  <data name="MonitoringSupport" xml:space="preserve">
+    <value>Моніторинг та підтримка 24/7</value>
+  </data>
+  <data name="Powerful" xml:space="preserve">
+    <value>Потужний</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безпечний</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Швидкий</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобальний</value>
+  </data>
+  <data name="AvailableServers" xml:space="preserve">
+    <value>Доступні сервери</value>
+  </data>
+  <data name="ChoosePerfectServer" xml:space="preserve">
+    <value>Виберіть ідеальний сервер для ваших потреб</value>
+  </data>
+</root>
+

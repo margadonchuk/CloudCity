@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Usługi</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Usługi</value>
+  </data>
+  <data name="OurServices" xml:space="preserve">
+    <value>Nasze usługi</value>
+  </data>
+  <data name="ServicesDescription1" xml:space="preserve">
+    <value>W CloudCity Center oferujemy kompleksową gamę zaawansowanych usług hostingowych i IT zaprojektowanych, aby wspierać firmy na każdym etapie wzrostu. Nasza infrastruktura jest zbudowana na sprzęcie korporacyjnym i najnowocześniejszych technologiach, zapewniając maksymalną wydajność, stabilność i bezpieczeństwo.</value>
+  </data>
+  <data name="ServicesDescription2" xml:space="preserve">
+    <value>Dzięki bezpiecznemu tunelowaniu VPN i globalnym centrom danych strategicznie zlokalizowanym w Europie, Stanach Zjednoczonych i Azji, gwarantujemy szybkie i stabilne połączenia dla użytkowników na całym świecie.</value>
+  </data>
+</root>
+

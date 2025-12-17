@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
+  <data name="GetInTouch" xml:space="preserve">
+    <value>Зв'яжіться з нами</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Зв'яжіться з нами</value>
+  </data>
+  <data name="ContactHeroText" xml:space="preserve">
+    <value>Ми тут, щоб допомогти! Зв'яжіться з нами через будь-який з каналів нижче. Наша команда готова допомогти вам з будь-якими питаннями або підтримкою, яка може вам знадобитися.</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailDesc" xml:space="preserve">
+    <value>Напишіть нам будь-коли</value>
+  </data>
+  <data name="TechnicalSupport" xml:space="preserve">
+    <value>Технічна підтримка</value>
+  </data>
+  <data name="TechnicalSupportDesc" xml:space="preserve">
+    <value>Отримайте технічну допомогу</value>
+  </data>
+  <data name="WriteToSpecialist" xml:space="preserve">
+    <value>Написати спеціалісту</value>
+  </data>
+  <data name="FinancialSupport" xml:space="preserve">
+    <value>Фінансова підтримка</value>
+  </data>
+  <data name="FinancialSupportDesc" xml:space="preserve">
+    <value>Питання щодо оплати та платежів</value>
+  </data>
+  <data name="ContactFinanceTeam" xml:space="preserve">
+    <value>Зв'язатися з фінансовою командою</value>
+  </data>
+  <data name="GeneralInquiries" xml:space="preserve">
+    <value>Загальні питання</value>
+  </data>
+  <data name="GeneralInquiriesDesc" xml:space="preserve">
+    <value>Загальні питання та підтримка</value>
+  </data>
+  <data name="MessageOnTelegram" xml:space="preserve">
+    <value>Написати в Telegram</value>
+  </data>
+  <data name="SendUsMessage" xml:space="preserve">
+    <value>Відправити нам повідомлення</value>
+  </data>
+  <data name="ContactFormDesc" xml:space="preserve">
+    <value>Заповніть форму нижче, і ми зв'яжемося з вами якомога швидше</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Ваше ім'я</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Ваш email</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Номер телефону</value>
+  </data>
+  <data name="ServiceType" xml:space="preserve">
+    <value>Тип послуги</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Повідомлення</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Відправити повідомлення</value>
+  </data>
+</root>
+

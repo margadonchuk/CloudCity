@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Alojamiento web</value>
+  </data>
+  <data name="Hosting" xml:space="preserve">
+    <value>Alojamiento</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Alojamiento web</value>
+  </data>
+  <data name="HostingDescription" xml:space="preserve">
+    <value>El alojamiento web es la base de su presencia en línea, proporcionando soluciones confiables y rápidas para sitios web de cualquier tamaño. En CloudCity Center, nos enfocamos en velocidad, seguridad y comodidad — utilizando las últimas tecnologías para ofrecer la mejor experiencia de alojamiento.</value>
+  </data>
+  <data name="CustomDesign" xml:space="preserve">
+    <value>Diseño personalizado, funcionalidad y alto ancho de banda</value>
+  </data>
+  <data name="SupportLanguages" xml:space="preserve">
+    <value>Soporte para C#, Python, PHP y constructores de sitios web populares</value>
+  </data>
+  <data name="BackupsSEO" xml:space="preserve">
+    <value>Copias de seguridad automáticas, adaptabilidad y optimización SEO</value>
+  </data>
+  <data name="HostingPlans" xml:space="preserve">
+    <value>Planes de alojamiento</value>
+  </data>
+  <data name="ChooseHostingSolution" xml:space="preserve">
+    <value>Elija la solución de alojamiento perfecta para su sitio web</value>
+  </data>
+  <data name="CreateWebsite" xml:space="preserve">
+    <value>Crear sitio web</value>
+  </data>
+  <data name="WebsiteDevelopmentServices" xml:space="preserve">
+    <value>Servicios profesionales de desarrollo de sitios web</value>
+  </data>
+</root>
+

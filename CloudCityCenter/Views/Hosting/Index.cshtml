@@ -1,6 +1,6 @@
 @model CloudCityCenter.Models.ViewModels.HostingPageVm
 @{
-    ViewData["Title"] = "Web Hosting";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <!-- HERO SECTION -->
@@ -16,28 +16,26 @@
       </div>
       <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
         <div class="section-badge mb-3">
-          <span class="badge-text">Hosting</span>
+          <span class="badge-text">@Localizer["Hosting"]</span>
         </div>
         <h1 class="display-4 fw-bold mb-4 hosting-page-title">
-          <span class="text-gradient-2">Web</span> <span class="text-primary">Hosting</span>
+          <span class="text-gradient-2">@Localizer["WebHosting"]</span>
         </h1>
         <p class="hosting-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-          Web Hosting is the foundation of your online presence, providing reliable and fast solutions 
-          for websites of any size. At <strong>CloudCity Center</strong>, we focus on speed, security, and 
-          convenience — using the latest technologies to deliver the best hosting experience.
+          @Localizer["HostingDescription"]
         </p>
         <div class="hosting-features mb-4">
           <div class="hosting-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Custom design, functionality & high bandwidth</span>
+            <span>@Localizer["CustomDesign"]</span>
           </div>
           <div class="hosting-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Support for C#, Python, PHP, and popular website builders</span>
+            <span>@Localizer["SupportLanguages"]</span>
           </div>
           <div class="hosting-feature-item">
             <i class="bi bi-check-circle-fill text-success me-2"></i>
-            <span>Automatic backups, adaptability, and SEO optimization</span>
+            <span>@Localizer["BackupsSEO"]</span>
           </div>
         </div>
       </div>
@@ -48,8 +46,8 @@
 <!-- HOSTING PLANS SECTION -->
 <section class="container py-5">
     <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-      <h2 class="display-5 fw-bold mb-3">Hosting Plans</h2>
-      <p class="lead text-muted">Choose the perfect hosting solution for your website</p>
+      <h2 class="display-5 fw-bold mb-3">@Localizer["HostingPlans"]</h2>
+      <p class="lead text-muted">@Localizer["ChooseHostingSolution"]</p>
     </div>
     <div class="row g-4">
         @foreach (var item in Model.HostingPlans)
@@ -67,8 +65,8 @@
 <section class="container py-5 position-relative">
   <div class="hosting-page-background"></div>
   <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-    <h2 class="display-5 fw-bold mb-3">Create Website</h2>
-    <p class="lead text-muted">Professional website development services</p>
+    <h2 class="display-5 fw-bold mb-3">@Localizer["CreateWebsite"]</h2>
+    <p class="lead text-muted">@Localizer["WebsiteDevelopmentServices"]</p>
   </div>
   <div class="row g-4">
       @foreach (var item in Model.WebsiteProducts)
