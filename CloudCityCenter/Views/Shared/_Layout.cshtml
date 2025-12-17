@@ -143,11 +143,12 @@
                                 }
                             </ul>
                         </li>
-                        <!-- Language Switcher для мобильной версии - всегда видимый -->
+                        <!-- Language Switcher для мобильной версии - компактный аккордеон -->
                         <li class="nav-item language-switcher-mobile d-lg-none">
-                            <div class="nav-link language-mobile-header">
+                            <div class="nav-link language-mobile-header" onclick="toggleLanguageMenu(this)">
                                 <i class="bi bi-globe me-2"></i>
-                                <span>@Localizer["Language"]</span>
+                                <span>@Localizer["Language"]: @currentLanguage</span>
+                                <i class="bi bi-chevron-down ms-auto language-chevron"></i>
                             </div>
                             <div class="language-mobile-list">
                                 @foreach (var lang in cultureNames)
@@ -272,6 +273,19 @@ else
 </script>
 
 <script>
+  // Функция для переключения меню языков
+  function toggleLanguageMenu(header) {
+    const switcher = header.closest('.language-switcher-mobile');
+    const chevron = header.querySelector('.language-chevron');
+    if (switcher) {
+      switcher.classList.toggle('active');
+      if (chevron) {
+        chevron.classList.toggle('bi-chevron-down');
+        chevron.classList.toggle('bi-chevron-up');
+      }
+    }
+  }
+  
   // Обработка переключения языков в мобильной версии
   (function() {
     function initLanguageSwitcher() {
@@ -288,6 +302,12 @@ else
           submitButton.addEventListener('click', function(e) {
             // Останавливаем всплытие, но не предотвращаем submit
             e.stopPropagation();
+            
+            // Закрываем аккордеон языков
+            const switcher = form.closest('.language-switcher-mobile');
+            if (switcher) {
+              switcher.classList.remove('active');
+            }
             
             // Закрываем collapse меню после небольшой задержки
             if (navbarCollapse && navbarCollapse.classList.contains('show')) {
