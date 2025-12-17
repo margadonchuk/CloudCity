@@ -30,5 +30,8 @@
   <data name="Language" xml:space="preserve">
     <value>Мова</value>
   </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Кошик</value>
+  </data>
 </root>
 
