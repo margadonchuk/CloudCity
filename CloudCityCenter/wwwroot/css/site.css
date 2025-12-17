@@ -3509,11 +3509,63 @@ body {
   /* Offcanvas Menu Styles */
   .offcanvas {
     width: 280px !important;
+    z-index: 1045 !important;
+  }
+  
+  .offcanvas.show {
+    visibility: visible !important;
+  }
+  
+  .offcanvas-backdrop {
+    z-index: 1040 !important;
   }
   
   .offcanvas-header {
-    padding: 15px 20px;
+    padding: 12px 15px;
     border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .offcanvas-header-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .offcanvas-header .navbar-brand {
+    margin: 0;
+    padding: 0;
+    flex: 0 0 auto;
+  }
+  
+  .telegram-bot-link-offcanvas {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+    display: inline-flex !important;
+    align-items: center;
+  }
+  
+  .cart-link-offcanvas {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 8px;
+    display: inline-flex !important;
+    align-items: center;
+    color: #0d6efd;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  .cart-link-offcanvas:hover {
+    color: #0b5ed7;
+  }
+  
+  .offcanvas-header .btn-close {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1.2rem;
   }
   
   .offcanvas-body {

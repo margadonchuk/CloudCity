@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     const cartCountEl = document.getElementById('cart-count');
                     const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
+                    const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
                     
                     if (cartCountEl) {
                         let count = parseInt(cartCountEl.textContent || '0', 10);
@@ -70,6 +71,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         count++;
                         cartCountMobileEl.textContent = count;
                         cartCountMobileEl.style.display = count > 0 ? 'inline-block' : 'none';
+                    }
+                    
+                    if (cartCountOffcanvasEl) {
+                        let count = parseInt(cartCountOffcanvasEl.textContent || '0', 10);
+                        count++;
+                        cartCountOffcanvasEl.textContent = count;
+                        cartCountOffcanvasEl.style.display = count > 0 ? 'inline-block' : 'none';
                     }
                 }
             }

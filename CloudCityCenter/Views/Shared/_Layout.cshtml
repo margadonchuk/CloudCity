@@ -186,10 +186,22 @@
         <!-- Mobile Offcanvas Menu -->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
             <div class="offcanvas-header border-bottom">
-                <h5 class="offcanvas-title d-flex align-items-center" id="mobileMenuLabel">
-                    <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo" style="height: 32px;">
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-bs-dismiss="offcanvas">
+                        <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo" style="height: 32px;">
+                    </a>
+                    <a class="nav-link telegram-bot-link-offcanvas" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+                        <div class="telegram-bot-wrapper-mobile">
+                            <i class="bi bi-telegram telegram-icon-mobile"></i>
+                            <span class="telegram-bot-text-mobile">Telegram</span>
+                        </div>
+                    </a>
+                    <a class="nav-link cart-link-offcanvas position-relative" asp-controller="Cart" asp-action="Index" data-bs-dismiss="offcanvas">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-offcanvas" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                    </a>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
             </div>
             <div class="offcanvas-body p-0">
                 <ul class="navbar-nav">
