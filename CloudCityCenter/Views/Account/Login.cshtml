@@ -1,0 +1,96 @@
+@model CloudCityCenter.Models.LoginViewModel
+@{
+    ViewData["Title"] = Localizer["LoginTitle"];
+}
+
+<!-- LOGIN HERO SECTION -->
+<section class="register-hero-section py-5 position-relative">
+  <div class="register-hero-background"></div>
+  <div class="register-hero-pattern"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="register-card animate-on-scroll" data-animation="fade-in-up">
+          <div class="register-card-header text-center mb-4">
+            <div class="register-icon-wrapper mb-3">
+              <i class="bi bi-box-arrow-in-right"></i>
+            </div>
+            <h1 class="display-4 fw-bold mb-2 register-title">
+              <span class="text-gradient-2">@Localizer["SignIn"]</span>
+            </h1>
+            <p class="text-muted">@Localizer["WelcomeBack"]</p>
+          </div>
+
+          <form asp-action="Login" method="post" class="register-form">
+            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+            
+            <div class="form-group-wrapper mb-4">
+              <label asp-for="Email" class="form-label register-label">
+                <i class="bi bi-envelope me-2"></i>@Localizer["EmailAddress"]
+              </label>
+              <input asp-for="Email" class="form-control register-input" placeholder="@Localizer["EmailPlaceholder"]" />
+              <span asp-validation-for="Email" class="text-danger register-error"></span>
+            </div>
+
+            <div class="form-group-wrapper mb-4">
+              <label asp-for="Password" class="form-label register-label">
+                <i class="bi bi-lock me-2"></i>@Localizer["Password"]
+              </label>
+              <div class="password-input-wrapper">
+                <input asp-for="Password" class="form-control register-input" type="password" placeholder="@Localizer["PasswordPlaceholder"]" id="password" />
+                <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                  <i class="bi bi-eye" id="password-eye"></i>
+                </button>
+              </div>
+              <span asp-validation-for="Password" class="text-danger register-error"></span>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" asp-for="RememberMe" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">
+                @Localizer["RememberMe"]
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100 register-submit-btn">
+              <i class="bi bi-box-arrow-in-right me-2"></i>@Localizer["SignInButton"]
+            </button>
+
+            <div class="register-divider my-4">
+              <span>@Localizer["Or"]</span>
+            </div>
+
+            <div class="text-center">
+              <p class="text-muted mb-0">
+                @Localizer["DontHaveAccount"] 
+                <a asp-controller="Account" asp-action="Register" class="register-link fw-bold">@Localizer["CreateAccount"]</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const eye = document.getElementById(inputId + '-eye');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                eye.classList.remove('bi-eye');
+                eye.classList.add('bi-eye-slash');
+            } else {
+                input.type = 'password';
+                eye.classList.remove('bi-eye-slash');
+                eye.classList.add('bi-eye');
+            }
+        }
+    </script>
+}
+
