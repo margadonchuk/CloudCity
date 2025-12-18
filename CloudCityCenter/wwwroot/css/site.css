@@ -1620,13 +1620,19 @@ body {
   color: #0d6efd;
   line-height: 1;
   margin-bottom: 5px;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #666;
+  color: #666 !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .about-btn {
