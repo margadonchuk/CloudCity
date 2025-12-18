@@ -2634,71 +2634,157 @@ body {
 
 @media (max-width: 768px) {
   .register-hero-section {
-    padding: 40px 0;
+    padding: 20px 0 40px 0;
     min-height: auto;
   }
   
   .register-card {
-    padding: 30px 20px;
-    border-radius: 20px;
+    padding: 35px 25px;
+    border-radius: 24px;
     margin: 0 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   }
   
   .register-icon-wrapper {
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem;
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    margin-bottom: 20px !important;
   }
   
   .register-title {
-    font-size: 1.75rem;
-    margin-bottom: 8px;
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
   }
   
   .register-card-header {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   .register-card-header p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .register-form {
+    margin-top: 10px;
   }
   
   .form-group-wrapper {
-    margin-bottom: 20px !important;
+    margin-bottom: 24px !important;
   }
   
   .register-label {
-    font-size: 0.9rem;
-    margin-bottom: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .register-label i {
+    font-size: 1rem;
+    margin-right: 8px;
   }
   
   .register-input {
-    padding: 12px 15px;
-    font-size: 0.95rem;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+  }
+  
+  .register-input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+  }
+  
+  .password-input-wrapper {
+    position: relative;
   }
   
   .password-toggle {
-    right: 12px;
-    font-size: 1.1rem;
+    right: 14px;
+    font-size: 1.2rem;
+    padding: 8px;
   }
   
-  .register-submit-btn {
-    padding: 12px 25px;
-    font-size: 1rem;
-    margin-top: 5px;
-  }
-  
-  .register-divider {
-    margin: 20px 0;
+  .register-error {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    display: block;
   }
   
   .form-check {
-    margin-bottom: 20px !important;
+    margin: 28px 0 !important;
+    padding: 16px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+  }
+  
+  .form-check-input {
+    margin-top: 0.3em;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 10px;
+    flex-shrink: 0;
   }
   
   .form-check-label {
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #495057;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+  
+  .form-check-label span {
+    margin-right: 4px;
+  }
+  
+  .form-check-label a {
+    margin: 0 4px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .form-check-label a:hover {
+    text-decoration: underline;
+  }
+  
+  .register-submit-btn {
+    padding: 16px 30px;
+    font-size: 1.05rem;
+    margin-top: 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  
+  .register-divider {
+    margin: 28px 0;
+  }
+  
+  .register-divider span {
+    font-size: 0.9rem;
+    padding: 0 20px;
+  }
+  
+  .text-center p {
+    font-size: 0.95rem;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+  
+  .text-center a {
+    font-size: 1rem;
+    padding: 8px 16px;
+    display: inline-block;
+    margin-top: 8px;
   }
 
   .contact-hero-section {
