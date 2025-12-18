@@ -3927,12 +3927,26 @@ body {
     flex-wrap: wrap;
   }
 
+  .hero-buttons {
+    justify-content: center !important;
+  }
+  
+  .hero-stats {
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 2rem !important;
+  }
+
   .stat-item {
     flex: 0 0 auto;
   }
 
   .stat-number {
     font-size: 2rem;
+  }
+  
+  .stat-label {
+    color: white !important;
   }
 
   .floating-card {

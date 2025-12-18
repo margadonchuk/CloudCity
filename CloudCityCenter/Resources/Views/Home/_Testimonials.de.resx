@@ -12,5 +12,8 @@
   <data name="SeeWhatClientsSay" xml:space="preserve">
     <value>Sehen Sie, was unsere Kunden über uns sagen</value>
   </data>
+  <data name="LearnMoreAboutUs" xml:space="preserve">
+    <value>Mehr über uns erfahren</value>
+  </data>
 </root>
 
