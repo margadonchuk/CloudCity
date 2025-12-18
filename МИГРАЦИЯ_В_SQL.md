@@ -147,3 +147,5 @@ SELECT Id, Name, Type, PricePerMonth, Location FROM Products;
 - Проверьте логи приложения на наличие ошибок
 
 
+
+

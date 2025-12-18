@@ -187,7 +187,7 @@
         <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
             <div class="offcanvas-header border-bottom">
                 <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-bs-dismiss="offcanvas">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-offcanvas-close>
                         <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo" style="height: 32px;">
                     </a>
                     <a class="nav-link telegram-bot-link-offcanvas" href="https://t.me/CloudCityCenter_Bot" target="_blank">
@@ -196,7 +196,7 @@
                             <span class="telegram-bot-text-mobile">Telegram</span>
                         </div>
                     </a>
-                    <a class="nav-link cart-link-offcanvas position-relative" asp-controller="Cart" asp-action="Index" data-bs-dismiss="offcanvas">
+                    <a class="nav-link cart-link-offcanvas position-relative" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-offcanvas" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
@@ -206,42 +206,42 @@
             <div class="offcanvas-body p-0">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index" data-bs-dismiss="offcanvas">
-                            <i class="bi bi-server me-2"></i>@Localizer["Servers"]
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index" data-bs-dismiss="offcanvas">
-                            <i class="bi bi-globe me-2"></i>@Localizer["Hosting"]
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index" data-bs-dismiss="offcanvas">
-                            <i class="bi bi-shield-lock me-2"></i>@Localizer["VPN"]
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index" data-bs-dismiss="offcanvas">
-                            <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index" data-bs-dismiss="offcanvas">
-                            <i class="bi bi-gear me-2"></i>@Localizer["Services"]
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index" data-bs-dismiss="offcanvas">
+                        <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-info-circle me-2"></i>@Localizer["About"]
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index" data-bs-dismiss="offcanvas">
+                        <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-gear me-2"></i>@Localizer["Services"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-server me-2"></i>@Localizer["Servers"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-globe me-2"></i>@Localizer["Hosting"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-shield-lock me-2"></i>@Localizer["VPN"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-envelope me-2"></i>@Localizer["Contact"]
                         </a>
                     </li>
                     <li class="nav-item position-relative">
-                        <a class="nav-link cart-link" asp-controller="Cart" asp-action="Index" data-bs-dismiss="offcanvas">
+                        <a class="nav-link cart-link" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-cart3 me-2"></i>@Localizer["Cart"]
                             <span id="cart-count-mobile" class="cart-badge" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                         </a>
@@ -249,7 +249,7 @@
                     @if (User.Identity?.IsAuthenticated ?? false)
                     {
                         <li class="nav-item">
-                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile" data-bs-dismiss="offcanvas">
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile" data-offcanvas-close>
                                 <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
                             </a>
                         </li>
@@ -257,7 +257,7 @@
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register" data-bs-dismiss="offcanvas">
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register" data-offcanvas-close>
                                 <i class="bi bi-person-plus me-2"></i>@Localizer["Register"]
                             </a>
                         </li>
@@ -265,7 +265,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link admin-link" asp-area="Admin" asp-controller="Servers" asp-action="Index" data-bs-dismiss="offcanvas">
+                            <a class="nav-link admin-link" asp-area="Admin" asp-controller="Servers" asp-action="Index" data-offcanvas-close>
                                 <i class="bi bi-shield-check me-2"></i>Admin
                             </a>
                         </li>
@@ -437,23 +437,20 @@ else
   // Исправление проблемы с неработающими ссылками в offcanvas меню
   document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.querySelector('#mobileMenu');
-    if (mobileMenu) {
-      // Обрабатываем клики на все ссылки в offcanvas меню
-      const offcanvasLinks = mobileMenu.querySelectorAll('a[data-bs-dismiss="offcanvas"]');
+    if (mobileMenu && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+      // Обрабатываем клики на все ссылки с атрибутом data-offcanvas-close
+      const offcanvasLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close]');
       offcanvasLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
-          // Удаляем data-bs-dismiss, чтобы ссылка работала
-          link.removeAttribute('data-bs-dismiss');
-          
-          // Закрываем меню после небольшой задержки, чтобы дать время на переход
-          setTimeout(function() {
-            if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
-              const bsOffcanvas = bootstrap.Offcanvas.getInstance(mobileMenu);
-              if (bsOffcanvas) {
-                bsOffcanvas.hide();
-              }
-            }
-          }, 100);
+          // Не предотвращаем переход по ссылке
+          // Закрываем меню сразу, но не мешаем переходу
+          const bsOffcanvas = bootstrap.Offcanvas.getInstance(mobileMenu);
+          if (bsOffcanvas) {
+            // Закрываем меню асинхронно, чтобы не мешать переходу
+            setTimeout(function() {
+              bsOffcanvas.hide();
+            }, 10);
+          }
         });
       });
     }
