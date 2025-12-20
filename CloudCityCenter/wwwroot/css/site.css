@@ -43,6 +43,12 @@ body {
 .nav-link {
   position: relative;
   padding-bottom: .25rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  color: var(--primary-color) !important;
 }
 
 .nav-link.active {
@@ -61,8 +67,20 @@ body {
   transition: width 0.3s ease;
 }
 
+.nav-link:hover::after {
+  width: 100%;
+}
+
 .nav-link.active::after {
   width: 100%;
+}
+
+.nav-link i {
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover i {
+  transform: scale(1.2) rotate(5deg);
 }
 
 .hero {
@@ -89,6 +107,20 @@ h1, h2, h3, h4, h5, h6 {
 .card {
   border: none;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
 }
 
 .card-header {
@@ -482,12 +514,38 @@ section.home-about {
     transition: all 0.3s ease;
     background-color: #3b82f6;
     border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-about .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.home-about .btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .home-about .btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-2px);
     background-color: #1e40af;
     color: #fff;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+    animation: button-bounce 0.6s ease-in-out;
+}
+
+.home-about .btn:active {
+    transform: scale(1.02) translateY(0);
 }
 
 .animate-scroll:hover {
@@ -1620,6 +1678,18 @@ body {
   justify-content: center;
   color: white;
   font-size: 1.5rem;
+  transition: all 0.3s ease;
+  animation: icon-glow 3s ease-in-out infinite;
+}
+
+.stat-icon:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+  animation: icon-pulse-hover 0.6s ease-in-out;
+}
+
+.stat-box:hover .stat-icon {
+  animation: icon-bounce 0.6s ease-in-out;
 }
 
 .stat-content {
@@ -1649,10 +1719,35 @@ body {
 
 .about-btn {
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.about-btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .about-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(13, 110, 253, 0.4);
+}
+
+.about-btn:active {
+  transform: translateY(-1px) scale(1.02);
 }
 
 /* ============================================
@@ -3656,11 +3751,23 @@ body {
   .navbar-toggler:hover {
     border-color: #0d6efd !important;
     background: #f8f9fa !important;
+    transform: scale(1.1) rotate(90deg) !important;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3) !important;
+    animation: button-bounce 0.6s ease-in-out !important;
+  }
+  
+  .navbar-toggler:active {
+    transform: scale(1.05) rotate(45deg) !important;
   }
   
   .navbar-toggler-icon {
     width: 18px !important;
     height: 18px !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .navbar-toggler:hover .navbar-toggler-icon {
+    transform: rotate(180deg) !important;
   }
 
   .navbar-collapse {
@@ -3789,6 +3896,33 @@ body {
     margin: 0;
     padding: 0.5rem;
     font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .offcanvas-header .btn-close::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(102, 102, 102, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+  }
+  
+  .offcanvas-header .btn-close:hover::before {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .offcanvas-header .btn-close:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: #0d6efd;
+    animation: icon-bounce 0.5s ease-in-out;
   }
   
   .offcanvas-body {
@@ -3810,6 +3944,16 @@ body {
   
   .offcanvas-body .nav-link:hover {
     background-color: rgba(13, 110, 253, 0.1);
+    transform: translateX(5px);
+    padding-left: 25px;
+  }
+  
+  .offcanvas-body .nav-link i {
+    transition: transform 0.3s ease;
+  }
+  
+  .offcanvas-body .nav-link:hover i {
+    transform: scale(1.3) rotate(10deg);
   }
   
   .offcanvas-body .nav-link.active {
@@ -3913,16 +4057,51 @@ body {
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   padding: 8px 12px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-toggler::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(13, 110, 253, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.navbar-toggler:hover::before {
+  width: 150px;
+  height: 150px;
 }
 
 .navbar-toggler:hover {
   border-color: #0d6efd;
-  background: rgba(13, 110, 253, 0.05);
+  background: rgba(13, 110, 253, 0.1);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+  animation: button-bounce 0.6s ease-in-out;
+}
+
+.navbar-toggler:active {
+  transform: scale(1.05) rotate(45deg);
 }
 
 .navbar-toggler:focus {
   box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+}
+
+.navbar-toggler-icon {
+  transition: transform 0.3s ease;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {
@@ -4184,16 +4363,23 @@ body {
   justify-content: center;
   box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
   transition: all 0.3s ease;
+  animation: icon-float 4s ease-in-out infinite;
 }
 
 .servers-icon-circle i {
   font-size: 2.5rem;
   color: white;
+  transition: transform 0.3s ease;
 }
 
 .servers-icon-item:hover .servers-icon-circle {
-  transform: scale(1.1);
-  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.5);
+  animation: icon-pulse 0.8s ease-in-out;
+}
+
+.servers-icon-item:hover .servers-icon-circle i {
+  transform: scale(1.2) rotate(-10deg);
 }
 
 .servers-icon-item span {
@@ -4444,16 +4630,23 @@ body {
   justify-content: center;
   box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
   transition: all 0.3s ease;
+  animation: icon-float 4s ease-in-out infinite;
 }
 
 .vps-icon-circle i {
   font-size: 2.5rem;
   color: white;
+  transition: transform 0.3s ease;
 }
 
 .vps-icon-item:hover .vps-icon-circle {
-  transform: scale(1.1);
-  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.5);
+  animation: icon-pulse 0.8s ease-in-out;
+}
+
+.vps-icon-item:hover .vps-icon-circle i {
+  transform: scale(1.2) rotate(-10deg);
 }
 
 .vps-icon-item span {
@@ -4548,16 +4741,23 @@ body {
   justify-content: center;
   box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
   transition: all 0.3s ease;
+  animation: icon-float 4s ease-in-out infinite;
 }
 
 .vdi-icon-circle i {
   font-size: 2.5rem;
   color: white;
+  transition: transform 0.3s ease;
 }
 
 .vdi-icon-item:hover .vdi-icon-circle {
-  transform: scale(1.1);
-  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.5);
+  animation: icon-pulse 0.8s ease-in-out;
+}
+
+.vdi-icon-item:hover .vdi-icon-circle i {
+  transform: scale(1.2) rotate(-10deg);
 }
 
 .vdi-icon-item span {
@@ -5217,6 +5417,239 @@ body {
   .language-option {
     padding: 12px 20px !important;
   }
+}
+
+/* ============================================
+   ENHANCED ANIMATIONS FOR BUTTONS AND ICONS
+   ============================================ */
+
+/* Global button animations */
+.btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-primary:hover {
+  animation: button-shine 1.5s ease-in-out infinite;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  background-size: 200% 200%;
+}
+
+.btn-primary i,
+.btn-outline-primary i,
+.btn-success i {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Icon animations */
+@keyframes icon-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(13, 110, 253, 0.6);
+  }
+}
+
+@keyframes icon-pulse-hover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes icon-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes button-shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes button-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes icon-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Additional icon hover effects */
+.bi-server:hover,
+.bi-globe:hover,
+.bi-shield-lock:hover,
+.bi-hdd-stack:hover,
+.bi-display:hover,
+.bi-gear:hover,
+.bi-info-circle:hover,
+.bi-envelope:hover,
+.bi-cart:hover,
+.bi-person-plus:hover {
+  animation: icon-wiggle 0.5s ease-in-out;
+}
+
+/* Telegram button enhanced animation */
+.telegram-bot-link,
+.telegram-bot-link-mobile,
+.telegram-bot-link-offcanvas {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.telegram-bot-link:hover,
+.telegram-bot-link-mobile:hover,
+.telegram-bot-link-offcanvas:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(13, 110, 253, 0.4);
+  animation: button-bounce 0.6s ease-in-out;
+}
+
+.telegram-bot-link i,
+.telegram-bot-link-mobile i,
+.telegram-bot-link-offcanvas i {
+  transition: transform 0.3s ease;
+}
+
+.telegram-bot-link:hover i,
+.telegram-bot-link-mobile:hover i,
+.telegram-bot-link-offcanvas:hover i {
+  transform: scale(1.2) rotate(15deg);
+}
+
+/* Cart icon animation */
+.cart-link,
+.cart-link-mobile,
+.cart-link-offcanvas {
+  transition: all 0.3s ease;
+}
+
+.cart-link:hover,
+.cart-link-mobile:hover,
+.cart-link-offcanvas:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.cart-link:hover i,
+.cart-link-mobile:hover i,
+.cart-link-offcanvas:hover i {
+  animation: icon-bounce 0.6s ease-in-out;
+}
+
+/* Register button animation */
+.btn-register,
+.btn-register-mobile {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-register::before,
+.btn-register-mobile::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-register:hover::before,
+.btn-register-mobile:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-register:hover,
+.btn-register-mobile:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(13, 110, 253, 0.4);
+  animation: button-bounce 0.6s ease-in-out;
+}
+
+.btn-register:hover i,
+.btn-register-mobile:hover i {
+  transform: scale(1.2) rotate(10deg);
 }
 
 
