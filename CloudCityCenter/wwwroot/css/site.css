@@ -2171,6 +2171,18 @@ body {
   margin-bottom: 60px;
 }
 
+.service-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.service-item-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .service-item-card {
   display: flex;
   align-items: center;
@@ -2180,9 +2192,10 @@ body {
   padding: 40px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.service-item-card:hover {
+.service-item-link:hover .service-item-card {
   transform: translateY(-10px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
@@ -2203,7 +2216,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.service-item-card:hover .service-item-image {
+.service-item-link:hover .service-item-image {
   transform: scale(1.05);
 }
 
@@ -2226,7 +2239,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.service-item-card:hover .service-item-icon {
+.service-item-link:hover .service-item-icon {
   transform: scale(1.1) rotate(5deg);
 }
 
@@ -4261,6 +4274,11 @@ body {
   .vpn-page-title,
   .vps-page-title {
     font-size: 2rem;
+  }
+
+  .service-item-link {
+    display: block;
+    width: 100%;
   }
 
   .service-item-card {
