@@ -17,7 +17,7 @@ public class VDIController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
         // VDI products will be added later
         var products = new List<ProductCardVm>();
