@@ -4019,14 +4019,21 @@ body {
   
   .stat-content {
     flex: 1;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .stat-value {
     font-size: 1.6rem;
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    color: #0d6efd;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   
   .stat-label {
@@ -4034,6 +4041,11 @@ body {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    color: #666 !important;
+    font-weight: 500;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .testimonial-card {
