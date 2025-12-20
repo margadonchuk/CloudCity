@@ -31,7 +31,7 @@
             </div>
             <div class="vdi-icon-item">
               <div class="vdi-icon-circle">
-                <i class="bi bi-devices"></i>
+                <i class="bi bi-laptop"></i>
               </div>
               <span>@Localizer["MultiDevice"]</span>
             </div>
@@ -67,21 +67,4 @@
   </div>
 </section>
 
-<!-- VDI PLANS SECTION -->
-<section class="container my-5">
-    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-      <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlans"]</h2>
-      <p class="lead text-muted">@Localizer["ChooseVDISolution"]</p>
-    </div>
-    <div class="row g-4">
-        @foreach (var item in Model)
-        {
-            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
-                <div class="card h-100 vdi-product-card">
-                    @await Html.PartialAsync("_ProductCard", item)
-                </div>
-            </div>
-        }
-    </div>
-</section>
 
