@@ -87,6 +87,12 @@
   <data name="Service12Description" xml:space="preserve">
     <value>Usługa konfiguracji i optymalizacji sprzętu sieciowego, w tym routerów WiFi, Mikrotik, Fortinet i Cisco. Obejmuje konfigurację sieci, konfigurację dostępu bezprzewodowego, routing, zapory ogniowe i systemy bezpieczeństwa. Zapewnia stabilność połączenia, kontrolę ruchu, równoważenie obciążenia i wdrożenie mechanizmów ochrony cyberbezpieczeństwa. Konfiguracja jest wykonywana zgodnie z wymaganiami infrastruktury i standardami bezpieczeństwa.</value>
   </data>
+  <data name="Service13Title" xml:space="preserve">
+    <value>Usługa Hostingu VDI</value>
+  </data>
+  <data name="Service13Description" xml:space="preserve">
+    <value>Przekształć swoje operacje biznesowe dzięki usłudze hostingu infrastruktury wirtualnych pulpitów (VDI) CloudCity Center. Nasze rozwiązania VDI zapewniają bezpieczne, skalowalne i elastyczne środowiska wirtualnych pulpitów dostępne z dowolnego miejsca, na dowolnym urządzeniu. Dzięki infrastrukturze klasy korporacyjnej i zaawansowanym protokołom bezpieczeństwa dostarczamy wysokowydajne wirtualne pulpity, które umożliwiają pracę zdalną, zwiększają produktywność i obniżają koszty IT. Doświadcz płynnego dostępu do swoich aplikacji i danych dzięki naszemu niezawodnemu hostingu VDI, zaprojektowanemu zgodnie z wymaganiami nowoczesnych firm.</value>
+  </data>
   <data name="ViewAllServers" xml:space="preserve">
     <value>Zobacz Wszystkie Serwery</value>
   </data>

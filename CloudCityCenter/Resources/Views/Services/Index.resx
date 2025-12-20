@@ -87,6 +87,12 @@
   <data name="Service12Description" xml:space="preserve">
     <value>A service for configuring and optimizing network equipment, including WiFi routers, Mikrotik, Fortinet, and Cisco. It includes network setup, wireless access configuration, routing, firewalls, and security systems. Ensures connection stability, traffic control, load balancing, and the implementation of cybersecurity protection mechanisms. Configuration is carried out in accordance with infrastructure requirements and security standards.</value>
   </data>
+  <data name="Service13Title" xml:space="preserve">
+    <value>VDI Hosting Service</value>
+  </data>
+  <data name="Service13Description" xml:space="preserve">
+    <value>Transform your business operations with CloudCity Center's Virtual Desktop Infrastructure (VDI) hosting service. Our VDI solutions provide secure, scalable, and flexible virtual desktop environments accessible from anywhere, on any device. With enterprise-grade infrastructure and advanced security protocols, we deliver high-performance virtual desktops that enable remote work, improve productivity, and reduce IT costs. Experience seamless access to your applications and data with our reliable VDI hosting, designed to meet the demands of modern businesses.</value>
+  </data>
   <data name="ViewAllServers" xml:space="preserve">
     <value>View All Servers</value>
   </data>

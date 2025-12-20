@@ -87,6 +87,12 @@
   <data name="Service12Description" xml:space="preserve">
     <value>Un service de configuration et d'optimisation d'équipement réseau, y compris les routeurs WiFi, Mikrotik, Fortinet et Cisco. Il comprend la configuration réseau, la configuration d'accès sans fil, le routage, les pare-feu et les systèmes de sécurité. Garantit la stabilité de la connexion, le contrôle du trafic, l'équilibrage de charge et la mise en œuvre de mécanismes de protection de la cybersécurité. La configuration est effectuée conformément aux exigences d'infrastructure et aux normes de sécurité.</value>
   </data>
+  <data name="Service13Title" xml:space="preserve">
+    <value>Service d'Hébergement VDI</value>
+  </data>
+  <data name="Service13Description" xml:space="preserve">
+    <value>Transformez vos opérations commerciales avec le service d'hébergement d'Infrastructure de Bureau Virtuel (VDI) de CloudCity Center. Nos solutions VDI fournissent des environnements de bureau virtuel sécurisés, évolutifs et flexibles accessibles de n'importe où, sur n'importe quel appareil. Avec une infrastructure de niveau entreprise et des protocoles de sécurité avancés, nous offrons des bureaux virtuels haute performance qui permettent le travail à distance, améliorent la productivité et réduisent les coûts informatiques. Profitez d'un accès transparent à vos applications et données avec notre hébergement VDI fiable, conçu pour répondre aux exigences des entreprises modernes.</value>
+  </data>
   <data name="ViewAllServers" xml:space="preserve">
     <value>Voir Tous les Serveurs</value>
   </data>

@@ -87,6 +87,12 @@
   <data name="Service12Description" xml:space="preserve">
     <value>Un servicio para configurar y optimizar equipos de red, incluyendo enrutadores WiFi, Mikrotik, Fortinet y Cisco. Incluye configuración de red, configuración de acceso inalámbrico, enrutamiento, firewalls y sistemas de seguridad. Garantiza estabilidad de conexión, control de tráfico, equilibrio de carga e implementación de mecanismos de protección de ciberseguridad. La configuración se realiza de acuerdo con los requisitos de infraestructura y estándares de seguridad.</value>
   </data>
+  <data name="Service13Title" xml:space="preserve">
+    <value>Servicio de Hosting VDI</value>
+  </data>
+  <data name="Service13Description" xml:space="preserve">
+    <value>Transforme las operaciones de su negocio con el servicio de hosting de Infraestructura de Escritorio Virtual (VDI) de CloudCity Center. Nuestras soluciones VDI proporcionan entornos de escritorio virtual seguros, escalables y flexibles accesibles desde cualquier lugar, en cualquier dispositivo. Con infraestructura de nivel empresarial y protocolos de seguridad avanzados, ofrecemos escritorios virtuales de alto rendimiento que permiten el trabajo remoto, mejoran la productividad y reducen los costos de TI. Experimente acceso fluido a sus aplicaciones y datos con nuestro hosting VDI confiable, diseñado para satisfacer las demandas de las empresas modernas.</value>
+  </data>
   <data name="ViewAllServers" xml:space="preserve">
     <value>Ver Todos los Servidores</value>
   </data>
