@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VDI Хостинг</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>VDI Хостинг</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>Виртуальная инфраструктура рабочих столов (VDI) обеспечивает безопасный удаленный доступ к виртуализированным средам рабочих столов. Получайте доступ к своему Windows рабочему столу из любого места, на любом устройстве, с корпоративной безопасностью и производительностью.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Виртуальный рабочий стол</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Облачный доступ</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безопасный</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Мультиустройственный</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Удаленный доступ из любого места</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Масштабируемые ресурсы и гибкие планы</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>VDI Планы</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Выберите идеальное VDI решение для ваших потребностей</value>
+  </data>
+</root>
+

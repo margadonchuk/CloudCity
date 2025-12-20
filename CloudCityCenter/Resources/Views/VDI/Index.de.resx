@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VDI-Hosting</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>VDI-Hosting</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>Virtual Desktop Infrastructure (VDI) bietet sicheren Remote-Zugriff auf virtualisierte Desktop-Umgebungen. Greifen Sie von überall und auf jedem Gerät auf Ihren Windows-Desktop zu, mit Unternehmenssicherheit und -leistung.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Virtueller Desktop</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Cloud-Zugriff</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Sicher</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Multi-Gerät</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Remote-Zugriff von überall</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Skalierbare Ressourcen und flexible Pläne</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Experten-Support 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>VDI-Pläne</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Wählen Sie die perfekte VDI-Lösung für Ihre Bedürfnisse</value>
+  </data>
+</root>
+

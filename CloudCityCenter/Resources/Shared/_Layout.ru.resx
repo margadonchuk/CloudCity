@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Servers" xml:space="preserve">
-    <value>Серверы</value>
+    <value>Windows Server</value>
   </data>
   <data name="Hosting" xml:space="preserve">
     <value>Хостинг</value>
@@ -11,6 +11,9 @@
   </data>
   <data name="VPS" xml:space="preserve">
     <value>VPS</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
   </data>
   <data name="Services" xml:space="preserve">
     <value>Услуги</value>

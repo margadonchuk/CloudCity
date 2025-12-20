@@ -77,6 +77,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
+                                <i class="bi bi-display me-1"></i>@Localizer["VDI"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
                                 <i class="bi bi-gear me-1"></i>@Localizer["Services"]
                             </a>
@@ -231,6 +236,11 @@
                     <li class="nav-item">
                         <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-display me-2"></i>@Localizer["VDI"]
                         </a>
                     </li>
                     <li class="nav-item">

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <data name="Title" xml:space="preserve">
-    <value>Виділені сервери</value>
+    <value>Windows Server</value>
   </data>
   <data name="Servers" xml:space="preserve">
-    <value>Сервери</value>
+    <value>Windows Server</value>
   </data>
   <data name="DedicatedServers" xml:space="preserve">
-    <value>Виділені сервери</value>
+    <value>Windows Server</value>
   </data>
   <data name="ServersDescription" xml:space="preserve">
-    <value>Наші bare-metal сервери забезпечують неперевершену продуктивність з повним контролем обладнання. Ідеально підходять для великих навантажень, ігрового хостингу або будь-якої програми, що вимагає максимальної потужності.</value>
+    <value>Наші рішення Windows Server забезпечують корпоративну продуктивність з повним контролем операційної системи Windows Server. Ідеально підходять для бізнес-додатків, Active Directory, SQL Server, Exchange та будь-якої Windows-інфраструктури, що вимагає надійного та безпечного хостингу.</value>
   </data>
   <data name="EnterpriseHardware" xml:space="preserve">
     <value>Корпоративне обладнання та root доступ</value>

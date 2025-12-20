@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Hébergement VDI</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>Hébergement VDI</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>L'infrastructure de bureau virtuel (VDI) fournit un accès à distance sécurisé aux environnements de bureau virtualisés. Accédez à votre bureau Windows depuis n'importe où, sur n'importe quel appareil, avec une sécurité et des performances de niveau entreprise.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Bureau virtuel</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Accès cloud</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Sécurisé</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Multi-appareils</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Accès à distance depuis n'importe où</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Ressources évolutives et plans flexibles</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Support expert 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>Plans VDI</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Choisissez la solution VDI parfaite pour vos besoins</value>
+  </data>
+</root>
+

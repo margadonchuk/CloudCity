@@ -1,0 +1,87 @@
+@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<!-- HERO SECTION -->
+<section class="vdi-page-hero py-5 position-relative">
+  <div class="vdi-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-2 order-md-1 animate-on-scroll" data-animation="fade-in-left">
+        <div class="vdi-page-image-wrapper">
+          <div class="vdi-icon-grid">
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-display"></i>
+              </div>
+              <span>@Localizer["VirtualDesktop"]</span>
+            </div>
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-cloud"></i>
+              </div>
+              <span>@Localizer["CloudAccess"]</span>
+            </div>
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <span>@Localizer["Secure"]</span>
+            </div>
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-devices"></i>
+              </div>
+              <span>@Localizer["MultiDevice"]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["VDI"]</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 vdi-page-title">
+          <span class="text-gradient-2">@Localizer["VDIHosting"]</span>
+        </h1>
+        <p class="vdi-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["VDIDescription"]
+        </p>
+        <div class="vdi-features mb-4">
+          <div class="vdi-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["RemoteAccess"]</span>
+          </div>
+          <div class="vdi-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["ScalableResources"]</span>
+          </div>
+          <div class="vdi-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["ExpertSupport"]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VDI PLANS SECTION -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+      <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlans"]</h2>
+      <p class="lead text-muted">@Localizer["ChooseVDISolution"]</p>
+    </div>
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+                <div class="card h-100 vdi-product-card">
+                    @await Html.PartialAsync("_ProductCard", item)
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
