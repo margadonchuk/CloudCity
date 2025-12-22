@@ -47,7 +47,7 @@ public class HostingController : Controller
             var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value);
 
             // Порядок отображения фичей для хостинга
-            var featureOrder = new[] { "CPU", "RAM", "SSD (NVMe)", "OS", "Трафик", "Страна" };
+            var featureOrder = new[] { "CPU", "RAM", "SSD (NVMe)", "OS", "Bandwidth", "Гео" };
             var orderedFeatures = new List<string>();
 
             foreach (var featureName in featureOrder)

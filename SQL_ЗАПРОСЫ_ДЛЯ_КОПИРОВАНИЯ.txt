@@ -1,58 +1,51 @@
 -- =============================================
--- Скрипт обновления товаров хостинга
--- Обновляет параметры: CPU, RAM, SSD (NVMe), OS, Bandwidth, Гео
--- Работает для SQL Server и SQLite
+-- SQL ЗАПРОСЫ ДЛЯ ОБНОВЛЕНИЯ ТОВАРОВ ХОСТИНГА
 -- =============================================
 
--- ВАЖНО: Перед выполнением выберите базу данных CloudCityDB!
--- В SQL Server Management Studio выберите CloudCityDB в выпадающем списке
--- Или раскомментируйте следующую строку:
+-- ВАЖНО: Перед выполнением убедитесь, что вы подключены к базе данных CloudCityDB!
+-- В SQL Server Management Studio выберите базу данных CloudCityDB в выпадающем списке.
+
 USE CloudCityDB;
 GO
 
 -- =============================================
 -- ШАГ 1: Обновить Location для товаров хостинга
 -- =============================================
--- Обновляем Location на "Нидерланды" для всех товаров хостинга
+
 UPDATE Products 
 SET Location = 'Нидерланды'
 WHERE Type = 1;
-
--- =============================================
--- ШАГ 1.1: Найти ID товара "Basic Hosting"
--- =============================================
--- Выполните этот запрос, чтобы узнать ID:
--- SELECT Id, Name, Slug FROM Products WHERE Slug = 'basic-hosting' AND Type = 1;
+GO
 
 -- =============================================
 -- ШАГ 2: Удалить старые фичи для "Basic Hosting"
 -- =============================================
--- Удаляем старые фичи (Storage, Email Accounts)
+
 DELETE FROM ProductFeatures 
 WHERE ProductId IN (
     SELECT Id FROM Products WHERE Slug = 'basic-hosting' AND Type = 1
 )
 AND Name IN ('Storage', 'Email Accounts', 'Трафик', 'Страна');
+GO
 
 -- Обновить существующие записи "Трафик" на "Bandwidth" для всех товаров хостинга
 UPDATE ProductFeatures
 SET Name = 'Bandwidth'
 WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 1)
 AND Name = 'Трафик';
+GO
 
 -- Обновить существующие записи "Страна" на "Гео" для всех товаров хостинга
 UPDATE ProductFeatures
 SET Name = 'Гео', Value = 'Netherlands'
 WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 1)
 AND Name = 'Страна';
+GO
 
 -- =============================================
 -- ШАГ 3: Добавить новые фичи для "Basic Hosting"
 -- =============================================
--- ВАЖНО: Замените [PRODUCT_ID] на реальный ID из ШАГА 1
--- Или используйте подзапрос (работает для SQL Server и SQLite)
 
--- Вариант 1: С использованием подзапроса (рекомендуется)
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     Id AS ProductId,
@@ -64,6 +57,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = Products.Id AND Name = 'CPU'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -76,6 +70,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = Products.Id AND Name = 'RAM'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -88,6 +83,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = Products.Id AND Name = 'SSD (NVMe)'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -100,6 +96,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = Products.Id AND Name = 'OS'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -112,6 +109,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = Products.Id AND Name = 'Bandwidth'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -124,6 +122,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = Products.Id AND Name = 'Гео'
 );
+GO
 
 -- =============================================
 -- ШАГ 4: Добавить новые товары хостинга (опционально)
@@ -134,7 +133,7 @@ INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, 
 SELECT 
     'Premium Hosting',
     'premium-hosting',
-    1, -- ProductType.Hosting
+    1,
     'Нидерланды',
     25.00,
     'Shared hosting premium',
@@ -144,8 +143,9 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'premium-hosting'
 );
+GO
 
--- Добавляем фичи для Premium Hosting
+-- Фичи для Premium Hosting
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
@@ -157,6 +157,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'CPU'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -169,6 +170,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'RAM'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -181,6 +183,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'SSD (NVMe)'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -193,6 +196,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'OS'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -205,6 +209,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Bandwidth'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -217,13 +222,14 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Гео'
 );
+GO
 
 -- Business Hosting
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
 SELECT 
     'Business Hosting',
     'business-hosting',
-    1, -- ProductType.Hosting
+    1,
     'Нидерланды',
     50.00,
     'Shared hosting business',
@@ -233,8 +239,9 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'business-hosting'
 );
+GO
 
--- Добавляем фичи для Business Hosting
+-- Фичи для Business Hosting
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
@@ -246,6 +253,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'CPU'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -258,6 +266,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'RAM'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -270,6 +279,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'SSD (NVMe)'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -282,6 +292,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'OS'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -294,6 +305,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Bandwidth'
 );
+GO
 
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
@@ -306,6 +318,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Гео'
 );
+GO
 
 -- =============================================
 -- ШАГ 5: Добавить варианты оплаты (ProductVariants)
@@ -317,13 +330,14 @@ SELECT
     p.Id AS ProductId,
     'Monthly' AS Name,
     10.00 AS Price,
-    0 AS BillingPeriod -- BillingPeriod.Monthly = 0
+    0 AS BillingPeriod
 FROM Products p
 WHERE p.Slug = 'basic-hosting' AND p.Type = 1
 AND NOT EXISTS (
     SELECT 1 FROM ProductVariants 
     WHERE ProductId = p.Id AND Name = 'Monthly'
 );
+GO
 
 -- Варианты для Premium Hosting
 INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
@@ -338,6 +352,7 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductVariants 
     WHERE ProductId = p.Id AND Name = 'Monthly'
 );
+GO
 
 -- Варианты для Business Hosting
 INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
@@ -352,28 +367,31 @@ AND NOT EXISTS (
     SELECT 1 FROM ProductVariants 
     WHERE ProductId = p.Id AND Name = 'Monthly'
 );
+GO
 
 -- =============================================
--- Проверка результатов
+-- ПРОВЕРКА РЕЗУЛЬТАТОВ
 -- =============================================
--- Выполните эти запросы для проверки:
 
 -- Проверить все товары хостинга
--- SELECT Id, Name, Slug, PricePerMonth FROM Products WHERE Type = 1;
+SELECT Id, Name, Slug, PricePerMonth, Location 
+FROM Products 
+WHERE Type = 1;
+GO
 
 -- Проверить фичи для Basic Hosting
--- SELECT pf.Name, pf.Value 
--- FROM ProductFeatures pf
--- INNER JOIN Products p ON pf.ProductId = p.Id
--- WHERE p.Slug = 'basic-hosting' AND p.Type = 1
--- ORDER BY 
---     CASE pf.Name
---         WHEN 'CPU' THEN 1
---         WHEN 'RAM' THEN 2
---         WHEN 'SSD (NVMe)' THEN 3
---         WHEN 'OS' THEN 4
---         WHEN 'Bandwidth' THEN 5
---         WHEN 'Гео' THEN 6
---         ELSE 99
---     END;
-
+SELECT pf.Name, pf.Value 
+FROM ProductFeatures pf
+INNER JOIN Products p ON pf.ProductId = p.Id
+WHERE p.Slug = 'basic-hosting' AND p.Type = 1
+ORDER BY 
+    CASE pf.Name
+        WHEN 'CPU' THEN 1
+        WHEN 'RAM' THEN 2
+        WHEN 'SSD (NVMe)' THEN 3
+        WHEN 'OS' THEN 4
+        WHEN 'Bandwidth' THEN 5
+        WHEN 'Гео' THEN 6
+        ELSE 99
+    END;
+GO
