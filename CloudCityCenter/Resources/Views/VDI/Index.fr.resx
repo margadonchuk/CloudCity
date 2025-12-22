@@ -39,5 +39,56 @@
   <data name="ChooseVDISolution" xml:space="preserve">
     <value>Choisissez la solution VDI parfaite pour vos besoins</value>
   </data>
+  <data name="VDIPlansForOnePerson" xml:space="preserve">
+    <value>VDI pour 1 personne</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Choisissez un plan adapté à vos tâches</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Trafic</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Commander</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="PlanStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="PlanStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="PlanPro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Pays-Bas</value>
+  </data>
+  <data name="RegionEurope" xml:space="preserve">
+    <value>Allemagne/France/Pologne</value>
+  </data>
+  <data name="RegionUSAsia" xml:space="preserve">
+    <value>États-Unis/Canada/Asie</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>cœur</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>Go</value>
+  </data>
 </root>
 
