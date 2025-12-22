@@ -33,5 +33,8 @@
   <data name="WebsiteDevelopmentServices" xml:space="preserve">
     <value>Services professionnels de développement de sites Web</value>
   </data>
+  <data name="HostingDescriptionText" xml:space="preserve">
+    <value>Pour le fonctionnement stable d'un projet moyen (site Web, serveur, VPN, panneau de contrôle). Avec administration et support technique:</value>
+  </data>
 </root>
 
