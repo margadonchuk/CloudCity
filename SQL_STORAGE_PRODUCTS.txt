@@ -17,7 +17,7 @@ SELECT
     5, -- ProductType.Storage
     'Netherlands',
     85.00,
-    'NAS для документов и резервных копий',
+    'NAS for documents and backups',
     1,
     1,
     '/images/nas1.png'
@@ -34,7 +34,7 @@ SELECT
     5, -- ProductType.Storage
     'Netherlands',
     135.00,
-    'Оптимальное облачное хранилище',
+    'Optimal cloud storage',
     1,
     1,
     '/images/nas2.png'
@@ -51,7 +51,7 @@ SELECT
     5, -- ProductType.Storage
     'Netherlands',
     249.00,
-    'Для критически важных данных',
+    'For critical data',
     1,
     1,
     '/images/nas3.png'

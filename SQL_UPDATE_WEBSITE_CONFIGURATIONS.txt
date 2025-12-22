@@ -1,0 +1,182 @@
+-- =============================================
+-- SQL ЗАПРОСЫ ДЛЯ ОБНОВЛЕНИЯ КОНФИГУРАЦИЙ WEBSITE ТОВАРОВ
+-- Замена русского текста на английский
+-- =============================================
+
+USE CloudCityDB;
+GO
+
+-- =============================================
+-- ОБНОВЛЕНИЕ КОНФИГУРАЦИЙ ДЛЯ WEBSITE BUILDER
+-- =============================================
+
+-- Обновить Configuration для Landing (WebsiteBuilder)
+UPDATE Products 
+SET Configuration = 'Single-page website (promo, service, product)'
+WHERE Slug = 'website-builder-landing' AND Type = 6;
+GO
+
+-- Обновить Configuration для Business (WebsiteBuilder)
+UPDATE Products 
+SET Configuration = 'Multi-page website (about company, services, contacts, etc.)'
+WHERE Slug = 'website-builder-business' AND Type = 6;
+GO
+
+-- Обновить Configuration для Shop (WebsiteBuilder)
+UPDATE Products 
+SET Configuration = 'Online store (up to 50 products)'
+WHERE Slug = 'website-builder-shop' AND Type = 6;
+GO
+
+-- =============================================
+-- ОБНОВЛЕНИЕ КОНФИГУРАЦИЙ ДЛЯ WEBSITE CODE
+-- =============================================
+
+-- Обновить Configuration для Landing Pro (WebsiteCode)
+UPDATE Products 
+SET Configuration = 'Single-page landing with custom logic'
+WHERE Slug = 'website-code-landing-pro' AND Type = 7;
+GO
+
+-- Обновить Configuration для Site Pro (WebsiteCode)
+UPDATE Products 
+SET Configuration = 'Multi-page website with logic'
+WHERE Slug = 'website-code-site-pro' AND Type = 7;
+GO
+
+-- Обновить Configuration для E-Commerce Pro (WebsiteCode)
+UPDATE Products 
+SET Configuration = 'Turnkey online store'
+WHERE Slug = 'website-code-ecommerce-pro' AND Type = 7;
+GO
+
+-- =============================================
+-- ОБНОВЛЕНИЕ ФИЧЕЙ (ProductFeatures) - ЗАМЕНА РУССКОГО НА АНГЛИЙСКИЙ
+-- =============================================
+
+-- Обновить Description для Landing (WebsiteBuilder)
+UPDATE ProductFeatures 
+SET Value = 'Single-page website (promo, service, product)'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-builder-landing' AND Type = 6)
+AND Name = 'Description';
+GO
+
+-- Обновить Included для Landing (WebsiteBuilder)
+UPDATE ProductFeatures 
+SET Value = 'Builder, responsive design, contact form, basic SEO, mobile version'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-builder-landing' AND Type = 6)
+AND Name = 'Included';
+GO
+
+-- Обновить Description для Business (WebsiteBuilder)
+UPDATE ProductFeatures 
+SET Value = 'Multi-page website (about company, services, contacts, etc.)'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-builder-business' AND Type = 6)
+AND Name = 'Description';
+GO
+
+-- Обновить Included для Business (WebsiteBuilder)
+UPDATE ProductFeatures 
+SET Value = 'Menu, up to 5 pages, responsive design, contact form, SEO, mobile version'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-builder-business' AND Type = 6)
+AND Name = 'Included';
+GO
+
+-- Обновить Description для Shop (WebsiteBuilder)
+UPDATE ProductFeatures 
+SET Value = 'Online store (up to 50 products)'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-builder-shop' AND Type = 6)
+AND Name = 'Description';
+GO
+
+-- Обновить Included для Shop (WebsiteBuilder)
+UPDATE ProductFeatures 
+SET Value = 'Catalog, shopping cart, checkout, payment, mobile version'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-builder-shop' AND Type = 6)
+AND Name = 'Included';
+GO
+
+-- Обновить Description для Landing Pro (WebsiteCode)
+UPDATE ProductFeatures 
+SET Value = 'Single-page landing with custom logic'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-code-landing-pro' AND Type = 7)
+AND Name = 'Description';
+GO
+
+-- Обновить Included для Landing Pro (WebsiteCode)
+UPDATE ProductFeatures 
+SET Value = 'Clean code, animations, forms, SEO'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-code-landing-pro' AND Type = 7)
+AND Name = 'Included';
+GO
+
+-- Обновить Description для Site Pro (WebsiteCode)
+UPDATE ProductFeatures 
+SET Value = 'Multi-page website with logic'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-code-site-pro' AND Type = 7)
+AND Name = 'Description';
+GO
+
+-- Обновить Included для Site Pro (WebsiteCode)
+UPDATE ProductFeatures 
+SET Value = 'UI/UX, SEO, database, admin panel'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-code-site-pro' AND Type = 7)
+AND Name = 'Included';
+GO
+
+-- Обновить Description для E-Commerce Pro (WebsiteCode)
+UPDATE ProductFeatures 
+SET Value = 'Turnkey online store'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-code-ecommerce-pro' AND Type = 7)
+AND Name = 'Description';
+GO
+
+-- Обновить Included для E-Commerce Pro (WebsiteCode)
+UPDATE ProductFeatures 
+SET Value = 'Full catalog, shopping cart, payment, filters, personal account'
+WHERE ProductId IN (SELECT Id FROM Products WHERE Slug = 'website-code-ecommerce-pro' AND Type = 7)
+AND Name = 'Included';
+GO
+
+-- =============================================
+-- УДАЛЕНИЕ ФИЧЕЙ "Price" (если они есть)
+-- =============================================
+
+-- Удалить фичи Price для всех WebsiteBuilder товаров
+DELETE FROM ProductFeatures 
+WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 6)
+AND Name = 'Price';
+GO
+
+-- Удалить фичи Price для всех WebsiteCode товаров
+DELETE FROM ProductFeatures 
+WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 7)
+AND Name = 'Price';
+GO
+
+-- =============================================
+-- ПРОВЕРКА РЕЗУЛЬТАТОВ
+-- =============================================
+
+-- Проверить все товары WebsiteBuilder
+SELECT Id, Name, Slug, PricePerMonth, Configuration 
+FROM Products 
+WHERE Type = 6
+ORDER BY PricePerMonth;
+GO
+
+-- Проверить все товары WebsiteCode
+SELECT Id, Name, Slug, PricePerMonth, Configuration 
+FROM Products 
+WHERE Type = 7
+ORDER BY PricePerMonth;
+GO
+
+-- Проверить фичи для Landing (WebsiteBuilder)
+SELECT pf.Name, pf.Value 
+FROM ProductFeatures pf
+INNER JOIN Products p ON pf.ProductId = p.Id
+WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
+ORDER BY pf.Id;
+GO
+

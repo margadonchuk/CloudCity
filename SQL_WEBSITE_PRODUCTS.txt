@@ -17,7 +17,7 @@ SELECT
     6, -- ProductType.WebsiteBuilder
     'Global',
     150.00,
-    'Одностраничный сайт (промо, услуга, продукт)',
+    'Single-page website (promo, service, product)',
     1,
     1,
     '/images/website.png'
@@ -34,7 +34,7 @@ SELECT
     6, -- ProductType.WebsiteBuilder
     'Global',
     250.00,
-    'Многостраничный сайт (о компании, услуги, контакты и др.)',
+    'Multi-page website (about company, services, contacts, etc.)',
     1,
     1,
     '/images/website.png'
@@ -51,7 +51,7 @@ SELECT
     6, -- ProductType.WebsiteBuilder
     'Global',
     1250.00,
-    'Интернет-магазин (до 50 товаров)',
+    'Online store (up to 50 products)',
     1,
     1,
     '/images/website.png'
@@ -72,7 +72,7 @@ SELECT
     7, -- ProductType.WebsiteCode
     'Global',
     250.00,
-    'Одностраничный лендинг с кастомной логикой',
+    'Single-page landing with custom logic',
     1,
     1,
     '/images/website.png'
@@ -89,7 +89,7 @@ SELECT
     7, -- ProductType.WebsiteCode
     'Global',
     550.00,
-    'Многостраничный сайт с логикой',
+    'Multi-page website with logic',
     1,
     1,
     '/images/website.png'
@@ -106,7 +106,7 @@ SELECT
     7, -- ProductType.WebsiteCode
     'Global',
     2550.00,
-    'Интернет-магазин под ключ',
+    'Turnkey online store',
     1,
     1,
     '/images/website.png'
@@ -123,7 +123,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Description' AS Name,
-    'Одностраничный сайт (промо, услуга, продукт)' AS Value
+    'Single-page website (promo, service, product)' AS Value
 FROM Products p
 WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
 AND NOT EXISTS (
@@ -136,25 +136,12 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Included' AS Name,
-    'Конструктор, адаптив, форма заявки, базовая SEO, мобильная версия' AS Value
+    'Builder, responsive design, contact form, basic SEO, mobile version' AS Value
 FROM Products p
 WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Included'
-);
-GO
-
-INSERT INTO ProductFeatures (ProductId, Name, Value)
-SELECT 
-    p.Id AS ProductId,
-    'Price' AS Name,
-    'от $150' AS Value
-FROM Products p
-WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
-AND NOT EXISTS (
-    SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Price'
 );
 GO
 
@@ -166,7 +153,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Description' AS Name,
-    'Многостраничный сайт (о компании, услуги, контакты и др.)' AS Value
+    'Multi-page website (about company, services, contacts, etc.)' AS Value
 FROM Products p
 WHERE p.Slug = 'website-builder-business' AND p.Type = 6
 AND NOT EXISTS (
@@ -179,25 +166,12 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Included' AS Name,
-    'Меню, до 5 страниц, адаптив, форма обратной связи, SEO, мобильная версия' AS Value
+    'Menu, up to 5 pages, responsive design, contact form, SEO, mobile version' AS Value
 FROM Products p
 WHERE p.Slug = 'website-builder-business' AND p.Type = 6
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Included'
-);
-GO
-
-INSERT INTO ProductFeatures (ProductId, Name, Value)
-SELECT 
-    p.Id AS ProductId,
-    'Price' AS Name,
-    'от $250' AS Value
-FROM Products p
-WHERE p.Slug = 'website-builder-business' AND p.Type = 6
-AND NOT EXISTS (
-    SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Price'
 );
 GO
 
@@ -209,7 +183,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Description' AS Name,
-    'Интернет-магазин (до 50 товаров)' AS Value
+    'Online store (up to 50 products)' AS Value
 FROM Products p
 WHERE p.Slug = 'website-builder-shop' AND p.Type = 6
 AND NOT EXISTS (
@@ -222,25 +196,12 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Included' AS Name,
-    'Каталог, корзина, оформление заказа, оплата, мобильная версия' AS Value
+    'Catalog, shopping cart, checkout, payment, mobile version' AS Value
 FROM Products p
 WHERE p.Slug = 'website-builder-shop' AND p.Type = 6
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Included'
-);
-GO
-
-INSERT INTO ProductFeatures (ProductId, Name, Value)
-SELECT 
-    p.Id AS ProductId,
-    'Price' AS Name,
-    'от $1250' AS Value
-FROM Products p
-WHERE p.Slug = 'website-builder-shop' AND p.Type = 6
-AND NOT EXISTS (
-    SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Price'
 );
 GO
 
@@ -252,7 +213,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Description' AS Name,
-    'Одностраничный лендинг с кастомной логикой' AS Value
+    'Single-page landing with custom logic' AS Value
 FROM Products p
 WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
 AND NOT EXISTS (
@@ -278,25 +239,12 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Included' AS Name,
-    'Чистый код, анимации, формы, SEO' AS Value
+    'Clean code, animations, forms, SEO' AS Value
 FROM Products p
 WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Included'
-);
-GO
-
-INSERT INTO ProductFeatures (ProductId, Name, Value)
-SELECT 
-    p.Id AS ProductId,
-    'Price' AS Name,
-    'от $250' AS Value
-FROM Products p
-WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
-AND NOT EXISTS (
-    SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Price'
 );
 GO
 
@@ -308,7 +256,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Description' AS Name,
-    'Многостраничный сайт с логикой' AS Value
+    'Multi-page website with logic' AS Value
 FROM Products p
 WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
 AND NOT EXISTS (
@@ -334,25 +282,12 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Included' AS Name,
-    'UI/UX, SEO, база данных, панель админа' AS Value
+    'UI/UX, SEO, database, admin panel' AS Value
 FROM Products p
 WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
     WHERE ProductId = p.Id AND Name = 'Included'
-);
-GO
-
-INSERT INTO ProductFeatures (ProductId, Name, Value)
-SELECT 
-    p.Id AS ProductId,
-    'Price' AS Name,
-    'от $550' AS Value
-FROM Products p
-WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
-AND NOT EXISTS (
-    SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Price'
 );
 GO
 
@@ -364,7 +299,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Description' AS Name,
-    'Интернет-магазин под ключ' AS Value
+    'Turnkey online store' AS Value
 FROM Products p
 WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
 AND NOT EXISTS (
@@ -390,7 +325,7 @@ INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
     'Included' AS Name,
-    'Полноценный каталог, корзина, оплата, фильтры, личный кабинет' AS Value
+    'Full catalog, shopping cart, payment, filters, personal account' AS Value
 FROM Products p
 WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
 AND NOT EXISTS (
@@ -399,18 +334,6 @@ AND NOT EXISTS (
 );
 GO
 
-INSERT INTO ProductFeatures (ProductId, Name, Value)
-SELECT 
-    p.Id AS ProductId,
-    'Price' AS Name,
-    'от $2550' AS Value
-FROM Products p
-WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
-AND NOT EXISTS (
-    SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Price'
-);
-GO
 
 -- =============================================
 -- ВАРИАНТЫ ОПЛАТЫ (ProductVariants)
