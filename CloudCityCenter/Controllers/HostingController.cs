@@ -24,6 +24,8 @@ public class HostingController : Controller
         var vpsProducts = await LoadProductCards(ProductType.VPS);
         var vpnProducts = await LoadProductCards(ProductType.VPN);
         var storageProducts = await LoadProductCards(ProductType.Storage);
+        var websiteBuilderProducts = await LoadProductCards(ProductType.WebsiteBuilder);
+        var websiteCodeProducts = await LoadProductCards(ProductType.WebsiteCode);
 
         var vm = new HostingPageVm
         {
@@ -31,7 +33,9 @@ public class HostingController : Controller
             WebsiteProducts = websiteProducts,
             VpsProducts = vpsProducts,
             VpnProducts = vpnProducts,
-            StorageProducts = storageProducts
+            StorageProducts = storageProducts,
+            WebsiteBuilderProducts = websiteBuilderProducts,
+            WebsiteCodeProducts = websiteCodeProducts
         };
 
         return View(vm);
@@ -60,6 +64,11 @@ public class HostingController : Controller
             {
                 featureOrder = new[] { "CPU", "RAM", "SSD (NVMe)", "OS", "Bandwidth", "Country" };
                 maxFeatures = 6;
+            }
+            else if (type == ProductType.WebsiteBuilder || type == ProductType.WebsiteCode)
+            {
+                featureOrder = new[] { "Description", "Included", "Technologies", "Price" };
+                maxFeatures = 10;
             }
             else
             {

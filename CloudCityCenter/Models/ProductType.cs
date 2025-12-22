@@ -8,5 +8,7 @@ public enum ProductType
     // Newly added product categories
     VPS = 3,
     VPN = 4,
-    Storage = 5
+    Storage = 5,
+    WebsiteBuilder = 6,  // Сайты на конструкторе
+    WebsiteCode = 7      // Сайты на коде
 }

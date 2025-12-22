@@ -1,0 +1,466 @@
+-- =============================================
+-- SQL ЗАПРОСЫ ДЛЯ ДОБАВЛЕНИЯ ТОВАРОВ WEBSITE BUILDER И WEBSITE CODE
+-- =============================================
+
+USE CloudCityDB;
+GO
+
+-- =============================================
+-- САЙТЫ НА КОНСТРУКТОРЕ (WebsiteBuilder)
+-- =============================================
+
+-- Landing (Конструктор)
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Landing',
+    'website-builder-landing',
+    6, -- ProductType.WebsiteBuilder
+    'Global',
+    150.00,
+    'Одностраничный сайт (промо, услуга, продукт)',
+    1,
+    1,
+    '/images/website.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'website-builder-landing'
+);
+GO
+
+-- Business (Конструктор)
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Business',
+    'website-builder-business',
+    6, -- ProductType.WebsiteBuilder
+    'Global',
+    250.00,
+    'Многостраничный сайт (о компании, услуги, контакты и др.)',
+    1,
+    1,
+    '/images/website.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'website-builder-business'
+);
+GO
+
+-- Shop (Конструктор)
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Shop',
+    'website-builder-shop',
+    6, -- ProductType.WebsiteBuilder
+    'Global',
+    1250.00,
+    'Интернет-магазин (до 50 товаров)',
+    1,
+    1,
+    '/images/website.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'website-builder-shop'
+);
+GO
+
+-- =============================================
+-- САЙТЫ НА КОДЕ (WebsiteCode)
+-- =============================================
+
+-- Landing Pro (Код)
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Landing Pro',
+    'website-code-landing-pro',
+    7, -- ProductType.WebsiteCode
+    'Global',
+    250.00,
+    'Одностраничный лендинг с кастомной логикой',
+    1,
+    1,
+    '/images/website.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'website-code-landing-pro'
+);
+GO
+
+-- Site Pro (Код)
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Site Pro',
+    'website-code-site-pro',
+    7, -- ProductType.WebsiteCode
+    'Global',
+    550.00,
+    'Многостраничный сайт с логикой',
+    1,
+    1,
+    '/images/website.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'website-code-site-pro'
+);
+GO
+
+-- E-Commerce Pro (Код)
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'E-Commerce Pro',
+    'website-code-ecommerce-pro',
+    7, -- ProductType.WebsiteCode
+    'Global',
+    2550.00,
+    'Интернет-магазин под ключ',
+    1,
+    1,
+    '/images/website.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'website-code-ecommerce-pro'
+);
+GO
+
+-- =============================================
+-- ФИЧИ ДЛЯ LANDING (Конструктор)
+-- =============================================
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Description' AS Name,
+    'Одностраничный сайт (промо, услуга, продукт)' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Description'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Included' AS Name,
+    'Конструктор, адаптив, форма заявки, базовая SEO, мобильная версия' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Included'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Price' AS Name,
+    'от $150' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-landing' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Price'
+);
+GO
+
+-- =============================================
+-- ФИЧИ ДЛЯ BUSINESS (Конструктор)
+-- =============================================
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Description' AS Name,
+    'Многостраничный сайт (о компании, услуги, контакты и др.)' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-business' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Description'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Included' AS Name,
+    'Меню, до 5 страниц, адаптив, форма обратной связи, SEO, мобильная версия' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-business' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Included'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Price' AS Name,
+    'от $250' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-business' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Price'
+);
+GO
+
+-- =============================================
+-- ФИЧИ ДЛЯ SHOP (Конструктор)
+-- =============================================
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Description' AS Name,
+    'Интернет-магазин (до 50 товаров)' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-shop' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Description'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Included' AS Name,
+    'Каталог, корзина, оформление заказа, оплата, мобильная версия' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-shop' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Included'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Price' AS Name,
+    'от $1250' AS Value
+FROM Products p
+WHERE p.Slug = 'website-builder-shop' AND p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Price'
+);
+GO
+
+-- =============================================
+-- ФИЧИ ДЛЯ LANDING PRO (Код)
+-- =============================================
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Description' AS Name,
+    'Одностраничный лендинг с кастомной логикой' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Description'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Technologies' AS Name,
+    'TypeScript' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Technologies'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Included' AS Name,
+    'Чистый код, анимации, формы, SEO' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Included'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Price' AS Name,
+    'от $250' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-landing-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Price'
+);
+GO
+
+-- =============================================
+-- ФИЧИ ДЛЯ SITE PRO (Код)
+-- =============================================
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Description' AS Name,
+    'Многостраничный сайт с логикой' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Description'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Technologies' AS Name,
+    'C# / ASP.NET / Laravel / PHP / Next.js' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Technologies'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Included' AS Name,
+    'UI/UX, SEO, база данных, панель админа' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Included'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Price' AS Name,
+    'от $550' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-site-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Price'
+);
+GO
+
+-- =============================================
+-- ФИЧИ ДЛЯ E-COMMERCE PRO (Код)
+-- =============================================
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Description' AS Name,
+    'Интернет-магазин под ключ' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Description'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Technologies' AS Name,
+    'C# / ASP.NET / Laravel / React / TypeScript' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Technologies'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Included' AS Name,
+    'Полноценный каталог, корзина, оплата, фильтры, личный кабинет' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Included'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Price' AS Name,
+    'от $2550' AS Value
+FROM Products p
+WHERE p.Slug = 'website-code-ecommerce-pro' AND p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Price'
+);
+GO
+
+-- =============================================
+-- ВАРИАНТЫ ОПЛАТЫ (ProductVariants)
+-- =============================================
+
+-- Варианты для всех товаров WebsiteBuilder
+INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
+SELECT 
+    p.Id AS ProductId,
+    'One-time' AS Name,
+    p.PricePerMonth AS Price,
+    0 AS BillingPeriod
+FROM Products p
+WHERE p.Type = 6
+AND NOT EXISTS (
+    SELECT 1 FROM ProductVariants 
+    WHERE ProductId = p.Id AND Name = 'One-time'
+);
+GO
+
+-- Варианты для всех товаров WebsiteCode
+INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
+SELECT 
+    p.Id AS ProductId,
+    'One-time' AS Name,
+    p.PricePerMonth AS Price,
+    0 AS BillingPeriod
+FROM Products p
+WHERE p.Type = 7
+AND NOT EXISTS (
+    SELECT 1 FROM ProductVariants 
+    WHERE ProductId = p.Id AND Name = 'One-time'
+);
+GO
+
+-- =============================================
+-- ПРОВЕРКА РЕЗУЛЬТАТОВ
+-- =============================================
+
+-- Проверить все товары WebsiteBuilder
+SELECT Id, Name, Slug, PricePerMonth, Configuration 
+FROM Products 
+WHERE Type = 6
+ORDER BY PricePerMonth;
+GO
+
+-- Проверить все товары WebsiteCode
+SELECT Id, Name, Slug, PricePerMonth, Configuration 
+FROM Products 
+WHERE Type = 7
+ORDER BY PricePerMonth;
+GO
+

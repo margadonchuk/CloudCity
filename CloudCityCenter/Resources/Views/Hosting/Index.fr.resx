@@ -54,5 +54,41 @@
   <data name="StorageAdditionalPrice" xml:space="preserve">
     <value>+$150/мес</value>
   </data>
+  <data name="WebsiteBuilderTitle" xml:space="preserve">
+    <value>Constructeur de sites</value>
+  </data>
+  <data name="WebsiteBuilderSubtitle" xml:space="preserve">
+    <value>Sites sur constructeur (sans code)</value>
+  </data>
+  <data name="WebsiteBuilderFeature1" xml:space="preserve">
+    <value>Solution rapide — jusqu'à 7 jours ouvrables</value>
+  </data>
+  <data name="WebsiteBuilderFeature2" xml:space="preserve">
+    <value>Hébergement et domaine — à la demande du client</value>
+  </data>
+  <data name="WebsiteBuilderFeature3" xml:space="preserve">
+    <value>CMS/constructeurs: WordPress + Elementor, Tilda, Wix</value>
+  </data>
+  <data name="WebsiteCodeTitle" xml:space="preserve">
+    <value>Développement personnalisé</value>
+  </data>
+  <data name="WebsiteCodeSubtitle" xml:space="preserve">
+    <value>Sites sur code (TypeScript, C#, PHP)</value>
+  </data>
+  <data name="WebsiteCodeFeature1" xml:space="preserve">
+    <value>Développement 7–41 jours</value>
+  </data>
+  <data name="WebsiteCodeFeature2" xml:space="preserve">
+    <value>Architecture individuelle</value>
+  </data>
+  <data name="WebsiteCodeFeature3" xml:space="preserve">
+    <value>Sécurité, protection contre SQL/XSS</value>
+  </data>
+  <data name="WebsiteCodeFeature4" xml:space="preserve">
+    <value>Hébergement/déploiement et support — sur demande</value>
+  </data>
+  <data name="SSLCertificate" xml:space="preserve">
+    <value>Certificat SSL pour chacun</value>
+  </data>
 </root>
 

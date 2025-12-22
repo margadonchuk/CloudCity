@@ -54,5 +54,41 @@
   <data name="StorageAdditionalPrice" xml:space="preserve">
     <value>+$150/мес</value>
   </data>
+  <data name="WebsiteBuilderTitle" xml:space="preserve">
+    <value>Сайти на конструкторі</value>
+  </data>
+  <data name="WebsiteBuilderSubtitle" xml:space="preserve">
+    <value>Сайти на конструкторі (без коду)</value>
+  </data>
+  <data name="WebsiteBuilderFeature1" xml:space="preserve">
+    <value>Швидке рішення — до 7 робочих днів</value>
+  </data>
+  <data name="WebsiteBuilderFeature2" xml:space="preserve">
+    <value>Хостинг і домен — за бажанням клієнта</value>
+  </data>
+  <data name="WebsiteBuilderFeature3" xml:space="preserve">
+    <value>CMS/конструктори: WordPress + Elementor, Tilda, Wix</value>
+  </data>
+  <data name="WebsiteCodeTitle" xml:space="preserve">
+    <value>Сайти на коді</value>
+  </data>
+  <data name="WebsiteCodeSubtitle" xml:space="preserve">
+    <value>Сайти на коді (TypeScript, C#, PHP)</value>
+  </data>
+  <data name="WebsiteCodeFeature1" xml:space="preserve">
+    <value>Розробка 7–41 день</value>
+  </data>
+  <data name="WebsiteCodeFeature2" xml:space="preserve">
+    <value>Індивідуальна архітектура</value>
+  </data>
+  <data name="WebsiteCodeFeature3" xml:space="preserve">
+    <value>Безпека, захист від SQL/XSS</value>
+  </data>
+  <data name="WebsiteCodeFeature4" xml:space="preserve">
+    <value>Хостинг/деплой та підтримка — на запит</value>
+  </data>
+  <data name="SSLCertificate" xml:space="preserve">
+    <value>SSL сертифікат кожному</value>
+  </data>
 </root>
 
