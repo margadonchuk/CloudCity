@@ -43,7 +43,8 @@ public class VDIController : Controller
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = p.PricePerMonth
+                        Price = p.PricePerMonth,
+                        ImageUrl = p.ImageUrl
                     };
                 })
                 .OrderBy(p => p.Price)

@@ -15,49 +15,49 @@
 
 -- Netherlands
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Start - Netherlands', 'vdi-start-netherlands', 8, 'Netherlands', 150.00, 'VDI на 1 человека - Start', 1, 1, '/images/vdi.png'
+SELECT 'VDI Start - Netherlands', 'vdi-start-netherlands', 8, 'Netherlands', 150.00, 'VDI на 1 человека - Start', 1, 1, '/images/vdi_start_1.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-start-netherlands');
 GO
 
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Standard - Netherlands', 'vdi-standard-netherlands', 8, 'Netherlands', 175.00, 'VDI на 1 человека - Standard', 1, 1, '/images/vdi.png'
+SELECT 'VDI Standard - Netherlands', 'vdi-standard-netherlands', 8, 'Netherlands', 175.00, 'VDI на 1 человека - Standard', 1, 1, '/images/vdi_standrt_1.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-standard-netherlands');
 GO
 
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Pro - Netherlands', 'vdi-pro-netherlands', 8, 'Netherlands', 200.00, 'VDI на 1 человека - Pro', 1, 1, '/images/vdi.png'
+SELECT 'VDI Pro - Netherlands', 'vdi-pro-netherlands', 8, 'Netherlands', 200.00, 'VDI на 1 человека - Pro', 1, 1, '/images/vdi_pro_1.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-pro-netherlands');
 GO
 
 -- Germany/France/Poland
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Start - Germany/France/Poland', 'vdi-start-europe', 8, 'Germany/France/Poland', 155.00, 'VDI на 1 человека - Start', 1, 1, '/images/vdi.png'
+SELECT 'VDI Start - Germany/France/Poland', 'vdi-start-europe', 8, 'Germany/France/Poland', 155.00, 'VDI на 1 человека - Start', 1, 1, '/images/vdi_start_2.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-start-europe');
 GO
 
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Standard - Germany/France/Poland', 'vdi-standard-europe', 8, 'Germany/France/Poland', 180.00, 'VDI на 1 человека - Standard', 1, 1, '/images/vdi.png'
+SELECT 'VDI Standard - Germany/France/Poland', 'vdi-standard-europe', 8, 'Germany/France/Poland', 180.00, 'VDI на 1 человека - Standard', 1, 1, '/images/vdi_standrt_2.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-standard-europe');
 GO
 
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Pro - Germany/France/Poland', 'vdi-pro-europe', 8, 'Germany/France/Poland', 205.00, 'VDI на 1 человека - Pro', 1, 1, '/images/vdi.png'
+SELECT 'VDI Pro - Germany/France/Poland', 'vdi-pro-europe', 8, 'Germany/France/Poland', 205.00, 'VDI на 1 человека - Pro', 1, 1, '/images/vdi_pro_2.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-pro-europe');
 GO
 
 -- USA/Canada/Asia
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Start - USA/Canada/Asia', 'vdi-start-usa-asia', 8, 'USA/Canada/Asia', 175.00, 'VDI на 1 человека - Start', 1, 1, '/images/vdi.png'
+SELECT 'VDI Start - USA/Canada/Asia', 'vdi-start-usa-asia', 8, 'USA/Canada/Asia', 175.00, 'VDI на 1 человека - Start', 1, 1, '/images/vdi_start_3.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-start-usa-asia');
 GO
 
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Standard - USA/Canada/Asia', 'vdi-standard-usa-asia', 8, 'USA/Canada/Asia', 200.00, 'VDI на 1 человека - Standard', 1, 1, '/images/vdi.png'
+SELECT 'VDI Standard - USA/Canada/Asia', 'vdi-standard-usa-asia', 8, 'USA/Canada/Asia', 200.00, 'VDI на 1 человека - Standard', 1, 1, '/images/vdi_standrt_3.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-standard-usa-asia');
 GO
 
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VDI Pro - USA/Canada/Asia', 'vdi-pro-usa-asia', 8, 'USA/Canada/Asia', 225.00, 'VDI на 1 человека - Pro', 1, 1, '/images/vdi.png'
+SELECT 'VDI Pro - USA/Canada/Asia', 'vdi-pro-usa-asia', 8, 'USA/Canada/Asia', 225.00, 'VDI на 1 человека - Pro', 1, 1, '/images/vdi_pro_3.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vdi-pro-usa-asia');
 GO
 

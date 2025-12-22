@@ -568,7 +568,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Start",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_start_1.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -597,7 +597,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Standard",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_standrt_1.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -626,7 +626,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Pro",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_pro_1.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -656,7 +656,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Start",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_start_2.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -685,7 +685,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Standard",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_standrt_2.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -714,7 +714,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Pro",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_pro_2.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -744,7 +744,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Start",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_start_3.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -773,7 +773,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Standard",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_standrt_3.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
@@ -802,7 +802,7 @@ public static class SeedData
                 Configuration = "VDI на 1 человека - Pro",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vdi.png",
+                ImageUrl = "/images/vdi_pro_3.png",
                 Type = ProductType.VDI,
                 Variants = new List<ProductVariant>
                 {
