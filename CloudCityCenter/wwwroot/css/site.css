@@ -4488,17 +4488,22 @@ body {
 
 .hosting-product-card .card-img-top {
   width: 100%;
-  height: 280px;
+  height: 320px;
   object-fit: contain;
   object-position: center;
   background-color: #f8f9fa;
   padding: 15px;
   border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease;
 }
 
 .hosting-product-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hosting-product-card:hover .card-img-top {
+  transform: scale(1.15);
 }
 
 .hosting-description-box {
