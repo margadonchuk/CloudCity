@@ -68,6 +68,39 @@
     </div>
 </section>
 
+<!-- STORAGE SECTION -->
+<section class="container py-5 position-relative">
+  <div class="hosting-page-background"></div>
+  <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <h2 class="display-5 fw-bold mb-3">@Localizer["Storage"]</h2>
+    <p class="lead text-muted mb-4">@Localizer["NASNetworkStorage"]</p>
+    
+    <!-- Описание возможностей Storage -->
+    <div class="hosting-description-box mb-4 animate-on-scroll" data-animation="fade-up">
+      <p class="hosting-description-text mb-2" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+        <strong>@Localizer["StorageCapabilities"]</strong>
+      </p>
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        @Localizer["StorageFeatures"]
+      </p>
+      <p class="hosting-description-text mb-0" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+        @Localizer["StorageWithBackup"] 
+        <span class="hosting-additional-price">@Localizer["StorageAdditionalPrice"]</span>
+      </p>
+    </div>
+  </div>
+  <div class="row g-4">
+      @foreach (var item in Model.StorageProducts)
+      {
+          <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+              <div class="card h-100 hosting-product-card">
+                  @await Html.PartialAsync("_ProductCard", item)
+              </div>
+          </div>
+      }
+  </div>
+</section>
+
 <!-- WEBSITE PRODUCTS SECTION -->
 <section class="container py-5 position-relative">
   <div class="hosting-page-background"></div>

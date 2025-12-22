@@ -23,13 +23,15 @@ public class HostingController : Controller
         var websiteProducts = await LoadProductCards(ProductType.Website);
         var vpsProducts = await LoadProductCards(ProductType.VPS);
         var vpnProducts = await LoadProductCards(ProductType.VPN);
+        var storageProducts = await LoadProductCards(ProductType.Storage);
 
         var vm = new HostingPageVm
         {
             HostingPlans = hostingPlans,
             WebsiteProducts = websiteProducts,
             VpsProducts = vpsProducts,
-            VpnProducts = vpnProducts
+            VpnProducts = vpnProducts,
+            StorageProducts = storageProducts
         };
 
         return View(vm);
@@ -46,8 +48,25 @@ public class HostingController : Controller
         {
             var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value);
 
-            // Порядок отображения фичей для хостинга
-            var featureOrder = new[] { "CPU", "RAM", "SSD (NVMe)", "OS", "Bandwidth", "Country" };
+            // Порядок отображения фичей в зависимости от типа товара
+            string[] featureOrder;
+            int maxFeatures;
+            if (type == ProductType.Storage)
+            {
+                featureOrder = new[] { "Storage", "CPU", "RAM", "Access", "Security", "Backup", "Support" };
+                maxFeatures = 7;
+            }
+            else if (type == ProductType.Hosting)
+            {
+                featureOrder = new[] { "CPU", "RAM", "SSD (NVMe)", "OS", "Bandwidth", "Country" };
+                maxFeatures = 6;
+            }
+            else
+            {
+                featureOrder = Array.Empty<string>();
+                maxFeatures = 6;
+            }
+
             var orderedFeatures = new List<string>();
 
             foreach (var featureName in featureOrder)
@@ -78,7 +97,7 @@ public class HostingController : Controller
                 Slug = p.Slug,
                 PricePerMonth = p.PricePerMonth,
                 ImageUrl = p.ImageUrl,
-                TopFeatures = orderedFeatures.Take(6).ToList()
+                TopFeatures = orderedFeatures.Take(maxFeatures).ToList()
             };
         }).ToList();
     }

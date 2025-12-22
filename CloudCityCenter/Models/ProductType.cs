@@ -7,5 +7,6 @@ public enum ProductType
     Website = 2,
     // Newly added product categories
     VPS = 3,
-    VPN = 4
+    VPN = 4,
+    Storage = 5
 }

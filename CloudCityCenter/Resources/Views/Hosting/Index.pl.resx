@@ -36,5 +36,23 @@
   <data name="HostingDescriptionText" xml:space="preserve">
     <value>Dla stabilnej pracy średniego projektu (strona internetowa, serwer, VPN, panel zarządzania). Z administracją i wsparciem technicznym:</value>
   </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Magazyn</value>
+  </data>
+  <data name="NASNetworkStorage" xml:space="preserve">
+    <value>NAS (Magazyn sieciowy)</value>
+  </data>
+  <data name="StorageCapabilities" xml:space="preserve">
+    <value>Możliwości</value>
+  </data>
+  <data name="StorageFeatures" xml:space="preserve">
+    <value>Dostęp SMB/NFS, Interfejs webowy (TrueNAS, OpenMediaVault, Synology DSM), Kopie zapasowe (np. do chmury lub innego NAS), Migawki (snapshot), szyfrowanie, ograniczenie dostępu</value>
+  </data>
+  <data name="StorageWithBackup" xml:space="preserve">
+    <value>Z kopią zapasową i wsparciem technicznym:</value>
+  </data>
+  <data name="StorageAdditionalPrice" xml:space="preserve">
+    <value>+$150/мес</value>
+  </data>
 </root>
 
