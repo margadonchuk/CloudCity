@@ -1,6 +1,6 @@
 -- =============================================
 -- Скрипт обновления товаров хостинга
--- Обновляет параметры: CPU, RAM, SSD (NVMe), OS, Bandwidth, Гео
+-- Обновляет параметры: CPU, RAM, SSD (NVMe), OS, Bandwidth, Country
 -- Работает для SQL Server и SQLite
 -- =============================================
 
@@ -15,7 +15,7 @@ GO
 -- =============================================
 -- Обновляем Location на "Нидерланды" для всех товаров хостинга
 UPDATE Products 
-SET Location = 'Нидерланды'
+SET Location = 'Netherlands'
 WHERE Type = 1;
 
 -- =============================================
@@ -40,11 +40,16 @@ SET Name = 'Bandwidth'
 WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 1)
 AND Name = 'Трафик';
 
--- Обновить существующие записи "Страна" на "Гео" для всех товаров хостинга
+-- Обновить Location для всех товаров хостинга на "Netherlands"
+UPDATE Products
+SET Location = 'Netherlands'
+WHERE Type = 1 AND (Location = 'Нидерланды' OR Location LIKE '%?%');
+
+-- Обновить существующие записи "Страна" или "Гео" на "Country" для всех товаров хостинга
 UPDATE ProductFeatures
-SET Name = 'Гео', Value = 'Netherlands'
+SET Name = 'Country', Value = 'Netherlands'
 WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 1)
-AND Name = 'Страна';
+AND (Name = 'Страна' OR Name = 'Гео');
 
 -- =============================================
 -- ШАГ 3: Добавить новые фичи для "Basic Hosting"
@@ -116,7 +121,7 @@ AND NOT EXISTS (
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     Id AS ProductId,
-    'Гео' AS Name,
+    'Country' AS Name,
     'Netherlands' AS Value
 FROM Products 
 WHERE Slug = 'basic-hosting' AND Type = 1
@@ -135,7 +140,7 @@ SELECT
     'Premium Hosting',
     'premium-hosting',
     1, -- ProductType.Hosting
-    'Нидерланды',
+    'Netherlands',
     25.00,
     'Shared hosting premium',
     1,
@@ -209,7 +214,7 @@ AND NOT EXISTS (
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
-    'Гео' AS Name,
+    'Country' AS Name,
     'Netherlands' AS Value
 FROM Products p
 WHERE p.Slug = 'premium-hosting' AND p.Type = 1
@@ -224,7 +229,7 @@ SELECT
     'Business Hosting',
     'business-hosting',
     1, -- ProductType.Hosting
-    'Нидерланды',
+    'Netherlands',
     50.00,
     'Shared hosting business',
     1,
@@ -298,7 +303,7 @@ AND NOT EXISTS (
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
-    'Гео' AS Name,
+    'Country' AS Name,
     'Netherlands' AS Value
 FROM Products p
 WHERE p.Slug = 'business-hosting' AND p.Type = 1
@@ -373,7 +378,7 @@ AND NOT EXISTS (
 --         WHEN 'SSD (NVMe)' THEN 3
 --         WHEN 'OS' THEN 4
 --         WHEN 'Bandwidth' THEN 5
---         WHEN 'Гео' THEN 6
+--         WHEN 'Country' THEN 6
 --         ELSE 99
 --     END;
 

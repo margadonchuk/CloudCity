@@ -12,9 +12,16 @@ GO
 -- ШАГ 1: Обновить Location для товаров хостинга
 -- =============================================
 
+-- Обновить Location на "Netherlands" для всех товаров хостинга
 UPDATE Products 
-SET Location = 'Нидерланды'
+SET Location = 'Netherlands'
 WHERE Type = 1;
+GO
+
+-- Исправить Location, если там знаки вопроса (проблемы с кодировкой)
+UPDATE Products 
+SET Location = 'Netherlands'
+WHERE Type = 1 AND (Location LIKE '%?%' OR Location = 'Нидерланды');
 GO
 
 -- =============================================
@@ -25,7 +32,7 @@ DELETE FROM ProductFeatures
 WHERE ProductId IN (
     SELECT Id FROM Products WHERE Slug = 'basic-hosting' AND Type = 1
 )
-AND Name IN ('Storage', 'Email Accounts', 'Трафик', 'Страна');
+AND Name IN ('Storage', 'Email Accounts', 'Трафик', 'Страна', 'Гео');
 GO
 
 -- Обновить существующие записи "Трафик" на "Bandwidth" для всех товаров хостинга
@@ -35,11 +42,11 @@ WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 1)
 AND Name = 'Трафик';
 GO
 
--- Обновить существующие записи "Страна" на "Гео" для всех товаров хостинга
+-- Обновить существующие записи "Страна" или "Гео" на "Country" для всех товаров хостинга
 UPDATE ProductFeatures
-SET Name = 'Гео', Value = 'Netherlands'
+SET Name = 'Country', Value = 'Netherlands'
 WHERE ProductId IN (SELECT Id FROM Products WHERE Type = 1)
-AND Name = 'Страна';
+AND (Name = 'Страна' OR Name = 'Гео' OR Name LIKE '%?%');
 GO
 
 -- =============================================
@@ -114,13 +121,13 @@ GO
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     Id AS ProductId,
-    'Гео' AS Name,
+    'Country' AS Name,
     'Netherlands' AS Value
 FROM Products 
 WHERE Slug = 'basic-hosting' AND Type = 1
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = Products.Id AND Name = 'Гео'
+    WHERE ProductId = Products.Id AND Name = 'Country'
 );
 GO
 
@@ -134,7 +141,7 @@ SELECT
     'Premium Hosting',
     'premium-hosting',
     1,
-    'Нидерланды',
+    'Netherlands',
     25.00,
     'Shared hosting premium',
     1,
@@ -214,13 +221,13 @@ GO
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
-    'Гео' AS Name,
+    'Country' AS Name,
     'Netherlands' AS Value
 FROM Products p
 WHERE p.Slug = 'premium-hosting' AND p.Type = 1
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Гео'
+    WHERE ProductId = p.Id AND Name = 'Country'
 );
 GO
 
@@ -230,7 +237,7 @@ SELECT
     'Business Hosting',
     'business-hosting',
     1,
-    'Нидерланды',
+    'Netherlands',
     50.00,
     'Shared hosting business',
     1,
@@ -310,13 +317,13 @@ GO
 INSERT INTO ProductFeatures (ProductId, Name, Value)
 SELECT 
     p.Id AS ProductId,
-    'Гео' AS Name,
+    'Country' AS Name,
     'Netherlands' AS Value
 FROM Products p
 WHERE p.Slug = 'business-hosting' AND p.Type = 1
 AND NOT EXISTS (
     SELECT 1 FROM ProductFeatures 
-    WHERE ProductId = p.Id AND Name = 'Гео'
+    WHERE ProductId = p.Id AND Name = 'Country'
 );
 GO
 
@@ -391,7 +398,7 @@ ORDER BY
         WHEN 'SSD (NVMe)' THEN 3
         WHEN 'OS' THEN 4
         WHEN 'Bandwidth' THEN 5
-        WHEN 'Гео' THEN 6
+        WHEN 'Country' THEN 6
         ELSE 99
     END;
 GO
