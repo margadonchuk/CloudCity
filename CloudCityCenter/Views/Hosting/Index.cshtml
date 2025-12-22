@@ -45,9 +45,20 @@
 
 <!-- HOSTING PLANS SECTION -->
 <section class="container py-5">
-    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-up">
       <h2 class="display-5 fw-bold mb-3">@Localizer["HostingPlans"]</h2>
-      <p class="lead text-muted">@Localizer["ChooseHostingSolution"]</p>
+      <p class="lead text-muted mb-4">@Localizer["ChooseHostingSolution"]</p>
+      
+      <!-- Описание услуг с дополнительной ценой -->
+      <div class="hosting-description-box mb-5 animate-on-scroll" data-animation="fade-up">
+        <p class="hosting-description-text mb-2" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          Для стабильной работы среднего проекта (сайт, сервер, VPN, панель управления).
+        </p>
+        <p class="hosting-description-text mb-0" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          С администрированием и техподдержкой: 
+          <span class="hosting-additional-price">–$50/мес</span>
+        </p>
+      </div>
     </div>
     <div class="row g-4">
         @foreach (var item in Model.HostingPlans)
