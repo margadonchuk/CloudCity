@@ -164,6 +164,44 @@ AND Name = 'Price';
 GO
 
 -- =============================================
+-- ОБНОВЛЕНИЕ ИЗОБРАЖЕНИЙ ДЛЯ WEBSITE BUILDER
+-- =============================================
+
+UPDATE Products 
+SET ImageUrl = '/images/Builder1.png'
+WHERE Slug = 'website-builder-landing' AND Type = 6;
+GO
+
+UPDATE Products 
+SET ImageUrl = '/images/Builder2.png'
+WHERE Slug = 'website-builder-business' AND Type = 6;
+GO
+
+UPDATE Products 
+SET ImageUrl = '/images/Builder3.png'
+WHERE Slug = 'website-builder-shop' AND Type = 6;
+GO
+
+-- =============================================
+-- ОБНОВЛЕНИЕ ИЗОБРАЖЕНИЙ ДЛЯ WEBSITE CODE
+-- =============================================
+
+UPDATE Products 
+SET ImageUrl = '/images/Development1.png'
+WHERE Slug = 'website-code-landing-pro' AND Type = 7;
+GO
+
+UPDATE Products 
+SET ImageUrl = '/images/Development2.png'
+WHERE Slug = 'website-code-site-pro' AND Type = 7;
+GO
+
+UPDATE Products 
+SET ImageUrl = '/images/Development3.png'
+WHERE Slug = 'website-code-ecommerce-pro' AND Type = 7;
+GO
+
+-- =============================================
 -- ПРОВЕРКА РЕЗУЛЬТАТОВ
 -- =============================================
 

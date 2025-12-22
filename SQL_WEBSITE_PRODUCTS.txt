@@ -20,7 +20,7 @@ SELECT
     'Single-page website (promo, service, product)',
     1,
     1,
-    '/images/website.png'
+    '/images/Builder1.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'website-builder-landing'
 );
@@ -37,7 +37,7 @@ SELECT
     'Multi-page website (about company, services, contacts, etc.)',
     1,
     1,
-    '/images/website.png'
+    '/images/Builder2.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'website-builder-business'
 );
@@ -54,7 +54,7 @@ SELECT
     'Online store (up to 50 products)',
     1,
     1,
-    '/images/website.png'
+    '/images/Builder3.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'website-builder-shop'
 );
@@ -75,7 +75,7 @@ SELECT
     'Single-page landing with custom logic',
     1,
     1,
-    '/images/website.png'
+    '/images/Development1.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'website-code-landing-pro'
 );
@@ -92,7 +92,7 @@ SELECT
     'Multi-page website with logic',
     1,
     1,
-    '/images/website.png'
+    '/images/Development2.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'website-code-site-pro'
 );
@@ -109,7 +109,7 @@ SELECT
     'Turnkey online store',
     1,
     1,
-    '/images/website.png'
+    '/images/Development3.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'website-code-ecommerce-pro'
 );

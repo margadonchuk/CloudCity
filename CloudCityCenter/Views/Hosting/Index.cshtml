@@ -102,14 +102,14 @@
 </section>
 
 <!-- WEBSITE BUILDER SECTION (Сайты на конструкторе) -->
-<section class="container py-5 position-relative">
-  <div class="hosting-page-background"></div>
+<section class="container py-5 position-relative website-builder-section">
+  <div class="website-builder-background"></div>
   <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-    <h2 class="display-5 fw-bold mb-3">@Localizer["WebsiteBuilderTitle"]</h2>
+    <h2 class="display-5 fw-bold mb-3 website-builder-title">@Localizer["WebsiteBuilderTitle"]</h2>
     <p class="lead text-muted mb-3">@Localizer["WebsiteBuilderSubtitle"]</p>
     
     <!-- Описание возможностей -->
-    <div class="hosting-description-box mb-4 animate-on-scroll" data-animation="fade-up">
+    <div class="hosting-description-box mb-4 animate-on-scroll website-builder-description" data-animation="fade-up">
       <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
         💡 @Localizer["WebsiteBuilderFeature1"]
       </p>
@@ -125,7 +125,7 @@
       @foreach (var item in Model.WebsiteBuilderProducts)
       {
           <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
-              <div class="card h-100 hosting-product-card">
+              <div class="card h-100 website-builder-card">
                   @await Html.PartialAsync("_ProductCard", item)
               </div>
           </div>
@@ -134,14 +134,14 @@
 </section>
 
 <!-- WEBSITE CODE SECTION (Сайты на коде) -->
-<section class="container py-5 position-relative">
-  <div class="hosting-page-background"></div>
+<section class="container py-5 position-relative website-code-section">
+  <div class="website-code-background"></div>
   <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-    <h2 class="display-5 fw-bold mb-3">@Localizer["WebsiteCodeTitle"]</h2>
+    <h2 class="display-5 fw-bold mb-3 website-code-title">@Localizer["WebsiteCodeTitle"]</h2>
     <p class="lead text-muted mb-3">@Localizer["WebsiteCodeSubtitle"]</p>
     
     <!-- Описание возможностей -->
-    <div class="hosting-description-box mb-4 animate-on-scroll" data-animation="fade-up">
+    <div class="hosting-description-box mb-4 animate-on-scroll website-code-description" data-animation="fade-up">
       <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
         🚀 @Localizer["WebsiteCodeFeature1"]
       </p>
@@ -160,7 +160,7 @@
       @foreach (var item in Model.WebsiteCodeProducts)
       {
           <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
-              <div class="card h-100 hosting-product-card">
+              <div class="card h-100 website-code-card">
                   @await Html.PartialAsync("_ProductCard", item)
               </div>
           </div>
