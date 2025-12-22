@@ -4633,11 +4633,19 @@ body {
 }
 
 /* Плавное появление карточек с задержкой */
-.hosting-product-card,
-.website-builder-card,
+.hosting-product-card {
+  opacity: 1 !important;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.website-builder-card {
+  opacity: 1 !important;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
 .website-code-card {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 1 !important;
+  animation: fadeInUp 0.6s ease-out backwards;
 }
 
 /* Анимация для кнопок */
@@ -4813,17 +4821,22 @@ body {
 }
 
 .website-builder-card .card-img-top {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 250px;
+  max-height: 400px;
   aspect-ratio: 3 / 2;
-  object-fit: cover;
+  object-fit: cover !important;
   object-position: center;
-  display: block;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   background: #f8f9fa;
   border-radius: 15px 15px 0 0;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
   filter: brightness(1);
 }
+
 
 .website-builder-card:hover {
   transform: translateY(-15px) scale(1.02);
@@ -4900,9 +4913,6 @@ body {
   border: 2px solid rgba(111, 66, 193, 0.3);
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-}
-
-.website-code-card {
   animation: fadeInUp 0.6s ease-out backwards;
 }
 
@@ -4919,12 +4929,16 @@ body {
 }
 
 .website-code-card .card-img-top {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 250px;
+  max-height: 400px;
   aspect-ratio: 3 / 2;
-  object-fit: cover;
+  object-fit: cover !important;
   object-position: center;
-  display: block;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   background: rgba(26, 26, 46, 0.5);
   border-radius: 15px 15px 0 0;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
