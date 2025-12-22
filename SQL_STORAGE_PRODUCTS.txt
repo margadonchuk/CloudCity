@@ -20,7 +20,7 @@ SELECT
     'NAS для документов и резервных копий',
     1,
     1,
-    '/images/storage.png'
+    '/images/nas1.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'storage-basic'
 );
@@ -37,7 +37,7 @@ SELECT
     'Оптимальное облачное хранилище',
     1,
     1,
-    '/images/storage.png'
+    '/images/nas2.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'storage-standard'
 );
@@ -54,10 +54,32 @@ SELECT
     'Для критически важных данных',
     1,
     1,
-    '/images/storage.png'
+    '/images/nas3.png'
 WHERE NOT EXISTS (
     SELECT 1 FROM Products WHERE Slug = 'storage-pro'
 );
+GO
+
+-- =============================================
+-- ОБНОВЛЕНИЕ ИЗОБРАЖЕНИЙ ДЛЯ СУЩЕСТВУЮЩИХ ТОВАРОВ
+-- =============================================
+
+-- Обновить изображение для Storage BASIC
+UPDATE Products 
+SET ImageUrl = '/images/nas1.png'
+WHERE Slug = 'storage-basic' AND Type = 5;
+GO
+
+-- Обновить изображение для Storage STANDARD
+UPDATE Products 
+SET ImageUrl = '/images/nas2.png'
+WHERE Slug = 'storage-standard' AND Type = 5;
+GO
+
+-- Обновить изображение для Storage PRO
+UPDATE Products 
+SET ImageUrl = '/images/nas3.png'
+WHERE Slug = 'storage-pro' AND Type = 5;
 GO
 
 -- =============================================
