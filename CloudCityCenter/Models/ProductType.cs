@@ -10,5 +10,6 @@ public enum ProductType
     VPN = 4,
     Storage = 5,
     WebsiteBuilder = 6,  // Сайты на конструкторе
-    WebsiteCode = 7      // Сайты на коде
+    WebsiteCode = 7,     // Сайты на коде
+    VDI = 8              // Virtual Desktop Infrastructure
 }

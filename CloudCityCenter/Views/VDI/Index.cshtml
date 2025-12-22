@@ -1,4 +1,4 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@model CloudCityCenter.Models.ViewModels.VDIPageVm
 @{
     ViewData["Title"] = Localizer["Title"];
 }
@@ -67,4 +67,115 @@
   </div>
 </section>
 
+<!-- VDI PLANS SECTION -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">VDI на 1 человека</h2>
+        <p class="lead text-muted">Выберите план, подходящий для ваших задач</p>
+    </div>
+
+    @foreach (var region in Model.Regions)
+    {
+        <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="vdi-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@region.RegionName</h3>
+            </div>
+            <div class="row g-4">
+                @foreach (var plan in region.Plans)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 vdi-plan-card shadow-sm">
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>CPU:</strong> @plan.CpuCores core
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>RAM:</strong> @plan.RamGb GB
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>SSD:</strong> @plan.SsdGb GB
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>Traffic:</strong> @plan.Traffic
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>Country:</strong> @plan.Country
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ month</span>
+                                    </div>
+                                    <button class="btn btn-primary w-100">Заказать</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</section>
+
+<style>
+    .vdi-region-block {
+        margin-bottom: 4rem;
+    }
+
+    .vdi-region-header {
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 1rem;
+    }
+
+    .vdi-plan-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+    }
+
+    .vdi-plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15) !important;
+    }
+
+    .vdi-plan-card .card-body {
+        padding: 2rem;
+    }
+
+    .vdi-plan-card .card-title {
+        color: #0d6efd;
+        font-size: 1.5rem;
+    }
+
+    .vdi-plan-card ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .vdi-plan-card ul li:last-child {
+        border-bottom: none;
+    }
+
+    .vdi-plan-card .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .vdi-plan-card .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: scale(1.02);
+    }
+</style>
 
