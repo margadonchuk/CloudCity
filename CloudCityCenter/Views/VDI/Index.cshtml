@@ -717,12 +717,28 @@
         // Обработчик для кнопки сброса
         if (resetButton) {
             resetButton.addEventListener('click', function() {
+                // Сбрасываем все фильтры
                 Object.values(filters).forEach(function(filter) {
                     if (filter) {
                         filter.value = '';
                     }
                 });
-                applyFilters();
+                
+                // Показываем все элементы явно
+                planItems.forEach(function(item) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                });
+                
+                // Показываем все региональные блоки
+                document.querySelectorAll('.vdi-region-block').forEach(function(block) {
+                    block.style.display = '';
+                });
+                
+                // Показываем все секции
+                document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                    section.style.display = '';
+                });
             });
         }
         
