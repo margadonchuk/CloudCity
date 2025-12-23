@@ -86,7 +86,8 @@ public class VDIController : Controller
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
                         Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl
+                        ImageUrl = p.ImageUrl,
+                        NumberOfPersons = 1
                     };
                 })
                 .OrderBy(p => p.Price)
@@ -116,7 +117,8 @@ public class VDIController : Controller
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
                         Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl
+                        ImageUrl = p.ImageUrl,
+                        NumberOfPersons = 3
                     };
                 })
                 .OrderBy(p => p.Price)
@@ -146,7 +148,8 @@ public class VDIController : Controller
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
                         Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl
+                        ImageUrl = p.ImageUrl,
+                        NumberOfPersons = 5
                     };
                 })
                 .OrderBy(p => p.Price)
@@ -176,7 +179,8 @@ public class VDIController : Controller
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
                         Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl
+                        ImageUrl = p.ImageUrl,
+                        NumberOfPersons = 10
                     };
                 })
                 .OrderBy(p => p.Price)
@@ -206,7 +210,8 @@ public class VDIController : Controller
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
                         Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl
+                        ImageUrl = p.ImageUrl,
+                        NumberOfPersons = 20
                     };
                 })
                 .OrderBy(p => p.Price)
@@ -215,13 +220,61 @@ public class VDIController : Controller
             .OrderBy(r => r.RegionName)
             .ToList();
 
+        // Собираем все планы для получения уникальных значений фильтров
+        var allPlans = new List<VDIPlanVm>();
+        foreach (var region in regionsForOne)
+        {
+            foreach (var plan in region.Plans)
+            {
+                plan.NumberOfPersons = 1;
+                allPlans.Add(plan);
+            }
+        }
+        foreach (var region in regionsForThree)
+        {
+            foreach (var plan in region.Plans)
+            {
+                plan.NumberOfPersons = 3;
+                allPlans.Add(plan);
+            }
+        }
+        foreach (var region in regionsForFive)
+        {
+            foreach (var plan in region.Plans)
+            {
+                plan.NumberOfPersons = 5;
+                allPlans.Add(plan);
+            }
+        }
+        foreach (var region in regionsForTen)
+        {
+            foreach (var plan in region.Plans)
+            {
+                plan.NumberOfPersons = 10;
+                allPlans.Add(plan);
+            }
+        }
+        foreach (var region in regionsForTwenty)
+        {
+            foreach (var plan in region.Plans)
+            {
+                plan.NumberOfPersons = 20;
+                allPlans.Add(plan);
+            }
+        }
+
         var vm = new VDIPageVm
         {
             RegionsForOnePerson = regionsForOne,
             RegionsForThreePersons = regionsForThree,
             RegionsForFivePersons = regionsForFive,
             RegionsForTenPersons = regionsForTen,
-            RegionsForTwentyPersons = regionsForTwenty
+            RegionsForTwentyPersons = regionsForTwenty,
+            AvailableLocations = allPlans.Select(p => p.Country).Distinct().OrderBy(l => l).ToList(),
+            AvailablePersons = allPlans.Select(p => p.NumberOfPersons).Distinct().OrderBy(p => p).ToList(),
+            AvailableCpuCores = allPlans.Select(p => p.CpuCores).Distinct().OrderBy(c => c).ToList(),
+            AvailableRamGb = allPlans.Select(p => p.RamGb).Distinct().OrderBy(r => r).ToList(),
+            AvailableSsdGb = allPlans.Select(p => p.SsdGb).Distinct().OrderBy(s => s).ToList()
         };
 
         return View(vm);

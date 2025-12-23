@@ -102,5 +102,23 @@
   <data name="VDIPlansForTwentyPersons" xml:space="preserve">
     <value>VDI para 20 personas</value>
   </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Todos los países</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Personas</value>
+  </data>
 </root>
 

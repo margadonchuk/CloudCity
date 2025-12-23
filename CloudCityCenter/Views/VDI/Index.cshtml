@@ -70,6 +70,72 @@
 
 <!-- VDI PLANS SECTION -->
 <section class="container my-5">
+    <!-- FILTERS SECTION -->
+    <div class="card mb-5 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-funnel me-2"></i>@Localizer["Filters"]</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <label class="form-label fw-bold">@Localizer["Country"]</label>
+                    <select id="filter-location" class="form-select vdi-filter">
+                        <option value="">@Localizer["AllCountries"]</option>
+                        @foreach (var location in Model.AvailableLocations)
+                        {
+                            <option value="@location">@GetLocalizedRegionName(location)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["Persons"]</label>
+                    <select id="filter-persons" class="form-select vdi-filter">
+                        <option value="">@Localizer["AllPersons"]</option>
+                        @foreach (var persons in Model.AvailablePersons)
+                        {
+                            <option value="@persons">@persons</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["CPU"] (@Localizer["Core"])</label>
+                    <select id="filter-cpu" class="form-select vdi-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var cpu in Model.AvailableCpuCores)
+                        {
+                            <option value="@cpu">@cpu</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["RAM"] (@Localizer["GB"])</label>
+                    <select id="filter-ram" class="form-select vdi-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var ram in Model.AvailableRamGb)
+                        {
+                            <option value="@ram">@ram</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["SSD"] (@Localizer["GB"])</label>
+                    <select id="filter-ssd" class="form-select vdi-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var ssd in Model.AvailableSsdGb)
+                        {
+                            <option value="@ssd">@ssd</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-1 d-flex align-items-end">
+                    <button type="button" id="reset-filters" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-x-circle"></i> @Localizer["Reset"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
         <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForOnePerson"]</h2>
         <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
@@ -179,7 +245,12 @@
                 <div class="row g-4">
                     @foreach (var plan in region.Plans)
                     {
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="3"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
                             <div class="card h-100 vdi-plan-card shadow-sm">
                                 @if (!string.IsNullOrEmpty(plan.ImageUrl))
                                 {
@@ -251,7 +322,12 @@
                 <div class="row g-4">
                     @foreach (var plan in region.Plans)
                     {
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="5"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
                             <div class="card h-100 vdi-plan-card shadow-sm">
                                 @if (!string.IsNullOrEmpty(plan.ImageUrl))
                                 {
@@ -323,7 +399,12 @@
                 <div class="row g-4">
                     @foreach (var plan in region.Plans)
                     {
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="10"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
                             <div class="card h-100 vdi-plan-card shadow-sm">
                                 @if (!string.IsNullOrEmpty(plan.ImageUrl))
                                 {
@@ -395,7 +476,12 @@
                 <div class="row g-4">
                     @foreach (var plan in region.Plans)
                     {
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="20"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
                             <div class="card h-100 vdi-plan-card shadow-sm">
                                 @if (!string.IsNullOrEmpty(plan.ImageUrl))
                                 {
@@ -501,5 +587,115 @@
         background-color: #0b5ed7;
         transform: scale(1.02);
     }
+    .vdi-plan-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .vdi-plan-item.hidden {
+        display: none !important;
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filters = {
+            location: document.getElementById('filter-location'),
+            persons: document.getElementById('filter-persons'),
+            cpu: document.getElementById('filter-cpu'),
+            ram: document.getElementById('filter-ram'),
+            ssd: document.getElementById('filter-ssd')
+        };
+        
+        const resetButton = document.getElementById('reset-filters');
+        const planItems = document.querySelectorAll('.vdi-plan-item');
+        
+        function applyFilters() {
+            const selectedLocation = filters.location.value;
+            const selectedPersons = filters.persons.value;
+            const selectedCpu = filters.cpu.value;
+            const selectedRam = filters.ram.value;
+            const selectedSsd = filters.ssd.value;
+            
+            planItems.forEach(function(item) {
+                const itemLocation = item.getAttribute('data-location');
+                const itemPersons = item.getAttribute('data-persons');
+                const itemCpu = item.getAttribute('data-cpu');
+                const itemRam = item.getAttribute('data-ram');
+                const itemSsd = item.getAttribute('data-ssd');
+                
+                let show = true;
+                
+                if (selectedLocation && itemLocation !== selectedLocation) {
+                    show = false;
+                }
+                
+                if (selectedPersons && itemPersons !== selectedPersons) {
+                    show = false;
+                }
+                
+                if (selectedCpu && itemCpu !== selectedCpu) {
+                    show = false;
+                }
+                
+                if (selectedRam && itemRam !== selectedRam) {
+                    show = false;
+                }
+                
+                if (selectedSsd && itemSsd !== selectedSsd) {
+                    show = false;
+                }
+                
+                if (show) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Скрываем пустые региональные блоки
+            document.querySelectorAll('.vdi-region-block').forEach(function(block) {
+                const visiblePlans = block.querySelectorAll('.vdi-plan-item:not(.hidden)');
+                if (visiblePlans.length === 0) {
+                    block.style.display = 'none';
+                } else {
+                    block.style.display = '';
+                }
+            });
+            
+            // Скрываем пустые секции
+            document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                const visibleBlocks = section.querySelectorAll('.vdi-region-block:not([style*="display: none"])');
+                if (visibleBlocks.length === 0 && section.querySelector('.vdi-plan-item')) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = '';
+                }
+            });
+        }
+        
+        // Добавляем обработчики событий для всех фильтров
+        Object.values(filters).forEach(function(filter) {
+            if (filter) {
+                filter.addEventListener('change', applyFilters);
+            }
+        });
+        
+        // Обработчик для кнопки сброса
+        if (resetButton) {
+            resetButton.addEventListener('click', function() {
+                Object.values(filters).forEach(function(filter) {
+                    if (filter) {
+                        filter.value = '';
+                    }
+                });
+                applyFilters();
+            });
+        }
+        
+        // Применяем фильтры при загрузке страницы (на случай, если есть значения в URL)
+        applyFilters();
+    });
+</script>
 
