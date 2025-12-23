@@ -136,36 +136,38 @@
         </div>
     </div>
 
-    <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
-        <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForOnePerson"]</h2>
-        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
-    </div>
+    <!-- VDI PLANS SECTION FOR 1 PERSON -->
+    <section class="container my-5">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
+            <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForOnePerson"]</h2>
+            <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+        </div>
 
-    @{
-        string GetLocalizedRegionName(string regionName)
-        {
-            if (regionName.Contains("Netherlands", StringComparison.OrdinalIgnoreCase))
-                return Localizer["RegionNetherlands"].Value;
-            if (regionName.Contains("Germany") || regionName.Contains("France") || regionName.Contains("Poland"))
-                return Localizer["RegionEurope"].Value;
-            if (regionName.Contains("USA") || regionName.Contains("Canada") || regionName.Contains("Asia"))
-                return Localizer["RegionUSAsia"].Value;
-            return regionName;
+        @{
+            string GetLocalizedRegionName(string regionName)
+            {
+                if (regionName.Contains("Netherlands", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["RegionNetherlands"].Value;
+                if (regionName.Contains("Germany") || regionName.Contains("France") || regionName.Contains("Poland"))
+                    return Localizer["RegionEurope"].Value;
+                if (regionName.Contains("USA") || regionName.Contains("Canada") || regionName.Contains("Asia"))
+                    return Localizer["RegionUSAsia"].Value;
+                return regionName;
+            }
+
+            string GetLocalizedPlanName(string planName)
+            {
+                if (planName.Contains("Start", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["PlanStart"].Value;
+                if (planName.Contains("Standard", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["PlanStandard"].Value;
+                if (planName.Contains("Pro", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["PlanPro"].Value;
+                return planName;
+            }
         }
 
-        string GetLocalizedPlanName(string planName)
-        {
-            if (planName.Contains("Start", StringComparison.OrdinalIgnoreCase))
-                return Localizer["PlanStart"].Value;
-            if (planName.Contains("Standard", StringComparison.OrdinalIgnoreCase))
-                return Localizer["PlanStandard"].Value;
-            if (planName.Contains("Pro", StringComparison.OrdinalIgnoreCase))
-                return Localizer["PlanPro"].Value;
-            return planName;
-        }
-    }
-
-    @foreach (var region in Model.RegionsForOnePerson)
+        @foreach (var region in Model.RegionsForOnePerson)
     {
         <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
             <div class="vdi-region-header mb-4">
@@ -232,8 +234,9 @@
                 }
             </div>
         </div>
-    }
-
+        }
+    </section>
+    
     <!-- VDI PLANS FOR 3 PERSONS SECTION -->
     <section class="container my-5">
         <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
@@ -698,14 +701,14 @@
                     
                     const sectionHeader = section.querySelector('.vdi-section-header');
                     
-                    if (visiblePlansInSection.length === 0) {
-                        // Скрываем секцию и заголовок, если нет видимых планов
+                    if (visiblePlansInSection.length === 0 && allPlansInSection.length > 0) {
+                        // Скрываем секцию и заголовок, если нет видимых планов, но есть планы в секции
                         section.style.display = 'none';
                         if (sectionHeader) {
                             sectionHeader.style.display = 'none';
                         }
                     } else {
-                        // Показываем секцию и заголовок, если есть видимые планы
+                        // Показываем секцию и заголовок, если есть видимые планы или нет планов вообще
                         section.style.display = '';
                         if (sectionHeader) {
                             sectionHeader.style.display = '';
