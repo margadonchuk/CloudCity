@@ -828,7 +828,7 @@ public static class SeedData
                 Name = "VDI Start - Netherlands (3 persons)",
                 Slug = "vdi-start-netherlands-3",
                 Location = "Netherlands",
-                PricePerMonth = 130,
+                PricePerMonth = 390,
                 Configuration = "VDI на 3 человека - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -839,7 +839,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 130,
+                        Price = 390,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -857,7 +857,7 @@ public static class SeedData
                 Name = "VDI Standard - Netherlands (3 persons)",
                 Slug = "vdi-standard-netherlands-3",
                 Location = "Netherlands",
-                PricePerMonth = 155,
+                PricePerMonth = 465,
                 Configuration = "VDI на 3 человека - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -868,7 +868,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 155,
+                        Price = 465,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -886,7 +886,7 @@ public static class SeedData
                 Name = "VDI Pro - Netherlands (3 persons)",
                 Slug = "vdi-pro-netherlands-3",
                 Location = "Netherlands",
-                PricePerMonth = 180,
+                PricePerMonth = 540,
                 Configuration = "VDI на 3 человека - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -897,7 +897,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 180,
+                        Price = 540,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -916,7 +916,7 @@ public static class SeedData
                 Name = "VDI Start - Germany/France/Poland (3 persons)",
                 Slug = "vdi-start-europe-3",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 135,
+                PricePerMonth = 405,
                 Configuration = "VDI на 3 человека - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -927,7 +927,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 135,
+                        Price = 405,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -945,7 +945,7 @@ public static class SeedData
                 Name = "VDI Standard - Germany/France/Poland (3 persons)",
                 Slug = "vdi-standard-europe-3",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 160,
+                PricePerMonth = 480,
                 Configuration = "VDI на 3 человека - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -956,7 +956,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 160,
+                        Price = 480,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -974,7 +974,7 @@ public static class SeedData
                 Name = "VDI Pro - Germany/France/Poland (3 persons)",
                 Slug = "vdi-pro-europe-3",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 185,
+                PricePerMonth = 555,
                 Configuration = "VDI на 3 человека - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -985,7 +985,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 185,
+                        Price = 555,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1004,7 +1004,7 @@ public static class SeedData
                 Name = "VDI Start - USA/Canada/Asia (3 persons)",
                 Slug = "vdi-start-usa-asia-3",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 155,
+                PricePerMonth = 465,
                 Configuration = "VDI на 3 человека - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1015,7 +1015,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 155,
+                        Price = 465,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1033,7 +1033,7 @@ public static class SeedData
                 Name = "VDI Standard - USA/Canada/Asia (3 persons)",
                 Slug = "vdi-standard-usa-asia-3",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 180,
+                PricePerMonth = 540,
                 Configuration = "VDI на 3 человека - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1044,7 +1044,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 180,
+                        Price = 540,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1062,7 +1062,7 @@ public static class SeedData
                 Name = "VDI Pro - USA/Canada/Asia (3 persons)",
                 Slug = "vdi-pro-usa-asia-3",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 205,
+                PricePerMonth = 615,
                 Configuration = "VDI на 3 человека - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1073,7 +1073,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 205,
+                        Price = 615,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1092,7 +1092,7 @@ public static class SeedData
                 Name = "VDI Start - Netherlands (5 persons)",
                 Slug = "vdi-start-netherlands-5",
                 Location = "Netherlands",
-                PricePerMonth = 110,
+                PricePerMonth = 550,
                 Configuration = "VDI на 5 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1103,7 +1103,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 110,
+                        Price = 550,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1121,7 +1121,7 @@ public static class SeedData
                 Name = "VDI Standard - Netherlands (5 persons)",
                 Slug = "vdi-standard-netherlands-5",
                 Location = "Netherlands",
-                PricePerMonth = 135,
+                PricePerMonth = 675,
                 Configuration = "VDI на 5 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1132,7 +1132,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 135,
+                        Price = 675,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1150,7 +1150,7 @@ public static class SeedData
                 Name = "VDI Pro - Netherlands (5 persons)",
                 Slug = "vdi-pro-netherlands-5",
                 Location = "Netherlands",
-                PricePerMonth = 160,
+                PricePerMonth = 800,
                 Configuration = "VDI на 5 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1161,7 +1161,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 160,
+                        Price = 800,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1180,7 +1180,7 @@ public static class SeedData
                 Name = "VDI Start - Germany/France/Poland (5 persons)",
                 Slug = "vdi-start-europe-5",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 115,
+                PricePerMonth = 575,
                 Configuration = "VDI на 5 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1191,7 +1191,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 115,
+                        Price = 575,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1209,7 +1209,7 @@ public static class SeedData
                 Name = "VDI Standard - Germany/France/Poland (5 persons)",
                 Slug = "vdi-standard-europe-5",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 140,
+                PricePerMonth = 700,
                 Configuration = "VDI на 5 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1220,7 +1220,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 140,
+                        Price = 700,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1238,7 +1238,7 @@ public static class SeedData
                 Name = "VDI Pro - Germany/France/Poland (5 persons)",
                 Slug = "vdi-pro-europe-5",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 165,
+                PricePerMonth = 825,
                 Configuration = "VDI на 5 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1249,7 +1249,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 165,
+                        Price = 825,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1268,7 +1268,7 @@ public static class SeedData
                 Name = "VDI Start - USA/Canada/Asia (5 persons)",
                 Slug = "vdi-start-usa-asia-5",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 135,
+                PricePerMonth = 675,
                 Configuration = "VDI на 5 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1279,7 +1279,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 135,
+                        Price = 675,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1297,7 +1297,7 @@ public static class SeedData
                 Name = "VDI Standard - USA/Canada/Asia (5 persons)",
                 Slug = "vdi-standard-usa-asia-5",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 160,
+                PricePerMonth = 800,
                 Configuration = "VDI на 5 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1308,7 +1308,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 160,
+                        Price = 800,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1326,7 +1326,7 @@ public static class SeedData
                 Name = "VDI Pro - USA/Canada/Asia (5 persons)",
                 Slug = "vdi-pro-usa-asia-5",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 185,
+                PricePerMonth = 925,
                 Configuration = "VDI на 5 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1337,7 +1337,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 185,
+                        Price = 925,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1356,7 +1356,7 @@ public static class SeedData
                 Name = "VDI Start - Netherlands (10 persons)",
                 Slug = "vdi-start-netherlands-10",
                 Location = "Netherlands",
-                PricePerMonth = 90,
+                PricePerMonth = 900,
                 Configuration = "VDI на 10 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1367,7 +1367,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 90,
+                        Price = 900,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1385,7 +1385,7 @@ public static class SeedData
                 Name = "VDI Standard - Netherlands (10 persons)",
                 Slug = "vdi-standard-netherlands-10",
                 Location = "Netherlands",
-                PricePerMonth = 115,
+                PricePerMonth = 1150,
                 Configuration = "VDI на 10 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1396,7 +1396,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 115,
+                        Price = 1150,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1414,7 +1414,7 @@ public static class SeedData
                 Name = "VDI Pro - Netherlands (10 persons)",
                 Slug = "vdi-pro-netherlands-10",
                 Location = "Netherlands",
-                PricePerMonth = 140,
+                PricePerMonth = 1400,
                 Configuration = "VDI на 10 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1425,7 +1425,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 140,
+                        Price = 1400,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1444,7 +1444,7 @@ public static class SeedData
                 Name = "VDI Start - Germany/France/Poland (10 persons)",
                 Slug = "vdi-start-europe-10",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 95,
+                PricePerMonth = 950,
                 Configuration = "VDI на 10 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1455,7 +1455,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 95,
+                        Price = 950,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1473,7 +1473,7 @@ public static class SeedData
                 Name = "VDI Standard - Germany/France/Poland (10 persons)",
                 Slug = "vdi-standard-europe-10",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 120,
+                PricePerMonth = 1200,
                 Configuration = "VDI на 10 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1484,7 +1484,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 120,
+                        Price = 1200,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1502,7 +1502,7 @@ public static class SeedData
                 Name = "VDI Pro - Germany/France/Poland (10 persons)",
                 Slug = "vdi-pro-europe-10",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 145,
+                PricePerMonth = 1450,
                 Configuration = "VDI на 10 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1513,7 +1513,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 145,
+                        Price = 1450,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1532,7 +1532,7 @@ public static class SeedData
                 Name = "VDI Start - USA/Canada/Asia (10 persons)",
                 Slug = "vdi-start-usa-asia-10",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 115,
+                PricePerMonth = 1150,
                 Configuration = "VDI на 10 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1543,7 +1543,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 115,
+                        Price = 1150,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1561,7 +1561,7 @@ public static class SeedData
                 Name = "VDI Standard - USA/Canada/Asia (10 persons)",
                 Slug = "vdi-standard-usa-asia-10",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 140,
+                PricePerMonth = 1400,
                 Configuration = "VDI на 10 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1572,7 +1572,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 140,
+                        Price = 1400,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1590,7 +1590,7 @@ public static class SeedData
                 Name = "VDI Pro - USA/Canada/Asia (10 persons)",
                 Slug = "vdi-pro-usa-asia-10",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 165,
+                PricePerMonth = 1650,
                 Configuration = "VDI на 10 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1601,7 +1601,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 165,
+                        Price = 1650,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1620,7 +1620,7 @@ public static class SeedData
                 Name = "VDI Start - Netherlands (20 persons)",
                 Slug = "vdi-start-netherlands-20",
                 Location = "Netherlands",
-                PricePerMonth = 75,
+                PricePerMonth = 1500,
                 Configuration = "VDI на 20 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1631,7 +1631,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 75,
+                        Price = 1500,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1649,7 +1649,7 @@ public static class SeedData
                 Name = "VDI Standard - Netherlands (20 persons)",
                 Slug = "vdi-standard-netherlands-20",
                 Location = "Netherlands",
-                PricePerMonth = 100,
+                PricePerMonth = 2000,
                 Configuration = "VDI на 20 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1660,7 +1660,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 100,
+                        Price = 2000,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1678,7 +1678,7 @@ public static class SeedData
                 Name = "VDI Pro - Netherlands (20 persons)",
                 Slug = "vdi-pro-netherlands-20",
                 Location = "Netherlands",
-                PricePerMonth = 125,
+                PricePerMonth = 2500,
                 Configuration = "VDI на 20 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1689,7 +1689,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 125,
+                        Price = 2500,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1708,7 +1708,7 @@ public static class SeedData
                 Name = "VDI Start - Germany/France/Poland (20 persons)",
                 Slug = "vdi-start-europe-20",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 80,
+                PricePerMonth = 1600,
                 Configuration = "VDI на 20 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1719,7 +1719,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 80,
+                        Price = 1600,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1737,7 +1737,7 @@ public static class SeedData
                 Name = "VDI Standard - Germany/France/Poland (20 persons)",
                 Slug = "vdi-standard-europe-20",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 105,
+                PricePerMonth = 2100,
                 Configuration = "VDI на 20 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1748,7 +1748,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 105,
+                        Price = 2100,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1766,7 +1766,7 @@ public static class SeedData
                 Name = "VDI Pro - Germany/France/Poland (20 persons)",
                 Slug = "vdi-pro-europe-20",
                 Location = "Germany/France/Poland",
-                PricePerMonth = 130,
+                PricePerMonth = 2600,
                 Configuration = "VDI на 20 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1777,7 +1777,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 130,
+                        Price = 2600,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1796,7 +1796,7 @@ public static class SeedData
                 Name = "VDI Start - USA/Canada/Asia (20 persons)",
                 Slug = "vdi-start-usa-asia-20",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 100,
+                PricePerMonth = 2000,
                 Configuration = "VDI на 20 человек - Start",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1807,7 +1807,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 100,
+                        Price = 2000,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1825,7 +1825,7 @@ public static class SeedData
                 Name = "VDI Standard - USA/Canada/Asia (20 persons)",
                 Slug = "vdi-standard-usa-asia-20",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 125,
+                PricePerMonth = 2500,
                 Configuration = "VDI на 20 человек - Standard",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1836,7 +1836,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 125,
+                        Price = 2500,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
@@ -1854,7 +1854,7 @@ public static class SeedData
                 Name = "VDI Pro - USA/Canada/Asia (20 persons)",
                 Slug = "vdi-pro-usa-asia-20",
                 Location = "USA/Canada/Asia",
-                PricePerMonth = 150,
+                PricePerMonth = 3000,
                 Configuration = "VDI на 20 человек - Pro",
                 IsAvailable = true,
                 IsPublished = true,
@@ -1865,7 +1865,7 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 150,
+                        Price = 3000,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
