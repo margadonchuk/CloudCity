@@ -36,6 +36,9 @@
   <data name="HostingDescriptionText" xml:space="preserve">
     <value>Dla stabilnej pracy średniego projektu (strona internetowa, serwer, VPN, panel zarządzania). Z administracją i wsparciem technicznym:</value>
   </data>
+  <data name="HostingAdditionalPrice" xml:space="preserve">
+    <value>+$50/mies.</value>
+  </data>
   <data name="Storage" xml:space="preserve">
     <value>Magazyn</value>
   </data>
@@ -52,7 +55,7 @@
     <value>Z kopią zapasową i wsparciem technicznym:</value>
   </data>
   <data name="StorageAdditionalPrice" xml:space="preserve">
-    <value>+$150/мес</value>
+    <value>+$150/mies.</value>
   </data>
   <data name="WebsiteBuilderTitle" xml:space="preserve">
     <value>Konstruktor stron</value>

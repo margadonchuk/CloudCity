@@ -36,6 +36,9 @@
   <data name="HostingDescriptionText" xml:space="preserve">
     <value>Для стабільної роботи середнього проекту (сайт, сервер, VPN, панель управління). З адмініструванням та техпідтримкою:</value>
   </data>
+  <data name="HostingAdditionalPrice" xml:space="preserve">
+    <value>+$50/міс</value>
+  </data>
   <data name="Storage" xml:space="preserve">
     <value>Сховище</value>
   </data>
@@ -52,7 +55,7 @@
     <value>З резервним копіюванням та техпідтримкою:</value>
   </data>
   <data name="StorageAdditionalPrice" xml:space="preserve">
-    <value>+$150/мес</value>
+    <value>+$150/міс</value>
   </data>
   <data name="WebsiteBuilderTitle" xml:space="preserve">
     <value>Сайти на конструкторі</value>
