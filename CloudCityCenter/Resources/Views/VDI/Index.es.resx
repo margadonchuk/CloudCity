@@ -96,5 +96,8 @@
   <data name="VDIPlansForFivePersons" xml:space="preserve">
     <value>VDI para 5 personas</value>
   </data>
+  <data name="VDIPlansForTenPersons" xml:space="preserve">
+    <value>VDI para 10 personas</value>
+  </data>
 </root>
 
