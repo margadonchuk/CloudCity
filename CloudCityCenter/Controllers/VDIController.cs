@@ -27,8 +27,21 @@ public class VDIController : Controller
             .ToListAsync();
 
         // Разделяем товары на планы для 1 человека и для 3 человек
-        var productsForOne = products.Where(p => p.Configuration.Contains("1 человека", StringComparison.OrdinalIgnoreCase) || p.Configuration.Contains("1 person", StringComparison.OrdinalIgnoreCase)).ToList();
-        var productsForThree = products.Where(p => p.Configuration.Contains("3 человека", StringComparison.OrdinalIgnoreCase) || p.Configuration.Contains("3 persons", StringComparison.OrdinalIgnoreCase)).ToList();
+        // Товары для 3 человек определяются по наличию "3" в Configuration или Slug
+        var productsForThree = products.Where(p => 
+            (p.Configuration != null && p.Configuration.Contains("3", StringComparison.OrdinalIgnoreCase)) ||
+            (p.Slug != null && (p.Slug.Contains("-3") || p.Slug.EndsWith("-3")))
+        ).ToList();
+        
+        // Все остальные товары - для 1 человека
+        var productsForOne = products.Where(p => !productsForThree.Contains(p)).ToList();
+        
+        // Если товары для 1 человека не найдены, но есть VDI товары,
+        // показываем все товары как для 1 человека (обратная совместимость)
+        if (productsForOne.Count == 0 && products.Count > 0)
+        {
+            productsForOne = products;
+        }
 
         // Группируем товары для 1 человека по регионам
         var regionsForOne = productsForOne
