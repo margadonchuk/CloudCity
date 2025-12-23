@@ -55,8 +55,13 @@ public class VDIController : Controller
              (p.Slug != null && (p.Slug.Contains("-3") || p.Slug.EndsWith("-3"))))
         ).ToList();
         
-        // Все остальные товары - для 1 человека
-        var productsForOne = products.Where(p => !productsForThree.Contains(p) && !productsForFive.Contains(p) && !productsForTen.Contains(p) && !productsForTwenty.Contains(p)).ToList();
+        // Товары для 1 человека - явно содержат "1" в Configuration или не содержат 3, 5, 10, 20
+        var productsForOne = products.Where(p => 
+            !productsForThree.Contains(p) && !productsForFive.Contains(p) && !productsForTen.Contains(p) && !productsForTwenty.Contains(p) &&
+            ((p.Configuration != null && (p.Configuration.Contains("1 человека", StringComparison.OrdinalIgnoreCase) || 
+                                          p.Configuration.Contains("1 person", StringComparison.OrdinalIgnoreCase))) ||
+             (p.Slug != null && !p.Slug.Contains("-3") && !p.Slug.Contains("-5") && !p.Slug.Contains("-10") && !p.Slug.Contains("-20")))
+        ).ToList();
         
         // Если товары для 1 человека не найдены, но есть VDI товары,
         // показываем все товары как для 1 человека (обратная совместимость)

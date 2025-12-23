@@ -664,15 +664,26 @@
                 }
             });
             
-            // Скрываем пустые секции
-            document.querySelectorAll('section.container.my-5').forEach(function(section) {
-                const visibleBlocks = section.querySelectorAll('.vdi-region-block:not([style*="display: none"])');
-                if (visibleBlocks.length === 0 && section.querySelector('.vdi-plan-item')) {
-                    section.style.display = 'none';
-                } else {
+            // Скрываем пустые секции (только если есть активные фильтры)
+            const hasActiveFilters = selectedLocation || selectedPersons || selectedCpu || selectedRam || selectedSsd;
+            if (hasActiveFilters) {
+                document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                    const visibleBlocks = section.querySelectorAll('.vdi-region-block[style=""], .vdi-region-block:not([style*="display: none"])');
+                    const hasVisibleBlocks = Array.from(visibleBlocks).some(function(block) {
+                        return block.style.display !== 'none' && block.offsetParent !== null;
+                    });
+                    if (!hasVisibleBlocks && section.querySelector('.vdi-plan-item')) {
+                        section.style.display = 'none';
+                    } else {
+                        section.style.display = '';
+                    }
+                });
+            } else {
+                // Если фильтры не активны, показываем все секции
+                document.querySelectorAll('section.container.my-5').forEach(function(section) {
                     section.style.display = '';
-                }
-            });
+                });
+            }
         }
         
         // Добавляем обработчики событий для всех фильтров
@@ -694,8 +705,8 @@
             });
         }
         
-        // Применяем фильтры при загрузке страницы (на случай, если есть значения в URL)
-        applyFilters();
+        // НЕ применяем фильтры при загрузке страницы - показываем все товары по умолчанию
+        // applyFilters();
     });
 </script>
 
