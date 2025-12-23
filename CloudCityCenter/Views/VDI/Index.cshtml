@@ -174,7 +174,12 @@
             <div class="row g-4">
                 @foreach (var plan in region.Plans)
                 {
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                         data-location="@plan.Country"
+                         data-persons="1"
+                         data-cpu="@plan.CpuCores"
+                         data-ram="@plan.RamGb"
+                         data-ssd="@plan.SsdGb">
                         <div class="card h-100 vdi-plan-card shadow-sm">
                             @if (!string.IsNullOrEmpty(plan.ImageUrl))
                             {
@@ -617,32 +622,43 @@
             const selectedSsd = filters.ssd.value;
             
             planItems.forEach(function(item) {
-                const itemLocation = item.getAttribute('data-location');
-                const itemPersons = item.getAttribute('data-persons');
-                const itemCpu = item.getAttribute('data-cpu');
-                const itemRam = item.getAttribute('data-ram');
-                const itemSsd = item.getAttribute('data-ssd');
+                const itemLocation = item.getAttribute('data-location') || '';
+                const itemPersons = item.getAttribute('data-persons') || '';
+                const itemCpu = item.getAttribute('data-cpu') || '';
+                const itemRam = item.getAttribute('data-ram') || '';
+                const itemSsd = item.getAttribute('data-ssd') || '';
                 
                 let show = true;
                 
-                if (selectedLocation && itemLocation !== selectedLocation) {
-                    show = false;
+                // Проверяем каждый фильтр только если он выбран
+                if (selectedLocation && selectedLocation.trim() !== '') {
+                    if (itemLocation !== selectedLocation) {
+                        show = false;
+                    }
                 }
                 
-                if (selectedPersons && itemPersons !== selectedPersons) {
-                    show = false;
+                if (selectedPersons && selectedPersons.trim() !== '') {
+                    if (itemPersons !== selectedPersons) {
+                        show = false;
+                    }
                 }
                 
-                if (selectedCpu && itemCpu !== selectedCpu) {
-                    show = false;
+                if (selectedCpu && selectedCpu.trim() !== '') {
+                    if (itemCpu !== selectedCpu) {
+                        show = false;
+                    }
                 }
                 
-                if (selectedRam && itemRam !== selectedRam) {
-                    show = false;
+                if (selectedRam && selectedRam.trim() !== '') {
+                    if (itemRam !== selectedRam) {
+                        show = false;
+                    }
                 }
                 
-                if (selectedSsd && itemSsd !== selectedSsd) {
-                    show = false;
+                if (selectedSsd && selectedSsd.trim() !== '') {
+                    if (itemSsd !== selectedSsd) {
+                        show = false;
+                    }
                 }
                 
                 if (show) {
@@ -656,7 +672,12 @@
             
             // Скрываем пустые региональные блоки
             document.querySelectorAll('.vdi-region-block').forEach(function(block) {
-                const visiblePlans = block.querySelectorAll('.vdi-plan-item:not(.hidden)');
+                const allPlans = block.querySelectorAll('.vdi-plan-item');
+                const visiblePlans = Array.from(allPlans).filter(function(plan) {
+                    return !plan.classList.contains('hidden') && 
+                           plan.style.display !== 'none' && 
+                           plan.offsetParent !== null;
+                });
                 if (visiblePlans.length === 0) {
                     block.style.display = 'none';
                 } else {
