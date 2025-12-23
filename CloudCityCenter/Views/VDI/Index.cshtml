@@ -618,11 +618,13 @@
         const planItems = document.querySelectorAll('.vdi-plan-item');
         
         function applyFilters() {
-            const selectedLocation = filters.location.value;
-            const selectedPersons = filters.persons.value;
-            const selectedCpu = filters.cpu.value;
-            const selectedRam = filters.ram.value;
-            const selectedSsd = filters.ssd.value;
+            const selectedLocation = filters.location ? filters.location.value : '';
+            const selectedPersons = filters.persons ? filters.persons.value : '';
+            const selectedCpu = filters.cpu ? filters.cpu.value : '';
+            const selectedRam = filters.ram ? filters.ram.value : '';
+            const selectedSsd = filters.ssd ? filters.ssd.value : '';
+            
+            let visibleCount = 0;
             
             planItems.forEach(function(item) {
                 const itemLocation = item.getAttribute('data-location') || '';
@@ -635,31 +637,31 @@
                 
                 // Проверяем каждый фильтр только если он выбран
                 if (selectedLocation && selectedLocation.trim() !== '') {
-                    if (itemLocation !== selectedLocation) {
+                    if (itemLocation.trim() !== selectedLocation.trim()) {
                         show = false;
                     }
                 }
                 
                 if (selectedPersons && selectedPersons.trim() !== '') {
-                    if (itemPersons !== selectedPersons) {
+                    if (itemPersons.trim() !== selectedPersons.trim()) {
                         show = false;
                     }
                 }
                 
                 if (selectedCpu && selectedCpu.trim() !== '') {
-                    if (itemCpu !== selectedCpu) {
+                    if (itemCpu.trim() !== selectedCpu.trim()) {
                         show = false;
                     }
                 }
                 
                 if (selectedRam && selectedRam.trim() !== '') {
-                    if (itemRam !== selectedRam) {
+                    if (itemRam.trim() !== selectedRam.trim()) {
                         show = false;
                     }
                 }
                 
                 if (selectedSsd && selectedSsd.trim() !== '') {
-                    if (itemSsd !== selectedSsd) {
+                    if (itemSsd.trim() !== selectedSsd.trim()) {
                         show = false;
                     }
                 }
@@ -667,6 +669,7 @@
                 if (show) {
                     item.classList.remove('hidden');
                     item.style.display = '';
+                    visibleCount++;
                 } else {
                     item.classList.add('hidden');
                     item.style.display = 'none';
@@ -678,10 +681,9 @@
                 const allPlans = block.querySelectorAll('.vdi-plan-item');
                 const visiblePlans = Array.from(allPlans).filter(function(plan) {
                     return !plan.classList.contains('hidden') && 
-                           plan.style.display !== 'none' && 
-                           plan.offsetParent !== null;
+                           plan.style.display !== 'none';
                 });
-                if (visiblePlans.length === 0) {
+                if (visiblePlans.length === 0 && allPlans.length > 0) {
                     block.style.display = 'none';
                 } else {
                     block.style.display = '';
@@ -689,18 +691,22 @@
             });
             
             // Скрываем пустые секции и их заголовки (только если есть активные фильтры)
-            const hasActiveFilters = selectedLocation || selectedPersons || selectedCpu || selectedRam || selectedSsd;
-            if (hasActiveFilters) {
-                document.querySelectorAll('section.container.my-5').forEach(function(section) {
-                    const allPlansInSection = section.querySelectorAll('.vdi-plan-item');
-                    const visiblePlansInSection = Array.from(allPlansInSection).filter(function(plan) {
-                        return !plan.classList.contains('hidden') && 
-                               plan.style.display !== 'none' && 
-                               plan.offsetParent !== null;
-                    });
-                    
-                    const sectionHeader = section.querySelector('.vdi-section-header');
-                    
+            const hasActiveFilters = (selectedLocation && selectedLocation.trim() !== '') ||
+                                    (selectedPersons && selectedPersons.trim() !== '') ||
+                                    (selectedCpu && selectedCpu.trim() !== '') ||
+                                    (selectedRam && selectedRam.trim() !== '') ||
+                                    (selectedSsd && selectedSsd.trim() !== '');
+            
+            document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                const allPlansInSection = section.querySelectorAll('.vdi-plan-item');
+                const visiblePlansInSection = Array.from(allPlansInSection).filter(function(plan) {
+                    return !plan.classList.contains('hidden') && 
+                           plan.style.display !== 'none';
+                });
+                
+                const sectionHeader = section.querySelector('.vdi-section-header');
+                
+                if (hasActiveFilters) {
                     if (visiblePlansInSection.length === 0 && allPlansInSection.length > 0) {
                         // Скрываем секцию и заголовок, если нет видимых планов, но есть планы в секции
                         section.style.display = 'none';
@@ -708,31 +714,48 @@
                             sectionHeader.style.display = 'none';
                         }
                     } else {
-                        // Показываем секцию и заголовок, если есть видимые планы или нет планов вообще
+                        // Показываем секцию и заголовок, если есть видимые планы
                         section.style.display = '';
                         if (sectionHeader) {
                             sectionHeader.style.display = '';
                         }
                     }
-                });
-            } else {
-                // Если фильтры не активны, показываем все секции и заголовки
-                document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                } else {
+                    // Если фильтры не активны, показываем все секции и заголовки
                     section.style.display = '';
-                    const sectionHeader = section.querySelector('.vdi-section-header');
                     if (sectionHeader) {
                         sectionHeader.style.display = '';
                     }
-                });
-            }
+                }
+            });
         }
         
         // Добавляем обработчики событий для всех фильтров
-        Object.values(filters).forEach(function(filter) {
-            if (filter) {
-                filter.addEventListener('change', applyFilters);
-            }
-        });
+        if (filters.location) {
+            filters.location.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.persons) {
+            filters.persons.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.cpu) {
+            filters.cpu.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ram) {
+            filters.ram.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ssd) {
+            filters.ssd.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
         
         // Обработчик для кнопки сброса
         if (resetButton) {
