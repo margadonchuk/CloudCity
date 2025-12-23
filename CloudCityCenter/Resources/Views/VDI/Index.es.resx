@@ -90,5 +90,8 @@
   <data name="GB" xml:space="preserve">
     <value>GB</value>
   </data>
+  <data name="VDIPlansForThreePersons" xml:space="preserve">
+    <value>VDI para 3 personas</value>
+  </data>
 </root>
 

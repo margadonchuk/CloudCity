@@ -26,8 +26,12 @@ public class VDIController : Controller
             .Include(p => p.Features)
             .ToListAsync();
 
-        // Группируем товары по регионам
-        var regions = products
+        // Разделяем товары на планы для 1 человека и для 3 человек
+        var productsForOne = products.Where(p => p.Configuration.Contains("1 человека", StringComparison.OrdinalIgnoreCase) || p.Configuration.Contains("1 person", StringComparison.OrdinalIgnoreCase)).ToList();
+        var productsForThree = products.Where(p => p.Configuration.Contains("3 человека", StringComparison.OrdinalIgnoreCase) || p.Configuration.Contains("3 persons", StringComparison.OrdinalIgnoreCase)).ToList();
+
+        // Группируем товары для 1 человека по регионам
+        var regionsForOne = productsForOne
             .GroupBy(p => p.Location)
             .Select(g => new VDIPlansByRegionVm
             {
@@ -37,7 +41,34 @@ public class VDIController : Controller
                     var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
                     return new VDIPlanVm
                     {
-                        Name = ExtractPlanName(p.Name), // Извлекаем "Start", "Standard" или "Pro"
+                        Name = ExtractPlanName(p.Name),
+                        CpuCores = ParseFeature(featuresDict, "CPU", "core"),
+                        RamGb = ParseFeature(featuresDict, "RAM", "GB"),
+                        SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
+                        Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
+                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                        Price = p.PricePerMonth,
+                        ImageUrl = p.ImageUrl
+                    };
+                })
+                .OrderBy(p => p.Price)
+                .ToList()
+            })
+            .OrderBy(r => r.RegionName)
+            .ToList();
+
+        // Группируем товары для 3 человек по регионам
+        var regionsForThree = productsForThree
+            .GroupBy(p => p.Location)
+            .Select(g => new VDIPlansByRegionVm
+            {
+                RegionName = g.Key,
+                Plans = g.Select(p =>
+                {
+                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    return new VDIPlanVm
+                    {
+                        Name = ExtractPlanName(p.Name),
                         CpuCores = ParseFeature(featuresDict, "CPU", "core"),
                         RamGb = ParseFeature(featuresDict, "RAM", "GB"),
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
@@ -55,7 +86,8 @@ public class VDIController : Controller
 
         var vm = new VDIPageVm
         {
-            Regions = regions
+            RegionsForOnePerson = regionsForOne,
+            RegionsForThreePersons = regionsForThree
         };
 
         return View(vm);
