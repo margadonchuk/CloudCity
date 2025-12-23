@@ -136,7 +136,7 @@
         </div>
     </div>
 
-    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
         <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForOnePerson"]</h2>
         <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
     </div>
@@ -236,7 +236,7 @@
 
     <!-- VDI PLANS FOR 3 PERSONS SECTION -->
     <section class="container my-5">
-        <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
             <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForThreePersons"]</h2>
             <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
         </div>
@@ -313,7 +313,7 @@
 
     <!-- VDI PLANS FOR 5 PERSONS SECTION -->
     <section class="container my-5">
-        <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
             <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForFivePersons"]</h2>
             <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
         </div>
@@ -390,7 +390,7 @@
 
     <!-- VDI PLANS FOR 10 PERSONS SECTION -->
     <section class="container my-5">
-        <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
             <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForTenPersons"]</h2>
             <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
         </div>
@@ -467,7 +467,7 @@
 
     <!-- VDI PLANS FOR 20 PERSONS SECTION -->
     <section class="container my-5">
-        <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
             <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForTwentyPersons"]</h2>
             <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
         </div>
@@ -685,24 +685,41 @@
                 }
             });
             
-            // Скрываем пустые секции (только если есть активные фильтры)
+            // Скрываем пустые секции и их заголовки (только если есть активные фильтры)
             const hasActiveFilters = selectedLocation || selectedPersons || selectedCpu || selectedRam || selectedSsd;
             if (hasActiveFilters) {
                 document.querySelectorAll('section.container.my-5').forEach(function(section) {
-                    const visibleBlocks = section.querySelectorAll('.vdi-region-block[style=""], .vdi-region-block:not([style*="display: none"])');
-                    const hasVisibleBlocks = Array.from(visibleBlocks).some(function(block) {
-                        return block.style.display !== 'none' && block.offsetParent !== null;
+                    const allPlansInSection = section.querySelectorAll('.vdi-plan-item');
+                    const visiblePlansInSection = Array.from(allPlansInSection).filter(function(plan) {
+                        return !plan.classList.contains('hidden') && 
+                               plan.style.display !== 'none' && 
+                               plan.offsetParent !== null;
                     });
-                    if (!hasVisibleBlocks && section.querySelector('.vdi-plan-item')) {
+                    
+                    const sectionHeader = section.querySelector('.vdi-section-header');
+                    
+                    if (visiblePlansInSection.length === 0) {
+                        // Скрываем секцию и заголовок, если нет видимых планов
                         section.style.display = 'none';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = 'none';
+                        }
                     } else {
+                        // Показываем секцию и заголовок, если есть видимые планы
                         section.style.display = '';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = '';
+                        }
                     }
                 });
             } else {
-                // Если фильтры не активны, показываем все секции
+                // Если фильтры не активны, показываем все секции и заголовки
                 document.querySelectorAll('section.container.my-5').forEach(function(section) {
                     section.style.display = '';
+                    const sectionHeader = section.querySelector('.vdi-section-header');
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
                 });
             }
         }
@@ -735,9 +752,13 @@
                     block.style.display = '';
                 });
                 
-                // Показываем все секции
+                // Показываем все секции и их заголовки
                 document.querySelectorAll('section.container.my-5').forEach(function(section) {
                     section.style.display = '';
+                    const sectionHeader = section.querySelector('.vdi-section-header');
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
                 });
             });
         }
