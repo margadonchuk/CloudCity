@@ -99,5 +99,8 @@
   <data name="VDIPlansForTenPersons" xml:space="preserve">
     <value>VDI на 10 осіб</value>
   </data>
+  <data name="VDIPlansForTwentyPersons" xml:space="preserve">
+    <value>VDI на 20 осіб</value>
+  </data>
 </root>
 

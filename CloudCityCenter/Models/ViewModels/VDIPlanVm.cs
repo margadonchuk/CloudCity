@@ -24,5 +24,6 @@ public class VDIPageVm
     public List<VDIPlansByRegionVm> RegionsForThreePersons { get; set; } = new List<VDIPlansByRegionVm>();
     public List<VDIPlansByRegionVm> RegionsForFivePersons { get; set; } = new List<VDIPlansByRegionVm>();
     public List<VDIPlansByRegionVm> RegionsForTenPersons { get; set; } = new List<VDIPlansByRegionVm>();
+    public List<VDIPlansByRegionVm> RegionsForTwentyPersons { get; set; } = new List<VDIPlansByRegionVm>();
 }
 

@@ -1613,6 +1613,270 @@ public static class SeedData
                     new() { Name = "Traffic", Value = "1 Gb/s" },
                     new() { Name = "Country", Value = "USA/Canada/Asia" }
                 }
+            },
+            // VDI Products for 20 persons - Netherlands
+            new()
+            {
+                Name = "VDI Start - Netherlands (20 persons)",
+                Slug = "vdi-start-netherlands-20",
+                Location = "Netherlands",
+                PricePerMonth = 75,
+                Configuration = "VDI на 20 человек - Start",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_start_1.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 75,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "4 core" },
+                    new() { Name = "RAM", Value = "8 GB" },
+                    new() { Name = "SSD", Value = "80 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "Netherlands" }
+                }
+            },
+            new()
+            {
+                Name = "VDI Standard - Netherlands (20 persons)",
+                Slug = "vdi-standard-netherlands-20",
+                Location = "Netherlands",
+                PricePerMonth = 100,
+                Configuration = "VDI на 20 человек - Standard",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_standrt_1.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 100,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "6 core" },
+                    new() { Name = "RAM", Value = "12 GB" },
+                    new() { Name = "SSD", Value = "120 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "Netherlands" }
+                }
+            },
+            new()
+            {
+                Name = "VDI Pro - Netherlands (20 persons)",
+                Slug = "vdi-pro-netherlands-20",
+                Location = "Netherlands",
+                PricePerMonth = 125,
+                Configuration = "VDI на 20 человек - Pro",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_pro_1.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 125,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "8 core" },
+                    new() { Name = "RAM", Value = "16 GB" },
+                    new() { Name = "SSD", Value = "150 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "Netherlands" }
+                }
+            },
+            // VDI Products for 20 persons - Germany/France/Poland
+            new()
+            {
+                Name = "VDI Start - Germany/France/Poland (20 persons)",
+                Slug = "vdi-start-europe-20",
+                Location = "Germany/France/Poland",
+                PricePerMonth = 80,
+                Configuration = "VDI на 20 человек - Start",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_start_2.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 80,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "4 core" },
+                    new() { Name = "RAM", Value = "8 GB" },
+                    new() { Name = "SSD", Value = "80 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "Germany/France/Poland" }
+                }
+            },
+            new()
+            {
+                Name = "VDI Standard - Germany/France/Poland (20 persons)",
+                Slug = "vdi-standard-europe-20",
+                Location = "Germany/France/Poland",
+                PricePerMonth = 105,
+                Configuration = "VDI на 20 человек - Standard",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_standrt_2.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 105,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "6 core" },
+                    new() { Name = "RAM", Value = "12 GB" },
+                    new() { Name = "SSD", Value = "120 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "Germany/France/Poland" }
+                }
+            },
+            new()
+            {
+                Name = "VDI Pro - Germany/France/Poland (20 persons)",
+                Slug = "vdi-pro-europe-20",
+                Location = "Germany/France/Poland",
+                PricePerMonth = 130,
+                Configuration = "VDI на 20 человек - Pro",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_pro_2.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 130,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "8 core" },
+                    new() { Name = "RAM", Value = "16 GB" },
+                    new() { Name = "SSD", Value = "150 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "Germany/France/Poland" }
+                }
+            },
+            // VDI Products for 20 persons - USA/Canada/Asia
+            new()
+            {
+                Name = "VDI Start - USA/Canada/Asia (20 persons)",
+                Slug = "vdi-start-usa-asia-20",
+                Location = "USA/Canada/Asia",
+                PricePerMonth = 100,
+                Configuration = "VDI на 20 человек - Start",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_start_3.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 100,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "4 core" },
+                    new() { Name = "RAM", Value = "8 GB" },
+                    new() { Name = "SSD", Value = "80 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "USA/Canada/Asia" }
+                }
+            },
+            new()
+            {
+                Name = "VDI Standard - USA/Canada/Asia (20 persons)",
+                Slug = "vdi-standard-usa-asia-20",
+                Location = "USA/Canada/Asia",
+                PricePerMonth = 125,
+                Configuration = "VDI на 20 человек - Standard",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_standrt_3.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 125,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "6 core" },
+                    new() { Name = "RAM", Value = "12 GB" },
+                    new() { Name = "SSD", Value = "120 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "USA/Canada/Asia" }
+                }
+            },
+            new()
+            {
+                Name = "VDI Pro - USA/Canada/Asia (20 persons)",
+                Slug = "vdi-pro-usa-asia-20",
+                Location = "USA/Canada/Asia",
+                PricePerMonth = 150,
+                Configuration = "VDI на 20 человек - Pro",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vdi_pro_3.png",
+                Type = ProductType.VDI,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 150,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "CPU", Value = "8 core" },
+                    new() { Name = "RAM", Value = "16 GB" },
+                    new() { Name = "SSD", Value = "150 GB" },
+                    new() { Name = "Traffic", Value = "1 Gb/s" },
+                    new() { Name = "Country", Value = "USA/Canada/Asia" }
+                }
             }
         };
 

@@ -26,33 +26,40 @@ public class VDIController : Controller
             .Include(p => p.Features)
             .ToListAsync();
 
-        // Разделяем товары на планы для 1, 3, 5 и 10 человек
+        // Разделяем товары на планы для 1, 3, 5, 10 и 20 человек
+        // Товары для 20 человек определяются по наличию "20" в Configuration или Slug
+        var productsForTwenty = products.Where(p => 
+            (p.Configuration != null && p.Configuration.Contains("20", StringComparison.OrdinalIgnoreCase)) ||
+            (p.Slug != null && (p.Slug.Contains("-20") || p.Slug.EndsWith("-20")))
+        ).ToList();
+        
         // Товары для 10 человек определяются по наличию "10" в Configuration или Slug
         var productsForTen = products.Where(p => 
-            (p.Configuration != null && p.Configuration.Contains("10", StringComparison.OrdinalIgnoreCase)) ||
-            (p.Slug != null && (p.Slug.Contains("-10") || p.Slug.EndsWith("-10")))
+            !productsForTwenty.Contains(p) &&
+            ((p.Configuration != null && p.Configuration.Contains("10", StringComparison.OrdinalIgnoreCase)) ||
+             (p.Slug != null && (p.Slug.Contains("-10") || p.Slug.EndsWith("-10"))))
         ).ToList();
         
         // Товары для 5 человек определяются по наличию "5" в Configuration или Slug
         var productsForFive = products.Where(p => 
-            !productsForTen.Contains(p) &&
+            !productsForTwenty.Contains(p) && !productsForTen.Contains(p) &&
             ((p.Configuration != null && p.Configuration.Contains("5", StringComparison.OrdinalIgnoreCase)) ||
              (p.Slug != null && (p.Slug.Contains("-5") || p.Slug.EndsWith("-5"))))
         ).ToList();
         
         // Товары для 3 человек определяются по наличию "3" в Configuration или Slug
         var productsForThree = products.Where(p => 
-            !productsForTen.Contains(p) && !productsForFive.Contains(p) &&
+            !productsForTwenty.Contains(p) && !productsForTen.Contains(p) && !productsForFive.Contains(p) &&
             ((p.Configuration != null && p.Configuration.Contains("3", StringComparison.OrdinalIgnoreCase)) ||
              (p.Slug != null && (p.Slug.Contains("-3") || p.Slug.EndsWith("-3"))))
         ).ToList();
         
         // Все остальные товары - для 1 человека
-        var productsForOne = products.Where(p => !productsForThree.Contains(p) && !productsForFive.Contains(p) && !productsForTen.Contains(p)).ToList();
+        var productsForOne = products.Where(p => !productsForThree.Contains(p) && !productsForFive.Contains(p) && !productsForTen.Contains(p) && !productsForTwenty.Contains(p)).ToList();
         
         // Если товары для 1 человека не найдены, но есть VDI товары,
         // показываем все товары как для 1 человека (обратная совместимость)
-        if (productsForOne.Count == 0 && products.Count > 0 && productsForThree.Count == 0 && productsForFive.Count == 0 && productsForTen.Count == 0)
+        if (productsForOne.Count == 0 && products.Count > 0 && productsForThree.Count == 0 && productsForFive.Count == 0 && productsForTen.Count == 0 && productsForTwenty.Count == 0)
         {
             productsForOne = products;
         }
@@ -165,12 +172,40 @@ public class VDIController : Controller
             .OrderBy(r => r.RegionName)
             .ToList();
 
+        // Группируем товары для 20 человек по регионам
+        var regionsForTwenty = productsForTwenty
+            .GroupBy(p => p.Location)
+            .Select(g => new VDIPlansByRegionVm
+            {
+                RegionName = g.Key,
+                Plans = g.Select(p =>
+                {
+                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    return new VDIPlanVm
+                    {
+                        Name = ExtractPlanName(p.Name),
+                        CpuCores = ParseFeature(featuresDict, "CPU", "core"),
+                        RamGb = ParseFeature(featuresDict, "RAM", "GB"),
+                        SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
+                        Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
+                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                        Price = p.PricePerMonth,
+                        ImageUrl = p.ImageUrl
+                    };
+                })
+                .OrderBy(p => p.Price)
+                .ToList()
+            })
+            .OrderBy(r => r.RegionName)
+            .ToList();
+
         var vm = new VDIPageVm
         {
             RegionsForOnePerson = regionsForOne,
             RegionsForThreePersons = regionsForThree,
             RegionsForFivePersons = regionsForFive,
-            RegionsForTenPersons = regionsForTen
+            RegionsForTenPersons = regionsForTen,
+            RegionsForTwentyPersons = regionsForTwenty
         };
 
         return View(vm);
