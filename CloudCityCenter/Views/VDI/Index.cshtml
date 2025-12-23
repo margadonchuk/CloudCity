@@ -216,7 +216,15 @@
                                             <span class="display-6 fw-bold text-primary">$@plan.Price</span>
                                             <span class="text-muted">/ @Localizer["Month"]</span>
                                         </div>
-                                        <button class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -280,7 +288,15 @@
                                             <span class="display-6 fw-bold text-primary">$@plan.Price</span>
                                             <span class="text-muted">/ @Localizer["Month"]</span>
                                         </div>
-                                        <button class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -344,7 +360,15 @@
                                             <span class="display-6 fw-bold text-primary">$@plan.Price</span>
                                             <span class="text-muted">/ @Localizer["Month"]</span>
                                         </div>
-                                        <button class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -408,7 +432,15 @@
                                             <span class="display-6 fw-bold text-primary">$@plan.Price</span>
                                             <span class="text-muted">/ @Localizer["Month"]</span>
                                         </div>
-                                        <button class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
