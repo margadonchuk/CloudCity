@@ -2,6 +2,8 @@ namespace CloudCityCenter.Models.ViewModels;
 
 public class VDIPlanVm
 {
+    public int ProductId { get; set; }
+    public int? ProductVariantId { get; set; }
     public string Name { get; set; } = string.Empty;
     public int CpuCores { get; set; }
     public int RamGb { get; set; }

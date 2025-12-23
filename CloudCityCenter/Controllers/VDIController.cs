@@ -24,6 +24,7 @@ public class VDIController : Controller
         var products = await _context.Products
             .Where(p => p.Type == ProductType.VDI && p.IsPublished)
             .Include(p => p.Features)
+            .Include(p => p.Variants)
             .ToListAsync();
 
         // Разделяем товары на планы для 1, 3, 5, 10 и 20 человек
@@ -73,15 +74,18 @@ public class VDIController : Controller
                 Plans = g.Select(p =>
                 {
                     var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
                     return new VDIPlanVm
                     {
+                        ProductId = p.Id,
+                        ProductVariantId = defaultVariant?.Id,
                         Name = ExtractPlanName(p.Name),
                         CpuCores = ParseFeature(featuresDict, "CPU", "core"),
                         RamGb = ParseFeature(featuresDict, "RAM", "GB"),
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = p.PricePerMonth,
+                        Price = defaultVariant?.Price ?? p.PricePerMonth,
                         ImageUrl = p.ImageUrl
                     };
                 })
@@ -100,15 +104,18 @@ public class VDIController : Controller
                 Plans = g.Select(p =>
                 {
                     var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
                     return new VDIPlanVm
                     {
+                        ProductId = p.Id,
+                        ProductVariantId = defaultVariant?.Id,
                         Name = ExtractPlanName(p.Name),
                         CpuCores = ParseFeature(featuresDict, "CPU", "core"),
                         RamGb = ParseFeature(featuresDict, "RAM", "GB"),
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = p.PricePerMonth,
+                        Price = defaultVariant?.Price ?? p.PricePerMonth,
                         ImageUrl = p.ImageUrl
                     };
                 })
@@ -127,15 +134,18 @@ public class VDIController : Controller
                 Plans = g.Select(p =>
                 {
                     var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
                     return new VDIPlanVm
                     {
+                        ProductId = p.Id,
+                        ProductVariantId = defaultVariant?.Id,
                         Name = ExtractPlanName(p.Name),
                         CpuCores = ParseFeature(featuresDict, "CPU", "core"),
                         RamGb = ParseFeature(featuresDict, "RAM", "GB"),
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = p.PricePerMonth,
+                        Price = defaultVariant?.Price ?? p.PricePerMonth,
                         ImageUrl = p.ImageUrl
                     };
                 })
@@ -154,15 +164,18 @@ public class VDIController : Controller
                 Plans = g.Select(p =>
                 {
                     var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
                     return new VDIPlanVm
                     {
+                        ProductId = p.Id,
+                        ProductVariantId = defaultVariant?.Id,
                         Name = ExtractPlanName(p.Name),
                         CpuCores = ParseFeature(featuresDict, "CPU", "core"),
                         RamGb = ParseFeature(featuresDict, "RAM", "GB"),
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = p.PricePerMonth,
+                        Price = defaultVariant?.Price ?? p.PricePerMonth,
                         ImageUrl = p.ImageUrl
                     };
                 })
@@ -181,15 +194,18 @@ public class VDIController : Controller
                 Plans = g.Select(p =>
                 {
                     var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
                     return new VDIPlanVm
                     {
+                        ProductId = p.Id,
+                        ProductVariantId = defaultVariant?.Id,
                         Name = ExtractPlanName(p.Name),
                         CpuCores = ParseFeature(featuresDict, "CPU", "core"),
                         RamGb = ParseFeature(featuresDict, "RAM", "GB"),
                         SsdGb = ParseFeature(featuresDict, "SSD", "GB"),
                         Traffic = featuresDict.GetValueOrDefault("Traffic", "1 Gb/s"),
                         Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = p.PricePerMonth,
+                        Price = defaultVariant?.Price ?? p.PricePerMonth,
                         ImageUrl = p.ImageUrl
                     };
                 })
