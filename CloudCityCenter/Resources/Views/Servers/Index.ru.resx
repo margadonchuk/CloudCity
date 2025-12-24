@@ -39,5 +39,59 @@
   <data name="ChoosePerfectServer" xml:space="preserve">
     <value>Выберите идеальный сервер для ваших потребностей</value>
   </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server на 5-8 человек</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server на 15 человек</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server на 25 человек</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server на 35 человек</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server на 50 человек</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Выберите план для ваших задач</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процессор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗУ</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Сеть</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Заказать</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Нидерланды</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Германия</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Великобритания / Польша / Франция</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Канада / США</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Сингапур / Индия / Австралия</value>
+  </data>
 </root>
 
