@@ -1,4 +1,5 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model CloudCityCenter.Models.ViewModels.WindowsServerPageVm
 @{
     ViewData["Title"] = Localizer["Title"];
 }
@@ -67,21 +68,433 @@
   </div>
 </section>
 
-<!-- PRODUCTS SECTION -->
+@using System
+@{
+    string GetLocalizedRegionName(string regionName)
+    {
+        if (regionName.Contains("Netherlands", StringComparison.OrdinalIgnoreCase))
+            return Localizer["RegionNetherlands"].Value;
+        if (regionName.Contains("Germany", StringComparison.OrdinalIgnoreCase))
+            return Localizer["RegionGermany"].Value;
+        if (regionName.Contains("United Kingdom") || regionName.Contains("Poland") || regionName.Contains("France"))
+            return Localizer["RegionUKPolandFrance"].Value;
+        if (regionName.Contains("Canada") || regionName.Contains("USA"))
+            return Localizer["RegionCanadaUSA"].Value;
+        if (regionName.Contains("Singapore") || regionName.Contains("India") || regionName.Contains("Australia"))
+            return Localizer["RegionSingaporeIndiaAustralia"].Value;
+        return regionName;
+    }
+}
+
+<!-- Windows Server на 5-8 человек -->
 <section class="container my-5">
-    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-      <h2 class="display-5 fw-bold mb-3">@Localizer["AvailableServers"]</h2>
-      <p class="lead text-muted">@Localizer["ChoosePerfectServer"]</p>
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForFiveToEightPersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    @foreach (var region in Model.RegionsForFiveToEightPersons)
+    {
+        <div class="servers-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="servers-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+            </div>
+            <div class="row g-4">
+                @foreach (var plan in region.Plans)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</section>
+
+<!-- Windows Server на 15 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForFifteenPersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    @foreach (var region in Model.RegionsForFifteenPersons)
+    {
+        <div class="servers-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="servers-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+            </div>
+            <div class="row g-4">
+                @foreach (var plan in region.Plans)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</section>
+
+<!-- Windows Server на 25 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForTwentyFivePersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    @foreach (var region in Model.RegionsForTwentyFivePersons)
+    {
+        <div class="servers-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="servers-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+            </div>
+            <div class="row g-4">
+                @foreach (var plan in region.Plans)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</section>
+
+<!-- Windows Server на 35 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForThirtyFivePersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    @foreach (var region in Model.RegionsForThirtyFivePersons)
+    {
+        <div class="servers-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="servers-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
     </div>
     <div class="row g-4">
-        @foreach (var item in Model)
+                @foreach (var plan in region.Plans)
         {
-            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
-                <div class="card h-100 servers-product-card">
-                    @await Html.PartialAsync("_ProductCard", item)
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
                 </div>
             </div>
         }
-    </div>
 </section>
+
+<!-- Windows Server на 50 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForFiftyPersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    @foreach (var region in Model.RegionsForFiftyPersons)
+    {
+        <div class="servers-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="servers-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+            </div>
+            <div class="row g-4">
+                @foreach (var plan in region.Plans)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</section>
+
+<style>
+    .servers-region-block {
+        margin-bottom: 4rem;
+    }
+
+    .servers-region-header {
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 1rem;
+    }
+
+    .servers-plan-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+    }
+
+    .servers-plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15) !important;
+    }
+
+    .servers-plan-card .card-body {
+        padding: 2rem;
+    }
+
+    .servers-plan-card .card-title {
+        color: #0d6efd;
+        font-size: 1.5rem;
+    }
+
+    .servers-plan-card ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .servers-plan-card ul li:last-child {
+        border-bottom: none;
+    }
+
+    .servers-plan-card .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .servers-plan-card .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: scale(1.02);
+    }
+</style>
 
