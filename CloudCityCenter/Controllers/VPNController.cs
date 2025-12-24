@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -66,6 +67,109 @@ public class VPNController : Controller
             };
         }).ToList();
 
-        return View(productCards);
+        // Услуги настройки оборудования
+        var configurationServices = GetConfigurationServices();
+
+        var viewModel = new VPNPageVm
+        {
+            VPNProducts = productCards,
+            ConfigurationServices = configurationServices
+        };
+
+        return View(viewModel);
+    }
+
+    private List<ConfigurationServiceCategoryVm> GetConfigurationServices()
+    {
+        return new List<ConfigurationServiceCategoryVm>
+        {
+            new ConfigurationServiceCategoryVm
+            {
+                CategoryName = "Настройка CHR (Cloud Hosted Router)",
+                CategoryDescription = "Установка/обновление RouterOS на виртуальном сервере, настройка VPN (WireGuard, IPsec, OpenVPN), Firewall, NAT, проброс портов, маршрутизация, мониторинг, базовые политики доступа, оптимизация под сеть клиента",
+                Services = new List<ConfigurationServiceVm>
+                {
+                    new ConfigurationServiceVm
+                    {
+                        Name = "CHR Basic",
+                        Description = "Базовая настройка CHR (VPN, Firewall, NAT)",
+                        Price = 150,
+                        Category = "CHR"
+                    },
+                    new ConfigurationServiceVm
+                    {
+                        Name = "CHR Standard",
+                        Description = "Расширенные правила безопасности + мониторинг",
+                        Price = 250,
+                        Category = "CHR"
+                    },
+                    new ConfigurationServiceVm
+                    {
+                        Name = "CHR Pro",
+                        Description = "Полная настройка с резервами, отказоустойчивостью",
+                        Price = 399,
+                        Category = "CHR"
+                    }
+                }
+            },
+            new ConfigurationServiceCategoryVm
+            {
+                CategoryName = "Настройка физического оборудования MikroTik",
+                CategoryDescription = "",
+                Services = new List<ConfigurationServiceVm>
+                {
+                    new ConfigurationServiceVm
+                    {
+                        Name = "MikroTik Basic",
+                        Description = "WAN/LAN подключение, NAT, DHCP, базовый Firewall",
+                        Price = 180,
+                        Category = "MikroTik"
+                    },
+                    new ConfigurationServiceVm
+                    {
+                        Name = "MikroTik Advanced",
+                        Description = "VPN/IPsec/L2TP, VLAN, резервирование провайдеров",
+                        Price = 250,
+                        Category = "MikroTik"
+                    },
+                    new ConfigurationServiceVm
+                    {
+                        Name = "MikroTik Pro",
+                        Description = "WiFi CAPsMAN, комплексное сетевое решение, мониторинг",
+                        Price = 450,
+                        Category = "MikroTik"
+                    }
+                }
+            },
+            new ConfigurationServiceCategoryVm
+            {
+                CategoryName = "Настройка физического оборудования Fortinet",
+                CategoryDescription = "Fortinet — это техника уровня корпоративной сетевой безопасности, сложнее MikroTik, и её настройка требует большего времени и опыта. Fortinet требует продвинутой сертификации и времени (часто 4–8 часов и больше), поэтому тарифы выше среднего уровня.",
+                Services = new List<ConfigurationServiceVm>
+                {
+                    new ConfigurationServiceVm
+                    {
+                        Name = "Fortinet Basic",
+                        Description = "Настройка базовых правил, интерфейсов, Firewall",
+                        Price = 400,
+                        Category = "Fortinet"
+                    },
+                    new ConfigurationServiceVm
+                    {
+                        Name = "Fortinet Security",
+                        Description = "VPN (IPsec/SSL), высокоуровневое шифрование, IPS",
+                        Price = 770,
+                        Category = "Fortinet"
+                    },
+                    new ConfigurationServiceVm
+                    {
+                        Name = "Fortinet Enterprise",
+                        Description = "Полный сетевой UTM, сегментация, HA, логирование",
+                        Price = 1500,
+                        Category = "Fortinet"
+                    }
+                }
+            }
+        };
     }
 }

@@ -1,4 +1,4 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@model CloudCityCenter.Models.ViewModels.VPNPageVm
 @{
     ViewData["Title"] = Localizer["Title"];
 }
@@ -50,7 +50,7 @@
       <p class="lead text-muted">@Localizer["ChooseVPNSolution"]</p>
     </div>
     <div class="row g-4 justify-content-center">
-        @foreach (var item in Model)
+        @foreach (var item in Model.VPNProducts)
         {
             <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
                 <div class="card h-100 vpn-product-card shadow text-center">
@@ -59,6 +59,68 @@
             </div>
         }
     </div>
+</section>
+
+<!-- CONFIGURATION SERVICES SECTION -->
+<section class="container py-5 mt-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 60px 40px !important;">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3 text-white">Настройка CHR, MikroTik и Fortinet под ваш бизнес</h2>
+        <p class="lead text-white-50" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+            Подключим, настроим и обеспечим стабильную работу вашей сети — от облачного CHR до физического MikroTik или корпоративного Fortinet. Без лишней сложности и с поддержкой на каждом этапе.
+        </p>
+    </div>
+
+    @foreach (var category in Model.ConfigurationServices)
+    {
+        <div class="mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="card shadow-lg border-0" style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; overflow: hidden;">
+                <div class="card-header bg-primary text-white" style="border: none; padding: 25px;">
+                    <h3 class="h4 mb-2 fw-bold">@category.CategoryName</h3>
+                    @if (!string.IsNullOrEmpty(category.CategoryDescription))
+                    {
+                        <p class="mb-0 text-white-50" style="font-size: 0.95rem;">
+                            @if (category.CategoryName.Contains("CHR"))
+                            {
+                                <span><strong>Что входит:</strong></span><br />
+                                <span>✔️ Установка/обновление RouterOS на виртуальном сервере</span><br />
+                                <span>✔️ Настройка VPN (WireGuard, IPsec, OpenVPN)</span><br />
+                                <span>✔️ Firewall, NAT, проброс портов</span><br />
+                                <span>✔️ Маршрутизация, мониторинг, базовые политики доступа</span><br />
+                                <span>✔️ Оптимизация под сеть клиента</span>
+                            }
+                            else
+                            {
+                                @category.CategoryDescription
+                            }
+                        </p>
+                    }
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        @foreach (var service in category.Services)
+                        {
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.1)';">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title fw-bold mb-3" style="color: #667eea;">@service.Name</h5>
+                                        <p class="card-text text-muted flex-grow-1 mb-3">@service.Description</p>
+                                        <div class="mt-auto">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <span class="h4 fw-bold text-primary mb-0">$@service.Price.ToString("0")</span>
+                                            </div>
+                                            <button class="btn btn-primary w-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                                Заказать
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </section>
 
 
