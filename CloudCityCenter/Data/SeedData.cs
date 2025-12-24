@@ -307,7 +307,7 @@ public static class SeedData
                 Configuration = "1 Core, 1GB RAM, 20GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps1.png",
+                ImageUrl = "/images/vps_1-1-20.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -337,7 +337,7 @@ public static class SeedData
                 Configuration = "2 Cores, 2GB RAM, 40GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps2.png",
+                ImageUrl = "/images/vps_2-2-40.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -367,7 +367,7 @@ public static class SeedData
                 Configuration = "2 Cores, 4GB RAM, 150GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps3.png",
+                ImageUrl = "/images/vps_3-2-150.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -397,7 +397,7 @@ public static class SeedData
                 Configuration = "4 Cores, 4GB RAM, 80GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps4.png",
+                ImageUrl = "/images/vps_4-4-80.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -427,7 +427,7 @@ public static class SeedData
                 Configuration = "6 Cores, 12GB RAM, 100GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps5.png",
+                ImageUrl = "/images/vps_5-6-100.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -457,7 +457,7 @@ public static class SeedData
                 Configuration = "8 Cores, 8GB RAM, 120GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps6.png",
+                ImageUrl = "/images/vps_6-8-120.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -487,7 +487,7 @@ public static class SeedData
                 Configuration = "8 Cores, 16GB RAM, 160GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps7.png",
+                ImageUrl = "/images/vps_7-8-160.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -517,7 +517,7 @@ public static class SeedData
                 Configuration = "8 Cores, 24GB RAM, 200GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps8.png",
+                ImageUrl = "/images/vps_8-8-200.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -547,7 +547,7 @@ public static class SeedData
                 Configuration = "12 Cores, 48GB RAM, 300GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps9.png",
+                ImageUrl = "/images/vps_9-12-300.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
@@ -577,7 +577,7 @@ public static class SeedData
                 Configuration = "16 Cores, 32GB RAM, 320GB SSD",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vps10.png",
+                ImageUrl = "/images/vps_10-16-320.png",
                 Type = ProductType.VPS,
                 Variants = new List<ProductVariant>
                 {
