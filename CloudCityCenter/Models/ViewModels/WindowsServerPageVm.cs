@@ -15,18 +15,12 @@ public class WindowsServerPlanVm
     public int NumberOfPersons { get; set; } // Для фильтрации по количеству человек
 }
 
-public class WindowsServerPlansByRegionVm
-{
-    public string RegionName { get; set; } = string.Empty;
-    public List<WindowsServerPlanVm> Plans { get; set; } = new List<WindowsServerPlanVm>();
-}
-
 public class WindowsServerPageVm
 {
-    public List<WindowsServerPlansByRegionVm> RegionsForFiveToEightPersons { get; set; } = new List<WindowsServerPlansByRegionVm>();
-    public List<WindowsServerPlansByRegionVm> RegionsForFifteenPersons { get; set; } = new List<WindowsServerPlansByRegionVm>();
-    public List<WindowsServerPlansByRegionVm> RegionsForTwentyFivePersons { get; set; } = new List<WindowsServerPlansByRegionVm>();
-    public List<WindowsServerPlansByRegionVm> RegionsForThirtyFivePersons { get; set; } = new List<WindowsServerPlansByRegionVm>();
-    public List<WindowsServerPlansByRegionVm> RegionsForFiftyPersons { get; set; } = new List<WindowsServerPlansByRegionVm>();
+    public List<WindowsServerPlanVm> PlansForFiveToEightPersons { get; set; } = new List<WindowsServerPlanVm>();
+    public List<WindowsServerPlanVm> PlansForFifteenPersons { get; set; } = new List<WindowsServerPlanVm>();
+    public List<WindowsServerPlanVm> PlansForTwentyFivePersons { get; set; } = new List<WindowsServerPlanVm>();
+    public List<WindowsServerPlanVm> PlansForThirtyFivePersons { get; set; } = new List<WindowsServerPlanVm>();
+    public List<WindowsServerPlanVm> PlansForFiftyPersons { get; set; } = new List<WindowsServerPlanVm>();
 }
 

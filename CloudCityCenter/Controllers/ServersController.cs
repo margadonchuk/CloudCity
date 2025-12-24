@@ -78,168 +78,128 @@ public class ServersController : Controller
              (p.Slug != null && p.Slug.Contains("5-8")))
         ).ToList();
 
-        // Группируем товары для 5-8 человек по регионам
-        var regionsForFiveToEight = productsForFiveToEight
-            .GroupBy(p => p.Location)
-            .Select(g => new WindowsServerPlansByRegionVm
+        // Преобразуем товары для 5-8 человек в список планов
+        var plansForFiveToEight = productsForFiveToEight.Select(p =>
+        {
+            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+            return new WindowsServerPlanVm
             {
-                RegionName = g.Key,
-                Plans = g.Select(p =>
-                {
-                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-                    return new WindowsServerPlanVm
-                    {
-                        ProductId = p.Id,
-                        ProductVariantId = defaultVariant?.Id,
-                        Name = p.Name,
-                        CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                        RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                        SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                        Network = featuresDict.GetValueOrDefault("Network", ""),
-                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl,
-                        NumberOfPersons = 5
-                    };
-                })
-                .OrderBy(p => p.Price)
-                .ToList()
-            })
-            .OrderBy(r => r.RegionName)
-            .ToList();
+                ProductId = p.Id,
+                ProductVariantId = defaultVariant?.Id,
+                Name = p.Name,
+                CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                Network = featuresDict.GetValueOrDefault("Network", ""),
+                Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                Price = defaultVariant?.Price ?? p.PricePerMonth,
+                ImageUrl = p.ImageUrl,
+                NumberOfPersons = 5
+            };
+        })
+        .OrderBy(p => p.Price)
+        .ToList();
 
-        // Группируем товары для 15 человек по регионам
-        var regionsForFifteen = productsForFifteen
-            .GroupBy(p => p.Location)
-            .Select(g => new WindowsServerPlansByRegionVm
+        // Преобразуем товары для 15 человек в список планов
+        var plansForFifteen = productsForFifteen.Select(p =>
+        {
+            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+            return new WindowsServerPlanVm
             {
-                RegionName = g.Key,
-                Plans = g.Select(p =>
-                {
-                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-                    return new WindowsServerPlanVm
-                    {
-                        ProductId = p.Id,
-                        ProductVariantId = defaultVariant?.Id,
-                        Name = p.Name,
-                        CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                        RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                        SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                        Network = featuresDict.GetValueOrDefault("Network", ""),
-                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl,
-                        NumberOfPersons = 15
-                    };
-                })
-                .OrderBy(p => p.Price)
-                .ToList()
-            })
-            .OrderBy(r => r.RegionName)
-            .ToList();
+                ProductId = p.Id,
+                ProductVariantId = defaultVariant?.Id,
+                Name = p.Name,
+                CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                Network = featuresDict.GetValueOrDefault("Network", ""),
+                Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                Price = defaultVariant?.Price ?? p.PricePerMonth,
+                ImageUrl = p.ImageUrl,
+                NumberOfPersons = 15
+            };
+        })
+        .OrderBy(p => p.Price)
+        .ToList();
 
-        // Группируем товары для 25 человек по регионам
-        var regionsForTwentyFive = productsForTwentyFive
-            .GroupBy(p => p.Location)
-            .Select(g => new WindowsServerPlansByRegionVm
+        // Преобразуем товары для 25 человек в список планов
+        var plansForTwentyFive = productsForTwentyFive.Select(p =>
+        {
+            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+            return new WindowsServerPlanVm
             {
-                RegionName = g.Key,
-                Plans = g.Select(p =>
-                {
-                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-                    return new WindowsServerPlanVm
-                    {
-                        ProductId = p.Id,
-                        ProductVariantId = defaultVariant?.Id,
-                        Name = p.Name,
-                        CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                        RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                        SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                        Network = featuresDict.GetValueOrDefault("Network", ""),
-                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl,
-                        NumberOfPersons = 25
-                    };
-                })
-                .OrderBy(p => p.Price)
-                .ToList()
-            })
-            .OrderBy(r => r.RegionName)
-            .ToList();
+                ProductId = p.Id,
+                ProductVariantId = defaultVariant?.Id,
+                Name = p.Name,
+                CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                Network = featuresDict.GetValueOrDefault("Network", ""),
+                Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                Price = defaultVariant?.Price ?? p.PricePerMonth,
+                ImageUrl = p.ImageUrl,
+                NumberOfPersons = 25
+            };
+        })
+        .OrderBy(p => p.Price)
+        .ToList();
 
-        // Группируем товары для 35 человек по регионам
-        var regionsForThirtyFive = productsForThirtyFive
-            .GroupBy(p => p.Location)
-            .Select(g => new WindowsServerPlansByRegionVm
+        // Преобразуем товары для 35 человек в список планов
+        var plansForThirtyFive = productsForThirtyFive.Select(p =>
+        {
+            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+            return new WindowsServerPlanVm
             {
-                RegionName = g.Key,
-                Plans = g.Select(p =>
-                {
-                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-                    return new WindowsServerPlanVm
-                    {
-                        ProductId = p.Id,
-                        ProductVariantId = defaultVariant?.Id,
-                        Name = p.Name,
-                        CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                        RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                        SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                        Network = featuresDict.GetValueOrDefault("Network", ""),
-                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl,
-                        NumberOfPersons = 35
-                    };
-                })
-                .OrderBy(p => p.Price)
-                .ToList()
-            })
-            .OrderBy(r => r.RegionName)
-            .ToList();
+                ProductId = p.Id,
+                ProductVariantId = defaultVariant?.Id,
+                Name = p.Name,
+                CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                Network = featuresDict.GetValueOrDefault("Network", ""),
+                Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                Price = defaultVariant?.Price ?? p.PricePerMonth,
+                ImageUrl = p.ImageUrl,
+                NumberOfPersons = 35
+            };
+        })
+        .OrderBy(p => p.Price)
+        .ToList();
 
-        // Группируем товары для 50 человек по регионам
-        var regionsForFifty = productsForFifty
-            .GroupBy(p => p.Location)
-            .Select(g => new WindowsServerPlansByRegionVm
+        // Преобразуем товары для 50 человек в список планов
+        var plansForFifty = productsForFifty.Select(p =>
+        {
+            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+            return new WindowsServerPlanVm
             {
-                RegionName = g.Key,
-                Plans = g.Select(p =>
-                {
-                    var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-                    var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-                    return new WindowsServerPlanVm
-                    {
-                        ProductId = p.Id,
-                        ProductVariantId = defaultVariant?.Id,
-                        Name = p.Name,
-                        CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                        RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                        SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                        Network = featuresDict.GetValueOrDefault("Network", ""),
-                        Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                        Price = defaultVariant?.Price ?? p.PricePerMonth,
-                        ImageUrl = p.ImageUrl,
-                        NumberOfPersons = 50
-                    };
-                })
-                .OrderBy(p => p.Price)
-                .ToList()
-            })
-            .OrderBy(r => r.RegionName)
-            .ToList();
+                ProductId = p.Id,
+                ProductVariantId = defaultVariant?.Id,
+                Name = p.Name,
+                CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                Network = featuresDict.GetValueOrDefault("Network", ""),
+                Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                Price = defaultVariant?.Price ?? p.PricePerMonth,
+                ImageUrl = p.ImageUrl,
+                NumberOfPersons = 50
+            };
+        })
+        .OrderBy(p => p.Price)
+        .ToList();
 
         var vm = new WindowsServerPageVm
         {
-            RegionsForFiveToEightPersons = regionsForFiveToEight,
-            RegionsForFifteenPersons = regionsForFifteen,
-            RegionsForTwentyFivePersons = regionsForTwentyFive,
-            RegionsForThirtyFivePersons = regionsForThirtyFive,
-            RegionsForFiftyPersons = regionsForFifty
+            PlansForFiveToEightPersons = plansForFiveToEight,
+            PlansForFifteenPersons = plansForFifteen,
+            PlansForTwentyFivePersons = plansForTwentyFive,
+            PlansForThirtyFivePersons = plansForThirtyFive,
+            PlansForFiftyPersons = plansForFifty
         };
 
         return View(vm);
