@@ -94,21 +94,24 @@ public class VPNController : Controller
                         Name = "CHR Basic",
                         Description = "Базовая настройка CHR (VPN, Firewall, NAT)",
                         Price = 150,
-                        Category = "CHR"
+                        Category = "CHR",
+                        ImageUrl = "/images/chr1.png"
                     },
                     new ConfigurationServiceVm
                     {
                         Name = "CHR Standard",
                         Description = "Расширенные правила безопасности + мониторинг",
                         Price = 250,
-                        Category = "CHR"
+                        Category = "CHR",
+                        ImageUrl = "/images/chr2.png"
                     },
                     new ConfigurationServiceVm
                     {
                         Name = "CHR Pro",
                         Description = "Полная настройка с резервами, отказоустойчивостью",
                         Price = 399,
-                        Category = "CHR"
+                        Category = "CHR",
+                        ImageUrl = "/images/chr3.png"
                     }
                 }
             },
@@ -123,21 +126,24 @@ public class VPNController : Controller
                         Name = "MikroTik Basic",
                         Description = "WAN/LAN подключение, NAT, DHCP, базовый Firewall",
                         Price = 180,
-                        Category = "MikroTik"
+                        Category = "MikroTik",
+                        ImageUrl = "/images/mikrotik1.png"
                     },
                     new ConfigurationServiceVm
                     {
                         Name = "MikroTik Advanced",
                         Description = "VPN/IPsec/L2TP, VLAN, резервирование провайдеров",
                         Price = 250,
-                        Category = "MikroTik"
+                        Category = "MikroTik",
+                        ImageUrl = "/images/mikrotik2.png"
                     },
                     new ConfigurationServiceVm
                     {
                         Name = "MikroTik Pro",
                         Description = "WiFi CAPsMAN, комплексное сетевое решение, мониторинг",
                         Price = 450,
-                        Category = "MikroTik"
+                        Category = "MikroTik",
+                        ImageUrl = "/images/mikrotik3.png"
                     }
                 }
             },
@@ -152,21 +158,24 @@ public class VPNController : Controller
                         Name = "Fortinet Basic",
                         Description = "Настройка базовых правил, интерфейсов, Firewall",
                         Price = 400,
-                        Category = "Fortinet"
+                        Category = "Fortinet",
+                        ImageUrl = "/images/fortinet1.png"
                     },
                     new ConfigurationServiceVm
                     {
                         Name = "Fortinet Security",
                         Description = "VPN (IPsec/SSL), высокоуровневое шифрование, IPS",
                         Price = 770,
-                        Category = "Fortinet"
+                        Category = "Fortinet",
+                        ImageUrl = "/images/fortinet2.png"
                     },
                     new ConfigurationServiceVm
                     {
                         Name = "Fortinet Enterprise",
                         Description = "Полный сетевой UTM, сегментация, HA, логирование",
                         Price = 1500,
-                        Category = "Fortinet"
+                        Category = "Fortinet",
+                        ImageUrl = "/images/fortinet3.png"
                     }
                 }
             }
