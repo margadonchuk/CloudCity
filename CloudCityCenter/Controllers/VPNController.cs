@@ -21,21 +21,51 @@ public class VPNController : Controller
     {
         var vpnProducts = await _context.Products
             .Where(p => p.Type == ProductType.VPN && p.IsPublished)
-            .Select(p => new ProductCardVm
+            .Include(p => p.Features)
+            .ToListAsync();
+
+        var productCards = vpnProducts.Select(p =>
+        {
+            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value);
+
+            // Порядок отображения фичей для VPN продуктов
+            string[] featureOrder = new[] { "Technology", "Devices", "Traffic", "Encryption", "Country" };
+            int maxFeatures = 10;
+
+            var orderedFeatures = new List<string>();
+
+            foreach (var featureName in featureOrder)
+            {
+                if (featuresDict.TryGetValue(featureName, out var value))
+                {
+                    orderedFeatures.Add(string.IsNullOrWhiteSpace(value)
+                        ? featureName
+                        : $"{featureName}: {value}");
+                }
+            }
+
+            // Если есть другие фичи, которые не в списке, добавляем их в конце
+            foreach (var feature in p.Features.OrderBy(f => f.Id))
+            {
+                if (!featureOrder.Contains(feature.Name) && !orderedFeatures.Any(f => f.StartsWith(feature.Name)))
+                {
+                    orderedFeatures.Add(string.IsNullOrWhiteSpace(feature.Value)
+                        ? feature.Name
+                        : $"{feature.Name}: {feature.Value}");
+                }
+            }
+
+            return new ProductCardVm
             {
                 Id = p.Id,
                 Name = p.Name,
                 Slug = p.Slug,
                 PricePerMonth = p.PricePerMonth,
                 ImageUrl = p.ImageUrl,
-                TopFeatures = p.Features
-                    .OrderBy(f => f.Id)
-                    .Select(f => string.IsNullOrWhiteSpace(f.Value) ? f.Name : $"{f.Name}: {f.Value}")
-                    .Take(3)
-                    .ToList(),
-            })
-            .ToListAsync();
+                TopFeatures = orderedFeatures.Take(maxFeatures).ToList()
+            };
+        }).ToList();
 
-        return View(vpnProducts);
+        return View(productCards);
     }
 }
