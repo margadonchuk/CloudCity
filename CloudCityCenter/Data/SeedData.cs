@@ -602,9 +602,9 @@ public static class SeedData
             {
                 Name = "VPN for a network",
                 Slug = "vpn-network",
-                Location = "Global",
+                Location = "Netherlands/Germany/France",
                 PricePerMonth = 80,
-                Configuration = "Site-to-site VPN service",
+                Configuration = "CHR + Gre tunnel",
                 IsAvailable = true,
                 IsPublished = true,
                 ImageUrl = "/images/vpn-network.png",
@@ -620,18 +620,20 @@ public static class SeedData
                 },
                 Features = new List<ProductFeature>
                 {
+                    new() { Name = "Technology", Value = "CHR + Gre tunnel" },
                     new() { Name = "Devices", Value = "Up to 50" },
                     new() { Name = "Traffic", Value = "Unlimited" },
-                    new() { Name = "Support", Value = "24/7" }
+                    new() { Name = "Encryption", Value = "IPSec" },
+                    new() { Name = "Country", Value = "Netherlands/Germany/France" }
                 }
             },
             new()
             {
                 Name = "VPN for a device",
                 Slug = "vpn-device",
-                Location = "Global",
-                PricePerMonth = 25,
-                Configuration = "Single device VPN",
+                Location = "Netherlands/Germany/France",
+                PricePerMonth = 24,
+                Configuration = "CHR + WireGuard",
                 IsAvailable = true,
                 IsPublished = true,
                 ImageUrl = "/images/vpn-device.png",
@@ -641,15 +643,46 @@ public static class SeedData
                     new()
                     {
                         Name = "Monthly",
-                        Price = 25,
+                        Price = 24,
                         BillingPeriod = BillingPeriod.Monthly
                     }
                 },
                 Features = new List<ProductFeature>
                 {
+                    new() { Name = "Technology", Value = "CHR + WireGuard" },
+                    new() { Name = "Devices", Value = "1 pcs" },
                     new() { Name = "Traffic", Value = "Unlimited" },
-                    new() { Name = "Servers", Value = "50+ Countries" },
-                    new() { Name = "Encryption", Value = "AES-256" }
+                    new() { Name = "Encryption", Value = "WireGuard" },
+                    new() { Name = "Country", Value = "Netherlands/Germany/France" }
+                }
+            },
+            new()
+            {
+                Name = "VPN for multiple devices",
+                Slug = "vpn-multiple-devices",
+                Location = "Netherlands/Germany/France",
+                PricePerMonth = 65,
+                Configuration = "CHR + WireGuard",
+                IsAvailable = true,
+                IsPublished = true,
+                ImageUrl = "/images/vpn-multiple-devices.png",
+                Type = ProductType.VPN,
+                Variants = new List<ProductVariant>
+                {
+                    new()
+                    {
+                        Name = "Monthly",
+                        Price = 65,
+                        BillingPeriod = BillingPeriod.Monthly
+                    }
+                },
+                Features = new List<ProductFeature>
+                {
+                    new() { Name = "Technology", Value = "CHR + WireGuard" },
+                    new() { Name = "Devices", Value = "5 pcs" },
+                    new() { Name = "Traffic", Value = "Unlimited" },
+                    new() { Name = "Encryption", Value = "WireGuard" },
+                    new() { Name = "Country", Value = "Netherlands/Germany/France" }
                 }
             },
             new()
