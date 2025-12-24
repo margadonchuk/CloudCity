@@ -29,19 +29,19 @@ GO
 
 -- VPN for a network
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VPN for a network', 'vpn-network', 4, 'Netherlands/Germany/France', 80.00, 'CHR + Gre tunnel', 1, 1, '/images/vpn-network.png'
+SELECT 'VPN for a network', 'vpn-network', 4, 'Netherlands/Germany/France', 80.00, 'CHR + Gre tunnel', 1, 1, '/images/vpn1.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vpn-network' AND Type = 4);
 GO
 
 -- VPN for a device
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VPN for a device', 'vpn-device', 4, 'Netherlands/Germany/France', 24.00, 'CHR + WireGuard', 1, 1, '/images/vpn-device.png'
+SELECT 'VPN for a device', 'vpn-device', 4, 'Netherlands/Germany/France', 24.00, 'CHR + WireGuard', 1, 1, '/images/vpn2.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vpn-device' AND Type = 4);
 GO
 
 -- VPN for multiple devices
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'VPN for multiple devices', 'vpn-multiple-devices', 4, 'Netherlands/Germany/France', 65.00, 'CHR + WireGuard', 1, 1, '/images/vpn-multiple-devices.png'
+SELECT 'VPN for multiple devices', 'vpn-multiple-devices', 4, 'Netherlands/Germany/France', 65.00, 'CHR + WireGuard', 1, 1, '/images/vpn3.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'vpn-multiple-devices' AND Type = 4);
 GO
 
@@ -53,7 +53,7 @@ UPDATE Products
 SET Location = 'Netherlands/Germany/France',
     PricePerMonth = 80.00,
     Configuration = 'CHR + Gre tunnel',
-    ImageUrl = '/images/vpn-network.png'
+    ImageUrl = '/images/vpn1.png'
 WHERE Slug = 'vpn-network' AND Type = 4;
 GO
 
@@ -61,7 +61,7 @@ UPDATE Products
 SET Location = 'Netherlands/Germany/France',
     PricePerMonth = 24.00,
     Configuration = 'CHR + WireGuard',
-    ImageUrl = '/images/vpn-device.png'
+    ImageUrl = '/images/vpn2.png'
 WHERE Slug = 'vpn-device' AND Type = 4;
 GO
 
@@ -69,7 +69,7 @@ UPDATE Products
 SET Location = 'Netherlands/Germany/France',
     PricePerMonth = 65.00,
     Configuration = 'CHR + WireGuard',
-    ImageUrl = '/images/vpn-multiple-devices.png'
+    ImageUrl = '/images/vpn3.png'
 WHERE Slug = 'vpn-multiple-devices' AND Type = 4;
 GO
 

@@ -607,7 +607,7 @@ public static class SeedData
                 Configuration = "CHR + Gre tunnel",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vpn-network.png",
+                ImageUrl = "/images/vpn1.png",
                 Type = ProductType.VPN,
                 Variants = new List<ProductVariant>
                 {
@@ -636,7 +636,7 @@ public static class SeedData
                 Configuration = "CHR + WireGuard",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vpn-device.png",
+                ImageUrl = "/images/vpn2.png",
                 Type = ProductType.VPN,
                 Variants = new List<ProductVariant>
                 {
@@ -665,7 +665,7 @@ public static class SeedData
                 Configuration = "CHR + WireGuard",
                 IsAvailable = true,
                 IsPublished = true,
-                ImageUrl = "/images/vpn-multiple-devices.png",
+                ImageUrl = "/images/vpn3.png",
                 Type = ProductType.VPN,
                 Variants = new List<ProductVariant>
                 {
