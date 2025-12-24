@@ -27,5 +27,44 @@
   <data name="ChooseVPNSolution" xml:space="preserve">
     <value>Выберите идеальное VPN решение для ваших потребностей</value>
   </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Настройка CHR, MikroTik и Fortinet под ваш бизнес</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>Подключим, настроим и обеспечим стабильную работу вашей сети — от облачного CHR до физического MikroTik или корпоративного Fortinet. Без лишней сложности и с поддержкой на каждом этапе.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>Настройка CHR (Cloud Hosted Router)</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>Что входит:</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Установка/обновление RouterOS на виртуальном сервере</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>Настройка VPN (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, проброс портов</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Маршрутизация, мониторинг, базовые политики доступа</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Оптимизация под сеть клиента</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Настройка физического оборудования MikroTik</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Настройка физического оборудования Fortinet</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet — это техника уровня корпоративной сетевой безопасности, сложнее MikroTik, и её настройка требует большего времени и опыта. Fortinet требует продвинутой сертификации и времени (часто 4–8 часов и больше), поэтому тарифы выше среднего уровня.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Заказать</value>
+  </data>
 </root>
 

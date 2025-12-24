@@ -27,5 +27,44 @@
   <data name="ChooseVPNSolution" xml:space="preserve">
     <value>Wybierz idealne rozwiązanie VPN dla swoich potrzeb</value>
   </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Konfiguracja CHR, MikroTik i Fortinet dla Twojego biznesu</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>Połączymy, skonfigurujemy i zapewnimy stabilną pracę Twojej sieci — od chmurowego CHR po fizyczny MikroTik lub korporacyjny Fortinet. Bez niepotrzebnej złożoności i ze wsparciem na każdym etapie.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>Konfiguracja CHR (Cloud Hosted Router)</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>Co zawiera:</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Instalacja/aktualizacja RouterOS na serwerze wirtualnym</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>Konfiguracja VPN (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, przekierowanie portów</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Routing, monitorowanie, podstawowe polityki dostępu</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Optymalizacja pod sieć klienta</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Konfiguracja fizycznego sprzętu MikroTik</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Konfiguracja fizycznego sprzętu Fortinet</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet to sprzęt bezpieczeństwa sieciowego na poziomie korporacyjnym, bardziej złożony niż MikroTik, a jego konfiguracja wymaga więcej czasu i doświadczenia. Fortinet wymaga zaawansowanej certyfikacji i czasu (często 4-8 godzin lub więcej), więc stawki są powyżej średniego poziomu.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Zamów</value>
+  </data>
 </root>
 

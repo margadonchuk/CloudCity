@@ -64,9 +64,9 @@
 <!-- CONFIGURATION SERVICES SECTION -->
 <section class="container py-5 mt-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 60px 40px !important;">
     <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
-        <h2 class="display-5 fw-bold mb-3 text-white">Настройка CHR, MikroTik и Fortinet под ваш бизнес</h2>
+        <h2 class="display-5 fw-bold mb-3 text-white">@Localizer["ConfigurationServicesTitle"]</h2>
         <p class="lead text-white-50" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
-            Подключим, настроим и обеспечим стабильную работу вашей сети — от облачного CHR до физического MikroTik или корпоративного Fortinet. Без лишней сложности и с поддержкой на каждом этапе.
+            @Localizer["ConfigurationServicesDescription"]
         </p>
     </div>
 
@@ -75,18 +75,39 @@
         <div class="mb-5 animate-on-scroll" data-animation="fade-in-up">
             <div class="card shadow-lg border-0" style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; overflow: hidden;">
                 <div class="card-header bg-primary text-white" style="border: none; padding: 25px;">
-                    <h3 class="h4 mb-2 fw-bold">@category.CategoryName</h3>
+                    <h3 class="h4 mb-2 fw-bold">
+                        @if (category.CategoryName.Contains("CHR"))
+                        {
+                            @Localizer["CHRConfigurationTitle"]
+                        }
+                        else if (category.CategoryName.Contains("MikroTik"))
+                        {
+                            @Localizer["MikroTikConfigurationTitle"]
+                        }
+                        else if (category.CategoryName.Contains("Fortinet"))
+                        {
+                            @Localizer["FortinetConfigurationTitle"]
+                        }
+                        else
+                        {
+                            @category.CategoryName
+                        }
+                    </h3>
                     @if (!string.IsNullOrEmpty(category.CategoryDescription))
                     {
                         <p class="mb-0 text-white-50" style="font-size: 0.95rem;">
                             @if (category.CategoryName.Contains("CHR"))
                             {
-                                <span><strong>Что входит:</strong></span><br />
-                                <span>✔️ Установка/обновление RouterOS на виртуальном сервере</span><br />
-                                <span>✔️ Настройка VPN (WireGuard, IPsec, OpenVPN)</span><br />
-                                <span>✔️ Firewall, NAT, проброс портов</span><br />
-                                <span>✔️ Маршрутизация, мониторинг, базовые политики доступа</span><br />
-                                <span>✔️ Оптимизация под сеть клиента</span>
+                                <span><strong>@Localizer["CHRWhatIncluded"]</strong></span><br />
+                                <span>✔️ @Localizer["CHRFeature1"]</span><br />
+                                <span>✔️ @Localizer["CHRFeature2"]</span><br />
+                                <span>✔️ @Localizer["CHRFeature3"]</span><br />
+                                <span>✔️ @Localizer["CHRFeature4"]</span><br />
+                                <span>✔️ @Localizer["CHRFeature5"]</span>
+                            }
+                            else if (category.CategoryName.Contains("Fortinet"))
+                            {
+                                @Localizer["FortinetDescription"]
                             }
                             else
                             {
@@ -108,9 +129,15 @@
                                             <div class="d-flex align-items-center justify-content-between mb-3">
                                                 <span class="h4 fw-bold text-primary mb-0">$@service.Price.ToString("0")</span>
                                             </div>
-                                            <button class="btn btn-primary w-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
-                                                Заказать
-                                            </button>
+                                            <form asp-controller="Cart" asp-action="AddConfigurationService" method="post" class="add-to-cart-form" data-ajax="true">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="serviceName" value="@service.Name" />
+                                                <input type="hidden" name="price" value="@service.Price" />
+                                                <input type="hidden" name="category" value="@service.Category" />
+                                                <button type="submit" class="btn btn-primary w-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                                    @Localizer["Order"]
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

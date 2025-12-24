@@ -98,6 +98,54 @@ public class CartController : Controller
         var cart = GetCart();
         cart.Add(new OrderItem { ProductId = productId, ProductVariantId = productVariantId, Price = price });
         SaveCart(cart);
+
+        // Проверяем, является ли это AJAX запросом
+        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest" || Request.Headers["Accept"].ToString().Contains("application/json"))
+        {
+            return Json(new { success = true, message = "Product added to cart" });
+        }
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddConfigurationService(string serviceName, decimal price, string category)
+    {
+        // Ищем или создаем продукт для услуги настройки
+        var slug = $"config-{category.ToLower()}-{serviceName.ToLower().Replace(" ", "-")}";
+        var product = await _context.Products
+            .FirstOrDefaultAsync(p => p.Slug == slug);
+
+        if (product == null)
+        {
+            // Создаем временный продукт для услуги настройки
+            product = new Product
+            {
+                Name = serviceName,
+                Slug = slug,
+                Type = ProductType.VPN, // Используем VPN тип для услуг настройки
+                Location = "Remote",
+                PricePerMonth = price,
+                Configuration = $"Configuration service: {category}",
+                IsAvailable = true,
+                IsPublished = false, // Не показываем в каталоге
+                ImageUrl = null
+            };
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+        }
+
+        var cart = GetCart();
+        cart.Add(new OrderItem { ProductId = product.Id, ProductVariantId = null, Price = price });
+        SaveCart(cart);
+
+        // Проверяем, является ли это AJAX запросом
+        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest" || Request.Headers["Accept"].ToString().Contains("application/json"))
+        {
+            return Json(new { success = true, message = "Service added to cart" });
+        }
+
         return RedirectToAction(nameof(Index));
     }
 

@@ -27,5 +27,44 @@
   <data name="ChooseVPNSolution" xml:space="preserve">
     <value>Choisissez la solution VPN parfaite pour vos besoins</value>
   </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Configuration de CHR, MikroTik et Fortinet pour votre entreprise</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>Nous connecterons, configurerons et assurerons le fonctionnement stable de votre réseau — du CHR cloud au MikroTik physique ou au Fortinet d'entreprise. Sans complexité inutile et avec un support à chaque étape.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>Configuration CHR (Cloud Hosted Router)</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>Ce qui est inclus :</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Installation/mise à jour de RouterOS sur serveur virtuel</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>Configuration VPN (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, redirection de ports</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Routage, surveillance, politiques d'accès de base</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Optimisation pour le réseau client</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Configuration de l'équipement physique MikroTik</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Configuration de l'équipement physique Fortinet</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet est un équipement de sécurité réseau de niveau entreprise, plus complexe que MikroTik, et sa configuration nécessite plus de temps et d'expérience. Fortinet nécessite une certification avancée et du temps (souvent 4 à 8 heures ou plus), donc les tarifs sont au-dessus du niveau moyen.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Commander</value>
+  </data>
 </root>
 

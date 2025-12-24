@@ -27,5 +27,44 @@
   <data name="ChooseVPNSolution" xml:space="preserve">
     <value>Wählen Sie die perfekte VPN-Lösung für Ihre Bedürfnisse</value>
   </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Konfiguration von CHR, MikroTik und Fortinet für Ihr Unternehmen</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>Wir verbinden, konfigurieren und gewährleisten den stabilen Betrieb Ihres Netzwerks — vom Cloud-CHR bis zum physischen MikroTik oder Corporate Fortinet. Ohne unnötige Komplexität und mit Unterstützung in jeder Phase.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>CHR (Cloud Hosted Router) Konfiguration</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>Was enthalten ist:</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Installation/Aktualisierung von RouterOS auf virtuellem Server</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>VPN-Einrichtung (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, Port-Weiterleitung</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Routing, Monitoring, grundlegende Zugriffsrichtlinien</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Optimierung für Kundennetzwerk</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Konfiguration physischer MikroTik-Ausrüstung</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Konfiguration physischer Fortinet-Ausrüstung</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet ist Netzwerksicherheitsausrüstung auf Unternehmensebene, komplexer als MikroTik, und ihre Konfiguration erfordert mehr Zeit und Erfahrung. Fortinet erfordert fortgeschrittene Zertifizierung und Zeit (oft 4-8 Stunden oder mehr), daher sind die Tarife überdurchschnittlich.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Bestellen</value>
+  </data>
 </root>
 

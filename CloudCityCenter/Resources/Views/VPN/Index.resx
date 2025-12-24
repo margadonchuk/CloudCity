@@ -27,5 +27,44 @@
   <data name="ChooseVPNSolution" xml:space="preserve">
     <value>Choose the perfect VPN solution for your needs</value>
   </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Configuration of CHR, MikroTik and Fortinet for your business</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>We will connect, configure and ensure stable operation of your network — from cloud CHR to physical MikroTik or corporate Fortinet. Without unnecessary complexity and with support at every stage.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>CHR (Cloud Hosted Router) Configuration</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>What's included:</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Installation/update of RouterOS on virtual server</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>VPN setup (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, port forwarding</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Routing, monitoring, basic access policies</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Optimization for client network</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Physical MikroTik Equipment Configuration</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Physical Fortinet Equipment Configuration</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet is enterprise-level network security equipment, more complex than MikroTik, and its configuration requires more time and experience. Fortinet requires advanced certification and time (often 4-8 hours or more), so rates are above average.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
 </root>
 
