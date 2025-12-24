@@ -39,5 +39,59 @@
   <data name="ChoosePerfectServer" xml:space="preserve">
     <value>Wählen Sie den perfekten Server für Ihre Bedürfnisse</value>
   </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server für 5-8 Personen</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server für 15 Personen</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server für 25 Personen</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server für 35 Personen</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server für 50 Personen</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Wählen Sie einen Plan, der zu Ihren Aufgaben passt</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Netzwerk</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Bestellen</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Niederlande</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Deutschland</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Vereinigtes Königreich / Polen / Frankreich</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Kanada / USA</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Singapur / Indien / Australien</value>
+  </data>
 </root>
 

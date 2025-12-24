@@ -39,5 +39,59 @@
   <data name="ChoosePerfectServer" xml:space="preserve">
     <value>Виберіть ідеальний сервер для ваших потреб</value>
   </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server на 5-8 осіб</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server на 15 осіб</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server на 25 осіб</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server на 35 осіб</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server на 50 осіб</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Виберіть план, підходящий для ваших завдань</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процесор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗП</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Мережа</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Країна</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Замовити</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>місяць</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Нідерланди</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Німеччина</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Великобританія / Польща / Франція</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Канада / США</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Сінгапур / Індія / Австралія</value>
+  </data>
 </root>
 

@@ -39,5 +39,59 @@
   <data name="ChoosePerfectServer" xml:space="preserve">
     <value>Wybierz idealny serwer dla swoich potrzeb</value>
   </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server dla 5-8 osób</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server dla 15 osób</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server dla 25 osób</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server dla 35 osób</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server dla 50 osób</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Wybierz plan odpowiedni do swoich zadań</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Sieć</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Kraj</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Zamów</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>miesiąc</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Holandia</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Niemcy</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Wielka Brytania / Polska / Francja</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Kanada / USA</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Singapur / Indie / Australia</value>
+  </data>
 </root>
 
