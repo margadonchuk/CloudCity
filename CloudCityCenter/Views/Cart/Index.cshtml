@@ -56,17 +56,13 @@
                             <span class="cart-item-variant badge bg-primary">@item.ProductVariant.Name</span>
                         }
                         @{
-                            // Проверяем, является ли это услугой настройки (по типу VPN и названию)
-                            var isSetupService = item.Product != null && 
-                                                 (item.Product.Type == CloudCityCenter.Models.ProductType.VPN || 
-                                                  (item.Product.Name != null && (
-                                                      item.Product.Name.Contains("Setup", StringComparison.OrdinalIgnoreCase) ||
-                                                      item.Product.Name.Contains("Настройка", StringComparison.OrdinalIgnoreCase) ||
-                                                      item.Product.Name.Contains("настройка", StringComparison.OrdinalIgnoreCase) ||
-                                                      item.Product.Name.Contains("установка", StringComparison.OrdinalIgnoreCase) ||
-                                                      item.Product.Name.Contains("Установка", StringComparison.OrdinalIgnoreCase))));
+                            // Проверяем, является ли это услугой настройки Windows Server (только по slug)
+                            // CHR, MikroTik, Fortinet - это ежемесячные услуги, не единоразовые
+                            var isWindowsServerSetupService = item.Product != null && 
+                                                             !string.IsNullOrEmpty(item.Product.Slug) &&
+                                                             item.Product.Slug.StartsWith("windows-server-setup-", StringComparison.OrdinalIgnoreCase);
                         }
-                        @if (isSetupService)
+                        @if (isWindowsServerSetupService)
                         {
                             <div class="mt-2">
                                 <span class="badge bg-warning text-dark">

@@ -197,12 +197,46 @@ public class CartController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddConfigurationService(string serviceName, decimal price, string category)
+    public async Task<IActionResult> AddConfigurationService(string serviceName, decimal price, string category, string imageUrl = null)
     {
         // Ищем или создаем продукт для услуги настройки
         var slug = $"config-{category.ToLower()}-{serviceName.ToLower().Replace(" ", "-")}";
         var product = await _context.Products
             .FirstOrDefaultAsync(p => p.Slug == slug);
+
+        // Определяем изображение на основе переданного imageUrl или категории и названия
+        string? productImageUrl = imageUrl;
+        if (string.IsNullOrEmpty(productImageUrl))
+        {
+            // Определяем изображение по категории и названию
+            if (category.Equals("CHR", StringComparison.OrdinalIgnoreCase))
+            {
+                if (serviceName.Contains("Basic", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/chr1.png";
+                else if (serviceName.Contains("Standard", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/chr2.png";
+                else if (serviceName.Contains("Pro", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/chr3.png";
+            }
+            else if (category.Equals("MikroTik", StringComparison.OrdinalIgnoreCase))
+            {
+                if (serviceName.Contains("Basic", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/mikrotik1.png";
+                else if (serviceName.Contains("Advanced", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/mikrotik2.png";
+                else if (serviceName.Contains("Pro", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/mikrotik3.png";
+            }
+            else if (category.Equals("Fortinet", StringComparison.OrdinalIgnoreCase))
+            {
+                if (serviceName.Contains("Basic", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/fortinet1.png";
+                else if (serviceName.Contains("Security", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/fortinet2.png";
+                else if (serviceName.Contains("Enterprise", StringComparison.OrdinalIgnoreCase))
+                    productImageUrl = "/images/fortinet3.png";
+            }
+        }
 
         if (product == null)
         {
@@ -217,18 +251,21 @@ public class CartController : Controller
                 Configuration = $"Configuration service: {category}",
                 IsAvailable = true,
                 IsPublished = false, // Не показываем в каталоге
-                ImageUrl = "/images/setupWinserv.png" // Используем изображение по умолчанию для услуг настройки
+                ImageUrl = productImageUrl // Используем оригинальное изображение товара
             };
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
         }
         else
         {
-            // Обновляем изображение, если его нет
-            if (string.IsNullOrEmpty(product.ImageUrl))
+            // Обновляем изображение, если его нет или оно неправильное
+            if (string.IsNullOrEmpty(product.ImageUrl) || product.ImageUrl == "/images/setupWinserv.png")
             {
-                product.ImageUrl = "/images/setupWinserv.png";
-                await _context.SaveChangesAsync();
+                if (!string.IsNullOrEmpty(productImageUrl))
+                {
+                    product.ImageUrl = productImageUrl;
+                    await _context.SaveChangesAsync();
+                }
             }
         }
 
