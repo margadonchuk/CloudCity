@@ -3490,6 +3490,21 @@ body {
 .cart-link {
   position: relative;
   padding: 10px 15px !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-icon-large {
+  font-size: 1.5rem !important;
+  color: #0d6efd;
+}
+
+.cart-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
 }
 
 .cart-badge {
@@ -3538,6 +3553,27 @@ body {
 
 .register-link.active {
   background: linear-gradient(135deg, #0b5ed7, #5568d3);
+}
+
+/* Login Link */
+.login-link {
+  background: linear-gradient(135deg, #20c997, #17a2b8);
+  color: white !important;
+  font-weight: 600;
+  padding: 10px 20px !important;
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(32, 201, 151, 0.3);
+  transition: all 0.3s ease;
+}
+
+.login-link:hover {
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(32, 201, 151, 0.4);
+}
+
+.login-link.active {
+  background: linear-gradient(135deg, #1aa179, #138496);
 }
 
 /* Admin Link */
@@ -6121,16 +6157,28 @@ body {
   transition: all 0.3s ease;
 }
 
-.cart-link:hover,
 .cart-link-mobile:hover,
 .cart-link-offcanvas:hover {
   transform: scale(1.1) rotate(-5deg);
+}
+
+.cart-link:hover {
+  transform: translateY(-2px);
 }
 
 .cart-link:hover i,
 .cart-link-mobile:hover i,
 .cart-link-offcanvas:hover i {
   animation: icon-bounce 0.6s ease-in-out;
+}
+
+.cart-link:hover .cart-icon-large {
+  color: #0b5ed7;
+  transform: scale(1.1);
+}
+
+.cart-link:hover .cart-label {
+  color: #0b5ed7;
 }
 
 /* Register button animation */
