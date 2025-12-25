@@ -99,6 +99,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 try {
                     const formData = new FormData(form);
+                    
+                    // Проверяем, нужно ли добавить услугу настройки
+                    const includeSetup = form.dataset.includeSetup === 'true';
+                    if (includeSetup) {
+                        const setupCheckbox = form.closest('.card').querySelector('.setup-service-checkbox');
+                        if (setupCheckbox && setupCheckbox.checked) {
+                            const setupPrice = parseFloat(formData.get('setupServicePrice') || '0');
+                            formData.set('includeSetupService', 'true');
+                            formData.set('setupServicePrice', setupPrice.toString());
+                        } else {
+                            formData.set('includeSetupService', 'false');
+                        }
+                    }
+                    
                     const response = await fetch(form.action, {
                         method: 'POST',
                         headers: {
@@ -116,23 +130,26 @@ document.addEventListener('DOMContentLoaded', function () {
                         const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
                         const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
                         
+                        // Обновляем счетчики корзины (учитываем, что может быть добавлено 2 товара: сервер + услуга)
+                        const itemsAdded = result.itemsAdded || 1;
+                        
                         if (cartCountEl) {
                             let count = parseInt(cartCountEl.textContent || '0', 10);
-                            count++;
+                            count += itemsAdded;
                             cartCountEl.textContent = count;
                             cartCountEl.style.display = count > 0 ? 'inline-block' : 'none';
                         }
                         
                         if (cartCountMobileEl) {
                             let count = parseInt(cartCountMobileEl.textContent || '0', 10);
-                            count++;
+                            count += itemsAdded;
                             cartCountMobileEl.textContent = count;
                             cartCountMobileEl.style.display = count > 0 ? 'inline-block' : 'none';
                         }
                         
                         if (cartCountOffcanvasEl) {
                             let count = parseInt(cartCountOffcanvasEl.textContent || '0', 10);
-                            count++;
+                            count += itemsAdded;
                             cartCountOffcanvasEl.textContent = count;
                             cartCountOffcanvasEl.style.display = count > 0 ? 'inline-block' : 'none';
                         }

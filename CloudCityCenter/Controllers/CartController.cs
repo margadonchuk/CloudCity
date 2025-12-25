@@ -75,7 +75,7 @@ public class CartController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Add(int productId, int? productVariantId)
+    public async Task<IActionResult> Add(int productId, int? productVariantId, bool includeSetupService = false, decimal? setupServicePrice = null)
     {
         try
         {
@@ -114,13 +114,50 @@ public class CartController : Controller
             }
 
             var cart = GetCart();
+            int itemsAdded = 1;
+            
+            // Добавляем товар в корзину
             cart.Add(new OrderItem { ProductId = productId, ProductVariantId = productVariantId, Price = price });
+            
+            // Если выбрана услуга настройки, добавляем её тоже
+            if (includeSetupService && setupServicePrice.HasValue && setupServicePrice.Value > 0)
+            {
+                var setupServiceName = GetLocalizer()["WindowsServerSetupService"].Value;
+                var setupPrice = setupServicePrice.Value;
+                
+                // Используем существующий метод для добавления услуги настройки
+                var setupSlug = $"windows-server-setup-{productId}";
+                var setupProduct = await _context.Products
+                    .FirstOrDefaultAsync(p => p.Slug == setupSlug);
+
+                if (setupProduct == null)
+                {
+                    setupProduct = new Product
+                    {
+                        Name = setupServiceName,
+                        Slug = setupSlug,
+                        Type = ProductType.VPN, // Используем VPN тип для услуг настройки
+                        Location = product.Location,
+                        PricePerMonth = setupPrice,
+                        Configuration = $"Windows Server Setup & Installation service for {product.Name}",
+                        IsAvailable = true,
+                        IsPublished = false, // Не показываем в каталоге
+                        ImageUrl = null
+                    };
+                    _context.Products.Add(setupProduct);
+                    await _context.SaveChangesAsync();
+                }
+
+                cart.Add(new OrderItem { ProductId = setupProduct.Id, ProductVariantId = null, Price = setupPrice });
+                itemsAdded++;
+            }
+            
             SaveCart(cart);
 
             // Проверяем, является ли это AJAX запросом
             if (IsAjaxRequest())
             {
-                return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value });
+                return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value, itemsAdded = itemsAdded });
             }
 
             TempData["Success"] = GetLocalizer()["ProductAddedToCart"].Value;

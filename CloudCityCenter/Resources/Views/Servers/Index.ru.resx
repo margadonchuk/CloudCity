@@ -78,6 +78,18 @@
   <data name="Order" xml:space="preserve">
     <value>Заказать</value>
   </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Настройка и установка Windows Server</value>
+  </data>
+  <data name="WindowsServerSetupDescription" xml:space="preserve">
+    <value>Профессиональная установка и настройка Windows Server. Наши специалисты настроят ваш сервер, сконфигурируют все необходимые службы и обеспечат оптимальную производительность. Включает первоначальную настройку, конфигурацию безопасности и базовую оптимизацию.</value>
+  </data>
+  <data name="WindowsServerSetupPrice" xml:space="preserve">
+    <value>+30% от стоимости сервера</value>
+  </data>
+  <data name="IncludeSetupService" xml:space="preserve">
+    <value>Включить услугу настройки</value>
+  </data>
   <data name="RegionNetherlands" xml:space="preserve">
     <value>Нидерланды</value>
   </data>

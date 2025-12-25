@@ -78,6 +78,18 @@
   <data name="Order" xml:space="preserve">
     <value>Order</value>
   </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Windows Server Setup &amp; Installation</value>
+  </data>
+  <data name="WindowsServerSetupDescription" xml:space="preserve">
+    <value>Professional installation and configuration of Windows Server. Our experts will set up your server, configure all necessary services, and ensure optimal performance. Includes initial setup, security configuration, and basic optimization.</value>
+  </data>
+  <data name="WindowsServerSetupPrice" xml:space="preserve">
+    <value>+30% of server cost</value>
+  </data>
+  <data name="IncludeSetupService" xml:space="preserve">
+    <value>Include Setup Service</value>
+  </data>
   <data name="RegionNetherlands" xml:space="preserve">
     <value>Netherlands</value>
   </data>

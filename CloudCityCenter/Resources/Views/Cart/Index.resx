@@ -72,5 +72,8 @@
   <data name="ErrorOccurred" xml:space="preserve">
     <value>An error occurred. Please try again.</value>
   </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Windows Server Setup &amp; Installation</value>
+  </data>
 </root>
 

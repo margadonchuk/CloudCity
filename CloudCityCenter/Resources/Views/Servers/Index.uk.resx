@@ -75,6 +75,18 @@
   <data name="Order" xml:space="preserve">
     <value>Замовити</value>
   </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Налаштування та встановлення Windows Server</value>
+  </data>
+  <data name="WindowsServerSetupDescription" xml:space="preserve">
+    <value>Професійне встановлення та налаштування Windows Server. Наші фахівці налаштують ваш сервер, сконфігурують всі необхідні служби та забезпечать оптимальну продуктивність. Включає початкове налаштування, конфігурацію безпеки та базову оптимізацію.</value>
+  </data>
+  <data name="WindowsServerSetupPrice" xml:space="preserve">
+    <value>+30% від вартості сервера</value>
+  </data>
+  <data name="IncludeSetupService" xml:space="preserve">
+    <value>Включити послугу налаштування</value>
+  </data>
   <data name="Month" xml:space="preserve">
     <value>місяць</value>
   </data>

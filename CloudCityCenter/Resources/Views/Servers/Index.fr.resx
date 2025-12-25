@@ -75,6 +75,18 @@
   <data name="Order" xml:space="preserve">
     <value>Commander</value>
   </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Configuration &amp; Installation Windows Server</value>
+  </data>
+  <data name="WindowsServerSetupDescription" xml:space="preserve">
+    <value>Installation et configuration professionnelles de Windows Server. Nos experts configureront votre serveur, configureront tous les services nécessaires et assureront des performances optimales. Inclut la configuration initiale, la configuration de sécurité et l'optimisation de base.</value>
+  </data>
+  <data name="WindowsServerSetupPrice" xml:space="preserve">
+    <value>+30% du coût du serveur</value>
+  </data>
+  <data name="IncludeSetupService" xml:space="preserve">
+    <value>Inclure le service de configuration</value>
+  </data>
   <data name="Month" xml:space="preserve">
     <value>mois</value>
   </data>
