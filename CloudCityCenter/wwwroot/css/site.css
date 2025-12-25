@@ -1572,6 +1572,80 @@ body {
   display: flex;
   align-items: center;
   font-size: 1.05rem;
+}
+
+/* New Welcome Feature Cards */
+.welcome-feature-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.welcome-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.welcome-feature-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0d6efd, #667eea);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.welcome-feature-card:hover .welcome-feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+}
+
+.welcome-feature-card h4 {
+  color: #1d1e4c;
+  font-size: 1.25rem;
+}
+
+.welcome-feature-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Welcome CTA Box */
+.welcome-cta-box {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.welcome-cta-box h3 {
+  color: #1d1e4c;
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .welcome-feature-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
+  }
+  
+  .welcome-feature-card h4 {
+    font-size: 1.15rem;
+  }
+  
+  .welcome-cta-box h3 {
+    font-size: 1.5rem;
+  }
+}
   color: #555;
 }
 

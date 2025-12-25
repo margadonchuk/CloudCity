@@ -39,5 +39,44 @@
   <data name="Registration" xml:space="preserve">
     <value>Registration</value>
   </data>
+  <data name="OurAdvantages" xml:space="preserve">
+    <value>Our Advantages</value>
+  </data>
+  <data name="EnterpriseSecurity" xml:space="preserve">
+    <value>Enterprise Security</value>
+  </data>
+  <data name="EnterpriseSecurityDesc" xml:space="preserve">
+    <value>Advanced security protocols and encryption to protect your data</value>
+  </data>
+  <data name="EasyScaling" xml:space="preserve">
+    <value>Easy Scaling</value>
+  </data>
+  <data name="EasyScalingDesc" xml:space="preserve">
+    <value>Scale your infrastructure up or down based on your needs</value>
+  </data>
+  <data name="CompetitivePricing" xml:space="preserve">
+    <value>Competitive Pricing</value>
+  </data>
+  <data name="CompetitivePricingDesc" xml:space="preserve">
+    <value>Transparent pricing with no hidden fees or surprises</value>
+  </data>
+  <data name="FullControl" xml:space="preserve">
+    <value>Full Control</value>
+  </data>
+  <data name="FullControlDesc" xml:space="preserve">
+    <value>Complete control panel and management tools at your fingertips</value>
+  </data>
+  <data name="ReadyToStart" xml:space="preserve">
+    <value>Ready to Start?</value>
+  </data>
+  <data name="ReadyToStartDesc" xml:space="preserve">
+    <value>Choose the perfect solution for your business needs</value>
+  </data>
+  <data name="BrowseServices" xml:space="preserve">
+    <value>Browse Services</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
 </root>
 

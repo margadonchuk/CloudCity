@@ -39,5 +39,44 @@
   <data name="Registration" xml:space="preserve">
     <value>Регистрация</value>
   </data>
+  <data name="OurAdvantages" xml:space="preserve">
+    <value>Наши преимущества</value>
+  </data>
+  <data name="EnterpriseSecurity" xml:space="preserve">
+    <value>Корпоративная безопасность</value>
+  </data>
+  <data name="EnterpriseSecurityDesc" xml:space="preserve">
+    <value>Передовые протоколы безопасности и шифрование для защиты ваших данных</value>
+  </data>
+  <data name="EasyScaling" xml:space="preserve">
+    <value>Простое масштабирование</value>
+  </data>
+  <data name="EasyScalingDesc" xml:space="preserve">
+    <value>Масштабируйте инфраструктуру вверх или вниз в зависимости от ваших потребностей</value>
+  </data>
+  <data name="CompetitivePricing" xml:space="preserve">
+    <value>Конкурентные цены</value>
+  </data>
+  <data name="CompetitivePricingDesc" xml:space="preserve">
+    <value>Прозрачное ценообразование без скрытых комиссий</value>
+  </data>
+  <data name="FullControl" xml:space="preserve">
+    <value>Полный контроль</value>
+  </data>
+  <data name="FullControlDesc" xml:space="preserve">
+    <value>Полная панель управления и инструменты под рукой</value>
+  </data>
+  <data name="ReadyToStart" xml:space="preserve">
+    <value>Готовы начать?</value>
+  </data>
+  <data name="ReadyToStartDesc" xml:space="preserve">
+    <value>Выберите идеальное решение для вашего бизнеса</value>
+  </data>
+  <data name="BrowseServices" xml:space="preserve">
+    <value>Просмотреть услуги</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Связаться с нами</value>
+  </data>
 </root>
 
