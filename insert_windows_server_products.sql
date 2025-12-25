@@ -119,61 +119,61 @@ GO
 
 -- Windows Server на 35 человек - Netherlands
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 35 - Netherlands', 'windows-server-35-netherlands', 0, 'Netherlands', 825.00, 'Windows Server на 35 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 35 - Netherlands', 'windows-server-35-netherlands', 0, 'Netherlands', 825.00, 'Windows Server на 35 человек', 1, 1, '/images/nether35.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-35-netherlands');
 GO
 
 -- Windows Server на 35 человек - Germany
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 35 - Germany', 'windows-server-35-germany', 0, 'Germany', 925.00, 'Windows Server на 35 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 35 - Germany', 'windows-server-35-germany', 0, 'Germany', 925.00, 'Windows Server на 35 человек', 1, 1, '/images/germ35.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-35-germany');
 GO
 
 -- Windows Server на 35 человек - United Kingdom / Poland / France
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 35 - UK/Poland/France', 'windows-server-35-uk-pol-fr', 0, 'United Kingdom / Poland / France', 975.00, 'Windows Server на 35 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 35 - UK/Poland/France', 'windows-server-35-uk-pol-fr', 0, 'United Kingdom / Poland / France', 975.00, 'Windows Server на 35 человек', 1, 1, '/images/pl35.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-35-uk-pol-fr');
 GO
 
 -- Windows Server на 35 человек - Canada/ USA
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 35 - Canada/USA', 'windows-server-35-canada-usa', 0, 'Canada/ USA', 925.00, 'Windows Server на 35 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 35 - Canada/USA', 'windows-server-35-canada-usa', 0, 'Canada/ USA', 925.00, 'Windows Server на 35 человек', 1, 1, '/images/usa35.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-35-canada-usa');
 GO
 
 -- Windows Server на 35 человек - Singapore / India / Australia
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 35 - Singapore/India/Australia', 'windows-server-35-singapore-india-australia', 0, 'Singapore / India / Australia', 1025.00, 'Windows Server на 35 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 35 - Singapore/India/Australia', 'windows-server-35-singapore-india-australia', 0, 'Singapore / India / Australia', 1025.00, 'Windows Server на 35 человек', 1, 1, '/images/ind35.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-35-singapore-india-australia');
 GO
 
 -- Windows Server на 50 человек - Netherlands
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 50 - Netherlands', 'windows-server-50-netherlands', 0, 'Netherlands', 1080.00, 'Windows Server на 50 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 50 - Netherlands', 'windows-server-50-netherlands', 0, 'Netherlands', 1080.00, 'Windows Server на 50 человек', 1, 1, '/images/nether50.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-50-netherlands');
 GO
 
 -- Windows Server на 50 человек - Germany
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 50 - Germany', 'windows-server-50-germany', 0, 'Germany', 1180.00, 'Windows Server на 50 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 50 - Germany', 'windows-server-50-germany', 0, 'Germany', 1180.00, 'Windows Server на 50 человек', 1, 1, '/images/germ50.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-50-germany');
 GO
 
 -- Windows Server на 50 человек - United Kingdom / Poland / France
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 50 - UK/Poland/France', 'windows-server-50-uk-pol-fr', 0, 'United Kingdom / Poland / France', 1230.00, 'Windows Server на 50 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 50 - UK/Poland/France', 'windows-server-50-uk-pol-fr', 0, 'United Kingdom / Poland / France', 1230.00, 'Windows Server на 50 человек', 1, 1, '/images/pl50.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-50-uk-pol-fr');
 GO
 
 -- Windows Server на 50 человек - Canada/ USA
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 50 - Canada/USA', 'windows-server-50-canada-usa', 0, 'Canada/ USA', 1180.00, 'Windows Server на 50 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 50 - Canada/USA', 'windows-server-50-canada-usa', 0, 'Canada/ USA', 1180.00, 'Windows Server на 50 человек', 1, 1, '/images/usa50.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-50-canada-usa');
 GO
 
 -- Windows Server на 50 человек - Singapore / India / Australia
 INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
-SELECT 'Windows Server 50 - Singapore/India/Australia', 'windows-server-50-singapore-india-australia', 0, 'Singapore / India / Australia', 1280.00, 'Windows Server на 50 человек', 1, 1, '/images/windows-server.png'
+SELECT 'Windows Server 50 - Singapore/India/Australia', 'windows-server-50-singapore-india-australia', 0, 'Singapore / India / Australia', 1280.00, 'Windows Server на 50 человек', 1, 1, '/images/ind50.png'
 WHERE NOT EXISTS (SELECT 1 FROM Products WHERE Slug = 'windows-server-50-singapore-india-australia');
 GO
 

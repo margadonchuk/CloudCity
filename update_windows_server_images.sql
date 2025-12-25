@@ -112,6 +112,74 @@ WHERE Slug = 'windows-server-25-singapore-india-australia';
 GO
 
 -- =============================================
+-- Обновление изображений для Windows Server 35 человек
+-- =============================================
+
+-- Windows Server 35 - Netherlands
+UPDATE Products 
+SET ImageUrl = '/images/nether35.png'
+WHERE Slug = 'windows-server-35-netherlands';
+GO
+
+-- Windows Server 35 - Germany
+UPDATE Products 
+SET ImageUrl = '/images/germ35.png'
+WHERE Slug = 'windows-server-35-germany';
+GO
+
+-- Windows Server 35 - Canada/USA
+UPDATE Products 
+SET ImageUrl = '/images/usa35.png'
+WHERE Slug = 'windows-server-35-canada-usa';
+GO
+
+-- Windows Server 35 - UK/Poland/France
+UPDATE Products 
+SET ImageUrl = '/images/pl35.png'
+WHERE Slug = 'windows-server-35-uk-pol-fr';
+GO
+
+-- Windows Server 35 - Singapore/India/Australia
+UPDATE Products 
+SET ImageUrl = '/images/ind35.png'
+WHERE Slug = 'windows-server-35-singapore-india-australia';
+GO
+
+-- =============================================
+-- Обновление изображений для Windows Server 50 человек
+-- =============================================
+
+-- Windows Server 50 - Netherlands
+UPDATE Products 
+SET ImageUrl = '/images/nether50.png'
+WHERE Slug = 'windows-server-50-netherlands';
+GO
+
+-- Windows Server 50 - Germany
+UPDATE Products 
+SET ImageUrl = '/images/germ50.png'
+WHERE Slug = 'windows-server-50-germany';
+GO
+
+-- Windows Server 50 - Canada/USA
+UPDATE Products 
+SET ImageUrl = '/images/usa50.png'
+WHERE Slug = 'windows-server-50-canada-usa';
+GO
+
+-- Windows Server 50 - UK/Poland/France
+UPDATE Products 
+SET ImageUrl = '/images/pl50.png'
+WHERE Slug = 'windows-server-50-uk-pol-fr';
+GO
+
+-- Windows Server 50 - Singapore/India/Australia
+UPDATE Products 
+SET ImageUrl = '/images/ind50.png'
+WHERE Slug = 'windows-server-50-singapore-india-australia';
+GO
+
+-- =============================================
 -- Проверка результатов
 -- =============================================
 
