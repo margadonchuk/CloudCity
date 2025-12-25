@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         const cartCountEl = document.getElementById('cart-count');
                         const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
                         const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
+                        const cartCountMobileMenuEl = document.getElementById('cart-count-mobile');
                         
                         // Обновляем счетчики корзины (учитываем, что может быть добавлено 2 товара: сервер + услуга)
                         const itemsAdded = result.itemsAdded || 1;
@@ -152,6 +153,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             count += itemsAdded;
                             cartCountOffcanvasEl.textContent = count;
                             cartCountOffcanvasEl.style.display = count > 0 ? 'inline-block' : 'none';
+                        }
+                        
+                        if (cartCountMobileMenuEl) {
+                            let count = parseInt(cartCountMobileMenuEl.textContent || '0', 10);
+                            count += itemsAdded;
+                            cartCountMobileMenuEl.textContent = count;
+                            cartCountMobileMenuEl.style.display = count > 0 ? 'inline-flex' : 'none';
                         }
                         
                         // Показываем уведомление об успехе
