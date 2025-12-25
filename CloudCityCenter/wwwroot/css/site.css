@@ -3269,6 +3269,17 @@ body {
   min-height: 70px;
 }
 
+/* Toast container positioning below navbar */
+.toast-container-below-nav {
+  top: 80px;
+}
+
+@media (max-width: 991px) {
+  .toast-container-below-nav {
+    top: 70px;
+  }
+}
+
 @media (max-width: 991px) {
   .navbar-modern {
     min-height: 60px !important;

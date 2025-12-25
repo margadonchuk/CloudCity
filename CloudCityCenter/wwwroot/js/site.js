@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!toastContainer) {
             toastContainer = document.createElement('div');
             toastContainer.id = 'toast-container';
-            toastContainer.className = 'position-fixed top-0 end-0 p-3';
+            toastContainer.className = 'position-fixed end-0 p-3 toast-container-below-nav';
             toastContainer.style.zIndex = '9999';
             document.body.appendChild(toastContainer);
         }
