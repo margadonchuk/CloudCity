@@ -197,7 +197,7 @@ public class CartController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddConfigurationService(string serviceName, decimal price, string category, string imageUrl = null)
+    public async Task<IActionResult> AddConfigurationService(string serviceName, decimal price, string category, string? imageUrl = null)
     {
         // Ищем или создаем продукт для услуги настройки
         var slug = $"config-{category.ToLower()}-{serviceName.ToLower().Replace(" ", "-")}";
