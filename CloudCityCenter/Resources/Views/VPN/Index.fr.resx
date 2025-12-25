@@ -70,13 +70,13 @@
     <value>CHR Basic</value>
   </data>
   <data name="CHRBasicDesc" xml:space="preserve">
-    <value>Configuration de base CHR (VPN, Firewall, NAT)</value>
+    <value>Configuration de base CHR (Fournisseur, Firewall, NAT)</value>
   </data>
   <data name="CHRStandard" xml:space="preserve">
     <value>CHR Standard</value>
   </data>
   <data name="CHRStandardDesc" xml:space="preserve">
-    <value>Règles de sécurité avancées + surveillance</value>
+    <value>Règles de sécurité avancées (VPN - Gre/L2TP + surveillance)</value>
   </data>
   <data name="CHRPro" xml:space="preserve">
     <value>CHR Pro</value>
