@@ -100,11 +100,15 @@ public class CartController : Controller
         SaveCart(cart);
 
         // Проверяем, является ли это AJAX запросом
-        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest" || Request.Headers["Accept"].ToString().Contains("application/json"))
+        var isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest" 
+                     || Request.Headers["Accept"].ToString().Contains("application/json");
+        
+        if (isAjax)
         {
             return Json(new { success = true, message = "Product added to cart" });
         }
 
+        TempData["Success"] = "Product added to cart successfully!";
         return RedirectToAction(nameof(Index));
     }
 

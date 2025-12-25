@@ -44,40 +44,129 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Функция для показа toast-уведомления
+    function showToast(message, type = 'success') {
+        // Создаем контейнер для toast, если его еще нет
+        let toastContainer = document.getElementById('toast-container');
+        if (!toastContainer) {
+            toastContainer = document.createElement('div');
+            toastContainer.id = 'toast-container';
+            toastContainer.className = 'position-fixed top-0 end-0 p-3';
+            toastContainer.style.zIndex = '9999';
+            document.body.appendChild(toastContainer);
+        }
+
+        // Создаем toast элемент
+        const toastId = 'toast-' + Date.now();
+        const toastHtml = `
+            <div id="${toastId}" class="toast align-items-center text-white bg-${type === 'success' ? 'success' : 'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        `;
+        
+        toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+        const toastElement = document.getElementById(toastId);
+        const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+        toast.show();
+        
+        // Удаляем элемент после скрытия
+        toastElement.addEventListener('hidden.bs.toast', function() {
+            toastElement.remove();
+        });
+    }
+
     document.querySelectorAll('.add-to-cart-form').forEach(function (form) {
         form.addEventListener('submit', async function (e) {
             if (form.dataset.ajax === 'true') {
                 e.preventDefault();
-                const formData = new FormData(form);
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    credentials: 'same-origin'
-                });
-                if (response.ok) {
-                    const cartCountEl = document.getElementById('cart-count');
-                    const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
-                    const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
+                
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton ? submitButton.innerHTML : '';
+                const originalButtonDisabled = submitButton ? submitButton.disabled : false;
+                
+                // Отключаем кнопку и меняем текст
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Добавление...';
+                }
+                
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: formData,
+                        credentials: 'same-origin'
+                    });
                     
-                    if (cartCountEl) {
-                        let count = parseInt(cartCountEl.textContent || '0', 10);
-                        count++;
-                        cartCountEl.textContent = count;
-                        cartCountEl.style.display = count > 0 ? 'inline-block' : 'none';
+                    if (response.ok) {
+                        const result = await response.json();
+                        
+                        // Обновляем счетчики корзины
+                        const cartCountEl = document.getElementById('cart-count');
+                        const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
+                        const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
+                        
+                        if (cartCountEl) {
+                            let count = parseInt(cartCountEl.textContent || '0', 10);
+                            count++;
+                            cartCountEl.textContent = count;
+                            cartCountEl.style.display = count > 0 ? 'inline-block' : 'none';
+                        }
+                        
+                        if (cartCountMobileEl) {
+                            let count = parseInt(cartCountMobileEl.textContent || '0', 10);
+                            count++;
+                            cartCountMobileEl.textContent = count;
+                            cartCountMobileEl.style.display = count > 0 ? 'inline-block' : 'none';
+                        }
+                        
+                        if (cartCountOffcanvasEl) {
+                            let count = parseInt(cartCountOffcanvasEl.textContent || '0', 10);
+                            count++;
+                            cartCountOffcanvasEl.textContent = count;
+                            cartCountOffcanvasEl.style.display = count > 0 ? 'inline-block' : 'none';
+                        }
+                        
+                        // Показываем уведомление об успехе
+                        showToast('Товар успешно добавлен в корзину!', 'success');
+                        
+                        // Визуальная обратная связь на кнопке
+                        if (submitButton) {
+                            submitButton.innerHTML = '<i class="bi bi-check-circle me-2"></i>Добавлено!';
+                            submitButton.classList.remove('btn-primary');
+                            submitButton.classList.add('btn-success');
+                            
+                            // Возвращаем исходное состояние через 2 секунды
+                            setTimeout(() => {
+                                submitButton.innerHTML = originalButtonText;
+                                submitButton.classList.remove('btn-success');
+                                submitButton.classList.add('btn-primary');
+                                submitButton.disabled = originalButtonDisabled;
+                            }, 2000);
+                        }
+                    } else {
+                        // Обработка ошибки
+                        showToast('Ошибка при добавлении товара в корзину', 'danger');
+                        if (submitButton) {
+                            submitButton.disabled = originalButtonDisabled;
+                            submitButton.innerHTML = originalButtonText;
+                        }
                     }
-                    
-                    if (cartCountMobileEl) {
-                        let count = parseInt(cartCountMobileEl.textContent || '0', 10);
-                        count++;
-                        cartCountMobileEl.textContent = count;
-                        cartCountMobileEl.style.display = count > 0 ? 'inline-block' : 'none';
-                    }
-                    
-                    if (cartCountOffcanvasEl) {
-                        let count = parseInt(cartCountOffcanvasEl.textContent || '0', 10);
-                        count++;
-                        cartCountOffcanvasEl.textContent = count;
-                        cartCountOffcanvasEl.style.display = count > 0 ? 'inline-block' : 'none';
+                } catch (error) {
+                    console.error('Error adding to cart:', error);
+                    showToast('Произошла ошибка. Попробуйте еще раз.', 'danger');
+                    if (submitButton) {
+                        submitButton.disabled = originalButtonDisabled;
+                        submitButton.innerHTML = originalButtonText;
                     }
                 }
             }
