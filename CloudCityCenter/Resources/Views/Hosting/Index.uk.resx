@@ -147,5 +147,50 @@
   <data name="Order" xml:space="preserve">
     <value>Замовити</value>
   </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Нідерланди</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Німеччина</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Франція</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Польща</value>
+  </data>
+  <data name="United Kingdom" xml:space="preserve">
+    <value>Великобританія</value>
+  </data>
+  <data name="Canada" xml:space="preserve">
+    <value>Канада</value>
+  </data>
+  <data name="USA" xml:space="preserve">
+    <value>США</value>
+  </data>
+  <data name="Singapore" xml:space="preserve">
+    <value>Сінгапур</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>Індія</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Австралія</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Нідерланди/Німеччина/Франція</value>
+  </data>
+  <data name="Germany/France/Poland" xml:space="preserve">
+    <value>Німеччина/Франція/Польща</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Безлімітний</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+  <data name="Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
 </root>
 

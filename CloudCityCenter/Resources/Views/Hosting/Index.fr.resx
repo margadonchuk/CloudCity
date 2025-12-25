@@ -147,5 +147,50 @@
   <data name="Order" xml:space="preserve">
     <value>Commander</value>
   </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Pays-Bas</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Allemagne</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>France</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Pologne</value>
+  </data>
+  <data name="United Kingdom" xml:space="preserve">
+    <value>Royaume-Uni</value>
+  </data>
+  <data name="Canada" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="USA" xml:space="preserve">
+    <value>États-Unis</value>
+  </data>
+  <data name="Singapore" xml:space="preserve">
+    <value>Singapour</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>Inde</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Australie</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Pays-Bas/Allemagne/France</value>
+  </data>
+  <data name="Germany/France/Poland" xml:space="preserve">
+    <value>Allemagne/France/Pologne</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Illimité</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+  <data name="Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
 </root>
 

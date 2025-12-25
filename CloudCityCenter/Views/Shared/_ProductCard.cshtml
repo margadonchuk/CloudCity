@@ -5,7 +5,7 @@
         ? "https://via.placeholder.com/300x200?text=No+Image"
         : Model.ImageUrl;
     
-    // Функция для локализации названий характеристик
+    // Функция для локализации названий и значений характеристик
     string LocalizeFeature(string feature)
     {
         if (string.IsNullOrWhiteSpace(feature))
@@ -25,12 +25,41 @@
                 localizedName = featureName;
             }
             
-            return $"{localizedName}: {featureValue}";
+            // Пытаемся локализовать значение характеристики
+            var localizedValue = LocalizeFeatureValue(featureValue);
+            
+            return $"{localizedName}: {localizedValue}";
         }
         
         // Если формат не "Name: Value", пытаемся локализовать всю строку
         var localized = Localizer[feature].Value;
         return localized != feature ? localized : feature;
+    }
+    
+    // Функция для локализации значений характеристик
+    string LocalizeFeatureValue(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return value;
+        
+        // Пытаемся локализовать значение
+        var localized = Localizer[value].Value;
+        if (localized != value)
+            return localized;
+        
+        // Если значение содержит несколько стран через "/", локализуем каждую
+        if (value.Contains("/"))
+        {
+            var countries = value.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var localizedCountries = countries.Select(c => 
+            {
+                var loc = Localizer[c.Trim()].Value;
+                return loc != c.Trim() ? loc : c.Trim();
+            });
+            return string.Join("/", localizedCountries);
+        }
+        
+        return value;
     }
 }
 <img src="@imageUrl" class="card-img-top" alt="@Model.Name" />

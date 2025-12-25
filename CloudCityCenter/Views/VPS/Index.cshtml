@@ -1,4 +1,5 @@
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@using System.Linq
 @model CloudCityCenter.Models.ViewModels.VPSPageVm
 @{
     ViewData["Title"] = Localizer["Title"];
@@ -163,15 +164,32 @@
                             </li>
                             <li class="mb-3">
                                 <i class="bi bi-speedometer2 text-primary me-2"></i>
-                                <strong>@Localizer["Traffic"]:</strong> @plan.Traffic
+                                <strong>@Localizer["Traffic"]:</strong> @(Localizer[plan.Traffic].Value != plan.Traffic ? Localizer[plan.Traffic].Value : plan.Traffic)
                             </li>
                             <li class="mb-3">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <strong>@Localizer["Country"]:</strong> @plan.Country
+                                <strong>@Localizer["Country"]:</strong> @{
+                                    var countryValue = plan.Country;
+                                    if (countryValue.Contains("/"))
+                                    {
+                                        var countries = countryValue.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                                        var localizedCountries = countries.Select(c => 
+                                        {
+                                            var loc = Localizer[c.Trim()].Value;
+                                            return loc != c.Trim() ? loc : c.Trim();
+                                        });
+                                        countryValue = string.Join("/", localizedCountries);
+                                    }
+                                    else
+                                    {
+                                        var loc = Localizer[countryValue].Value;
+                                        countryValue = loc != plan.Country ? loc : countryValue;
+                                    }
+                                }@countryValue
                             </li>
                             <li class="mb-3">
                                 <i class="bi bi-ubuntu text-primary me-2"></i>
-                                <strong>@Localizer["OS"]:</strong> @plan.OS
+                                <strong>@Localizer["OS"]:</strong> @(Localizer[plan.OS].Value != plan.OS ? Localizer[plan.OS].Value : plan.OS)
                             </li>
                         </ul>
                         <div class="mt-auto">

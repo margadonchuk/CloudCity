@@ -174,5 +174,26 @@
   <data name="Month" xml:space="preserve">
     <value>Месяц</value>
   </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Нидерланды</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Германия</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Франция</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Польша</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Нидерланды/Германия/Франция</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Безлимитный</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
 </root>
 
