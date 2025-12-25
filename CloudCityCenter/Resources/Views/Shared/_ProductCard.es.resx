@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Alojamiento web</value>
+  </data>
+  <data name="Hosting" xml:space="preserve">
+    <value>Alojamiento</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Alojamiento web</value>
+  </data>
+  <data name="HostingDescription" xml:space="preserve">
+    <value>El alojamiento web es la base de su presencia en línea, proporcionando soluciones confiables y rápidas para sitios web de cualquier tamaño. En CloudCity Center, nos enfocamos en velocidad, seguridad y comodidad — utilizando las últimas tecnologías para ofrecer la mejor experiencia de alojamiento.</value>
+  </data>
+  <data name="CustomDesign" xml:space="preserve">
+    <value>Diseño personalizado, funcionalidad y alto ancho de banda</value>
+  </data>
+  <data name="SupportLanguages" xml:space="preserve">
+    <value>Soporte para C#, Python, PHP y constructores de sitios web populares</value>
+  </data>
+  <data name="BackupsSEO" xml:space="preserve">
+    <value>Copias de seguridad automáticas, adaptabilidad y optimización SEO</value>
+  </data>
+  <data name="HostingPlans" xml:space="preserve">
+    <value>Planes de alojamiento</value>
+  </data>
+  <data name="ChooseHostingSolution" xml:space="preserve">
+    <value>Elija la solución de alojamiento perfecta para su sitio web</value>
+  </data>
+  <data name="CreateWebsite" xml:space="preserve">
+    <value>Crear sitio web</value>
+  </data>
+  <data name="WebsiteDevelopmentServices" xml:space="preserve">
+    <value>Servicios profesionales de desarrollo de sitios web</value>
+  </data>
+  <data name="HostingDescriptionText" xml:space="preserve">
+    <value>Para el funcionamiento estable de un proyecto medio (sitio web, servidor, VPN, panel de control). Con administración y soporte técnico:</value>
+  </data>
+  <data name="HostingAdditionalPrice" xml:space="preserve">
+    <value>+$50/mes</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Almacenamiento</value>
+  </data>
+  <data name="NASNetworkStorage" xml:space="preserve">
+    <value>NAS (Almacenamiento en red)</value>
+  </data>
+  <data name="StorageCapabilities" xml:space="preserve">
+    <value>Capacidades</value>
+  </data>
+  <data name="StorageFeatures" xml:space="preserve">
+    <value>Acceso SMB/NFS, Interfaz web (TrueNAS, OpenMediaVault, Synology DSM), Copias de seguridad (por ejemplo, a la nube u otro NAS), Instantáneas (snapshot), cifrado, restricción de acceso</value>
+  </data>
+  <data name="StorageWithBackup" xml:space="preserve">
+    <value>Con copia de seguridad y soporte técnico:</value>
+  </data>
+  <data name="StorageAdditionalPrice" xml:space="preserve">
+    <value>+$150/mes</value>
+  </data>
+  <data name="WebsiteBuilderTitle" xml:space="preserve">
+    <value>Constructor de sitios</value>
+  </data>
+  <data name="WebsiteBuilderSubtitle" xml:space="preserve">
+    <value>Sitios en constructor (sin código)</value>
+  </data>
+  <data name="WebsiteBuilderFeature1" xml:space="preserve">
+    <value>Solución rápida — hasta 7 días laborables</value>
+  </data>
+  <data name="WebsiteBuilderFeature2" xml:space="preserve">
+    <value>Alojamiento y dominio — a solicitud del cliente</value>
+  </data>
+  <data name="WebsiteBuilderFeature3" xml:space="preserve">
+    <value>CMS/constructores: WordPress + Elementor, Tilda, Wix</value>
+  </data>
+  <data name="WebsiteCodeTitle" xml:space="preserve">
+    <value>Desarrollo personalizado</value>
+  </data>
+  <data name="WebsiteCodeSubtitle" xml:space="preserve">
+    <value>Sitios en código (TypeScript, C#, PHP)</value>
+  </data>
+  <data name="WebsiteCodeFeature1" xml:space="preserve">
+    <value>Desarrollo 7–41 días</value>
+  </data>
+  <data name="WebsiteCodeFeature2" xml:space="preserve">
+    <value>Arquitectura individual</value>
+  </data>
+  <data name="WebsiteCodeFeature3" xml:space="preserve">
+    <value>Seguridad, protección contra SQL/XSS</value>
+  </data>
+  <data name="WebsiteCodeFeature4" xml:space="preserve">
+    <value>Alojamiento/despliegue y soporte — bajo solicitud</value>
+  </data>
+  <data name="SSLCertificate" xml:space="preserve">
+    <value>Certificado SSL para cada uno</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Tráfico</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>Sistema operativo</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Tecnología</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Dispositivos</value>
+  </data>
+  <data name="Encryption" xml:space="preserve">
+    <value>Cifrado</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Acceso</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Copia de seguridad</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Soporte</value>
+  </data>
+  <data name="Bandwidth" xml:space="preserve">
+    <value>Ancho de banda</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Núcleo</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Pedir</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Países Bajos</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Alemania</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Francia</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Polonia</value>
+  </data>
+  <data name="United Kingdom" xml:space="preserve">
+    <value>Reino Unido</value>
+  </data>
+  <data name="Canada" xml:space="preserve">
+    <value>Canadá</value>
+  </data>
+  <data name="USA" xml:space="preserve">
+    <value>EE.UU.</value>
+  </data>
+  <data name="Singapore" xml:space="preserve">
+    <value>Singapur</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>India</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Australia</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Países Bajos/Alemania/Francia</value>
+  </data>
+  <data name="Germany/France/Poland" xml:space="preserve">
+    <value>Alemania/Francia/Polonia</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Ilimitado</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+  <data name="Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Incluido</value>
+  </data>
+  <data name="Technologies" xml:space="preserve">
+    <value>Tecnologías</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="Email Accounts" xml:space="preserve">
+    <value>Cuentas de correo</value>
+  </data>
+  <data name="SSD (NVMe)" xml:space="preserve">
+    <value>SSD (NVMe)</value>
+  </data>
+  <data name="Single-page website (promo, service, product)" xml:space="preserve">
+    <value>Sitio web de una página (promo, servicio, producto)</value>
+  </data>
+  <data name="Multi-page website (about company, services, contacts, etc.)" xml:space="preserve">
+    <value>Sitio web de varias páginas (sobre la empresa, servicios, contactos, etc.)</value>
+  </data>
+  <data name="Online store (up to 50 products)" xml:space="preserve">
+    <value>Tienda en línea (hasta 50 productos)</value>
+  </data>
+  <data name="Single-page landing with custom logic" xml:space="preserve">
+    <value>Página de aterrizaje de una página con lógica personalizada</value>
+  </data>
+  <data name="Multi-page website with logic" xml:space="preserve">
+    <value>Sitio web de varias páginas con lógica</value>
+  </data>
+  <data name="Turnkey online store" xml:space="preserve">
+    <value>Tienda en línea lista para usar</value>
+  </data>
+  <data name="Builder, responsive design, contact form, basic SEO, mobile version" xml:space="preserve">
+    <value>Constructor, diseño responsive, formulario de contacto, SEO básico, versión móvil</value>
+  </data>
+  <data name="Menu, up to 5 pages, responsive design, contact form, SEO, mobile version" xml:space="preserve">
+    <value>Menú, hasta 5 páginas, diseño responsive, formulario de contacto, SEO, versión móvil</value>
+  </data>
+  <data name="Catalog, shopping cart, checkout, payment, mobile version" xml:space="preserve">
+    <value>Catálogo, carrito de compras, pago, versión móvil</value>
+  </data>
+  <data name="Clean code, animations, forms, SEO" xml:space="preserve">
+    <value>Código limpio, animaciones, formularios, SEO</value>
+  </data>
+  <data name="UI/UX, SEO, database, admin panel" xml:space="preserve">
+    <value>UI/UX, SEO, base de datos, panel de administración</value>
+  </data>
+  <data name="Full catalog, shopping cart, payment, filters, personal account" xml:space="preserve">
+    <value>Catálogo completo, carrito de compras, pago, filtros, cuenta personal</value>
+  </data>
+  <data name="TypeScript" xml:space="preserve">
+    <value>TypeScript</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/PHP/Next.js" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/PHP/Next.js</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/React/TypeScript" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/React/TypeScript</value>
+  </data>
+  <data name="Builder" xml:space="preserve">
+    <value>Constructor</value>
+  </data>
+  <data name="responsive design" xml:space="preserve">
+    <value>diseño responsive</value>
+  </data>
+  <data name="contact form" xml:space="preserve">
+    <value>formulario de contacto</value>
+  </data>
+  <data name="basic SEO" xml:space="preserve">
+    <value>SEO básico</value>
+  </data>
+  <data name="mobile version" xml:space="preserve">
+    <value>versión móvil</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menú</value>
+  </data>
+  <data name="up to 5 pages" xml:space="preserve">
+    <value>hasta 5 páginas</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Catálogo</value>
+  </data>
+  <data name="shopping cart" xml:space="preserve">
+    <value>carrito de compras</value>
+  </data>
+  <data name="checkout" xml:space="preserve">
+    <value>pago</value>
+  </data>
+  <data name="payment" xml:space="preserve">
+    <value>pago</value>
+  </data>
+  <data name="Clean code" xml:space="preserve">
+    <value>Código limpio</value>
+  </data>
+  <data name="animations" xml:space="preserve">
+    <value>animaciones</value>
+  </data>
+  <data name="forms" xml:space="preserve">
+    <value>formularios</value>
+  </data>
+  <data name="SEO" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="UI/UX" xml:space="preserve">
+    <value>UI/UX</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>base de datos</value>
+  </data>
+  <data name="admin panel" xml:space="preserve">
+    <value>panel de administración</value>
+  </data>
+  <data name="Full catalog" xml:space="preserve">
+    <value>Catálogo completo</value>
+  </data>
+  <data name="filters" xml:space="preserve">
+    <value>filtros</value>
+  </data>
+  <data name="personal account" xml:space="preserve">
+    <value>cuenta personal</value>
+  </data>
+  <data name="C#" xml:space="preserve">
+    <value>C#</value>
+  </data>
+  <data name="ASP.NET" xml:space="preserve">
+    <value>ASP.NET</value>
+  </data>
+  <data name="Laravel" xml:space="preserve">
+    <value>Laravel</value>
+  </data>
+  <data name="PHP" xml:space="preserve">
+    <value>PHP</value>
+  </data>
+  <data name="Next.js" xml:space="preserve">
+    <value>Next.js</value>
+  </data>
+  <data name="React" xml:space="preserve">
+    <value>React</value>
+  </data>
+</root>
+

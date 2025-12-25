@@ -43,7 +43,7 @@
         if (string.IsNullOrWhiteSpace(value))
             return value;
         
-        // Пытаемся локализовать значение целиком
+        // Сначала пытаемся локализовать значение целиком (это важно для длинных строк)
         var localized = Localizer[value].Value;
         if (localized != value)
             return localized;
@@ -55,8 +55,12 @@
             var localizedParts = parts.Select(part => 
             {
                 var trimmed = part.Trim();
+                // Сначала пытаемся локализовать часть целиком
                 var loc = Localizer[trimmed].Value;
-                return loc != trimmed ? loc : trimmed;
+                if (loc != trimmed)
+                    return loc;
+                // Если не получилось, пытаемся локализовать отдельные слова
+                return trimmed;
             });
             return string.Join("/", localizedParts);
         }
@@ -68,8 +72,12 @@
             var localizedParts = parts.Select(part => 
             {
                 var trimmed = part.Trim();
+                // Сначала пытаемся локализовать часть целиком
                 var loc = Localizer[trimmed].Value;
-                return loc != trimmed ? loc : trimmed;
+                if (loc != trimmed)
+                    return loc;
+                // Если не получилось, возвращаем оригинал
+                return trimmed;
             });
             return string.Join(", ", localizedParts);
         }
@@ -81,8 +89,12 @@
             var localizedParts = parts.Select(part => 
             {
                 var trimmed = part.Trim();
+                // Сначала пытаемся локализовать часть целиком
                 var loc = Localizer[trimmed].Value;
-                return loc != trimmed ? loc : trimmed;
+                if (loc != trimmed)
+                    return loc;
+                // Если не получилось, возвращаем оригинал
+                return trimmed;
             });
             return string.Join(" + ", localizedParts);
         }
