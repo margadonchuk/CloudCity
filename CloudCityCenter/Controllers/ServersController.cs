@@ -34,10 +34,22 @@ public class ServersController : Controller
             .Include(p => p.Variants)
             .ToListAsync();
 
-        // Если товаров нет, возвращаем пустую модель
+        // Если товаров нет, возвращаем пустую модель с инициализированными списками
         if (!products.Any())
         {
-            return View(new WindowsServerPageVm());
+            return View(new WindowsServerPageVm
+            {
+                PlansForFiveToEightPersons = new List<WindowsServerPlanVm>(),
+                PlansForFifteenPersons = new List<WindowsServerPlanVm>(),
+                PlansForTwentyFivePersons = new List<WindowsServerPlanVm>(),
+                PlansForThirtyFivePersons = new List<WindowsServerPlanVm>(),
+                PlansForFiftyPersons = new List<WindowsServerPlanVm>(),
+                AvailableLocations = new List<string>(),
+                AvailablePersons = new List<int>(),
+                AvailableCpu = new List<string>(),
+                AvailableRam = new List<string>(),
+                AvailableSsd = new List<string>()
+            });
         }
 
         // Разделяем товары на планы для 5-8, 15, 25, 35 и 50 человек
@@ -193,29 +205,55 @@ public class ServersController : Controller
         .OrderBy(p => p.Price)
         .ToList();
 
-        // Собираем все планы для получения уникальных значений фильтров
-        var allPlans = new List<WindowsServerPlanVm>();
-        allPlans.AddRange(plansForFiveToEight);
-        allPlans.AddRange(plansForFifteen);
-        allPlans.AddRange(plansForTwentyFive);
-        allPlans.AddRange(plansForThirtyFive);
-        allPlans.AddRange(plansForFifty);
+            // Собираем все планы для получения уникальных значений фильтров
+            var allPlans = new List<WindowsServerPlanVm>();
+            if (plansForFiveToEight != null) allPlans.AddRange(plansForFiveToEight);
+            if (plansForFifteen != null) allPlans.AddRange(plansForFifteen);
+            if (plansForTwentyFive != null) allPlans.AddRange(plansForTwentyFive);
+            if (plansForThirtyFive != null) allPlans.AddRange(plansForThirtyFive);
+            if (plansForFifty != null) allPlans.AddRange(plansForFifty);
 
-        var vm = new WindowsServerPageVm
+            var vm = new WindowsServerPageVm
+            {
+                PlansForFiveToEightPersons = plansForFiveToEight ?? new List<WindowsServerPlanVm>(),
+                PlansForFifteenPersons = plansForFifteen ?? new List<WindowsServerPlanVm>(),
+                PlansForTwentyFivePersons = plansForTwentyFive ?? new List<WindowsServerPlanVm>(),
+                PlansForThirtyFivePersons = plansForThirtyFive ?? new List<WindowsServerPlanVm>(),
+                PlansForFiftyPersons = plansForFifty ?? new List<WindowsServerPlanVm>(),
+                AvailableLocations = allPlans?.Select(p => p?.Country ?? string.Empty).Where(c => !string.IsNullOrEmpty(c)).Distinct().OrderBy(l => l).ToList() ?? new List<string>(),
+                AvailablePersons = allPlans?.Select(p => p.NumberOfPersons).Distinct().OrderBy(p => p).ToList() ?? new List<int>(),
+                AvailableCpu = allPlans?.Select(p => p?.CPU ?? string.Empty).Where(c => !string.IsNullOrEmpty(c)).Distinct().OrderBy(c => c).ToList() ?? new List<string>(),
+                AvailableRam = allPlans?.Select(p => p?.RAM ?? string.Empty).Where(r => !string.IsNullOrEmpty(r)).Distinct().OrderBy(r => r).ToList() ?? new List<string>(),
+                AvailableSsd = allPlans?.Select(p => p?.SSD ?? string.Empty).Where(s => !string.IsNullOrEmpty(s)).Distinct().OrderBy(s => s).ToList() ?? new List<string>()
+            };
+
+            return View(vm);
+        }
+        catch (Exception ex)
         {
-            PlansForFiveToEightPersons = plansForFiveToEight,
-            PlansForFifteenPersons = plansForFifteen,
-            PlansForTwentyFivePersons = plansForTwentyFive,
-            PlansForThirtyFivePersons = plansForThirtyFive,
-            PlansForFiftyPersons = plansForFifty,
-            AvailableLocations = allPlans.Select(p => p.Country).Distinct().OrderBy(l => l).ToList(),
-            AvailablePersons = allPlans.Select(p => p.NumberOfPersons).Distinct().OrderBy(p => p).ToList(),
-            AvailableCpu = allPlans.Select(p => p.CPU).Where(c => !string.IsNullOrEmpty(c)).Distinct().OrderBy(c => c).ToList(),
-            AvailableRam = allPlans.Select(p => p.RAM).Where(r => !string.IsNullOrEmpty(r)).Distinct().OrderBy(r => r).ToList(),
-            AvailableSsd = allPlans.Select(p => p.SSD).Where(s => !string.IsNullOrEmpty(s)).Distinct().OrderBy(s => s).ToList()
-        };
-
-        return View(vm);
+            // Логируем ошибку
+            Console.Error.WriteLine($"Error in ServersController.Index: {ex.Message}");
+            Console.Error.WriteLine($"Stack trace: {ex.StackTrace}");
+            if (ex.InnerException != null)
+            {
+                Console.Error.WriteLine($"Inner exception: {ex.InnerException.Message}");
+            }
+            
+            // Возвращаем пустую модель с инициализированными списками
+            return View(new WindowsServerPageVm
+            {
+                PlansForFiveToEightPersons = new List<WindowsServerPlanVm>(),
+                PlansForFifteenPersons = new List<WindowsServerPlanVm>(),
+                PlansForTwentyFivePersons = new List<WindowsServerPlanVm>(),
+                PlansForThirtyFivePersons = new List<WindowsServerPlanVm>(),
+                PlansForFiftyPersons = new List<WindowsServerPlanVm>(),
+                AvailableLocations = new List<string>(),
+                AvailablePersons = new List<int>(),
+                AvailableCpu = new List<string>(),
+                AvailableRam = new List<string>(),
+                AvailableSsd = new List<string>()
+            });
+        }
     }
 
     /// <summary>

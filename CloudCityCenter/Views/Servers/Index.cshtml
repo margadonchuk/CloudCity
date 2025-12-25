@@ -98,9 +98,12 @@
                     <label class="form-label fw-bold">@Localizer["Country"]</label>
                     <select id="filter-location" class="form-select servers-filter">
                         <option value="">@Localizer["AllCountries"]</option>
-                        @foreach (var location in Model.AvailableLocations)
+                        @if (Model.AvailableLocations != null)
                         {
-                            <option value="@location">@GetLocalizedRegionName(location)</option>
+                            @foreach (var location in Model.AvailableLocations)
+                            {
+                                <option value="@location">@GetLocalizedRegionName(location)</option>
+                            }
                         }
                     </select>
                 </div>
@@ -108,9 +111,12 @@
                     <label class="form-label fw-bold">@Localizer["Persons"]</label>
                     <select id="filter-persons" class="form-select servers-filter">
                         <option value="">@Localizer["AllPersons"]</option>
-                        @foreach (var persons in Model.AvailablePersons)
+                        @if (Model.AvailablePersons != null)
                         {
-                            <option value="@persons">@persons</option>
+                            @foreach (var persons in Model.AvailablePersons)
+                            {
+                                <option value="@persons">@persons</option>
+                            }
                         }
                     </select>
                 </div>
@@ -118,9 +124,12 @@
                     <label class="form-label fw-bold">@Localizer["CPU"]</label>
                     <select id="filter-cpu" class="form-select servers-filter">
                         <option value="">@Localizer["All"]</option>
-                        @foreach (var cpu in Model.AvailableCpu)
+                        @if (Model.AvailableCpu != null)
                         {
-                            <option value="@cpu">@cpu</option>
+                            @foreach (var cpu in Model.AvailableCpu)
+                            {
+                                <option value="@cpu">@cpu</option>
+                            }
                         }
                     </select>
                 </div>
@@ -128,9 +137,12 @@
                     <label class="form-label fw-bold">@Localizer["RAM"]</label>
                     <select id="filter-ram" class="form-select servers-filter">
                         <option value="">@Localizer["All"]</option>
-                        @foreach (var ram in Model.AvailableRam)
+                        @if (Model.AvailableRam != null)
                         {
-                            <option value="@ram">@ram</option>
+                            @foreach (var ram in Model.AvailableRam)
+                            {
+                                <option value="@ram">@ram</option>
+                            }
                         }
                     </select>
                 </div>
@@ -138,9 +150,12 @@
                     <label class="form-label fw-bold">@Localizer["SSD"]</label>
                     <select id="filter-ssd" class="form-select servers-filter">
                         <option value="">@Localizer["All"]</option>
-                        @foreach (var ssd in Model.AvailableSsd)
+                        @if (Model.AvailableSsd != null)
                         {
-                            <option value="@ssd">@ssd</option>
+                            @foreach (var ssd in Model.AvailableSsd)
+                            {
+                                <option value="@ssd">@ssd</option>
+                            }
                         }
                     </select>
                 </div>
