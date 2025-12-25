@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Отключаем кнопку и меняем текст
                 if (submitButton) {
                     submitButton.disabled = true;
-                    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Добавление...';
+                    const addingText = window.cartLocalization?.adding || 'Adding...';
+                    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' + addingText;
                 }
                 
                 try {
@@ -137,11 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         
                         // Показываем уведомление об успехе
-                        showToast('Товар успешно добавлен в корзину!', 'success');
+                        const successMessage = result.message || window.cartLocalization?.productAddedToCart || 'Product successfully added to cart!';
+                        showToast(successMessage, 'success');
                         
                         // Визуальная обратная связь на кнопке
                         if (submitButton) {
-                            submitButton.innerHTML = '<i class="bi bi-check-circle me-2"></i>Добавлено!';
+                            const addedText = window.cartLocalization?.added || 'Added!';
+                            submitButton.innerHTML = '<i class="bi bi-check-circle me-2"></i>' + addedText;
                             submitButton.classList.remove('btn-primary');
                             submitButton.classList.add('btn-success');
                             
@@ -155,7 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     } else {
                         // Обработка ошибки
-                        showToast('Ошибка при добавлении товара в корзину', 'danger');
+                        const errorMessage = window.cartLocalization?.errorAddingToCart || 'Error adding product to cart';
+                        showToast(errorMessage, 'danger');
                         if (submitButton) {
                             submitButton.disabled = originalButtonDisabled;
                             submitButton.innerHTML = originalButtonText;
@@ -163,7 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 } catch (error) {
                     console.error('Error adding to cart:', error);
-                    showToast('Произошла ошибка. Попробуйте еще раз.', 'danger');
+                    const errorMessage = window.cartLocalization?.errorOccurred || 'An error occurred. Please try again.';
+                    showToast(errorMessage, 'danger');
                     if (submitButton) {
                         submitButton.disabled = originalButtonDisabled;
                         submitButton.innerHTML = originalButtonText;

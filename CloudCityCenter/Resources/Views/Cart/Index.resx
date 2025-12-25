@@ -57,5 +57,20 @@
   <data name="StartShopping" xml:space="preserve">
     <value>Start Shopping</value>
   </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Adding...</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Added!</value>
+  </data>
+  <data name="ProductAddedToCart" xml:space="preserve">
+    <value>Product successfully added to cart!</value>
+  </data>
+  <data name="ErrorAddingToCart" xml:space="preserve">
+    <value>Error adding product to cart</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>An error occurred. Please try again.</value>
+  </data>
 </root>
 

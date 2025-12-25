@@ -338,6 +338,20 @@ else
     @await Html.PartialAsync("_Footer")
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    @inject Microsoft.Extensions.Localization.IStringLocalizerFactory LocalizerFactory
+    @{
+        var cartLocalizer = LocalizerFactory.Create("Views.Cart.Index", "CloudCityCenter");
+    }
+    <script>
+        // Передаем локализованные строки в JavaScript
+        window.cartLocalization = {
+            adding: '@Html.Raw(cartLocalizer["Adding"].Value.Replace("'", "\\'"))',
+            added: '@Html.Raw(cartLocalizer["Added"].Value.Replace("'", "\\'"))',
+            productAddedToCart: '@Html.Raw(cartLocalizer["ProductAddedToCart"].Value.Replace("'", "\\'"))',
+            errorAddingToCart: '@Html.Raw(cartLocalizer["ErrorAddingToCart"].Value.Replace("'", "\\'"))',
+            errorOccurred: '@Html.Raw(cartLocalizer["ErrorOccurred"].Value.Replace("'", "\\'"))'
+        };
+    </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 

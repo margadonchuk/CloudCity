@@ -3,6 +3,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
@@ -12,11 +13,18 @@ namespace CloudCityCenter.Controllers;
 public class CartController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly IStringLocalizerFactory _localizerFactory;
     private const string CartSessionKey = "Cart";
 
-    public CartController(ApplicationDbContext context)
+    public CartController(ApplicationDbContext context, IStringLocalizerFactory localizerFactory)
     {
         _context = context;
+        _localizerFactory = localizerFactory;
+    }
+
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.Cart.Index", "CloudCityCenter");
     }
 
     private List<OrderItem> GetCart()
@@ -112,10 +120,10 @@ public class CartController : Controller
             // Проверяем, является ли это AJAX запросом
             if (IsAjaxRequest())
             {
-                return Json(new { success = true, message = "Product added to cart" });
+                return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value });
             }
 
-            TempData["Success"] = "Product added to cart successfully!";
+            TempData["Success"] = GetLocalizer()["ProductAddedToCart"].Value;
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -126,10 +134,10 @@ public class CartController : Controller
 
             if (IsAjaxRequest())
             {
-                return Json(new { success = false, message = "An error occurred while adding product to cart" });
+                return Json(new { success = false, message = GetLocalizer()["ErrorOccurred"].Value });
             }
 
-            TempData["Error"] = "An error occurred while adding product to cart. Please try again.";
+            TempData["Error"] = GetLocalizer()["ErrorOccurred"].Value;
             return RedirectToAction(nameof(Index));
         }
     }

@@ -57,5 +57,20 @@
   <data name="StartShopping" xml:space="preserve">
     <value>Начать покупки</value>
   </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Добавление...</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Добавлено!</value>
+  </data>
+  <data name="ProductAddedToCart" xml:space="preserve">
+    <value>Товар успешно добавлен в корзину!</value>
+  </data>
+  <data name="ErrorAddingToCart" xml:space="preserve">
+    <value>Ошибка при добавлении товара в корзину</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Произошла ошибка. Попробуйте еще раз.</value>
+  </data>
 </root>
 

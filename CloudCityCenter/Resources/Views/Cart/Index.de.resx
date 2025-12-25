@@ -57,5 +57,20 @@
   <data name="StartShopping" xml:space="preserve">
     <value>Einkaufen beginnen</value>
   </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Hinzufügen...</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Hinzugefügt!</value>
+  </data>
+  <data name="ProductAddedToCart" xml:space="preserve">
+    <value>Produkt erfolgreich zum Warenkorb hinzugefügt!</value>
+  </data>
+  <data name="ErrorAddingToCart" xml:space="preserve">
+    <value>Fehler beim Hinzufügen des Produkts zum Warenkorb</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</value>
+  </data>
 </root>
 
