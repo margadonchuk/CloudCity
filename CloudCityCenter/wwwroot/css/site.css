@@ -3537,6 +3537,12 @@ body {
   animation: cart-pulse 2s ease-in-out infinite;
   line-height: 1;
   z-index: 10;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  backdrop-filter: none;
+  transform: translateZ(0);
 }
 
 @keyframes cart-pulse {
@@ -3857,6 +3863,12 @@ body {
     box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5) !important;
     z-index: 3 !important;
     line-height: 1 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: none !important;
+    transform: translateZ(0) !important;
   }
 
   .navbar-toggler {
@@ -3971,6 +3983,12 @@ body {
     font-weight: 800;
     box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5), 0 0 0 2px white;
     line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: none;
+    transform: translateZ(0);
   }
   
   /* Offcanvas Menu Styles */

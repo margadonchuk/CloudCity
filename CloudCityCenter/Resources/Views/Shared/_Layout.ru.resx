@@ -30,6 +30,9 @@
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Язык</value>
   </data>
