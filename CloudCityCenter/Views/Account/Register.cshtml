@@ -58,7 +58,7 @@
               <span asp-validation-for="ConfirmPassword" class="text-danger register-error"></span>
             </div>
 
-            <div class="form-check mb-4">
+            <div class="form-check">
               <input class="form-check-input" type="checkbox" id="termsCheck" required>
               <label class="form-check-label" for="termsCheck">
                 <span>@Localizer["AgreeTerms"]</span>
@@ -72,12 +72,12 @@
               <i class="bi bi-person-plus me-2"></i>@Localizer["CreateAccountButton"]
             </button>
 
-            <div class="register-divider my-4">
+            <div class="register-divider">
               <span>@Localizer["Or"]</span>
             </div>
 
             <div class="text-center">
-              <p class="text-muted mb-0">
+              <p class="text-muted mb-2">
                 @Localizer["AlreadyHaveAccount"] 
                 <a asp-controller="Account" asp-action="Login" class="register-link fw-bold">@Localizer["SignIn"]</a>
               </p>

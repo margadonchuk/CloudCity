@@ -2705,6 +2705,7 @@ body {
 
 .form-group-wrapper {
   position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .register-label {
@@ -2774,7 +2775,8 @@ body {
   font-size: 1.1rem;
   box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
   transition: all 0.3s ease;
-  margin-top: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .register-submit-btn:hover {
@@ -2785,6 +2787,7 @@ body {
 .register-divider {
   position: relative;
   text-align: center;
+  margin: 2.5rem 0;
 }
 
 .register-divider::before,
@@ -2831,7 +2834,42 @@ body {
 
 .form-check-label {
   color: #555;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.register-form .form-check {
+  margin: 2rem 0 2.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.register-form .form-check-input {
+  margin-top: 0.3em;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.register-form .form-check-label span,
+.register-form .form-check-label a {
+  margin-right: 0.25rem;
+}
+
+.register-form .form-check-label a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-form .form-check-label a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -2875,12 +2913,12 @@ body {
   }
   
   .form-group-wrapper {
-    margin-bottom: 24px !important;
+    margin-bottom: 1.5rem !important;
   }
   
   .register-label {
     font-size: 0.95rem;
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -2888,7 +2926,7 @@ body {
   
   .register-label i {
     font-size: 1rem;
-    margin-right: 8px;
+    margin-right: 0.5rem;
   }
   
   .register-input {
@@ -2919,56 +2957,57 @@ body {
     display: block;
   }
   
-  .form-check {
-    margin: 28px 0 !important;
-    padding: 16px;
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    border: 1px solid #e9ecef;
+  .register-form .form-check {
+    margin: 2rem 0 2.5rem 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background-color: #f8f9fa !important;
+    border-radius: 12px !important;
+    border: 1px solid #e9ecef !important;
   }
   
-  .form-check-input {
-    margin-top: 0.3em;
-    width: 1.2em;
-    height: 1.2em;
-    margin-right: 10px;
-    flex-shrink: 0;
+  .register-form .form-check-input {
+    margin-top: 0.3em !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    margin-right: 0.75rem !important;
+    flex-shrink: 0 !important;
   }
   
-  .form-check-label {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #495057;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    cursor: pointer;
+  .register-form .form-check-label {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    color: #495057 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    cursor: pointer !important;
   }
   
-  .form-check-label span {
-    margin-right: 4px;
+  .register-form .form-check-label span,
+  .register-form .form-check-label a {
+    margin-right: 0.25rem !important;
   }
   
-  .form-check-label a {
-    margin: 0 4px;
-    font-weight: 600;
-    text-decoration: none;
+  .register-form .form-check-label a {
+    font-weight: 600 !important;
+    text-decoration: none !important;
   }
   
-  .form-check-label a:hover {
-    text-decoration: underline;
+  .register-form .form-check-label a:hover {
+    text-decoration: underline !important;
   }
   
   .register-submit-btn {
     padding: 16px 30px;
     font-size: 1.05rem;
-    margin-top: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
     border-radius: 12px;
     font-weight: 600;
   }
   
   .register-divider {
-    margin: 28px 0;
+    margin: 2.5rem 0;
   }
   
   .register-divider span {
@@ -2976,17 +3015,19 @@ body {
     padding: 0 20px;
   }
   
-  .text-center p {
+  .register-form .text-center {
+    margin-top: 1rem;
+  }
+  
+  .register-form .text-center p {
     font-size: 0.95rem;
-    margin-top: 8px;
+    margin-bottom: 0.5rem;
     line-height: 1.6;
   }
   
-  .text-center a {
+  .register-form .text-center a {
     font-size: 1rem;
-    padding: 8px 16px;
     display: inline-block;
-    margin-top: 8px;
   }
 
   .contact-hero-section {
