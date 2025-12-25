@@ -1,8 +1,37 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @model CloudCityCenter.Models.ViewModels.ProductCardVm
 @{
     var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
         ? "https://via.placeholder.com/300x200?text=No+Image"
         : Model.ImageUrl;
+    
+    // Функция для локализации названий характеристик
+    string LocalizeFeature(string feature)
+    {
+        if (string.IsNullOrWhiteSpace(feature))
+            return feature;
+        
+        // Разбиваем строку на название характеристики и значение (например, "CPU: 1 core")
+        var parts = feature.Split(new[] { ':' }, 2);
+        if (parts.Length == 2)
+        {
+            var featureName = parts[0].Trim();
+            var featureValue = parts[1].Trim();
+            
+            // Пытаемся локализовать название характеристики
+            var localizedName = Localizer[featureName].Value;
+            if (localizedName == featureName) // Если локализация не найдена, используем оригинал
+            {
+                localizedName = featureName;
+            }
+            
+            return $"{localizedName}: {featureValue}";
+        }
+        
+        // Если формат не "Name: Value", пытаемся локализовать всю строку
+        var localized = Localizer[feature].Value;
+        return localized != feature ? localized : feature;
+    }
 }
 <img src="@imageUrl" class="card-img-top" alt="@Model.Name" />
 <div class="card-body">
@@ -10,10 +39,10 @@
     <ul class="list-unstyled small">
     @foreach (var feature in Model.TopFeatures)
     {
-        <li>@feature</li>
+        <li>@LocalizeFeature(feature)</li>
     }
     </ul>
-    <p class="card-text fw-semibold">$@Model.PricePerMonth / month</p>
+    <p class="card-text fw-semibold">$@Model.PricePerMonth / @Localizer["Month"]</p>
     <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
         @Html.AntiForgeryToken()
         <input type="hidden" name="productId" value="@Model.Id" />
@@ -21,6 +50,6 @@
         {
             <input type="hidden" name="productVariantId" value="@Model.ProductVariantId" />
         }
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
+        <button type="submit" class="btn btn-primary">@Localizer["Order"]</button>
     </form>
 </div>

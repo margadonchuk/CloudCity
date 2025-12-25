@@ -70,13 +70,13 @@
     <value>CHR Basic</value>
   </data>
   <data name="CHRBasicDesc" xml:space="preserve">
-    <value>Базовая настройка CHR (Провайдер, Firewall, NAT)</value>
+    <value>Базовая настройка CHR (VPN, Firewall, NAT)</value>
   </data>
   <data name="CHRStandard" xml:space="preserve">
     <value>CHR Standard</value>
   </data>
   <data name="CHRStandardDesc" xml:space="preserve">
-    <value>Расширенные правила безопасности (VPN - Gre/L2TP + мониторинг)</value>
+    <value>Расширенные правила безопасности + мониторинг</value>
   </data>
   <data name="CHRPro" xml:space="preserve">
     <value>CHR Pro</value>
@@ -119,6 +119,60 @@
   </data>
   <data name="FortinetEnterpriseDesc" xml:space="preserve">
     <value>Полный сетевой UTM, сегментация, HA, логирование</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процессор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗУ</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Трафик</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>ОС</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Технология</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Устройства</value>
+  </data>
+  <data name="Encryption" xml:space="preserve">
+    <value>Шифрование</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Хранилище</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Доступ</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Резервное копирование</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Поддержка</value>
+  </data>
+  <data name="Bandwidth" xml:space="preserve">
+    <value>Пропускная способность</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Ядро</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>ГБ</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Месяц</value>
   </data>
 </root>
 

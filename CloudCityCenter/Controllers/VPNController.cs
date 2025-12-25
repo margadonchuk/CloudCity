@@ -92,7 +92,7 @@ public class VPNController : Controller
                     new ConfigurationServiceVm
                     {
                         Name = "CHR Basic",
-                        Description = "Базовая настройка CHR (Провайдер, Firewall, NAT)",
+                        Description = "Базовая настройка CHR (VPN, Firewall, NAT)",
                         Price = 150,
                         Category = "CHR",
                         ImageUrl = "/images/chr1.png"
@@ -100,7 +100,7 @@ public class VPNController : Controller
                     new ConfigurationServiceVm
                     {
                         Name = "CHR Standard",
-                        Description = "Расширенные правила безопасности (VPN - Gre/L2TP + мониторинг)",
+                        Description = "Расширенные правила безопасности + мониторинг",
                         Price = 250,
                         Category = "CHR",
                         ImageUrl = "/images/chr2.png"

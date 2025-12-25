@@ -70,13 +70,13 @@
     <value>CHR Basic</value>
   </data>
   <data name="CHRBasicDesc" xml:space="preserve">
-    <value>Podstawowa konfiguracja CHR (Dostawca, Firewall, NAT)</value>
+    <value>Podstawowa konfiguracja CHR (VPN, Firewall, NAT)</value>
   </data>
   <data name="CHRStandard" xml:space="preserve">
     <value>CHR Standard</value>
   </data>
   <data name="CHRStandardDesc" xml:space="preserve">
-    <value>Zaawansowane reguły bezpieczeństwa (VPN - Gre/L2TP + monitorowanie)</value>
+    <value>Zaawansowane reguły bezpieczeństwa + monitorowanie</value>
   </data>
   <data name="CHRPro" xml:space="preserve">
     <value>CHR Pro</value>
@@ -119,6 +119,60 @@
   </data>
   <data name="FortinetEnterpriseDesc" xml:space="preserve">
     <value>Pełne UTM sieciowe, segmentacja, HA, rejestrowanie</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Ruch</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Kraj</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>System operacyjny</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Technologia</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Urządzenia</value>
+  </data>
+  <data name="Encryption" xml:space="preserve">
+    <value>Szyfrowanie</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Pamięć</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Dostęp</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Bezpieczeństwo</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Kopia zapasowa</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Wsparcie</value>
+  </data>
+  <data name="Bandwidth" xml:space="preserve">
+    <value>Przepustowość</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Rdzeń</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Miesiąc</value>
   </data>
 </root>
 
