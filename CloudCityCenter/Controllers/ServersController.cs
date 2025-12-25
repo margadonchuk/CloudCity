@@ -28,182 +28,184 @@ public class ServersController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var products = await _context.Products
-            .Where(p => p.Type == ProductType.DedicatedServer && p.IsPublished)
-            .Include(p => p.Features)
-            .Include(p => p.Variants)
-            .ToListAsync();
-
-        // Если товаров нет, возвращаем пустую модель с инициализированными списками
-        if (!products.Any())
+        try
         {
-            return View(new WindowsServerPageVm
-            {
-                PlansForFiveToEightPersons = new List<WindowsServerPlanVm>(),
-                PlansForFifteenPersons = new List<WindowsServerPlanVm>(),
-                PlansForTwentyFivePersons = new List<WindowsServerPlanVm>(),
-                PlansForThirtyFivePersons = new List<WindowsServerPlanVm>(),
-                PlansForFiftyPersons = new List<WindowsServerPlanVm>(),
-                AvailableLocations = new List<string>(),
-                AvailablePersons = new List<int>(),
-                AvailableCpu = new List<string>(),
-                AvailableRam = new List<string>(),
-                AvailableSsd = new List<string>()
-            });
-        }
+            var products = await _context.Products
+                .Where(p => p.Type == ProductType.DedicatedServer && p.IsPublished)
+                .Include(p => p.Features)
+                .Include(p => p.Variants)
+                .ToListAsync();
 
-        // Разделяем товары на планы для 5-8, 15, 25, 35 и 50 человек
-        // Определяем по Configuration или Slug
-        
-        // Товары для 50 человек определяются по наличию "50" в Configuration или "-50" в Slug
-        var productsForFifty = products.Where(p => 
-            (p.Configuration != null && p.Configuration.Contains("50", StringComparison.OrdinalIgnoreCase)) ||
-            (p.Slug != null && p.Slug.Contains("-50"))
-        ).ToList();
-        
-        // Товары для 35 человек определяются по наличию "35" в Configuration или "-35" в Slug
-        var productsForThirtyFive = products.Where(p => 
-            !productsForFifty.Contains(p) &&
-            ((p.Configuration != null && p.Configuration.Contains("35", StringComparison.OrdinalIgnoreCase)) ||
-             (p.Slug != null && p.Slug.Contains("-35")))
-        ).ToList();
-        
-        // Товары для 25 человек определяются по наличию "25" в Configuration или "-25" в Slug
-        var productsForTwentyFive = products.Where(p => 
-            !productsForFifty.Contains(p) && !productsForThirtyFive.Contains(p) &&
-            ((p.Configuration != null && p.Configuration.Contains("25", StringComparison.OrdinalIgnoreCase)) ||
-             (p.Slug != null && p.Slug.Contains("-25")))
-        ).ToList();
-        
-        // Товары для 15 человек определяются по наличию "15" в Configuration или "-15" в Slug
-        var productsForFifteen = products.Where(p => 
-            !productsForFifty.Contains(p) && !productsForThirtyFive.Contains(p) && !productsForTwentyFive.Contains(p) &&
-            ((p.Configuration != null && p.Configuration.Contains("15", StringComparison.OrdinalIgnoreCase)) ||
-             (p.Slug != null && p.Slug.Contains("-15")))
-        ).ToList();
-        
-        // Товары для 5-8 человек - остальные (содержат "5-8" в Configuration или "5-8" в Slug)
-        var productsForFiveToEight = products.Where(p => 
-            !productsForFifteen.Contains(p) && !productsForTwentyFive.Contains(p) && 
-            !productsForThirtyFive.Contains(p) && !productsForFifty.Contains(p) &&
-            ((p.Configuration != null && p.Configuration.Contains("5-8", StringComparison.OrdinalIgnoreCase)) ||
-             (p.Slug != null && p.Slug.Contains("5-8")))
-        ).ToList();
-
-        // Преобразуем товары для 5-8 человек в список планов
-        var plansForFiveToEight = productsForFiveToEight.Select(p =>
-        {
-            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-            return new WindowsServerPlanVm
+            // Если товаров нет, возвращаем пустую модель с инициализированными списками
+            if (!products.Any())
             {
-                ProductId = p.Id,
-                ProductVariantId = defaultVariant?.Id,
-                Name = p.Name,
-                CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                Network = featuresDict.GetValueOrDefault("Network", ""),
-                Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                Price = defaultVariant?.Price ?? p.PricePerMonth,
-                ImageUrl = p.ImageUrl,
-                NumberOfPersons = 5
-            };
-        })
-        .OrderBy(p => p.Price)
-        .ToList();
+                return View(new WindowsServerPageVm
+                {
+                    PlansForFiveToEightPersons = new List<WindowsServerPlanVm>(),
+                    PlansForFifteenPersons = new List<WindowsServerPlanVm>(),
+                    PlansForTwentyFivePersons = new List<WindowsServerPlanVm>(),
+                    PlansForThirtyFivePersons = new List<WindowsServerPlanVm>(),
+                    PlansForFiftyPersons = new List<WindowsServerPlanVm>(),
+                    AvailableLocations = new List<string>(),
+                    AvailablePersons = new List<int>(),
+                    AvailableCpu = new List<string>(),
+                    AvailableRam = new List<string>(),
+                    AvailableSsd = new List<string>()
+                });
+            }
 
-        // Преобразуем товары для 15 человек в список планов
-        var plansForFifteen = productsForFifteen.Select(p =>
-        {
-            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-            return new WindowsServerPlanVm
-            {
-                ProductId = p.Id,
-                ProductVariantId = defaultVariant?.Id,
-                Name = p.Name,
-                CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                Network = featuresDict.GetValueOrDefault("Network", ""),
-                Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                Price = defaultVariant?.Price ?? p.PricePerMonth,
-                ImageUrl = p.ImageUrl,
-                NumberOfPersons = 15
-            };
-        })
-        .OrderBy(p => p.Price)
-        .ToList();
+            // Разделяем товары на планы для 5-8, 15, 25, 35 и 50 человек
+            // Определяем по Configuration или Slug
+            
+            // Товары для 50 человек определяются по наличию "50" в Configuration или "-50" в Slug
+            var productsForFifty = products.Where(p => 
+                (p.Configuration != null && p.Configuration.Contains("50", StringComparison.OrdinalIgnoreCase)) ||
+                (p.Slug != null && p.Slug.Contains("-50"))
+            ).ToList();
+            
+            // Товары для 35 человек определяются по наличию "35" в Configuration или "-35" в Slug
+            var productsForThirtyFive = products.Where(p => 
+                !productsForFifty.Contains(p) &&
+                ((p.Configuration != null && p.Configuration.Contains("35", StringComparison.OrdinalIgnoreCase)) ||
+                 (p.Slug != null && p.Slug.Contains("-35")))
+            ).ToList();
+            
+            // Товары для 25 человек определяются по наличию "25" в Configuration или "-25" в Slug
+            var productsForTwentyFive = products.Where(p => 
+                !productsForFifty.Contains(p) && !productsForThirtyFive.Contains(p) &&
+                ((p.Configuration != null && p.Configuration.Contains("25", StringComparison.OrdinalIgnoreCase)) ||
+                 (p.Slug != null && p.Slug.Contains("-25")))
+            ).ToList();
+            
+            // Товары для 15 человек определяются по наличию "15" в Configuration или "-15" в Slug
+            var productsForFifteen = products.Where(p => 
+                !productsForFifty.Contains(p) && !productsForThirtyFive.Contains(p) && !productsForTwentyFive.Contains(p) &&
+                ((p.Configuration != null && p.Configuration.Contains("15", StringComparison.OrdinalIgnoreCase)) ||
+                 (p.Slug != null && p.Slug.Contains("-15")))
+            ).ToList();
+            
+            // Товары для 5-8 человек - остальные (содержат "5-8" в Configuration или "5-8" в Slug)
+            var productsForFiveToEight = products.Where(p => 
+                !productsForFifteen.Contains(p) && !productsForTwentyFive.Contains(p) && 
+                !productsForThirtyFive.Contains(p) && !productsForFifty.Contains(p) &&
+                ((p.Configuration != null && p.Configuration.Contains("5-8", StringComparison.OrdinalIgnoreCase)) ||
+                 (p.Slug != null && p.Slug.Contains("5-8")))
+            ).ToList();
 
-        // Преобразуем товары для 25 человек в список планов
-        var plansForTwentyFive = productsForTwentyFive.Select(p =>
-        {
-            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-            return new WindowsServerPlanVm
+            // Преобразуем товары для 5-8 человек в список планов
+            var plansForFiveToEight = productsForFiveToEight.Select(p =>
             {
-                ProductId = p.Id,
-                ProductVariantId = defaultVariant?.Id,
-                Name = p.Name,
-                CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                Network = featuresDict.GetValueOrDefault("Network", ""),
-                Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                Price = defaultVariant?.Price ?? p.PricePerMonth,
-                ImageUrl = p.ImageUrl,
-                NumberOfPersons = 25
-            };
-        })
-        .OrderBy(p => p.Price)
-        .ToList();
+                var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+                return new WindowsServerPlanVm
+                {
+                    ProductId = p.Id,
+                    ProductVariantId = defaultVariant?.Id,
+                    Name = p.Name,
+                    CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                    RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                    SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                    Network = featuresDict.GetValueOrDefault("Network", ""),
+                    Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                    Price = defaultVariant?.Price ?? p.PricePerMonth,
+                    ImageUrl = p.ImageUrl,
+                    NumberOfPersons = 5
+                };
+            })
+            .OrderBy(p => p.Price)
+            .ToList();
 
-        // Преобразуем товары для 35 человек в список планов
-        var plansForThirtyFive = productsForThirtyFive.Select(p =>
-        {
-            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-            return new WindowsServerPlanVm
+            // Преобразуем товары для 15 человек в список планов
+            var plansForFifteen = productsForFifteen.Select(p =>
             {
-                ProductId = p.Id,
-                ProductVariantId = defaultVariant?.Id,
-                Name = p.Name,
-                CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                Network = featuresDict.GetValueOrDefault("Network", ""),
-                Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                Price = defaultVariant?.Price ?? p.PricePerMonth,
-                ImageUrl = p.ImageUrl,
-                NumberOfPersons = 35
-            };
-        })
-        .OrderBy(p => p.Price)
-        .ToList();
+                var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+                return new WindowsServerPlanVm
+                {
+                    ProductId = p.Id,
+                    ProductVariantId = defaultVariant?.Id,
+                    Name = p.Name,
+                    CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                    RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                    SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                    Network = featuresDict.GetValueOrDefault("Network", ""),
+                    Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                    Price = defaultVariant?.Price ?? p.PricePerMonth,
+                    ImageUrl = p.ImageUrl,
+                    NumberOfPersons = 15
+                };
+            })
+            .OrderBy(p => p.Price)
+            .ToList();
 
-        // Преобразуем товары для 50 человек в список планов
-        var plansForFifty = productsForFifty.Select(p =>
-        {
-            var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
-            var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
-            return new WindowsServerPlanVm
+            // Преобразуем товары для 25 человек в список планов
+            var plansForTwentyFive = productsForTwentyFive.Select(p =>
             {
-                ProductId = p.Id,
-                ProductVariantId = defaultVariant?.Id,
-                Name = p.Name,
-                CPU = featuresDict.GetValueOrDefault("CPU", ""),
-                RAM = featuresDict.GetValueOrDefault("RAM", ""),
-                SSD = featuresDict.GetValueOrDefault("SSD", ""),
-                Network = featuresDict.GetValueOrDefault("Network", ""),
-                Country = featuresDict.GetValueOrDefault("Country", p.Location),
-                Price = defaultVariant?.Price ?? p.PricePerMonth,
-                ImageUrl = p.ImageUrl,
-                NumberOfPersons = 50
-            };
-        })
-        .OrderBy(p => p.Price)
-        .ToList();
+                var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+                return new WindowsServerPlanVm
+                {
+                    ProductId = p.Id,
+                    ProductVariantId = defaultVariant?.Id,
+                    Name = p.Name,
+                    CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                    RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                    SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                    Network = featuresDict.GetValueOrDefault("Network", ""),
+                    Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                    Price = defaultVariant?.Price ?? p.PricePerMonth,
+                    ImageUrl = p.ImageUrl,
+                    NumberOfPersons = 25
+                };
+            })
+            .OrderBy(p => p.Price)
+            .ToList();
+
+            // Преобразуем товары для 35 человек в список планов
+            var plansForThirtyFive = productsForThirtyFive.Select(p =>
+            {
+                var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+                return new WindowsServerPlanVm
+                {
+                    ProductId = p.Id,
+                    ProductVariantId = defaultVariant?.Id,
+                    Name = p.Name,
+                    CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                    RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                    SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                    Network = featuresDict.GetValueOrDefault("Network", ""),
+                    Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                    Price = defaultVariant?.Price ?? p.PricePerMonth,
+                    ImageUrl = p.ImageUrl,
+                    NumberOfPersons = 35
+                };
+            })
+            .OrderBy(p => p.Price)
+            .ToList();
+
+            // Преобразуем товары для 50 человек в список планов
+            var plansForFifty = productsForFifty.Select(p =>
+            {
+                var featuresDict = p.Features.ToDictionary(f => f.Name, f => f.Value ?? "");
+                var defaultVariant = p.Variants.OrderBy(v => v.Id).FirstOrDefault();
+                return new WindowsServerPlanVm
+                {
+                    ProductId = p.Id,
+                    ProductVariantId = defaultVariant?.Id,
+                    Name = p.Name,
+                    CPU = featuresDict.GetValueOrDefault("CPU", ""),
+                    RAM = featuresDict.GetValueOrDefault("RAM", ""),
+                    SSD = featuresDict.GetValueOrDefault("SSD", ""),
+                    Network = featuresDict.GetValueOrDefault("Network", ""),
+                    Country = featuresDict.GetValueOrDefault("Country", p.Location),
+                    Price = defaultVariant?.Price ?? p.PricePerMonth,
+                    ImageUrl = p.ImageUrl,
+                    NumberOfPersons = 50
+                };
+            })
+            .OrderBy(p => p.Price)
+            .ToList();
 
             // Собираем все планы для получения уникальных значений фильтров
             var allPlans = new List<WindowsServerPlanVm>();
