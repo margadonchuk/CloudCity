@@ -86,6 +86,74 @@
     }
 }
 
+<!-- FILTERS SECTION -->
+<section class="container my-5">
+    <div class="card mb-5 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-funnel me-2"></i>@Localizer["Filters"]</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["Country"]</label>
+                    <select id="filter-location" class="form-select servers-filter">
+                        <option value="">@Localizer["AllCountries"]</option>
+                        @foreach (var location in Model.AvailableLocations)
+                        {
+                            <option value="@location">@GetLocalizedRegionName(location)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["Persons"]</label>
+                    <select id="filter-persons" class="form-select servers-filter">
+                        <option value="">@Localizer["AllPersons"]</option>
+                        @foreach (var persons in Model.AvailablePersons)
+                        {
+                            <option value="@persons">@persons</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["CPU"]</label>
+                    <select id="filter-cpu" class="form-select servers-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var cpu in Model.AvailableCpu)
+                        {
+                            <option value="@cpu">@cpu</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["RAM"]</label>
+                    <select id="filter-ram" class="form-select servers-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var ram in Model.AvailableRam)
+                        {
+                            <option value="@ram">@ram</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["SSD"]</label>
+                    <select id="filter-ssd" class="form-select servers-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var ssd in Model.AvailableSsd)
+                        {
+                            <option value="@ssd">@ssd</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2 d-flex align-items-end">
+                    <button type="button" id="reset-filters" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-x-circle"></i> @Localizer["Reset"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Windows Server на 5-8 человек -->
 <section class="container my-5">
     <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
@@ -96,7 +164,12 @@
     <div class="row g-4">
         @foreach (var plan in Model.PlansForFiveToEightPersons)
         {
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
                 <div class="card h-100 servers-plan-card shadow-sm">
                     @if (!string.IsNullOrEmpty(plan.ImageUrl))
                     {
@@ -160,7 +233,12 @@
     <div class="row g-4">
         @foreach (var plan in Model.PlansForFifteenPersons)
         {
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
                 <div class="card h-100 servers-plan-card shadow-sm">
                     @if (!string.IsNullOrEmpty(plan.ImageUrl))
                     {
@@ -224,7 +302,12 @@
     <div class="row g-4">
         @foreach (var plan in Model.PlansForTwentyFivePersons)
         {
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
                         <div class="card h-100 servers-plan-card shadow-sm">
                             @if (!string.IsNullOrEmpty(plan.ImageUrl))
                             {
@@ -288,7 +371,12 @@
     <div class="row g-4">
         @foreach (var plan in Model.PlansForThirtyFivePersons)
         {
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
                 <div class="card h-100 servers-plan-card shadow-sm">
                     @if (!string.IsNullOrEmpty(plan.ImageUrl))
                     {
@@ -352,7 +440,12 @@
     <div class="row g-4">
         @foreach (var plan in Model.PlansForFiftyPersons)
         {
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
                         <div class="card h-100 servers-plan-card shadow-sm">
                             @if (!string.IsNullOrEmpty(plan.ImageUrl))
                             {
@@ -456,5 +549,181 @@
         background-color: #0b5ed7;
         transform: scale(1.02);
     }
+    
+    .servers-plan-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .servers-plan-item.hidden {
+        display: none !important;
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filters = {
+            location: document.getElementById('filter-location'),
+            persons: document.getElementById('filter-persons'),
+            cpu: document.getElementById('filter-cpu'),
+            ram: document.getElementById('filter-ram'),
+            ssd: document.getElementById('filter-ssd')
+        };
+        
+        const resetButton = document.getElementById('reset-filters');
+        const planItems = document.querySelectorAll('.servers-plan-item');
+        
+        function applyFilters() {
+            const selectedLocation = filters.location ? filters.location.value : '';
+            const selectedPersons = filters.persons ? filters.persons.value : '';
+            const selectedCpu = filters.cpu ? filters.cpu.value : '';
+            const selectedRam = filters.ram ? filters.ram.value : '';
+            const selectedSsd = filters.ssd ? filters.ssd.value : '';
+            
+            let visibleCount = 0;
+            
+            planItems.forEach(function(item) {
+                const itemLocation = item.getAttribute('data-location') || '';
+                const itemPersons = item.getAttribute('data-persons') || '';
+                const itemCpu = item.getAttribute('data-cpu') || '';
+                const itemRam = item.getAttribute('data-ram') || '';
+                const itemSsd = item.getAttribute('data-ssd') || '';
+                
+                let show = true;
+                
+                // Проверяем каждый фильтр только если он выбран
+                if (selectedLocation && selectedLocation.trim() !== '') {
+                    if (itemLocation.trim() !== selectedLocation.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedPersons && selectedPersons.trim() !== '') {
+                    if (itemPersons.trim() !== selectedPersons.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedCpu && selectedCpu.trim() !== '') {
+                    if (itemCpu.trim() !== selectedCpu.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedRam && selectedRam.trim() !== '') {
+                    if (itemRam.trim() !== selectedRam.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedSsd && selectedSsd.trim() !== '') {
+                    if (itemSsd.trim() !== selectedSsd.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (show) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Скрываем пустые секции и их заголовки (только если есть активные фильтры)
+            const hasActiveFilters = (selectedLocation && selectedLocation.trim() !== '') ||
+                                    (selectedPersons && selectedPersons.trim() !== '') ||
+                                    (selectedCpu && selectedCpu.trim() !== '') ||
+                                    (selectedRam && selectedRam.trim() !== '') ||
+                                    (selectedSsd && selectedSsd.trim() !== '');
+            
+            document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                const allPlansInSection = section.querySelectorAll('.servers-plan-item');
+                const visiblePlansInSection = Array.from(allPlansInSection).filter(function(plan) {
+                    return !plan.classList.contains('hidden') && 
+                           plan.style.display !== 'none';
+                });
+                
+                const sectionHeader = section.querySelector('.servers-section-header');
+                
+                if (hasActiveFilters) {
+                    if (visiblePlansInSection.length === 0 && allPlansInSection.length > 0) {
+                        // Скрываем секцию и заголовок, если нет видимых планов, но есть планы в секции
+                        section.style.display = 'none';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = 'none';
+                        }
+                    } else {
+                        // Показываем секцию и заголовок, если есть видимые планы
+                        section.style.display = '';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = '';
+                        }
+                    }
+                } else {
+                    // Если фильтры не активны, показываем все секции и заголовки
+                    section.style.display = '';
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
+                }
+            });
+        }
+        
+        // Добавляем обработчики событий для всех фильтров
+        if (filters.location) {
+            filters.location.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.persons) {
+            filters.persons.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.cpu) {
+            filters.cpu.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ram) {
+            filters.ram.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ssd) {
+            filters.ssd.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        
+        // Обработчик для кнопки сброса
+        if (resetButton) {
+            resetButton.addEventListener('click', function() {
+                // Сбрасываем все фильтры
+                Object.values(filters).forEach(function(filter) {
+                    if (filter) {
+                        filter.value = '';
+                    }
+                });
+                
+                // Показываем все элементы явно
+                planItems.forEach(function(item) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                });
+                
+                // Показываем все секции и их заголовки
+                document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                    section.style.display = '';
+                    const sectionHeader = section.querySelector('.servers-section-header');
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
+                });
+            });
+        }
+    });
+</script>
 

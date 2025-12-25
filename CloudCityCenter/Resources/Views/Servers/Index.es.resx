@@ -39,5 +39,77 @@
   <data name="ChoosePerfectServer" xml:space="preserve">
     <value>Elija el servidor perfecto para sus necesidades</value>
   </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server para 5-8 personas</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server para 15 personas</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server para 25 personas</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server para 35 personas</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server para 50 personas</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Elija un plan para sus tareas</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Pedir</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Países Bajos</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Alemania</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Reino Unido / Polonia / Francia</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Canadá / Estados Unidos</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Singapur / India / Australia</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Todos los países</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Personas</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
 </root>
 

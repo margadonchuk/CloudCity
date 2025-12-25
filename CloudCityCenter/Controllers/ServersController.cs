@@ -193,13 +193,26 @@ public class ServersController : Controller
         .OrderBy(p => p.Price)
         .ToList();
 
+        // Собираем все планы для получения уникальных значений фильтров
+        var allPlans = new List<WindowsServerPlanVm>();
+        allPlans.AddRange(plansForFiveToEight);
+        allPlans.AddRange(plansForFifteen);
+        allPlans.AddRange(plansForTwentyFive);
+        allPlans.AddRange(plansForThirtyFive);
+        allPlans.AddRange(plansForFifty);
+
         var vm = new WindowsServerPageVm
         {
             PlansForFiveToEightPersons = plansForFiveToEight,
             PlansForFifteenPersons = plansForFifteen,
             PlansForTwentyFivePersons = plansForTwentyFive,
             PlansForThirtyFivePersons = plansForThirtyFive,
-            PlansForFiftyPersons = plansForFifty
+            PlansForFiftyPersons = plansForFifty,
+            AvailableLocations = allPlans.Select(p => p.Country).Distinct().OrderBy(l => l).ToList(),
+            AvailablePersons = allPlans.Select(p => p.NumberOfPersons).Distinct().OrderBy(p => p).ToList(),
+            AvailableCpu = allPlans.Select(p => p.CPU).Where(c => !string.IsNullOrEmpty(c)).Distinct().OrderBy(c => c).ToList(),
+            AvailableRam = allPlans.Select(p => p.RAM).Where(r => !string.IsNullOrEmpty(r)).Distinct().OrderBy(r => r).ToList(),
+            AvailableSsd = allPlans.Select(p => p.SSD).Where(s => !string.IsNullOrEmpty(s)).Distinct().OrderBy(s => s).ToList()
         };
 
         return View(vm);

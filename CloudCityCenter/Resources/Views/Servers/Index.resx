@@ -93,5 +93,23 @@
   <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
     <value>Singapore / India / Australia</value>
   </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>All Countries</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>All Persons</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Persons</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>
 

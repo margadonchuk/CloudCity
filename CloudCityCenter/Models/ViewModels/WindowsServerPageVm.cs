@@ -22,5 +22,12 @@ public class WindowsServerPageVm
     public List<WindowsServerPlanVm> PlansForTwentyFivePersons { get; set; } = new List<WindowsServerPlanVm>();
     public List<WindowsServerPlanVm> PlansForThirtyFivePersons { get; set; } = new List<WindowsServerPlanVm>();
     public List<WindowsServerPlanVm> PlansForFiftyPersons { get; set; } = new List<WindowsServerPlanVm>();
+    
+    // Списки для фильтров
+    public List<string> AvailableLocations { get; set; } = new List<string>();
+    public List<int> AvailablePersons { get; set; } = new List<int>();
+    public List<string> AvailableCpu { get; set; } = new List<string>();
+    public List<string> AvailableRam { get; set; } = new List<string>();
+    public List<string> AvailableSsd { get; set; } = new List<string>();
 }
 
