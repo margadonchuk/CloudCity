@@ -72,5 +72,11 @@
   <data name="ErrorOccurred" xml:space="preserve">
     <value>Wystąpił błąd. Spróbuj ponownie.</value>
   </data>
+  <data name="OneTimePayment" xml:space="preserve">
+    <value>Płatność jednorazowa</value>
+  </data>
+  <data name="OneTimePaymentDescription" xml:space="preserve">
+    <value>To jednorazowa płatność za usługę konfiguracji i instalacji</value>
+  </data>
 </root>
 

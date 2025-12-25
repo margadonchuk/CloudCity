@@ -1,4 +1,5 @@
 @model CloudCityCenter.Models.ViewModels.CartViewModel
+@using System
 @{
     ViewData["Title"] = Localizer["Title"];
 }
@@ -53,6 +54,28 @@
                         @if (!string.IsNullOrEmpty(item.ProductVariant?.Name))
                         {
                             <span class="cart-item-variant badge bg-primary">@item.ProductVariant.Name</span>
+                        }
+                        @{
+                            // Проверяем, является ли это услугой настройки (по типу VPN и названию)
+                            var isSetupService = item.Product != null && 
+                                                 (item.Product.Type == CloudCityCenter.Models.ProductType.VPN || 
+                                                  (item.Product.Name != null && (
+                                                      item.Product.Name.Contains("Setup", StringComparison.OrdinalIgnoreCase) ||
+                                                      item.Product.Name.Contains("Настройка", StringComparison.OrdinalIgnoreCase) ||
+                                                      item.Product.Name.Contains("настройка", StringComparison.OrdinalIgnoreCase) ||
+                                                      item.Product.Name.Contains("установка", StringComparison.OrdinalIgnoreCase) ||
+                                                      item.Product.Name.Contains("Установка", StringComparison.OrdinalIgnoreCase))));
+                        }
+                        @if (isSetupService)
+                        {
+                            <div class="mt-2">
+                                <span class="badge bg-warning text-dark">
+                                    <i class="bi bi-info-circle me-1"></i>@Localizer["OneTimePayment"]
+                                </span>
+                                <small class="d-block text-muted mt-1" style="font-size: 0.85rem;">
+                                    <i class="bi bi-exclamation-triangle-fill text-warning me-1"></i>@Localizer["OneTimePaymentDescription"]
+                                </small>
+                            </div>
                         }
                       </div>
                       <div class="cart-item-footer">

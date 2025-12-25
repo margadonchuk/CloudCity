@@ -72,5 +72,11 @@
   <data name="ErrorOccurred" xml:space="preserve">
     <value>Сталася помилка. Спробуйте ще раз.</value>
   </data>
+  <data name="OneTimePayment" xml:space="preserve">
+    <value>Одноразова оплата</value>
+  </data>
+  <data name="OneTimePaymentDescription" xml:space="preserve">
+    <value>Це одноразова оплата за послугу налаштування та встановлення</value>
+  </data>
 </root>
 

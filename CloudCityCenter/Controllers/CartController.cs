@@ -142,10 +142,19 @@ public class CartController : Controller
                         Configuration = $"Windows Server Setup & Installation service for {product.Name}",
                         IsAvailable = true,
                         IsPublished = false, // Не показываем в каталоге
-                        ImageUrl = null
+                        ImageUrl = "/images/setupWinserv.png"
                     };
                     _context.Products.Add(setupProduct);
                     await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    // Обновляем изображение, если его нет
+                    if (string.IsNullOrEmpty(setupProduct.ImageUrl))
+                    {
+                        setupProduct.ImageUrl = "/images/setupWinserv.png";
+                        await _context.SaveChangesAsync();
+                    }
                 }
 
                 cart.Add(new OrderItem { ProductId = setupProduct.Id, ProductVariantId = null, Price = setupPrice });
@@ -208,10 +217,19 @@ public class CartController : Controller
                 Configuration = $"Configuration service: {category}",
                 IsAvailable = true,
                 IsPublished = false, // Не показываем в каталоге
-                ImageUrl = null
+                ImageUrl = "/images/setupWinserv.png" // Используем изображение по умолчанию для услуг настройки
             };
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
+        }
+        else
+        {
+            // Обновляем изображение, если его нет
+            if (string.IsNullOrEmpty(product.ImageUrl))
+            {
+                product.ImageUrl = "/images/setupWinserv.png";
+                await _context.SaveChangesAsync();
+            }
         }
 
         var cart = GetCart();
