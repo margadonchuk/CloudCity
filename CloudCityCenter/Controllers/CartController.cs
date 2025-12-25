@@ -69,47 +69,76 @@ public class CartController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Add(int productId, int? productVariantId)
     {
-        var product = await _context.Products
-            .AsNoTracking()
-            .FirstOrDefaultAsync(p => p.Id == productId);
-        if (product == null)
+        try
         {
-            return NotFound();
-        }
-
-        decimal price;
-        if (productVariantId.HasValue)
-        {
-            var variant = await _context.ProductVariants
+            var product = await _context.Products
                 .AsNoTracking()
-                .FirstOrDefaultAsync(v => v.Id == productVariantId.Value && v.ProductId == productId);
-            if (variant == null)
+                .FirstOrDefaultAsync(p => p.Id == productId);
+            if (product == null)
             {
-                return BadRequest();
+                if (IsAjaxRequest())
+                {
+                    return Json(new { success = false, message = "Product not found" });
+                }
+                return NotFound();
             }
 
-            price = variant.Price;
+            decimal price;
+            if (productVariantId.HasValue)
+            {
+                var variant = await _context.ProductVariants
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(v => v.Id == productVariantId.Value && v.ProductId == productId);
+                if (variant == null)
+                {
+                    if (IsAjaxRequest())
+                    {
+                        return Json(new { success = false, message = "Product variant not found" });
+                    }
+                    return BadRequest();
+                }
+
+                price = variant.Price;
+            }
+            else
+            {
+                price = product.PricePerMonth;
+            }
+
+            var cart = GetCart();
+            cart.Add(new OrderItem { ProductId = productId, ProductVariantId = productVariantId, Price = price });
+            SaveCart(cart);
+
+            // Проверяем, является ли это AJAX запросом
+            if (IsAjaxRequest())
+            {
+                return Json(new { success = true, message = "Product added to cart" });
+            }
+
+            TempData["Success"] = "Product added to cart successfully!";
+            return RedirectToAction(nameof(Index));
         }
-        else
+        catch (Exception ex)
         {
-            price = product.PricePerMonth;
+            // Логируем ошибку (в production можно использовать ILogger)
+            Console.Error.WriteLine($"Error adding product to cart: {ex.Message}");
+            Console.Error.WriteLine($"Stack trace: {ex.StackTrace}");
+
+            if (IsAjaxRequest())
+            {
+                return Json(new { success = false, message = "An error occurred while adding product to cart" });
+            }
+
+            TempData["Error"] = "An error occurred while adding product to cart. Please try again.";
+            return RedirectToAction(nameof(Index));
         }
+    }
 
-        var cart = GetCart();
-        cart.Add(new OrderItem { ProductId = productId, ProductVariantId = productVariantId, Price = price });
-        SaveCart(cart);
-
-        // Проверяем, является ли это AJAX запросом
-        var isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest" 
-                     || Request.Headers["Accept"].ToString().Contains("application/json");
-        
-        if (isAjax)
-        {
-            return Json(new { success = true, message = "Product added to cart" });
-        }
-
-        TempData["Success"] = "Product added to cart successfully!";
-        return RedirectToAction(nameof(Index));
+    private bool IsAjaxRequest()
+    {
+        return Request.Headers["X-Requested-With"] == "XMLHttpRequest" 
+               || (Request.Headers.ContainsKey("Accept") 
+                   && Request.Headers["Accept"].ToString().Contains("application/json"));
     }
 
     [HttpPost]
