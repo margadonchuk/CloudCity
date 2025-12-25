@@ -192,5 +192,23 @@
   <data name="Windows" xml:space="preserve">
     <value>Windows</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="Technologies" xml:space="preserve">
+    <value>Технологии</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Email Accounts" xml:space="preserve">
+    <value>Почтовые ящики</value>
+  </data>
+  <data name="SSD (NVMe)" xml:space="preserve">
+    <value>SSD (NVMe)</value>
+  </data>
 </root>
 

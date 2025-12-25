@@ -1,4 +1,5 @@
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@using System.Linq
 @model CloudCityCenter.Models.ViewModels.ProductCardVm
 @{
     var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
@@ -42,7 +43,7 @@
         if (string.IsNullOrWhiteSpace(value))
             return value;
         
-        // Пытаемся локализовать значение
+        // Пытаемся локализовать значение целиком
         var localized = Localizer[value].Value;
         if (localized != value)
             return localized;
@@ -50,13 +51,40 @@
         // Если значение содержит несколько стран через "/", локализуем каждую
         if (value.Contains("/"))
         {
-            var countries = value.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            var localizedCountries = countries.Select(c => 
+            var parts = value.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var localizedParts = parts.Select(part => 
             {
-                var loc = Localizer[c.Trim()].Value;
-                return loc != c.Trim() ? loc : c.Trim();
+                var trimmed = part.Trim();
+                var loc = Localizer[trimmed].Value;
+                return loc != trimmed ? loc : trimmed;
             });
-            return string.Join("/", localizedCountries);
+            return string.Join("/", localizedParts);
+        }
+        
+        // Если значение содержит несколько элементов через ",", локализуем каждую часть
+        if (value.Contains(","))
+        {
+            var parts = value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var localizedParts = parts.Select(part => 
+            {
+                var trimmed = part.Trim();
+                var loc = Localizer[trimmed].Value;
+                return loc != trimmed ? loc : trimmed;
+            });
+            return string.Join(", ", localizedParts);
+        }
+        
+        // Если значение содержит "+", локализуем каждую часть
+        if (value.Contains("+"))
+        {
+            var parts = value.Split(new[] { '+' }, StringSplitOptions.RemoveEmptyEntries);
+            var localizedParts = parts.Select(part => 
+            {
+                var trimmed = part.Trim();
+                var loc = Localizer[trimmed].Value;
+                return loc != trimmed ? loc : trimmed;
+            });
+            return string.Join(" + ", localizedParts);
         }
         
         return value;

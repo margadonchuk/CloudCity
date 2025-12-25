@@ -192,5 +192,23 @@
   <data name="Windows" xml:space="preserve">
     <value>Windows</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Inclus</value>
+  </data>
+  <data name="Technologies" xml:space="preserve">
+    <value>Technologies</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="Email Accounts" xml:space="preserve">
+    <value>Comptes e-mail</value>
+  </data>
+  <data name="SSD (NVMe)" xml:space="preserve">
+    <value>SSD (NVMe)</value>
+  </data>
 </root>
 
