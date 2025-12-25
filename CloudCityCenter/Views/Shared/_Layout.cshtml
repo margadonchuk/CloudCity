@@ -20,12 +20,20 @@
 <body>
     @{
         var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
-        var cartJson = Context.Session.GetString("Cart");
         var cartCount = 0;
-        if (!string.IsNullOrEmpty(cartJson))
+        try
         {
-            var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CloudCityCenter.Models.OrderItem>>(cartJson);
-            cartCount = cartItems?.Count ?? 0;
+            var cartJson = Context.Session?.GetString("Cart");
+            if (!string.IsNullOrEmpty(cartJson))
+            {
+                var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CloudCityCenter.Models.OrderItem>>(cartJson);
+                cartCount = cartItems?.Count ?? 0;
+            }
+        }
+        catch
+        {
+            // Игнорируем ошибки сессии
+            cartCount = 0;
         }
     }
     <header>

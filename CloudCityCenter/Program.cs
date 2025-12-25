@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,12 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+// Добавляем поддержку systemd для Type=notify (если на Linux)
+if (System.OperatingSystem.IsLinux())
+{
+    builder.Services.AddSystemd();
+}
+
 // Configure forwarded headers for reverse proxy (nginx)
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
@@ -57,6 +64,26 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 });
 
 var app = builder.Build();
+
+// Добавляем глобальный обработчик необработанных исключений
+AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+{
+    var exception = e.ExceptionObject as Exception;
+    Console.Error.WriteLine($"CRITICAL: Unhandled exception: {exception?.Message}");
+    Console.Error.WriteLine($"Stack trace: {exception?.StackTrace}");
+    if (exception?.InnerException != null)
+    {
+        Console.Error.WriteLine($"Inner exception: {exception.InnerException.Message}");
+    }
+};
+
+// Обработчик необработанных исключений для async операций
+TaskScheduler.UnobservedTaskException += (sender, e) =>
+{
+    Console.Error.WriteLine($"CRITICAL: Unobserved task exception: {e.Exception.Message}");
+    Console.Error.WriteLine($"Stack trace: {e.Exception.StackTrace}");
+    e.SetObserved();
+};
 
 if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=") || a == "--migrate-data"))
 {
@@ -292,6 +319,19 @@ app.UseStaticFiles();
 
 app.UseRequestLocalization(localizationOptions);
 app.UseRouting();
+
+// Используем systemd интеграцию для Type=notify (если доступно)
+if (System.OperatingSystem.IsLinux())
+{
+    try
+    {
+        app.UseSystemd();
+    }
+    catch
+    {
+        // Игнорируем если UseSystemd недоступен (нужен пакет Microsoft.Extensions.Hosting.Systemd)
+    }
+}
 
 app.UseSession();
 
