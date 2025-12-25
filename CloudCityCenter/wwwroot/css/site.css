@@ -3547,7 +3547,7 @@ body {
 
 /* Register Link */
 .register-link {
-  background: linear-gradient(135deg, #0d6efd, #667eea);
+  background: linear-gradient(135deg, #0d6efd, #667eea) !important;
   color: white !important;
   font-weight: 600;
   padding: 10px 20px !important;
@@ -3556,19 +3556,40 @@ body {
   transition: all 0.3s ease;
 }
 
-.register-link:hover {
+.register-link:hover,
+.register-link:focus,
+.register-link:active,
+.register-link:focus-visible,
+.register-link:visited {
   color: white !important;
+  background: linear-gradient(135deg, #0b5ed7, #5568d3) !important;
+}
+
+.register-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
 }
 
-.register-link.active {
-  background: linear-gradient(135deg, #0b5ed7, #5568d3);
+.register-link:active {
+  transform: translateY(0);
+  color: white !important;
+}
+
+.register-link.active,
+.register-link.active:hover,
+.register-link.active:focus,
+.register-link.active:active {
+  background: linear-gradient(135deg, #0b5ed7, #5568d3) !important;
+  color: white !important;
+}
+
+.register-link::after {
+  display: none;
 }
 
 /* Login Link */
 .login-link {
-  background: linear-gradient(135deg, #20c997, #17a2b8);
+  background: linear-gradient(135deg, #20c997, #17a2b8) !important;
   color: white !important;
   font-weight: 600;
   padding: 10px 20px !important;
@@ -3577,14 +3598,35 @@ body {
   transition: all 0.3s ease;
 }
 
-.login-link:hover {
+.login-link:hover,
+.login-link:focus,
+.login-link:active,
+.login-link:focus-visible,
+.login-link:visited {
   color: white !important;
+  background: linear-gradient(135deg, #1aa179, #138496) !important;
+}
+
+.login-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(32, 201, 151, 0.4);
 }
 
-.login-link.active {
-  background: linear-gradient(135deg, #1aa179, #138496);
+.login-link:active {
+  transform: translateY(0);
+  color: white !important;
+}
+
+.login-link.active,
+.login-link.active:hover,
+.login-link.active:focus,
+.login-link.active:active {
+  background: linear-gradient(135deg, #1aa179, #138496) !important;
+  color: white !important;
+}
+
+.login-link::after {
+  display: none;
 }
 
 /* Admin Link */
