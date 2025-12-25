@@ -210,5 +210,131 @@
   <data name="SSD (NVMe)" xml:space="preserve">
     <value>SSD (NVMe)</value>
   </data>
+  <data name="Single-page website (promo, service, product)" xml:space="preserve">
+    <value>Site Web à page unique (promo, service, produit)</value>
+  </data>
+  <data name="Multi-page website (about company, services, contacts, etc.)" xml:space="preserve">
+    <value>Site Web multi-pages (à propos de l'entreprise, services, contacts, etc.)</value>
+  </data>
+  <data name="Online store (up to 50 products)" xml:space="preserve">
+    <value>Boutique en ligne (jusqu'à 50 produits)</value>
+  </data>
+  <data name="Single-page landing with custom logic" xml:space="preserve">
+    <value>Page d'atterrissage à page unique avec logique personnalisée</value>
+  </data>
+  <data name="Multi-page website with logic" xml:space="preserve">
+    <value>Site Web multi-pages avec logique</value>
+  </data>
+  <data name="Turnkey online store" xml:space="preserve">
+    <value>Boutique en ligne clé en main</value>
+  </data>
+  <data name="Builder, responsive design, contact form, basic SEO, mobile version" xml:space="preserve">
+    <value>Constructeur, design responsive, formulaire de contact, SEO de base, version mobile</value>
+  </data>
+  <data name="Menu, up to 5 pages, responsive design, contact form, SEO, mobile version" xml:space="preserve">
+    <value>Menu, jusqu'à 5 pages, design responsive, formulaire de contact, SEO, version mobile</value>
+  </data>
+  <data name="Catalog, shopping cart, checkout, payment, mobile version" xml:space="preserve">
+    <value>Catalogue, panier, paiement, version mobile</value>
+  </data>
+  <data name="Clean code, animations, forms, SEO" xml:space="preserve">
+    <value>Code propre, animations, formulaires, SEO</value>
+  </data>
+  <data name="UI/UX, SEO, database, admin panel" xml:space="preserve">
+    <value>UI/UX, SEO, base de données, panneau d'administration</value>
+  </data>
+  <data name="Full catalog, shopping cart, payment, filters, personal account" xml:space="preserve">
+    <value>Catalogue complet, panier, paiement, filtres, compte personnel</value>
+  </data>
+  <data name="TypeScript" xml:space="preserve">
+    <value>TypeScript</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/PHP/Next.js" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/PHP/Next.js</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/React/TypeScript" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/React/TypeScript</value>
+  </data>
+  <data name="Builder" xml:space="preserve">
+    <value>Constructeur</value>
+  </data>
+  <data name="responsive design" xml:space="preserve">
+    <value>design responsive</value>
+  </data>
+  <data name="contact form" xml:space="preserve">
+    <value>formulaire de contact</value>
+  </data>
+  <data name="basic SEO" xml:space="preserve">
+    <value>SEO de base</value>
+  </data>
+  <data name="mobile version" xml:space="preserve">
+    <value>version mobile</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="up to 5 pages" xml:space="preserve">
+    <value>jusqu'à 5 pages</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Catalogue</value>
+  </data>
+  <data name="shopping cart" xml:space="preserve">
+    <value>panier</value>
+  </data>
+  <data name="checkout" xml:space="preserve">
+    <value>paiement</value>
+  </data>
+  <data name="payment" xml:space="preserve">
+    <value>paiement</value>
+  </data>
+  <data name="Clean code" xml:space="preserve">
+    <value>Code propre</value>
+  </data>
+  <data name="animations" xml:space="preserve">
+    <value>animations</value>
+  </data>
+  <data name="forms" xml:space="preserve">
+    <value>formulaires</value>
+  </data>
+  <data name="SEO" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="UI/UX" xml:space="preserve">
+    <value>UI/UX</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>base de données</value>
+  </data>
+  <data name="admin panel" xml:space="preserve">
+    <value>panneau d'administration</value>
+  </data>
+  <data name="Full catalog" xml:space="preserve">
+    <value>Catalogue complet</value>
+  </data>
+  <data name="filters" xml:space="preserve">
+    <value>filtres</value>
+  </data>
+  <data name="personal account" xml:space="preserve">
+    <value>compte personnel</value>
+  </data>
+  <data name="C#" xml:space="preserve">
+    <value>C#</value>
+  </data>
+  <data name="ASP.NET" xml:space="preserve">
+    <value>ASP.NET</value>
+  </data>
+  <data name="Laravel" xml:space="preserve">
+    <value>Laravel</value>
+  </data>
+  <data name="PHP" xml:space="preserve">
+    <value>PHP</value>
+  </data>
+  <data name="Next.js" xml:space="preserve">
+    <value>Next.js</value>
+  </data>
+  <data name="React" xml:space="preserve">
+    <value>React</value>
+  </data>
 </root>
 

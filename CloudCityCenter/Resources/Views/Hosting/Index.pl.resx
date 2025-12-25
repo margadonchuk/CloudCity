@@ -210,5 +210,131 @@
   <data name="SSD (NVMe)" xml:space="preserve">
     <value>SSD (NVMe)</value>
   </data>
+  <data name="Single-page website (promo, service, product)" xml:space="preserve">
+    <value>Strona jednostronowa (promo, usługa, produkt)</value>
+  </data>
+  <data name="Multi-page website (about company, services, contacts, etc.)" xml:space="preserve">
+    <value>Strona wielostronowa (o firmie, usługi, kontakty itp.)</value>
+  </data>
+  <data name="Online store (up to 50 products)" xml:space="preserve">
+    <value>Sklep internetowy (do 50 produktów)</value>
+  </data>
+  <data name="Single-page landing with custom logic" xml:space="preserve">
+    <value>Strona jednostronowa z niestandardową logiką</value>
+  </data>
+  <data name="Multi-page website with logic" xml:space="preserve">
+    <value>Strona wielostronowa z logiką</value>
+  </data>
+  <data name="Turnkey online store" xml:space="preserve">
+    <value>Gotowy sklep internetowy</value>
+  </data>
+  <data name="Builder, responsive design, contact form, basic SEO, mobile version" xml:space="preserve">
+    <value>Konstruktor, responsywny design, formularz kontaktowy, podstawowe SEO, wersja mobilna</value>
+  </data>
+  <data name="Menu, up to 5 pages, responsive design, contact form, SEO, mobile version" xml:space="preserve">
+    <value>Menu, do 5 stron, responsywny design, formularz kontaktowy, SEO, wersja mobilna</value>
+  </data>
+  <data name="Catalog, shopping cart, checkout, payment, mobile version" xml:space="preserve">
+    <value>Katalog, koszyk, płatność, wersja mobilna</value>
+  </data>
+  <data name="Clean code, animations, forms, SEO" xml:space="preserve">
+    <value>Czysty kod, animacje, formularze, SEO</value>
+  </data>
+  <data name="UI/UX, SEO, database, admin panel" xml:space="preserve">
+    <value>UI/UX, SEO, baza danych, panel administracyjny</value>
+  </data>
+  <data name="Full catalog, shopping cart, payment, filters, personal account" xml:space="preserve">
+    <value>Pełny katalog, koszyk, płatność, filtry, konto osobiste</value>
+  </data>
+  <data name="TypeScript" xml:space="preserve">
+    <value>TypeScript</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/PHP/Next.js" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/PHP/Next.js</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/React/TypeScript" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/React/TypeScript</value>
+  </data>
+  <data name="Builder" xml:space="preserve">
+    <value>Konstruktor</value>
+  </data>
+  <data name="responsive design" xml:space="preserve">
+    <value>responsywny design</value>
+  </data>
+  <data name="contact form" xml:space="preserve">
+    <value>formularz kontaktowy</value>
+  </data>
+  <data name="basic SEO" xml:space="preserve">
+    <value>podstawowe SEO</value>
+  </data>
+  <data name="mobile version" xml:space="preserve">
+    <value>wersja mobilna</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="up to 5 pages" xml:space="preserve">
+    <value>do 5 stron</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Katalog</value>
+  </data>
+  <data name="shopping cart" xml:space="preserve">
+    <value>koszyk</value>
+  </data>
+  <data name="checkout" xml:space="preserve">
+    <value>płatność</value>
+  </data>
+  <data name="payment" xml:space="preserve">
+    <value>płatność</value>
+  </data>
+  <data name="Clean code" xml:space="preserve">
+    <value>Czysty kod</value>
+  </data>
+  <data name="animations" xml:space="preserve">
+    <value>animacje</value>
+  </data>
+  <data name="forms" xml:space="preserve">
+    <value>formularze</value>
+  </data>
+  <data name="SEO" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="UI/UX" xml:space="preserve">
+    <value>UI/UX</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>baza danych</value>
+  </data>
+  <data name="admin panel" xml:space="preserve">
+    <value>panel administracyjny</value>
+  </data>
+  <data name="Full catalog" xml:space="preserve">
+    <value>Pełny katalog</value>
+  </data>
+  <data name="filters" xml:space="preserve">
+    <value>filtry</value>
+  </data>
+  <data name="personal account" xml:space="preserve">
+    <value>konto osobiste</value>
+  </data>
+  <data name="C#" xml:space="preserve">
+    <value>C#</value>
+  </data>
+  <data name="ASP.NET" xml:space="preserve">
+    <value>ASP.NET</value>
+  </data>
+  <data name="Laravel" xml:space="preserve">
+    <value>Laravel</value>
+  </data>
+  <data name="PHP" xml:space="preserve">
+    <value>PHP</value>
+  </data>
+  <data name="Next.js" xml:space="preserve">
+    <value>Next.js</value>
+  </data>
+  <data name="React" xml:space="preserve">
+    <value>React</value>
+  </data>
 </root>
 

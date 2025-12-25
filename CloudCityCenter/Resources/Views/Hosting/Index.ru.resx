@@ -210,5 +210,131 @@
   <data name="SSD (NVMe)" xml:space="preserve">
     <value>SSD (NVMe)</value>
   </data>
+  <data name="Single-page website (promo, service, product)" xml:space="preserve">
+    <value>Одностраничный сайт (промо, услуга, товар)</value>
+  </data>
+  <data name="Multi-page website (about company, services, contacts, etc.)" xml:space="preserve">
+    <value>Многостраничный сайт (о компании, услуги, контакты и т.д.)</value>
+  </data>
+  <data name="Online store (up to 50 products)" xml:space="preserve">
+    <value>Интернет-магазин (до 50 товаров)</value>
+  </data>
+  <data name="Single-page landing with custom logic" xml:space="preserve">
+    <value>Одностраничный лендинг с индивидуальной логикой</value>
+  </data>
+  <data name="Multi-page website with logic" xml:space="preserve">
+    <value>Многостраничный сайт с логикой</value>
+  </data>
+  <data name="Turnkey online store" xml:space="preserve">
+    <value>Готовый интернет-магазин</value>
+  </data>
+  <data name="Builder, responsive design, contact form, basic SEO, mobile version" xml:space="preserve">
+    <value>Конструктор, адаптивный дизайн, форма обратной связи, базовая SEO-оптимизация, мобильная версия</value>
+  </data>
+  <data name="Menu, up to 5 pages, responsive design, contact form, SEO, mobile version" xml:space="preserve">
+    <value>Меню, до 5 страниц, адаптивный дизайн, форма обратной связи, SEO-оптимизация, мобильная версия</value>
+  </data>
+  <data name="Catalog, shopping cart, checkout, payment, mobile version" xml:space="preserve">
+    <value>Каталог, корзина, оформление заказа, оплата, мобильная версия</value>
+  </data>
+  <data name="Clean code, animations, forms, SEO" xml:space="preserve">
+    <value>Чистый код, анимации, формы, SEO</value>
+  </data>
+  <data name="UI/UX, SEO, database, admin panel" xml:space="preserve">
+    <value>UI/UX, SEO, база данных, админ-панель</value>
+  </data>
+  <data name="Full catalog, shopping cart, payment, filters, personal account" xml:space="preserve">
+    <value>Полный каталог, корзина, оплата, фильтры, личный кабинет</value>
+  </data>
+  <data name="TypeScript" xml:space="preserve">
+    <value>TypeScript</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/PHP/Next.js" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/PHP/Next.js</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/React/TypeScript" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/React/TypeScript</value>
+  </data>
+  <data name="Builder" xml:space="preserve">
+    <value>Конструктор</value>
+  </data>
+  <data name="responsive design" xml:space="preserve">
+    <value>адаптивный дизайн</value>
+  </data>
+  <data name="contact form" xml:space="preserve">
+    <value>форма обратной связи</value>
+  </data>
+  <data name="basic SEO" xml:space="preserve">
+    <value>базовая SEO-оптимизация</value>
+  </data>
+  <data name="mobile version" xml:space="preserve">
+    <value>мобильная версия</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="up to 5 pages" xml:space="preserve">
+    <value>до 5 страниц</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Каталог</value>
+  </data>
+  <data name="shopping cart" xml:space="preserve">
+    <value>корзина</value>
+  </data>
+  <data name="checkout" xml:space="preserve">
+    <value>оформление заказа</value>
+  </data>
+  <data name="payment" xml:space="preserve">
+    <value>оплата</value>
+  </data>
+  <data name="Clean code" xml:space="preserve">
+    <value>Чистый код</value>
+  </data>
+  <data name="animations" xml:space="preserve">
+    <value>анимации</value>
+  </data>
+  <data name="forms" xml:space="preserve">
+    <value>формы</value>
+  </data>
+  <data name="SEO" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="UI/UX" xml:space="preserve">
+    <value>UI/UX</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>база данных</value>
+  </data>
+  <data name="admin panel" xml:space="preserve">
+    <value>админ-панель</value>
+  </data>
+  <data name="Full catalog" xml:space="preserve">
+    <value>Полный каталог</value>
+  </data>
+  <data name="filters" xml:space="preserve">
+    <value>фильтры</value>
+  </data>
+  <data name="personal account" xml:space="preserve">
+    <value>личный кабинет</value>
+  </data>
+  <data name="C#" xml:space="preserve">
+    <value>C#</value>
+  </data>
+  <data name="ASP.NET" xml:space="preserve">
+    <value>ASP.NET</value>
+  </data>
+  <data name="Laravel" xml:space="preserve">
+    <value>Laravel</value>
+  </data>
+  <data name="PHP" xml:space="preserve">
+    <value>PHP</value>
+  </data>
+  <data name="Next.js" xml:space="preserve">
+    <value>Next.js</value>
+  </data>
+  <data name="React" xml:space="preserve">
+    <value>React</value>
+  </data>
 </root>
 
