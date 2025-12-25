@@ -10,6 +10,12 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Добавляем поддержку systemd для Type=notify (если на Linux)
+if (System.OperatingSystem.IsLinux())
+{
+    builder.Host.UseSystemd();
+}
+
 // Read environment before configuring EF
 var env = builder.Environment;
 
@@ -48,12 +54,6 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
-// Добавляем поддержку systemd для Type=notify (если на Linux)
-if (System.OperatingSystem.IsLinux())
-{
-    builder.Services.AddSystemd();
-}
 
 // Configure forwarded headers for reverse proxy (nginx)
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
@@ -319,19 +319,6 @@ app.UseStaticFiles();
 
 app.UseRequestLocalization(localizationOptions);
 app.UseRouting();
-
-// Используем systemd интеграцию для Type=notify (если доступно)
-if (System.OperatingSystem.IsLinux())
-{
-    try
-    {
-        app.UseSystemd();
-    }
-    catch
-    {
-        // Игнорируем если UseSystemd недоступен (нужен пакет Microsoft.Extensions.Hosting.Systemd)
-    }
-}
 
 app.UseSession();
 
