@@ -3520,20 +3520,23 @@ body {
 
 .cart-badge {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 2px;
+  right: 2px;
   background: linear-gradient(135deg, #dc3545, #c82333);
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.4);
+  font-size: 0.85rem;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5), 0 0 0 2px white;
   animation: cart-pulse 2s ease-in-out infinite;
+  line-height: 1;
+  z-index: 10;
 }
 
 @keyframes cart-pulse {
@@ -3839,18 +3842,21 @@ body {
     position: absolute !important;
     top: 2px !important;
     right: 2px !important;
-    background: #dc3545 !important;
+    background: linear-gradient(135deg, #dc3545, #c82333) !important;
     color: white !important;
     border-radius: 50% !important;
-    width: 18px !important;
-    height: 18px !important;
+    min-width: 22px !important;
+    height: 22px !important;
+    padding: 0 5px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 0.65rem !important;
-    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    font-weight: 800 !important;
     border: 2px solid white !important;
-    z-index: 3;
+    box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5) !important;
+    z-index: 3 !important;
+    line-height: 1 !important;
   }
 
   .navbar-toggler {
@@ -3958,6 +3964,13 @@ body {
     right: 10px;
     z-index: 11;
     pointer-events: none;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5), 0 0 0 2px white;
+    line-height: 1;
   }
   
   /* Offcanvas Menu Styles */
