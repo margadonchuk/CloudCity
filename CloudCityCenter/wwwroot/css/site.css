@@ -4154,10 +4154,8 @@ body {
     z-index: 10 !important;
   }
 
-  /* ЗОНА 2: СОЦСЕТИ ПО ЦЕНТРУ */
-  .navbar-modern .container-fluid > .mobile-nav-center.d-lg-none,
-  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-center,
-  .navbar-modern .container-fluid > .d-flex.mobile-nav-center {
+  /* ЗОНА 2: СОЦСЕТИ ПО ЦЕНТРУ - ТОЛЬКО ОДИН РАЗ */
+  .navbar-modern .container-fluid > .mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
@@ -4173,6 +4171,11 @@ body {
     padding: 0 !important;
     width: auto !important;
     height: auto !important;
+  }
+  
+  /* Убираем дублирование - только один элемент должен быть виден */
+  .navbar-modern .container-fluid > .mobile-nav-center:not(:first-of-type) {
+    display: none !important;
   }
   
   .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
@@ -4201,10 +4204,8 @@ body {
     flex-shrink: 0 !important;
   }
 
-  /* ЗОНА 3: КОРЗИНА И МЕНЮ СПРАВА */
-  .navbar-modern .container-fluid > .mobile-nav-right.d-lg-none,
-  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-right,
-  .navbar-modern .container-fluid > .d-flex.mobile-nav-right {
+  /* ЗОНА 3: КОРЗИНА И МЕНЮ СПРАВА - ТОЛЬКО ОДИН РАЗ */
+  .navbar-modern .container-fluid > .mobile-nav-right {
     flex: 0 0 auto !important;
     display: flex !important;
     flex-direction: row !important;
@@ -4217,6 +4218,11 @@ body {
     margin-right: 0 !important;
     padding: 0 !important;
     width: auto !important;
+  }
+  
+  /* Убираем дублирование - только один элемент должен быть виден */
+  .navbar-modern .container-fluid > .mobile-nav-right:not(:first-of-type) {
+    display: none !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
@@ -4243,23 +4249,6 @@ body {
     justify-content: center !important;
   }
   
-  /* Дополнительные переопределения для гарантии */
-  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-center {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  
-  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-right {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  
-  /* Убираем все возможные конфликты с Bootstrap */
-  .navbar-modern .container-fluid > .d-lg-none {
-    flex-shrink: 0 !important;
-  }
 }
   
   .cart-badge-mobile {
