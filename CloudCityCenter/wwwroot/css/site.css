@@ -3395,15 +3395,6 @@ body {
   }
 }
 
-@media (max-width: 991px) {
-  .navbar-modern {
-    min-height: 70px !important;
-    height: 70px !important;
-    padding: 12px 0 !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-}
 
 
 .navbar-modern .container-fluid {
@@ -3463,21 +3454,6 @@ body {
 }
 
 /* Мобильная версия - правильное позиционирование элементов */
-@media (max-width: 991px) {
-  .navbar-modern .container-fluid {
-    justify-content: flex-start !important;
-    padding: 0 10px !important;
-  }
-  
-  .navbar-modern .container-fluid > .navbar-brand {
-    margin-right: 0 !important;
-    flex: 0 0 auto !important;
-    max-width: 120px !important;
-    position: relative !important;
-    z-index: 10 !important;
-  }
-  
-}
 
 .navbar-modern .container-fluid > .collapse > div {
   min-height: 0;
@@ -4117,18 +4093,24 @@ body {
     display: none !important;
   }
 
-  /* ОСНОВНОЙ КОНТЕЙНЕР */
+  /* ============================================
+     КОНТЕЙНЕР - Flexbox с тремя зонами
+     ============================================ */
   .navbar-modern .container-fluid {
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 20px !important;
+    padding: 0 18px !important;
     width: 100% !important;
     position: relative !important;
     height: 100% !important;
+    min-height: 70px !important;
   }
   
-  /* 1. ЛОГОТИП СЛЕВА */
+  /* ============================================
+     ЗОНА 1: ЛОГОТИП СЛЕВА
+     ============================================ */
   .navbar-modern .container-fluid > .navbar-brand {
     flex: 0 0 auto !important;
     display: flex !important;
@@ -4136,58 +4118,94 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     z-index: 10 !important;
+    order: 1 !important;
   }
   
-  .navbar-modern .container-fluid > .navbar-brand img {
+  .navbar-modern .container-fluid > .navbar-brand img,
+  .navbar-modern .container-fluid > .navbar-brand .navbar-logo {
     height: 45px !important;
     width: auto !important;
     max-width: 140px !important;
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
-  /* 2. СОЦСЕТИ ПО ЦЕНТРУ */
+  /* ============================================
+     ЗОНА 2: СОЦСЕТИ ПО ЦЕНТРУ
+     ============================================ */
   .navbar-modern .container-fluid > .mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    gap: 20px !important;
+    justify-content: center !important;
+    gap: 22px !important;
     z-index: 5 !important;
+    order: 2 !important;
   }
   
   .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
     margin: 0 !important;
     padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Стили для оберток иконок соцсетей в мобильной версии */
+  .navbar-modern .container-fluid > .mobile-nav-center .instagram-wrapper-mobile,
+  .navbar-modern .container-fluid > .mobile-nav-center .telegram-bot-wrapper-mobile,
+  .navbar-modern .container-fluid > .mobile-nav-center .whatsapp-wrapper-mobile {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
-  /* 3. КОРЗИНА И МЕНЮ СПРАВА */
+  /* ============================================
+     ЗОНА 3: КОРЗИНА И МЕНЮ СПРАВА
+     ============================================ */
   .navbar-modern .container-fluid > .mobile-nav-right {
     flex: 0 0 auto !important;
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    gap: 16px !important;
+    justify-content: flex-end !important;
+    gap: 18px !important;
     z-index: 10 !important;
+    order: 3 !important;
+    margin-left: auto !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 8px !important;
+    padding: 8px 10px !important;
     display: flex !important;
     align-items: center !important;
-    font-size: 1.6rem !important;
+    justify-content: center !important;
+    font-size: 1.7rem !important;
     color: #333 !important;
     text-decoration: none !important;
+    position: relative !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.6rem !important;
+    font-size: 1.7rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
     padding: 8px 12px !important;
     border: 1px solid #ddd !important;
     border-radius: 5px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
   
