@@ -103,6 +103,18 @@ public class AccountController : Controller
         {
             return Challenge();
         }
+        
+        // Проверяем, является ли пользователь админом
+        var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+        
+        // Если пользователь является админом, но его claims не обновлены, обновляем их
+        if (isAdmin && !User.IsInRole("Admin"))
+        {
+            await _signInManager.RefreshSignInAsync(user);
+        }
+        
+        ViewData["IsAdmin"] = isAdmin;
+        
         return View(user);
     }
 }
