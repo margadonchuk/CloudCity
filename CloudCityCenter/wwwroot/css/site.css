@@ -4101,9 +4101,7 @@ body {
   .navbar-modern {
     min-height: 70px !important;
     height: 70px !important;
-    max-height: 70px !important;
-    padding: 12px 0 !important;
-    overflow: visible !important;
+    padding: 10px 0 !important;
     display: flex !important;
     align-items: center !important;
   }
@@ -4112,7 +4110,7 @@ body {
     padding-top: 70px !important;
   }
   
-  /* Скрываем десктопное меню на мобильных устройствах */
+  /* Скрываем десктопное меню */
   .navbar-collapse.d-none.d-lg-block {
     display: none !important;
   }
@@ -4122,53 +4120,34 @@ body {
   .navbar-center {
     display: none !important;
   }
-  
-  /* Дополнительный отступ для контента, чтобы меню не перекрывало */
-  main, .container, .container-fluid, section {
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* Убеждаемся, что первая секция не перекрывается */
-  section:first-of-type {
-    padding-top: 10px !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Hero секции должны иметь дополнительный отступ */
-  .hero-section, .services-page-hero, section.py-5:first-of-type {
-    padding-top: 15px !important;
-    margin-top: 0 !important;
-  }
 
-  /* Мобильная навигация - простая и чистая структура */
+  /* ПРОСТАЯ СТРУКТУРА МОБИЛЬНОЙ НАВИГАЦИИ */
   .navbar-modern .container-fluid {
     display: flex !important;
-    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 12px !important;
+    padding: 0 15px !important;
     width: 100% !important;
     position: relative !important;
   }
   
-  /* Логотип слева */
+  /* 1. ЛОГОТИП СЛЕВА */
   .navbar-modern .container-fluid > .navbar-brand {
     flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    margin-right: auto !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
     z-index: 10 !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand img {
-    height: 38px !important;
+    height: 40px !important;
     width: auto !important;
-    max-width: 130px !important;
+    max-width: 120px !important;
     display: block !important;
   }
 
-  /* Соцсети по центру */
+  /* 2. СОЦСЕТИ ПО ЦЕНТРУ */
   .navbar-modern .container-fluid > .mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
@@ -4176,32 +4155,30 @@ body {
     transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 12px !important;
     z-index: 5 !important;
   }
 
-  /* Корзина и меню справа */
+  /* 3. КОРЗИНА И МЕНЮ СПРАВА */
   .navbar-modern .container-fluid > .mobile-nav-right {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 12px !important;
     z-index: 10 !important;
-    margin-left: auto !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 6px 10px !important;
+    padding: 8px !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
     color: #333 !important;
     text-decoration: none !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
@@ -4209,80 +4186,7 @@ body {
     border: 1px solid #ddd !important;
     border-radius: 5px !important;
   }
-
-  
-  .navbar-modern .nav-link {
-    display: inline-flex !important;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-  }
-
-  .telegram-bot-link-mobile .telegram-bot-wrapper-mobile {
-    pointer-events: all;
-  }
-
-  .telegram-bot-wrapper-mobile {
-    padding: 6px 12px !important;
-    gap: 4px !important;
-    white-space: nowrap !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    font-size: 0.8rem !important;
-    font-weight: 600 !important;
-    background: linear-gradient(135deg, #0d6efd, #667eea) !important;
-    color: white !important;
-    border-radius: 8px !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-  }
-  
-  .telegram-bot-wrapper-mobile:hover {
-    background: linear-gradient(135deg, #0b5ed7, #5568d3);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-    color: white;
-  }
-  
-  .telegram-bot-text-mobile {
-    font-size: 0.75rem;
-    white-space: nowrap;
-    color: white;
-  }
-  
-  .telegram-icon-mobile {
-    font-size: 1rem;
-    flex-shrink: 0;
-    color: white;
-  }
-
-  .cart-link-mobile {
-    flex: 0 0 auto !important;
-    margin: 0 0 0 auto !important;
-    padding: 8px !important;
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    position: relative !important;
-    z-index: 2;
-    order: 3;
-    color: #0d6efd !important;
-    font-size: 1.2rem !important;
-    text-decoration: none !important;
-    transition: color 0.2s;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-  }
-  
-  .cart-link-mobile:hover {
-    color: #0b5ed7 !important;
-  }
+}
   
   .cart-badge-mobile {
     position: absolute !important;
