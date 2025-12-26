@@ -3459,6 +3459,41 @@ body {
   padding-right: 220px;
 }
 
+/* Мобильная версия - правильное позиционирование элементов */
+@media (max-width: 991px) {
+  .navbar-modern .container-fluid {
+    justify-content: flex-start !important;
+    padding: 0 10px !important;
+  }
+  
+  .navbar-modern .container-fluid > .navbar-brand {
+    margin-right: 0 !important;
+    flex: 0 0 auto !important;
+    max-width: 120px !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  .mobile-nav-center {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+  }
+  
+  .mobile-nav-right {
+    margin-left: auto !important;
+    flex: 0 0 auto !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+}
+
 .navbar-modern .container-fluid > .collapse > div {
   min-height: 0;
 }
@@ -4124,7 +4159,7 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     gap: 5px !important;
     padding: 0 10px !important;
     width: 100% !important;
@@ -4159,27 +4194,26 @@ body {
     flex-shrink: 0 !important;
     z-index: 1 !important;
     pointer-events: auto !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   /* Убеждаемся, что логотип не перекрывается */
   .navbar-modern .container-fluid > .navbar-brand {
     position: relative !important;
-    z-index: 2 !important;
+    z-index: 10 !important;
     max-width: 120px !important;
   }
 
   /* Убеждаемся, что правая часть не перекрывается */
-  .mobile-nav-right {
-    position: relative !important;
-    z-index: 2 !important;
-  }
-
   .mobile-nav-right {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
     margin-left: auto !important;
     flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
