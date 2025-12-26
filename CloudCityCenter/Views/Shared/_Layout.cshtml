@@ -169,7 +169,7 @@
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">
+                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile">
                                     <i class="bi bi-person-circle me-1"></i>@Localizer["Profile"]
                                 </a>
                             </li>
@@ -273,7 +273,7 @@
                     @if (User.Identity?.IsAuthenticated ?? false)
                     {
                         <li class="nav-item">
-                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile" data-offcanvas-close>
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile" data-offcanvas-close>
                                 <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
                             </a>
                         </li>
