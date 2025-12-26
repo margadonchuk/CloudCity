@@ -4187,15 +4187,14 @@ body {
   .mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
     gap: 4px !important;
     flex-shrink: 0 !important;
     z-index: 1 !important;
     pointer-events: auto !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
   }
 
   /* Убеждаемся, что логотип не перекрывается */
@@ -4213,7 +4212,7 @@ body {
     margin-left: auto !important;
     flex-shrink: 0 !important;
     position: relative !important;
-    z-index: 2 !important;
+    z-index: 10 !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
