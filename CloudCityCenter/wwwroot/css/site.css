@@ -3448,37 +3448,44 @@ body {
   width: 100%;
   position: relative;
   justify-content: space-between;
+  gap: 20px;
 }
 
 /* Левая навигация */
 .navbar-nav-left {
-  flex: 1;
+  flex: 0 1 auto;
   justify-content: flex-start;
   display: flex;
   align-items: center;
   gap: 5px;
+  min-width: 0;
+  margin-right: auto;
+  padding-right: 20px;
 }
 
 /* Соцсети по центру (десктоп) */
 .navbar-center-social {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 10px;
   white-space: nowrap;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Правая навигация */
 .navbar-nav-right {
-  flex: 1;
+  flex: 0 1 auto;
   justify-content: flex-end;
   display: flex;
   align-items: center;
   gap: 5px;
   margin-left: auto;
+  min-width: 0;
+  padding-left: 20px;
 }
 
 body {
@@ -3498,20 +3505,9 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-.navbar-nav-left {
-  flex: 1;
-  justify-content: flex-start;
-  min-width: 0;
-  margin-right: auto;
-}
-
-.navbar-nav-right {
-  flex: 1;
-  justify-content: flex-end;
-  min-width: 0;
-  margin-left: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 
