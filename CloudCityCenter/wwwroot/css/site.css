@@ -4159,8 +4159,8 @@ body {
     grid-template-columns: auto 1fr auto !important;
     grid-template-rows: 1fr !important;
     align-items: center !important;
-    gap: 10px !important;
-    padding: 0 10px !important;
+    gap: 15px !important;
+    padding: 0 15px !important;
     width: 100% !important;
     height: 100% !important;
     min-height: 60px !important;
@@ -4178,6 +4178,7 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     align-self: center !important;
+    margin-right: 10px !important;
   }
 
   .navbar-modern .container-fluid > .mobile-nav-center {
@@ -4186,10 +4187,16 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 15px !important;
     z-index: 1 !important;
     position: relative !important;
     align-self: center !important;
+    padding: 0 15px !important;
+  }
+  
+  .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .navbar-modern .container-fluid > .mobile-nav-right {
@@ -4197,11 +4204,17 @@ body {
     grid-row: 1 !important;
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 15px !important;
     z-index: 10 !important;
     position: relative !important;
     justify-content: flex-end !important;
     align-self: center !important;
+    margin-left: 10px !important;
+  }
+  
+  .navbar-modern .container-fluid > .mobile-nav-right .nav-link {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
