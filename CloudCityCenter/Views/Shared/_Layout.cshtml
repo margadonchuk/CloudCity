@@ -39,12 +39,13 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
             <div class="container-fluid">
+                <!-- Логотип -->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- Social Media для мобильной версии -->
-                <div class="d-flex align-items-center justify-content-center gap-2 d-lg-none">
+                <!-- Мобильная версия: Логотип / Instagram / Telegram / WhatsApp / Корзина / Меню -->
+                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-items">
                     <a class="nav-link instagram-link-mobile" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
                         <div class="instagram-wrapper-mobile">
                             <i class="bi bi-instagram instagram-icon-mobile"></i>
@@ -60,17 +61,14 @@
                             <i class="bi bi-whatsapp whatsapp-icon-mobile"></i>
                         </div>
                     </a>
+                    <a class="nav-link cart-link-mobile position-relative" asp-controller="Cart" asp-action="Index">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
-
-                <!-- Cart для мобильной версии -->
-                <a class="nav-link cart-link-mobile d-lg-none position-relative" asp-controller="Cart" asp-action="Index">
-                    <i class="bi bi-cart3"></i>
-                    <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
-                </a>
-
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
                 <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
                     <div class="d-flex align-items-center w-100 position-relative">

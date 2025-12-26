@@ -3768,6 +3768,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .instagram-wrapper-mobile {
@@ -3805,6 +3806,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .whatsapp-wrapper-mobile {
@@ -3843,7 +3845,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  order: 2;
+  flex-shrink: 0;
 }
 
 .telegram-bot-wrapper-mobile {
@@ -4122,8 +4124,8 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
     padding: 0 15px !important;
     width: 100% !important;
     height: 100% !important;
@@ -4145,6 +4147,28 @@ body {
     z-index: 2;
     order: 1;
     width: auto !important;
+    margin-right: 0 !important;
+  }
+
+  .mobile-nav-items {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-nav-items .cart-link-mobile {
+    padding: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .mobile-nav-items .navbar-toggler {
+    padding: 8px !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 4px !important;
   }
 
   .navbar-logo {
