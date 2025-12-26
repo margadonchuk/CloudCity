@@ -3701,7 +3701,10 @@ body {
 /* Instagram для мобильной версии */
 .instagram-link-mobile {
   padding: 0 !important;
-  margin: 0 5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .instagram-wrapper-mobile {
@@ -3710,6 +3713,8 @@ body {
   justify-content: center;
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
   border-radius: 50%;
   color: white !important;
@@ -3727,12 +3732,16 @@ body {
   font-size: 1.2rem;
   color: white;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  line-height: 1;
 }
 
 /* WhatsApp для мобильной версии */
 .whatsapp-link-mobile {
   padding: 0 !important;
-  margin: 0 5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .whatsapp-wrapper-mobile {
@@ -3741,6 +3750,8 @@ body {
   justify-content: center;
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   border-radius: 50%;
   color: white !important;
@@ -3758,12 +3769,17 @@ body {
   font-size: 1.2rem;
   color: white;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  line-height: 1;
 }
 
 /* Telegram Bot для мобильной версии */
-.telegram-bot-link-mobile {
+.telegram-bot-link-mobile,
+.telegram-bot-link-offcanvas {
   padding: 0 !important;
-  margin: 0 10px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   order: 2;
 }
 
@@ -3773,6 +3789,8 @@ body {
   justify-content: center;
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   background: linear-gradient(135deg, #0088cc, #0066aa);
   border-radius: 50%;
   color: white !important;
@@ -3800,11 +3818,12 @@ body {
 }
 
 .telegram-icon-mobile {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   position: relative;
   z-index: 1;
   color: white;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  line-height: 1;
 }
 
 .telegram-bot-text-mobile {
