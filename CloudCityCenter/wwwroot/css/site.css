@@ -4097,7 +4097,7 @@ body {
 }
 
 /* ============================================
-   МОБИЛЬНАЯ НАВИГАЦИЯ - ЧИСТАЯ СТРУКТУРА
+   МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
 @media (max-width: 991px) {
   .navbar-modern {
@@ -4122,7 +4122,7 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 16px !important;
+    padding: 0 20px !important;
     width: 100% !important;
     position: relative !important;
     height: 100% !important;
@@ -4139,9 +4139,9 @@ body {
   }
   
   .navbar-modern .container-fluid > .navbar-brand img {
-    height: 42px !important;
+    height: 45px !important;
     width: auto !important;
-    max-width: 130px !important;
+    max-width: 140px !important;
     display: block !important;
   }
 
@@ -4153,7 +4153,7 @@ body {
     transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
-    gap: 16px !important;
+    gap: 20px !important;
     z-index: 5 !important;
   }
   
@@ -4167,7 +4167,7 @@ body {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 14px !important;
+    gap: 16px !important;
     z-index: 10 !important;
   }
 
@@ -4185,7 +4185,7 @@ body {
   }
 
   .mobile-nav-right .navbar-toggler {
-    padding: 8px 10px !important;
+    padding: 8px 12px !important;
     border: 1px solid #ddd !important;
     border-radius: 5px !important;
   }
