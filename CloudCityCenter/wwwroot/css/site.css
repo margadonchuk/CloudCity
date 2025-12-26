@@ -4102,8 +4102,6 @@ body {
     min-height: 70px !important;
     height: 70px !important;
     padding: 10px 0 !important;
-    display: flex !important;
-    align-items: center !important;
   }
   
   body {
@@ -4121,29 +4119,32 @@ body {
     display: none !important;
   }
 
-  /* ПРОСТАЯ СТРУКТУРА МОБИЛЬНОЙ НАВИГАЦИИ */
+  /* ЧИСТАЯ СТРУКТУРА: Логотип | Соцсети | Корзина+Меню */
   .navbar-modern .container-fluid {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 15px !important;
+    padding: 0 12px !important;
     width: 100% !important;
     position: relative !important;
+    height: 100% !important;
   }
   
   /* 1. ЛОГОТИП СЛЕВА */
   .navbar-modern .container-fluid > .navbar-brand {
     flex: 0 0 auto !important;
-    display: block !important;
+    display: flex !important;
+    align-items: center !important;
     margin: 0 !important;
     padding: 0 !important;
     z-index: 10 !important;
+    order: 1 !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand img {
-    height: 40px !important;
+    height: 38px !important;
     width: auto !important;
-    max-width: 120px !important;
+    max-width: 110px !important;
     display: block !important;
   }
 
@@ -4155,8 +4156,9 @@ body {
     transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 10px !important;
     z-index: 5 !important;
+    order: 2 !important;
   }
 
   /* 3. КОРЗИНА И МЕНЮ СПРАВА */
@@ -4164,27 +4166,28 @@ body {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 10px !important;
     z-index: 10 !important;
+    order: 3 !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 8px !important;
+    padding: 6px 8px !important;
     display: flex !important;
     align-items: center !important;
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
     color: #333 !important;
     text-decoration: none !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
-    padding: 8px 10px !important;
+    padding: 6px 10px !important;
     border: 1px solid #ddd !important;
-    border-radius: 5px !important;
+    border-radius: 4px !important;
   }
 }
   
