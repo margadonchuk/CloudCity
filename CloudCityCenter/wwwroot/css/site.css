@@ -4114,6 +4114,13 @@ body {
     width: 100% !important;
     position: relative !important;
     min-height: 70px !important;
+    height: 70px !important;
+    max-height: 70px !important;
+  }
+  
+  /* Убираем все лишние отступы и позиционирование */
+  .navbar-modern .container-fluid > * {
+    position: relative !important;
   }
   
   /* ЗОНА 1: ЛОГОТИП СЛЕВА */
@@ -4125,6 +4132,9 @@ body {
     padding: 0 !important;
     z-index: 10 !important;
     order: 1 !important;
+    position: relative !important;
+    width: auto !important;
+    max-width: 140px !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand img,
@@ -4133,10 +4143,16 @@ body {
     width: auto !important;
     max-width: 140px !important;
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
 
   /* ЗОНА 2: СОЦСЕТИ ПО ЦЕНТРУ */
-  .navbar-modern .container-fluid > .mobile-nav-center {
+  .navbar-modern .container-fluid > .mobile-nav-center.d-lg-none,
+  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-center,
+  .navbar-modern .container-fluid > .d-flex.mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
@@ -4148,6 +4164,10 @@ body {
     gap: 18px !important;
     z-index: 5 !important;
     order: 2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
   }
   
   .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
@@ -4156,6 +4176,8 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
   }
   
   /* Иконки соцсетей в мобильной версии */
@@ -4166,13 +4188,18 @@ body {
     height: 40px !important;
     min-width: 40px !important;
     min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    flex-shrink: 0 !important;
   }
 
   /* ЗОНА 3: КОРЗИНА И МЕНЮ СПРАВА */
-  .navbar-modern .container-fluid > .mobile-nav-right {
+  .navbar-modern .container-fluid > .mobile-nav-right.d-lg-none,
+  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-right,
+  .navbar-modern .container-fluid > .d-flex.mobile-nav-right {
     flex: 0 0 auto !important;
     display: flex !important;
     flex-direction: row !important;
@@ -4182,6 +4209,9 @@ body {
     z-index: 10 !important;
     order: 3 !important;
     margin-left: auto !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
@@ -4206,6 +4236,24 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+  }
+  
+  /* Дополнительные переопределения для гарантии */
+  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-center {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .navbar-modern .container-fluid > .d-lg-none.mobile-nav-right {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Убираем все возможные конфликты с Bootstrap */
+  .navbar-modern .container-fluid > .d-lg-none {
+    flex-shrink: 0 !important;
   }
 }
   
