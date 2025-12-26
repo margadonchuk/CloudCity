@@ -9,11 +9,13 @@ public class AccountController : Controller
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+    public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _roleManager = roleManager;
     }
 
     [HttpGet]
@@ -32,6 +34,19 @@ public class AccountController : Controller
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                // Автоматически назначаем роль Admin для support@cloudcity.center
+                if (model.Email.Equals("support@cloudcity.center", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Убеждаемся, что роль Admin существует
+                    if (!await _roleManager.RoleExistsAsync("Admin"))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole("Admin"));
+                    }
+                    
+                    // Назначаем роль Admin
+                    await _userManager.AddToRoleAsync(user, "Admin");
+                }
+                
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Profile");
             }
