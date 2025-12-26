@@ -4141,26 +4141,34 @@ body {
     margin-top: 0 !important;
   }
 
+  /* Мобильная навигация - простая и чистая структура */
   .navbar-modern .container-fluid {
     display: flex !important;
-    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 15px !important;
+    padding: 0 12px !important;
     width: 100% !important;
-    height: 100% !important;
-    min-height: 70px !important;
     position: relative !important;
   }
   
+  /* Логотип слева */
   .navbar-modern .container-fluid > .navbar-brand {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    margin-right: 10px !important;
+    margin-right: auto !important;
     z-index: 10 !important;
   }
+  
+  .navbar-modern .container-fluid > .navbar-brand img {
+    height: 38px !important;
+    width: auto !important;
+    max-width: 130px !important;
+    display: block !important;
+  }
 
+  /* Соцсети по центру */
   .navbar-modern .container-fluid > .mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
@@ -4168,57 +4176,38 @@ body {
     transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    z-index: 1 !important;
+    gap: 10px !important;
+    z-index: 5 !important;
   }
 
+  /* Корзина и меню справа */
   .navbar-modern .container-fluid > .mobile-nav-right {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 10px !important;
     z-index: 10 !important;
     margin-left: auto !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 8px !important;
+    padding: 6px 10px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
     color: #333 !important;
     text-decoration: none !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
-    padding: 10px 12px !important;
-    border: 1px solid #dee2e6 !important;
-    border-radius: 6px !important;
-  }
-
-  .navbar-logo {
-    height: 40px !important;
-    width: auto !important;
-    max-width: 120px !important;
-    display: block !important;
-  }
-  
-  .navbar-modern .container-fluid > .navbar-brand {
-    display: flex !important;
-    align-items: center !important;
-  }
-  
-  /* Улучшенные отступы для кнопок соцсетей */
-  .mobile-nav-center .instagram-wrapper-mobile,
-  .mobile-nav-center .telegram-bot-wrapper-mobile,
-  .mobile-nav-center .whatsapp-wrapper-mobile {
-    margin: 0 5px !important;
+    padding: 8px 10px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;
   }
 
   
