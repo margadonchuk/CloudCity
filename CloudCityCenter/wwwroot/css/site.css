@@ -3822,7 +3822,7 @@ body {
 /* WhatsApp для мобильной версии */
 .whatsapp-link-mobile {
   padding: 0 !important;
-  margin: 0;
+  margin: 0 4px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3861,7 +3861,7 @@ body {
 .telegram-bot-link-mobile,
 .telegram-bot-link-offcanvas {
   padding: 0 !important;
-  margin: 0;
+  margin: 0 4px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4124,7 +4124,7 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 12px !important;
+    padding: 0 15px !important;
     width: 100% !important;
     position: relative !important;
     height: 100% !important;
@@ -4137,14 +4137,15 @@ body {
     align-items: center !important;
     margin: 0 !important;
     padding: 0 !important;
+    margin-right: 20px !important;
     z-index: 10 !important;
     order: 1 !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand img {
-    height: 38px !important;
+    height: 40px !important;
     width: auto !important;
-    max-width: 110px !important;
+    max-width: 120px !important;
     display: block !important;
   }
 
@@ -4156,9 +4157,14 @@ body {
     transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 20px !important;
     z-index: 5 !important;
     order: 2 !important;
+  }
+  
+  .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
+    margin: 0 6px !important;
+    padding: 0 !important;
   }
 
   /* 3. КОРЗИНА И МЕНЮ СПРАВА */
@@ -4166,13 +4172,14 @@ body {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 18px !important;
     z-index: 10 !important;
     order: 3 !important;
+    margin-left: 20px !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 6px 8px !important;
+    padding: 8px 10px !important;
     display: flex !important;
     align-items: center !important;
     font-size: 1.5rem !important;
@@ -4185,7 +4192,7 @@ body {
   }
 
   .mobile-nav-right .navbar-toggler {
-    padding: 6px 10px !important;
+    padding: 8px 12px !important;
     border: 1px solid #ddd !important;
     border-radius: 4px !important;
   }
