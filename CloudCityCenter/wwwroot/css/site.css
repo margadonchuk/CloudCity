@@ -4146,7 +4146,6 @@ body {
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 15px !important;
     padding: 0 15px !important;
     width: 100% !important;
     height: 100% !important;
@@ -4158,70 +4157,43 @@ body {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    margin-right: 10px !important;
     z-index: 10 !important;
-    position: relative !important;
-    max-width: 140px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    order: 1 !important;
   }
 
   .navbar-modern .container-fluid > .mobile-nav-center {
     position: absolute !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 15px !important;
+    gap: 12px !important;
     z-index: 1 !important;
-    padding: 0 !important;
-    order: 2 !important;
-  }
-  
-  .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
   .navbar-modern .container-fluid > .mobile-nav-right {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 15px !important;
+    gap: 12px !important;
     z-index: 10 !important;
-    position: relative !important;
-    justify-content: flex-end !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    order: 3 !important;
-  }
-  
-  .navbar-modern .container-fluid > .mobile-nav-right .nav-link {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin-left: auto !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 8px 12px !important;
+    padding: 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
     color: #333 !important;
     text-decoration: none !important;
-    border-radius: 6px !important;
-    transition: all 0.3s ease !important;
-  }
-  
-  .mobile-nav-right .cart-link-mobile:hover {
-    background-color: #f0f0f0 !important;
-    color: #0d6efd !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
@@ -4231,29 +4203,15 @@ body {
   }
 
   .navbar-logo {
-    height: 45px !important;
+    height: 40px !important;
     width: auto !important;
-    max-width: 140px !important;
+    max-width: 120px !important;
     display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    object-fit: contain !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand {
     display: flex !important;
     align-items: center !important;
-    height: 100% !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    flex-shrink: 0 !important;
-  }
-  
-  /* Убеждаемся что логотип виден */
-  .navbar-brand img {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
   }
   
   /* Улучшенные отступы для кнопок соцсетей */
