@@ -94,6 +94,11 @@
                                 <i class="bi bi-gear me-1"></i>@Localizer["Services"]
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-instagram me-1"></i>Instagram
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Center - Telegram Bot -->
@@ -131,6 +136,11 @@
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">
                                 <i class="bi bi-envelope me-1"></i>@Localizer["Contact"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-whatsapp me-1"></i>WhatsApp
                             </a>
                         </li>
                         <!-- Language Switcher -->
@@ -190,7 +200,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link admin-link" asp-area="Admin" asp-controller="Servers" asp-action="Index">
+                                <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
                                     <i class="bi bi-shield-check me-1"></i>Admin
                                 </a>
                             </li>
@@ -233,6 +243,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer" data-offcanvas-close>
+                            <i class="bi bi-instagram me-2"></i>Instagram
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-server me-2"></i>@Localizer["Servers"]
                         </a>
@@ -260,6 +275,11 @@
                     <li class="nav-item">
                         <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-envelope me-2"></i>@Localizer["Contact"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer" data-offcanvas-close>
+                            <i class="bi bi-whatsapp me-2"></i>WhatsApp
                         </a>
                     </li>
                     <li class="nav-item">
@@ -294,7 +314,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link admin-link" asp-area="Admin" asp-controller="Servers" asp-action="Index" data-offcanvas-close>
+                            <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index" data-offcanvas-close>
                                 <i class="bi bi-shield-check me-2"></i>Admin
                             </a>
                         </li>
