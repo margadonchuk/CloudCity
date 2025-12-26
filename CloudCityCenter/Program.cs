@@ -264,6 +264,10 @@ using (var scope = app.Services.CreateScope())
             context.Database.EnsureCreated();
         }
         
+        // Создаем роли и назначаем Admin для support@cloudcity.center
+        logger.LogInformation("Ensuring roles exist and assigning admin role...");
+        await SeedData.RunAsync(services, null);
+        
         // Загружаем данные только если товаров нет
         var productsCount = await context.Products.CountAsync();
         if (productsCount == 0)

@@ -27,12 +27,22 @@ public static class SeedData
             }
         }
 
+        // Автоматически назначаем роль Admin для support@cloudcity.center
+        const string supportEmail = "support@cloudcity.center";
+        var supportUser = await userManager.FindByEmailAsync(supportEmail);
+        if (supportUser != null && !await userManager.IsInRoleAsync(supportUser, "Admin"))
+        {
+            await userManager.AddToRoleAsync(supportUser, "Admin");
+            Console.WriteLine($"✓ Роль Admin назначена для {supportEmail}");
+        }
+
         if (!string.IsNullOrWhiteSpace(adminEmail))
         {
             var user = await userManager.FindByEmailAsync(adminEmail);
             if (user != null && !await userManager.IsInRoleAsync(user, "Admin"))
             {
                 await userManager.AddToRoleAsync(user, "Admin");
+                Console.WriteLine($"✓ Роль Admin назначена для {adminEmail}");
             }
         }
     }
