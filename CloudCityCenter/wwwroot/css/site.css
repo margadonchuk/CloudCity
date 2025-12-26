@@ -3558,6 +3558,208 @@ body {
   margin-left: 2px;
 }
 
+/* Instagram Link Styles */
+.instagram-link {
+  padding: 0 !important;
+  margin: 0 5px;
+}
+
+.instagram-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  border-radius: 30px;
+  color: white !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(131, 58, 180, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.instagram-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
+  animation: instagram-shine 3s ease-in-out infinite;
+}
+
+@keyframes instagram-shine {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+.instagram-wrapper:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(131, 58, 180, 0.5);
+  background: linear-gradient(135deg, #9b4dd4, #ff2d2d, #ffc055);
+}
+
+.instagram-icon {
+  font-size: 1.4rem;
+  position: relative;
+  z-index: 1;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.instagram-text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.instagram-arrow {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  margin-left: 2px;
+}
+
+/* WhatsApp Link Styles */
+.whatsapp-link {
+  padding: 0 !important;
+  margin: 0 5px;
+}
+
+.whatsapp-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border-radius: 30px;
+  color: white !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.whatsapp-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
+  animation: whatsapp-shine 3s ease-in-out infinite;
+}
+
+@keyframes whatsapp-shine {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+.whatsapp-wrapper:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+  background: linear-gradient(135deg, #2FE576, #15A085);
+}
+
+.whatsapp-icon {
+  font-size: 1.4rem;
+  position: relative;
+  z-index: 1;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.whatsapp-text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.whatsapp-arrow {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  margin-left: 2px;
+}
+
+/* Instagram для мобильной версии */
+.instagram-link-mobile {
+  padding: 0 !important;
+  margin: 0 5px;
+}
+
+.instagram-wrapper-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  border-radius: 50%;
+  color: white !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 15px rgba(131, 58, 180, 0.35);
+}
+
+.instagram-wrapper-mobile:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 5px 20px rgba(131, 58, 180, 0.5);
+  background: linear-gradient(135deg, #9b4dd4, #ff2d2d, #ffc055);
+}
+
+.instagram-icon-mobile {
+  font-size: 1.2rem;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* WhatsApp для мобильной версии */
+.whatsapp-link-mobile {
+  padding: 0 !important;
+  margin: 0 5px;
+}
+
+.whatsapp-wrapper-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border-radius: 50%;
+  color: white !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 15px rgba(37, 211, 102, 0.35);
+}
+
+.whatsapp-wrapper-mobile:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+  background: linear-gradient(135deg, #2FE576, #15A085);
+}
+
+.whatsapp-icon-mobile {
+  font-size: 1.2rem;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
 /* Telegram Bot для мобильной версии */
 .telegram-bot-link-mobile {
   padding: 0 !important;
@@ -3568,14 +3770,14 @@ body {
 .telegram-bot-wrapper-mobile {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, #0088cc, #0066aa);
-  border-radius: 25px;
+  border-radius: 50%;
   color: white !important;
-  font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 136, 204, 0.35);
+  box-shadow: 0 3px 15px rgba(0, 136, 204, 0.35);
   position: relative;
   overflow: hidden;
 }
