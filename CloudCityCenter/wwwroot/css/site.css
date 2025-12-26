@@ -3440,6 +3440,8 @@ body {
   align-items: center;
   position: relative;
   width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .navbar-modern .container-fluid > .collapse > div {
@@ -3448,7 +3450,10 @@ body {
   width: 100%;
   position: relative;
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  min-width: 0;
 }
 
 /* Левая навигация */
@@ -3459,8 +3464,10 @@ body {
   align-items: center;
   gap: 5px;
   min-width: 0;
-  margin-right: auto;
-  padding-right: 20px;
+  max-width: 40%;
+  padding-right: 15px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Соцсети по центру (десктоп) */
@@ -3470,8 +3477,8 @@ body {
   align-items: center;
   gap: 10px;
   white-space: nowrap;
-  margin: 0 auto;
-  padding: 0 20px;
+  margin: 0;
+  padding: 0 15px;
   position: relative;
   z-index: 1;
 }
@@ -3483,9 +3490,11 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  margin-left: auto;
   min-width: 0;
-  padding-left: 20px;
+  max-width: 40%;
+  padding-left: 15px;
+  position: relative;
+  z-index: 2;
 }
 
 body {
