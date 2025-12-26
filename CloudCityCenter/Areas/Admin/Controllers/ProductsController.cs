@@ -91,11 +91,11 @@ public class ProductsController : Controller
         }
 
         // Проверяем уникальность slug
-        var existingProduct = await _context.Products
+        var productWithSameSlug = await _context.Products
             .AsNoTracking()
             .FirstOrDefaultAsync(p => p.Slug == product.Slug && p.Id != product.Id);
         
-        if (existingProduct != null)
+        if (productWithSameSlug != null)
         {
             ModelState.AddModelError("Slug", "Slug already exists.");
             return View(product);
