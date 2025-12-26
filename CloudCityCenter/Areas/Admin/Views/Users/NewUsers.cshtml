@@ -33,7 +33,7 @@
             <td>@(user.PhoneNumber ?? "N/A")</td>
             <td>@(hasOrders ? "Yes" : "No")</td>
             <td>
-                <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Details</a>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Details</a>
             </td>
         </tr>
     }
@@ -41,7 +41,7 @@
 </table>
 
 <div class="mt-3">
-    <a asp-action="Customers" class="btn btn-primary">View Customers</a>
-    <a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back to Products</a>
+    <a asp-area="Admin" asp-controller="Users" asp-action="Customers" class="btn btn-primary">View Customers</a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back to Products</a>
 </div>
 
