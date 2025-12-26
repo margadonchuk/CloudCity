@@ -3775,10 +3775,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
   border-radius: 50%;
   color: white !important;
@@ -3813,10 +3813,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   border-radius: 50%;
   color: white !important;
@@ -3852,10 +3852,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
   background: linear-gradient(135deg, #0088cc, #0066aa);
   border-radius: 50%;
   color: white !important;
@@ -4124,9 +4124,9 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 10px !important;
-    padding: 0 15px !important;
+    justify-content: space-between !important;
+    gap: 5px !important;
+    padding: 0 10px !important;
     width: 100% !important;
     height: 100% !important;
     position: relative !important;
@@ -4147,10 +4147,34 @@ body {
     z-index: 2;
     order: 1;
     width: auto !important;
-    margin-right: 0 !important;
   }
 
-  .mobile-nav-items {
+  .mobile-nav-center {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Убеждаемся, что логотип не перекрывается */
+  .navbar-modern .container-fluid > .navbar-brand {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 120px !important;
+  }
+
+  /* Убеждаемся, что правая часть не перекрывается */
+  .mobile-nav-right {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .mobile-nav-right {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
@@ -4158,14 +4182,14 @@ body {
     flex-shrink: 0 !important;
   }
 
-  .mobile-nav-items .cart-link-mobile {
+  .mobile-nav-right .cart-link-mobile {
     padding: 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
 
-  .mobile-nav-items .navbar-toggler {
+  .mobile-nav-right .navbar-toggler {
     padding: 8px !important;
     border: 1px solid #dee2e6 !important;
     border-radius: 4px !important;
