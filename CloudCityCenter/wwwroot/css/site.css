@@ -3409,6 +3409,32 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 0 15px;
+  position: relative;
+}
+
+.navbar-modern .container-fluid > .navbar-brand {
+  order: 1;
+  flex: 0 0 auto;
+  margin-right: auto;
+}
+
+.navbar-modern .container-fluid > .collapse {
+  order: 2;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.navbar-modern .container-fluid > .collapse .navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  margin: 0;
 }
 
 body {
