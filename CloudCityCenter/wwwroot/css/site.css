@@ -3415,7 +3415,9 @@ body {
 .navbar-modern .container-fluid > .navbar-brand {
   order: 1;
   flex: 0 0 auto;
-  margin-right: auto;
+  z-index: 10;
+  position: relative;
+  margin-right: 20px;
 }
 
 .navbar-modern .container-fluid > .collapse {
@@ -3426,15 +3428,39 @@ body {
   align-items: center;
   position: relative;
   width: 100%;
+  min-width: 0;
 }
 
-.navbar-modern .container-fluid > .collapse .navbar-center {
+.navbar-modern .container-fluid > .collapse > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.navbar-modern .container-fluid > .collapse .navbar-center-social {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+  transform: translateX(-50%);
+  z-index: 5;
   margin: 0;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+/* Убеждаемся, что логотип не перекрывается */
+.navbar-modern .container-fluid > .navbar-brand {
+  max-width: 200px;
+  overflow: hidden;
+}
+
+.navbar-modern .container-fluid > .collapse > div {
+  padding-left: 220px;
+  padding-right: 220px;
+}
+
+.navbar-modern .container-fluid > .collapse > div {
+  min-height: 0;
 }
 
 body {
@@ -3459,11 +3485,15 @@ body {
 .navbar-nav-left {
   flex: 1;
   justify-content: flex-start;
+  min-width: 0;
+  margin-right: auto;
 }
 
 .navbar-nav-right {
   flex: 1;
   justify-content: flex-end;
+  min-width: 0;
+  margin-left: auto;
 }
 
 .navbar-center {
@@ -3472,6 +3502,13 @@ body {
   align-items: center;
   flex: 0 0 auto;
   margin: 0 20px;
+}
+
+.navbar-center-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
 .nav-link {

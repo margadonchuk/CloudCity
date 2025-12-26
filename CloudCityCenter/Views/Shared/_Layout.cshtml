@@ -73,64 +73,65 @@
                 </button>
 
                 <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
-                    <!-- Left Navigation -->
-                    <ul class="navbar-nav navbar-nav-left">
-                        <li class="nav-item">
-                            <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
-                                <i class="bi bi-server me-1"></i>@Localizer["Servers"]
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
-                                <i class="bi bi-globe me-1"></i>@Localizer["Hosting"]
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
-                                <i class="bi bi-shield-lock me-1"></i>@Localizer["VPN"]
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
-                                <i class="bi bi-hdd-stack me-1"></i>@Localizer["VPS"]
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
-                                <i class="bi bi-display me-1"></i>@Localizer["VDI"]
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
-                                <i class="bi bi-gear me-1"></i>@Localizer["Services"]
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="d-flex align-items-center w-100 position-relative">
+                        <!-- Left Navigation -->
+                        <ul class="navbar-nav navbar-nav-left">
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
+                                    <i class="bi bi-server me-1"></i>@Localizer["Servers"]
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
+                                    <i class="bi bi-globe me-1"></i>@Localizer["Hosting"]
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
+                                    <i class="bi bi-shield-lock me-1"></i>@Localizer["VPN"]
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
+                                    <i class="bi bi-hdd-stack me-1"></i>@Localizer["VPS"]
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
+                                    <i class="bi bi-display me-1"></i>@Localizer["VDI"]
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
+                                    <i class="bi bi-gear me-1"></i>@Localizer["Services"]
+                                </a>
+                            </li>
+                        </ul>
 
-                    <!-- Center - Social Media Links -->
-                    <div class="navbar-center d-none d-lg-flex align-items-center gap-2">
-                        <a class="nav-link instagram-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
-                            <div class="instagram-wrapper">
-                                <i class="bi bi-instagram instagram-icon"></i>
-                                <span class="instagram-text">Instagram</span>
-                                <i class="bi bi-box-arrow-up-right instagram-arrow"></i>
-                            </div>
-                        </a>
-                        <a class="nav-link telegram-bot-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
-                            <div class="telegram-bot-wrapper">
-                                <i class="bi bi-telegram telegram-icon"></i>
-                                <span class="telegram-bot-text">Telegram</span>
-                                <i class="bi bi-box-arrow-up-right telegram-bot-arrow"></i>
-                            </div>
-                        </a>
-                        <a class="nav-link whatsapp-link" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer">
-                            <div class="whatsapp-wrapper">
-                                <i class="bi bi-whatsapp whatsapp-icon"></i>
-                                <span class="whatsapp-text">WhatsApp</span>
-                                <i class="bi bi-box-arrow-up-right whatsapp-arrow"></i>
-                            </div>
-                        </a>
-                    </div>
+                        <!-- Center - Social Media Links -->
+                        <div class="navbar-center-social d-none d-lg-flex align-items-center gap-2">
+                            <a class="nav-link instagram-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
+                                <div class="instagram-wrapper">
+                                    <i class="bi bi-instagram instagram-icon"></i>
+                                    <span class="instagram-text">Instagram</span>
+                                    <i class="bi bi-box-arrow-up-right instagram-arrow"></i>
+                                </div>
+                            </a>
+                            <a class="nav-link telegram-bot-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+                                <div class="telegram-bot-wrapper">
+                                    <i class="bi bi-telegram telegram-icon"></i>
+                                    <span class="telegram-bot-text">Telegram</span>
+                                    <i class="bi bi-box-arrow-up-right telegram-bot-arrow"></i>
+                                </div>
+                            </a>
+                            <a class="nav-link whatsapp-link" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer">
+                                <div class="whatsapp-wrapper">
+                                    <i class="bi bi-whatsapp whatsapp-icon"></i>
+                                    <span class="whatsapp-text">WhatsApp</span>
+                                    <i class="bi bi-box-arrow-up-right whatsapp-arrow"></i>
+                                </div>
+                            </a>
+                        </div>
 
                     <!-- Right Navigation -->
                     <ul class="navbar-nav navbar-nav-right">
@@ -221,6 +222,7 @@
                             </li>
                         }
                     </ul>
+                    </div>
                 </div>
             </div>
         </nav>
