@@ -3822,7 +3822,7 @@ body {
 /* WhatsApp для мобильной версии */
 .whatsapp-link-mobile {
   padding: 0 !important;
-  margin: 0 4px !important;
+  margin: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3833,10 +3833,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
-  min-height: 38px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   border-radius: 50%;
   color: white !important;
@@ -3861,7 +3861,7 @@ body {
 .telegram-bot-link-mobile,
 .telegram-bot-link-offcanvas {
   padding: 0 !important;
-  margin: 0 4px !important;
+  margin: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3872,10 +3872,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
-  min-height: 38px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   background: linear-gradient(135deg, #0088cc, #0066aa);
   border-radius: 50%;
   color: white !important;
@@ -4096,11 +4096,12 @@ body {
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
-/* Mobile Menu */
+/* ============================================
+   МОБИЛЬНАЯ НАВИГАЦИЯ - ЧИСТАЯ СТРУКТУРА
+   ============================================ */
 @media (max-width: 991px) {
   .navbar-modern {
     min-height: 70px !important;
-    height: 70px !important;
     padding: 10px 0 !important;
   }
   
@@ -4109,22 +4110,19 @@ body {
   }
   
   /* Скрываем десктопное меню */
-  .navbar-collapse.d-none.d-lg-block {
-    display: none !important;
-  }
-  
+  .navbar-collapse.d-none.d-lg-block,
   .navbar-nav-left,
   .navbar-nav-right,
   .navbar-center {
     display: none !important;
   }
 
-  /* ЧИСТАЯ СТРУКТУРА: Логотип | Соцсети | Корзина+Меню */
+  /* ОСНОВНОЙ КОНТЕЙНЕР */
   .navbar-modern .container-fluid {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 15px !important;
+    padding: 0 16px !important;
     width: 100% !important;
     position: relative !important;
     height: 100% !important;
@@ -4137,15 +4135,13 @@ body {
     align-items: center !important;
     margin: 0 !important;
     padding: 0 !important;
-    margin-right: 20px !important;
     z-index: 10 !important;
-    order: 1 !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand img {
-    height: 40px !important;
+    height: 42px !important;
     width: auto !important;
-    max-width: 120px !important;
+    max-width: 130px !important;
     display: block !important;
   }
 
@@ -4157,13 +4153,12 @@ body {
     transform: translate(-50%, -50%) !important;
     display: flex !important;
     align-items: center !important;
-    gap: 20px !important;
+    gap: 16px !important;
     z-index: 5 !important;
-    order: 2 !important;
   }
   
   .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
-    margin: 0 6px !important;
+    margin: 0 !important;
     padding: 0 !important;
   }
 
@@ -4172,29 +4167,27 @@ body {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 18px !important;
+    gap: 14px !important;
     z-index: 10 !important;
-    order: 3 !important;
-    margin-left: 20px !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 8px 10px !important;
+    padding: 8px !important;
     display: flex !important;
     align-items: center !important;
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
     color: #333 !important;
     text-decoration: none !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
-    padding: 8px 12px !important;
+    padding: 8px 10px !important;
     border: 1px solid #ddd !important;
-    border-radius: 4px !important;
+    border-radius: 5px !important;
   }
 }
   
