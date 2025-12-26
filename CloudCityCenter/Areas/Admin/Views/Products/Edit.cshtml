@@ -1,3 +1,4 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model CloudCityCenter.Models.Product
 
 @{
@@ -10,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Edit">
+        <form asp-area="Admin" asp-controller="Products" asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             
@@ -68,7 +69,7 @@
             
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
         </form>
     </div>

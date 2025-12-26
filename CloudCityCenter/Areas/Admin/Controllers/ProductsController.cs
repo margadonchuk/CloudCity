@@ -103,7 +103,23 @@ public class ProductsController : Controller
 
         try
         {
-            _context.Update(product);
+            var existingProduct = await _context.Products.FindAsync(id);
+            if (existingProduct == null)
+            {
+                return NotFound();
+            }
+
+            // Обновляем свойства
+            existingProduct.Name = product.Name;
+            existingProduct.Slug = product.Slug;
+            existingProduct.Type = product.Type;
+            existingProduct.Location = product.Location;
+            existingProduct.PricePerMonth = product.PricePerMonth;
+            existingProduct.Configuration = product.Configuration;
+            existingProduct.IsAvailable = product.IsAvailable;
+            existingProduct.IsPublished = product.IsPublished;
+            existingProduct.ImageUrl = product.ImageUrl;
+
             await _context.SaveChangesAsync();
             _logger.LogInformation("Product {ProductId} edited", product.Id);
             return RedirectToAction(nameof(Index));
