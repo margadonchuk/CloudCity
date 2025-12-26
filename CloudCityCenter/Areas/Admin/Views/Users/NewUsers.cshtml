@@ -1,0 +1,47 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.EntityFrameworkCore
+@inject CloudCityCenter.Data.ApplicationDbContext Context
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@{
+    ViewData["Title"] = "New Users";
+    Layout = "_Layout";
+}
+
+<h1>New Users</h1>
+
+<p class="text-muted">Recently registered users (last 100)</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Email Confirmed</th>
+            <th>Phone Number</th>
+            <th>Has Orders</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        var hasOrders = Context.Orders.Any(o => o.UserId == user.Id);
+        
+        <tr>
+            <td>@user.Email</td>
+            <td>@(user.EmailConfirmed ? "Yes" : "No")</td>
+            <td>@(user.PhoneNumber ?? "N/A")</td>
+            <td>@(hasOrders ? "Yes" : "No")</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="mt-3">
+    <a asp-action="Customers" class="btn btn-primary">View Customers</a>
+    <a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back to Products</a>
+</div>
+
