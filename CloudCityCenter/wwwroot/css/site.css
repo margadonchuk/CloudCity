@@ -4142,11 +4142,12 @@ body {
   }
 
   .navbar-modern .container-fluid {
-    display: grid !important;
-    grid-template-columns: auto 1fr auto !important;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    gap: 25px !important;
-    padding: 0 20px !important;
+    justify-content: space-between !important;
+    gap: 15px !important;
+    padding: 0 15px !important;
     width: 100% !important;
     height: 100% !important;
     min-height: 70px !important;
@@ -4154,7 +4155,7 @@ body {
   }
   
   .navbar-modern .container-fluid > .navbar-brand {
-    grid-column: 1 !important;
+    flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -4163,40 +4164,38 @@ body {
     max-width: 140px !important;
     margin: 0 !important;
     padding: 0 !important;
+    order: 1 !important;
   }
 
   .navbar-modern .container-fluid > .mobile-nav-center {
-    grid-column: 2 !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 25px !important;
+    gap: 15px !important;
     z-index: 1 !important;
-    position: relative !important;
     padding: 0 !important;
+    order: 2 !important;
   }
   
   .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
     margin: 0 !important;
     padding: 0 !important;
   }
-  
-  .navbar-modern .container-fluid > .mobile-nav-center .instagram-link-mobile,
-  .navbar-modern .container-fluid > .mobile-nav-center .telegram-bot-link-mobile,
-  .navbar-modern .container-fluid > .mobile-nav-center .whatsapp-link-mobile {
-    margin: 0 8px !important;
-  }
 
   .navbar-modern .container-fluid > .mobile-nav-right {
-    grid-column: 3 !important;
+    flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    gap: 20px !important;
+    gap: 15px !important;
     z-index: 10 !important;
     position: relative !important;
     justify-content: flex-end !important;
     margin: 0 !important;
     padding: 0 !important;
+    order: 3 !important;
   }
   
   .navbar-modern .container-fluid > .mobile-nav-right .nav-link {
@@ -4205,11 +4204,24 @@ body {
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 10px !important;
+    padding: 8px 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.2rem !important;
+    font-size: 1.3rem !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .mobile-nav-right .cart-link-mobile:hover {
+    background-color: #f0f0f0 !important;
+    color: #0d6efd !important;
+  }
+  
+  .mobile-nav-right .cart-link-mobile i {
+    font-size: 1.3rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
@@ -4219,16 +4231,29 @@ body {
   }
 
   .navbar-logo {
-    height: 40px !important;
+    height: 45px !important;
     width: auto !important;
-    max-width: none !important;
+    max-width: 140px !important;
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    object-fit: contain !important;
   }
   
   .navbar-modern .container-fluid > .navbar-brand {
     display: flex !important;
     align-items: center !important;
     height: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Убеждаемся что логотип виден */
+  .navbar-brand img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   /* Улучшенные отступы для кнопок соцсетей */
@@ -4463,18 +4488,25 @@ body {
   .offcanvas {
     width: 300px !important;
     z-index: 1045 !important;
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+    background: #ffffff !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
+    visibility: visible !important;
   }
   
   .offcanvas.show {
     visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .offcanvas-backdrop {
     z-index: 1040 !important;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(3px) !important;
+    opacity: 1 !important;
+  }
+  
+  .offcanvas-backdrop.show {
+    opacity: 1 !important;
   }
   
   .offcanvas-header {
