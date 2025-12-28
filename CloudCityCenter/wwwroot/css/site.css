@@ -6529,14 +6529,17 @@ body {
 .dropdown.show .dropdown-menu,
 .language-switcher.dropdown.show .dropdown-menu,
 .language-switcher.dropdown.show .language-dropdown,
-.dropdown.show .language-dropdown {
+.dropdown.show .language-dropdown,
+.nav-item.dropdown.show .dropdown-menu,
+.nav-item.dropdown.show .language-dropdown {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
 /* Дополнительные стили для гарантированного отображения */
-.nav-item.dropdown.show .dropdown-menu {
+.nav-item.dropdown.show .dropdown-menu,
+.nav-item.dropdown.show .language-dropdown {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -6553,6 +6556,9 @@ body {
   white-space: nowrap;
   visibility: visible !important;
   opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 1001 !important;
+  position: relative;
 }
 
 .language-switcher-btn:hover {
@@ -6581,7 +6587,7 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   border: 1px solid #e0e0e0;
   padding: 8px 0;
-  margin-top: 8px;
+  margin-top: 0.125rem !important;
   z-index: 1050 !important;
   position: absolute !important;
   top: 100% !important;
@@ -6589,6 +6595,16 @@ body {
   left: auto !important;
   background-color: white !important;
   pointer-events: auto !important;
+  transform: none !important;
+}
+
+.navbar-nav-right .language-switcher .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+  margin-top: 0.125rem !important;
 }
 
 .language-form {

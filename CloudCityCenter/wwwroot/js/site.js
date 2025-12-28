@@ -317,4 +317,20 @@ document.addEventListener('DOMContentLoaded', function () {
             this.style.animation = 'pin-pulse 2s ease-in-out infinite';
         });
     });
+
+    // Initialize language dropdown
+    const languageDropdown = document.getElementById('languageDropdown');
+    if (languageDropdown && typeof bootstrap !== 'undefined') {
+        // Ensure Bootstrap dropdown is initialized
+        const dropdownElement = languageDropdown.closest('.dropdown');
+        if (dropdownElement) {
+            // Initialize dropdown if not already initialized
+            try {
+                new bootstrap.Dropdown(languageDropdown);
+            } catch (e) {
+                // Dropdown might already be initialized, that's okay
+                console.log('Language dropdown already initialized');
+            }
+        }
+    }
 });
