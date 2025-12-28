@@ -201,6 +201,11 @@
                                     <i class="bi bi-person-circle me-1"></i>@Localizer["Profile"]
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(currentController == "Orders" ? "active" : "")" asp-area="" asp-controller="Orders" asp-action="Index">
+                                    <i class="bi bi-receipt me-1"></i>@Localizer["Orders"]
+                                </a>
+                            </li>
                         }
                         else
                         {
@@ -320,6 +325,11 @@
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile" data-offcanvas-close>
                                 <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Orders" ? "active" : "")" asp-area="" asp-controller="Orders" asp-action="Index" data-offcanvas-close>
+                                <i class="bi bi-receipt me-2"></i>@Localizer["Orders"]
                             </a>
                         </li>
                     }
