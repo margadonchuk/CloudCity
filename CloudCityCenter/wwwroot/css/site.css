@@ -4251,17 +4251,26 @@ body {
     align-items: center !important;
     justify-content: flex-end !important;
     gap: 15px !important;
-    z-index: 10 !important;
+    z-index: 1050 !important;
     order: 3 !important;
     margin-left: auto !important;
     margin-right: 0 !important;
     padding: 0 !important;
     width: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   /* Убираем дублирование - только один элемент должен быть виден */
   .navbar-modern .container-fluid > .mobile-nav-right:not(:first-of-type) {
     display: none !important;
+  }
+  
+  /* Убеждаемся что кнопка меню всегда видна на мобильных */
+  .mobile-nav-right {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
@@ -4305,6 +4314,7 @@ body {
     pointer-events: auto !important;
     z-index: 1050 !important;
     position: relative !important;
+    margin: 0 !important;
   }
   
   .mobile-nav-right .navbar-toggler:hover {
@@ -4505,12 +4515,16 @@ body {
     z-index: 1045 !important;
     background: #ffffff !important;
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15) !important;
-    visibility: hidden !important;
   }
   
   .offcanvas.show {
     visibility: visible !important;
     opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+  
+  .offcanvas-end:not(.show) {
+    transform: translateX(100%) !important;
   }
   
   .offcanvas-backdrop {

@@ -69,7 +69,7 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -621,52 +621,41 @@ else
     }
   })();
   
-  // Исправление проблемы с неработающими ссылками в offcanvas меню
+  // Mobile menu initialization
   document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenu = document.querySelector('#mobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuButton = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
     
-    // Ensure mobile menu button works
-    if (mobileMenuButton) {
-      mobileMenuButton.addEventListener('click', function(e) {
-        console.log('Mobile menu button clicked');
-        if (mobileMenu) {
-          // Use Bootstrap's offcanvas if available
-          if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
-            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(mobileMenu);
-            if (mobileMenu.classList.contains('show')) {
-              bsOffcanvas.hide();
-            } else {
-              bsOffcanvas.show();
-            }
-          } else {
-            // Fallback: manual toggle
-            mobileMenu.classList.toggle('show');
-            const backdrop = document.querySelector('.offcanvas-backdrop');
-            if (backdrop) {
-              backdrop.classList.toggle('show');
-            }
-          }
-        }
-      });
-    }
+    console.log('Mobile menu elements:', { mobileMenu, mobileMenuButton });
     
-    if (mobileMenu && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+    // Ensure Bootstrap offcanvas is initialized
+    if (mobileMenu && typeof bootstrap !== 'undefined') {
+      // Initialize offcanvas
+      const bsOffcanvas = new bootstrap.Offcanvas(mobileMenu);
+      console.log('Bootstrap offcanvas initialized');
+      
+      // Handle menu button click - let Bootstrap handle it, but ensure it works
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function(e) {
+          console.log('Menu button clicked');
+          // Bootstrap will handle the toggle via data-bs-toggle attribute
+        });
+      }
+      
       // Обрабатываем клики на все ссылки с атрибутом data-offcanvas-close
       const offcanvasLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close]');
       offcanvasLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
-          // Не предотвращаем переход по ссылке
-          // Закрываем меню сразу, но не мешаем переходу
-          const bsOffcanvas = bootstrap.Offcanvas.getInstance(mobileMenu);
-          if (bsOffcanvas) {
-            // Закрываем меню асинхронно, чтобы не мешать переходу
+          const bsOffcanvasInstance = bootstrap.Offcanvas.getInstance(mobileMenu);
+          if (bsOffcanvasInstance) {
             setTimeout(function() {
-              bsOffcanvas.hide();
+              bsOffcanvasInstance.hide();
             }, 10);
           }
         });
       });
+    } else {
+      console.error('Bootstrap not loaded or mobile menu not found');
     }
   });
 </script>
