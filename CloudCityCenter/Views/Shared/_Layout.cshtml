@@ -623,34 +623,55 @@ else
   
   // Mobile menu - simple direct implementation
   (function() {
+    let menuButton = null;
+    let mobileMenu = null;
+    
     function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const button = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
+      console.log('toggleMobileMenu called');
       
-      if (!menu || !button) {
-        console.error('Mobile menu or button not found');
+      if (!mobileMenu) {
+        mobileMenu = document.getElementById('mobileMenu');
+      }
+      if (!menuButton) {
+        menuButton = document.querySelector('button[data-bs-target="#mobileMenu"]') || 
+                     document.querySelector('.mobile-nav-right .navbar-toggler') ||
+                     document.querySelector('.navbar-toggler');
+      }
+      
+      if (!mobileMenu) {
+        console.error('Mobile menu not found!');
+        return;
+      }
+      if (!menuButton) {
+        console.error('Menu button not found!');
         return;
       }
       
-      const isOpen = menu.classList.contains('show');
+      console.log('Menu and button found, toggling...');
+      
+      const isOpen = mobileMenu.classList.contains('show');
+      console.log('Menu is currently:', isOpen ? 'open' : 'closed');
       
       if (isOpen) {
         // Close menu
-        menu.classList.remove('show');
+        console.log('Closing menu...');
+        mobileMenu.classList.remove('show');
         document.body.classList.remove('modal-open');
         const backdrop = document.querySelector('.offcanvas-backdrop');
         if (backdrop) {
           backdrop.classList.remove('show');
           setTimeout(function() {
-            if (backdrop.parentNode) {
+            if (backdrop && backdrop.parentNode) {
               backdrop.remove();
             }
           }, 150);
         }
-        button.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-expanded', 'false');
+        console.log('Menu closed');
       } else {
         // Open menu
-        menu.classList.add('show');
+        console.log('Opening menu...');
+        mobileMenu.classList.add('show');
         document.body.classList.add('modal-open');
         
         // Create backdrop
@@ -659,55 +680,85 @@ else
           backdrop = document.createElement('div');
           backdrop.className = 'offcanvas-backdrop fade';
           document.body.appendChild(backdrop);
+          console.log('Backdrop created');
         }
         backdrop.classList.add('show');
         
         // Close on backdrop click
         backdrop.onclick = function() {
+          console.log('Backdrop clicked, closing menu');
           toggleMobileMenu();
         };
         
-        button.setAttribute('aria-expanded', 'true');
+        menuButton.setAttribute('aria-expanded', 'true');
+        console.log('Menu opened');
       }
     }
     
     function initMobileMenu() {
-      const button = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
-      const menu = document.getElementById('mobileMenu');
+      console.log('Initializing mobile menu...');
       
-      if (button && menu) {
-        console.log('Initializing mobile menu');
+      // Try multiple selectors to find the button
+      menuButton = document.querySelector('button[data-bs-target="#mobileMenu"]') || 
+                   document.querySelector('.mobile-nav-right .navbar-toggler') ||
+                   document.querySelector('.navbar-toggler');
+      
+      mobileMenu = document.getElementById('mobileMenu');
+      
+      console.log('Button found:', menuButton ? 'YES' : 'NO');
+      console.log('Menu found:', mobileMenu ? 'YES' : 'NO');
+      
+      if (menuButton && mobileMenu) {
+        console.log('Both elements found, setting up event listeners...');
         
         // Remove Bootstrap data attributes to prevent conflicts
-        button.removeAttribute('data-bs-toggle');
+        if (menuButton.hasAttribute('data-bs-toggle')) {
+          menuButton.removeAttribute('data-bs-toggle');
+          console.log('Removed data-bs-toggle attribute');
+        }
+        
+        // Remove any existing listeners by cloning
+        const newButton = menuButton.cloneNode(true);
+        menuButton.parentNode.replaceChild(newButton, menuButton);
+        menuButton = newButton;
         
         // Add our click handler
-        button.addEventListener('click', function(e) {
+        menuButton.addEventListener('click', function(e) {
+          console.log('Button clicked!');
           e.preventDefault();
           e.stopPropagation();
           toggleMobileMenu();
+          return false;
         });
         
         // Handle close links
-        const closeLinks = menu.querySelectorAll('a[data-offcanvas-close], button[data-bs-dismiss="offcanvas"]');
+        const closeLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close], button[data-bs-dismiss="offcanvas"], .btn-close');
+        console.log('Close links found:', closeLinks.length);
         closeLinks.forEach(function(link) {
           link.addEventListener('click', function(e) {
+            console.log('Close link clicked');
             toggleMobileMenu();
           });
         });
         
-        console.log('Mobile menu initialized');
+        console.log('Mobile menu initialized successfully!');
       } else {
-        console.log('Retrying mobile menu init...');
+        console.log('Elements not ready, retrying in 100ms...');
         setTimeout(initMobileMenu, 100);
       }
     }
     
-    // Initialize
+    // Initialize multiple times to ensure it works
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initMobileMenu);
+      document.addEventListener('DOMContentLoaded', function() {
+        initMobileMenu();
+        setTimeout(initMobileMenu, 200);
+        setTimeout(initMobileMenu, 500);
+      });
     } else {
       initMobileMenu();
+      setTimeout(initMobileMenu, 200);
+      setTimeout(initMobileMenu, 500);
     }
   })();
 </script>

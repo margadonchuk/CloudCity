@@ -4276,7 +4276,8 @@ body {
   
   .mobile-nav-right .navbar-toggler,
   .navbar-modern .container-fluid > .mobile-nav-right .navbar-toggler,
-  button.navbar-toggler[data-bs-target="#mobileMenu"] {
+  button.navbar-toggler[data-bs-target="#mobileMenu"],
+  button.navbar-toggler {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -4284,6 +4285,10 @@ body {
     cursor: pointer !important;
     position: relative !important;
     z-index: 1051 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
