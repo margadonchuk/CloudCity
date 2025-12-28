@@ -4488,7 +4488,7 @@ body {
     width: 300px !important;
     z-index: 1045 !important;
     background: #ffffff !important;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15) !important;
     visibility: hidden !important;
   }
   
