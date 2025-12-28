@@ -4127,47 +4127,29 @@ body {
 /* ============================================
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
-/* CRITICAL: Mobile menu button - ULTRA SIMPLE, ALWAYS VISIBLE */
+/* CRITICAL: Mobile menu button - ALWAYS VISIBLE, RED FOR TESTING */
 #mobileMenuBtn {
   position: fixed !important;
   top: 15px !important;
   right: 15px !important;
   z-index: 999999 !important;
-  width: 50px !important;
-  height: 50px !important;
-  background: #0d6efd !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: red !important;
   color: white !important;
-  border: none !important;
+  border: 3px solid black !important;
   border-radius: 8px !important;
-  font-size: 24px !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
   cursor: pointer !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-  line-height: 50px !important;
+  line-height: 60px !important;
   text-align: center !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+  box-shadow: 0 4px 20px rgba(255,0,0,0.8) !important;
 }
-
-/* Hide on desktop */
-@media (min-width: 992px) {
-  #mobileMenuBtn {
-    display: none !important;
-  }
-}
-
-/* Show on mobile - FORCE IT */
-@media (max-width: 991px) {
-  #mobileMenuBtn {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: fixed !important;
-    top: 15px !important;
-    right: 15px !important;
-    z-index: 999999 !important;
-  }
   
   /* CRITICAL: Force mobile menu button to be visible */
   button#mobileMenuBtn,

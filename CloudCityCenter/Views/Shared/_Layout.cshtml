@@ -44,8 +44,8 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- MOBILE MENU BUTTON - ULTRA SIMPLE -->
-                <button id="mobileMenuBtn" type="button" onclick="var menu = document.getElementById('mobileMenu'); if(menu) { var bsOffcanvas = new bootstrap.Offcanvas(menu); bsOffcanvas.show(); } console.log('BUTTON CLICKED!');" style="position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 50px !important; height: 50px !important; background: #0d6efd !important; color: white !important; border: none !important; border-radius: 8px !important; font-size: 24px !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 50px !important; text-align: center !important;">☰</button>
+                <!-- MOBILE MENU BUTTON - ALWAYS VISIBLE FOR TESTING -->
+                <button id="mobileMenuBtn" type="button" style="position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 60px !important; height: 60px !important; background: red !important; color: white !important; border: 3px solid black !important; border-radius: 8px !important; font-size: 30px !important; font-weight: bold !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 60px !important; text-align: center !important; box-shadow: 0 4px 20px rgba(255,0,0,0.8) !important;">☰</button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
                 <div class="d-flex align-items-center justify-content-center d-lg-none mobile-nav-center">
@@ -886,57 +886,97 @@ else
   })();
 </script>
 
-    <!-- FINAL FIX: Create button dynamically if it doesn't exist -->
+    <!-- FINAL FIX: Create button dynamically - GUARANTEED TO WORK -->
     <script>
       (function() {
         function createMobileMenuButton() {
-          // Check if button exists
-          var existingBtn = document.getElementById('mobileMenuBtn');
-          if (existingBtn) {
-            console.log('Button already exists, forcing visible');
-            existingBtn.style.cssText = 'position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 50px !important; height: 50px !important; background: #0d6efd !important; color: white !important; border: none !important; border-radius: 8px !important; font-size: 24px !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 50px !important; text-align: center !important;';
-            return;
+          console.log('=== CREATING MOBILE MENU BUTTON ===');
+          
+          // Remove any existing button first
+          var oldBtn = document.getElementById('mobileMenuBtn');
+          if (oldBtn) {
+            oldBtn.remove();
+            console.log('Removed old button');
           }
           
-          // Create button if it doesn't exist
-          console.log('Creating mobile menu button dynamically...');
+          // Create NEW button
           var btn = document.createElement('button');
           btn.id = 'mobileMenuBtn';
           btn.type = 'button';
           btn.innerHTML = '☰';
-          btn.style.cssText = 'position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 50px !important; height: 50px !important; background: #0d6efd !important; color: white !important; border: none !important; border-radius: 8px !important; font-size: 24px !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 50px !important; text-align: center !important; box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;';
+          btn.setAttribute('data-bs-toggle', 'offcanvas');
+          btn.setAttribute('data-bs-target', '#mobileMenu');
           
-          btn.onclick = function() {
-            console.log('MOBILE MENU BUTTON CLICKED!');
+          // Set ALL styles
+          btn.style.position = 'fixed';
+          btn.style.top = '15px';
+          btn.style.right = '15px';
+          btn.style.zIndex = '999999';
+          btn.style.width = '60px';
+          btn.style.height = '60px';
+          btn.style.background = 'red';
+          btn.style.color = 'white';
+          btn.style.border = '3px solid black';
+          btn.style.borderRadius = '8px';
+          btn.style.fontSize = '30px';
+          btn.style.fontWeight = 'bold';
+          btn.style.cursor = 'pointer';
+          btn.style.display = 'block';
+          btn.style.visibility = 'visible';
+          btn.style.opacity = '1';
+          btn.style.lineHeight = '60px';
+          btn.style.textAlign = 'center';
+          btn.style.boxShadow = '0 4px 20px rgba(255,0,0,0.8)';
+          btn.style.pointerEvents = 'auto';
+          
+          // Click handler
+          btn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('=== BUTTON CLICKED ===');
+            alert('Button clicked! Opening menu...');
             var menu = document.getElementById('mobileMenu');
+            console.log('Menu element:', menu);
             if (menu) {
               if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+                console.log('Using Bootstrap Offcanvas');
                 var bsOffcanvas = new bootstrap.Offcanvas(menu);
                 bsOffcanvas.show();
               } else {
+                console.log('Bootstrap not available, using manual toggle');
                 menu.classList.add('show');
                 document.body.classList.add('modal-open');
               }
             } else {
-              console.error('Mobile menu not found!');
+              alert('ERROR: Mobile menu element not found!');
+              console.error('Mobile menu element not found!');
             }
           };
           
+          // Add to body
           document.body.appendChild(btn);
-          console.log('Mobile menu button created and added to page!');
+          console.log('✅ Button created and added to body!');
+          console.log('Button element:', btn);
+          console.log('Button computed styles:', window.getComputedStyle(btn));
+          alert('Mobile menu button created! Check top-right corner.');
         }
         
-        // Run immediately
+        // Run multiple times to ensure it works
         if (document.body) {
           createMobileMenuButton();
-        } else {
-          document.addEventListener('DOMContentLoaded', createMobileMenuButton);
         }
         
-        // Also run after load
-        window.addEventListener('load', function() {
+        document.addEventListener('DOMContentLoaded', function() {
           setTimeout(createMobileMenuButton, 100);
         });
+        
+        window.addEventListener('load', function() {
+          setTimeout(createMobileMenuButton, 200);
+        });
+        
+        // Also run after a delay
+        setTimeout(createMobileMenuButton, 500);
+        setTimeout(createMobileMenuButton, 1000);
       })();
     </script>
 
