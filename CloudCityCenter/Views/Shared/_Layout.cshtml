@@ -76,6 +76,11 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
+                    <button id="mobileMenuBtn2" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important; align-items: center !important; justify-content: center !important;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" style="display: block !important; width: 20px !important; height: 20px !important;">
+                            <path stroke="rgba(33, 37, 41, 0.75)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path>
+                        </svg>
+                    </button>
                 </div>
 
                 <!-- TEST: Simple visible button outside container -->
@@ -422,11 +427,13 @@ else
     <script>
       (function() {
         function forceButtonVisible() {
-          // Try multiple selectors
+          // Try multiple selectors - check both buttons
           var btn = document.getElementById('mobileMenuBtn') || 
+                    document.getElementById('mobileMenuBtn2') ||
                     document.querySelector('button.mobile-menu-btn') ||
                     document.querySelector('.mobile-nav-right button') ||
-                    document.querySelector('.mobile-nav-right .navbar-toggler');
+                    document.querySelector('.mobile-nav-right .navbar-toggler') ||
+                    document.querySelector('button[data-bs-target="#mobileMenu"]');
           
           var container = document.querySelector('.mobile-nav-right') ||
                           document.querySelector('div.mobile-nav-right') ||
