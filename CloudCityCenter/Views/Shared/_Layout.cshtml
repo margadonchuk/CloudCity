@@ -624,6 +624,33 @@ else
   // Исправление проблемы с неработающими ссылками в offcanvas меню
   document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.querySelector('#mobileMenu');
+    const mobileMenuButton = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
+    
+    // Ensure mobile menu button works
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener('click', function(e) {
+        console.log('Mobile menu button clicked');
+        if (mobileMenu) {
+          // Use Bootstrap's offcanvas if available
+          if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+            const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(mobileMenu);
+            if (mobileMenu.classList.contains('show')) {
+              bsOffcanvas.hide();
+            } else {
+              bsOffcanvas.show();
+            }
+          } else {
+            // Fallback: manual toggle
+            mobileMenu.classList.toggle('show');
+            const backdrop = document.querySelector('.offcanvas-backdrop');
+            if (backdrop) {
+              backdrop.classList.toggle('show');
+            }
+          }
+        }
+      });
+    }
+    
     if (mobileMenu && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
       // Обрабатываем клики на все ссылки с атрибутом data-offcanvas-close
       const offcanvasLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close]');

@@ -4301,6 +4301,10 @@ body {
     transition: all 0.3s ease !important;
     visibility: visible !important;
     opacity: 1 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    z-index: 1050 !important;
+    position: relative !important;
   }
   
   .mobile-nav-right .navbar-toggler:hover {
@@ -4331,6 +4335,18 @@ body {
   
   #mobileMenu.offcanvas.show {
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+  
+  /* Убеждаемся что offcanvas может открыться */
+  .offcanvas-end {
+    transform: translateX(100%) !important;
+  }
+  
+  .offcanvas-end.show {
+    transform: translateX(0) !important;
     visibility: visible !important;
   }
   
