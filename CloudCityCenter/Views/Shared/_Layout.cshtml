@@ -38,11 +38,16 @@
     }
     <header>
         <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
-            <div class="container-fluid">
+            <div class="container-fluid" style="position: relative;">
                 <!-- Логотип - слева -->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
+
+                <!-- MOBILE MENU BUTTON - SIMPLE AND VISIBLE -->
+                <button id="mobileMenuBtn" class="d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); z-index: 99999; padding: 10px 14px; border: 2px solid #0d6efd; border-radius: 8px; background-color: white; min-width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
                 <div class="d-flex align-items-center justify-content-center d-lg-none mobile-nav-center">
@@ -69,9 +74,6 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn d-flex d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="console.log('Button clicked!');" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important; width: auto !important;">
-                        <span class="navbar-toggler-icon" style="display: block !important; width: 20px !important; height: 20px !important; visibility: visible !important; opacity: 1 !important;"></span>
-                    </button>
                 </div>
 
                 <!-- TEST: Simple visible button outside container -->
