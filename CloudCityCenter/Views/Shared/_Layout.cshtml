@@ -621,43 +621,63 @@ else
     }
   })();
   
-  // Mobile menu initialization
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileMenuButton = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
-    
-    console.log('Mobile menu elements:', { mobileMenu, mobileMenuButton });
-    
-    // Ensure Bootstrap offcanvas is initialized
-    if (mobileMenu && typeof bootstrap !== 'undefined') {
-      // Initialize offcanvas
-      const bsOffcanvas = new bootstrap.Offcanvas(mobileMenu);
-      console.log('Bootstrap offcanvas initialized');
+  // Mobile menu - ensure it works
+  (function() {
+    function initMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileMenuButton = document.querySelector('button[data-bs-target="#mobileMenu"]');
       
-      // Handle menu button click - let Bootstrap handle it, but ensure it works
-      if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function(e) {
-          console.log('Menu button clicked');
-          // Bootstrap will handle the toggle via data-bs-toggle attribute
-        });
+      if (!mobileMenu || !mobileMenuButton) {
+        console.log('Mobile menu elements not ready, retrying...');
+        setTimeout(initMobileMenu, 100);
+        return;
       }
       
-      // Обрабатываем клики на все ссылки с атрибутом data-offcanvas-close
-      const offcanvasLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close]');
-      offcanvasLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          const bsOffcanvasInstance = bootstrap.Offcanvas.getInstance(mobileMenu);
-          if (bsOffcanvasInstance) {
+      console.log('Mobile menu elements found');
+      
+      // Ensure Bootstrap handles it - just verify it's set up
+      if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+        // Get or create instance
+        let bsOffcanvas = bootstrap.Offcanvas.getInstance(mobileMenu);
+        if (!bsOffcanvas) {
+          bsOffcanvas = new bootstrap.Offcanvas(mobileMenu);
+          console.log('Created Bootstrap offcanvas instance');
+        }
+        
+        // Handle close links
+        const offcanvasLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close]');
+        offcanvasLinks.forEach(function(link) {
+          link.addEventListener('click', function(e) {
             setTimeout(function() {
-              bsOffcanvasInstance.hide();
+              const instance = bootstrap.Offcanvas.getInstance(mobileMenu);
+              if (instance) {
+                instance.hide();
+              }
             }, 10);
-          }
+          });
         });
-      });
-    } else {
-      console.error('Bootstrap not loaded or mobile menu not found');
+      } else {
+        console.error('Bootstrap not loaded');
+        // Fallback manual implementation
+        mobileMenuButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          mobileMenu.classList.toggle('show');
+          const backdrop = document.querySelector('.offcanvas-backdrop') || document.createElement('div');
+          if (!backdrop.parentNode) {
+            backdrop.className = 'offcanvas-backdrop';
+            document.body.appendChild(backdrop);
+          }
+          backdrop.classList.toggle('show');
+        });
+      }
     }
-  });
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+      initMobileMenu();
+    }
+  })();
 </script>
 
 

@@ -4267,10 +4267,20 @@ body {
   }
   
   /* Убеждаемся что кнопка меню всегда видна на мобильных */
-  .mobile-nav-right {
+  .mobile-nav-right,
+  .navbar-modern .container-fluid > .mobile-nav-right {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
+  }
+  
+  .mobile-nav-right .navbar-toggler,
+  .navbar-modern .container-fluid > .mobile-nav-right .navbar-toggler {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
@@ -4343,7 +4353,8 @@ body {
     display: block !important;
   }
   
-  #mobileMenu.offcanvas.show {
+  #mobileMenu.offcanvas.show,
+  #mobileMenu.offcanvas.showing {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -4355,9 +4366,30 @@ body {
     transform: translateX(100%) !important;
   }
   
-  .offcanvas-end.show {
+  .offcanvas-end.show,
+  .offcanvas-end.showing {
     transform: translateX(0) !important;
     visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Backdrop для мобильного меню */
+  .offcanvas-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s linear, visibility 0.15s linear;
+  }
+  
+  .offcanvas-backdrop.show {
+    opacity: 1;
+    visibility: visible;
   }
   
 }
