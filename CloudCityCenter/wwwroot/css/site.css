@@ -4163,14 +4163,18 @@ body {
 
 /* ВАЖНО: Десктопное меню должно быть видно на больших экранах */
 @media (min-width: 992px) {
-  .navbar-modern .container-fluid > .collapse {
+  .navbar-modern .container-fluid > .collapse,
+  .navbar-modern .container-fluid > .collapse.show {
     display: flex !important;
     visibility: visible !important;
+    height: auto !important;
   }
   
-  #navbarNav.navbar-collapse {
+  #navbarNav.navbar-collapse,
+  #navbarNav.navbar-collapse.show {
     display: flex !important;
     visibility: visible !important;
+    height: auto !important;
   }
   
   .navbar-nav-left,
