@@ -318,36 +318,62 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize language dropdown
-    const languageDropdown = document.getElementById('languageDropdown');
-    if (languageDropdown && typeof bootstrap !== 'undefined') {
-        // Ensure Bootstrap dropdown is initialized
-        const dropdownElement = languageDropdown.closest('.dropdown');
-        if (dropdownElement) {
-            // Initialize dropdown if not already initialized
-            try {
-                // Check if dropdown is already initialized
-                let dropdownInstance = bootstrap.Dropdown.getInstance(languageDropdown);
-                if (!dropdownInstance) {
-                    dropdownInstance = new bootstrap.Dropdown(languageDropdown, {
-                        boundary: 'viewport',
-                        popperConfig: {
-                            placement: 'bottom-end'
-                        }
-                    });
-                }
-                
-                // Add event listener to ensure menu shows
-                languageDropdown.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (dropdownInstance) {
-                        dropdownInstance.toggle();
+    // Initialize language dropdown - ensure it works properly
+    function initLanguageDropdown() {
+        const languageDropdown = document.getElementById('languageDropdown');
+        if (!languageDropdown) return;
+        
+        // Wait for Bootstrap to be fully loaded
+        if (typeof bootstrap === 'undefined') {
+            setTimeout(initLanguageDropdown, 100);
+            return;
+        }
+        
+        try {
+            const dropdownElement = languageDropdown.closest('.dropdown');
+            if (!dropdownElement) return;
+            
+            // Check if dropdown is already initialized
+            let dropdownInstance = bootstrap.Dropdown.getInstance(languageDropdown);
+            if (!dropdownInstance) {
+                // Initialize dropdown
+                dropdownInstance = new bootstrap.Dropdown(languageDropdown, {
+                    boundary: 'viewport',
+                    popperConfig: {
+                        placement: 'bottom-end'
                     }
                 });
-            } catch (e) {
-                console.error('Error initializing language dropdown:', e);
             }
+            
+            // Listen for dropdown show event
+            dropdownElement.addEventListener('shown.bs.dropdown', function() {
+                const menu = dropdownElement.querySelector('.dropdown-menu, .language-dropdown');
+                if (menu) {
+                    menu.style.display = 'block';
+                    menu.style.visibility = 'visible';
+                    menu.style.opacity = '1';
+                }
+            });
+            
+            // Also check on click to ensure menu shows
+            languageDropdown.addEventListener('click', function(e) {
+                setTimeout(function() {
+                    if (dropdownElement.classList.contains('show')) {
+                        const menu = dropdownElement.querySelector('.dropdown-menu, .language-dropdown');
+                        if (menu) {
+                            menu.style.display = 'block';
+                            menu.style.visibility = 'visible';
+                            menu.style.opacity = '1';
+                        }
+                    }
+                }, 50);
+            });
+            
+        } catch (e) {
+            console.error('Error initializing language dropdown:', e);
         }
     }
+    
+    // Initialize on page load
+    initLanguageDropdown();
 });
