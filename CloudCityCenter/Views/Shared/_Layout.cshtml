@@ -44,9 +44,9 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- MOBILE MENU BUTTON - SIMPLE AND VISIBLE -->
-                <button id="mobileMenuBtn" class="d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); z-index: 99999; padding: 10px 14px; border: 2px solid #0d6efd; border-radius: 8px; background-color: white; min-width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                    <span class="navbar-toggler-icon"></span>
+                <!-- MOBILE MENU BUTTON - ABSOLUTELY POSITIONED, NO BOOTSTRAP CLASSES -->
+                <button id="mobileMenuBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="position: absolute !important; right: 15px !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 99999 !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; visibility: visible !important; opacity: 1 !important;">
+                    <span class="navbar-toggler-icon" style="display: block !important; width: 20px !important; height: 20px !important; background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e&quot;) !important;"></span>
                 </button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
