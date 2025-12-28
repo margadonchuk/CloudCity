@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Мобильная версия: Корзина и Меню - справа -->
-                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right">
+                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right" style="display: flex !important; visibility: visible !important;">
                     <a class="nav-link cart-link-mobile position-relative" asp-controller="Cart" asp-action="Index">
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
@@ -677,18 +677,22 @@ else
       
       console.log('Mobile menu elements found, Bootstrap available');
       
-      // Force button to be visible
-      btn.style.display = 'flex';
-      btn.style.visibility = 'visible';
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
-      btn.style.zIndex = '1051';
+      // Force button to be visible - AGGRESSIVE
+      btn.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 1051 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important;';
       
       if (container) {
-        container.style.display = 'flex';
-        container.style.visibility = 'visible';
-        container.style.opacity = '1';
+        container.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 1050 !important; flex: 0 0 auto !important;';
+        console.log('Container styles forced');
       }
+      
+      // Also check parent
+      var parent = btn.parentElement;
+      if (parent) {
+        parent.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important;';
+        console.log('Parent container styles forced');
+      }
+      
+      console.log('Button forced to be visible');
       
       // Handle close buttons with data-offcanvas-close attribute
       var closeLinks = menu.querySelectorAll('a[data-offcanvas-close]');
