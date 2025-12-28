@@ -69,7 +69,7 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -235,7 +235,7 @@
         </nav>
         
         <!-- Mobile Offcanvas Menu -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" data-bs-scroll="true" data-bs-backdrop="true">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
             <div class="offcanvas-header border-bottom">
                 <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-offcanvas-close>
@@ -636,97 +636,25 @@ else
     }
   })();
   
-  // Mobile menu - Simple and reliable implementation
-  (function() {
-    function initMobileMenu() {
-      var menuElement = document.getElementById('mobileMenu');
-      var btn = document.getElementById('mobileMenuBtn');
-      
-      if (!menuElement || !btn) {
-        console.log('Menu elements not found, retrying...');
-        setTimeout(initMobileMenu, 200);
-        return;
-      }
-      
-      console.log('Menu elements found, initializing...');
-      
-      // Use Bootstrap Offcanvas if available
-      if (typeof bootstrap !== 'undefined' && typeof bootstrap.Offcanvas !== 'undefined') {
-        var offcanvasInstance = bootstrap.Offcanvas.getInstance(menuElement);
-        if (!offcanvasInstance) {
-          offcanvasInstance = new bootstrap.Offcanvas(menuElement, {
-            backdrop: true,
-            scroll: true
-          });
-        }
-        
-        // Handle close buttons
-        var closeLinks = menuElement.querySelectorAll('a[data-offcanvas-close]');
-        closeLinks.forEach(function(link) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
+  // Mobile menu - Handle close buttons with data-offcanvas-close attribute
+  document.addEventListener('DOMContentLoaded', function() {
+    var menuElement = document.getElementById('mobileMenu');
+    if (!menuElement) return;
+    
+    // Handle close buttons with data-offcanvas-close
+    var closeLinks = menuElement.querySelectorAll('a[data-offcanvas-close]');
+    closeLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+          var offcanvasInstance = bootstrap.Offcanvas.getInstance(menuElement);
+          if (offcanvasInstance) {
             offcanvasInstance.hide();
-          });
-        });
-        
-        // Update aria-expanded
-        menuElement.addEventListener('show.bs.offcanvas', function() {
-          btn.setAttribute('aria-expanded', 'true');
-        });
-        menuElement.addEventListener('hide.bs.offcanvas', function() {
-          btn.setAttribute('aria-expanded', 'false');
-        });
-        
-        console.log('Bootstrap Offcanvas initialized');
-      } else {
-        // Fallback: Manual toggle if Bootstrap not available
-        console.log('Bootstrap not available, using manual toggle');
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          menuElement.classList.toggle('show');
-          document.body.classList.toggle('modal-open');
-          btn.setAttribute('aria-expanded', menuElement.classList.contains('show'));
-        });
-        
-        // Close on backdrop click
-        var backdrop = document.createElement('div');
-        backdrop.className = 'offcanvas-backdrop fade';
-        backdrop.addEventListener('click', function() {
-          menuElement.classList.remove('show');
-          document.body.classList.remove('modal-open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-        
-        // Handle close buttons
-        var closeLinks = menuElement.querySelectorAll('a[data-offcanvas-close], .btn-close');
-        closeLinks.forEach(function(link) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            menuElement.classList.remove('show');
-            document.body.classList.remove('modal-open');
-            btn.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-      
-      console.log('Mobile menu ready!');
-    }
-    
-    // Wait for DOM and Bootstrap
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(initMobileMenu, 300);
+          }
+        }
       });
-    } else {
-      setTimeout(initMobileMenu, 300);
-    }
-    
-    // Also try after Bootstrap loads
-    window.addEventListener('load', function() {
-      setTimeout(initMobileMenu, 500);
     });
-  })();
+  });
 </script>
 
 
