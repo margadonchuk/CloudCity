@@ -36,12 +36,12 @@
             cartCount = 0;
         }
     }
+    <!-- MOBILE MENU BUTTON - ВНЕ NAVBAR, ВСЕГДА ВИДНА НА МОБИЛЬНЫХ -->
+    <button id="mobileMenuBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню" style="position:fixed !important;top:15px !important;right:15px !important;z-index:999999 !important;width:60px !important;height:60px !important;background:#0d6efd !important;color:white !important;border:3px solid #fff !important;border-radius:10px !important;font-size:32px !important;font-weight:bold !important;cursor:pointer !important;display:block !important;visibility:visible !important;opacity:1 !important;line-height:54px !important;text-align:center !important;box-shadow:0 6px 25px rgba(13,110,253,0.5) !important;user-select:none !important;pointer-events:auto !important;transition:all 0.3s ease !important;">☰</button>
+    
     <header>
         <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
             <div class="container-fluid" style="position: relative;">
-                <!-- MOBILE MENU BUTTON - ВНУТРИ NAVBAR -->
-                <button id="mobileMenuBtn" type="button" class="d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню" style="position:fixed !important;top:15px !important;right:15px !important;z-index:999999 !important;width:60px !important;height:60px !important;background:#0d6efd !important;color:white !important;border:2px solid white !important;border-radius:8px !important;font-size:30px !important;font-weight:bold !important;cursor:pointer !important;display:block !important;visibility:visible !important;opacity:1 !important;line-height:56px !important;text-align:center !important;box-shadow:0 4px 20px rgba(0,0,0,0.3) !important;user-select:none !important;pointer-events:auto !important;">☰</button>
-                
                 <!-- Логотип - слева -->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
