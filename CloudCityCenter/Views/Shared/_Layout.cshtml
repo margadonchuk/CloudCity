@@ -74,6 +74,9 @@
                     </button>
                 </div>
 
+                <!-- TEST: Simple visible button outside container -->
+                <button id="testMenuBtn" class="d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" style="position: fixed; top: 10px; right: 10px; z-index: 99999; padding: 10px; background: red; color: white; border: 2px solid black; display: block !important; visibility: visible !important;">TEST MENU</button>
+
                 <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
                     <div class="d-flex align-items-center w-100 position-relative">
                         <!-- Left Navigation -->
@@ -425,30 +428,64 @@ else
                           document.querySelector('div.mobile-nav-right') ||
                           document.querySelector('div.d-flex.mobile-nav-right');
           
+          var testBtn = document.getElementById('testMenuBtn');
+          
           console.log('=== FORCING BUTTON VISIBLE ===');
-          console.log('Button found:', btn ? 'YES' : 'NO');
+          console.log('Test button found:', testBtn ? 'YES' : 'NO');
+          console.log('Main button found:', btn ? 'YES' : 'NO');
           console.log('Container found:', container ? 'YES' : 'NO');
+          
+          // Check if test button is visible
+          if (testBtn) {
+            var testDisplay = window.getComputedStyle(testBtn).display;
+            console.log('Test button display:', testDisplay);
+            if (testDisplay === 'none') {
+              testBtn.style.display = 'block';
+              console.log('Test button was hidden, forcing visible');
+            }
+          }
           
           if (btn) {
             // Remove all classes that might hide it
             btn.classList.remove('d-none', 'd-lg-block');
             btn.classList.add('d-flex', 'd-lg-none');
             
-            // Force styles
-            btn.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important; width: auto !important;';
+            // Force styles with setProperty for !important
+            btn.style.setProperty('display', 'flex', 'important');
+            btn.style.setProperty('visibility', 'visible', 'important');
+            btn.style.setProperty('opacity', '1', 'important');
+            btn.style.setProperty('pointer-events', 'auto', 'important');
+            btn.style.setProperty('z-index', '9999', 'important');
+            btn.style.setProperty('position', 'relative', 'important');
+            btn.style.setProperty('padding', '10px 14px', 'important');
+            btn.style.setProperty('border', '2px solid #0d6efd', 'important');
+            btn.style.setProperty('border-radius', '8px', 'important');
+            btn.style.setProperty('background-color', 'white', 'important');
+            btn.style.setProperty('min-width', '44px', 'important');
+            btn.style.setProperty('height', '44px', 'important');
+            btn.style.setProperty('margin', '0', 'important');
+            btn.style.setProperty('cursor', 'pointer', 'important');
+            btn.style.setProperty('width', 'auto', 'important');
             
             // Force icon to be visible
             var icon = btn.querySelector('.navbar-toggler-icon');
             if (icon) {
-              icon.style.cssText = 'display: block !important; width: 20px !important; height: 20px !important; visibility: visible !important; opacity: 1 !important;';
+              icon.style.setProperty('display', 'block', 'important');
+              icon.style.setProperty('width', '20px', 'important');
+              icon.style.setProperty('height', '20px', 'important');
+              icon.style.setProperty('visibility', 'visible', 'important');
+              icon.style.setProperty('opacity', '1', 'important');
             }
             
             console.log('✅ Mobile menu button FORCED to be visible');
             console.log('Button computed display:', window.getComputedStyle(btn).display);
             console.log('Button computed visibility:', window.getComputedStyle(btn).visibility);
+            console.log('Button offsetWidth:', btn.offsetWidth);
+            console.log('Button offsetHeight:', btn.offsetHeight);
           } else {
             console.error('❌ Mobile menu button NOT FOUND in DOM!');
             console.error('Searching for button in:', document.querySelector('.mobile-nav-right'));
+            console.error('All buttons on page:', document.querySelectorAll('button').length);
           }
           
           if (container) {
@@ -456,11 +493,21 @@ else
             container.classList.remove('d-none');
             container.classList.add('d-flex', 'd-lg-none');
             
-            // Force styles
-            container.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 9998 !important; flex: 0 0 auto !important; margin-left: auto !important; width: auto !important; height: auto !important;';
+            // Force styles with setProperty
+            container.style.setProperty('display', 'flex', 'important');
+            container.style.setProperty('visibility', 'visible', 'important');
+            container.style.setProperty('opacity', '1', 'important');
+            container.style.setProperty('position', 'relative', 'important');
+            container.style.setProperty('z-index', '9998', 'important');
+            container.style.setProperty('flex', '0 0 auto', 'important');
+            container.style.setProperty('margin-left', 'auto', 'important');
+            container.style.setProperty('width', 'auto', 'important');
+            container.style.setProperty('height', 'auto', 'important');
             
             console.log('✅ Mobile menu container FORCED to be visible');
             console.log('Container computed display:', window.getComputedStyle(container).display);
+            console.log('Container offsetWidth:', container.offsetWidth);
+            console.log('Container offsetHeight:', container.offsetHeight);
           } else {
             console.error('❌ Mobile menu container NOT FOUND in DOM!');
           }
