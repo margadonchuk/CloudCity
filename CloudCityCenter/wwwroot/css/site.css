@@ -3441,9 +3441,9 @@ body {
   position: relative;
   width: 100%;
   min-width: 0;
-  overflow: visible;
-  margin-left: 20px;
-  margin-right: 20px;
+  overflow: hidden;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .navbar-modern .container-fluid > .collapse > div {
@@ -3452,9 +3452,9 @@ body {
   width: 100%;
   position: relative;
   justify-content: space-between;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: nowrap;
-  overflow: visible;
+  overflow: hidden;
   min-width: 0;
 }
 
@@ -3464,13 +3464,14 @@ body {
   justify-content: flex-start;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   min-width: 0;
   flex-shrink: 1;
-  padding-right: 10px;
+  padding-right: 5px;
   position: relative;
   z-index: 2;
-  overflow: visible;
+  overflow: hidden;
+  max-width: 35%;
 }
 
 .navbar-nav-left .nav-item {
@@ -3479,8 +3480,8 @@ body {
 }
 
 .navbar-nav-left .nav-link {
-  padding: 8px 10px;
-  font-size: 0.9rem;
+  padding: 6px 8px;
+  font-size: 0.85rem;
 }
 
 /* Соцсети по центру (десктоп) */
@@ -3488,10 +3489,10 @@ body {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   white-space: nowrap;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 5px;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -3503,13 +3504,14 @@ body {
   justify-content: flex-end;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   min-width: 0;
   flex-shrink: 1;
-  padding-left: 10px;
+  padding-left: 5px;
   position: relative;
   z-index: 2;
-  overflow: visible;
+  overflow: hidden;
+  max-width: 35%;
 }
 
 .navbar-nav-right .nav-item {
@@ -3518,8 +3520,8 @@ body {
 }
 
 .navbar-nav-right .nav-link {
-  padding: 8px 10px;
-  font-size: 0.9rem;
+  padding: 6px 8px;
+  font-size: 0.85rem;
 }
 
 body {
@@ -3594,8 +3596,8 @@ body {
 .telegram-bot-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 22px;
+  gap: 6px;
+  padding: 8px 14px;
   background: linear-gradient(135deg, #0088cc, #0066aa);
   border-radius: 30px;
   color: white !important;
@@ -3604,6 +3606,8 @@ body {
   box-shadow: 0 5px 20px rgba(0, 136, 204, 0.35);
   position: relative;
   overflow: hidden;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .telegram-bot-wrapper::before {
@@ -3633,7 +3637,7 @@ body {
 }
 
 .telegram-icon {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   position: relative;
   z-index: 1;
   color: white;
@@ -3643,7 +3647,7 @@ body {
 .telegram-bot-text {
   position: relative;
   z-index: 1;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3px;
 }
 
@@ -3664,8 +3668,8 @@ body {
 .instagram-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 22px;
+  gap: 6px;
+  padding: 8px 14px;
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
   border-radius: 30px;
   color: white !important;
@@ -3674,6 +3678,8 @@ body {
   box-shadow: 0 5px 20px rgba(131, 58, 180, 0.35);
   position: relative;
   overflow: hidden;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .instagram-wrapper::before {
@@ -3703,7 +3709,7 @@ body {
 }
 
 .instagram-icon {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   position: relative;
   z-index: 1;
   color: white;
@@ -3713,7 +3719,7 @@ body {
 .instagram-text {
   position: relative;
   z-index: 1;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3px;
 }
 
@@ -3734,8 +3740,8 @@ body {
 .whatsapp-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 22px;
+  gap: 6px;
+  padding: 8px 14px;
   background: linear-gradient(135deg, #25D366, #128C7E);
   border-radius: 30px;
   color: white !important;
@@ -3744,6 +3750,8 @@ body {
   box-shadow: 0 5px 20px rgba(37, 211, 102, 0.35);
   position: relative;
   overflow: hidden;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .whatsapp-wrapper::before {
@@ -3773,7 +3781,7 @@ body {
 }
 
 .whatsapp-icon {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   position: relative;
   z-index: 1;
   color: white;
@@ -3783,7 +3791,7 @@ body {
 .whatsapp-text {
   position: relative;
   z-index: 1;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3px;
 }
 
@@ -4306,6 +4314,18 @@ body {
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Убеждаемся что offcanvas работает на мобильных */
+  #mobileMenu.offcanvas {
+    display: block !important;
+  }
+  
+  #mobileMenu.offcanvas.show {
+    display: block !important;
+    visibility: visible !important;
   }
   
 }
