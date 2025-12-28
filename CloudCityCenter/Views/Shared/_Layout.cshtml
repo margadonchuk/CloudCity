@@ -636,95 +636,66 @@ else
     }
   })();
   
-  // Mobile menu - using ID for reliability
+  // Mobile menu - using Bootstrap Offcanvas API
   (function() {
-    function toggleMenu() {
-      var menu = document.getElementById('mobileMenu');
-      var btn = document.getElementById('mobileMenuBtn');
-      
-      if (!menu) {
-        alert('Menu not found!');
-        return;
-      }
-      if (!btn) {
-        alert('Button not found!');
+    function initMobileMenu() {
+      // Wait for Bootstrap to be available
+      if (typeof bootstrap === 'undefined' || typeof bootstrap.Offcanvas === 'undefined') {
+        setTimeout(initMobileMenu, 100);
         return;
       }
       
-      var isOpen = menu.classList.contains('show');
-      
-      if (isOpen) {
-        // Close
-        menu.classList.remove('show');
-        document.body.classList.remove('modal-open');
-        var backdrop = document.querySelector('.offcanvas-backdrop');
-        if (backdrop) {
-          backdrop.classList.remove('show');
-          setTimeout(function() {
-            if (backdrop && backdrop.parentNode) backdrop.remove();
-          }, 150);
-        }
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        // Open
-        menu.classList.add('show');
-        document.body.classList.add('modal-open');
-        
-        var backdrop = document.querySelector('.offcanvas-backdrop');
-        if (!backdrop) {
-          backdrop = document.createElement('div');
-          backdrop.className = 'offcanvas-backdrop fade';
-          document.body.appendChild(backdrop);
-        }
-        backdrop.classList.add('show');
-        backdrop.onclick = function() { toggleMenu(); };
-        
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    }
-    
-    function init() {
+      var menuElement = document.getElementById('mobileMenu');
       var btn = document.getElementById('mobileMenuBtn');
-      var menu = document.getElementById('mobileMenu');
       
-      if (btn && menu) {
-        // Remove any existing listeners
-        var newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
-        btn = newBtn;
-        
-        btn.onclick = function(e) {
+      if (!menuElement || !btn) {
+        setTimeout(initMobileMenu, 100);
+        return;
+      }
+      
+      // Initialize Bootstrap Offcanvas if not already initialized
+      var offcanvasInstance = bootstrap.Offcanvas.getInstance(menuElement);
+      if (!offcanvasInstance) {
+        offcanvasInstance = new bootstrap.Offcanvas(menuElement, {
+          backdrop: true,
+          scroll: true
+        });
+      }
+      
+      // Handle close buttons with data-offcanvas-close attribute
+      var closeLinks = menuElement.querySelectorAll('a[data-offcanvas-close]');
+      closeLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
           e.preventDefault();
-          e.stopPropagation();
-          toggleMenu();
-          return false;
-        };
-        
-        // Close buttons
-        var closeBtns = menu.querySelectorAll('a[data-offcanvas-close], .btn-close, button[data-bs-dismiss]');
-        for (var i = 0; i < closeBtns.length; i++) {
-          (function(btn) {
-            btn.onclick = function(e) {
-              e.preventDefault();
-              toggleMenu();
-              return false;
-            };
-          })(closeBtns[i]);
-        }
-        
-        console.log('Mobile menu ready!');
-      } else {
-        setTimeout(init, 100);
-      }
+          if (offcanvasInstance) {
+            offcanvasInstance.hide();
+          }
+        });
+      });
+      
+      // Update button aria-expanded on show/hide
+      menuElement.addEventListener('show.bs.offcanvas', function() {
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      });
+      
+      menuElement.addEventListener('hide.bs.offcanvas', function() {
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+      
+      console.log('Mobile menu initialized successfully!');
     }
     
+    // Initialize after DOM and Bootstrap are ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initMobileMenu, 100);
+      });
     } else {
-      init();
+      setTimeout(initMobileMenu, 100);
     }
-    setTimeout(init, 200);
-    setTimeout(init, 500);
+    
+    // Also try after a delay to ensure Bootstrap is loaded
+    setTimeout(initMobileMenu, 500);
   })();
 </script>
 
