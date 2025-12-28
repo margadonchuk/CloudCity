@@ -4268,16 +4268,21 @@ body {
   
   /* Убеждаемся что кнопка меню всегда видна на мобильных */
   .mobile-nav-right,
-  .navbar-modern .container-fluid > .mobile-nav-right {
+  .navbar-modern .container-fluid > .mobile-nav-right,
+  div.mobile-nav-right.d-lg-none {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
+    position: relative !important;
+    z-index: 1050 !important;
   }
   
   .mobile-nav-right .navbar-toggler,
   .navbar-modern .container-fluid > .mobile-nav-right .navbar-toggler,
   button.navbar-toggler[data-bs-target="#mobileMenu"],
-  button.navbar-toggler {
+  button.navbar-toggler,
+  #mobileMenuBtn,
+  .mobile-menu-btn {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
