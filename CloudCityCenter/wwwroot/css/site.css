@@ -3524,6 +3524,15 @@ body {
   font-size: 0.85rem;
 }
 
+.navbar-nav-right .dropdown {
+  position: static;
+}
+
+.navbar-nav-right .language-switcher {
+  position: relative;
+  z-index: 1001;
+}
+
 body {
   padding-top: 80px;
 }
@@ -6513,11 +6522,21 @@ body {
 }
 
 .language-switcher .dropdown-menu {
-  display: none;
+  display: none !important;
 }
 
-.language-switcher.show .dropdown-menu,
-.language-switcher[aria-expanded="true"] .dropdown-menu {
+/* Bootstrap dropdown show класс добавляется к элементу с классом dropdown */
+.dropdown.show .dropdown-menu,
+.language-switcher.dropdown.show .dropdown-menu,
+.language-switcher.dropdown.show .language-dropdown,
+.dropdown.show .language-dropdown {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Дополнительные стили для гарантированного отображения */
+.nav-item.dropdown.show .dropdown-menu {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -6568,6 +6587,8 @@ body {
   top: 100% !important;
   right: 0 !important;
   left: auto !important;
+  background-color: white !important;
+  pointer-events: auto !important;
 }
 
 .language-form {
