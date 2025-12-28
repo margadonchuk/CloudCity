@@ -44,8 +44,8 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- MOBILE MENU BUTTON - SIMPLE, ALWAYS VISIBLE FIRST -->
-                <button id="mobileMenuBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" onclick="console.log('CLICKED!');" style="position: fixed; top: 15px; right: 15px; z-index: 999999; width: 50px; height: 50px; background: #0d6efd; color: white; border: none; border-radius: 8px; font-size: 24px; cursor: pointer; display: block; visibility: visible; opacity: 1;">☰</button>
+                <!-- MOBILE MENU BUTTON - ULTRA SIMPLE -->
+                <button id="mobileMenuBtn" type="button" onclick="var menu = document.getElementById('mobileMenu'); if(menu) { var bsOffcanvas = new bootstrap.Offcanvas(menu); bsOffcanvas.show(); } console.log('BUTTON CLICKED!');" style="position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 50px !important; height: 50px !important; background: #0d6efd !important; color: white !important; border: none !important; border-radius: 8px !important; font-size: 24px !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 50px !important; text-align: center !important;">☰</button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
                 <div class="d-flex align-items-center justify-content-center d-lg-none mobile-nav-center">
@@ -886,6 +886,59 @@ else
   })();
 </script>
 
+    <!-- FINAL FIX: Create button dynamically if it doesn't exist -->
+    <script>
+      (function() {
+        function createMobileMenuButton() {
+          // Check if button exists
+          var existingBtn = document.getElementById('mobileMenuBtn');
+          if (existingBtn) {
+            console.log('Button already exists, forcing visible');
+            existingBtn.style.cssText = 'position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 50px !important; height: 50px !important; background: #0d6efd !important; color: white !important; border: none !important; border-radius: 8px !important; font-size: 24px !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 50px !important; text-align: center !important;';
+            return;
+          }
+          
+          // Create button if it doesn't exist
+          console.log('Creating mobile menu button dynamically...');
+          var btn = document.createElement('button');
+          btn.id = 'mobileMenuBtn';
+          btn.type = 'button';
+          btn.innerHTML = '☰';
+          btn.style.cssText = 'position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 50px !important; height: 50px !important; background: #0d6efd !important; color: white !important; border: none !important; border-radius: 8px !important; font-size: 24px !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 50px !important; text-align: center !important; box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;';
+          
+          btn.onclick = function() {
+            console.log('MOBILE MENU BUTTON CLICKED!');
+            var menu = document.getElementById('mobileMenu');
+            if (menu) {
+              if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+                var bsOffcanvas = new bootstrap.Offcanvas(menu);
+                bsOffcanvas.show();
+              } else {
+                menu.classList.add('show');
+                document.body.classList.add('modal-open');
+              }
+            } else {
+              console.error('Mobile menu not found!');
+            }
+          };
+          
+          document.body.appendChild(btn);
+          console.log('Mobile menu button created and added to page!');
+        }
+        
+        // Run immediately
+        if (document.body) {
+          createMobileMenuButton();
+        } else {
+          document.addEventListener('DOMContentLoaded', createMobileMenuButton);
+        }
+        
+        // Also run after load
+        window.addEventListener('load', function() {
+          setTimeout(createMobileMenuButton, 100);
+        });
+      })();
+    </script>
 
 </body>
 </html>

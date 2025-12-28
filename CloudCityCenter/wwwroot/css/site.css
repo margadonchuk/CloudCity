@@ -4127,7 +4127,7 @@ body {
 /* ============================================
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
-/* CRITICAL: Mobile menu button - SIMPLE FIXED POSITION */
+/* CRITICAL: Mobile menu button - ULTRA SIMPLE, ALWAYS VISIBLE */
 #mobileMenuBtn {
   position: fixed !important;
   top: 15px !important;
@@ -4157,12 +4157,16 @@ body {
   }
 }
 
-/* Show on mobile */
+/* Show on mobile - FORCE IT */
 @media (max-width: 991px) {
   #mobileMenuBtn {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    position: fixed !important;
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 999999 !important;
   }
   
   /* CRITICAL: Force mobile menu button to be visible */
