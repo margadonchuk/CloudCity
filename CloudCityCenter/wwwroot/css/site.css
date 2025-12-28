@@ -4127,7 +4127,7 @@ body {
 /* ============================================
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
-/* CRITICAL: Mobile menu button - ALWAYS VISIBLE */
+/* CRITICAL: Mobile menu button - ALWAYS VISIBLE ON ALL SCREENS */
 #mobileMenuBtn {
   position: fixed !important;
   top: 15px !important;
@@ -4149,6 +4149,23 @@ body {
   line-height: 56px !important;
   text-align: center !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+}
+
+/* На мобильных устройствах кнопка ВСЕГДА видна */
+@media (max-width: 991.98px) {
+  #mobileMenuBtn {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* На десктопе скрываем только если есть класс d-lg-none */
+@media (min-width: 992px) {
+  #mobileMenuBtn.d-lg-none {
+    display: none !important;
+  }
 }
   
   /* CRITICAL: Force mobile menu button to be visible */
