@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <!-- MOBILE MENU BUTTON - AT THE VERY START OF BODY -->
-    <button id="mobileMenuBtnBody" type="button" onclick="var m=document.getElementById('mobileMenu');if(m){if(typeof bootstrap!='undefined'&&bootstrap.Offcanvas){new bootstrap.Offcanvas(m).show();}else{m.classList.add('show');document.body.classList.add('modal-open');}}alert('Menu opening!');" style="position:fixed!important;top:15px!important;right:15px!important;z-index:999999!important;width:60px!important;height:60px!important;background:red!important;color:white!important;border:3px solid black!important;border-radius:8px!important;font-size:30px!important;font-weight:bold!important;cursor:pointer!important;display:block!important;visibility:visible!important;opacity:1!important;line-height:60px!important;text-align:center!important;">☰</button>
+    <!-- MOBILE MENU BUTTON - GUARANTEED TO WORK -->
+    <div id="mobileMenuBtnBody" onclick="var m=document.getElementById('mobileMenu');if(m){m.classList.add('show');m.style.display='flex';m.style.visibility='visible';m.style.transform='translateX(0)';document.body.classList.add('modal-open');var b=document.createElement('div');b.className='offcanvas-backdrop fade show';b.style.position='fixed';b.style.top='0';b.style.left='0';b.style.width='100%';b.style.height='100%';b.style.backgroundColor='rgba(0,0,0,0.5)';b.style.zIndex='1040';b.onclick=function(){m.classList.remove('show');document.body.classList.remove('modal-open');b.remove();};document.body.appendChild(b);}alert('Menu should open now!');" style="position:fixed;top:15px;right:15px;z-index:999999;width:60px;height:60px;background:red;color:white;border:3px solid black;border-radius:8px;font-size:30px;font-weight:bold;cursor:pointer;display:block;visibility:visible;opacity:1;line-height:60px;text-align:center;box-shadow:0 4px 20px rgba(255,0,0,0.8);user-select:none;">☰</div>
     @{
         var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
         var cartCount = 0;

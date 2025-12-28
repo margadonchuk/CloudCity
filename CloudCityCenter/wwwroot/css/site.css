@@ -4127,8 +4127,9 @@ body {
 /* ============================================
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
-/* CRITICAL: Mobile menu button - ALWAYS VISIBLE, RED FOR TESTING */
-#mobileMenuBtn {
+/* CRITICAL: Mobile menu button - ALWAYS VISIBLE ON ALL SCREENS FOR TESTING */
+#mobileMenuBtn,
+#mobileMenuBtnBody {
   position: fixed !important;
   top: 15px !important;
   right: 15px !important;
