@@ -4226,27 +4226,49 @@ body {
   }
 
   .mobile-nav-right .cart-link-mobile {
-    padding: 8px !important;
+    padding: 10px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.6rem !important;
-    color: #333 !important;
+    font-size: 1.8rem !important;
+    color: #0d6efd !important;
     text-decoration: none !important;
     position: relative !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    min-width: 44px !important;
+    height: 44px !important;
+  }
+  
+  .mobile-nav-right .cart-link-mobile:hover {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+    transform: scale(1.1) !important;
   }
   
   .mobile-nav-right .cart-link-mobile i {
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
   }
 
   .mobile-nav-right .navbar-toggler {
-    padding: 8px 12px !important;
-    border: 1px solid #ddd !important;
-    border-radius: 5px !important;
+    padding: 10px 14px !important;
+    border: 2px solid #0d6efd !important;
+    border-radius: 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    background-color: white !important;
+    min-width: 44px !important;
+    height: 44px !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .mobile-nav-right .navbar-toggler:hover {
+    background-color: #0d6efd !important;
+    border-color: #0b5ed7 !important;
+  }
+  
+  .mobile-nav-right .navbar-toggler:hover .navbar-toggler-icon {
+    filter: brightness(0) invert(1) !important;
   }
   
 }
@@ -4745,6 +4767,15 @@ body {
   .offcanvas-backdrop {
     display: none !important;
     visibility: hidden !important;
+  }
+  
+  /* Скрываем мобильную навигацию на десктопе */
+  .mobile-nav-right {
+    display: none !important;
+  }
+  
+  .mobile-nav-center {
+    display: none !important;
   }
 }
 
