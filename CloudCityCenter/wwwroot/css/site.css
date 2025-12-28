@@ -4160,6 +4160,26 @@ body {
 #mobileMenuBtn.d-lg-none {
   display: block;
 }
+
+/* ВАЖНО: Десктопное меню должно быть видно на больших экранах */
+@media (min-width: 992px) {
+  .navbar-modern .container-fluid > .collapse {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  
+  #navbarNav.navbar-collapse {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  
+  .navbar-nav-left,
+  .navbar-nav-right,
+  .navbar-center-social {
+    display: flex !important;
+    visibility: visible !important;
+  }
+}
   
   /* CRITICAL: Force mobile menu button to be visible */
   button#mobileMenuBtn,
@@ -4204,7 +4224,8 @@ body {
   }
   
   /* Скрываем десктопное меню */
-  .navbar-modern .container-fluid > .collapse {
+  /* На мобильных скрываем десктопное меню */
+  .navbar-modern .container-fluid > .collapse:not(.show) {
     display: none !important;
   }
   
