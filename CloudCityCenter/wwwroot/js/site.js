@@ -318,87 +318,93 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize language dropdown - manual toggle approach
-    function initLanguageDropdown() {
-        const languageDropdown = document.getElementById('languageDropdown');
-        if (!languageDropdown) return;
+    // Initialize language dropdown - completely custom solution
+    (function() {
+        const languageButton = document.getElementById('languageDropdown');
+        if (!languageButton) {
+            console.log('Language dropdown button not found');
+            return;
+        }
         
-        const dropdownElement = languageDropdown.closest('.dropdown');
-        if (!dropdownElement) return;
+        const dropdownParent = languageButton.closest('.dropdown');
+        if (!dropdownParent) {
+            console.log('Dropdown parent not found');
+            return;
+        }
         
-        const dropdownMenu = dropdownElement.querySelector('.dropdown-menu, .language-dropdown');
-        if (!dropdownMenu) return;
+        const dropdownMenu = dropdownParent.querySelector('.dropdown-menu, .language-dropdown');
+        if (!dropdownMenu) {
+            console.log('Dropdown menu not found');
+            return;
+        }
         
-        // Manual toggle function
-        function toggleLanguageMenu(e) {
+        console.log('Language dropdown elements found:', {
+            button: languageButton,
+            parent: dropdownParent,
+            menu: dropdownMenu
+        });
+        
+        // Remove Bootstrap data attributes to prevent conflicts
+        languageButton.removeAttribute('data-bs-toggle');
+        languageButton.removeAttribute('data-bs-auto-close');
+        
+        // Custom toggle function
+        function toggleMenu(e) {
             if (e) {
                 e.preventDefault();
                 e.stopPropagation();
             }
             
-            const isOpen = dropdownElement.classList.contains('show');
+            const isCurrentlyOpen = dropdownParent.classList.contains('show') || 
+                                   dropdownMenu.style.display === 'block';
             
-            // Close all other dropdowns first
-            document.querySelectorAll('.dropdown.show').forEach(function(openDropdown) {
-                if (openDropdown !== dropdownElement) {
-                    openDropdown.classList.remove('show');
-                    const openMenu = openDropdown.querySelector('.dropdown-menu');
-                    if (openMenu) {
-                        openMenu.style.display = 'none';
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown').forEach(function(dd) {
+                if (dd !== dropdownParent) {
+                    dd.classList.remove('show');
+                    const menu = dd.querySelector('.dropdown-menu');
+                    if (menu) {
+                        menu.style.display = 'none';
+                        menu.style.visibility = 'hidden';
+                        menu.style.opacity = '0';
                     }
                 }
             });
             
-            if (isOpen) {
-                // Close
-                dropdownElement.classList.remove('show');
+            if (isCurrentlyOpen) {
+                // Close menu
+                dropdownParent.classList.remove('show');
                 dropdownMenu.style.display = 'none';
                 dropdownMenu.style.visibility = 'hidden';
                 dropdownMenu.style.opacity = '0';
-                languageDropdown.setAttribute('aria-expanded', 'false');
+                languageButton.setAttribute('aria-expanded', 'false');
+                console.log('Language menu closed');
             } else {
-                // Open
-                dropdownElement.classList.add('show');
+                // Open menu
+                dropdownParent.classList.add('show');
                 dropdownMenu.style.display = 'block';
                 dropdownMenu.style.visibility = 'visible';
                 dropdownMenu.style.opacity = '1';
-                languageDropdown.setAttribute('aria-expanded', 'true');
+                languageButton.setAttribute('aria-expanded', 'true');
+                console.log('Language menu opened');
             }
         }
         
-        // Add click handler
-        languageDropdown.addEventListener('click', toggleLanguageMenu);
+        // Add click event listener
+        languageButton.addEventListener('click', toggleMenu);
+        console.log('Click event listener added to language button');
         
         // Close when clicking outside
         document.addEventListener('click', function(e) {
-            if (!dropdownElement.contains(e.target)) {
-                dropdownElement.classList.remove('show');
+            if (!dropdownParent.contains(e.target)) {
+                dropdownParent.classList.remove('show');
                 dropdownMenu.style.display = 'none';
                 dropdownMenu.style.visibility = 'hidden';
                 dropdownMenu.style.opacity = '0';
-                languageDropdown.setAttribute('aria-expanded', 'false');
+                languageButton.setAttribute('aria-expanded', 'false');
             }
         });
         
-        // Also try Bootstrap initialization as fallback
-        if (typeof bootstrap !== 'undefined') {
-            try {
-                let dropdownInstance = bootstrap.Dropdown.getInstance(languageDropdown);
-                if (!dropdownInstance) {
-                    dropdownInstance = new bootstrap.Dropdown(languageDropdown, {
-                        boundary: 'viewport',
-                        popperConfig: {
-                            placement: 'bottom-end'
-                        }
-                    });
-                }
-            } catch (e) {
-                // If Bootstrap fails, manual toggle will still work
-                console.log('Bootstrap dropdown initialization failed, using manual toggle');
-            }
-        }
-    }
-    
-    // Initialize on page load
-    initLanguageDropdown();
+        console.log('Language dropdown initialized successfully');
+    })();
 });
