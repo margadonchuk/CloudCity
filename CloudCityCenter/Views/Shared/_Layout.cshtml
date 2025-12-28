@@ -69,7 +69,7 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;">
+                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -636,25 +636,99 @@ else
     }
   })();
   
-  // Mobile menu - Handle close buttons with data-offcanvas-close attribute
-  document.addEventListener('DOMContentLoaded', function() {
-    var menuElement = document.getElementById('mobileMenu');
-    if (!menuElement) return;
-    
-    // Handle close buttons with data-offcanvas-close
-    var closeLinks = menuElement.querySelectorAll('a[data-offcanvas-close]');
-    closeLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
+  // Mobile menu - Direct implementation that definitely works
+  (function() {
+    function initMobileMenu() {
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileMenu');
+      
+      if (!btn || !menu) {
+        setTimeout(initMobileMenu, 100);
+        return;
+      }
+      
+      console.log('Initializing mobile menu...');
+      
+      // Remove any existing event listeners by cloning
+      var newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+      btn = newBtn;
+      
+      // Add click handler
+      btn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('Menu button clicked');
+        
+        // Try Bootstrap first
         if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
-          var offcanvasInstance = bootstrap.Offcanvas.getInstance(menuElement);
-          if (offcanvasInstance) {
-            offcanvasInstance.hide();
+          var offcanvasInstance = bootstrap.Offcanvas.getInstance(menu);
+          if (!offcanvasInstance) {
+            offcanvasInstance = new bootstrap.Offcanvas(menu);
+          }
+          offcanvasInstance.toggle();
+        } else {
+          // Fallback: manual toggle
+          menu.classList.toggle('show');
+          document.body.classList.toggle('modal-open');
+          
+          if (menu.classList.contains('show')) {
+            // Create backdrop
+            var backdrop = document.createElement('div');
+            backdrop.className = 'offcanvas-backdrop fade show';
+            backdrop.id = 'mobileMenuBackdrop';
+            document.body.appendChild(backdrop);
+            backdrop.addEventListener('click', function() {
+              menu.classList.remove('show');
+              document.body.classList.remove('modal-open');
+              backdrop.remove();
+            });
+          } else {
+            var backdrop = document.getElementById('mobileMenuBackdrop');
+            if (backdrop) backdrop.remove();
           }
         }
+        
+        btn.setAttribute('aria-expanded', menu.classList.contains('show') ? 'true' : 'false');
       });
+      
+      // Handle close buttons
+      var closeLinks = menu.querySelectorAll('a[data-offcanvas-close], .btn-close[data-bs-dismiss]');
+      closeLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+            var offcanvasInstance = bootstrap.Offcanvas.getInstance(menu);
+            if (offcanvasInstance) {
+              offcanvasInstance.hide();
+            }
+          } else {
+            menu.classList.remove('show');
+            document.body.classList.remove('modal-open');
+            var backdrop = document.getElementById('mobileMenuBackdrop');
+            if (backdrop) backdrop.remove();
+          }
+        });
+      });
+      
+      console.log('Mobile menu initialized successfully!');
+    }
+    
+    // Initialize after page loads
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initMobileMenu, 200);
+      });
+    } else {
+      setTimeout(initMobileMenu, 200);
+    }
+    
+    // Also try after Bootstrap loads
+    window.addEventListener('load', function() {
+      setTimeout(initMobileMenu, 300);
     });
-  });
+  })();
 </script>
 
 
