@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <!-- MOBILE MENU BUTTON - GUARANTEED TO WORK -->
-    <div id="mobileMenuBtnBody" onclick="var m=document.getElementById('mobileMenu');if(m){m.classList.add('show');m.style.display='flex';m.style.visibility='visible';m.style.transform='translateX(0)';document.body.classList.add('modal-open');var b=document.createElement('div');b.className='offcanvas-backdrop fade show';b.style.position='fixed';b.style.top='0';b.style.left='0';b.style.width='100%';b.style.height='100%';b.style.backgroundColor='rgba(0,0,0,0.5)';b.style.zIndex='1040';b.onclick=function(){m.classList.remove('show');document.body.classList.remove('modal-open');b.remove();};document.body.appendChild(b);}alert('Menu should open now!');" style="position:fixed;top:15px;right:15px;z-index:999999;width:60px;height:60px;background:red;color:white;border:3px solid black;border-radius:8px;font-size:30px;font-weight:bold;cursor:pointer;display:block;visibility:visible;opacity:1;line-height:60px;text-align:center;box-shadow:0 4px 20px rgba(255,0,0,0.8);user-select:none;">☰</div>
+    <!-- MOBILE MENU BUTTON - ЕДИНСТВЕННАЯ КНОПКА -->
+    <button id="mobileMenuBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" style="position:fixed;top:15px;right:15px;z-index:999999;width:60px;height:60px;background:#0d6efd;color:white;border:2px solid white;border-radius:8px;font-size:30px;font-weight:bold;cursor:pointer;display:block;visibility:visible;opacity:1;line-height:56px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);user-select:none;">☰</button>
     @{
         var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
         var cartCount = 0;
@@ -46,8 +46,6 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- MOBILE MENU BUTTON - ALWAYS VISIBLE FOR TESTING -->
-                <button id="mobileMenuBtn" type="button" onclick="alert('Button in nav clicked!');var m=document.getElementById('mobileMenu');if(m){if(typeof bootstrap!='undefined'&&bootstrap.Offcanvas){new bootstrap.Offcanvas(m).show();}else{m.classList.add('show');document.body.classList.add('modal-open');}}else{alert('Menu not found!');}" style="position: fixed !important; top: 15px !important; right: 15px !important; z-index: 999999 !important; width: 60px !important; height: 60px !important; background: red !important; color: white !important; border: 3px solid black !important; border-radius: 8px !important; font-size: 30px !important; font-weight: bold !important; cursor: pointer !important; display: block !important; visibility: visible !important; opacity: 1 !important; line-height: 60px !important; text-align: center !important; box-shadow: 0 4px 20px rgba(255,0,0,0.8) !important;">☰</button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
                 <div class="d-flex align-items-center justify-content-center d-lg-none mobile-nav-center">
@@ -74,15 +72,8 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn2" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important; align-items: center !important; justify-content: center !important;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" style="display: block !important; width: 20px !important; height: 20px !important;">
-                            <path stroke="rgba(33, 37, 41, 0.75)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path>
-                        </svg>
-                    </button>
                 </div>
 
-                <!-- TEST: Simple visible button outside container -->
-                <button id="testMenuBtn" class="d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" style="position: fixed; top: 10px; right: 10px; z-index: 99999; padding: 10px; background: red; color: white; border: 2px solid black; display: block !important; visibility: visible !important;">TEST MENU</button>
 
                 <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
                     <div class="d-flex align-items-center w-100 position-relative">
@@ -425,13 +416,8 @@ else
     <script>
       (function() {
         function forceButtonVisible() {
-          // Try multiple selectors - check both buttons
-          var btn = document.getElementById('mobileMenuBtn') || 
-                    document.getElementById('mobileMenuBtn2') ||
-                    document.querySelector('button.mobile-menu-btn') ||
-                    document.querySelector('.mobile-nav-right button') ||
-                    document.querySelector('.mobile-nav-right .navbar-toggler') ||
-                    document.querySelector('button[data-bs-target="#mobileMenu"]');
+          // Check the button
+          var btn = document.getElementById('mobileMenuBtn');
           
           var container = document.querySelector('.mobile-nav-right') ||
                           document.querySelector('div.mobile-nav-right') ||
@@ -890,96 +876,15 @@ else
 
     <!-- FINAL FIX: Create button dynamically - GUARANTEED TO WORK -->
     <script>
-      (function() {
-        function createMobileMenuButton() {
-          console.log('=== CREATING MOBILE MENU BUTTON ===');
-          
-          // Remove any existing button first
-          var oldBtn = document.getElementById('mobileMenuBtn');
-          if (oldBtn) {
-            oldBtn.remove();
-            console.log('Removed old button');
-          }
-          
-          // Create NEW button
-          var btn = document.createElement('button');
-          btn.id = 'mobileMenuBtn';
-          btn.type = 'button';
-          btn.innerHTML = '☰';
-          btn.setAttribute('data-bs-toggle', 'offcanvas');
-          btn.setAttribute('data-bs-target', '#mobileMenu');
-          
-          // Set ALL styles
-          btn.style.position = 'fixed';
-          btn.style.top = '15px';
-          btn.style.right = '15px';
-          btn.style.zIndex = '999999';
-          btn.style.width = '60px';
-          btn.style.height = '60px';
-          btn.style.background = 'red';
-          btn.style.color = 'white';
-          btn.style.border = '3px solid black';
-          btn.style.borderRadius = '8px';
-          btn.style.fontSize = '30px';
-          btn.style.fontWeight = 'bold';
-          btn.style.cursor = 'pointer';
-          btn.style.display = 'block';
-          btn.style.visibility = 'visible';
-          btn.style.opacity = '1';
-          btn.style.lineHeight = '60px';
-          btn.style.textAlign = 'center';
-          btn.style.boxShadow = '0 4px 20px rgba(255,0,0,0.8)';
-          btn.style.pointerEvents = 'auto';
-          
-          // Click handler
-          btn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('=== BUTTON CLICKED ===');
-            alert('Button clicked! Opening menu...');
-            var menu = document.getElementById('mobileMenu');
-            console.log('Menu element:', menu);
-            if (menu) {
-              if (typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
-                console.log('Using Bootstrap Offcanvas');
-                var bsOffcanvas = new bootstrap.Offcanvas(menu);
-                bsOffcanvas.show();
-              } else {
-                console.log('Bootstrap not available, using manual toggle');
-                menu.classList.add('show');
-                document.body.classList.add('modal-open');
-              }
-            } else {
-              alert('ERROR: Mobile menu element not found!');
-              console.error('Mobile menu element not found!');
-            }
-          };
-          
-          // Add to body
-          document.body.appendChild(btn);
-          console.log('✅ Button created and added to body!');
-          console.log('Button element:', btn);
-          console.log('Button computed styles:', window.getComputedStyle(btn));
-          alert('Mobile menu button created! Check top-right corner.');
+      // Кнопка уже есть в HTML, не нужно создавать её через JavaScript
+      document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('mobileMenuBtn');
+        if (btn) {
+          console.log('✅ Кнопка меню найдена и готова к работе');
+        } else {
+          console.error('❌ Кнопка меню НЕ НАЙДЕНА!');
         }
-        
-        // Run multiple times to ensure it works
-        if (document.body) {
-          createMobileMenuButton();
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-          setTimeout(createMobileMenuButton, 100);
-        });
-        
-        window.addEventListener('load', function() {
-          setTimeout(createMobileMenuButton, 200);
-        });
-        
-        // Also run after a delay
-        setTimeout(createMobileMenuButton, 500);
-        setTimeout(createMobileMenuButton, 1000);
-      })();
+      });
     </script>
 
 </body>

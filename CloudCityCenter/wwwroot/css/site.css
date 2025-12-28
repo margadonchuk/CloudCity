@@ -4127,18 +4127,17 @@ body {
 /* ============================================
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
-/* CRITICAL: Mobile menu button - ALWAYS VISIBLE ON ALL SCREENS FOR TESTING */
-#mobileMenuBtn,
-#mobileMenuBtnBody {
+/* CRITICAL: Mobile menu button - ALWAYS VISIBLE */
+#mobileMenuBtn {
   position: fixed !important;
   top: 15px !important;
   right: 15px !important;
   z-index: 999999 !important;
   width: 60px !important;
   height: 60px !important;
-  background: red !important;
+  background: #0d6efd !important;
   color: white !important;
-  border: 3px solid black !important;
+  border: 2px solid white !important;
   border-radius: 8px !important;
   font-size: 30px !important;
   font-weight: bold !important;
@@ -4147,9 +4146,9 @@ body {
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-  line-height: 60px !important;
+  line-height: 56px !important;
   text-align: center !important;
-  box-shadow: 0 4px 20px rgba(255,0,0,0.8) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
 }
   
   /* CRITICAL: Force mobile menu button to be visible */
@@ -4434,9 +4433,10 @@ body {
     right: 0 !important;
     bottom: 0 !important;
     z-index: 1045 !important;
-    display: flex !important;
+    display: none !important;
     flex-direction: column !important;
     max-width: 100% !important;
+    width: 300px !important;
     visibility: hidden !important;
     background-color: #fff !important;
     outline: 0 !important;
@@ -4446,6 +4446,7 @@ body {
   }
   
   #mobileMenu.offcanvas.show {
+    display: flex !important;
     visibility: visible !important;
     transform: translateX(0) !important;
   }
