@@ -326,10 +326,27 @@ document.addEventListener('DOMContentLoaded', function () {
         if (dropdownElement) {
             // Initialize dropdown if not already initialized
             try {
-                new bootstrap.Dropdown(languageDropdown);
+                // Check if dropdown is already initialized
+                let dropdownInstance = bootstrap.Dropdown.getInstance(languageDropdown);
+                if (!dropdownInstance) {
+                    dropdownInstance = new bootstrap.Dropdown(languageDropdown, {
+                        boundary: 'viewport',
+                        popperConfig: {
+                            placement: 'bottom-end'
+                        }
+                    });
+                }
+                
+                // Add event listener to ensure menu shows
+                languageDropdown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (dropdownInstance) {
+                        dropdownInstance.toggle();
+                    }
+                });
             } catch (e) {
-                // Dropdown might already be initialized, that's okay
-                console.log('Language dropdown already initialized');
+                console.error('Error initializing language dropdown:', e);
             }
         }
     }
