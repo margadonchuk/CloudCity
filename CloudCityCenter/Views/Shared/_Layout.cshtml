@@ -411,6 +411,77 @@ else
         };
     </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <!-- Language Dropdown Fix -->
+    <script>
+        (function() {
+            function setupLanguageDropdown() {
+                var btn = document.getElementById('languageDropdown');
+                if (!btn) {
+                    setTimeout(setupLanguageDropdown, 100);
+                    return;
+                }
+                
+                var parent = btn.closest('.dropdown');
+                if (!parent) return;
+                
+                var menu = parent.querySelector('.dropdown-menu') || parent.querySelector('.language-dropdown');
+                if (!menu) return;
+                
+                // Remove Bootstrap attributes
+                btn.removeAttribute('data-bs-toggle');
+                btn.removeAttribute('data-bs-auto-close');
+                
+                // Ensure hidden initially
+                menu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+                
+                // Toggle function
+                btn.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    var isOpen = parent.classList.contains('show');
+                    
+                    // Close others
+                    document.querySelectorAll('.dropdown.show').forEach(function(dd) {
+                        if (dd !== parent) {
+                            dd.classList.remove('show');
+                            var m = dd.querySelector('.dropdown-menu');
+                            if (m) m.style.cssText = 'display: none !important;';
+                        }
+                    });
+                    
+                    if (isOpen) {
+                        parent.classList.remove('show');
+                        menu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+                        btn.setAttribute('aria-expanded', 'false');
+                    } else {
+                        parent.classList.add('show');
+                        menu.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important;';
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                };
+                
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!parent.contains(e.target)) {
+                        parent.classList.remove('show');
+                        menu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // Run after page load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setupLanguageDropdown);
+            } else {
+                setupLanguageDropdown();
+            }
+            setTimeout(setupLanguageDropdown, 500);
+        })();
+    </script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 
 

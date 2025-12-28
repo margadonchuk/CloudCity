@@ -6520,7 +6520,8 @@ body {
 
 /* Language dropdown menu - hidden by default */
 .language-switcher .dropdown-menu,
-.language-dropdown {
+.language-dropdown,
+.dropdown-menu.language-dropdown {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
