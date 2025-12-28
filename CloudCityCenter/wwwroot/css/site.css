@@ -6522,9 +6522,11 @@ body {
 .language-switcher .dropdown-menu,
 .language-dropdown {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
-/* Bootstrap dropdown show - when dropdown is opened */
+/* Show dropdown when parent has show class - multiple selectors for reliability */
 .dropdown.show > .dropdown-menu,
 .dropdown.show .dropdown-menu,
 .dropdown.show .language-dropdown,
@@ -6533,25 +6535,21 @@ body {
 .nav-item.dropdown.show .dropdown-menu,
 .nav-item.dropdown.show .language-dropdown,
 .nav-item.dropdown.show > .dropdown-menu,
-.nav-item.dropdown.show > ul.dropdown-menu {
+.nav-item.dropdown.show > ul.dropdown-menu,
+li.dropdown.show ul.dropdown-menu,
+li.dropdown.show .language-dropdown,
+li.dropdown.show .dropdown-menu {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-/* Additional selectors for Bootstrap 5 */
+/* Additional selectors for Bootstrap 5 and manual toggle */
 [data-bs-toggle="dropdown"][aria-expanded="true"] + .dropdown-menu,
 [data-bs-toggle="dropdown"][aria-expanded="true"] ~ .dropdown-menu,
 #languageDropdown[aria-expanded="true"] + .dropdown-menu,
-#languageDropdown[aria-expanded="true"] ~ .dropdown-menu {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* Force show when parent has show class */
-li.dropdown.show ul.dropdown-menu,
-li.dropdown.show .language-dropdown {
+#languageDropdown[aria-expanded="true"] ~ .dropdown-menu,
+#languageDropdown[aria-expanded="true"] ~ .language-dropdown {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;

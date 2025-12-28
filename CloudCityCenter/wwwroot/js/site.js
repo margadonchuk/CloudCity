@@ -318,59 +318,84 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize language dropdown - ensure it works properly
+    // Initialize language dropdown - manual toggle approach
     function initLanguageDropdown() {
         const languageDropdown = document.getElementById('languageDropdown');
         if (!languageDropdown) return;
         
-        // Wait for Bootstrap to be fully loaded
-        if (typeof bootstrap === 'undefined') {
-            setTimeout(initLanguageDropdown, 100);
-            return;
-        }
+        const dropdownElement = languageDropdown.closest('.dropdown');
+        if (!dropdownElement) return;
         
-        try {
-            const dropdownElement = languageDropdown.closest('.dropdown');
-            if (!dropdownElement) return;
-            
-            // Check if dropdown is already initialized
-            let dropdownInstance = bootstrap.Dropdown.getInstance(languageDropdown);
-            if (!dropdownInstance) {
-                // Initialize dropdown
-                dropdownInstance = new bootstrap.Dropdown(languageDropdown, {
-                    boundary: 'viewport',
-                    popperConfig: {
-                        placement: 'bottom-end'
-                    }
-                });
+        const dropdownMenu = dropdownElement.querySelector('.dropdown-menu, .language-dropdown');
+        if (!dropdownMenu) return;
+        
+        // Manual toggle function
+        function toggleLanguageMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
             }
             
-            // Listen for dropdown show event
-            dropdownElement.addEventListener('shown.bs.dropdown', function() {
-                const menu = dropdownElement.querySelector('.dropdown-menu, .language-dropdown');
-                if (menu) {
-                    menu.style.display = 'block';
-                    menu.style.visibility = 'visible';
-                    menu.style.opacity = '1';
+            const isOpen = dropdownElement.classList.contains('show');
+            
+            // Close all other dropdowns first
+            document.querySelectorAll('.dropdown.show').forEach(function(openDropdown) {
+                if (openDropdown !== dropdownElement) {
+                    openDropdown.classList.remove('show');
+                    const openMenu = openDropdown.querySelector('.dropdown-menu');
+                    if (openMenu) {
+                        openMenu.style.display = 'none';
+                    }
                 }
             });
             
-            // Also check on click to ensure menu shows
-            languageDropdown.addEventListener('click', function(e) {
-                setTimeout(function() {
-                    if (dropdownElement.classList.contains('show')) {
-                        const menu = dropdownElement.querySelector('.dropdown-menu, .language-dropdown');
-                        if (menu) {
-                            menu.style.display = 'block';
-                            menu.style.visibility = 'visible';
-                            menu.style.opacity = '1';
+            if (isOpen) {
+                // Close
+                dropdownElement.classList.remove('show');
+                dropdownMenu.style.display = 'none';
+                dropdownMenu.style.visibility = 'hidden';
+                dropdownMenu.style.opacity = '0';
+                languageDropdown.setAttribute('aria-expanded', 'false');
+            } else {
+                // Open
+                dropdownElement.classList.add('show');
+                dropdownMenu.style.display = 'block';
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.opacity = '1';
+                languageDropdown.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        // Add click handler
+        languageDropdown.addEventListener('click', toggleLanguageMenu);
+        
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdownElement.contains(e.target)) {
+                dropdownElement.classList.remove('show');
+                dropdownMenu.style.display = 'none';
+                dropdownMenu.style.visibility = 'hidden';
+                dropdownMenu.style.opacity = '0';
+                languageDropdown.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Also try Bootstrap initialization as fallback
+        if (typeof bootstrap !== 'undefined') {
+            try {
+                let dropdownInstance = bootstrap.Dropdown.getInstance(languageDropdown);
+                if (!dropdownInstance) {
+                    dropdownInstance = new bootstrap.Dropdown(languageDropdown, {
+                        boundary: 'viewport',
+                        popperConfig: {
+                            placement: 'bottom-end'
                         }
-                    }
-                }, 50);
-            });
-            
-        } catch (e) {
-            console.error('Error initializing language dropdown:', e);
+                    });
+                }
+            } catch (e) {
+                // If Bootstrap fails, manual toggle will still work
+                console.log('Bootstrap dropdown initialization failed, using manual toggle');
+            }
         }
     }
     
