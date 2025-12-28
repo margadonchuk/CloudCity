@@ -6555,10 +6555,21 @@ li.dropdown.show .dropdown-menu {
 
 /* Force show with inline styles (highest priority) */
 .language-dropdown[style*="display: block"],
-.dropdown-menu[style*="display: block"] {
+.dropdown-menu[style*="display: block"],
+.language-dropdown[style*="display:block"],
+.dropdown-menu[style*="display:block"] {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* Override any conflicting styles */
+.dropdown.show .language-dropdown,
+.dropdown.show .dropdown-menu.language-dropdown {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .language-switcher-btn {

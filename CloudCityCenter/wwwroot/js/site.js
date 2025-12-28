@@ -318,45 +318,44 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize language dropdown - completely custom solution
-    (function() {
+    // Initialize language dropdown - simple and reliable solution
+    function initLanguageDropdown() {
         const languageButton = document.getElementById('languageDropdown');
         if (!languageButton) {
-            console.log('Language dropdown button not found');
+            setTimeout(initLanguageDropdown, 100);
             return;
         }
         
         const dropdownParent = languageButton.closest('.dropdown');
         if (!dropdownParent) {
-            console.log('Dropdown parent not found');
+            setTimeout(initLanguageDropdown, 100);
             return;
         }
         
-        const dropdownMenu = dropdownParent.querySelector('.dropdown-menu, .language-dropdown');
+        const dropdownMenu = dropdownParent.querySelector('.dropdown-menu') || 
+                           dropdownParent.querySelector('.language-dropdown');
         if (!dropdownMenu) {
-            console.log('Dropdown menu not found');
+            setTimeout(initLanguageDropdown, 100);
             return;
         }
-        
-        console.log('Language dropdown elements found:', {
-            button: languageButton,
-            parent: dropdownParent,
-            menu: dropdownMenu
-        });
         
         // Remove Bootstrap data attributes to prevent conflicts
-        languageButton.removeAttribute('data-bs-toggle');
-        languageButton.removeAttribute('data-bs-auto-close');
+        if (languageButton.hasAttribute('data-bs-toggle')) {
+            languageButton.removeAttribute('data-bs-toggle');
+        }
+        if (languageButton.hasAttribute('data-bs-auto-close')) {
+            languageButton.removeAttribute('data-bs-auto-close');
+        }
+        
+        // Ensure menu is hidden initially
+        dropdownMenu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
         
         // Custom toggle function
         function toggleMenu(e) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
+            e.preventDefault();
+            e.stopPropagation();
             
-            const isCurrentlyOpen = dropdownParent.classList.contains('show') || 
-                                   dropdownMenu.style.display === 'block';
+            const isOpen = dropdownParent.classList.contains('show');
             
             // Close all other dropdowns
             document.querySelectorAll('.dropdown').forEach(function(dd) {
@@ -364,47 +363,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     dd.classList.remove('show');
                     const menu = dd.querySelector('.dropdown-menu');
                     if (menu) {
-                        menu.style.display = 'none';
-                        menu.style.visibility = 'hidden';
-                        menu.style.opacity = '0';
+                        menu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
                     }
                 }
             });
             
-            if (isCurrentlyOpen) {
-                // Close menu
+            if (isOpen) {
+                // Close
                 dropdownParent.classList.remove('show');
-                dropdownMenu.style.display = 'none';
-                dropdownMenu.style.visibility = 'hidden';
-                dropdownMenu.style.opacity = '0';
+                dropdownMenu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
                 languageButton.setAttribute('aria-expanded', 'false');
-                console.log('Language menu closed');
             } else {
-                // Open menu
+                // Open
                 dropdownParent.classList.add('show');
-                dropdownMenu.style.display = 'block';
-                dropdownMenu.style.visibility = 'visible';
-                dropdownMenu.style.opacity = '1';
+                dropdownMenu.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important;';
                 languageButton.setAttribute('aria-expanded', 'true');
-                console.log('Language menu opened');
             }
         }
-        
-        // Add click event listener
-        languageButton.addEventListener('click', toggleMenu);
-        console.log('Click event listener added to language button');
+            
+        // Add click event listener (use capture to ensure it fires)
+        languageButton.addEventListener('click', toggleMenu, true);
         
         // Close when clicking outside
         document.addEventListener('click', function(e) {
             if (!dropdownParent.contains(e.target)) {
                 dropdownParent.classList.remove('show');
-                dropdownMenu.style.display = 'none';
-                dropdownMenu.style.visibility = 'hidden';
-                dropdownMenu.style.opacity = '0';
+                dropdownMenu.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
                 languageButton.setAttribute('aria-expanded', 'false');
             }
-        });
-        
-        console.log('Language dropdown initialized successfully');
-    })();
+        }, true);
+    }
+    
+    // Initialize immediately and also after a delay
+    initLanguageDropdown();
+    setTimeout(initLanguageDropdown, 300);
 });
