@@ -3383,6 +3383,7 @@ body {
   margin: 0;
   width: 100%;
   min-height: 70px;
+  overflow: visible;
 }
 
 /* Toast container positioning below navbar */
@@ -3409,6 +3410,7 @@ body {
   padding: 0 20px;
   position: relative;
   min-height: 70px;
+  overflow: visible;
 }
 
 /* Логотип слева */
@@ -3439,7 +3441,7 @@ body {
   position: relative;
   width: 100%;
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
   margin-left: 15px;
   margin-right: 15px;
 }
@@ -3452,7 +3454,7 @@ body {
   justify-content: space-between;
   gap: 5px;
   flex-wrap: nowrap;
-  overflow: hidden;
+  overflow: visible;
   min-width: 0;
 }
 
@@ -3529,6 +3531,15 @@ body {
 .navbar-nav-right .language-switcher {
   position: relative;
   z-index: 1001;
+}
+
+.navbar-nav-right .language-switcher .dropdown-menu,
+.navbar-nav-right .language-switcher .language-dropdown {
+  position: fixed !important;
+  z-index: 9999 !important;
+  margin-top: 0.125rem !important;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 body {
@@ -6616,14 +6627,13 @@ li.dropdown.show .dropdown-menu {
   border: 1px solid #e0e0e0;
   padding: 8px 0;
   margin-top: 0.125rem !important;
-  z-index: 1050 !important;
-  position: absolute !important;
-  top: 100% !important;
-  right: 0 !important;
-  left: auto !important;
+  z-index: 9999 !important;
+  position: fixed !important;
   background-color: white !important;
   pointer-events: auto !important;
   transform: none !important;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .navbar-nav-right .language-switcher .dropdown-menu {

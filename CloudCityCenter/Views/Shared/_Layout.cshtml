@@ -457,7 +457,14 @@ else
                         btn.setAttribute('aria-expanded', 'false');
                     } else {
                         parent.classList.add('show');
-                        menu.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important;';
+                        
+                        // Calculate position for fixed menu - position it below the button
+                        var rect = btn.getBoundingClientRect();
+                        var rightPosition = window.innerWidth - rect.right;
+                        
+                        // Position menu below button, aligned to right edge
+                        menu.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: ' + (rect.bottom + 2) + 'px !important; right: ' + rightPosition + 'px !important; left: auto !important; z-index: 9999 !important; min-width: 180px !important;';
+                        
                         btn.setAttribute('aria-expanded', 'true');
                     }
                 };
