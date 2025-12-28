@@ -3510,8 +3510,8 @@ body {
   padding-left: 5px;
   position: relative;
   z-index: 2;
-  overflow: hidden;
-  max-width: 35%;
+  overflow: visible;
+  max-width: 40%;
 }
 
 .navbar-nav-right .nav-item {
@@ -4836,6 +4836,19 @@ body {
   
   .mobile-nav-center {
     display: none !important;
+  }
+  
+  /* Показываем переключатель языка на десктопе */
+  .language-switcher {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .language-switcher-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
@@ -6505,16 +6518,22 @@ body {
    ============================================ */
 .language-switcher {
   position: relative;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .language-switcher-btn {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 6px;
-  padding: 10px 15px !important;
+  padding: 6px 10px !important;
   border-radius: 10px;
   transition: all 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .language-switcher-btn:hover {
@@ -6533,7 +6552,8 @@ body {
 
 .language-text {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .language-dropdown {
