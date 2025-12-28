@@ -69,7 +69,7 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <button id="mobileMenuBtn" class="navbar-toggler" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important;">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -621,150 +621,101 @@ else
     }
   })();
   
-  // Mobile menu - simple direct implementation
+  // Mobile menu - using ID for reliability
   (function() {
-    let menuButton = null;
-    let mobileMenu = null;
-    
-    function toggleMobileMenu() {
-      console.log('toggleMobileMenu called');
+    function toggleMenu() {
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('mobileMenuBtn');
       
-      if (!mobileMenu) {
-        mobileMenu = document.getElementById('mobileMenu');
-      }
-      if (!menuButton) {
-        menuButton = document.querySelector('button[data-bs-target="#mobileMenu"]') || 
-                     document.querySelector('.mobile-nav-right .navbar-toggler') ||
-                     document.querySelector('.navbar-toggler');
-      }
-      
-      if (!mobileMenu) {
-        console.error('Mobile menu not found!');
+      if (!menu) {
+        alert('Menu not found!');
         return;
       }
-      if (!menuButton) {
-        console.error('Menu button not found!');
+      if (!btn) {
+        alert('Button not found!');
         return;
       }
       
-      console.log('Menu and button found, toggling...');
-      
-      const isOpen = mobileMenu.classList.contains('show');
-      console.log('Menu is currently:', isOpen ? 'open' : 'closed');
+      var isOpen = menu.classList.contains('show');
       
       if (isOpen) {
-        // Close menu
-        console.log('Closing menu...');
-        mobileMenu.classList.remove('show');
+        // Close
+        menu.classList.remove('show');
         document.body.classList.remove('modal-open');
-        const backdrop = document.querySelector('.offcanvas-backdrop');
+        var backdrop = document.querySelector('.offcanvas-backdrop');
         if (backdrop) {
           backdrop.classList.remove('show');
           setTimeout(function() {
-            if (backdrop && backdrop.parentNode) {
-              backdrop.remove();
-            }
+            if (backdrop && backdrop.parentNode) backdrop.remove();
           }, 150);
         }
-        menuButton.setAttribute('aria-expanded', 'false');
-        console.log('Menu closed');
+        btn.setAttribute('aria-expanded', 'false');
       } else {
-        // Open menu
-        console.log('Opening menu...');
-        mobileMenu.classList.add('show');
+        // Open
+        menu.classList.add('show');
         document.body.classList.add('modal-open');
         
-        // Create backdrop
-        let backdrop = document.querySelector('.offcanvas-backdrop');
+        var backdrop = document.querySelector('.offcanvas-backdrop');
         if (!backdrop) {
           backdrop = document.createElement('div');
           backdrop.className = 'offcanvas-backdrop fade';
           document.body.appendChild(backdrop);
-          console.log('Backdrop created');
         }
         backdrop.classList.add('show');
+        backdrop.onclick = function() { toggleMenu(); };
         
-        // Close on backdrop click
-        backdrop.onclick = function() {
-          console.log('Backdrop clicked, closing menu');
-          toggleMobileMenu();
-        };
-        
-        menuButton.setAttribute('aria-expanded', 'true');
-        console.log('Menu opened');
+        btn.setAttribute('aria-expanded', 'true');
       }
     }
     
-    function initMobileMenu() {
-      console.log('Initializing mobile menu...');
+    function init() {
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileMenu');
       
-      // Try multiple selectors to find the button
-      menuButton = document.querySelector('button[data-bs-target="#mobileMenu"]') || 
-                   document.querySelector('.mobile-nav-right .navbar-toggler') ||
-                   document.querySelector('.navbar-toggler');
-      
-      mobileMenu = document.getElementById('mobileMenu');
-      
-      console.log('Button found:', menuButton ? 'YES' : 'NO');
-      console.log('Menu found:', mobileMenu ? 'YES' : 'NO');
-      
-      if (menuButton && mobileMenu) {
-        console.log('Both elements found, setting up event listeners...');
+      if (btn && menu) {
+        // Remove any existing listeners
+        var newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        btn = newBtn;
         
-        // Remove Bootstrap data attributes to prevent conflicts
-        if (menuButton.hasAttribute('data-bs-toggle')) {
-          menuButton.removeAttribute('data-bs-toggle');
-          console.log('Removed data-bs-toggle attribute');
-        }
-        
-        // Remove any existing listeners by cloning
-        const newButton = menuButton.cloneNode(true);
-        menuButton.parentNode.replaceChild(newButton, menuButton);
-        menuButton = newButton;
-        
-        // Add our click handler
-        menuButton.addEventListener('click', function(e) {
-          console.log('Button clicked!');
+        btn.onclick = function(e) {
           e.preventDefault();
           e.stopPropagation();
-          toggleMobileMenu();
+          toggleMenu();
           return false;
-        });
+        };
         
-        // Handle close links
-        const closeLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close], button[data-bs-dismiss="offcanvas"], .btn-close');
-        console.log('Close links found:', closeLinks.length);
-        closeLinks.forEach(function(link) {
-          link.addEventListener('click', function(e) {
-            console.log('Close link clicked');
-            toggleMobileMenu();
-          });
-        });
+        // Close buttons
+        var closeBtns = menu.querySelectorAll('a[data-offcanvas-close], .btn-close, button[data-bs-dismiss]');
+        for (var i = 0; i < closeBtns.length; i++) {
+          (function(btn) {
+            btn.onclick = function(e) {
+              e.preventDefault();
+              toggleMenu();
+              return false;
+            };
+          })(closeBtns[i]);
+        }
         
-        console.log('Mobile menu initialized successfully!');
+        console.log('Mobile menu ready!');
       } else {
-        console.log('Elements not ready, retrying in 100ms...');
-        setTimeout(initMobileMenu, 100);
+        setTimeout(init, 100);
       }
     }
     
-    // Initialize multiple times to ensure it works
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        initMobileMenu();
-        setTimeout(initMobileMenu, 200);
-        setTimeout(initMobileMenu, 500);
-      });
+      document.addEventListener('DOMContentLoaded', init);
     } else {
-      initMobileMenu();
-      setTimeout(initMobileMenu, 200);
-      setTimeout(initMobileMenu, 500);
+      init();
     }
+    setTimeout(init, 200);
+    setTimeout(init, 500);
   })();
 </script>
 
 
 </body>
 </html>
+
 
 
