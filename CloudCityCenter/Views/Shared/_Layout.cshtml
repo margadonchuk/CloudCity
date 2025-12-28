@@ -69,7 +69,7 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn" class="navbar-toggler" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important;">
+                    <button id="mobileMenuBtn" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important;">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -235,7 +235,7 @@
         </nav>
         
         <!-- Mobile Offcanvas Menu -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" data-bs-scroll="true" data-bs-backdrop="true">
             <div class="offcanvas-header border-bottom">
                 <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-offcanvas-close>
