@@ -64,13 +64,13 @@
                 </div>
 
                 <!-- Мобильная версия: Корзина и Меню - справа -->
-                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right" style="display: flex !important; visibility: visible !important;">
+                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right" style="display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 9998 !important; flex: 0 0 auto !important; margin-left: auto !important; width: auto !important; height: auto !important;">
                     <a class="nav-link cart-link-mobile position-relative" asp-controller="Cart" asp-action="Index">
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important;">
-                        <span class="navbar-toggler-icon" style="display: block !important; width: 20px !important; height: 20px !important;"></span>
+                    <button id="mobileMenuBtn" class="navbar-toggler mobile-menu-btn d-flex d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="console.log('Button clicked!');" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important; width: auto !important;">
+                        <span class="navbar-toggler-icon" style="display: block !important; width: 20px !important; height: 20px !important; visibility: visible !important; opacity: 1 !important;"></span>
                     </button>
                 </div>
 
@@ -415,39 +415,85 @@ else
     <script>
       (function() {
         function forceButtonVisible() {
-          var btn = document.getElementById('mobileMenuBtn');
-          var container = document.querySelector('.mobile-nav-right');
+          // Try multiple selectors
+          var btn = document.getElementById('mobileMenuBtn') || 
+                    document.querySelector('button.mobile-menu-btn') ||
+                    document.querySelector('.mobile-nav-right button') ||
+                    document.querySelector('.mobile-nav-right .navbar-toggler');
+          
+          var container = document.querySelector('.mobile-nav-right') ||
+                          document.querySelector('div.mobile-nav-right') ||
+                          document.querySelector('div.d-flex.mobile-nav-right');
+          
+          console.log('=== FORCING BUTTON VISIBLE ===');
+          console.log('Button found:', btn ? 'YES' : 'NO');
+          console.log('Container found:', container ? 'YES' : 'NO');
           
           if (btn) {
-            btn.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important;';
+            // Remove all classes that might hide it
+            btn.classList.remove('d-none', 'd-lg-block');
+            btn.classList.add('d-flex', 'd-lg-none');
+            
+            // Force styles
+            btn.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; margin: 0 !important; cursor: pointer !important; width: auto !important;';
+            
+            // Force icon to be visible
+            var icon = btn.querySelector('.navbar-toggler-icon');
+            if (icon) {
+              icon.style.cssText = 'display: block !important; width: 20px !important; height: 20px !important; visibility: visible !important; opacity: 1 !important;';
+            }
+            
             console.log('✅ Mobile menu button FORCED to be visible');
+            console.log('Button computed display:', window.getComputedStyle(btn).display);
+            console.log('Button computed visibility:', window.getComputedStyle(btn).visibility);
           } else {
             console.error('❌ Mobile menu button NOT FOUND in DOM!');
+            console.error('Searching for button in:', document.querySelector('.mobile-nav-right'));
           }
           
           if (container) {
-            container.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 9998 !important; flex: 0 0 auto !important; margin-left: auto !important;';
+            // Remove all classes that might hide it
+            container.classList.remove('d-none');
+            container.classList.add('d-flex', 'd-lg-none');
+            
+            // Force styles
+            container.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 9998 !important; flex: 0 0 auto !important; margin-left: auto !important; width: auto !important; height: auto !important;';
+            
             console.log('✅ Mobile menu container FORCED to be visible');
+            console.log('Container computed display:', window.getComputedStyle(container).display);
           } else {
             console.error('❌ Mobile menu container NOT FOUND in DOM!');
           }
         }
         
-        // Run immediately
-        forceButtonVisible();
+        // Run immediately - before anything else
+        if (document.body) {
+          forceButtonVisible();
+        }
         
         // Run after DOM loads
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', forceButtonVisible);
+          document.addEventListener('DOMContentLoaded', function() {
+            forceButtonVisible();
+            setTimeout(forceButtonVisible, 50);
+          });
+        } else {
+          forceButtonVisible();
         }
         
         // Run after everything loads
-        window.addEventListener('load', forceButtonVisible);
+        window.addEventListener('load', function() {
+          forceButtonVisible();
+          setTimeout(forceButtonVisible, 100);
+        });
         
         // Run multiple times to catch any late rendering
+        setTimeout(forceButtonVisible, 50);
         setTimeout(forceButtonVisible, 100);
+        setTimeout(forceButtonVisible, 200);
         setTimeout(forceButtonVisible, 500);
         setTimeout(forceButtonVisible, 1000);
+        setTimeout(forceButtonVisible, 2000);
       })();
     </script>
     @inject Microsoft.Extensions.Localization.IStringLocalizerFactory LocalizerFactory
