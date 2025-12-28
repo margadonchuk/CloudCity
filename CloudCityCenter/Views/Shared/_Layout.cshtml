@@ -44,12 +44,8 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- MOBILE MENU BUTTON - ABSOLUTELY POSITIONED, NO BOOTSTRAP CLASSES -->
-                <button id="mobileMenuBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="position: absolute !important; right: 15px !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 99999 !important; padding: 10px 14px !important; border: 2px solid #0d6efd !important; border-radius: 8px !important; background-color: white !important; min-width: 44px !important; height: 44px !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; visibility: visible !important; opacity: 1 !important;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" style="display: block !important; width: 20px !important; height: 20px !important;">
-                        <path stroke="rgba(33, 37, 41, 0.75)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path>
-                    </svg>
-                </button>
+                <!-- MOBILE MENU BUTTON - SIMPLE, ALWAYS VISIBLE FIRST -->
+                <button id="mobileMenuBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" onclick="console.log('CLICKED!');" style="position: fixed; top: 15px; right: 15px; z-index: 999999; width: 50px; height: 50px; background: #0d6efd; color: white; border: none; border-radius: 8px; font-size: 24px; cursor: pointer; display: block; visibility: visible; opacity: 1;">☰</button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
                 <div class="d-flex align-items-center justify-content-center d-lg-none mobile-nav-center">
