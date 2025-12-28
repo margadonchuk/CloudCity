@@ -4404,7 +4404,6 @@ body {
     z-index: 1045 !important;
     background: #ffffff !important;
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
-    visibility: visible !important;
   }
   
   .offcanvas.show {
@@ -4733,6 +4732,19 @@ body {
 
   .telegram-bot-text {
     font-size: 0.9rem;
+  }
+}
+
+/* Hide mobile offcanvas menu on desktop (lg and above) */
+@media (min-width: 992px) {
+  #mobileMenu.offcanvas {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  .offcanvas-backdrop {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 
