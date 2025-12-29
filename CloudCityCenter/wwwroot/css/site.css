@@ -4486,7 +4486,8 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background-color: white !important;
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
     min-width: 44px !important;
     height: 44px !important;
     transition: all 0.3s ease !important;
@@ -4500,7 +4501,7 @@ body {
   }
   
   .mobile-nav-right .navbar-toggler:hover {
-    background-color: #0d6efd !important;
+    background-color: #0b5ed7 !important;
     border-color: #0b5ed7 !important;
   }
   
@@ -7295,4 +7296,3 @@ li.dropdown.show .dropdown-menu {
 .btn-register-mobile:hover i {
   transform: scale(1.2) rotate(10deg);
 }
-
