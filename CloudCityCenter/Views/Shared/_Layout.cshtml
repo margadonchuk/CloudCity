@@ -794,6 +794,10 @@ else
       }
       
       console.log('Mobile menu elements found, Bootstrap available');
+      var offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(menu, {
+        backdrop: true,
+        scroll: false
+      });
       
       // Force button to be visible - AGGRESSIVE
       btn.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 1051 !important;';
@@ -837,9 +841,15 @@ else
       });
       
       // Test button click
-      btn.addEventListener('click', function() {
-        console.log('Menu button was clicked!');
-      });
+      if (!btn.dataset.offcanvasBound) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Menu button was clicked!');
+          offcanvasInstance.toggle();
+        });
+        btn.dataset.offcanvasBound = 'true';
+      }
       
       console.log('Mobile menu initialized successfully');
     }
@@ -875,4 +885,3 @@ else
 
 </body>
 </html>
-
