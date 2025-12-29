@@ -4141,9 +4141,9 @@ body {
   z-index: 999999;
   width: 60px;
   height: 60px;
-  background: #0d6efd;
-  color: white;
-  border: 3px solid #fff;
+  background: #000;
+  color: #fff;
+  border: 3px solid #000;
   border-radius: 10px;
   font-size: 32px;
   font-weight: bold;
@@ -4155,11 +4155,22 @@ body {
   transition: all 0.3s ease;
 }
 
+#mobileMenuBtn .bi-list {
+  display: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #fff;
+}
+
+#mobileMenuBtn .navbar-toggler-icon {
+  display: block;
+}
+
 /* Hover эффект для кнопки */
 #mobileMenuBtn:hover {
-  background: #0b5ed7;
+  background: #1a1a1a;
   transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(13,110,253,0.6);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
 }
 
 /* Кнопка видна только на мобильных (Bootstrap класс d-lg-none уже скрывает на десктопе) */
@@ -4228,6 +4239,14 @@ body {
     opacity: 1 !important;
     pointer-events: auto !important;
   }
+
+  #mobileMenuBtn .navbar-toggler-icon {
+    display: none !important;
+  }
+
+  #mobileMenuBtn .bi-list {
+    display: inline-block !important;
+  }
   
   /* CRITICAL: Force mobile menu button to be visible ТОЛЬКО НА МОБИЛЬНЫХ */
   button#mobileMenuBtn,
@@ -4245,10 +4264,10 @@ body {
     min-width: 44px !important;
     min-height: 44px !important;
     padding: 8px !important;
-    border: 2px solid #0d6efd !important;
+    border: 2px solid #000 !important;
     border-radius: 8px !important;
-    background-color: white !important;
-    color: #0d6efd !important;
+    background-color: #000 !important;
+    color: #fff !important;
     margin: 0 !important;
     align-items: center !important;
     justify-content: center !important;
@@ -4258,7 +4277,8 @@ body {
   
   button#mobileMenuBtn:hover,
   .mobile-menu-btn:hover {
-    background-color: #0d6efd !important;
+    background-color: #333 !important;
+    border-color: #fff !important;
     color: white !important;
     transform: scale(1.05) !important;
   }
@@ -4349,55 +4369,53 @@ body {
   }
 
   /* ЗОНА 2: СОЦСЕТИ ПО ЦЕНТРУ - ТОЛЬКО НА МОБИЛЬНЫХ */
-  @media (max-width: 991.98px) {
-    .navbar-modern .container-fluid > .mobile-nav-center {
-      position: absolute !important;
-      left: 50% !important;
-      top: 50% !important;
-      transform: translate(-50%, -50%) !important;
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 18px !important;
-      z-index: 5 !important;
-      order: 2 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      width: auto !important;
-      height: auto !important;
-    }
-    
-    /* Убираем дублирование - только один элемент должен быть виден */
-    .navbar-modern .container-fluid > .mobile-nav-center:not(:first-of-type) {
-      display: none !important;
-    }
-    
-    .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
-      margin: 0 !important;
-      padding: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: auto !important;
-      height: auto !important;
-    }
-    
-    /* Иконки соцсетей в мобильной версии */
-    .navbar-modern .container-fluid > .mobile-nav-center .instagram-wrapper-mobile,
-    .navbar-modern .container-fluid > .mobile-nav-center .telegram-bot-wrapper-mobile,
-    .navbar-modern .container-fluid > .mobile-nav-center .whatsapp-wrapper-mobile {
-      width: 40px !important;
-      height: 40px !important;
-      min-width: 40px !important;
-      min-height: 40px !important;
-      max-width: 40px !important;
-      max-height: 40px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      flex-shrink: 0 !important;
-    }
+  .navbar-modern .container-fluid > .mobile-nav-center {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    z-index: 5 !important;
+    order: 2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  /* Убираем дублирование - только один элемент должен быть виден */
+  .navbar-modern .container-fluid > .mobile-nav-center:not(:first-of-type) {
+    display: none !important;
+  }
+  
+  .navbar-modern .container-fluid > .mobile-nav-center .nav-link {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  /* Иконки соцсетей в мобильной версии */
+  .navbar-modern .container-fluid > .mobile-nav-center .instagram-wrapper-mobile,
+  .navbar-modern .container-fluid > .mobile-nav-center .telegram-bot-wrapper-mobile,
+  .navbar-modern .container-fluid > .mobile-nav-center .whatsapp-wrapper-mobile {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
   }
 
   /* ЗОНА 3: КОРЗИНА И МЕНЮ СПРАВА - ТОЛЬКО ОДИН РАЗ */
@@ -4455,9 +4473,10 @@ body {
     min-width: 44px !important;
     min-height: 44px !important;
     padding: 10px 14px !important;
-    border: 2px solid #0d6efd !important;
+    border: 2px solid #000 !important;
     border-radius: 8px !important;
-    background-color: white !important;
+    background-color: #000 !important;
+    color: #ffffff !important;
   }
 
   .mobile-nav-right .cart-link-mobile {
@@ -4488,12 +4507,13 @@ body {
   .mobile-menu-btn,
   #mobileMenuBtn {
     padding: 10px 14px !important;
-    border: 2px solid #0d6efd !important;
+    border: 2px solid #000 !important;
     border-radius: 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background-color: white !important;
+    background-color: #000 !important;
+    color: #ffffff !important;
     min-width: 44px !important;
     height: 44px !important;
     transition: all 0.3s ease !important;
@@ -4507,8 +4527,8 @@ body {
   }
   
   .mobile-nav-right .navbar-toggler:hover {
-    background-color: #0d6efd !important;
-    border-color: #0b5ed7 !important;
+    background-color: #1a1a1a !important;
+    border-color: #1a1a1a !important;
   }
   
   .mobile-nav-right .navbar-toggler:hover .navbar-toggler-icon {
@@ -4519,7 +4539,7 @@ body {
     display: block !important;
     width: 20px !important;
     height: 20px !important;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: 100% !important;
@@ -4575,7 +4595,6 @@ body {
     overflow: hidden !important;
   }
   
-}
   
   .cart-badge-mobile {
     position: absolute !important;
@@ -5026,6 +5045,7 @@ body {
     border-left: 3px solid #0d6efd;
     box-shadow: 0 2px 6px rgba(13, 110, 253, 0.15);
   }
+}
 
 /* Extra small devices */
 @media (max-width: 576px) {
@@ -7302,5 +7322,3 @@ li.dropdown.show .dropdown-menu {
 .btn-register-mobile:hover i {
   transform: scale(1.2) rotate(10deg);
 }
-
-
