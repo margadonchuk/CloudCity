@@ -36,6 +36,20 @@
             cartCount = 0;
         }
     }
+    @{
+        var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+        var cultureNames = new Dictionary<string, string>
+        {
+            { "en", "English" },
+            { "uk", "Українська" },
+            { "ru", "Русский" },
+            { "fr", "Français" },
+            { "de", "Deutsch" },
+            { "es", "Español" },
+            { "pl", "Polski" }
+        };
+        var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
+    }
     <header>
         <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
             <div class="container-fluid">
@@ -112,20 +126,6 @@
 
                     <!-- Right Navigation -->
                     <ul class="navbar-nav navbar-nav-right">
-                        @{
-                            var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
-                            var cultureNames = new Dictionary<string, string>
-                            {
-                                { "en", "English" },
-                                { "uk", "Українська" },
-                                { "ru", "Русский" },
-                                { "fr", "Français" },
-                                { "de", "Deutsch" },
-                                { "es", "Español" },
-                                { "pl", "Polski" }
-                            };
-                            var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
-                        }
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
                                 <i class="bi bi-info-circle me-1"></i>@Localizer["About"]
@@ -308,28 +308,11 @@
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-offcanvas-close>
                         <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo" style="height: 32px;">
                     </a>
-                    <div class="d-flex align-items-center justify-content-center gap-2">
-                        <a class="nav-link instagram-link-mobile" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
-                            <div class="instagram-wrapper-mobile">
-                                <i class="bi bi-instagram instagram-icon-mobile"></i>
-                            </div>
-                        </a>
-                        <a class="nav-link telegram-bot-link-offcanvas" href="https://t.me/CloudCityCenter_Bot" target="_blank">
-                            <div class="telegram-bot-wrapper-mobile">
-                                <i class="bi bi-telegram telegram-icon-mobile"></i>
-                            </div>
-                        </a>
-                        <a class="nav-link whatsapp-link-mobile" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer">
-                            <div class="whatsapp-wrapper-mobile">
-                                <i class="bi bi-whatsapp whatsapp-icon-mobile"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="nav-link cart-link-offcanvas position-relative" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
+                    <a class="nav-link cart-link-offcanvas position-relative ms-auto" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-offcanvas" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
             </div>
             <div class="offcanvas-body p-0">
@@ -347,11 +330,6 @@
                     <li class="nav-item">
                         <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-gear me-2"></i>@Localizer["Services"]
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer" data-offcanvas-close>
-                            <i class="bi bi-instagram me-2"></i>Instagram
                         </a>
                     </li>
                     <li class="nav-item">
@@ -703,8 +681,7 @@ else
     }
   })();
   
-  // Mobile menu - Bootstrap handles toggle automatically
-  // This just handles close buttons and aria attributes
+  // Mobile menu initialization - Bootstrap handles toggle via data attributes
   (function() {
     function initMobileMenu() {
       var menu = document.getElementById('mobileMenu');
@@ -721,48 +698,49 @@ else
         return;
       }
       
-      // Initialize offcanvas
-      var offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(menu, {
-        backdrop: true,
-        scroll: false
-      });
-      
-      // Handle close buttons with data-offcanvas-close attribute
-      var closeLinks = menu.querySelectorAll('a[data-offcanvas-close]');
-      closeLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          if (bootstrap.Offcanvas) {
-            var offcanvasInstance = bootstrap.Offcanvas.getInstance(menu);
-            if (offcanvasInstance) {
-              offcanvasInstance.hide();
-            }
-          }
+      // Bootstrap automatically handles offcanvas via data-bs-toggle and data-bs-target
+      // We just need to initialize it and handle close links
+      try {
+        var offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(menu, {
+          backdrop: true,
+          keyboard: true,
+          scroll: false
         });
-      });
-      
-      // Update button aria-expanded when menu opens/closes
-      menu.addEventListener('show.bs.offcanvas', function() {
-        btn.setAttribute('aria-expanded', 'true');
-      });
-      menu.addEventListener('hide.bs.offcanvas', function() {
-        btn.setAttribute('aria-expanded', 'false');
-      });
+        
+        // Handle close buttons with data-offcanvas-close attribute
+        var closeLinks = menu.querySelectorAll('a[data-offcanvas-close]');
+        closeLinks.forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            var instance = bootstrap.Offcanvas.getInstance(menu);
+            if (instance) {
+              instance.hide();
+            }
+          });
+        });
+        
+        // Update button aria-expanded when menu opens/closes
+        if (btn) {
+          menu.addEventListener('show.bs.offcanvas', function() {
+            btn.setAttribute('aria-expanded', 'true');
+          });
+          menu.addEventListener('hide.bs.offcanvas', function() {
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        }
+      } catch (e) {
+        console.error('Error initializing mobile menu:', e);
+      }
     }
     
     // Initialize after DOM and Bootstrap are ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(initMobileMenu, 300);
-      });
+      document.addEventListener('DOMContentLoaded', initMobileMenu);
     } else {
-      setTimeout(initMobileMenu, 300);
+      initMobileMenu();
     }
     
     // Also try after window loads
-    window.addEventListener('load', function() {
-      setTimeout(initMobileMenu, 500);
-    });
+    window.addEventListener('load', initMobileMenu);
   })();
 </script>
 
