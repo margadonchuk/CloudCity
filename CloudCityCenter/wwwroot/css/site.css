@@ -4238,21 +4238,28 @@ body {
 
 /* ВАЖНО: Десктопное меню должно быть видно на больших экранах */
 @media (min-width: 992px) {
-  /* Показываем десктопное меню */
-  .navbar-modern .container-fluid > .collapse,
-  .navbar-modern .container-fluid > .collapse.show,
-  #navbarNav,
-  #navbarNav.navbar-collapse,
-  #navbarNav.navbar-collapse.show {
+  /* Показываем десктопное меню - теперь оно вне collapse */
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
     overflow: visible !important;
     pointer-events: auto !important;
+    width: 100% !important;
   }
   
   /* Показываем элементы десктопного меню */
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex .navbar-nav-left,
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex .navbar-nav-right,
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex .navbar-center-social {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Показываем элементы десктопного меню (общие правила) */
   .navbar-nav-left,
   .navbar-nav-right,
   .navbar-center-social {
@@ -4260,6 +4267,19 @@ body {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+  }
+  
+  /* Скрываем кнопку мобильного меню на десктопе */
+  .navbar-toggler.d-lg-none {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  /* Скрываем offcanvas мобильного меню на десктопе */
+  .offcanvas#mobileMenu {
+    display: none !important;
   }
   
   /* Скрываем мобильную версию соцсетей на десктопе */
@@ -4299,12 +4319,36 @@ body {
 
 /* На мобильных устройствах скрываем десктопное меню */
 @media (max-width: 991.98px) {
-  /* Скрываем десктопное меню */
+  /* Скрываем десктопное меню - теперь оно вне collapse */
+  .navbar-modern .container-fluid > .d-none.d-lg-flex {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Скрываем элементы десктопного меню внутри контейнера */
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex .navbar-nav-left,
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex .navbar-nav-right,
+  .navbar-modern .container-fluid > div.d-none.d-lg-flex .navbar-center-social {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  /* Скрываем десктопное меню из collapse (если есть) */
   .navbar-modern .container-fluid > .collapse,
   .navbar-modern .container-fluid > .collapse.show,
   #navbarNav,
   #navbarNav.navbar-collapse,
-  #navbarNav.navbar-collapse.show {
+  #navbarNav.navbar-collapse.show,
+  #mainNavbarMobile {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -4313,17 +4357,9 @@ body {
     pointer-events: none !important;
   }
   
-  /* Скрываем элементы десктопного меню */
+  /* Скрываем все элементы десктопного меню на мобильных */
   .navbar-nav-left,
   .navbar-nav-right,
-  .navbar-center-social {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-  
-  /* Скрываем десктопную версию соцсетей на мобильных */
   .navbar-center-social {
     display: none !important;
     visibility: hidden !important;
@@ -4337,13 +4373,39 @@ body {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+    z-index: 1050 !important;
+    position: relative !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #000 !important;
+    border: 2px solid #000 !important;
+    border-radius: 8px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 8px 12px !important;
+    margin-left: auto !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
   }
   
-  /* Скрываем десктопное меню на мобильных */
-  .navbar-nav-left,
-  .navbar-nav-right,
-  .navbar-center-social {
-    display: none !important;
+  .navbar-toggler.d-lg-none:hover {
+    background-color: #333 !important;
+    border-color: #333 !important;
+    transform: scale(1.05) !important;
+  }
+  
+  .navbar-toggler.d-lg-none:active {
+    transform: scale(0.95) !important;
+  }
+  
+  .navbar-toggler.d-lg-none .navbar-toggler-icon {
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .mobile-menu-button {

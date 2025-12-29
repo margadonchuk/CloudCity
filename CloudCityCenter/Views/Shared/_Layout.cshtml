@@ -45,162 +45,70 @@
                 </a>
                 
                 <!-- Стандартная Bootstrap кнопка для мобильного меню -->
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation" style="border: 2px solid #000; border-radius: 8px; padding: 8px 12px; background: #000; width: 44px; height: 44px; margin-left: auto;">
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="border: 2px solid #000; border-radius: 8px; padding: 8px 12px; background: #000; width: 44px; height: 44px; margin-left: auto; z-index: 1050;">
                     <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3E%3Cpath stroke=%27rgba%28255, 255, 255, 1%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E'); width: 20px; height: 20px;"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="mainNavbar">
-                    <!-- Мобильная версия меню -->
-                    <ul class="navbar-nav d-lg-none">
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link @(currentController == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="bi bi-house me-2"></i>@Localizer["Home"]
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
-                                <i class="bi bi-info-circle me-2"></i>@Localizer["About"]
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
-                                <i class="bi bi-gear me-2"></i>@Localizer["Services"]
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
+                <!-- Десктопная версия меню - вне collapse -->
+                <div class="d-none d-lg-flex align-items-center w-100 position-relative">
+                    <!-- Left Navigation -->
+                    <ul class="navbar-nav navbar-nav-left">
+                        <li class="nav-item">
                             <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
-                                <i class="bi bi-server me-2"></i>@Localizer["Servers"]
+                                <i class="bi bi-server me-1"></i>@Localizer["Servers"]
                             </a>
                         </li>
-                        <li class="nav-item border-bottom">
+                        <li class="nav-item">
                             <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
-                                <i class="bi bi-globe me-2"></i>@Localizer["Hosting"]
+                                <i class="bi bi-globe me-1"></i>@Localizer["Hosting"]
                             </a>
                         </li>
-                        <li class="nav-item border-bottom">
+                        <li class="nav-item">
                             <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
-                                <i class="bi bi-shield-lock me-2"></i>@Localizer["VPN"]
+                                <i class="bi bi-shield-lock me-1"></i>@Localizer["VPN"]
                             </a>
                         </li>
-                        <li class="nav-item border-bottom">
+                        <li class="nav-item">
                             <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
-                                <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
+                                <i class="bi bi-hdd-stack me-1"></i>@Localizer["VPS"]
                             </a>
                         </li>
-                        <li class="nav-item border-bottom">
+                        <li class="nav-item">
                             <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
-                                <i class="bi bi-display me-2"></i>@Localizer["VDI"]
+                                <i class="bi bi-display me-1"></i>@Localizer["VDI"]
                             </a>
                         </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">
-                                <i class="bi bi-envelope me-2"></i>@Localizer["Contact"]
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
+                                <i class="bi bi-gear me-1"></i>@Localizer["Services"]
                             </a>
                         </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link d-flex align-items-center justify-content-between" asp-controller="Cart" asp-action="Index">
-                                <span class="d-flex align-items-center">
-                                    <i class="bi bi-cart3 me-2"></i>@Localizer["Cart"]
-                                </span>
-                                <span class="badge bg-danger rounded-pill" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
-                            </a>
-                        </li>
-                        @if (User.Identity?.IsAuthenticated ?? false)
-                        {
-                            <li class="nav-item border-bottom">
-                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile">
-                                    <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
-                                </a>
-                            </li>
-                            <li class="nav-item border-bottom">
-                                <a class="nav-link @(currentController == "Orders" ? "active" : "")" asp-area="" asp-controller="Orders" asp-action="Index">
-                                    <i class="bi bi-receipt me-2"></i>@Localizer["Orders"]
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item border-bottom">
-                                <a class="nav-link @(currentController == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")" asp-controller="Account" asp-action="Login">
-                                    <i class="bi bi-box-arrow-in-right me-2"></i>@Localizer["Login"]
-                                </a>
-                            </li>
-                            <li class="nav-item border-bottom">
-                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">
-                                    <i class="bi bi-person-plus me-2"></i>@Localizer["Register"]
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item border-bottom">
-                                <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
-                                    <i class="bi bi-shield-check me-2"></i>Admin
-                                </a>
-                            </li>
-                        }
                     </ul>
-                    
-                    <!-- Десктопная версия меню -->
-                    <div class="d-none d-lg-flex align-items-center w-100 position-relative">
-                        <!-- Left Navigation -->
-                        <ul class="navbar-nav navbar-nav-left">
-                            <li class="nav-item">
-                                <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
-                                    <i class="bi bi-server me-1"></i>@Localizer["Servers"]
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
-                                    <i class="bi bi-globe me-1"></i>@Localizer["Hosting"]
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
-                                    <i class="bi bi-shield-lock me-1"></i>@Localizer["VPN"]
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
-                                    <i class="bi bi-hdd-stack me-1"></i>@Localizer["VPS"]
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
-                                    <i class="bi bi-display me-1"></i>@Localizer["VDI"]
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
-                                    <i class="bi bi-gear me-1"></i>@Localizer["Services"]
-                                </a>
-                            </li>
-                        </ul>
 
-                        <!-- Center - Social Media Links -->
-                        <div class="navbar-center-social d-none d-lg-flex align-items-center gap-2">
-                            <a class="nav-link instagram-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
-                                <div class="instagram-wrapper">
-                                    <i class="bi bi-instagram instagram-icon"></i>
-                                    <span class="instagram-text">Instagram</span>
-                                    <i class="bi bi-box-arrow-up-right instagram-arrow"></i>
-                                </div>
-                            </a>
-                            <a class="nav-link telegram-bot-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
-                                <div class="telegram-bot-wrapper">
-                                    <i class="bi bi-telegram telegram-icon"></i>
-                                    <span class="telegram-bot-text">Telegram</span>
-                                    <i class="bi bi-box-arrow-up-right telegram-bot-arrow"></i>
-                                </div>
-                            </a>
-                            <a class="nav-link whatsapp-link" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer">
-                                <div class="whatsapp-wrapper">
-                                    <i class="bi bi-whatsapp whatsapp-icon"></i>
-                                    <span class="whatsapp-text">WhatsApp</span>
-                                    <i class="bi bi-box-arrow-up-right whatsapp-arrow"></i>
-                                </div>
-                            </a>
-                        </div>
+                    <!-- Center - Social Media Links -->
+                    <div class="navbar-center-social d-none d-lg-flex align-items-center gap-2">
+                        <a class="nav-link instagram-link" href="https://instagram.com/cloudcity.center" target="_blank" rel="noopener noreferrer">
+                            <div class="instagram-wrapper">
+                                <i class="bi bi-instagram instagram-icon"></i>
+                                <span class="instagram-text">Instagram</span>
+                                <i class="bi bi-box-arrow-up-right instagram-arrow"></i>
+                            </div>
+                        </a>
+                        <a class="nav-link telegram-bot-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+                            <div class="telegram-bot-wrapper">
+                                <i class="bi bi-telegram telegram-icon"></i>
+                                <span class="telegram-bot-text">Telegram</span>
+                                <i class="bi bi-box-arrow-up-right telegram-bot-arrow"></i>
+                            </div>
+                        </a>
+                        <a class="nav-link whatsapp-link" href="https://wa.me/33773166380" target="_blank" rel="noopener noreferrer">
+                            <div class="whatsapp-wrapper">
+                                <i class="bi bi-whatsapp whatsapp-icon"></i>
+                                <span class="whatsapp-text">WhatsApp</span>
+                                <i class="bi bi-box-arrow-up-right whatsapp-arrow"></i>
+                            </div>
+                        </a>
+                    </div>
 
                     <!-- Right Navigation -->
                     <ul class="navbar-nav navbar-nav-right">
@@ -296,12 +204,104 @@
                             </li>
                         }
                     </ul>
-                    </div>
+                </div>
+
+                <!-- Мобильная версия меню через collapse (fallback, скрыто, используется offcanvas) -->
+                <div class="collapse navbar-collapse d-lg-none d-none" id="mainNavbarMobile" style="display: none !important;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house me-2"></i>@Localizer["Home"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
+                                <i class="bi bi-info-circle me-2"></i>@Localizer["About"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
+                                <i class="bi bi-gear me-2"></i>@Localizer["Services"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
+                                <i class="bi bi-server me-2"></i>@Localizer["Servers"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
+                                <i class="bi bi-globe me-2"></i>@Localizer["Hosting"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
+                                <i class="bi bi-shield-lock me-2"></i>@Localizer["VPN"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
+                                <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
+                                <i class="bi bi-display me-2"></i>@Localizer["VDI"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">
+                                <i class="bi bi-envelope me-2"></i>@Localizer["Contact"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link d-flex align-items-center justify-content-between" asp-controller="Cart" asp-action="Index">
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-cart3 me-2"></i>@Localizer["Cart"]
+                                </span>
+                                <span class="badge bg-danger rounded-pill" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                            </a>
+                        </li>
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item border-bottom">
+                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile">
+                                    <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
+                                </a>
+                            </li>
+                            <li class="nav-item border-bottom">
+                                <a class="nav-link @(currentController == "Orders" ? "active" : "")" asp-area="" asp-controller="Orders" asp-action="Index">
+                                    <i class="bi bi-receipt me-2"></i>@Localizer["Orders"]
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item border-bottom">
+                                <a class="nav-link @(currentController == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")" asp-controller="Account" asp-action="Login">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>@Localizer["Login"]
+                                </a>
+                            </li>
+                            <li class="nav-item border-bottom">
+                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">
+                                    <i class="bi bi-person-plus me-2"></i>@Localizer["Register"]
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item border-bottom">
+                                <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                    <i class="bi bi-shield-check me-2"></i>Admin
+                                </a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
         
-        <!-- Mobile Offcanvas Menu (старое, оставляем для совместимости) -->
+        <!-- Mobile Offcanvas Menu -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
             <div class="offcanvas-header border-bottom">
                 <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
