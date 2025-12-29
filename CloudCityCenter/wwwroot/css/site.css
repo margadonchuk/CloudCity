@@ -4155,6 +4155,16 @@ body {
   transition: all 0.3s ease;
 }
 
+#mobileMenuBtn .bi-list {
+  display: none;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+#mobileMenuBtn .navbar-toggler-icon {
+  display: block;
+}
+
 /* Hover эффект для кнопки */
 #mobileMenuBtn:hover {
   background: #0b5ed7;
@@ -4227,6 +4237,14 @@ body {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+  }
+
+  #mobileMenuBtn .navbar-toggler-icon {
+    display: none !important;
+  }
+
+  #mobileMenuBtn .bi-list {
+    display: inline-block !important;
   }
   
   /* CRITICAL: Force mobile menu button to be visible ТОЛЬКО НА МОБИЛЬНЫХ */
@@ -7277,5 +7295,4 @@ li.dropdown.show .dropdown-menu {
 .btn-register-mobile:hover i {
   transform: scale(1.2) rotate(10deg);
 }
-
 
