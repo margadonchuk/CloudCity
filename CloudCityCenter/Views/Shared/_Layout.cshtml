@@ -18,6 +18,11 @@
 </head>
 
 <body>
+    <!-- Мобильная кнопка меню - фиксированная, всегда видна -->
+    <button id="mobileMenuBtnFixed" class="d-lg-none" onclick="toggleMobileMenu()" style="position: fixed !important; top: 15px !important; right: 15px !important; width: 50px !important; height: 50px !important; background: #000 !important; border: 3px solid #000 !important; border-radius: 10px !important; color: #fff !important; font-size: 28px !important; line-height: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; z-index: 99999 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;">
+        ☰
+    </button>
+    
     @{
         var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
         var cartCount = 0;
@@ -494,82 +499,65 @@ else
     @await Html.PartialAsync("_Footer")
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Mobile menu - простое решение на чистом JavaScript -->
+    <!-- Mobile menu - максимально простое решение -->
     <script>
-      (function() {
-        function initSimpleMenu() {
-          var menuBtn = document.getElementById('simpleMobileMenuBtn');
-          var menu = document.getElementById('simpleMobileMenu');
-          var backdrop = null;
-          
-          if (!menuBtn || !menu) {
-            setTimeout(initSimpleMenu, 100);
-            return;
-          }
-          
-          // Создаем backdrop (затемнение фона)
-          function createBackdrop() {
-            if (!backdrop) {
-              backdrop = document.createElement('div');
-              backdrop.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9997; display: none;';
-              backdrop.id = 'menuBackdrop';
-              document.body.appendChild(backdrop);
-            }
-            return backdrop;
-          }
-          
-          // Функция открытия/закрытия меню
-          function toggleMenu() {
-            var isOpen = menu.style.display === 'block';
-            
-            if (isOpen) {
-              // Закрываем меню
-              menu.style.display = 'none';
-              if (backdrop) backdrop.style.display = 'none';
-              document.body.style.overflow = '';
-            } else {
-              // Открываем меню
-              menu.style.display = 'block';
-              createBackdrop();
-              backdrop.style.display = 'block';
-              document.body.style.overflow = 'hidden';
-            }
-          }
-          
-          // Обработчик клика на кнопку
-          menuBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleMenu();
-          });
-          
-          // Закрытие при клике на backdrop
-          createBackdrop();
-          backdrop.addEventListener('click', function() {
-            toggleMenu();
-          });
-          
-          // Закрытие при клике на ссылки в меню
-          var menuLinks = menu.querySelectorAll('a');
-          menuLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-              setTimeout(function() {
-                toggleMenu();
-              }, 100);
-            });
-          });
-          
-          console.log('✅ Simple mobile menu initialized');
-          console.log('Button found:', menuBtn ? 'YES' : 'NO');
-          console.log('Menu found:', menu ? 'YES' : 'NO');
+      var menuBackdrop = null;
+      
+      function toggleMobileMenu() {
+        var menu = document.getElementById('simpleMobileMenu');
+        if (!menu) {
+          console.error('Menu not found!');
+          return;
         }
         
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initSimpleMenu);
+        var isOpen = menu.style.display === 'block';
+        
+        if (isOpen) {
+          // Закрываем
+          menu.style.display = 'none';
+          if (menuBackdrop) menuBackdrop.style.display = 'none';
+          document.body.style.overflow = '';
         } else {
-          initSimpleMenu();
+          // Открываем
+          menu.style.display = 'block';
+          
+          // Создаем backdrop если его нет
+          if (!menuBackdrop) {
+            menuBackdrop = document.createElement('div');
+            menuBackdrop.id = 'menuBackdrop';
+            menuBackdrop.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9997; display: block;';
+            menuBackdrop.onclick = toggleMobileMenu;
+            document.body.appendChild(menuBackdrop);
+          } else {
+            menuBackdrop.style.display = 'block';
+          }
+          
+          document.body.style.overflow = 'hidden';
         }
-      })();
+      }
+      
+      // Закрытие при клике на ссылки
+      document.addEventListener('DOMContentLoaded', function() {
+        var menu = document.getElementById('simpleMobileMenu');
+        if (menu) {
+          var links = menu.querySelectorAll('a');
+          links.forEach(function(link) {
+            link.addEventListener('click', function() {
+              setTimeout(toggleMobileMenu, 100);
+            });
+          });
+        }
+        
+        // Проверка видимости кнопки
+        var btn = document.getElementById('mobileMenuBtnFixed');
+        if (btn) {
+          console.log('✅ Mobile menu button found');
+          console.log('Button display:', window.getComputedStyle(btn).display);
+          console.log('Button visible:', btn.offsetWidth > 0);
+        } else {
+          console.error('❌ Mobile menu button NOT found!');
+        }
+      });
     </script>
     @inject Microsoft.Extensions.Localization.IStringLocalizerFactory LocalizerFactory
     @{

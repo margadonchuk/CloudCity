@@ -4287,6 +4287,11 @@ body {
     pointer-events: none !important;
   }
   
+  /* Фиксированная кнопка скрыта на десктопе */
+  #mobileMenuBtnFixed {
+    display: none !important;
+  }
+  
   #simpleMobileMenu {
     display: none !important;
   }
@@ -4326,8 +4331,8 @@ body {
     pointer-events: none !important;
   }
   
-  /* Показываем мобильную кнопку меню на мобильных */
-  .navbar-toggler[data-bs-target="#mobileMenuCollapse"] {
+  /* Показываем фиксированную кнопку меню на мобильных */
+  #mobileMenuBtnFixed {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -4335,8 +4340,8 @@ body {
   }
   
   /* Показываем мобильное меню когда открыто */
-  #mobileMenuCollapse.show,
-  #mobileMenuCollapse.collapsing {
+  #simpleMobileMenu[style*="display: block"],
+  #simpleMobileMenu.show {
     display: block !important;
     visibility: visible !important;
   }
