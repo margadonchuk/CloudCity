@@ -4134,56 +4134,29 @@ body {
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
 /* Mobile menu button - только для мобильных устройств */
-#mobileMenuBtn {
-  position: relative !important;
-  z-index: 1060 !important;
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  background: #000 !important;
-  color: #fff !important;
-  border: 2px solid #000 !important;
-  border-radius: 8px !important;
-  padding: 8px !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  user-select: none !important;
-  transition: all 0.3s ease !important;
-  pointer-events: auto !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+/* Mobile menu button styling */
+.mobile-nav-right .navbar-toggler {
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 8px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
 }
 
-#mobileMenuBtn .bi-list {
-  display: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: #fff;
-}
-
-#mobileMenuBtn .navbar-toggler-icon {
-  display: block;
+.mobile-nav-right .navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   width: 20px;
   height: 20px;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
 }
 
-/* Hover эффект для кнопки */
-#mobileMenuBtn:hover {
-  background: #333;
+.mobile-nav-right .navbar-toggler:hover {
+  background-color: #333;
   border-color: #fff;
   transform: scale(1.05);
-}
-
-/* Кнопка видна только на мобильных (Bootstrap класс d-lg-none уже скрывает на десктопе) */
-#mobileMenuBtn.d-lg-none {
-  display: block;
 }
 
 /* ВАЖНО: Десктопное меню должно быть видно на больших экранах */
@@ -4216,7 +4189,7 @@ body {
   }
   
   /* ВАЖНО: Скрываем мобильную кнопку меню на десктопе */
-  #mobileMenuBtn {
+  .mobile-nav-right .navbar-toggler {
     display: none !important;
     visibility: hidden !important;
   }
@@ -4253,9 +4226,6 @@ body {
   }
   
   /* ВАЖНО: Показываем мобильную кнопку меню на мобильных */
-  button#mobileMenuBtn,
-  .mobile-menu-btn,
-  .mobile-nav-right button,
   .mobile-nav-right .navbar-toggler {
     display: flex !important;
     visibility: visible !important;
@@ -4280,7 +4250,7 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   }
 
-  #mobileMenuBtn .navbar-toggler-icon {
+  .mobile-nav-right .navbar-toggler .navbar-toggler-icon {
     display: block !important;
     width: 20px !important;
     height: 20px !important;
@@ -4289,35 +4259,15 @@ body {
     background-position: center !important;
     background-size: 100% !important;
   }
-
-  #mobileMenuBtn .bi-list {
-    display: none !important;
-  }
   
-  button#mobileMenuBtn:hover,
-  .mobile-menu-btn:hover {
+  .mobile-nav-right .navbar-toggler:hover {
     background-color: #333 !important;
     border-color: #fff !important;
     color: white !important;
     transform: scale(1.05) !important;
   }
   
-  /* Иконка гамбургера в кнопке */
-  button#mobileMenuBtn .navbar-toggler-icon,
-  .mobile-menu-btn .navbar-toggler-icon {
-    display: block !important;
-    width: 20px !important;
-    height: 20px !important;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2813, 110, 253, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: 100% !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  
-  button#mobileMenuBtn:hover .navbar-toggler-icon,
-  .mobile-menu-btn:hover .navbar-toggler-icon {
+  .mobile-nav-right .navbar-toggler:hover .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
   }
 }
@@ -4338,9 +4288,7 @@ body {
   }
   
   /* Убеждаемся, что кнопка кликабельна */
-  .mobile-nav-right button,
-  .mobile-nav-right .navbar-toggler,
-  #mobileMenuBtn {
+  .mobile-nav-right .navbar-toggler {
     pointer-events: auto !important;
     cursor: pointer !important;
     z-index: 1060 !important;
@@ -4490,11 +4438,7 @@ body {
   
   .mobile-nav-right .navbar-toggler,
   .navbar-modern .container-fluid > .mobile-nav-right .navbar-toggler,
-  button.navbar-toggler[data-bs-target="#mobileMenu"],
-  button.navbar-toggler,
-  #mobileMenuBtn,
-  .mobile-menu-btn,
-  button#mobileMenuBtn {
+  .mobile-nav-right .navbar-toggler {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -4537,9 +4481,7 @@ body {
     font-size: 1.8rem !important;
   }
 
-  .mobile-nav-right .navbar-toggler,
-  .mobile-menu-btn,
-  #mobileMenuBtn {
+  .mobile-nav-right .navbar-toggler {
     padding: 10px 14px !important;
     border: 2px solid #000 !important;
     border-radius: 8px !important;
