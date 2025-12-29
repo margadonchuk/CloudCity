@@ -1,0 +1,74 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CloudCityCenter.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "_Layout";
+}
+
+<h1>Product Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+        
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        
+        <dt class="col-sm-2">Slug</dt>
+        <dd class="col-sm-10">@Model.Slug</dd>
+        
+        <dt class="col-sm-2">Type</dt>
+        <dd class="col-sm-10">@Model.Type</dd>
+        
+        <dt class="col-sm-2">Location</dt>
+        <dd class="col-sm-10">@Model.Location</dd>
+        
+        <dt class="col-sm-2">Price Per Month</dt>
+        <dd class="col-sm-10">$@Model.PricePerMonth</dd>
+        
+        <dt class="col-sm-2">Configuration</dt>
+        <dd class="col-sm-10">@Model.Configuration</dd>
+        
+        <dt class="col-sm-2">Is Available</dt>
+        <dd class="col-sm-10">@(Model.IsAvailable ? "Yes" : "No")</dd>
+        
+        <dt class="col-sm-2">Is Published</dt>
+        <dd class="col-sm-10">@(Model.IsPublished ? "Yes" : "No")</dd>
+        
+        <dt class="col-sm-2">Image URL</dt>
+        <dd class="col-sm-10">@(Model.ImageUrl ?? "N/A")</dd>
+        
+        @if (Model.Variants != null && Model.Variants.Count > 0)
+        {
+            <dt class="col-sm-2">Variants</dt>
+            <dd class="col-sm-10">
+                <ul>
+                @foreach (var variant in Model.Variants)
+                {
+                    <li>@variant.Name - $@variant.Price (@variant.BillingPeriod)</li>
+                }
+                </ul>
+            </dd>
+        }
+        
+        @if (Model.Features != null && Model.Features.Count > 0)
+        {
+            <dt class="col-sm-2">Features</dt>
+            <dd class="col-sm-10">
+                <ul>
+                @foreach (var feature in Model.Features)
+                {
+                    <li>@feature.Name: @feature.Value</li>
+                }
+                </ul>
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+

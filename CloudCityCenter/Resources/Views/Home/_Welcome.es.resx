@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="Performance" xml:space="preserve">
+    <value>Rendimiento</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Soporte</value>
+  </data>
+  <data name="WhyChooseUs" xml:space="preserve">
+    <value>¿Por qué elegirnos?</value>
+  </data>
+  <data name="PremiumSolutions" xml:space="preserve">
+    <value>Soluciones premium</value>
+  </data>
+  <data name="ForYourBusiness" xml:space="preserve">
+    <value>Para su negocio</value>
+  </data>
+  <data name="WelcomeDescription" xml:space="preserve">
+    <value>Nuestra empresa ofrece una amplia y diversa gama de soluciones de alta calidad que están meticulosamente adaptadas específicamente para sus necesidades comerciales únicas. Nos comprometemos a ofrecer estos servicios de primer nivel a precios competitivos y asequibles que garantizan un valor excepcional sin arruinarse, permitiéndole maximizar su inversión y lograr sus objetivos comerciales de manera efectiva.</value>
+  </data>
+  <data name="ExpertSupport247" xml:space="preserve">
+    <value>Soporte experto 24/7</value>
+  </data>
+  <data name="UptimeGuarantee" xml:space="preserve">
+    <value>Garantía de tiempo de actividad 99.9%</value>
+  </data>
+  <data name="GlobalDataCenters" xml:space="preserve">
+    <value>Centros de datos globales</value>
+  </data>
+  <data name="ServerCatalog" xml:space="preserve">
+    <value>Catálogo de servidores</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+</root>
+

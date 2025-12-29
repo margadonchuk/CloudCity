@@ -1,42 +1,66 @@
 @model CloudCityCenter.Models.ViewModels.HostingPageVm
 @{
-    ViewData["Title"] = "Web Hosting";
+    ViewData["Title"] = Localizer["Title"];
 }
 
-<section id="web-hosting" class="container my-5">
-  <!-- Картинка сверху -->
-  <div class="text-center mb-4">
-    <img src="/images/webhosting.png" alt="Web Hosting" class="img-fluid rounded shadow">
+<!-- HERO SECTION -->
+<section class="hosting-page-hero py-5 position-relative">
+  <div class="hosting-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-2 order-md-1 animate-on-scroll" data-animation="fade-in-left">
+        <div class="hosting-page-image-wrapper">
+          <img src="/images/webhosting.png" alt="Web Hosting" class="hosting-page-image" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["Hosting"]</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 hosting-page-title">
+          <span class="text-gradient-2">@Localizer["WebHosting"]</span>
+        </h1>
+        <p class="hosting-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["HostingDescription"]
+        </p>
+        <div class="hosting-features mb-4">
+          <div class="hosting-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["CustomDesign"]</span>
+          </div>
+          <div class="hosting-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["SupportLanguages"]</span>
+          </div>
+          <div class="hosting-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["BackupsSEO"]</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- Заголовок и текст -->
-  <h2 class="fw-bold">Web Hosting</h2>
-  <p>
-    Web Hosting is the foundation of your online presence, providing reliable and fast solutions 
-    for websites of any size. At <b>CloudCity Center</b>, we focus on speed, security, and 
-    convenience — using the latest technologies to deliver the best hosting experience.
-  </p>
-
-  <!-- Подзаголовок и преимущества -->
-  <h4>Highlights</h4>
-  <ul>
-    <li>Custom design, functionality & high bandwidth</li>
-    <li>Support for C#, Python, PHP, and popular website builders</li>
-    <li>Automatic backups, adaptability, and SEO optimization</li>
-  </ul>
 </section>
 
-<section class="container py-4">
-    <form id="add-all-form" data-ajax="true" asp-controller="Cart" asp-action="AddAll" method="post" class="mb-3">
-        @Html.AntiForgeryToken()
-        <button type="submit" class="btn btn-success">Add All to Cart</button>
-    </form>
-    <h2 class="mb-3">Hosting Plans</h2>
+<!-- HOSTING PLANS SECTION -->
+<section class="container py-5">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-up">
+      <h2 class="display-5 fw-bold mb-4">@Localizer["HostingPlans"]</h2>
+      
+      <!-- Описание услуг с дополнительной ценой -->
+      <div class="hosting-description-box mb-5 animate-on-scroll" data-animation="fade-up">
+        <p class="hosting-description-text mb-0" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["HostingDescriptionText"] 
+          <span class="hosting-additional-price">@Localizer["HostingAdditionalPrice"]</span>
+        </p>
+      </div>
+    </div>
     <div class="row g-4">
         @foreach (var item in Model.HostingPlans)
         {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
+            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+                <div class="card h-100 hosting-product-card">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
             </div>
@@ -44,44 +68,105 @@
     </div>
 </section>
 
-<section class="container py-4">
-    <h2 class="mb-3">Create Website</h2>
-    <div class="row g-4">
-        @foreach (var item in Model.WebsiteProducts)
-        {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    @await Html.PartialAsync("_ProductCard", item)
-                </div>
-            </div>
-        }
+<!-- STORAGE SECTION -->
+<section class="container py-5 position-relative">
+  <div class="hosting-page-background"></div>
+  <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <h2 class="display-5 fw-bold mb-3">@Localizer["Storage"]</h2>
+    <p class="lead text-muted mb-4">@Localizer["NASNetworkStorage"]</p>
+    
+    <!-- Описание возможностей Storage -->
+    <div class="hosting-description-box mb-4 animate-on-scroll" data-animation="fade-up">
+      <p class="hosting-description-text mb-2" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+        <strong>@Localizer["StorageCapabilities"]</strong>
+      </p>
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        @Localizer["StorageFeatures"]
+      </p>
+      <p class="hosting-description-text mb-0" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+        @Localizer["StorageWithBackup"] 
+        <span class="hosting-additional-price">@Localizer["StorageAdditionalPrice"]</span>
+      </p>
     </div>
+  </div>
+  <div class="row g-4">
+      @foreach (var item in Model.StorageProducts)
+      {
+          <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+              <div class="card h-100 hosting-product-card">
+                  @await Html.PartialAsync("_ProductCard", item)
+              </div>
+          </div>
+      }
+  </div>
 </section>
 
-<section class="container py-4">
-    <h2 class="mb-3">VPS Hosting</h2>
-    <div class="row g-4">
-        @foreach (var item in Model.VpsProducts)
-        {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    @await Html.PartialAsync("_ProductCard", item)
-                </div>
-            </div>
-        }
+<!-- WEBSITE BUILDER SECTION (Сайты на конструкторе) -->
+<section class="container py-5 position-relative website-builder-section">
+  <div class="website-builder-background"></div>
+  <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <h2 class="display-5 fw-bold mb-3 website-builder-title">@Localizer["WebsiteBuilderTitle"]</h2>
+    <p class="lead text-muted mb-3">@Localizer["WebsiteBuilderSubtitle"]</p>
+    
+    <!-- Описание возможностей -->
+    <div class="hosting-description-box mb-4 animate-on-scroll website-builder-description" data-animation="fade-up">
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        💡 @Localizer["WebsiteBuilderFeature1"]
+      </p>
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        🔧 @Localizer["WebsiteBuilderFeature2"]
+      </p>
+      <p class="hosting-description-text mb-0" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        🧩 @Localizer["WebsiteBuilderFeature3"]
+      </p>
     </div>
+  </div>
+  <div class="row g-4">
+      @foreach (var item in Model.WebsiteBuilderProducts)
+      {
+          <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+              <div class="card h-100 website-builder-card">
+                  @await Html.PartialAsync("_ProductCard", item)
+              </div>
+          </div>
+      }
+  </div>
 </section>
 
-<section class="container py-4">
-    <h2 class="mb-3">VPN Tunneling</h2>
-    <div class="row g-4">
-        @foreach (var item in Model.VpnProducts)
-        {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    @await Html.PartialAsync("_ProductCard", item)
-                </div>
-            </div>
-        }
+<!-- WEBSITE CODE SECTION (Сайты на коде) -->
+<section class="container py-5 position-relative website-code-section">
+  <div class="website-code-background"></div>
+  <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+    <h2 class="display-5 fw-bold mb-3 website-code-title">@Localizer["WebsiteCodeTitle"]</h2>
+    <p class="lead text-muted mb-3">@Localizer["WebsiteCodeSubtitle"]</p>
+    
+    <!-- Описание возможностей -->
+    <div class="hosting-description-box mb-4 animate-on-scroll website-code-description" data-animation="fade-up">
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        🚀 @Localizer["WebsiteCodeFeature1"]
+      </p>
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        🧠 @Localizer["WebsiteCodeFeature2"]
+      </p>
+      <p class="hosting-description-text mb-2" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        🔐 @Localizer["WebsiteCodeFeature3"]
+      </p>
+      <p class="hosting-description-text mb-0" style="font-size: 1rem; line-height: 1.8; color: #555;">
+        ⚙️ @Localizer["WebsiteCodeFeature4"]
+      </p>
     </div>
+  </div>
+  <div class="row g-4">
+      @foreach (var item in Model.WebsiteCodeProducts)
+      {
+          <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+              <div class="card h-100 website-code-card">
+                  @await Html.PartialAsync("_ProductCard", item)
+              </div>
+          </div>
+      }
+  </div>
+  <div class="text-center mt-4">
+    <p class="text-muted">🔒 @Localizer["SSLCertificate"]</p>
+  </div>
 </section>

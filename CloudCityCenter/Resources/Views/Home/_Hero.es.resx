@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Bienvenido a</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Soluciones de infraestructura en la nube premium adaptadas para su negocio. Experimente confiabilidad, seguridad y rendimiento a precios competitivos.</value>
+  </data>
+  <data name="ExploreServers" xml:space="preserve">
+    <value>Explorar servidores</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Comenzar</value>
+  </data>
+  <data name="UptimePercent" xml:space="preserve">
+    <value>Tiempo de actividad %</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Soporte</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Países</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Seguro</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Rápido</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+  </data>
+</root>
+

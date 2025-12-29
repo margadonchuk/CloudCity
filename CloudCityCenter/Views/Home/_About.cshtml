@@ -1,32 +1,63 @@
-<section class="py-5 bg-light">
+<section class="about-section py-5 position-relative">
+    <div class="about-background"></div>
     <div class="container">
         <div class="row align-items-center">
 
             <!-- Картинка -->
-            <div class="col-md-6 mb-3 mb-md-0">
-                <img src="/images/homeabout.png" class="img-fluid rounded" alt="About CloudCity Center" style="border-radius: 20px;" />
+            <div class="col-md-6 mb-3 mb-md-0 animate-on-scroll" data-animation="fade-in-left">
+                <div class="about-image-wrapper">
+                    <img src="/images/homeabout.png" class="img-fluid about-image" alt="About CloudCity Center" />
+                    <div class="image-overlay"></div>
+                </div>
             </div>
 
             <!-- Текст -->
-            <div class="col-md-6">
-                <h2 class="display-5 fw-bold">About Us</h2>
-                <p>
-                    At <strong>CloudCity Center</strong>, we provide reliable, high-performance server solutions tailored for businesses of all sizes.
-                    With data centers across Europe, the US, and Asia, we ensure top-tier security, including advanced firewalls,
-                    DDoS protection, and VPN tunneling.
+            <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">
+                <div class="section-badge mb-3">
+                    <span class="badge-text">@Localizer["OurStory"]</span>
+                </div>
+                <h2 class="display-4 fw-bold mb-4 about-title">
+                    <span class="text-gradient-2">@Localizer["AboutUs"]</span>
+                </h2>
+                <p class="about-text mb-3">
+                    @Localizer["AboutText1"]
                 </p>
-                <p>
-                    Our mission is to deliver seamless, secure hosting that empowers your growth. Backed by enterprise-grade hardware and 24/7 expert support,
-                    we’re here to keep your business running smoothly. Choose CloudCity Center for dependable servers you can trust.
+                <p class="about-text mb-4">
+                    @Localizer["AboutText2"]
                 </p>
 
-               <div style="text-align: center; margin-top: 20px;">
-    <a href="/about" 
-       class="btn btn-primary d-inline-flex align-items-center px-4 py-2" 
-       style="border-radius: 30px;">
-        <i class="bi bi-eye me-2"></i> Learn More
-    </a>
-</div>
+                <!-- Stats -->
+                <div class="about-stats mb-4">
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="bi bi-server"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value">1000+</div>
+                            <div class="stat-label">@Localizer["Servers"]</div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="bi bi-people"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value">5000+</div>
+                            <div class="stat-label">@Localizer["Clients"]</div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="bi bi-globe"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value">50+</div>
+                            <div class="stat-label">@Localizer["Countries"]</div>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="text-center text-md-start">
+                    <a href="/about" 
+                       class="btn btn-primary d-inline-flex align-items-center px-5 py-3 about-btn" 
+                       style="border-radius: 50px; font-weight: 600; box-shadow: 0 8px 25px rgba(13, 110, 253, 0.25);">
+                        <i class="bi bi-eye me-2"></i> @Localizer["LearnMore"]
+                    </a>
+                </div>
         </div>
     </div>
 </section>

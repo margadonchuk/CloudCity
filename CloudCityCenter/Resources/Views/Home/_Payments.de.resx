@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Payments" xml:space="preserve">
+    <value>Zahlungen</value>
+  </data>
+  <data name="ChooseYourWay" xml:space="preserve">
+    <value>Wählen Sie Ihre Art</value>
+  </data>
+  <data name="ToPay" xml:space="preserve">
+    <value>zu zahlen</value>
+  </data>
+  <data name="PaymentsDescription" xml:space="preserve">
+    <value>Bei CloudCity Center wissen wir, wie wichtig es ist, bei Zahlungen flexibel zu bleiben. Deshalb unterstützen wir mehrere Optionen: Banküberweisung, Kreditkarte, PayPal oder Kryptowährung — einschließlich BTC, ETH, USDT, Doge und vielen mehr.</value>
+  </data>
+</root>
+

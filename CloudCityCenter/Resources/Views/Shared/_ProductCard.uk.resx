@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Веб-хостинг</value>
+  </data>
+  <data name="Hosting" xml:space="preserve">
+    <value>Хостинг</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Веб-хостинг</value>
+  </data>
+  <data name="HostingDescription" xml:space="preserve">
+    <value>Веб-хостинг — це основа вашого онлайн-присутності, що надає надійні та швидкі рішення для веб-сайтів будь-якого розміру. У CloudCity Center ми фокусуємося на швидкості, безпеці та зручності — використовуючи найновіші технології для забезпечення найкращого досвіду хостингу.</value>
+  </data>
+  <data name="CustomDesign" xml:space="preserve">
+    <value>Індивідуальний дизайн, функціональність та висока пропускна здатність</value>
+  </data>
+  <data name="SupportLanguages" xml:space="preserve">
+    <value>Підтримка C#, Python, PHP та популярних конструкторів сайтів</value>
+  </data>
+  <data name="BackupsSEO" xml:space="preserve">
+    <value>Автоматичні резервні копії, адаптивність та SEO-оптимізація</value>
+  </data>
+  <data name="HostingPlans" xml:space="preserve">
+    <value>Тарифи хостингу</value>
+  </data>
+  <data name="ChooseHostingSolution" xml:space="preserve">
+    <value>Виберіть ідеальне рішення для хостингу вашого сайту</value>
+  </data>
+  <data name="CreateWebsite" xml:space="preserve">
+    <value>Створити сайт</value>
+  </data>
+  <data name="WebsiteDevelopmentServices" xml:space="preserve">
+    <value>Професійні послуги з розробки веб-сайтів</value>
+  </data>
+  <data name="HostingDescriptionText" xml:space="preserve">
+    <value>Для стабільної роботи середнього проекту (сайт, сервер, VPN, панель управління). З адмініструванням та техпідтримкою:</value>
+  </data>
+  <data name="HostingAdditionalPrice" xml:space="preserve">
+    <value>+$50/міс</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Сховище</value>
+  </data>
+  <data name="NASNetworkStorage" xml:space="preserve">
+    <value>NAS (мережеве сховище)</value>
+  </data>
+  <data name="StorageCapabilities" xml:space="preserve">
+    <value>Можливості</value>
+  </data>
+  <data name="StorageFeatures" xml:space="preserve">
+    <value>SMB/NFS доступ, Веб-інтерфейс (TrueNAS, OpenMediaVault, Synology DSM), Резервні копії (наприклад, на хмару або інший NAS), Знімки (snapshot), шифрування, обмеження доступу</value>
+  </data>
+  <data name="StorageWithBackup" xml:space="preserve">
+    <value>З резервним копіюванням та техпідтримкою:</value>
+  </data>
+  <data name="StorageAdditionalPrice" xml:space="preserve">
+    <value>+$150/міс</value>
+  </data>
+  <data name="WebsiteBuilderTitle" xml:space="preserve">
+    <value>Сайти на конструкторі</value>
+  </data>
+  <data name="WebsiteBuilderSubtitle" xml:space="preserve">
+    <value>Сайти на конструкторі (без коду)</value>
+  </data>
+  <data name="WebsiteBuilderFeature1" xml:space="preserve">
+    <value>Швидке рішення — до 7 робочих днів</value>
+  </data>
+  <data name="WebsiteBuilderFeature2" xml:space="preserve">
+    <value>Хостинг і домен — за бажанням клієнта</value>
+  </data>
+  <data name="WebsiteBuilderFeature3" xml:space="preserve">
+    <value>CMS/конструктори: WordPress + Elementor, Tilda, Wix</value>
+  </data>
+  <data name="WebsiteCodeTitle" xml:space="preserve">
+    <value>Сайти на коді</value>
+  </data>
+  <data name="WebsiteCodeSubtitle" xml:space="preserve">
+    <value>Сайти на коді (TypeScript, C#, PHP)</value>
+  </data>
+  <data name="WebsiteCodeFeature1" xml:space="preserve">
+    <value>Розробка 7–41 день</value>
+  </data>
+  <data name="WebsiteCodeFeature2" xml:space="preserve">
+    <value>Індивідуальна архітектура</value>
+  </data>
+  <data name="WebsiteCodeFeature3" xml:space="preserve">
+    <value>Безпека, захист від SQL/XSS</value>
+  </data>
+  <data name="WebsiteCodeFeature4" xml:space="preserve">
+    <value>Хостинг/деплой та підтримка — на запит</value>
+  </data>
+  <data name="SSLCertificate" xml:space="preserve">
+    <value>SSL сертифікат кожному</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процесор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗП</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Трафік</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Країна</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>ОС</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Технологія</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Пристрої</value>
+  </data>
+  <data name="Encryption" xml:space="preserve">
+    <value>Шифрування</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Доступ</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Безпека</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Резервне копіювання</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="Bandwidth" xml:space="preserve">
+    <value>Пропускна здатність</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Ядро</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>ГБ</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Місяць</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Замовити</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Нідерланди</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Німеччина</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Франція</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Польща</value>
+  </data>
+  <data name="United Kingdom" xml:space="preserve">
+    <value>Великобританія</value>
+  </data>
+  <data name="Canada" xml:space="preserve">
+    <value>Канада</value>
+  </data>
+  <data name="USA" xml:space="preserve">
+    <value>США</value>
+  </data>
+  <data name="Singapore" xml:space="preserve">
+    <value>Сінгапур</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>Індія</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Австралія</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Нідерланди/Німеччина/Франція</value>
+  </data>
+  <data name="Germany/France/Poland" xml:space="preserve">
+    <value>Німеччина/Франція/Польща</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Безлімітний</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+  <data name="Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="Technologies" xml:space="preserve">
+    <value>Технології</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Ціна</value>
+  </data>
+  <data name="Email Accounts" xml:space="preserve">
+    <value>Поштові скриньки</value>
+  </data>
+  <data name="SSD (NVMe)" xml:space="preserve">
+    <value>SSD (NVMe)</value>
+  </data>
+  <data name="Single-page website (promo, service, product)" xml:space="preserve">
+    <value>Односторінковий сайт (промо, послуга, товар)</value>
+  </data>
+  <data name="Multi-page website (about company, services, contacts, etc.)" xml:space="preserve">
+    <value>Багатосторінковий сайт (про компанію, послуги, контакти тощо)</value>
+  </data>
+  <data name="Online store (up to 50 products)" xml:space="preserve">
+    <value>Інтернет-магазин (до 50 товарів)</value>
+  </data>
+  <data name="Single-page landing with custom logic" xml:space="preserve">
+    <value>Односторінковий лендінг з індивідуальною логікою</value>
+  </data>
+  <data name="Multi-page website with logic" xml:space="preserve">
+    <value>Багатосторінковий сайт з логікою</value>
+  </data>
+  <data name="Turnkey online store" xml:space="preserve">
+    <value>Готовий інтернет-магазин</value>
+  </data>
+  <data name="Builder, responsive design, contact form, basic SEO, mobile version" xml:space="preserve">
+    <value>Конструктор, адаптивний дизайн, форма зворотного зв'язку, базова SEO-оптимізація, мобільна версія</value>
+  </data>
+  <data name="Menu, up to 5 pages, responsive design, contact form, SEO, mobile version" xml:space="preserve">
+    <value>Меню, до 5 сторінок, адаптивний дизайн, форма зворотного зв'язку, SEO-оптимізація, мобільна версія</value>
+  </data>
+  <data name="Catalog, shopping cart, checkout, payment, mobile version" xml:space="preserve">
+    <value>Каталог, кошик, оформлення замовлення, оплата, мобільна версія</value>
+  </data>
+  <data name="Clean code, animations, forms, SEO" xml:space="preserve">
+    <value>Чистий код, анімації, форми, SEO</value>
+  </data>
+  <data name="UI/UX, SEO, database, admin panel" xml:space="preserve">
+    <value>UI/UX, SEO, база даних, адмін-панель</value>
+  </data>
+  <data name="Full catalog, shopping cart, payment, filters, personal account" xml:space="preserve">
+    <value>Повний каталог, кошик, оплата, фільтри, особистий кабінет</value>
+  </data>
+  <data name="TypeScript" xml:space="preserve">
+    <value>TypeScript</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/PHP/Next.js" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/PHP/Next.js</value>
+  </data>
+  <data name="C#/ASP.NET/Laravel/React/TypeScript" xml:space="preserve">
+    <value>C#/ASP.NET/Laravel/React/TypeScript</value>
+  </data>
+  <data name="Builder" xml:space="preserve">
+    <value>Конструктор</value>
+  </data>
+  <data name="responsive design" xml:space="preserve">
+    <value>адаптивний дизайн</value>
+  </data>
+  <data name="contact form" xml:space="preserve">
+    <value>форма зворотного зв'язку</value>
+  </data>
+  <data name="basic SEO" xml:space="preserve">
+    <value>базова SEO-оптимізація</value>
+  </data>
+  <data name="mobile version" xml:space="preserve">
+    <value>мобільна версія</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="up to 5 pages" xml:space="preserve">
+    <value>до 5 сторінок</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Каталог</value>
+  </data>
+  <data name="shopping cart" xml:space="preserve">
+    <value>кошик</value>
+  </data>
+  <data name="checkout" xml:space="preserve">
+    <value>оформлення замовлення</value>
+  </data>
+  <data name="payment" xml:space="preserve">
+    <value>оплата</value>
+  </data>
+  <data name="Clean code" xml:space="preserve">
+    <value>Чистий код</value>
+  </data>
+  <data name="animations" xml:space="preserve">
+    <value>анімації</value>
+  </data>
+  <data name="forms" xml:space="preserve">
+    <value>форми</value>
+  </data>
+  <data name="SEO" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="UI/UX" xml:space="preserve">
+    <value>UI/UX</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>база даних</value>
+  </data>
+  <data name="admin panel" xml:space="preserve">
+    <value>адмін-панель</value>
+  </data>
+  <data name="Full catalog" xml:space="preserve">
+    <value>Повний каталог</value>
+  </data>
+  <data name="filters" xml:space="preserve">
+    <value>фільтри</value>
+  </data>
+  <data name="personal account" xml:space="preserve">
+    <value>особистий кабінет</value>
+  </data>
+  <data name="C#" xml:space="preserve">
+    <value>C#</value>
+  </data>
+  <data name="ASP.NET" xml:space="preserve">
+    <value>ASP.NET</value>
+  </data>
+  <data name="Laravel" xml:space="preserve">
+    <value>Laravel</value>
+  </data>
+  <data name="PHP" xml:space="preserve">
+    <value>PHP</value>
+  </data>
+  <data name="Next.js" xml:space="preserve">
+    <value>Next.js</value>
+  </data>
+  <data name="React" xml:space="preserve">
+    <value>React</value>
+  </data>
+</root>
+

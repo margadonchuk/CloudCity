@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Logowanie</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="WelcomeBack" xml:space="preserve">
+    <value>Witamy z powrotem! Proszę zalogować się do swojego konta</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adres e-mail</value>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>twoj.email@example.com</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Wprowadź swoje hasło</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Zapamiętaj mnie</value>
+  </data>
+  <data name="SignInButton" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>lub</value>
+  </data>
+  <data name="DontHaveAccount" xml:space="preserve">
+    <value>Nie masz konta?</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Utwórz konto</value>
+  </data>
+</root>
+

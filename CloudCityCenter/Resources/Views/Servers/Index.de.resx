@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Windows Server</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Windows Server</value>
+  </data>
+  <data name="DedicatedServers" xml:space="preserve">
+    <value>Windows Server</value>
+  </data>
+  <data name="ServersDescription" xml:space="preserve">
+    <value>Unsere Windows Server-Lösungen bieten Unternehmensleistung mit vollständiger Kontrolle über das Windows Server-Betriebssystem. Perfekt für Geschäftsanwendungen, Active Directory, SQL Server, Exchange und jede Windows-Infrastruktur, die zuverlässiges und sicheres Hosting erfordert.</value>
+  </data>
+  <data name="EnterpriseHardware" xml:space="preserve">
+    <value>Unternehmenshardware und Root-Zugriff</value>
+  </data>
+  <data name="MultipleDatacenters" xml:space="preserve">
+    <value>Mehrere Rechenzentrumsstandorte</value>
+  </data>
+  <data name="MonitoringSupport" xml:space="preserve">
+    <value>Überwachung und Support 24/7</value>
+  </data>
+  <data name="Powerful" xml:space="preserve">
+    <value>Leistungsstark</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Sicher</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Schnell</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="AvailableServers" xml:space="preserve">
+    <value>Verfügbare Server</value>
+  </data>
+  <data name="ChoosePerfectServer" xml:space="preserve">
+    <value>Wählen Sie den perfekten Server für Ihre Bedürfnisse</value>
+  </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server für 5-8 Personen</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server für 15 Personen</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server für 25 Personen</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server für 35 Personen</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server für 50 Personen</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Wählen Sie einen Plan, der zu Ihren Aufgaben passt</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Netzwerk</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Bestellen</value>
+  </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Windows Server Einrichtung &amp; Installation</value>
+  </data>
+  <data name="WindowsServerSetupDescription" xml:space="preserve">
+    <value>Professionelle Installation und Konfiguration von Windows Server. Unsere Experten richten Ihren Server ein, konfigurieren alle notwendigen Dienste und gewährleisten optimale Leistung. Enthält Erstinstallation, Sicherheitskonfiguration und grundlegende Optimierung.</value>
+  </data>
+  <data name="WindowsServerSetupPrice" xml:space="preserve">
+    <value>+30% des Serverpreises</value>
+  </data>
+  <data name="IncludeSetupService" xml:space="preserve">
+    <value>Einrichtungsservice einschließen</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Niederlande</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Deutschland</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Vereinigtes Königreich / Polen / Frankreich</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Kanada / USA</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Singapur / Indien / Australien</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Alle Länder</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Personen</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+</root>
+

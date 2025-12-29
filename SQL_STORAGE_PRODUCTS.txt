@@ -1,0 +1,401 @@
+-- =============================================
+-- SQL ЗАПРОСЫ ДЛЯ ДОБАВЛЕНИЯ ТОВАРОВ STORAGE (NAS)
+-- =============================================
+
+USE CloudCityDB;
+GO
+
+-- =============================================
+-- ШАГ 1: Добавить товары Storage
+-- =============================================
+
+-- Storage BASIC
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Storage BASIC',
+    'storage-basic',
+    5, -- ProductType.Storage
+    'Netherlands',
+    85.00,
+    'NAS for documents and backups',
+    1,
+    1,
+    '/images/nas1.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'storage-basic'
+);
+GO
+
+-- Storage STANDARD
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Storage STANDARD',
+    'storage-standard',
+    5, -- ProductType.Storage
+    'Netherlands',
+    135.00,
+    'Optimal cloud storage',
+    1,
+    1,
+    '/images/nas2.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'storage-standard'
+);
+GO
+
+-- Storage PRO
+INSERT INTO Products (Name, Slug, Type, Location, PricePerMonth, Configuration, IsAvailable, IsPublished, ImageUrl)
+SELECT 
+    'Storage PRO',
+    'storage-pro',
+    5, -- ProductType.Storage
+    'Netherlands',
+    249.00,
+    'For critical data',
+    1,
+    1,
+    '/images/nas3.png'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Products WHERE Slug = 'storage-pro'
+);
+GO
+
+-- =============================================
+-- ОБНОВЛЕНИЕ ИЗОБРАЖЕНИЙ ДЛЯ СУЩЕСТВУЮЩИХ ТОВАРОВ
+-- =============================================
+
+-- Обновить изображение для Storage BASIC
+UPDATE Products 
+SET ImageUrl = '/images/nas1.png'
+WHERE Slug = 'storage-basic' AND Type = 5;
+GO
+
+-- Обновить изображение для Storage STANDARD
+UPDATE Products 
+SET ImageUrl = '/images/nas2.png'
+WHERE Slug = 'storage-standard' AND Type = 5;
+GO
+
+-- Обновить изображение для Storage PRO
+UPDATE Products 
+SET ImageUrl = '/images/nas3.png'
+WHERE Slug = 'storage-pro' AND Type = 5;
+GO
+
+-- =============================================
+-- ШАГ 2: Добавить фичи для Storage BASIC
+-- =============================================
+
+-- Storage BASIC Features
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Storage' AS Name,
+    '500 GB SSD/RAID' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Storage'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'CPU' AS Name,
+    '2 Cores' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'CPU'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'RAM' AS Name,
+    '4 GB' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'RAM'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Access' AS Name,
+    'WebDAV / SMB / FTP' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Access'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Security' AS Name,
+    'IP access, WireGuard' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Security'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Backup' AS Name,
+    'Not included' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Backup'
+);
+GO
+
+-- =============================================
+-- ШАГ 3: Добавить фичи для Storage STANDARD
+-- =============================================
+
+-- Storage STANDARD Features
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Storage' AS Name,
+    '1 TB SSD/RAID1' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Storage'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'CPU' AS Name,
+    '4 Cores' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'CPU'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'RAM' AS Name,
+    '8 GB' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'RAM'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Access' AS Name,
+    'Web interface, SMB/NFS, WebDAV' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Access'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Security' AS Name,
+    'VPN, IP access, encryption' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Security'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Backup' AS Name,
+    'Not included' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Backup'
+);
+GO
+
+-- =============================================
+-- ШАГ 4: Добавить фичи для Storage PRO
+-- =============================================
+
+-- Storage PRO Features
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Storage' AS Name,
+    '2 TB+ SSD/ZFS (RAID10)' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Storage'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'CPU' AS Name,
+    '6 Cores' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'CPU'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'RAM' AS Name,
+    '16 GB' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'RAM'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Access' AS Name,
+    'Web interface + multi-user support' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Access'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Security' AS Name,
+    'VPN, IP access, encryption' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Security'
+);
+GO
+
+INSERT INTO ProductFeatures (ProductId, Name, Value)
+SELECT 
+    p.Id AS ProductId,
+    'Support' AS Name,
+    'Full administration and support' AS Value
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductFeatures 
+    WHERE ProductId = p.Id AND Name = 'Support'
+);
+GO
+
+-- =============================================
+-- ШАГ 5: Добавить варианты оплаты (ProductVariants)
+-- =============================================
+
+-- Варианты для Storage BASIC
+INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
+SELECT 
+    p.Id AS ProductId,
+    'Monthly' AS Name,
+    85.00 AS Price,
+    0 AS BillingPeriod
+FROM Products p
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductVariants 
+    WHERE ProductId = p.Id AND Name = 'Monthly'
+);
+GO
+
+-- Варианты для Storage STANDARD
+INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
+SELECT 
+    p.Id AS ProductId,
+    'Monthly' AS Name,
+    135.00 AS Price,
+    0 AS BillingPeriod
+FROM Products p
+WHERE p.Slug = 'storage-standard' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductVariants 
+    WHERE ProductId = p.Id AND Name = 'Monthly'
+);
+GO
+
+-- Варианты для Storage PRO
+INSERT INTO ProductVariants (ProductId, Name, Price, BillingPeriod)
+SELECT 
+    p.Id AS ProductId,
+    'Monthly' AS Name,
+    249.00 AS Price,
+    0 AS BillingPeriod
+FROM Products p
+WHERE p.Slug = 'storage-pro' AND p.Type = 5
+AND NOT EXISTS (
+    SELECT 1 FROM ProductVariants 
+    WHERE ProductId = p.Id AND Name = 'Monthly'
+);
+GO
+
+-- =============================================
+-- ПРОВЕРКА РЕЗУЛЬТАТОВ
+-- =============================================
+
+-- Проверить все товары Storage
+SELECT Id, Name, Slug, PricePerMonth, Location 
+FROM Products 
+WHERE Type = 5
+ORDER BY PricePerMonth;
+GO
+
+-- Проверить фичи для Storage BASIC
+SELECT pf.Name, pf.Value 
+FROM ProductFeatures pf
+INNER JOIN Products p ON pf.ProductId = p.Id
+WHERE p.Slug = 'storage-basic' AND p.Type = 5
+ORDER BY pf.Id;
+GO
+

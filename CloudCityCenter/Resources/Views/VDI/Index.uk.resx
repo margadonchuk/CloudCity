@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VDI Хостинг</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>VDI Хостинг</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>Віртуальна інфраструктура робочих столів (VDI) забезпечує безпечний віддалений доступ до віртуалізованих середовищ робочих столів. Отримуйте доступ до свого Windows робочого столу з будь-якого місця, на будь-якому пристрої, з корпоративною безпекою та продуктивністю.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Віртуальний робочий стіл</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Хмарний доступ</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безпечний</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Багатопристроєвий</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Віддалений доступ з будь-якого місця</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Масштабовані ресурси та гнучкі плани</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Експертна підтримка 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>VDI Плани</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Виберіть ідеальне VDI рішення для ваших потреб</value>
+  </data>
+  <data name="VDIPlansForOnePerson" xml:space="preserve">
+    <value>VDI на 1 особу</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Виберіть план, що підходить для ваших завдань</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Трафік</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Країна</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Замовити</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>місяць</value>
+  </data>
+  <data name="PlanStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="PlanStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="PlanPro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Нідерланди</value>
+  </data>
+  <data name="RegionEurope" xml:space="preserve">
+    <value>Німеччина/Франція/Польща</value>
+  </data>
+  <data name="RegionUSAsia" xml:space="preserve">
+    <value>США/Канада/Азія</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>ядро</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>ГБ</value>
+  </data>
+  <data name="VDIPlansForThreePersons" xml:space="preserve">
+    <value>VDI на 3 особи</value>
+  </data>
+  <data name="VDIPlansForFivePersons" xml:space="preserve">
+    <value>VDI на 5 осіб</value>
+  </data>
+  <data name="VDIPlansForTenPersons" xml:space="preserve">
+    <value>VDI на 10 осіб</value>
+  </data>
+  <data name="VDIPlansForTwentyPersons" xml:space="preserve">
+    <value>VDI на 20 осіб</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Фільтри</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Всі країни</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Осіб</value>
+  </data>
+</root>
+

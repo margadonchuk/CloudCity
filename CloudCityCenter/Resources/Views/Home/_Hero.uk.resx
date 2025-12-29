@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Ласкаво просимо до</value>
+  </data>
+  <data name="HeroDescription" xml:space="preserve">
+    <value>Преміальні хмарні інфраструктурні рішення, адаптовані для вашого бізнесу. Забезпечуємо надійність, безпеку та продуктивність за конкурентними цінами.</value>
+  </data>
+  <data name="ExploreServers" xml:space="preserve">
+    <value>Дослідити сервери</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Почати</value>
+  </data>
+  <data name="UptimePercent" xml:space="preserve">
+    <value>Час роботи %</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Країни</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безпечно</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Швидко</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобально</value>
+  </data>
+</root>
+

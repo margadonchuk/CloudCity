@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VPS Hosting</value>
+  </data>
+  <data name="VPS" xml:space="preserve">
+    <value>VPS</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>VPS Hosting</value>
+  </data>
+  <data name="VPSDescription" xml:space="preserve">
+    <value>VPS (Virtual Private Server) is a virtual dedicated server that combines the advantages of renting a physical server with the convenience of cloud technologies. Each customer receives their own isolated space with dedicated resources — processor, RAM, disk space, and root access.</value>
+  </data>
+  <data name="DedicatedCPU" xml:space="preserve">
+    <value>Dedicated CPU</value>
+  </data>
+  <data name="IsolatedRAM" xml:space="preserve">
+    <value>Isolated RAM</value>
+  </data>
+  <data name="SSDStorage" xml:space="preserve">
+    <value>SSD Storage</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Secure</value>
+  </data>
+  <data name="DedicatedResources" xml:space="preserve">
+    <value>Dedicated resources &amp; full root access</value>
+  </data>
+  <data name="SSDEnterprise" xml:space="preserve">
+    <value>SSD storage, enterprise-grade hardware</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>24/7 expert support</value>
+  </data>
+  <data name="VPSPlans" xml:space="preserve">
+    <value>VPS Plans</value>
+  </data>
+  <data name="ChooseVPSSolution" xml:space="preserve">
+    <value>Choose the perfect VPS solution for your needs</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Traffic</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>OS</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Netherlands</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Germany</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>France</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Poland</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Netherlands/Germany/France</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Unlimited</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+</root>
+

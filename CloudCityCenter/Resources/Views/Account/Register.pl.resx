@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Utwórz konto</value>
+  </data>
+  <data name="JoinCloudCity" xml:space="preserve">
+    <value>Dołącz do CloudCity Center i rozpocznij swoją podróż</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adres e-mail</value>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>twoj.email@example.com</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Wprowadź swoje hasło</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Potwierdź hasło</value>
+  </data>
+  <data name="ConfirmPasswordPlaceholder" xml:space="preserve">
+    <value>Potwierdź swoje hasło</value>
+  </data>
+  <data name="AgreeTerms" xml:space="preserve">
+    <value>Akceptuję</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Warunki korzystania z usługi</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Politykę prywatności</value>
+  </data>
+  <data name="CreateAccountButton" xml:space="preserve">
+    <value>Utwórz konto</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>lub</value>
+  </data>
+  <data name="AlreadyHaveAccount" xml:space="preserve">
+    <value>Masz już konto?</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+</root>
+

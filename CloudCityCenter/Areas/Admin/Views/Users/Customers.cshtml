@@ -1,0 +1,64 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Reflection
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@{
+    ViewData["Title"] = "Customers";
+    Layout = "_Layout";
+    var customersInfo = ViewData["CustomersInfo"] as Dictionary<string, object>;
+}
+
+<h1>Customers</h1>
+
+<p class="text-muted">Users who have made at least one order</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Email Confirmed</th>
+            <th>Orders Count</th>
+            <th>Total Spent</th>
+            <th>Last Order Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        int ordersCount = 0;
+        decimal totalSpent = 0m;
+        DateTime? lastOrderDate = null;
+        
+        if (customersInfo != null && customersInfo.ContainsKey(user.Id))
+        {
+            var info = customersInfo[user.Id];
+            var infoType = info.GetType();
+            var ordersCountProp = infoType.GetProperty("OrdersCount");
+            var totalSpentProp = infoType.GetProperty("TotalSpent");
+            var lastOrderDateProp = infoType.GetProperty("LastOrderDate");
+            
+            if (ordersCountProp != null) ordersCount = (int)ordersCountProp.GetValue(info)!;
+            if (totalSpentProp != null) totalSpent = (decimal)totalSpentProp.GetValue(info)!;
+            if (lastOrderDateProp != null) lastOrderDate = (DateTime?)lastOrderDateProp.GetValue(info);
+        }
+        
+        <tr>
+            <td>@user.Email</td>
+            <td>@(user.EmailConfirmed ? "Yes" : "No")</td>
+            <td>@ordersCount</td>
+            <td>$@totalSpent.ToString("F2")</td>
+            <td>@(lastOrderDate.HasValue ? lastOrderDate.Value.ToString("yyyy-MM-dd HH:mm") : "N/A")</td>
+            <td>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="mt-3">
+    <a asp-area="Admin" asp-controller="Users" asp-action="NewUsers" class="btn btn-primary">View New Users</a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back to Products</a>
+</div>
+

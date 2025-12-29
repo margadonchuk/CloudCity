@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Windows Server</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Windows Server</value>
+  </data>
+  <data name="DedicatedServers" xml:space="preserve">
+    <value>Windows Server</value>
+  </data>
+  <data name="ServersDescription" xml:space="preserve">
+    <value>Наші рішення Windows Server забезпечують корпоративну продуктивність з повним контролем операційної системи Windows Server. Ідеально підходять для бізнес-додатків, Active Directory, SQL Server, Exchange та будь-якої Windows-інфраструктури, що вимагає надійного та безпечного хостингу.</value>
+  </data>
+  <data name="EnterpriseHardware" xml:space="preserve">
+    <value>Корпоративне обладнання та root доступ</value>
+  </data>
+  <data name="MultipleDatacenters" xml:space="preserve">
+    <value>Кілька локацій дата-центрів</value>
+  </data>
+  <data name="MonitoringSupport" xml:space="preserve">
+    <value>Моніторинг та підтримка 24/7</value>
+  </data>
+  <data name="Powerful" xml:space="preserve">
+    <value>Потужний</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безпечний</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Швидкий</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобальний</value>
+  </data>
+  <data name="AvailableServers" xml:space="preserve">
+    <value>Доступні сервери</value>
+  </data>
+  <data name="ChoosePerfectServer" xml:space="preserve">
+    <value>Виберіть ідеальний сервер для ваших потреб</value>
+  </data>
+  <data name="WindowsServerForFiveToEightPersons" xml:space="preserve">
+    <value>Windows Server на 5-8 осіб</value>
+  </data>
+  <data name="WindowsServerForFifteenPersons" xml:space="preserve">
+    <value>Windows Server на 15 осіб</value>
+  </data>
+  <data name="WindowsServerForTwentyFivePersons" xml:space="preserve">
+    <value>Windows Server на 25 осіб</value>
+  </data>
+  <data name="WindowsServerForThirtyFivePersons" xml:space="preserve">
+    <value>Windows Server на 35 осіб</value>
+  </data>
+  <data name="WindowsServerForFiftyPersons" xml:space="preserve">
+    <value>Windows Server на 50 осіб</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Виберіть план, підходящий для ваших завдань</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процесор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗП</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Мережа</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Країна</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Замовити</value>
+  </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Налаштування та встановлення Windows Server</value>
+  </data>
+  <data name="WindowsServerSetupDescription" xml:space="preserve">
+    <value>Професійне встановлення та налаштування Windows Server. Наші фахівці налаштують ваш сервер, сконфігурують всі необхідні служби та забезпечать оптимальну продуктивність. Включає початкове налаштування, конфігурацію безпеки та базову оптимізацію.</value>
+  </data>
+  <data name="WindowsServerSetupPrice" xml:space="preserve">
+    <value>+30% від вартості сервера</value>
+  </data>
+  <data name="IncludeSetupService" xml:space="preserve">
+    <value>Включити послугу налаштування</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>місяць</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Нідерланди</value>
+  </data>
+  <data name="RegionGermany" xml:space="preserve">
+    <value>Німеччина</value>
+  </data>
+  <data name="RegionUKPolandFrance" xml:space="preserve">
+    <value>Великобританія / Польща / Франція</value>
+  </data>
+  <data name="RegionCanadaUSA" xml:space="preserve">
+    <value>Канада / США</value>
+  </data>
+  <data name="RegionSingaporeIndiaAustralia" xml:space="preserve">
+    <value>Сінгапур / Індія / Австралія</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Фільтри</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Всі країни</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Осіб</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
+</root>
+

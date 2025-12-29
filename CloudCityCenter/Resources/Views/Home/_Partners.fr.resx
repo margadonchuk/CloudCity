@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Partners" xml:space="preserve">
+    <value>Partenaires</value>
+  </data>
+  <data name="OurTechnologyPartners" xml:space="preserve">
+    <value>Nos partenaires technologiques</value>
+  </data>
+  <data name="TrustedByLeaders" xml:space="preserve">
+    <value>Approuvé par les leaders de l'industrie dans le monde entier</value>
+  </data>
+</root>
+

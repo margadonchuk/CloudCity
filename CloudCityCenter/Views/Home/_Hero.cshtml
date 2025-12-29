@@ -1,13 +1,68 @@
-<!--<section class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background-color: #0d6efd; min-height: 280px;">
-    <div>
-          <h1 class="display-4 fw-bold">Добро пожаловать в CloudCity Center</h1>
-        <p class="lead">Арендуйте сервера по всему миру по честным ценам и без лишних хлопот.</p>
-        <a class="btn btn-light btn-lg me-2" asp-controller="Servers" asp-action="Index">Каталог серверов</a>
-        <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Register">Регистрация</a>
+<section class="hero-section">
+    <div class="hero-background">
+        <div class="hero-gradient"></div>
+        <div class="hero-particles"></div>
     </div>
-</section>-->
-
-
-
-
-    
+    <div class="container hero-content">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-6 hero-text animate-fade-in-up">
+                <h1 class="display-3 fw-bold mb-4 hero-title">
+                    <span class="text-gradient">@Localizer["WelcomeTo"]</span><br>
+                    <span style="color: white;">CloudCity Center</span>
+                </h1>
+                <p class="lead mb-4 hero-description">
+                    @Localizer["HeroDescription"]
+                </p>
+                <div class="hero-buttons d-flex flex-wrap gap-3 justify-content-center">
+                    <a class="btn btn-primary btn-lg px-5 py-3 hero-btn animate-scale-in" 
+                       asp-controller="Servers" asp-action="Index"
+                       style="border-radius: 50px; font-weight: 600; box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);">
+                        <i class="bi bi-server me-2"></i>@Localizer["ExploreServers"]
+                    </a>
+                    <a class="btn btn-outline-light btn-lg px-5 py-3 hero-btn animate-scale-in" 
+                       asp-controller="Account" asp-action="Register"
+                       style="border-radius: 50px; font-weight: 600; border-width: 2px;">
+                        <i class="bi bi-person-plus me-2"></i>@Localizer["GetStarted"]
+                    </a>
+                </div>
+                <div class="hero-stats mt-5 d-flex gap-5 justify-content-center">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="99.9">0</div>
+                        <div class="stat-label" style="color: white !important;">@Localizer["UptimePercent"]</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="24">0</div>
+                        <div class="stat-label" style="color: white !important;">@Localizer["Support"]</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label" style="color: white !important;">@Localizer["Countries"]</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 hero-image animate-fade-in-right">
+                <div class="hero-image-wrapper">
+                    <img src="/images/Home1.png" alt="CloudCity Center" class="hero-main-image">
+                    <div class="floating-card card-1">
+                        <div class="floating-card-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <span class="floating-card-text">@Localizer["Secure"]</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="floating-card-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <span class="floating-card-text">@Localizer["Fast"]</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="floating-card-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <span class="floating-card-text">@Localizer["Global"]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

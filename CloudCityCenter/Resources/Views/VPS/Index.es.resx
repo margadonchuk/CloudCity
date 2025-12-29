@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Alojamiento VPS</value>
+  </data>
+  <data name="VPS" xml:space="preserve">
+    <value>VPS</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>Alojamiento VPS</value>
+  </data>
+  <data name="VPSDescription" xml:space="preserve">
+    <value>VPS (servidor privado virtual) es un servidor dedicado virtual que combina las ventajas de alquilar un servidor físico con la comodidad de las tecnologías en la nube. Cada cliente recibe su propio espacio aislado con recursos dedicados — procesador, RAM, espacio en disco y acceso root.</value>
+  </data>
+  <data name="DedicatedCPU" xml:space="preserve">
+    <value>CPU dedicado</value>
+  </data>
+  <data name="IsolatedRAM" xml:space="preserve">
+    <value>RAM aislada</value>
+  </data>
+  <data name="SSDStorage" xml:space="preserve">
+    <value>Almacenamiento SSD</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Seguro</value>
+  </data>
+  <data name="DedicatedResources" xml:space="preserve">
+    <value>Recursos dedicados y acceso root completo</value>
+  </data>
+  <data name="SSDEnterprise" xml:space="preserve">
+    <value>Almacenamiento SSD, hardware de nivel empresarial</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Soporte experto 24/7</value>
+  </data>
+  <data name="VPSPlans" xml:space="preserve">
+    <value>Planes VPS</value>
+  </data>
+  <data name="ChooseVPSSolution" xml:space="preserve">
+    <value>Elija la solución VPS perfecta para sus necesidades</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Tráfico</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>Sistema operativo</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Núcleo</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Pedir</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Países Bajos</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Alemania</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Francia</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Polonia</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Países Bajos/Alemania/Francia</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Ilimitado</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+</root>
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VPS хостинг</value>
+  </data>
+  <data name="VPS" xml:space="preserve">
+    <value>VPS</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>VPS хостинг</value>
+  </data>
+  <data name="VPSDescription" xml:space="preserve">
+    <value>VPS (виртуальный выделенный сервер) — это виртуальный выделенный сервер, который сочетает преимущества аренды физического сервера с удобством облачных технологий. Каждый клиент получает свое изолированное пространство с выделенными ресурсами — процессор, RAM, дисковое пространство и root доступ.</value>
+  </data>
+  <data name="DedicatedCPU" xml:space="preserve">
+    <value>Выделенный CPU</value>
+  </data>
+  <data name="IsolatedRAM" xml:space="preserve">
+    <value>Изолированная RAM</value>
+  </data>
+  <data name="SSDStorage" xml:space="preserve">
+    <value>SSD хранилище</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безопасный</value>
+  </data>
+  <data name="DedicatedResources" xml:space="preserve">
+    <value>Выделенные ресурсы и полный root доступ</value>
+  </data>
+  <data name="SSDEnterprise" xml:space="preserve">
+    <value>SSD хранилище, корпоративное оборудование</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="VPSPlans" xml:space="preserve">
+    <value>Тарифы VPS</value>
+  </data>
+  <data name="ChooseVPSSolution" xml:space="preserve">
+    <value>Выберите идеальное VPS решение для ваших потребностей</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процессор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗУ</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Трафик</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>ОС</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Ядро</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>ГБ</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Заказать</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Фильтры</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Нидерланды</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Германия</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Франция</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Польша</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Нидерланды/Германия/Франция</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Безлимитный</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+</root>
+

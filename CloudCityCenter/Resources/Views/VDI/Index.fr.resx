@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Hébergement VDI</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>Hébergement VDI</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>L'infrastructure de bureau virtuel (VDI) fournit un accès à distance sécurisé aux environnements de bureau virtualisés. Accédez à votre bureau Windows depuis n'importe où, sur n'importe quel appareil, avec une sécurité et des performances de niveau entreprise.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Bureau virtuel</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Accès cloud</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Sécurisé</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Multi-appareils</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Accès à distance depuis n'importe où</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Ressources évolutives et plans flexibles</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Support expert 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>Plans VDI</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Choisissez la solution VDI parfaite pour vos besoins</value>
+  </data>
+  <data name="VDIPlansForOnePerson" xml:space="preserve">
+    <value>VDI pour 1 personne</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Choisissez un plan adapté à vos tâches</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Trafic</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Commander</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="PlanStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="PlanStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="PlanPro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Pays-Bas</value>
+  </data>
+  <data name="RegionEurope" xml:space="preserve">
+    <value>Allemagne/France/Pologne</value>
+  </data>
+  <data name="RegionUSAsia" xml:space="preserve">
+    <value>États-Unis/Canada/Asie</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>cœur</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="VDIPlansForThreePersons" xml:space="preserve">
+    <value>VDI pour 3 personnes</value>
+  </data>
+  <data name="VDIPlansForFivePersons" xml:space="preserve">
+    <value>VDI pour 5 personnes</value>
+  </data>
+  <data name="VDIPlansForTenPersons" xml:space="preserve">
+    <value>VDI pour 10 personnes</value>
+  </data>
+  <data name="VDIPlansForTwentyPersons" xml:space="preserve">
+    <value>VDI pour 20 personnes</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtres</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Tous les pays</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Personnes</value>
+  </data>
+</root>
+

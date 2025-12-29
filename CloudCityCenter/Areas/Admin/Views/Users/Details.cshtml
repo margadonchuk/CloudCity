@@ -1,0 +1,79 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Microsoft.AspNetCore.Identity.IdentityUser
+
+@{
+    ViewData["Title"] = "User Details";
+    Layout = "_Layout";
+    var orders = ViewData["Orders"] as List<CloudCityCenter.Models.Order> ?? new List<CloudCityCenter.Models.Order>();
+    var ordersCount = ViewData["OrdersCount"] as int? ?? 0;
+    var totalSpent = ViewData["TotalSpent"] as decimal? ?? 0m;
+}
+
+<h1>User Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+        
+        <dt class="col-sm-2">Email Confirmed</dt>
+        <dd class="col-sm-10">@(Model.EmailConfirmed ? "Yes" : "No")</dd>
+        
+        <dt class="col-sm-2">Phone Number</dt>
+        <dd class="col-sm-10">@(Model.PhoneNumber ?? "N/A")</dd>
+        
+        <dt class="col-sm-2">Phone Confirmed</dt>
+        <dd class="col-sm-10">@(Model.PhoneNumberConfirmed ? "Yes" : "No")</dd>
+        
+        <dt class="col-sm-2">Two Factor Enabled</dt>
+        <dd class="col-sm-10">@(Model.TwoFactorEnabled ? "Yes" : "No")</dd>
+        
+        <dt class="col-sm-2">Lockout Enabled</dt>
+        <dd class="col-sm-10">@(Model.LockoutEnabled ? "Yes" : "No")</dd>
+        
+        <dt class="col-sm-2">Orders Count</dt>
+        <dd class="col-sm-10">@ordersCount</dd>
+        
+        <dt class="col-sm-2">Total Spent</dt>
+        <dd class="col-sm-10">$@totalSpent.ToString("F2")</dd>
+    </dl>
+</div>
+
+@if (orders.Any())
+{
+    <h3 class="mt-4">Orders</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Items</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var order in orders)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>$@order.Total.ToString("F2") @order.Currency</td>
+                <td>@order.Status</td>
+                <td>@order.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@order.Items.Count item(s)</td>
+                <td>
+                    <a asp-area="" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-info">View Order</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<div class="mt-3">
+    <a asp-area="Admin" asp-controller="Users" asp-action="NewUsers" class="btn btn-secondary">Back to New Users</a>
+    <a asp-area="Admin" asp-controller="Users" asp-action="Customers" class="btn btn-secondary">Back to Customers</a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-primary">Back to Products</a>
+</div>
+

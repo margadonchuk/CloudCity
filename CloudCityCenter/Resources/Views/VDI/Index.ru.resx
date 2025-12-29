@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VDI Хостинг</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>VDI Хостинг</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>Виртуальная инфраструктура рабочих столов (VDI) обеспечивает безопасный удаленный доступ к виртуализированным средам рабочих столов. Получайте доступ к своему Windows рабочему столу из любого места, на любом устройстве, с корпоративной безопасностью и производительностью.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Виртуальный рабочий стол</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Облачный доступ</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Безопасный</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Мультиустройственный</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Удаленный доступ из любого места</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Масштабируемые ресурсы и гибкие планы</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>VDI Планы</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Выберите идеальное VDI решение для ваших потребностей</value>
+  </data>
+  <data name="VDIPlansForOnePerson" xml:space="preserve">
+    <value>VDI на 1 человека</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Выберите план, подходящий для ваших задач</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Трафик</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Заказать</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>месяц</value>
+  </data>
+  <data name="PlanStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="PlanStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="PlanPro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Нидерланды</value>
+  </data>
+  <data name="RegionEurope" xml:space="preserve">
+    <value>Германия/Франция/Польша</value>
+  </data>
+  <data name="RegionUSAsia" xml:space="preserve">
+    <value>США/Канада/Азия</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>ядро</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>ГБ</value>
+  </data>
+  <data name="VDIPlansForThreePersons" xml:space="preserve">
+    <value>VDI на 3 человека</value>
+  </data>
+  <data name="VDIPlansForFivePersons" xml:space="preserve">
+    <value>VDI на 5 человек</value>
+  </data>
+  <data name="VDIPlansForTenPersons" xml:space="preserve">
+    <value>VDI на 10 человек</value>
+  </data>
+  <data name="VDIPlansForTwentyPersons" xml:space="preserve">
+    <value>VDI на 20 человек</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Фильтры</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Все страны</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Человек</value>
+  </data>
+</root>
+

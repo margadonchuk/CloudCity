@@ -1,0 +1,796 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model CloudCityCenter.Models.ViewModels.VDIPageVm
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<!-- HERO SECTION -->
+<section class="vdi-page-hero py-5 position-relative">
+  <div class="vdi-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-2 order-md-1 animate-on-scroll" data-animation="fade-in-left">
+        <div class="vdi-page-image-wrapper">
+          <div class="vdi-icon-grid">
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-display"></i>
+              </div>
+              <span>@Localizer["VirtualDesktop"]</span>
+            </div>
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-cloud"></i>
+              </div>
+              <span>@Localizer["CloudAccess"]</span>
+            </div>
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <span>@Localizer["Secure"]</span>
+            </div>
+            <div class="vdi-icon-item">
+              <div class="vdi-icon-circle">
+                <i class="bi bi-laptop"></i>
+              </div>
+              <span>@Localizer["MultiDevice"]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["VDI"]</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 vdi-page-title">
+          <span class="text-gradient-2">@Localizer["VDIHosting"]</span>
+        </h1>
+        <p class="vdi-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["VDIDescription"]
+        </p>
+        <div class="vdi-features mb-4">
+          <div class="vdi-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["RemoteAccess"]</span>
+          </div>
+          <div class="vdi-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["ScalableResources"]</span>
+          </div>
+          <div class="vdi-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["ExpertSupport"]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VDI PLANS SECTION -->
+<section class="container my-5">
+    <!-- FILTERS SECTION -->
+    <div class="card mb-5 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-funnel me-2"></i>@Localizer["Filters"]</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <label class="form-label fw-bold">@Localizer["Country"]</label>
+                    <select id="filter-location" class="form-select vdi-filter">
+                        <option value="">@Localizer["AllCountries"]</option>
+                        @foreach (var location in Model.AvailableLocations)
+                        {
+                            <option value="@location">@GetLocalizedRegionName(location)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["Persons"]</label>
+                    <select id="filter-persons" class="form-select vdi-filter">
+                        <option value="">@Localizer["AllPersons"]</option>
+                        @foreach (var persons in Model.AvailablePersons)
+                        {
+                            <option value="@persons">@persons</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["CPU"] (@Localizer["Core"])</label>
+                    <select id="filter-cpu" class="form-select vdi-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var cpu in Model.AvailableCpuCores)
+                        {
+                            <option value="@cpu">@cpu</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["RAM"] (@Localizer["GB"])</label>
+                    <select id="filter-ram" class="form-select vdi-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var ram in Model.AvailableRamGb)
+                        {
+                            <option value="@ram">@ram</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["SSD"] (@Localizer["GB"])</label>
+                    <select id="filter-ssd" class="form-select vdi-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @foreach (var ssd in Model.AvailableSsdGb)
+                        {
+                            <option value="@ssd">@ssd</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-1 d-flex align-items-end">
+                    <button type="button" id="reset-filters" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-x-circle"></i> @Localizer["Reset"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VDI PLANS SECTION FOR 1 PERSON -->
+    <section class="container my-5">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
+            <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForOnePerson"]</h2>
+            <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+        </div>
+
+        @{
+            string GetLocalizedRegionName(string regionName)
+            {
+                if (regionName.Contains("Netherlands", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["RegionNetherlands"].Value;
+                if (regionName.Contains("Germany") || regionName.Contains("France") || regionName.Contains("Poland"))
+                    return Localizer["RegionEurope"].Value;
+                if (regionName.Contains("USA") || regionName.Contains("Canada") || regionName.Contains("Asia"))
+                    return Localizer["RegionUSAsia"].Value;
+                return regionName;
+            }
+
+            string GetLocalizedPlanName(string planName)
+            {
+                if (planName.Contains("Start", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["PlanStart"].Value;
+                if (planName.Contains("Standard", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["PlanStandard"].Value;
+                if (planName.Contains("Pro", StringComparison.OrdinalIgnoreCase))
+                    return Localizer["PlanPro"].Value;
+                return planName;
+            }
+        }
+
+        @foreach (var region in Model.RegionsForOnePerson)
+    {
+        <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="vdi-region-header mb-4">
+                <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+            </div>
+            <div class="row g-4">
+                @foreach (var plan in region.Plans)
+                {
+                    <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                         data-location="@plan.Country"
+                         data-persons="1"
+                         data-cpu="@plan.CpuCores"
+                         data-ram="@plan.RamGb"
+                         data-ssd="@plan.SsdGb">
+                        <div class="card h-100 vdi-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@GetLocalizedPlanName(plan.Name)" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@GetLocalizedPlanName(plan.Name)</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CpuCores @Localizer["Core"]
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RamGb @Localizer["GB"]
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SsdGb @Localizer["GB"]
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Traffic"]:</strong> @plan.Traffic
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        }
+    </section>
+    
+    <!-- VDI PLANS FOR 3 PERSONS SECTION -->
+    <section class="container my-5">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
+            <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForThreePersons"]</h2>
+            <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+        </div>
+
+        @foreach (var region in Model.RegionsForThreePersons)
+        {
+            <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+                <div class="vdi-region-header mb-4">
+                    <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+                </div>
+                <div class="row g-4">
+                    @foreach (var plan in region.Plans)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="3"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
+                            <div class="card h-100 vdi-plan-card shadow-sm">
+                                @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                                {
+                                    <img src="@plan.ImageUrl" class="card-img-top" alt="@GetLocalizedPlanName(plan.Name)" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                                }
+                                <div class="card-body d-flex flex-column">
+                                    <div class="text-center mb-3">
+                                        <h4 class="card-title fw-bold mb-2">@GetLocalizedPlanName(plan.Name)</h4>
+                                    </div>
+                                    <ul class="list-unstyled flex-grow-1 mb-4">
+                                        <li class="mb-3">
+                                            <i class="bi bi-cpu text-primary me-2"></i>
+                                            <strong>@Localizer["CPU"]:</strong> @plan.CpuCores @Localizer["Core"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-memory text-primary me-2"></i>
+                                            <strong>@Localizer["RAM"]:</strong> @plan.RamGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                            <strong>@Localizer["SSD"]:</strong> @plan.SsdGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                            <strong>@Localizer["Traffic"]:</strong> @plan.Traffic
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                                            <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <div class="text-center mb-3">
+                                            <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                            <span class="text-muted">/ @Localizer["Month"]</span>
+                                        </div>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- VDI PLANS FOR 5 PERSONS SECTION -->
+    <section class="container my-5">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
+            <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForFivePersons"]</h2>
+            <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+        </div>
+
+        @foreach (var region in Model.RegionsForFivePersons)
+        {
+            <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+                <div class="vdi-region-header mb-4">
+                    <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+                </div>
+                <div class="row g-4">
+                    @foreach (var plan in region.Plans)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="5"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
+                            <div class="card h-100 vdi-plan-card shadow-sm">
+                                @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                                {
+                                    <img src="@plan.ImageUrl" class="card-img-top" alt="@GetLocalizedPlanName(plan.Name)" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                                }
+                                <div class="card-body d-flex flex-column">
+                                    <div class="text-center mb-3">
+                                        <h4 class="card-title fw-bold mb-2">@GetLocalizedPlanName(plan.Name)</h4>
+                                    </div>
+                                    <ul class="list-unstyled flex-grow-1 mb-4">
+                                        <li class="mb-3">
+                                            <i class="bi bi-cpu text-primary me-2"></i>
+                                            <strong>@Localizer["CPU"]:</strong> @plan.CpuCores @Localizer["Core"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-memory text-primary me-2"></i>
+                                            <strong>@Localizer["RAM"]:</strong> @plan.RamGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                            <strong>@Localizer["SSD"]:</strong> @plan.SsdGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                            <strong>@Localizer["Traffic"]:</strong> @plan.Traffic
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                                            <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <div class="text-center mb-3">
+                                            <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                            <span class="text-muted">/ @Localizer["Month"]</span>
+                                        </div>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- VDI PLANS FOR 10 PERSONS SECTION -->
+    <section class="container my-5">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
+            <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForTenPersons"]</h2>
+            <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+        </div>
+
+        @foreach (var region in Model.RegionsForTenPersons)
+        {
+            <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+                <div class="vdi-region-header mb-4">
+                    <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+                </div>
+                <div class="row g-4">
+                    @foreach (var plan in region.Plans)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="10"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
+                            <div class="card h-100 vdi-plan-card shadow-sm">
+                                @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                                {
+                                    <img src="@plan.ImageUrl" class="card-img-top" alt="@GetLocalizedPlanName(plan.Name)" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                                }
+                                <div class="card-body d-flex flex-column">
+                                    <div class="text-center mb-3">
+                                        <h4 class="card-title fw-bold mb-2">@GetLocalizedPlanName(plan.Name)</h4>
+                                    </div>
+                                    <ul class="list-unstyled flex-grow-1 mb-4">
+                                        <li class="mb-3">
+                                            <i class="bi bi-cpu text-primary me-2"></i>
+                                            <strong>@Localizer["CPU"]:</strong> @plan.CpuCores @Localizer["Core"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-memory text-primary me-2"></i>
+                                            <strong>@Localizer["RAM"]:</strong> @plan.RamGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                            <strong>@Localizer["SSD"]:</strong> @plan.SsdGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                            <strong>@Localizer["Traffic"]:</strong> @plan.Traffic
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                                            <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <div class="text-center mb-3">
+                                            <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                            <span class="text-muted">/ @Localizer["Month"]</span>
+                                        </div>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- VDI PLANS FOR 20 PERSONS SECTION -->
+    <section class="container my-5">
+        <div class="text-center mb-5 animate-on-scroll vdi-section-header" data-animation="fade-in-up">
+            <h2 class="display-5 fw-bold mb-3">@Localizer["VDIPlansForTwentyPersons"]</h2>
+            <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+        </div>
+
+        @foreach (var region in Model.RegionsForTwentyPersons)
+        {
+            <div class="vdi-region-block mb-5 animate-on-scroll" data-animation="fade-in-up">
+                <div class="vdi-region-header mb-4">
+                    <h3 class="h3 fw-bold text-center mb-3">@GetLocalizedRegionName(region.RegionName)</h3>
+                </div>
+                <div class="row g-4">
+                    @foreach (var plan in region.Plans)
+                    {
+                        <div class="col-12 col-md-6 col-lg-4 vdi-plan-item" 
+                             data-location="@plan.Country"
+                             data-persons="20"
+                             data-cpu="@plan.CpuCores"
+                             data-ram="@plan.RamGb"
+                             data-ssd="@plan.SsdGb">
+                            <div class="card h-100 vdi-plan-card shadow-sm">
+                                @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                                {
+                                    <img src="@plan.ImageUrl" class="card-img-top" alt="@GetLocalizedPlanName(plan.Name)" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                                }
+                                <div class="card-body d-flex flex-column">
+                                    <div class="text-center mb-3">
+                                        <h4 class="card-title fw-bold mb-2">@GetLocalizedPlanName(plan.Name)</h4>
+                                    </div>
+                                    <ul class="list-unstyled flex-grow-1 mb-4">
+                                        <li class="mb-3">
+                                            <i class="bi bi-cpu text-primary me-2"></i>
+                                            <strong>@Localizer["CPU"]:</strong> @plan.CpuCores @Localizer["Core"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-memory text-primary me-2"></i>
+                                            <strong>@Localizer["RAM"]:</strong> @plan.RamGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                            <strong>@Localizer["SSD"]:</strong> @plan.SsdGb @Localizer["GB"]
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                            <strong>@Localizer["Traffic"]:</strong> @plan.Traffic
+                                        </li>
+                                        <li class="mb-3">
+                                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                                            <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <div class="text-center mb-3">
+                                            <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                            <span class="text-muted">/ @Localizer["Month"]</span>
+                                        </div>
+                                        <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="productId" value="@plan.ProductId" />
+                                            @if (plan.ProductVariantId.HasValue)
+                                            {
+                                                <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                            }
+                                            <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </section>
+
+<style>
+    .vdi-region-block {
+        margin-bottom: 4rem;
+    }
+
+    .vdi-region-header {
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 1rem;
+    }
+
+    .vdi-plan-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+    }
+
+    .vdi-plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15) !important;
+    }
+
+    .vdi-plan-card .card-body {
+        padding: 2rem;
+    }
+
+    .vdi-plan-card .card-title {
+        color: #0d6efd;
+        font-size: 1.5rem;
+    }
+
+    .vdi-plan-card ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .vdi-plan-card ul li:last-child {
+        border-bottom: none;
+    }
+
+    .vdi-plan-card .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .vdi-plan-card .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: scale(1.02);
+    }
+    .vdi-plan-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .vdi-plan-item.hidden {
+        display: none !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filters = {
+            location: document.getElementById('filter-location'),
+            persons: document.getElementById('filter-persons'),
+            cpu: document.getElementById('filter-cpu'),
+            ram: document.getElementById('filter-ram'),
+            ssd: document.getElementById('filter-ssd')
+        };
+        
+        const resetButton = document.getElementById('reset-filters');
+        const planItems = document.querySelectorAll('.vdi-plan-item');
+        
+        function applyFilters() {
+            const selectedLocation = filters.location ? filters.location.value : '';
+            const selectedPersons = filters.persons ? filters.persons.value : '';
+            const selectedCpu = filters.cpu ? filters.cpu.value : '';
+            const selectedRam = filters.ram ? filters.ram.value : '';
+            const selectedSsd = filters.ssd ? filters.ssd.value : '';
+            
+            let visibleCount = 0;
+            
+            planItems.forEach(function(item) {
+                const itemLocation = item.getAttribute('data-location') || '';
+                const itemPersons = item.getAttribute('data-persons') || '';
+                const itemCpu = item.getAttribute('data-cpu') || '';
+                const itemRam = item.getAttribute('data-ram') || '';
+                const itemSsd = item.getAttribute('data-ssd') || '';
+                
+                let show = true;
+                
+                // Проверяем каждый фильтр только если он выбран
+                if (selectedLocation && selectedLocation.trim() !== '') {
+                    if (itemLocation.trim() !== selectedLocation.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedPersons && selectedPersons.trim() !== '') {
+                    if (itemPersons.trim() !== selectedPersons.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedCpu && selectedCpu.trim() !== '') {
+                    if (itemCpu.trim() !== selectedCpu.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedRam && selectedRam.trim() !== '') {
+                    if (itemRam.trim() !== selectedRam.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedSsd && selectedSsd.trim() !== '') {
+                    if (itemSsd.trim() !== selectedSsd.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (show) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Скрываем пустые региональные блоки
+            document.querySelectorAll('.vdi-region-block').forEach(function(block) {
+                const allPlans = block.querySelectorAll('.vdi-plan-item');
+                const visiblePlans = Array.from(allPlans).filter(function(plan) {
+                    return !plan.classList.contains('hidden') && 
+                           plan.style.display !== 'none';
+                });
+                if (visiblePlans.length === 0 && allPlans.length > 0) {
+                    block.style.display = 'none';
+                } else {
+                    block.style.display = '';
+                }
+            });
+            
+            // Скрываем пустые секции и их заголовки (только если есть активные фильтры)
+            const hasActiveFilters = (selectedLocation && selectedLocation.trim() !== '') ||
+                                    (selectedPersons && selectedPersons.trim() !== '') ||
+                                    (selectedCpu && selectedCpu.trim() !== '') ||
+                                    (selectedRam && selectedRam.trim() !== '') ||
+                                    (selectedSsd && selectedSsd.trim() !== '');
+            
+            document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                const allPlansInSection = section.querySelectorAll('.vdi-plan-item');
+                const visiblePlansInSection = Array.from(allPlansInSection).filter(function(plan) {
+                    return !plan.classList.contains('hidden') && 
+                           plan.style.display !== 'none';
+                });
+                
+                const sectionHeader = section.querySelector('.vdi-section-header');
+                
+                if (hasActiveFilters) {
+                    if (visiblePlansInSection.length === 0 && allPlansInSection.length > 0) {
+                        // Скрываем секцию и заголовок, если нет видимых планов, но есть планы в секции
+                        section.style.display = 'none';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = 'none';
+                        }
+                    } else {
+                        // Показываем секцию и заголовок, если есть видимые планы
+                        section.style.display = '';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = '';
+                        }
+                    }
+                } else {
+                    // Если фильтры не активны, показываем все секции и заголовки
+                    section.style.display = '';
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
+                }
+            });
+        }
+        
+        // Добавляем обработчики событий для всех фильтров
+        if (filters.location) {
+            filters.location.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.persons) {
+            filters.persons.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.cpu) {
+            filters.cpu.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ram) {
+            filters.ram.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ssd) {
+            filters.ssd.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        
+        // Обработчик для кнопки сброса
+        if (resetButton) {
+            resetButton.addEventListener('click', function() {
+                // Сбрасываем все фильтры
+                Object.values(filters).forEach(function(filter) {
+                    if (filter) {
+                        filter.value = '';
+                    }
+                });
+                
+                // Показываем все элементы явно
+                planItems.forEach(function(item) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                });
+                
+                // Показываем все региональные блоки
+                document.querySelectorAll('.vdi-region-block').forEach(function(block) {
+                    block.style.display = '';
+                });
+                
+                // Показываем все секции и их заголовки
+                document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                    section.style.display = '';
+                    const sectionHeader = section.querySelector('.vdi-section-header');
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
+                });
+            });
+        }
+        
+        // НЕ применяем фильтры при загрузке страницы - показываем все товары по умолчанию
+        // applyFilters();
+    });
+</script>
+

@@ -1,42 +1,88 @@
 
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 
 
 <!-- ABOUT SECTION -->
-<section id="about-us" class="aboutus-section image-section">
- 
-    <div>
-        <h2 style="font-size: 2.5rem; color: #1a1a1a;;">About us</h2>
-        <p style="font-size: 18px; color: #666;">
-            Ready to discover what truly sets us apart in the competitive landscape of server solutions?
-            At <strong>CloudCity Center</strong>, we’ve not only redefined server solutions but also elevated the standards
-            by seamlessly merging exceptional reliability, top-notch security, and unbeatable affordability.
+<section id="about-us" class="about-page-section py-5 position-relative">
+  <div class="about-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["OurStory"]</span>
+        </div>
+        <h2 class="display-4 fw-bold mb-4 about-page-title">
+          <span class="text-gradient-2">@Localizer["AboutUs"]</span>
+        </h2>
+        <p class="about-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["AboutText"]
         </p>
+        <div class="about-page-features">
+          <div class="about-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["EnterpriseInfrastructure"]</span>
+          </div>
+          <div class="about-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["GlobalDataCenter"]</span>
+          </div>
+          <div class="about-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["ExpertSupport"]</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">
+        <div class="about-page-image-wrapper">
+          <img src="/images/about.png" alt="About CloudCity Center" class="about-page-image" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
     </div>
-    
-  <div class="image-col">
-        <img src="/images/about.png" alt="about" class="full-visual-img" />
-    </div>
-    
+  </div>
 </section>
 
 <!-- EXPERTISE SECTION -->
-<section id="our-expertise" class="expertise-section image-section">
-    <div class="image-col">
-        <img src="/images/expertise.png" alt="Server rack" class="full-visual-img" />
-    </div>
-
-    <div class="text-col">
-        <h2 style="font-size: 2.5rem; color: #1a1a1a;">Our Expertise</h2>
-        <p style="font-size:18px; color: #666;">
-            With cutting-edge tech and tailor-made solutions, we’re not just another server provider — we’re your partner in growth.
-            <br><br>
-            Need global reach? We’ve got it. Whether you’re in Europe, the Americas, or Asia.
+<section id="our-expertise" class="expertise-page-section py-5 position-relative">
+  <div class="expertise-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-2 order-md-1 animate-on-scroll" data-animation="fade-in-left">
+        <div class="about-page-image-wrapper">
+          <img src="/images/expertise.png" alt="Our Expertise" class="about-page-image" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 animate-on-scroll" data-animation="fade-in-right">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["Expertise"]</span>
+        </div>
+        <h2 class="display-4 fw-bold mb-4 about-page-title">
+          <span class="text-gradient-2">@Localizer["OurExpertise"]</span>
+        </h2>
+        <p class="about-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["ExpertiseText"]
         </p>
+        <div class="about-page-stats">
+          <div class="about-stat-item">
+            <div class="about-stat-number">50+</div>
+            <div class="about-stat-label">@Localizer["Countries"]</div>
+          </div>
+          <div class="about-stat-item">
+            <div class="about-stat-number">1000+</div>
+            <div class="about-stat-label">@Localizer["Servers"]</div>
+          </div>
+          <div class="about-stat-item">
+            <div class="about-stat-number">5000+</div>
+            <div class="about-stat-label">@Localizer["Clients"]</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <style>
@@ -69,7 +115,7 @@
 
 <!-- VALUES SECTION -->
 <section id="services" class="container py-5">
-  <h2 class="text-center display-5 fw-bold mb-5">What drives us?</h2>
+  <h2 class="text-center display-5 fw-bold mb-5">@Localizer["WhatDrivesUs"]</h2>
 
   <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -90,8 +136,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/security.png" alt="Security" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Security</h4>
-              <p class="text-muted mb-0">Firewall, VPN tunneling, DDoS protection.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["Security"]</h4>
+              <p class="text-muted mb-0">@Localizer["SecurityDesc"]</p>
             </div>
           </div>
 
@@ -99,8 +145,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/affordability.png" alt="Affordability" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Affordability</h4>
-              <p class="text-muted mb-0">High-quality service, without breaking the bank.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["Affordability"]</h4>
+              <p class="text-muted mb-0">@Localizer["AffordabilityDesc"]</p>
             </div>
           </div>
         </div>
@@ -113,8 +159,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/service3.png" alt="Network Equipment" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Network Equipment</h4>
-              <p class="text-muted mb-0">Setup & tuning: WiFi, Mikrotik, Fortinet, Cisco.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["NetworkEquipment"]</h4>
+              <p class="text-muted mb-0">@Localizer["NetworkEquipmentDesc"]</p>
             </div>
           </div>
 
@@ -122,8 +168,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/vps.png" alt="VPS Hosting" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">VPS Hosting</h4>
-              <p class="text-muted mb-0">SSD, root access, scalable for apps & sites.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["VPSHosting"]</h4>
+              <p class="text-muted mb-0">@Localizer["VPSHostingDesc"]</p>
             </div>
           </div>
 
@@ -131,8 +177,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/hosting.png" alt="Web Hosting" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Web Hosting</h4>
-              <p class="text-muted mb-0">Fast, secure, and easy to manage websites.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["WebHosting"]</h4>
+              <p class="text-muted mb-0">@Localizer["WebHostingDesc"]</p>
             </div>
           </div>
         </div>
@@ -145,8 +191,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/storage.png" alt="Cloud Storage" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Cloud Storage</h4>
-              <p class="text-muted mb-0">Secure storage with backups & fast access.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["CloudStorage"]</h4>
+              <p class="text-muted mb-0">@Localizer["CloudStorageDesc"]</p>
             </div>
           </div>
 
@@ -154,8 +200,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/webdev.png" alt="Custom Web Development" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Web Development</h4>
-              <p class="text-muted mb-0">Custom sites & apps: C#, Python, PHP.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["WebDevelopment"]</h4>
+              <p class="text-muted mb-0">@Localizer["WebDevelopmentDesc"]</p>
             </div>
           </div>
 
@@ -163,8 +209,8 @@
           <div class="col-10 col-md-4">
             <div class="feature text-center h-100">
               <img src="/images/reliability.png" alt="Reliability" class="feature-img">
-              <h4 class="fw-semibold mt-4 mb-2">Reliability</h4>
-              <p class="text-muted mb-0">Your servers, running 24/7. Always.</p>
+              <h4 class="fw-semibold mt-4 mb-2">@Localizer["Reliability"]</h4>
+              <p class="text-muted mb-0">@Localizer["ReliabilityDesc"]</p>
             </div>
           </div>
         </div>
@@ -174,11 +220,11 @@
     <!-- Стрелки -->
     <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+      <span class="visually-hidden">@Localizer["Previous"]</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+      <span class="visually-hidden">@Localizer["Next"]</span>
     </button>
   </div>
 </section>
@@ -199,7 +245,7 @@
               <div class="expert-avatar">
                 <img src="/images/backend.png" alt="Backend Developer">
               </div>
-              <p class="expert-title">Backend Developer</p>
+              <p class="expert-title">@Localizer["BackendDeveloper"]</p>
             </div>
           </div>
 
@@ -208,7 +254,7 @@
               <div class="expert-avatar">
                 <img src="/images/support.png" alt="Support Specialists &amp; Managers">
               </div>
-              <p class="expert-title">Support Specialists &amp; Managers</p>
+              <p class="expert-title">@Localizer["SupportSpecialists"]</p>
             </div>
           </div>
 
@@ -217,7 +263,7 @@
               <div class="expert-avatar">
                 <img src="/images/finance.png" alt="Finance Specialist">
               </div>
-              <p class="expert-title">Finance Specialist</p>
+              <p class="expert-title">@Localizer["FinanceSpecialist"]</p>
             </div>
           </div>
         </div>
@@ -231,7 +277,7 @@
               <div class="expert-avatar">
                 <img src="/images/database.png" alt="Database Developer">
               </div>
-              <p class="expert-title">Database Developer</p>
+              <p class="expert-title">@Localizer["DatabaseDeveloper"]</p>
             </div>
           </div>
 
@@ -240,7 +286,7 @@
               <div class="expert-avatar">
                 <img src="/images/frontend.png" alt="Frontend Developer">
               </div>
-              <p class="expert-title">Frontend Developer</p>
+              <p class="expert-title">@Localizer["FrontendDeveloper"]</p>
             </div>
           </div>
 
@@ -249,7 +295,7 @@
               <div class="expert-avatar">
                 <img src="/images/network.png" alt="Network Engineer">
               </div>
-              <p class="expert-title">Network Engineer</p>
+              <p class="expert-title">@Localizer["NetworkEngineer"]</p>
             </div>
           </div>
         </div>
@@ -260,11 +306,11 @@
     <!-- Стрелки -->
     <button class="carousel-control-prev" type="button" data-bs-target="#expertsCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+      <span class="visually-hidden">@Localizer["Previous"]</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#expertsCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+      <span class="visually-hidden">@Localizer["Next"]</span>
     </button>
 
     <!-- Точки (по желанию) -->
@@ -278,7 +324,7 @@
 
 <!-- TESTIMONIALS SECTION -->
 <section id="testimonial-carousel" style="padding: 60px 5%; background-color: #f9f9f9; border-radius: 20px;">
-  <h2 style="text-align: center; font-size: 2.5rem;">What Our Clients Say</h2>
+  <h2 style="text-align: center; font-size: 2.5rem;">@Localizer["WhatClientsSay"]</h2>
 
   <div class="carousel-container" style="overflow: hidden; width: 100%;">
     <div class="carousel-track" style="display: flex; transition: transform 0.5s ease;">
@@ -401,65 +447,65 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <section class="faq-section">
-  <h2>Frequently Asked Questions</h2>
+  <h2>@Localizer["FAQ"]</h2>
   
   <div class="faq-item">
     <input type="checkbox" id="q1">
-    <label for="q1" class="faq-question">What services does CloudCity offer?</label>
-    <div class="faq-answer">CloudCity provides affordable and secure server rental services in multiple locations worldwide, including advanced DDoS protection, VPN tunneling, and firewall security for your business needs.
+    <label for="q1" class="faq-question">@Localizer["FAQ1"]</label>
+    <div class="faq-answer">@Localizer["FAQ1Answer"]
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q2">
-    <label for="q2" class="faq-question">In which countries are your servers available?</label>
-    <div class="faq-answer">Our servers are available in the Netherlands, Germany, France, Poland, the UK, the USA, Singapore, India, and Australia, ensuring global coverage and reliability.
+    <label for="q2" class="faq-question">@Localizer["FAQ2"]</label>
+    <div class="faq-answer">@Localizer["FAQ2Answer"]
 
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q3">
-    <label for="q3" class="faq-question">What makes CloudCity servers secure?</label>
-    <div class="faq-answer">We implement advanced firewall protection, DDoS mitigation strategies, VPN tunneling for secure server connections, and external-to-internal IP address switching to ensure robust security for your data.
+    <label for="q3" class="faq-question">@Localizer["FAQ3"]</label>
+    <div class="faq-answer">@Localizer["FAQ3Answer"]
 
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q4">
-    <label for="q4" class="faq-question">How can I set up my server after purchasing?</label>
-    <div class="faq-answer">Once you purchase a server, you’ll receive a detailed setup guide via email. Our support team is also available to assist you in configuring your server according to your requirements.
+    <label for="q4" class="faq-question">@Localizer["FAQ4"]</label>
+    <div class="faq-answer">@Localizer["FAQ4Answer"]
 
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q5">
-    <label for="q5" class="faq-question">Do you offer flexible pricing plans?</label>
-    <div class="faq-answer">Yes, we offer a range of pricing plans to suit startups, small, and medium businesses. You can choose from monthly, quarterly, or annual billing options based on your needs.
+    <label for="q5" class="faq-question">@Localizer["FAQ5"]</label>
+    <div class="faq-answer">@Localizer["FAQ5Answer"]
 
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q6">
-    <label for="q6" class="faq-question">What support options do you provide?</label>
-    <div class="faq-answer">We provide 24/7 customer support via live chat, email, and a dedicated knowledge base. Our team is always ready to help with technical issues or questions.
+    <label for="q6" class="faq-question">@Localizer["FAQ6"]</label>
+    <div class="faq-answer">@Localizer["FAQ6Answer"]
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q7">
-    <label for="q7" class="faq-question">Can I upgrade my server plan later?</label>
-    <div class="faq-answer">Absolutely! You can upgrade your server plan at any time to match your growing business needs. Simply contact our support team, and we’ll guide you through the process.
+    <label for="q7" class="faq-question">@Localizer["FAQ7"]</label>
+    <div class="faq-answer">@Localizer["FAQ7Answer"]
     </div>
   </div>
 
   <div class="faq-item">
     <input type="checkbox" id="q8">
-    <label for="q8" class="faq-question">How do I monitor the performance of my server?</label>
-    <div class="faq-answer">CloudCity provides an intuitive control panel where you can monitor server performance in real time. You can track CPU usage, memory, and bandwidth to ensure your server runs efficiently.
+    <label for="q8" class="faq-question">@Localizer["FAQ8"]</label>
+    <div class="faq-answer">@Localizer["FAQ8Answer"]
 
 </div>
   </div>
@@ -472,22 +518,22 @@ document.addEventListener("DOMContentLoaded", () => {
     
     <!-- Текст слева -->
     <div style="flex: 1; min-width: 280px;">
-      <h2 style="font-size: 1.8rem; color: #0b1c49;">Please enter your<br>email address, and<br>we will get in touch<br>with you soon.</h2>
+      <h2 style="font-size: 1.8rem; color: #0b1c49;">@Localizer["ContactFormTitle"]</h2>
     </div>
 
     <!-- Форма справа -->
     <form method="post" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
       @Html.AntiForgeryToken()
-      <input type="text" name="Name" placeholder="Your Name" required
+      <input type="text" name="Name" placeholder="@Localizer["YourName"]" required
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <input type="email" name="Email" placeholder="Your Email" required
+      <input type="email" name="Email" placeholder="@Localizer["YourEmail"]" required
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <input type="text" name="Subject" placeholder="Subject"
+      <input type="text" name="Subject" placeholder="@Localizer["Subject"]"
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <textarea name="Message" placeholder="Your Message" rows="4"
+      <textarea name="Message" placeholder="@Localizer["YourMessage"]" rows="4"
                 style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
       <button type="submit" style="background-color: #0b1c49; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer;">
-        Send Message
+        @Localizer["SendMessage"]
       </button>
     </form>
 
