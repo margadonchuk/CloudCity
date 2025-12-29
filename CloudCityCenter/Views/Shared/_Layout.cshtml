@@ -65,12 +65,12 @@
                 </div>
 
                 <!-- Мобильная версия: Корзина и Меню - справа -->
-                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right" style="display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 9998 !important; flex: 0 0 auto !important; margin-left: auto !important; width: auto !important; height: auto !important;">
+                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right">
                     <a class="nav-link cart-link-mobile position-relative" asp-controller="Cart" asp-action="Index">
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button id="mobileMenuBtn" type="button" class="navbar-toggler mobile-menu-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню">
+                    <button id="mobileMenuBtn" type="button" class="navbar-toggler mobile-menu-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню" style="pointer-events: auto; cursor: pointer;">
                         <span class="navbar-toggler-icon" aria-hidden="true"></span>
                         <i class="bi bi-list" aria-hidden="true"></i>
                     </button>
@@ -414,120 +414,35 @@ else
     @await Html.PartialAsync("_Footer")
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- CRITICAL: Force mobile menu button to be visible immediately -->
+    <!-- Ensure mobile menu button is clickable -->
     <script>
       (function() {
-        function forceButtonVisible() {
-          // Check the button
+        function ensureButtonClickable() {
           var btn = document.getElementById('mobileMenuBtn');
-          
-          var container = document.querySelector('.mobile-nav-right') ||
-                          document.querySelector('div.mobile-nav-right') ||
-                          document.querySelector('div.d-flex.mobile-nav-right');
-          
-          var testBtn = document.getElementById('testMenuBtn');
-          
-          console.log('=== FORCING BUTTON VISIBLE ===');
-          console.log('Test button found:', testBtn ? 'YES' : 'NO');
-          console.log('Main button found:', btn ? 'YES' : 'NO');
-          console.log('Container found:', container ? 'YES' : 'NO');
-          
-          // Check if test button is visible
-          if (testBtn) {
-            var testDisplay = window.getComputedStyle(testBtn).display;
-            console.log('Test button display:', testDisplay);
-            if (testDisplay === 'none') {
-              testBtn.style.display = 'block';
-              console.log('Test button was hidden, forcing visible');
-            }
-          }
-          
           if (btn) {
-            // Remove all classes that might hide it
-            btn.classList.remove('d-none', 'd-lg-block');
-            btn.classList.add('d-flex', 'd-lg-none');
-            
-            // Force styles with setProperty for !important - MATCH HTML INLINE STYLES
-            btn.style.setProperty('display', 'flex', 'important');
-            btn.style.setProperty('visibility', 'visible', 'important');
-            btn.style.setProperty('opacity', '1', 'important');
+            // Ensure button is clickable
             btn.style.setProperty('pointer-events', 'auto', 'important');
-            btn.style.setProperty('z-index', '99999', 'important');
+            btn.style.setProperty('cursor', 'pointer', 'important');
+            btn.style.setProperty('z-index', '1050', 'important');
             
-            // Force icon to be visible
-            var icon = btn.querySelector('.navbar-toggler-icon');
-            if (icon) {
-              icon.style.setProperty('display', 'block', 'important');
-              icon.style.setProperty('width', '20px', 'important');
-              icon.style.setProperty('height', '20px', 'important');
-              icon.style.setProperty('visibility', 'visible', 'important');
-              icon.style.setProperty('opacity', '1', 'important');
+            // Ensure button is visible on mobile
+            if (window.innerWidth < 992) {
+              btn.style.setProperty('display', 'flex', 'important');
+              btn.style.setProperty('visibility', 'visible', 'important');
+              btn.style.setProperty('opacity', '1', 'important');
             }
-            
-            console.log('✅ Mobile menu button FORCED to be visible');
-            console.log('Button computed display:', window.getComputedStyle(btn).display);
-            console.log('Button computed visibility:', window.getComputedStyle(btn).visibility);
-            console.log('Button offsetWidth:', btn.offsetWidth);
-            console.log('Button offsetHeight:', btn.offsetHeight);
-          } else {
-            console.error('❌ Mobile menu button NOT FOUND in DOM!');
-            console.error('Searching for button in:', document.querySelector('.mobile-nav-right'));
-            console.error('All buttons on page:', document.querySelectorAll('button').length);
           }
-          
-          if (container) {
-            // Remove all classes that might hide it
-            container.classList.remove('d-none');
-            container.classList.add('d-flex', 'd-lg-none');
-            
-            // Force styles with setProperty
-            container.style.setProperty('display', 'flex', 'important');
-            container.style.setProperty('visibility', 'visible', 'important');
-            container.style.setProperty('opacity', '1', 'important');
-            container.style.setProperty('position', 'relative', 'important');
-            container.style.setProperty('z-index', '9998', 'important');
-            container.style.setProperty('flex', '0 0 auto', 'important');
-            container.style.setProperty('margin-left', 'auto', 'important');
-            container.style.setProperty('width', 'auto', 'important');
-            container.style.setProperty('height', 'auto', 'important');
-            
-            console.log('✅ Mobile menu container FORCED to be visible');
-            console.log('Container computed display:', window.getComputedStyle(container).display);
-            console.log('Container offsetWidth:', container.offsetWidth);
-            console.log('Container offsetHeight:', container.offsetHeight);
-          } else {
-            console.error('❌ Mobile menu container NOT FOUND in DOM!');
-          }
-        }
-        
-        // Run immediately - before anything else
-        if (document.body) {
-          forceButtonVisible();
         }
         
         // Run after DOM loads
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function() {
-            forceButtonVisible();
-            setTimeout(forceButtonVisible, 50);
-          });
+          document.addEventListener('DOMContentLoaded', ensureButtonClickable);
         } else {
-          forceButtonVisible();
+          ensureButtonClickable();
         }
         
-        // Run after everything loads
-        window.addEventListener('load', function() {
-          forceButtonVisible();
-          setTimeout(forceButtonVisible, 100);
-        });
-        
-        // Run multiple times to catch any late rendering
-        setTimeout(forceButtonVisible, 50);
-        setTimeout(forceButtonVisible, 100);
-        setTimeout(forceButtonVisible, 200);
-        setTimeout(forceButtonVisible, 500);
-        setTimeout(forceButtonVisible, 1000);
-        setTimeout(forceButtonVisible, 2000);
+        // Also run after window loads
+        window.addEventListener('load', ensureButtonClickable);
       })();
     </script>
     @inject Microsoft.Extensions.Localization.IStringLocalizerFactory LocalizerFactory
@@ -800,22 +715,13 @@ else
         scroll: false
       });
       
-      // Force button to be visible - AGGRESSIVE
-      btn.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; z-index: 1051 !important;';
-      
-      if (container) {
-        container.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 1050 !important; flex: 0 0 auto !important;';
-        console.log('Container styles forced');
-      }
-      
-      // Also check parent
-      var parent = btn.parentElement;
-      if (parent) {
-        parent.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important;';
-        console.log('Parent container styles forced');
-      }
-      
-      console.log('Button forced to be visible');
+      // Ensure button is clickable and visible
+      btn.style.setProperty('pointer-events', 'auto', 'important');
+      btn.style.setProperty('cursor', 'pointer', 'important');
+      btn.style.setProperty('z-index', '1050', 'important');
+      btn.style.setProperty('display', 'flex', 'important');
+      btn.style.setProperty('visibility', 'visible', 'important');
+      btn.style.setProperty('opacity', '1', 'important');
       
       // Handle close buttons with data-offcanvas-close attribute
       var closeLinks = menu.querySelectorAll('a[data-offcanvas-close]');
@@ -841,16 +747,8 @@ else
         console.log('Menu closed');
       });
       
-      // Test button click
-      if (!btn.dataset.offcanvasBound) {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log('Menu button was clicked!');
-          offcanvasInstance.toggle();
-        });
-        btn.dataset.offcanvasBound = 'true';
-      }
+      // Bootstrap handles the click via data-bs-toggle, but ensure it works
+      console.log('Button ready - Bootstrap will handle clicks via data-bs-toggle');
       
       console.log('Mobile menu initialized successfully');
     }

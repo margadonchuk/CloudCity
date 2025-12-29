@@ -4135,42 +4135,48 @@ body {
    ============================================ */
 /* Mobile menu button - только для мобильных устройств */
 #mobileMenuBtn {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 999999;
-  width: 60px;
-  height: 60px;
+  position: relative;
+  z-index: 1050;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   background: #000;
   color: #fff;
-  border: 3px solid #000;
-  border-radius: 10px;
-  font-size: 32px;
-  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
-  line-height: 54px;
-  text-align: center;
-  box-shadow: 0 6px 25px rgba(13,110,253,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
   transition: all 0.3s ease;
+  pointer-events: auto;
 }
 
 #mobileMenuBtn .bi-list {
   display: none;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 1;
   color: #fff;
 }
 
 #mobileMenuBtn .navbar-toggler-icon {
   display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 /* Hover эффект для кнопки */
 #mobileMenuBtn:hover {
-  background: #1a1a1a;
+  background: #333;
+  border-color: #fff;
   transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
 }
 
 /* Кнопка видна только на мобильных (Bootstrap класс d-lg-none уже скрывает на десктопе) */
@@ -4233,22 +4239,6 @@ body {
   }
   
   /* ВАЖНО: Показываем мобильную кнопку меню на мобильных */
-  #mobileMenuBtn {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-
-  #mobileMenuBtn .navbar-toggler-icon {
-    display: none !important;
-  }
-
-  #mobileMenuBtn .bi-list {
-    display: inline-block !important;
-  }
-  
-  /* CRITICAL: Force mobile menu button to be visible ТОЛЬКО НА МОБИЛЬНЫХ */
   button#mobileMenuBtn,
   .mobile-menu-btn,
   .mobile-nav-right button,
@@ -4273,6 +4263,21 @@ body {
     justify-content: center !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+  }
+
+  #mobileMenuBtn .navbar-toggler-icon {
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 100% !important;
+  }
+
+  #mobileMenuBtn .bi-list {
+    display: none !important;
   }
   
   button#mobileMenuBtn:hover,
@@ -4310,9 +4315,17 @@ body {
     visibility: visible !important;
     opacity: 1 !important;
     position: relative !important;
-    z-index: 9998 !important;
+    z-index: 1040 !important;
     flex: 0 0 auto !important;
     margin-left: auto !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Убеждаемся, что кнопка кликабельна */
+  .mobile-nav-right button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1050 !important;
   }
   .navbar-modern {
     min-height: 70px;
