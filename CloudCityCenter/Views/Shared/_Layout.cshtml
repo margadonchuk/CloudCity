@@ -64,12 +64,12 @@
                 </div>
 
                 <!-- Мобильная версия: Корзина и Меню - справа -->
-                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right" style="display: flex !important;">
+                <div class="d-flex align-items-center gap-2 d-lg-none mobile-nav-right">
                     <a class="nav-link cart-link-mobile position-relative" asp-controller="Cart" asp-action="Index">
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation" aria-expanded="false" style="display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; cursor: pointer !important;">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation" aria-expanded="false">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -431,23 +431,7 @@ else
             return;
           }
           
-          // Убеждаемся, что контейнер виден на мобильных
-          if (window.innerWidth < 992 && container) {
-            container.style.display = 'flex';
-            container.style.visibility = 'visible';
-            container.style.opacity = '1';
-            container.style.pointerEvents = 'auto';
-          }
-          
-          // Убеждаемся, что кнопка видна и кликабельна на мобильных
-          if (window.innerWidth < 992) {
-            menuBtn.style.display = 'flex';
-            menuBtn.style.visibility = 'visible';
-            menuBtn.style.opacity = '1';
-            menuBtn.style.pointerEvents = 'auto';
-            menuBtn.style.cursor = 'pointer';
-            menuBtn.style.zIndex = '1050';
-          }
+          // Не применяем inline стили - полагаемся на CSS медиа-запросы
           
           // Инициализируем offcanvas
           var offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(menu, {
