@@ -4192,6 +4192,16 @@ body {
   flex-shrink: 0;
 }
 
+/* Скрываем мобильную кнопку на десктопе */
+@media (min-width: 992px) {
+  button[data-bs-target="#mobileMenu"].d-lg-none {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
 /* ВАЖНО: Десктопное меню должно быть видно на больших экранах */
 @media (min-width: 992px) {
   /* Показываем десктопное меню */
