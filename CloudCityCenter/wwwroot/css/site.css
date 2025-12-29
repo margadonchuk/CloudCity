@@ -3433,29 +3433,35 @@ body {
 }
 
 /* Десктопное меню */
-.navbar-modern .container-fluid > .collapse {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  min-width: 0;
-  overflow: visible;
-  margin-left: 15px;
-  margin-right: 15px;
+/* Базовое правило для десктопного меню - видно на больших экранах */
+@media (min-width: 992px) {
+  .navbar-modern .container-fluid > .collapse {
+    flex: 1;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 
-.navbar-modern .container-fluid > .collapse > div {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  justify-content: space-between;
-  gap: 5px;
-  flex-wrap: nowrap;
-  overflow: visible;
-  min-width: 0;
+/* Правило для внутреннего div десктопного меню */
+@media (min-width: 992px) {
+  .navbar-modern .container-fluid > .collapse > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+    gap: 5px;
+    flex-wrap: nowrap;
+    overflow: visible;
+    min-width: 0;
+  }
 }
 
 /* Левая навигация */
@@ -4184,6 +4190,19 @@ body {
     visibility: visible !important;
   }
 }
+
+/* На мобильных устройствах скрываем десктопное меню */
+@media (max-width: 991.98px) {
+  .navbar-modern .container-fluid > .collapse {
+    display: none !important;
+  }
+  
+  .navbar-nav-left,
+  .navbar-nav-right,
+  .navbar-center-social {
+    display: none !important;
+  }
+}
   
   /* CRITICAL: Force mobile menu button to be visible */
   button#mobileMenuBtn,
@@ -4225,18 +4244,6 @@ body {
   
   body {
     padding-top: 70px;
-  }
-  
-  /* Скрываем десктопное меню */
-  /* На мобильных скрываем десктопное меню */
-  .navbar-modern .container-fluid > .collapse:not(.show) {
-    display: none !important;
-  }
-  
-  .navbar-nav-left,
-  .navbar-nav-right,
-  .navbar-center-social {
-    display: none !important;
   }
 
   /* Контейнер - Flexbox */
