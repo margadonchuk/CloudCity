@@ -70,7 +70,8 @@
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
                     <button class="mobile-menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню">
-                        <i class="bi bi-list"></i>
+                        <i class="bi bi-list" aria-hidden="true"></i>
+                        <span class="menu-icon-fallback" aria-hidden="true">☰</span>
                     </button>
                 </div>
 

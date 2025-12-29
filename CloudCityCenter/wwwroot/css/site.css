@@ -4164,8 +4164,27 @@ body {
 }
 
 .mobile-menu-button i {
+  font-size: 24px !important;
+  color: #fff !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  line-height: 1 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.mobile-menu-button .menu-icon-fallback {
+  display: none;
   font-size: 24px;
   color: #fff;
+  line-height: 1;
+}
+
+/* Если Bootstrap Icons не загрузились, показываем fallback */
+.mobile-menu-button i:not([class*="bi-"]) + .menu-icon-fallback,
+.mobile-menu-button:not(:has(i.bi-list)) .menu-icon-fallback {
+  display: block !important;
 }
 
 /* ВАЖНО: Десктопное меню должно быть видно на больших экранах */
@@ -4299,9 +4318,29 @@ body {
     line-height: 1 !important;
   }
   
-  .mobile-menu-button i {
+  .mobile-menu-button i,
+  .mobile-menu-button .bi,
+  .mobile-menu-button .bi-list {
     font-size: 24px !important;
     color: #fff !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    line-height: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    font-family: "bootstrap-icons" !important;
+  }
+  
+  .mobile-menu-button .menu-icon-fallback {
+    display: none !important;
+    font-size: 24px !important;
+    color: #fff !important;
+    line-height: 1 !important;
+  }
+  
+  /* Если иконка не видна, показываем fallback */
+  .mobile-menu-button:not(:has(i.bi-list)) .menu-icon-fallback {
     display: block !important;
   }
   
@@ -4312,7 +4351,10 @@ body {
     transform: scale(1.05) !important;
   }
   
-  .mobile-menu-button:hover i {
+  .mobile-menu-button:hover i,
+  .mobile-menu-button:hover .bi,
+  .mobile-menu-button:hover .bi-list,
+  .mobile-menu-button:hover .menu-icon-fallback {
     color: #fff !important;
   }
 }
