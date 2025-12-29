@@ -69,8 +69,8 @@
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation" aria-expanded="false">
-                        <span class="navbar-toggler-icon"></span>
+                    <button class="mobile-menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню">
+                        <i class="bi bi-list"></i>
                     </button>
                 </div>
 
@@ -416,7 +416,7 @@ else
     <script>
       (function() {
         function initMobileMenu() {
-          var menuBtn = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
+          var menuBtn = document.querySelector('.mobile-menu-button[data-bs-target="#mobileMenu"]');
           var menu = document.getElementById('mobileMenu');
           var container = document.querySelector('.mobile-nav-right');
           
