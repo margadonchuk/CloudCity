@@ -4135,24 +4135,26 @@ body {
    ============================================ */
 /* Mobile menu button - только для мобильных устройств */
 #mobileMenuBtn {
-  position: relative;
-  z-index: 1050;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  background: #000;
-  color: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  transition: all 0.3s ease;
-  pointer-events: auto;
+  position: relative !important;
+  z-index: 1060 !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #000 !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  user-select: none !important;
+  transition: all 0.3s ease !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #mobileMenuBtn .bi-list {
@@ -4222,20 +4224,32 @@ body {
 
 /* На мобильных устройствах скрываем десктопное меню */
 @media (max-width: 991.98px) {
-  .navbar-modern .container-fluid > .collapse {
+  .navbar-modern .container-fluid > .collapse,
+  .navbar-modern .container-fluid > .collapse.show,
+  #navbarNav {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
   }
   
   .navbar-nav-left,
   .navbar-nav-right,
   .navbar-center-social {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   /* Скрываем десктопную версию соцсетей на мобильных */
   .navbar-center-social {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   /* ВАЖНО: Показываем мобильную кнопку меню на мобильных */
@@ -4315,17 +4329,24 @@ body {
     visibility: visible !important;
     opacity: 1 !important;
     position: relative !important;
-    z-index: 1040 !important;
+    z-index: 1055 !important;
     flex: 0 0 auto !important;
     margin-left: auto !important;
     pointer-events: auto !important;
+    width: auto !important;
+    height: auto !important;
   }
   
   /* Убеждаемся, что кнопка кликабельна */
-  .mobile-nav-right button {
+  .mobile-nav-right button,
+  .mobile-nav-right .navbar-toggler,
+  #mobileMenuBtn {
     pointer-events: auto !important;
     cursor: pointer !important;
-    z-index: 1050 !important;
+    z-index: 1060 !important;
+    position: relative !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3) !important;
   }
   .navbar-modern {
     min-height: 70px;
