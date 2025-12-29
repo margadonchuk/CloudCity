@@ -44,9 +44,9 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
                 
-                <!-- Мобильная кнопка меню - справа в навбаре -->
-                <button class="d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню" style="position: fixed !important; top: 15px !important; right: 15px !important; width: 50px !important; height: 50px !important; background: #000 !important; border: 3px solid #000 !important; border-radius: 10px !important; color: #fff !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; z-index: 99999 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;">
-                    <span style="font-size: 32px; color: #fff; line-height: 1;">☰</span>
+                <!-- Мобильная кнопка меню - стандартный Bootstrap navbar-toggler -->
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenuCollapse" aria-controls="mobileMenuCollapse" aria-expanded="false" aria-label="Toggle navigation" style="border: 2px solid #000 !important; border-radius: 8px !important; padding: 8px 12px !important; background: #000 !important; color: #fff !important; width: auto !important; height: auto !important;">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3E%3Cpath stroke=%27rgba%28255, 255, 255, 1%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E') !important; width: 24px !important; height: 24px !important;"></span>
                 </button>
 
                 <!-- Мобильная версия: Соц сети по центру -->
@@ -240,7 +240,102 @@
             </div>
         </nav>
         
-        <!-- Mobile Offcanvas Menu -->
+        <!-- Mobile Collapse Menu - простое выпадающее меню -->
+        <div class="collapse d-lg-none" id="mobileMenuCollapse" style="position: fixed; top: 70px; left: 0; right: 0; background: white; z-index: 1040; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-height: calc(100vh - 70px); overflow-y: auto;">
+            <div class="container-fluid p-0">
+                <ul class="navbar-nav">
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(currentController == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">
+                            <i class="bi bi-house me-2"></i>@Localizer["Home"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
+                            <i class="bi bi-info-circle me-2"></i>@Localizer["About"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
+                            <i class="bi bi-gear me-2"></i>@Localizer["Services"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
+                            <i class="bi bi-server me-2"></i>@Localizer["Servers"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
+                            <i class="bi bi-globe me-2"></i>@Localizer["Hosting"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
+                            <i class="bi bi-shield-lock me-2"></i>@Localizer["VPN"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
+                            <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
+                            <i class="bi bi-display me-2"></i>@Localizer["VDI"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">
+                            <i class="bi bi-envelope me-2"></i>@Localizer["Contact"]
+                        </a>
+                    </li>
+                    <li class="nav-item border-bottom">
+                        <a class="nav-link d-flex align-items-center justify-content-between" asp-controller="Cart" asp-action="Index">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-cart3 me-2"></i>@Localizer["Cart"]
+                            </span>
+                            <span id="cart-count-mobile-collapse" class="cart-badge-inline" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                        </a>
+                    </li>
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile">
+                                <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Orders" ? "active" : "")" asp-area="" asp-controller="Orders" asp-action="Index">
+                                <i class="bi bi-receipt me-2"></i>@Localizer["Orders"]
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")" asp-controller="Account" asp-action="Login">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>@Localizer["Login"]
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">
+                                <i class="bi bi-person-plus me-2"></i>@Localizer["Register"]
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                <i class="bi bi-shield-check me-2"></i>Admin
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Mobile Offcanvas Menu (старое, оставляем для совместимости) -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
             <div class="offcanvas-header border-bottom">
                 <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
@@ -417,90 +512,20 @@ else
     @await Html.PartialAsync("_Footer")
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Mobile menu initialization -->
+    <!-- Mobile menu - Bootstrap collapse работает автоматически -->
     <script>
-      (function() {
-        function initMobileMenu() {
-          var menuBtn = document.querySelector('button[data-bs-target="#mobileMenu"]');
-          var menu = document.getElementById('mobileMenu');
-          
-          if (!menuBtn || !menu) {
-            setTimeout(initMobileMenu, 100);
-            return;
-          }
-          
-          // Убеждаемся, что кнопка видна на мобильных
-          if (window.innerWidth < 992) {
-            menuBtn.style.display = 'flex';
-            menuBtn.style.visibility = 'visible';
-            menuBtn.style.opacity = '1';
-          }
-          
-          // Проверяем, что Bootstrap загружен
-          if (typeof bootstrap === 'undefined') {
-            setTimeout(initMobileMenu, 200);
-            return;
-          }
-          
-          // Не применяем inline стили - полагаемся на CSS медиа-запросы
-          
-          // Инициализируем offcanvas
-          var offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(menu, {
-            backdrop: true,
-            scroll: false
-          });
-          
-          // Обработка закрытия меню при клике на ссылки
-          var closeLinks = menu.querySelectorAll('a[data-offcanvas-close]');
-          closeLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-              e.preventDefault();
-              if (offcanvasInstance) {
-                offcanvasInstance.hide();
-              }
-            });
-          });
-          
-          // Тест видимости кнопки
-          var btnStyles = window.getComputedStyle(menuBtn);
-          var containerStyles = container ? window.getComputedStyle(container) : null;
-          
-          console.log('=== Mobile Menu Debug ===');
-          console.log('Button found:', menuBtn ? 'YES' : 'NO');
-          console.log('Menu found:', menu ? 'YES' : 'NO');
-          console.log('Container found:', container ? 'YES' : 'NO');
-          console.log('Screen width:', window.innerWidth);
-          console.log('Button display:', btnStyles.display);
-          console.log('Button visibility:', btnStyles.visibility);
-          console.log('Button opacity:', btnStyles.opacity);
-          console.log('Button pointer-events:', btnStyles.pointerEvents);
-          console.log('Button z-index:', btnStyles.zIndex);
-          console.log('Button width:', menuBtn.offsetWidth);
-          console.log('Button height:', menuBtn.offsetHeight);
-          if (container) {
-            console.log('Container display:', containerStyles.display);
-            console.log('Container visibility:', containerStyles.visibility);
-          }
-          console.log('Bootstrap loaded:', typeof bootstrap !== 'undefined');
-          console.log('Mobile menu initialized successfully');
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        var menuBtn = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenuCollapse"]');
+        var menu = document.getElementById('mobileMenuCollapse');
         
-        // Запускаем инициализацию
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initMobileMenu);
+        if (menuBtn && menu) {
+          console.log('✅ Mobile menu button found');
+          console.log('✅ Mobile collapse menu found');
+          console.log('Button visible:', window.getComputedStyle(menuBtn).display !== 'none');
         } else {
-          initMobileMenu();
+          console.log('❌ Mobile menu elements not found');
         }
-        
-        window.addEventListener('load', function() {
-          setTimeout(initMobileMenu, 100);
-        });
-        
-        // Также проверяем при изменении размера окна
-        window.addEventListener('resize', function() {
-          setTimeout(initMobileMenu, 100);
-        });
-      })();
+      });
     </script>
     @inject Microsoft.Extensions.Localization.IStringLocalizerFactory LocalizerFactory
     @{
