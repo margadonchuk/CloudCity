@@ -4134,27 +4134,47 @@ body {
    МОБИЛЬНАЯ НАВИГАЦИЯ
    ============================================ */
 /* Mobile menu button - только для мобильных устройств */
-/* Mobile menu button - простая иконка меню */
+/* Mobile menu button - фиксированная позиция, всегда видна */
+.mobile-menu-button-fixed {
+  position: fixed !important;
+  top: 15px !important;
+  right: 15px !important;
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  border: 3px solid #000 !important;
+  border-radius: 10px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #000 !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 9999 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.mobile-menu-button-fixed:hover {
+  background-color: #333 !important;
+  border-color: #fff !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.mobile-menu-button-fixed span {
+  font-size: 28px !important;
+  color: #fff !important;
+  line-height: 1 !important;
+  display: block !important;
+}
+
+/* Старая кнопка - скрываем */
 .mobile-menu-button {
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 10px;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  pointer-events: auto;
-  position: relative;
-  z-index: 1050;
-  font-size: 24px;
-  line-height: 1;
-  transition: all 0.3s ease;
+  display: none !important;
 }
 
 .mobile-menu-button:hover {
@@ -4214,7 +4234,8 @@ body {
     pointer-events: none !important;
   }
   
-  .mobile-menu-button {
+  .mobile-menu-button,
+  .mobile-menu-button-fixed {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -4320,6 +4341,14 @@ body {
   
   .mobile-menu-button:hover span {
     color: #fff !important;
+  }
+  
+  /* Показываем фиксированную кнопку меню на мобильных */
+  .mobile-menu-button-fixed {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 }
   

@@ -37,6 +37,11 @@
         }
     }
     <header>
+        <!-- Мобильная кнопка меню - фиксированная позиция, всегда видна -->
+        <button class="mobile-menu-button-fixed d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Открыть меню">
+            <span style="font-size: 28px; color: #fff; line-height: 1; display: block;">☰</span>
+        </button>
+        
         <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
             <div class="container-fluid">
                 <!-- Логотип - слева -->
@@ -416,9 +421,9 @@ else
     <script>
       (function() {
         function initMobileMenu() {
-          var menuBtn = document.querySelector('.mobile-menu-button[data-bs-target="#mobileMenu"]');
+          var menuBtn = document.querySelector('.mobile-menu-button-fixed[data-bs-target="#mobileMenu"]') || 
+                        document.querySelector('.mobile-menu-button[data-bs-target="#mobileMenu"]');
           var menu = document.getElementById('mobileMenu');
-          var container = document.querySelector('.mobile-nav-right');
           
           if (!menuBtn || !menu) {
             setTimeout(initMobileMenu, 100);
