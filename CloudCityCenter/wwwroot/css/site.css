@@ -4229,34 +4229,17 @@ body {
     pointer-events: auto !important;
   }
   
-  /* CRITICAL: Force mobile menu button to be visible ТОЛЬКО НА МОБИЛЬНЫХ */
-    button#mobileMenuBtn,
-    .mobile-menu-btn,
-    .mobile-nav-right button,
-    .mobile-nav-right .navbar-toggler {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-      position: fixed !important;
-      top: 15px !important;
-      right: 15px !important;
-      z-index: 999999 !important;
-      width: 60px !important;
-      height: 60px !important;
-      min-width: 60px !important;
-      min-height: 60px !important;
-      padding: 0 !important;
-      border: 3px solid #fff !important;
-      border-radius: 10px !important;
-      background-color: #0d6efd !important;
-      color: white !important;
-      margin: 0 !important;
-      font-size: 32px !important;
-      line-height: 54px !important;
-      text-align: center !important;
-    }
+  /* Показываем мобильные действия в хедере */
+  button#mobileMenuBtn,
+  .mobile-menu-btn,
+  .mobile-nav-right button,
+  .mobile-nav-right .navbar-toggler {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
+}
   
   .mobile-nav-right,
   div.mobile-nav-right,
@@ -4485,7 +4468,11 @@ body {
     background-color: #0d6efd !important;
     border-color: #0b5ed7 !important;
   }
-  
+
+  .mobile-nav-right .navbar-toggler:hover .mobile-menu-icon {
+    color: #fff !important;
+  }
+
   .mobile-nav-right .navbar-toggler:hover .navbar-toggler-icon {
     filter: brightness(0) invert(1) !important;
   }
@@ -4500,6 +4487,13 @@ body {
     background-size: 100% !important;
     opacity: 1 !important;
     visibility: visible !important;
+  }
+
+  .mobile-nav-right .mobile-menu-icon {
+    font-size: 1.8rem !important;
+    color: #0d6efd !important;
+    line-height: 1 !important;
+    display: block !important;
   }
   
   /* Убеждаемся что offcanvas работает на мобильных */
@@ -7277,5 +7271,3 @@ li.dropdown.show .dropdown-menu {
 .btn-register-mobile:hover i {
   transform: scale(1.2) rotate(10deg);
 }
-
-
