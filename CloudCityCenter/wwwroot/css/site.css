@@ -4331,19 +4331,19 @@ body {
     pointer-events: none !important;
   }
   
-  /* Показываем фиксированную кнопку меню на мобильных */
-  #mobileMenuBtnFixed {
+  /* Показываем стандартную Bootstrap кнопку меню на мобильных */
+  .navbar-toggler.d-lg-none {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
   }
   
-  /* Показываем мобильное меню когда открыто */
-  #simpleMobileMenu[style*="display: block"],
-  #simpleMobileMenu.show {
-    display: block !important;
-    visibility: visible !important;
+  /* Скрываем десктопное меню на мобильных */
+  .navbar-nav-left,
+  .navbar-nav-right,
+  .navbar-center-social {
+    display: none !important;
   }
   
   .mobile-menu-button {
