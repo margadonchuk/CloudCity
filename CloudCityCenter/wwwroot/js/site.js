@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Collapse the responsive menu when a link is clicked
     const navbarCollapse = document.querySelector('.navbar-collapse');
+
     if (navbarCollapse) {
         navbarCollapse.querySelectorAll('a').forEach(function (navLink) {
             navLink.addEventListener('click', function () {

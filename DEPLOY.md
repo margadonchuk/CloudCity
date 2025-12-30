@@ -27,8 +27,11 @@
    ```bash
    export ASPNETCORE_ENVIRONMENT=Production
    export ASPNETCORE_URLS="http://localhost:5000"
-   dotnet run --configuration Release
+   export USE_REVERSE_PROXY=true
+   dotnet run --configuration Release --no-launch-profile
    ```
+   
+   **ВАЖНО:** Используйте флаг `--no-launch-profile`, чтобы не использовался Development профиль из launchSettings.json
 
 ## Настройка systemd сервиса
 
@@ -49,6 +52,7 @@ KillSignal=SIGINT
 SyslogIdentifier=cloudcity
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=ASPNETCORE_URLS=http://localhost:5000
+Environment=USE_REVERSE_PROXY=true
 User=siteadmin
 
 [Install]
