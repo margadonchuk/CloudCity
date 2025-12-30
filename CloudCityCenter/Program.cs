@@ -119,12 +119,8 @@ using (var scope = app.Services.CreateScope())
 app.UseForwardedHeaders();
 
 // Check if we're behind a reverse proxy (nginx)
-<<<<<<< HEAD
-var useReverseProxy = app.Configuration.GetValue<bool>("UseReverseProxy", false);
-=======
-var useReverseProxy = app.Configuration.GetValue<bool>("UseReverseProxy", false) || 
-                      Environment.GetEnvironmentVariable("USE_REVERSE_PROXY") == "true";
->>>>>>> 27d50fb88ed2d469b7fcc6b28958d659daee134f
+var useReverseProxy = app.Configuration.GetValue<bool>("UseReverseProxy", false) ||
+                      string.Equals(Environment.GetEnvironmentVariable("USE_REVERSE_PROXY"), "true", StringComparison.OrdinalIgnoreCase);
 
 if (!app.Environment.IsDevelopment())
 {
@@ -140,13 +136,8 @@ else
     app.UseDeveloperExceptionPage();
 }
 
-<<<<<<< HEAD
-// Only redirect to HTTPS if not behind a reverse proxy (nginx handles HTTPS)
-// For production behind nginx, HTTPS redirection is disabled
-=======
-// Completely disable HTTPS redirection when behind reverse proxy (nginx handles HTTPS)
->>>>>>> 27d50fb88ed2d469b7fcc6b28958d659daee134f
-// This prevents ERR_TOO_MANY_REDIRECTS errors
+// Redirect to HTTPS only when not behind reverse proxy (nginx handles HTTPS).
+// This prevents ERR_TOO_MANY_REDIRECTS errors.
 if (!useReverseProxy)
 {
     app.UseHttpsRedirection();
@@ -172,6 +163,21 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
+// Agent debug ingest endpoint (writes NDJSON lines to .cursor/debug.log)
+var debugDir = Path.Combine(app.Environment.ContentRootPath, ".cursor");
+var debugLogPath = Path.Combine(debugDir, "debug.log");
+Directory.CreateDirectory(debugDir);
+app.MapPost("/ingest/38680bd6-8223-4b5d-9453-913b38e9d421", async context =>
+{
+    using var reader = new StreamReader(context.Request.Body);
+    var body = await reader.ReadToEndAsync();
+    if (!string.IsNullOrWhiteSpace(body))
+    {
+        await File.AppendAllTextAsync(debugLogPath, body.TrimEnd() + Environment.NewLine);
+    }
+    context.Response.StatusCode = 200;
+});
 
 app.Run();
 

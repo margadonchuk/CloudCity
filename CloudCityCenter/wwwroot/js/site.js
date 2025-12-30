@@ -4,8 +4,41 @@
 // Write your JavaScript code.
 
 document.addEventListener('DOMContentLoaded', function () {
+    // #region agent log helpers
+    const agentLogEndpoint = '/ingest/38680bd6-8223-4b5d-9453-913b38e9d421';
+    const agentSession = 'debug-session';
+    const agentRun = 'pre-fix';
+    const agentLog = (hypothesisId, location, message, data) => {
+        fetch(agentLogEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                sessionId: agentSession,
+                runId: agentRun,
+                hypothesisId,
+                location,
+                message,
+                data,
+                timestamp: Date.now()
+            })
+        }).catch(() => { });
+    };
+    // #endregion
+
     // Collapse the responsive menu when a link is clicked
     const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+
+    agentLog(
+        'H1-bootstrap-or-dom',
+        'site.js:DOMContentLoaded',
+        'init state',
+        {
+            bootstrapAvailable: typeof bootstrap !== 'undefined',
+            navbarCollapseFound: !!navbarCollapse,
+            navbarTogglerFound: !!navbarToggler
+        }
+    );
 
     if (navbarCollapse) {
         navbarCollapse.querySelectorAll('a').forEach(function (navLink) {
@@ -14,6 +47,41 @@ document.addEventListener('DOMContentLoaded', function () {
                     bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
                 }
             });
+        });
+
+        ['show.bs.collapse', 'shown.bs.collapse'].forEach(function (evt) {
+            navbarCollapse.addEventListener(evt, function () {
+                const styles = getComputedStyle(navbarCollapse);
+                agentLog(
+                    'H3-collapse-hidden-by-css',
+                    'site.js:navbarCollapse ' + evt,
+                    'collapse event',
+                    {
+                        event: evt,
+                        display: styles.display,
+                        visibility: styles.visibility,
+                        maxHeight: styles.maxHeight,
+                        isShownClass: navbarCollapse.classList.contains('show')
+                    }
+                );
+            });
+        });
+    }
+
+    if (navbarToggler) {
+        navbarToggler.addEventListener('click', function () {
+            const styles = getComputedStyle(navbarToggler);
+            agentLog(
+                'H2-toggler-click',
+                'site.js:navbarToggler click',
+                'toggler clicked',
+                {
+                    pointerEvents: styles.pointerEvents,
+                    zIndex: styles.zIndex,
+                    opacity: styles.opacity,
+                    collapseHasShowClass: navbarCollapse ? navbarCollapse.classList.contains('show') : null
+                }
+            );
         });
     }
 
