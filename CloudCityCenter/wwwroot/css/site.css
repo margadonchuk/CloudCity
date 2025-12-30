@@ -4307,6 +4307,22 @@ body {
     pointer-events: none !important;
   }
   
+  /* Скрываем новый контейнер мобильной навигации на десктопе */
+  .mobile-nav-right-wrapper {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  .mobile-menu-btn,
+  .cart-link-mobile-nav {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
   /* Фиксированная кнопка скрыта на десктопе */
   #mobileMenuBtnFixed {
     display: none !important;
@@ -4367,45 +4383,36 @@ body {
     pointer-events: none !important;
   }
   
-  /* Показываем стандартную Bootstrap кнопку меню на мобильных */
-  .navbar-toggler.d-lg-none {
+  /* Показываем новый контейнер мобильной навигации на мобильных */
+  .mobile-nav-right-wrapper {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
-    z-index: 1050 !important;
-    position: relative !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-color: #000 !important;
-    border: 2px solid #000 !important;
-    border-radius: 8px !important;
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    padding: 8px 12px !important;
-    margin-left: auto !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
   }
   
-  .navbar-toggler.d-lg-none:hover {
-    background-color: #333 !important;
-    border-color: #333 !important;
-    transform: scale(1.05) !important;
-  }
-  
-  .navbar-toggler.d-lg-none:active {
-    transform: scale(0.95) !important;
-  }
-  
-  .navbar-toggler.d-lg-none .navbar-toggler-icon {
-    width: 20px !important;
-    height: 20px !important;
-    display: block !important;
+  /* Показываем корзину в мобильной навигации */
+  .cart-link-mobile-nav {
+    display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Показываем новую кнопку меню на мобильных */
+  .mobile-menu-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Скрываем старую кнопку меню, если она есть */
+  .navbar-toggler.d-lg-none:not(.mobile-menu-btn) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   .mobile-menu-button {
@@ -4712,6 +4719,131 @@ body {
     background-size: 100% !important;
     opacity: 1 !important;
     visibility: visible !important;
+  }
+  
+  /* Новый контейнер для мобильной навигации справа */
+  .mobile-nav-right-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-left: auto !important;
+    z-index: 1050 !important;
+  }
+  
+  /* Стили для корзины в мобильной навигации */
+  .cart-link-mobile-nav {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+    background-color: transparent !important;
+    border: 2px solid #000 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    padding: 0 !important;
+  }
+  
+  .cart-link-mobile-nav:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+    transform: scale(1.05) !important;
+  }
+  
+  .cart-link-mobile-nav i {
+    font-size: 20px !important;
+  }
+  
+  .cart-badge-mobile-nav {
+    position: absolute !important;
+    top: -4px !important;
+    right: -4px !important;
+    background-color: #dc3545 !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+  }
+  
+  /* Новая кнопка меню с анимированной иконкой */
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 0 !important;
+    border: 2px solid #000 !important;
+    border-radius: 8px !important;
+    background-color: #000 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 1050 !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3) !important;
+    touch-action: manipulation !important;
+  }
+  
+  .mobile-menu-btn:hover {
+    background-color: #333 !important;
+    border-color: #333 !important;
+    transform: scale(1.05) !important;
+  }
+  
+  .mobile-menu-btn:active {
+    transform: scale(0.95) !important;
+  }
+  
+  .mobile-menu-btn[aria-expanded="true"] {
+    background-color: #333 !important;
+  }
+  
+  /* Анимированная иконка меню (гамбургер) */
+  .mobile-menu-icon {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    width: 20px !important;
+    height: 16px !important;
+    position: relative !important;
+  }
+  
+  .mobile-menu-icon .menu-line {
+    display: block !important;
+    width: 100% !important;
+    height: 2px !important;
+    background-color: #fff !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+    transform-origin: center !important;
+  }
+  
+  /* Анимация при открытии меню */
+  .mobile-menu-btn[aria-expanded="true"] .mobile-menu-icon .menu-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg) !important;
+  }
+  
+  .mobile-menu-btn[aria-expanded="true"] .mobile-menu-icon .menu-line:nth-child(2) {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+  
+  .mobile-menu-btn[aria-expanded="true"] .mobile-menu-icon .menu-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg) !important;
   }
   
   /* Убеждаемся что offcanvas работает на мобильных */

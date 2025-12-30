@@ -58,10 +58,23 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
                 
-                <!-- Стандартная Bootstrap кнопка для мобильного меню -->
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation" style="border: 2px solid #000; border-radius: 8px; padding: 8px 12px; background: #000; width: 44px; height: 44px; margin-left: auto; z-index: 1050;">
-                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3E%3Cpath stroke=%27rgba%28255, 255, 255, 1%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E'); width: 20px; height: 20px;"></span>
-                </button>
+                <!-- Мобильная навигация справа -->
+                <div class="d-lg-none mobile-nav-right-wrapper">
+                    <!-- Корзина для мобильных -->
+                    <a class="nav-link cart-link-mobile-nav d-lg-none me-2" asp-controller="Cart" asp-action="Index">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-mobile-nav" class="cart-badge-mobile-nav" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                    </a>
+                    
+                    <!-- Кнопка меню - справа сверху -->
+                    <button class="navbar-toggler mobile-menu-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="mobile-menu-icon">
+                            <span class="menu-line"></span>
+                            <span class="menu-line"></span>
+                            <span class="menu-line"></span>
+                        </span>
+                    </button>
+                </div>
 
                 <!-- Десктопная версия меню - вне collapse -->
                 <div class="d-none d-lg-flex align-items-center w-100 position-relative">
@@ -685,7 +698,8 @@ else
   (function() {
     function initMobileMenu() {
       var menu = document.getElementById('mobileMenu');
-      var btn = document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
+      var btn = document.querySelector('.mobile-menu-btn[data-bs-target="#mobileMenu"]') || 
+                document.querySelector('.navbar-toggler[data-bs-target="#mobileMenu"]');
       
       if (!menu || !btn) {
         setTimeout(initMobileMenu, 100);
