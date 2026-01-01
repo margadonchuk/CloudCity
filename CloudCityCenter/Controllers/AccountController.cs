@@ -88,6 +88,20 @@ public class AccountController : Controller
         {
             return Challenge();
         }
+        
+        // Проверяем, является ли пользователь админом
+        var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+        ViewData["IsAdmin"] = isAdmin;
+        
         return View(user);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
     }
 }
