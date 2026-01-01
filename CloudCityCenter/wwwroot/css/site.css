@@ -30,6 +30,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  padding-top: 72px; /* чтобы контент не заезжал под шапку */
   margin-bottom: 60px;
   background-color: var(--light-color);
   color: var(--dark-color);
@@ -997,10 +998,6 @@ section.home-about {
 }
 
 /* высота твоего navbar ≈ 64–72px; подгони под себя */
-body {
-  padding-top: 72px; /* чтобы контент не заезжал под шапку */
-}
-
 .navbar {
   position: fixed;
   top: 0;
@@ -3548,9 +3545,7 @@ body {
   overflow-y: auto;
 }
 
-body {
-  padding-top: 80px;
-}
+/* Удалено дублирующееся определение body - уже определено выше */
 
 .navbar-logo {
   height: 45px;
