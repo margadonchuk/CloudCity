@@ -1,0 +1,51 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CloudCityCenter.Models.Product
+@{
+    ViewData["Title"] = "Детали товара";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Детали товара</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+        
+        <dt class="col-sm-2">Название</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        
+        <dt class="col-sm-2">Slug</dt>
+        <dd class="col-sm-10">@Model.Slug</dd>
+        
+        <dt class="col-sm-2">Тип</dt>
+        <dd class="col-sm-10">@Model.Type</dd>
+        
+        <dt class="col-sm-2">Локация</dt>
+        <dd class="col-sm-10">@Model.Location</dd>
+        
+        <dt class="col-sm-2">Цена/мес</dt>
+        <dd class="col-sm-10">@Model.PricePerMonth.ToString("C")</dd>
+        
+        <dt class="col-sm-2">Конфигурация</dt>
+        <dd class="col-sm-10">@Model.Configuration</dd>
+        
+        <dt class="col-sm-2">Доступен</dt>
+        <dd class="col-sm-10">@(Model.IsAvailable ? "Да" : "Нет")</dd>
+        
+        <dt class="col-sm-2">Опубликован</dt>
+        <dd class="col-sm-10">@(Model.IsPublished ? "Да" : "Нет")</dd>
+        
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <dt class="col-sm-2">Изображение</dt>
+            <dd class="col-sm-10"><img src="@Model.ImageUrl" alt="@Model.Name" style="max-width: 200px;" /></dd>
+        }
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Редактировать</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+</div>
+
