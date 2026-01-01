@@ -14,6 +14,21 @@ var env = builder.Environment;
 // ✅ Чтение строки подключения из переменной окружения
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+// Логируем информацию о подключении (безопасно, без пароля)
+if (string.IsNullOrEmpty(connectionString))
+{
+    Console.WriteLine("⚠️ WARNING: ConnectionStrings__DefaultConnection is not set! Will use InMemory database.");
+    Console.WriteLine("⚠️ Set environment variable: export ConnectionStrings__DefaultConnection=\"Server=...;Database=...;User Id=...;Password=...\"");
+}
+else
+{
+    // Логируем connection string без пароля для безопасности
+    var safeConnectionString = connectionString.Contains("Password=", StringComparison.OrdinalIgnoreCase)
+        ? connectionString.Substring(0, connectionString.IndexOf("Password=", StringComparison.OrdinalIgnoreCase)) + "Password=***"
+        : connectionString;
+    Console.WriteLine($"✅ Database connection string found: {safeConnectionString}");
+}
+
 // Add services to the container.
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddControllersWithViews().AddViewLocalization();
@@ -88,13 +103,41 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        
+        // Логируем информацию о базе данных
+        var dbProvider = context.Database.ProviderName ?? "Unknown";
+        var isInMemory = context.Database.IsInMemory();
+        var isRelational = context.Database.IsRelational();
+        var canConnect = await context.Database.CanConnectAsync();
+        
+        logger.LogInformation("Database Provider: {Provider}", dbProvider);
+        logger.LogInformation("Is InMemory: {IsInMemory}", isInMemory);
+        logger.LogInformation("Is Relational: {IsRelational}", isRelational);
+        logger.LogInformation("Can Connect: {CanConnect}", canConnect);
+        
+        if (isInMemory)
+        {
+            logger.LogWarning("⚠️ WARNING: Using InMemory database! Data will not persist. Check ConnectionStrings__DefaultConnection environment variable.");
+        }
+        
         if (context.Database.IsRelational())
+        {
+            logger.LogInformation("Applying migrations to relational database...");
             context.Database.Migrate();
+            logger.LogInformation("Migrations applied successfully.");
+        }
         else
+        {
+            logger.LogInformation("Using non-relational database, ensuring created...");
             context.Database.EnsureCreated();
+        }
+        
         if (!context.Products.Any())
         {
+            logger.LogInformation("Database is empty, seeding initial data...");
             SeedData.Initialize(context);
+            logger.LogInformation("Initial data seeded successfully.");
         }
     }
     catch (Exception ex)

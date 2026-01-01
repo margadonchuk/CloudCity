@@ -4130,6 +4130,21 @@ body {
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
+/* Navbar Collapse - ensure menu is visible */
+.navbar-collapse {
+  display: flex !important;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+  
+  .navbar-collapse.show {
+    display: flex !important;
+  }
+}
+
 /* Navbar Toggler */
 .navbar-toggler {
   border: 2px solid #e0e0e0;

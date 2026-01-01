@@ -75,6 +75,7 @@ public class ServersController : Controller
         {
             _context.Add(server);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Server saved to database with ID: {ServerId}", server.Id);
 
             var product = new Product
             {
@@ -91,15 +92,19 @@ public class ServersController : Controller
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Product saved to database with ID: {ProductId}", product.Id);
 
             await transaction.CommitAsync();
+            _logger.LogInformation("Transaction committed successfully for server {ServerSlug}", server.Slug);
 
-            _logger.LogInformation("Server {ServerSlug} created", server.Slug);
+            _logger.LogInformation("Server {ServerSlug} created successfully", server.Slug);
             return RedirectToAction(nameof(Index));
         }
         catch (DbUpdateException ex)
         {
             await transaction.RollbackAsync();
+            _logger.LogError(ex, "Database update error while creating server {ServerSlug}. Transaction rolled back.", server.Slug);
+            
             if (ex.InnerException?.Message.Contains("duplicate", StringComparison.OrdinalIgnoreCase) == true ||
                 ex.InnerException?.Message.Contains("IX_Servers_Slug") == true ||
                 ex.InnerException?.Message.Contains("IX_Products_Slug") == true)
@@ -108,6 +113,13 @@ public class ServersController : Controller
                 return View(server);
             }
 
+            _logger.LogError(ex, "Unhandled database exception: {Message}", ex.Message);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+            _logger.LogError(ex, "Unexpected error while creating server {ServerSlug}. Transaction rolled back.", server.Slug);
             throw;
         }
     }
@@ -168,6 +180,7 @@ public class ServersController : Controller
         {
             _context.Update(server);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Server updated in database with ID: {ServerId}", server.Id);
 
             if (existingProduct == null)
             {
@@ -184,6 +197,7 @@ public class ServersController : Controller
                     IsPublished = server.IsActive,
                 };
                 _context.Products.Add(product);
+                _logger.LogInformation("New product created for server {ServerSlug}", server.Slug);
             }
             else
             {
@@ -196,17 +210,23 @@ public class ServersController : Controller
                 existingProduct.IsAvailable = server.IsActive;
                 existingProduct.IsPublished = server.IsActive;
                 _context.Update(existingProduct);
+                _logger.LogInformation("Existing product updated for server {ServerSlug}", server.Slug);
             }
 
             await _context.SaveChangesAsync();
-            await transaction.CommitAsync();
+            _logger.LogInformation("Product changes saved to database");
 
-            _logger.LogInformation("Server {ServerSlug} edited", server.Slug);
+            await transaction.CommitAsync();
+            _logger.LogInformation("Transaction committed successfully for server {ServerSlug}", server.Slug);
+
+            _logger.LogInformation("Server {ServerSlug} edited successfully", server.Slug);
             return RedirectToAction(nameof(Index));
         }
         catch (DbUpdateException ex)
         {
             await transaction.RollbackAsync();
+            _logger.LogError(ex, "Database update error while editing server {ServerSlug}. Transaction rolled back.", server.Slug);
+            
             if (ex.InnerException?.Message.Contains("duplicate", StringComparison.OrdinalIgnoreCase) == true ||
                 ex.InnerException?.Message.Contains("IX_Servers_Slug") == true ||
                 ex.InnerException?.Message.Contains("IX_Products_Slug") == true)
@@ -215,6 +235,13 @@ public class ServersController : Controller
                 return View(server);
             }
 
+            _logger.LogError(ex, "Unhandled database exception: {Message}", ex.Message);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+            _logger.LogError(ex, "Unexpected error while editing server {ServerSlug}. Transaction rolled back.", server.Slug);
             throw;
         }
     }
@@ -251,17 +278,22 @@ public class ServersController : Controller
                 if (product != null)
                 {
                     _context.Products.Remove(product);
+                    _logger.LogInformation("Product {ProductSlug} marked for deletion", product.Slug);
                 }
 
                 _context.Servers.Remove(server);
                 await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
+                _logger.LogInformation("Server {ServerSlug} removed from database", server.Slug);
 
-                _logger.LogInformation("Server {ServerSlug} deleted", server.Slug);
+                await transaction.CommitAsync();
+                _logger.LogInformation("Transaction committed successfully for server deletion {ServerSlug}", server.Slug);
+
+                _logger.LogInformation("Server {ServerSlug} deleted successfully", server.Slug);
             }
-            catch
+            catch (Exception ex)
             {
                 await transaction.RollbackAsync();
+                _logger.LogError(ex, "Error while deleting server {ServerSlug}. Transaction rolled back.", server.Slug);
                 throw;
             }
         }
