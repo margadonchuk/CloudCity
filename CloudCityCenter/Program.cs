@@ -5,7 +5,6 @@ using CloudCityCenter.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,14 +45,6 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromHours(1);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
-});
-
-// Configure forwarded headers for reverse proxy (nginx)
-builder.Services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
-    options.KnownNetworks.Clear();
-    options.KnownProxies.Clear();
 });
 
 var app = builder.Build();
@@ -114,34 +105,17 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
-// Use forwarded headers FIRST before other middleware (for nginx reverse proxy)
-// This must be called before UseHttpsRedirection
-app.UseForwardedHeaders();
-
-// Check if we're behind a reverse proxy (nginx)
-var useReverseProxy = app.Configuration.GetValue<bool>("UseReverseProxy", false) ||
-                      string.Equals(Environment.GetEnvironmentVariable("USE_REVERSE_PROXY"), "true", StringComparison.OrdinalIgnoreCase);
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // Don't use HSTS when behind reverse proxy - nginx handles HTTPS
-    if (!useReverseProxy)
-    {
-        app.UseHsts();
-    }
+    app.UseHsts();
 }
 else
 {
     app.UseDeveloperExceptionPage();
 }
 
-// Redirect to HTTPS only when not behind reverse proxy (nginx handles HTTPS).
-// This prevents ERR_TOO_MANY_REDIRECTS errors.
-if (!useReverseProxy)
-{
-    app.UseHttpsRedirection();
-}
+app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
