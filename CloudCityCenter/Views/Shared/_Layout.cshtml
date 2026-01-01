@@ -61,7 +61,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
+                <div class="collapse navbar-collapse d-lg-block" id="navbarNav">
                     <!-- Left Navigation -->
                     <ul class="navbar-nav navbar-nav-left">
                         <li class="nav-item">
@@ -169,7 +169,7 @@
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">
+                                <a class="nav-link profile-link-btn @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">
                                     <i class="bi bi-person-circle me-1"></i>@Localizer["Profile"]
                                 </a>
                             </li>
@@ -184,14 +184,6 @@
                             <li class="nav-item">
                                 <a class="nav-link register-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">
                                     <i class="bi bi-person-plus me-1"></i>@Localizer["Register"]
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
-                                    <i class="bi bi-shield-check me-1"></i>Admin
                                 </a>
                             </li>
                         }

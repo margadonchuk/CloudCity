@@ -3789,6 +3789,38 @@ body {
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
+/* Profile Link Button - красивая кнопка профиля */
+.profile-link-btn {
+  background: linear-gradient(135deg, #0d6efd, #0056b3) !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 10px 20px !important;
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.profile-link-btn:hover {
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+  background: linear-gradient(135deg, #0056b3, #004085) !important;
+}
+
+.profile-link-btn.active {
+  background: linear-gradient(135deg, #0056b3, #003d7a) !important;
+  box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+}
+
+.profile-link-btn i {
+  font-size: 1.1em;
+  margin-right: 6px;
+}
+
 /* Mobile Menu */
 @media (max-width: 991px) {
   .navbar-modern {
