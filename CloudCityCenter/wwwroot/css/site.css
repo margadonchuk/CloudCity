@@ -3670,9 +3670,11 @@ body {
   .social-icons-group-mobile {
     position: absolute !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     z-index: 5 !important;
     order: 2 !important;
+    margin: 0 !important;
   }
 }
 
@@ -4059,6 +4061,7 @@ body {
     padding: 0 15px !important;
     width: 100% !important;
     height: 100% !important;
+    min-height: 60px !important;
     position: relative !important;
   }
   
@@ -4074,9 +4077,11 @@ body {
     padding: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
-    z-index: 2;
-    order: 1;
+    justify-content: center !important;
+    z-index: 10 !important;
+    order: 1 !important;
     width: auto !important;
+    height: 100% !important;
   }
 
   .navbar-logo {
@@ -4158,13 +4163,10 @@ body {
     padding: 8px !important;
     display: inline-flex !important;
     justify-content: center !important;
+    align-items: center !important;
     order: 3 !important;
     z-index: 10 !important;
     position: relative !important;
-    align-items: center !important;
-    position: relative !important;
-    z-index: 2;
-    order: 3;
     color: #0d6efd !important;
     font-size: 1.2rem !important;
     text-decoration: none !important;
@@ -4172,6 +4174,7 @@ body {
     width: auto !important;
     min-width: auto !important;
     max-width: none !important;
+    height: 100% !important;
   }
   
   .cart-link-mobile:hover {
@@ -4214,8 +4217,6 @@ body {
     order: 4 !important;
     z-index: 10 !important;
     position: relative !important;
-    z-index: 3;
-    order: 4;
     font-size: 0.85rem !important;
     line-height: 1 !important;
     background: white !important;
@@ -4225,6 +4226,7 @@ body {
     width: auto !important;
     min-width: auto !important;
     max-width: none !important;
+    height: auto !important;
   }
   
   .navbar-toggler:hover {
