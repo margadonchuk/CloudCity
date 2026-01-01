@@ -3557,6 +3557,182 @@ body {
   margin-left: 2px;
 }
 
+/* Social Media Icons Group */
+.social-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.3rem;
+}
+
+.social-icon-link i {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.social-icon-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.instagram-link::before {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.telegram-link::before {
+  background: linear-gradient(135deg, #0088cc, #0066aa);
+}
+
+.whatsapp-link::before {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.social-icon-link:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.social-icon-link:hover i {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.instagram-link:hover::before {
+  background: linear-gradient(135deg, #ffa64d 0%, #ff7a5c 25%, #ff4d6d 50%, #ff2d8a 75%, #d91a8f 100%);
+}
+
+.telegram-link:hover::before {
+  background: linear-gradient(135deg, #0099dd, #0077bb);
+}
+
+.whatsapp-link:hover::before {
+  background: linear-gradient(135deg, #2FE57C, #1AB394);
+}
+
+.social-icon-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: 0;
+}
+
+.social-icon-link:hover::after {
+  width: 100%;
+  height: 100%;
+}
+
+/* Social Media Icons для мобильной версии */
+.social-icons-group-mobile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+}
+
+.social-icon-link-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: white !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.2rem;
+}
+
+.social-icon-link-mobile i {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.social-icon-link-mobile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon-link-mobile.instagram-link::before {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-icon-link-mobile.telegram-link::before {
+  background: linear-gradient(135deg, #0088cc, #0066aa);
+}
+
+.social-icon-link-mobile.whatsapp-link::before {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.social-icon-link-mobile:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon-link-mobile:hover i {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.social-icon-link-mobile.instagram-link:hover::before {
+  background: linear-gradient(135deg, #ffa64d 0%, #ff7a5c 25%, #ff4d6d 50%, #ff2d8a 75%, #d91a8f 100%);
+}
+
+.social-icon-link-mobile.telegram-link:hover::before {
+  background: linear-gradient(135deg, #0099dd, #0077bb);
+}
+
+.social-icon-link-mobile.whatsapp-link:hover::before {
+  background: linear-gradient(135deg, #2FE57C, #1AB394);
+}
+
 /* Telegram Bot для мобильной версии */
 .telegram-bot-link-mobile {
   padding: 0 !important;

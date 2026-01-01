@@ -43,13 +43,18 @@
                     <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
                 </a>
 
-                <!-- Telegram Bot для мобильной версии -->
-                <a class="nav-link telegram-bot-link-mobile d-lg-none" href="https://t.me/CloudCityCenter_Bot" target="_blank">
-                    <div class="telegram-bot-wrapper-mobile">
-                        <i class="bi bi-telegram telegram-icon-mobile"></i>
-                        <span class="telegram-bot-text-mobile">Telegram</span>
-                    </div>
-                </a>
+                <!-- Social Media Icons для мобильной версии -->
+                <div class="social-icons-group-mobile d-lg-none">
+                    <a class="social-icon-link-mobile instagram-link" href="https://www.instagram.com/cloudcity.center" target="_blank" title="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a class="social-icon-link-mobile telegram-link" href="https://t.me/CloudCityCenter_Bot" target="_blank" title="Telegram">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                    <a class="social-icon-link-mobile whatsapp-link" href="https://wa.me/33773166380" target="_blank" title="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
 
                 <!-- Cart для мобильной версии -->
                 <a class="nav-link cart-link-mobile d-lg-none position-relative" asp-controller="Cart" asp-action="Index">
@@ -64,11 +69,6 @@
                 <div class="navbar-collapse d-lg-flex" id="navbarNav">
                     <!-- Left Navigation -->
                     <ul class="navbar-nav navbar-nav-left">
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://www.instagram.com/cloudcity.center" target="_blank" title="Instagram">
-                                <i class="bi bi-instagram"></i>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
                                 <i class="bi bi-server me-1"></i>@Localizer["Servers"]
@@ -101,15 +101,19 @@
                         </li>
                     </ul>
 
-                    <!-- Center - Telegram Bot -->
+                    <!-- Center - Social Media Icons -->
                     <div class="navbar-center d-none d-lg-flex">
-                        <a class="nav-link telegram-bot-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
-                            <div class="telegram-bot-wrapper">
-                                <i class="bi bi-telegram telegram-icon"></i>
-                                <span class="telegram-bot-text">Telegram</span>
-                                <i class="bi bi-box-arrow-up-right telegram-bot-arrow"></i>
-                            </div>
-                        </a>
+                        <div class="social-icons-group">
+                            <a class="social-icon-link instagram-link" href="https://www.instagram.com/cloudcity.center" target="_blank" title="Instagram">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a class="social-icon-link telegram-link" href="https://t.me/CloudCityCenter_Bot" target="_blank" title="Telegram">
+                                <i class="bi bi-telegram"></i>
+                            </a>
+                            <a class="social-icon-link whatsapp-link" href="https://wa.me/33773166380" target="_blank" title="WhatsApp">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Right Navigation -->
@@ -128,11 +132,6 @@
                             };
                             var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
                         }
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://wa.me/33773166380" target="_blank" title="WhatsApp">
-                                <i class="bi bi-whatsapp"></i>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
                                 <i class="bi bi-info-circle me-1"></i>@Localizer["About"]
@@ -209,12 +208,17 @@
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-offcanvas-close>
                         <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo" style="height: 32px;">
                     </a>
-                    <a class="nav-link telegram-bot-link-offcanvas" href="https://t.me/CloudCityCenter_Bot" target="_blank">
-                        <div class="telegram-bot-wrapper-mobile">
-                            <i class="bi bi-telegram telegram-icon-mobile"></i>
-                            <span class="telegram-bot-text-mobile">Telegram</span>
-                        </div>
-                    </a>
+                    <div class="social-icons-group-mobile">
+                        <a class="social-icon-link-mobile instagram-link" href="https://www.instagram.com/cloudcity.center" target="_blank" title="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a class="social-icon-link-mobile telegram-link" href="https://t.me/CloudCityCenter_Bot" target="_blank" title="Telegram">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                        <a class="social-icon-link-mobile whatsapp-link" href="https://wa.me/33773166380" target="_blank" title="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
                     <a class="nav-link cart-link-offcanvas position-relative" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
                         <i class="bi bi-cart3"></i>
                         <span id="cart-count-offcanvas" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
@@ -224,16 +228,6 @@
             </div>
             <div class="offcanvas-body p-0">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/cloudcity.center" target="_blank" title="Instagram" data-offcanvas-close>
-                            <i class="bi bi-instagram me-2"></i>Instagram
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://wa.me/33773166380" target="_blank" title="WhatsApp" data-offcanvas-close>
-                            <i class="bi bi-whatsapp me-2"></i>WhatsApp
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-info-circle me-2"></i>@Localizer["About"]
