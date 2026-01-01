@@ -4090,71 +4090,11 @@ body {
     max-width: none !important;
   }
 
-  .telegram-bot-link-mobile {
-    flex: 0 0 auto !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 2;
-    order: 2;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-  }
-  
   .navbar-modern .nav-link {
     display: inline-flex !important;
     width: auto !important;
     min-width: auto !important;
     max-width: none !important;
-  }
-
-  .telegram-bot-link-mobile .telegram-bot-wrapper-mobile {
-    pointer-events: all;
-  }
-
-  .telegram-bot-wrapper-mobile {
-    padding: 6px 12px !important;
-    gap: 4px !important;
-    white-space: nowrap !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    font-size: 0.8rem !important;
-    font-weight: 600 !important;
-    background: linear-gradient(135deg, #0d6efd, #667eea) !important;
-    color: white !important;
-    border-radius: 8px !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-  }
-  
-  .telegram-bot-wrapper-mobile:hover {
-    background: linear-gradient(135deg, #0b5ed7, #5568d3);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-    color: white;
-  }
-  
-  .telegram-bot-text-mobile {
-    font-size: 0.75rem;
-    white-space: nowrap;
-    color: white;
-  }
-  
-  .telegram-icon-mobile {
-    font-size: 1rem;
-    flex-shrink: 0;
-    color: white;
   }
 
   .navbar-right-mobile {
@@ -4164,6 +4104,7 @@ body {
     margin-left: auto !important;
     z-index: 10 !important;
     position: relative !important;
+    flex: 0 0 auto !important;
   }
   
   .cart-link-mobile {
@@ -4182,7 +4123,7 @@ body {
     width: auto !important;
     min-width: auto !important;
     max-width: none !important;
-    height: 100% !important;
+    height: auto !important;
   }
   
   .cart-link-mobile:hover {
