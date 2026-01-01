@@ -3655,27 +3655,9 @@ body {
 }
 
 /* Social Media Icons для мобильной версии */
+/* Базовые стили для соцсетей (десктоп) */
 .social-icons-group-mobile {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 50px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 991px) {
-  .social-icons-group-mobile {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 5 !important;
-    margin: 0 !important;
-    pointer-events: all !important;
-  }
+  display: none;
 }
 
 .social-icon-link-mobile {
@@ -4008,128 +3990,95 @@ body {
   margin-right: 6px;
 }
 
-/* Mobile Menu */
+/* Mobile Navbar - Новая версия с нуля */
 @media (max-width: 991px) {
-  .navbar-modern {
-    min-height: 60px !important;
-    height: 60px !important;
-    max-height: 60px !important;
-    padding: 8px 0 !important;
-    overflow: visible !important;
-  }
-  
-  body {
-    padding-top: 70px !important;
-  }
-  
-  /* Скрываем десктопное меню на мобильных устройствах */
-  .navbar-collapse.d-none.d-lg-block {
-    display: none !important;
-  }
-  
+  /* Скрываем десктопное меню */
+  .navbar-collapse.d-none.d-lg-block,
   .navbar-nav-left,
   .navbar-nav-right,
   .navbar-center {
     display: none !important;
   }
   
-  /* Дополнительный отступ для контента, чтобы меню не перекрывало */
-  main, .container, .container-fluid, section {
-    position: relative;
-    z-index: 1;
+  /* Настройки навбара */
+  .navbar-modern {
+    min-height: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
   }
   
-  /* Убеждаемся, что первая секция не перекрывается */
-  section:first-of-type {
-    padding-top: 10px !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Hero секции должны иметь дополнительный отступ */
-  .hero-section, .services-page-hero, section.py-5:first-of-type {
-    padding-top: 15px !important;
-    margin-top: 0 !important;
+  body {
+    padding-top: 70px !important;
   }
 
+  /* Контейнер навбара */
   .navbar-modern .container-fluid {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 8px !important;
+    justify-content: space-between !important;
+    height: 60px !important;
     padding: 0 15px !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 60px !important;
     position: relative !important;
   }
-  
-  .navbar-modern .container-fluid > * {
-    display: inline-flex !important;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-  }
 
+  /* Логотип слева */
   .navbar-brand {
     flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     z-index: 10 !important;
-    order: 1 !important;
-    width: auto !important;
-    height: 100% !important;
   }
 
   .navbar-logo {
     height: 32px !important;
     width: auto !important;
-    max-width: none !important;
   }
 
-  .navbar-modern .nav-link {
-    display: inline-flex !important;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
+  /* Соцсети по центру */
+  .social-icons-group-mobile {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 5 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
   }
 
+  /* Корзина и меню справа */
   .navbar-right-mobile {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    margin-left: auto !important;
-    z-index: 10 !important;
-    position: relative !important;
     flex: 0 0 auto !important;
+    z-index: 10 !important;
   }
-  
+
   .cart-link-mobile {
-    flex: 0 0 auto !important;
-    margin: 0 !important;
-    padding: 8px !important;
-    display: inline-flex !important;
-    justify-content: center !important;
+    display: flex !important;
     align-items: center !important;
-    z-index: 10 !important;
-    position: relative !important;
+    justify-content: center !important;
+    padding: 8px !important;
     color: #0d6efd !important;
     font-size: 1.2rem !important;
     text-decoration: none !important;
-    transition: color 0.2s;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-    height: auto !important;
+    position: relative !important;
+    transition: color 0.2s !important;
   }
-  
+
   .cart-link-mobile:hover {
     color: #0b5ed7 !important;
   }
-  
+
   .cart-badge-mobile {
     position: absolute !important;
     top: 2px !important;
@@ -4148,113 +4097,28 @@ body {
     border: 2px solid white !important;
     box-shadow: 0 3px 10px rgba(220, 53, 69, 0.5) !important;
     z-index: 3 !important;
-    line-height: 1 !important;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    text-rendering: optimizeLegibility !important;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
-    backdrop-filter: none !important;
-    transform: translateZ(0) !important;
   }
 
   .navbar-toggler {
-    flex: 0 0 auto !important;
-    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     padding: 6px 10px !important;
     border: 2px solid #e0e0e0 !important;
     border-radius: 8px !important;
-    z-index: 10 !important;
-    position: relative !important;
-    font-size: 0.85rem !important;
-    line-height: 1 !important;
     background: white !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-    height: auto !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease !important;
   }
-  
+
   .navbar-toggler:hover {
     border-color: #0d6efd !important;
     background: #f8f9fa !important;
-    transform: scale(1.1) rotate(90deg) !important;
-    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3) !important;
-    animation: button-bounce 0.6s ease-in-out !important;
   }
-  
-  .navbar-toggler:active {
-    transform: scale(1.05) rotate(45deg) !important;
-  }
-  
+
   .navbar-toggler-icon {
     width: 18px !important;
     height: 18px !important;
-    transition: transform 0.3s ease !important;
-  }
-  
-  .navbar-toggler:hover .navbar-toggler-icon {
-    transform: rotate(180deg) !important;
-  }
-
-  .navbar-collapse {
-    order: 4;
-    width: 100%;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid #e0e0e0;
-    flex-basis: 100%;
-    max-height: calc(100vh - 60px);
-    overflow-y: auto;
-  }
-
-  .navbar-nav-left,
-  .navbar-nav-right {
-    flex-direction: column;
-    width: 100%;
-    gap: 5px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .navbar-center {
-    display: none !important;
-  }
-
-  .nav-link {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 12px 15px !important;
-    border-radius: 8px;
-    margin-bottom: 4px;
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-
-  .nav-link.active::after {
-    display: none;
-  }
-
-  .nav-link.active {
-    background: rgba(13, 110, 253, 0.15);
-    border-left: 4px solid #0d6efd;
-  }
-
-  .register-link,
-  .admin-link {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .cart-link {
-    width: 100%;
-    justify-content: flex-start;
-    position: relative;
-    z-index: 10;
-    pointer-events: auto !important;
   }
   
   .cart-badge {
