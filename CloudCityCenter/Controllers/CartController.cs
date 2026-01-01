@@ -348,6 +348,7 @@ public class CartController : Controller
             UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty,
             Items = cart,
             Total = cart.Sum(i => i.Price),
+            Currency = "USD",
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
         };

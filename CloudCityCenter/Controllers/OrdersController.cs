@@ -68,6 +68,7 @@ public class OrdersController : Controller
         order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
         order.CreatedAt = DateTime.UtcNow;
         order.UpdatedAt = DateTime.UtcNow;
+        order.Currency = "USD"; // Устанавливаем доллары по умолчанию
         if (order.Items != null && order.Items.Count > 0 && order.Total == 0)
         {
             order.Total = order.Items.Sum(i => i.Price);

@@ -20,7 +20,7 @@
                             {
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <span>@i.Product?.Name @(i.ProductVariant != null ? $"- {i.ProductVariant.Name}" : "")</span>
-                                    <span>@Model.Currency @i.Price</span>
+                                    <span>$@i.Price.ToString("F2")</span>
                                 </li>
                             }
                         </ul>

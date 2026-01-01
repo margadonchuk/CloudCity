@@ -77,7 +77,7 @@
                       <div class="cart-item-footer">
                         <div class="cart-item-price">
                           <span class="price-label">@Localizer["Price"]</span>
-                          <span class="price-value">@item.Item.Price.ToString("C")</span>
+                          <span class="price-value">$@item.Item.Price.ToString("F2")</span>
                         </div>
                         <form asp-action="Remove" method="post" class="cart-item-remove">
                           @Html.AntiForgeryToken()
@@ -124,7 +124,7 @@
                 <div class="cart-summary-divider"></div>
                 <div class="cart-summary-total">
                   <span class="total-label">@Localizer["Total"]</span>
-                  <span class="total-value">@Model.Total.ToString("C")</span>
+                  <span class="total-value">$@Model.Total.ToString("F2")</span>
                 </div>
               </div>
               <div class="cart-summary-footer">

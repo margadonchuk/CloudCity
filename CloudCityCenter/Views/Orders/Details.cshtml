@@ -15,13 +15,13 @@
             {
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span>@item.Product?.Name @(item.ProductVariant != null ? $"- {item.ProductVariant.Name}" : "")</span>
-                    <span>@Model.Currency @item.Price</span>
+                    <span>$@item.Price.ToString("F2")</span>
                 </li>
             }
         </ul>
         <dl class="row mb-0">
             <dt class="col-sm-4">Total</dt>
-            <dd class="col-sm-8">@Model.Currency @Model.Total</dd>
+            <dd class="col-sm-8">$@Model.Total.ToString("F2")</dd>
             <dt class="col-sm-4">Status</dt>
             <dd class="col-sm-8">@Model.Status</dd>
         </dl>

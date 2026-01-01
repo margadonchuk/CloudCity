@@ -31,7 +31,7 @@
             <tr>
                 <td>@customer.User.Email</td>
                 <td>@customer.OrderCount</td>
-                <td>@customer.TotalSpent.ToString("C")</td>
+                <td>$@customer.TotalSpent.ToString("F2")</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@customer.User.Id" class="btn btn-sm btn-info">Детали</a>
                 </td>

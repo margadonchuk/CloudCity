@@ -22,7 +22,7 @@
         <dd class="col-sm-10">@orderCount</dd>
         
         <dt class="col-sm-2">Всего потрачено</dt>
-        <dd class="col-sm-10">@totalSpent.ToString("C")</dd>
+        <dd class="col-sm-10">$@totalSpent.ToString("F2")</dd>
     </dl>
 </div>
 
@@ -46,7 +46,7 @@
                     <td>@order.Id</td>
                     <td>@order.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                     <td>@order.Status</td>
-                    <td>@order.Total.ToString("C")</td>
+                    <td>$@order.Total.ToString("F2")</td>
                     <td>
                         <a asp-area="Admin" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-info">Просмотр</a>
                     </td>

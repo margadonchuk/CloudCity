@@ -25,7 +25,7 @@
                     }
                 </ul>
                 <p class="card-text"><small class="text-muted">@item.CreatedAt.ToString("yyyy-MM-dd")</small></p>
-                <p class="card-text fw-semibold">@item.Currency @item.Total</p>
+                <p class="card-text fw-semibold">$@item.Total.ToString("F2")</p>
                 <span class="badge bg-secondary">@item.Status</span>
             </div>
             <div class="card-footer text-center">
