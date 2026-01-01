@@ -4183,8 +4183,31 @@ body {
   .offcanvas-header-content {
     display: flex !important;
     align-items: center !important;
+    justify-content: space-between !important;
     gap: 10px;
     width: 100%;
+    position: relative;
+  }
+  
+  .offcanvas-header-content .navbar-brand {
+    flex: 0 0 auto;
+    z-index: 2;
+  }
+  
+  .offcanvas-header-content .social-icons-group-mobile {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    z-index: 1;
+  }
+  
+  .offcanvas-header-content .btn-close {
+    flex: 0 0 auto;
+    z-index: 2;
+    margin: 0 !important;
   }
   
   .offcanvas-header .navbar-brand {
