@@ -524,6 +524,15 @@ else
           }
         });
       });
+
+      // Скрываем корзину в навбаре при открытии меню
+      mobileMenu.addEventListener('show.bs.offcanvas', function() {
+        document.body.classList.add('offcanvas-open');
+      });
+
+      mobileMenu.addEventListener('hide.bs.offcanvas', function() {
+        document.body.classList.remove('offcanvas-open');
+      });
     }
   });
 </script>

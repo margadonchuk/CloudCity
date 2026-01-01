@@ -4120,6 +4120,11 @@ body {
     width: 18px !important;
     height: 18px !important;
   }
+
+  /* Скрываем корзину в навбаре, когда меню открыто */
+  body.offcanvas-open .cart-link-mobile {
+    display: none !important;
+  }
   
   .cart-badge {
     position: absolute;
