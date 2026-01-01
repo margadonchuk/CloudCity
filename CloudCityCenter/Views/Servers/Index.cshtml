@@ -1,33 +1,916 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model CloudCityCenter.Models.ViewModels.WindowsServerPageVm
 @{
-    ViewData["Title"] = "Dedicated Servers";
+    ViewData["Title"] = Localizer["Title"];
 }
 
-<section class="container py-4">
-    <h1 class="mb-3">Dedicated Servers</h1>
-    <p class="text-muted">
-        Our bare‑metal servers deliver uncompromised performance with full hardware control.
-        Ideal for large workloads, game hosting or any application that demands raw power.
-    </p>
-
-    <h5>What you get</h5>
-    <ul>
-        <li>Enterprise hardware & root access</li>
-        <li>Multiple datacenter locations</li>
-        <li>24/7 monitoring & support</li>
-    </ul>
+<!-- HERO SECTION -->
+<section class="servers-page-hero py-5 position-relative">
+  <div class="servers-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["Servers"]</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 servers-page-title">
+          <span class="text-gradient-2">@Localizer["DedicatedServers"]</span>
+        </h1>
+        <p class="servers-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["ServersDescription"]
+        </p>
+        <div class="servers-features mb-4">
+          <div class="servers-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["EnterpriseHardware"]</span>
+          </div>
+          <div class="servers-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["MultipleDatacenters"]</span>
+          </div>
+          <div class="servers-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["MonitoringSupport"]</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">
+        <div class="servers-page-image-wrapper">
+          <div class="servers-icon-grid">
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-server"></i>
+              </div>
+              <span>@Localizer["Powerful"]</span>
+            </div>
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <span>@Localizer["Secure"]</span>
+            </div>
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <span>@Localizer["Fast"]</span>
+            </div>
+            <div class="servers-icon-item">
+              <div class="servers-icon-circle">
+                <i class="bi bi-globe"></i>
+              </div>
+              <span>@Localizer["Global"]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+@using System
+@{
+    string GetLocalizedRegionName(string regionName)
+    {
+        if (regionName.Contains("Netherlands", StringComparison.OrdinalIgnoreCase))
+            return Localizer["RegionNetherlands"].Value;
+        if (regionName.Contains("Germany", StringComparison.OrdinalIgnoreCase))
+            return Localizer["RegionGermany"].Value;
+        if (regionName.Contains("United Kingdom") || regionName.Contains("Poland") || regionName.Contains("France"))
+            return Localizer["RegionUKPolandFrance"].Value;
+        if (regionName.Contains("Canada") || regionName.Contains("USA"))
+            return Localizer["RegionCanadaUSA"].Value;
+        if (regionName.Contains("Singapore") || regionName.Contains("India") || regionName.Contains("Australia"))
+            return Localizer["RegionSingaporeIndiaAustralia"].Value;
+        return regionName;
+    }
+}
+
+<!-- FILTERS SECTION -->
 <section class="container my-5">
+    <div class="card mb-5 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-funnel me-2"></i>@Localizer["Filters"]</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["Country"]</label>
+                    <select id="filter-location" class="form-select servers-filter">
+                        <option value="">@Localizer["AllCountries"]</option>
+                        @if (Model.AvailableLocations != null)
+                        {
+                            @foreach (var location in Model.AvailableLocations)
+                            {
+                                <option value="@location">@GetLocalizedRegionName(location)</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["Persons"]</label>
+                    <select id="filter-persons" class="form-select servers-filter">
+                        <option value="">@Localizer["AllPersons"]</option>
+                        @if (Model.AvailablePersons != null)
+                        {
+                            @foreach (var persons in Model.AvailablePersons)
+                            {
+                                <option value="@persons">@persons</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["CPU"]</label>
+                    <select id="filter-cpu" class="form-select servers-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @if (Model.AvailableCpu != null)
+                        {
+                            @foreach (var cpu in Model.AvailableCpu)
+                            {
+                                <option value="@cpu">@cpu</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["RAM"]</label>
+                    <select id="filter-ram" class="form-select servers-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @if (Model.AvailableRam != null)
+                        {
+                            @foreach (var ram in Model.AvailableRam)
+                            {
+                                <option value="@ram">@ram</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <label class="form-label fw-bold">@Localizer["SSD"]</label>
+                    <select id="filter-ssd" class="form-select servers-filter">
+                        <option value="">@Localizer["All"]</option>
+                        @if (Model.AvailableSsd != null)
+                        {
+                            @foreach (var ssd in Model.AvailableSsd)
+                            {
+                                <option value="@ssd">@ssd</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 col-lg-2 d-flex align-items-end">
+                    <button type="button" id="reset-filters" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-x-circle"></i> @Localizer["Reset"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Windows Server на 5-8 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForFiveToEightPersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
     <div class="row g-4">
-        @foreach (var item in Model)
+        @foreach (var plan in Model.PlansForFiveToEightPersons)
         {
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    @await Html.PartialAsync("_ProductCard", item)
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
+                <div class="card h-100 servers-plan-card shadow-sm">
+                    @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                    {
+                        <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                    }
+                    <div class="card-body d-flex flex-column">
+                        <div class="text-center mb-3">
+                            <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                        </div>
+                        <ul class="list-unstyled flex-grow-1 mb-4">
+                            <li class="mb-3">
+                                <i class="bi bi-cpu text-primary me-2"></i>
+                                <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-memory text-primary me-2"></i>
+                                <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                <strong>@Localizer["Network"]:</strong> @plan.Network
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-center mb-3">
+                                <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            
+                            <!-- Windows Server Setup Service -->
+                            <div class="card border-success mb-3" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
+                                <div class="card-body p-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input setup-service-checkbox" type="checkbox" 
+                                               id="setup-service-@plan.ProductId" 
+                                               data-server-price="@plan.Price"
+                                               data-server-id="@plan.ProductId"
+                                               checked>
+                                        <label class="form-check-label fw-bold text-success" for="setup-service-@plan.ProductId">
+                                            <i class="bi bi-star-fill text-warning me-1"></i>@Localizer["WindowsServerSetupService"]
+                                        </label>
+                                    </div>
+                                    <small class="text-muted d-block mt-2" style="font-size: 0.85rem;">
+                                        @Localizer["WindowsServerSetupDescription"]
+                                    </small>
+                                    <div class="mt-2">
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-plus-circle me-1"></i>@Localizer["WindowsServerSetupPrice"]
+                                        </span>
+                                        <span class="fw-bold text-success ms-2 setup-service-price" data-base-price="@plan.Price">
+                                            (+$@string.Format("{0:F2}", plan.Price * 0.3m))
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true" data-include-setup="true">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="productId" value="@plan.ProductId" />
+                                @if (plan.ProductVariantId.HasValue)
+                                {
+                                    <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                }
+                                <input type="hidden" name="includeSetupService" value="true" />
+                                <input type="hidden" name="setupServicePrice" class="setup-service-price-input" value="@(plan.Price * 0.3m)" />
+                                <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
     </div>
 </section>
+
+<!-- Windows Server на 15 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForFifteenPersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var plan in Model.PlansForFifteenPersons)
+        {
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
+                <div class="card h-100 servers-plan-card shadow-sm">
+                    @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                    {
+                        <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                    }
+                    <div class="card-body d-flex flex-column">
+                        <div class="text-center mb-3">
+                            <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                        </div>
+                        <ul class="list-unstyled flex-grow-1 mb-4">
+                            <li class="mb-3">
+                                <i class="bi bi-cpu text-primary me-2"></i>
+                                <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-memory text-primary me-2"></i>
+                                <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                <strong>@Localizer["Network"]:</strong> @plan.Network
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-center mb-3">
+                                <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            
+                            <!-- Windows Server Setup Service -->
+                            <div class="card border-success mb-3" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
+                                <div class="card-body p-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input setup-service-checkbox" type="checkbox" 
+                                               id="setup-service-@plan.ProductId" 
+                                               data-server-price="@plan.Price"
+                                               data-server-id="@plan.ProductId"
+                                               checked>
+                                        <label class="form-check-label fw-bold text-success" for="setup-service-@plan.ProductId">
+                                            <i class="bi bi-star-fill text-warning me-1"></i>@Localizer["WindowsServerSetupService"]
+                                        </label>
+                                    </div>
+                                    <small class="text-muted d-block mt-2" style="font-size: 0.85rem;">
+                                        @Localizer["WindowsServerSetupDescription"]
+                                    </small>
+                                    <div class="mt-2">
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-plus-circle me-1"></i>@Localizer["WindowsServerSetupPrice"]
+                                        </span>
+                                        <span class="fw-bold text-success ms-2 setup-service-price" data-base-price="@plan.Price">
+                                            (+$@string.Format("{0:F2}", plan.Price * 0.3m))
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true" data-include-setup="true">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="productId" value="@plan.ProductId" />
+                                @if (plan.ProductVariantId.HasValue)
+                                {
+                                    <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                }
+                                <input type="hidden" name="includeSetupService" value="true" />
+                                <input type="hidden" name="setupServicePrice" class="setup-service-price-input" value="@(plan.Price * 0.3m)" />
+                                <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Windows Server на 25 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForTwentyFivePersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var plan in Model.PlansForTwentyFivePersons)
+        {
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    
+                                    <!-- Windows Server Setup Service -->
+                                    <div class="card border-success mb-3" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
+                                        <div class="card-body p-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input setup-service-checkbox" type="checkbox" 
+                                                       id="setup-service-@plan.ProductId" 
+                                                       data-server-price="@plan.Price"
+                                                       data-server-id="@plan.ProductId"
+                                                       checked>
+                                                <label class="form-check-label fw-bold text-success" for="setup-service-@plan.ProductId">
+                                                    <i class="bi bi-star-fill text-warning me-1"></i>@Localizer["WindowsServerSetupService"]
+                                                </label>
+                                            </div>
+                                            <small class="text-muted d-block mt-2" style="font-size: 0.85rem;">
+                                                @Localizer["WindowsServerSetupDescription"]
+                                            </small>
+                                            <div class="mt-2">
+                                                <span class="badge bg-success">
+                                                    <i class="bi bi-plus-circle me-1"></i>@Localizer["WindowsServerSetupPrice"]
+                                                </span>
+                                                <span class="fw-bold text-success ms-2 setup-service-price" data-base-price="@plan.Price">
+                                                    (+$@string.Format("{0:F2}", plan.Price * 0.3m))
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true" data-include-setup="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <input type="hidden" name="includeSetupService" value="true" />
+                                        <input type="hidden" name="setupServicePrice" class="setup-service-price-input" value="@(plan.Price * 0.3m)" />
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        }
+    </div>
+</section>
+
+<!-- Windows Server на 35 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForThirtyFivePersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var plan in Model.PlansForThirtyFivePersons)
+        {
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
+                <div class="card h-100 servers-plan-card shadow-sm">
+                    @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                    {
+                        <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                    }
+                    <div class="card-body d-flex flex-column">
+                        <div class="text-center mb-3">
+                            <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                        </div>
+                        <ul class="list-unstyled flex-grow-1 mb-4">
+                            <li class="mb-3">
+                                <i class="bi bi-cpu text-primary me-2"></i>
+                                <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-memory text-primary me-2"></i>
+                                <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                <strong>@Localizer["Network"]:</strong> @plan.Network
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-center mb-3">
+                                <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            
+                            <!-- Windows Server Setup Service -->
+                            <div class="card border-success mb-3" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
+                                <div class="card-body p-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input setup-service-checkbox" type="checkbox" 
+                                               id="setup-service-@plan.ProductId" 
+                                               data-server-price="@plan.Price"
+                                               data-server-id="@plan.ProductId"
+                                               checked>
+                                        <label class="form-check-label fw-bold text-success" for="setup-service-@plan.ProductId">
+                                            <i class="bi bi-star-fill text-warning me-1"></i>@Localizer["WindowsServerSetupService"]
+                                        </label>
+                                    </div>
+                                    <small class="text-muted d-block mt-2" style="font-size: 0.85rem;">
+                                        @Localizer["WindowsServerSetupDescription"]
+                                    </small>
+                                    <div class="mt-2">
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-plus-circle me-1"></i>@Localizer["WindowsServerSetupPrice"]
+                                        </span>
+                                        <span class="fw-bold text-success ms-2 setup-service-price" data-base-price="@plan.Price">
+                                            (+$@string.Format("{0:F2}", plan.Price * 0.3m))
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true" data-include-setup="true">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="productId" value="@plan.ProductId" />
+                                @if (plan.ProductVariantId.HasValue)
+                                {
+                                    <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                }
+                                <input type="hidden" name="includeSetupService" value="true" />
+                                <input type="hidden" name="setupServicePrice" class="setup-service-price-input" value="@(plan.Price * 0.3m)" />
+                                <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Windows Server на 50 человек -->
+<section class="container my-5">
+    <div class="text-center mb-5 animate-on-scroll servers-section-header" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3">@Localizer["WindowsServerForFiftyPersons"]</h2>
+        <p class="lead text-muted">@Localizer["ChoosePlanForYourTasks"]</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var plan in Model.PlansForFiftyPersons)
+        {
+            <div class="col-12 col-md-6 col-lg-4 servers-plan-item" 
+                 data-location="@plan.Country"
+                 data-persons="@plan.NumberOfPersons"
+                 data-cpu="@plan.CPU"
+                 data-ram="@plan.RAM"
+                 data-ssd="@plan.SSD">
+                        <div class="card h-100 servers-plan-card shadow-sm">
+                            @if (!string.IsNullOrEmpty(plan.ImageUrl))
+                            {
+                                <img src="@plan.ImageUrl" class="card-img-top" alt="@plan.Name" style="height: auto; max-height: 250px; width: 100%; object-fit: contain; padding: 1rem;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-center mb-3">
+                                    <h4 class="card-title fw-bold mb-2">@plan.Name</h4>
+                                </div>
+                                <ul class="list-unstyled flex-grow-1 mb-4">
+                                    <li class="mb-3">
+                                        <i class="bi bi-cpu text-primary me-2"></i>
+                                        <strong>@Localizer["CPU"]:</strong> @plan.CPU
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-memory text-primary me-2"></i>
+                                        <strong>@Localizer["RAM"]:</strong> @plan.RAM
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-hdd-stack text-primary me-2"></i>
+                                        <strong>@Localizer["SSD"]:</strong> @plan.SSD
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>@Localizer["Network"]:</strong> @plan.Network
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <strong>@Localizer["Country"]:</strong> @GetLocalizedRegionName(plan.Country)
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <div class="text-center mb-3">
+                                        <span class="display-6 fw-bold text-primary">$@plan.Price</span>
+                                        <span class="text-muted">/ @Localizer["Month"]</span>
+                                    </div>
+                                    
+                                    <!-- Windows Server Setup Service -->
+                                    <div class="card border-success mb-3" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
+                                        <div class="card-body p-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input setup-service-checkbox" type="checkbox" 
+                                                       id="setup-service-@plan.ProductId" 
+                                                       data-server-price="@plan.Price"
+                                                       data-server-id="@plan.ProductId"
+                                                       checked>
+                                                <label class="form-check-label fw-bold text-success" for="setup-service-@plan.ProductId">
+                                                    <i class="bi bi-star-fill text-warning me-1"></i>@Localizer["WindowsServerSetupService"]
+                                                </label>
+                                            </div>
+                                            <small class="text-muted d-block mt-2" style="font-size: 0.85rem;">
+                                                @Localizer["WindowsServerSetupDescription"]
+                                            </small>
+                                            <div class="mt-2">
+                                                <span class="badge bg-success">
+                                                    <i class="bi bi-plus-circle me-1"></i>@Localizer["WindowsServerSetupPrice"]
+                                                </span>
+                                                <span class="fw-bold text-success ms-2 setup-service-price" data-base-price="@plan.Price">
+                                                    (+$@string.Format("{0:F2}", plan.Price * 0.3m))
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="add-to-cart-form" data-ajax="true" data-include-setup="true">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="productId" value="@plan.ProductId" />
+                                        @if (plan.ProductVariantId.HasValue)
+                                        {
+                                            <input type="hidden" name="productVariantId" value="@plan.ProductVariantId" />
+                                        }
+                                        <input type="hidden" name="includeSetupService" value="true" />
+                                        <input type="hidden" name="setupServicePrice" class="setup-service-price-input" value="@(plan.Price * 0.3m)" />
+                                        <button type="submit" class="btn btn-primary w-100">@Localizer["Order"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        }
+    </div>
+</section>
+
+<style>
+    .servers-region-block {
+        margin-bottom: 4rem;
+    }
+
+    .servers-region-header {
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 1rem;
+    }
+
+    .servers-plan-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+    }
+
+    .servers-plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15) !important;
+    }
+
+    .servers-plan-card .card-body {
+        padding: 2rem;
+    }
+
+    .servers-plan-card .card-title {
+        color: #0d6efd;
+        font-size: 1.5rem;
+    }
+
+    .servers-plan-card ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .servers-plan-card ul li:last-child {
+        border-bottom: none;
+    }
+
+    .servers-plan-card .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .servers-plan-card .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: scale(1.02);
+    }
+    
+    .servers-plan-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .servers-plan-item.hidden {
+        display: none !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filters = {
+            location: document.getElementById('filter-location'),
+            persons: document.getElementById('filter-persons'),
+            cpu: document.getElementById('filter-cpu'),
+            ram: document.getElementById('filter-ram'),
+            ssd: document.getElementById('filter-ssd')
+        };
+        
+        const resetButton = document.getElementById('reset-filters');
+        const planItems = document.querySelectorAll('.servers-plan-item');
+        
+        function applyFilters() {
+            const selectedLocation = filters.location ? filters.location.value : '';
+            const selectedPersons = filters.persons ? filters.persons.value : '';
+            const selectedCpu = filters.cpu ? filters.cpu.value : '';
+            const selectedRam = filters.ram ? filters.ram.value : '';
+            const selectedSsd = filters.ssd ? filters.ssd.value : '';
+            
+            let visibleCount = 0;
+            
+            planItems.forEach(function(item) {
+                const itemLocation = item.getAttribute('data-location') || '';
+                const itemPersons = item.getAttribute('data-persons') || '';
+                const itemCpu = item.getAttribute('data-cpu') || '';
+                const itemRam = item.getAttribute('data-ram') || '';
+                const itemSsd = item.getAttribute('data-ssd') || '';
+                
+                let show = true;
+                
+                // Проверяем каждый фильтр только если он выбран
+                if (selectedLocation && selectedLocation.trim() !== '') {
+                    if (itemLocation.trim() !== selectedLocation.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedPersons && selectedPersons.trim() !== '') {
+                    if (itemPersons.trim() !== selectedPersons.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedCpu && selectedCpu.trim() !== '') {
+                    if (itemCpu.trim() !== selectedCpu.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedRam && selectedRam.trim() !== '') {
+                    if (itemRam.trim() !== selectedRam.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (selectedSsd && selectedSsd.trim() !== '') {
+                    if (itemSsd.trim() !== selectedSsd.trim()) {
+                        show = false;
+                    }
+                }
+                
+                if (show) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Скрываем пустые секции и их заголовки (только если есть активные фильтры)
+            const hasActiveFilters = (selectedLocation && selectedLocation.trim() !== '') ||
+                                    (selectedPersons && selectedPersons.trim() !== '') ||
+                                    (selectedCpu && selectedCpu.trim() !== '') ||
+                                    (selectedRam && selectedRam.trim() !== '') ||
+                                    (selectedSsd && selectedSsd.trim() !== '');
+            
+            document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                const allPlansInSection = section.querySelectorAll('.servers-plan-item');
+                const visiblePlansInSection = Array.from(allPlansInSection).filter(function(plan) {
+                    return !plan.classList.contains('hidden') && 
+                           plan.style.display !== 'none';
+                });
+                
+                const sectionHeader = section.querySelector('.servers-section-header');
+                
+                if (hasActiveFilters) {
+                    if (visiblePlansInSection.length === 0 && allPlansInSection.length > 0) {
+                        // Скрываем секцию и заголовок, если нет видимых планов, но есть планы в секции
+                        section.style.display = 'none';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = 'none';
+                        }
+                    } else {
+                        // Показываем секцию и заголовок, если есть видимые планы
+                        section.style.display = '';
+                        if (sectionHeader) {
+                            sectionHeader.style.display = '';
+                        }
+                    }
+                } else {
+                    // Если фильтры не активны, показываем все секции и заголовки
+                    section.style.display = '';
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
+                }
+            });
+        }
+        
+        // Добавляем обработчики событий для всех фильтров
+        if (filters.location) {
+            filters.location.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.persons) {
+            filters.persons.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.cpu) {
+            filters.cpu.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ram) {
+            filters.ram.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        if (filters.ssd) {
+            filters.ssd.addEventListener('change', function() {
+                applyFilters();
+            });
+        }
+        
+        // Обработчик для кнопки сброса
+        if (resetButton) {
+            resetButton.addEventListener('click', function() {
+                // Сбрасываем все фильтры
+                Object.values(filters).forEach(function(filter) {
+                    if (filter) {
+                        filter.value = '';
+                    }
+                });
+                
+                // Показываем все элементы явно
+                planItems.forEach(function(item) {
+                    item.classList.remove('hidden');
+                    item.style.display = '';
+                });
+                
+                // Показываем все секции и их заголовки
+                document.querySelectorAll('section.container.my-5').forEach(function(section) {
+                    section.style.display = '';
+                    const sectionHeader = section.querySelector('.servers-section-header');
+                    if (sectionHeader) {
+                        sectionHeader.style.display = '';
+                    }
+                });
+            });
+        }
+    });
+    
+    // Обработка чекбоксов услуги настройки Windows Server
+    document.querySelectorAll('.setup-service-checkbox').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const form = this.closest('.card').querySelector('.add-to-cart-form');
+            const priceInput = form.querySelector('.setup-service-price-input');
+            const serverPrice = parseFloat(this.dataset.serverPrice || '0');
+            const setupPrice = serverPrice * 0.3;
+            
+            if (this.checked) {
+                if (priceInput) {
+                    priceInput.value = setupPrice.toFixed(2);
+                }
+                form.dataset.includeSetup = 'true';
+            } else {
+                if (priceInput) {
+                    priceInput.value = '0';
+                }
+                form.dataset.includeSetup = 'false';
+            }
+        });
+    });
+</script>
 

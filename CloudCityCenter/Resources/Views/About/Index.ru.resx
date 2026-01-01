@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="OurStory" xml:space="preserve">
+    <value>Наша история</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="AboutText" xml:space="preserve">
+    <value>Готовы узнать, что действительно выделяет нас на конкурентном рынке серверных решений? В CloudCity Center мы не только переосмыслили серверные решения, но и повысили стандарты, безупречно объединив исключительную надежность, лучшую безопасность и непревзойденную доступность.</value>
+  </data>
+  <data name="EnterpriseInfrastructure" xml:space="preserve">
+    <value>Инфраструктура корпоративного уровня</value>
+  </data>
+  <data name="GlobalDataCenter" xml:space="preserve">
+    <value>Глобальная сеть дата-центров</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="Expertise" xml:space="preserve">
+    <value>Экспертиза</value>
+  </data>
+  <data name="OurExpertise" xml:space="preserve">
+    <value>Наша экспертиза</value>
+  </data>
+  <data name="ExpertiseText" xml:space="preserve">
+    <value>Благодаря передовым технологиям и индивидуальным решениям мы не просто другой поставщик серверов — мы ваш партнер в росте. Нужен глобальный охват? У нас это есть. Будь вы в Европе, Америке или Азии.</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Страны</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Серверы</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Клиенты</value>
+  </data>
+  <data name="WhatDrivesUs" xml:space="preserve">
+    <value>Что нас мотивирует?</value>
+  </data>
+  <data name="Reliability" xml:space="preserve">
+    <value>Надежность</value>
+  </data>
+  <data name="ReliabilityDesc" xml:space="preserve">
+    <value>Ваши серверы работают 24/7. Всегда.</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="SecurityDesc" xml:space="preserve">
+    <value>Файрвол, VPN туннелирование, защита от DDoS.</value>
+  </data>
+  <data name="Affordability" xml:space="preserve">
+    <value>Доступность</value>
+  </data>
+  <data name="AffordabilityDesc" xml:space="preserve">
+    <value>Высококачественный сервис без переплат.</value>
+  </data>
+  <data name="NetworkEquipment" xml:space="preserve">
+    <value>Сетевое оборудование</value>
+  </data>
+  <data name="NetworkEquipmentDesc" xml:space="preserve">
+    <value>Настройка и наладка: WiFi, Mikrotik, Fortinet, Cisco.</value>
+  </data>
+  <data name="VPSHosting" xml:space="preserve">
+    <value>VPS хостинг</value>
+  </data>
+  <data name="VPSHostingDesc" xml:space="preserve">
+    <value>SSD, root доступ, масштабируемость для приложений и сайтов.</value>
+  </data>
+  <data name="WebHosting" xml:space="preserve">
+    <value>Веб-хостинг</value>
+  </data>
+  <data name="WebHostingDesc" xml:space="preserve">
+    <value>Быстрые, безопасные и простые в управлении веб-сайты.</value>
+  </data>
+  <data name="CloudStorage" xml:space="preserve">
+    <value>Облачное хранилище</value>
+  </data>
+  <data name="CloudStorageDesc" xml:space="preserve">
+    <value>Безопасное хранилище с резервными копиями и быстрым доступом.</value>
+  </data>
+  <data name="WebDevelopment" xml:space="preserve">
+    <value>Веб-разработка</value>
+  </data>
+  <data name="WebDevelopmentDesc" xml:space="preserve">
+    <value>Индивидуальные сайты и приложения: C#, Python, PHP.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Предыдущий</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Следующий</value>
+  </data>
+  <data name="BackendDeveloper" xml:space="preserve">
+    <value>Backend разработчик</value>
+  </data>
+  <data name="SupportSpecialists" xml:space="preserve">
+    <value>Специалисты поддержки и менеджеры</value>
+  </data>
+  <data name="FinanceSpecialist" xml:space="preserve">
+    <value>Финансовый специалист</value>
+  </data>
+  <data name="DatabaseDeveloper" xml:space="preserve">
+    <value>Разработчик баз данных</value>
+  </data>
+  <data name="FrontendDeveloper" xml:space="preserve">
+    <value>Frontend разработчик</value>
+  </data>
+  <data name="NetworkEngineer" xml:space="preserve">
+    <value>Сетевой инженер</value>
+  </data>
+  <data name="WhatClientsSay" xml:space="preserve">
+    <value>Что говорят наши клиенты</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
+  </data>
+  <data name="FAQ1" xml:space="preserve">
+    <value>Какие услуги предлагает CloudCity?</value>
+  </data>
+  <data name="FAQ1Answer" xml:space="preserve">
+    <value>CloudCity предоставляет доступные и безопасные услуги аренды серверов в различных местах по всему миру, включая продвинутую защиту от DDoS, VPN туннелирование и безопасность файрвола для ваших бизнес-потребностей.</value>
+  </data>
+  <data name="FAQ2" xml:space="preserve">
+    <value>В каких странах доступны ваши серверы?</value>
+  </data>
+  <data name="FAQ2Answer" xml:space="preserve">
+    <value>Наши серверы доступны в Нидерландах, Германии, Франции, Польше, Великобритании, США, Сингапуре, Индии и Австралии, обеспечивая глобальное покрытие и надежность.</value>
+  </data>
+  <data name="FAQ3" xml:space="preserve">
+    <value>Что делает серверы CloudCity безопасными?</value>
+  </data>
+  <data name="FAQ3Answer" xml:space="preserve">
+    <value>Мы применяем продвинутую защиту файрвола, стратегии смягчения DDoS, VPN туннелирование для безопасных подключений к серверам и переключение внешних на внутренние IP-адреса для обеспечения надежной безопасности ваших данных.</value>
+  </data>
+  <data name="FAQ4" xml:space="preserve">
+    <value>Как я могу настроить свой сервер после покупки?</value>
+  </data>
+  <data name="FAQ4Answer" xml:space="preserve">
+    <value>После покупки сервера вы получите подробное руководство по настройке по электронной почте. Наша команда поддержки также готова помочь вам настроить сервер в соответствии с вашими требованиями.</value>
+  </data>
+  <data name="FAQ5" xml:space="preserve">
+    <value>Предлагаете ли вы гибкие тарифные планы?</value>
+  </data>
+  <data name="FAQ5Answer" xml:space="preserve">
+    <value>Да, мы предлагаем ряд тарифных планов для стартапов, малого и среднего бизнеса. Вы можете выбрать ежемесячную, квартальную или годовую оплату в зависимости от ваших потребностей.</value>
+  </data>
+  <data name="FAQ6" xml:space="preserve">
+    <value>Какие варианты поддержки вы предоставляете?</value>
+  </data>
+  <data name="FAQ6Answer" xml:space="preserve">
+    <value>Мы предоставляем круглосуточную поддержку клиентов через онлайн-чат, электронную почту и специальную базу знаний. Наша команда всегда готова помочь с техническими проблемами или вопросами.</value>
+  </data>
+  <data name="FAQ7" xml:space="preserve">
+    <value>Могу ли я позже обновить свой тарифный план сервера?</value>
+  </data>
+  <data name="FAQ7Answer" xml:space="preserve">
+    <value>Абсолютно! Вы можете обновить свой тарифный план сервера в любое время в соответствии с растущими потребностями вашего бизнеса. Просто свяжитесь с нашей командой поддержки, и мы проведем вас через процесс.</value>
+  </data>
+  <data name="FAQ8" xml:space="preserve">
+    <value>Как я могу отслеживать производительность моего сервера?</value>
+  </data>
+  <data name="FAQ8Answer" xml:space="preserve">
+    <value>CloudCity предоставляет интуитивную панель управления, где вы можете отслеживать производительность сервера в реальном времени. Вы можете отслеживать использование CPU, памяти и пропускной способности, чтобы обеспечить эффективную работу вашего сервера.</value>
+  </data>
+  <data name="ContactFormTitle" xml:space="preserve">
+    <value>Пожалуйста, введите ваш адрес электронной почты, и мы свяжемся с вами в ближайшее время.</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Ваше имя</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Ваш email</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="YourMessage" xml:space="preserve">
+    <value>Ваше сообщение</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Отправить сообщение</value>
+  </data>
+</root>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Security" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="Performance" xml:space="preserve">
+    <value>Производительность</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобально</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Поддержка</value>
+  </data>
+  <data name="WhyChooseUs" xml:space="preserve">
+    <value>Почему выбирают нас</value>
+  </data>
+  <data name="PremiumSolutions" xml:space="preserve">
+    <value>Премиальные решения</value>
+  </data>
+  <data name="ForYourBusiness" xml:space="preserve">
+    <value>Для вашего бизнеса</value>
+  </data>
+  <data name="WelcomeDescription" xml:space="preserve">
+    <value>Наша компания предлагает широкий и разнообразный спектр высококачественных решений, которые тщательно адаптированы специально для ваших уникальных бизнес-потребностей. Мы стремимся предоставлять эти услуги высшего класса по конкурентным и доступным ценам, обеспечивая исключительную ценность без переплат, позволяя вам максимизировать свои инвестиции и эффективно достигать бизнес-целей.</value>
+  </data>
+  <data name="ExpertSupport247" xml:space="preserve">
+    <value>Экспертная поддержка 24/7</value>
+  </data>
+  <data name="UptimeGuarantee" xml:space="preserve">
+    <value>Гарантия времени работы 99.9%</value>
+  </data>
+  <data name="GlobalDataCenters" xml:space="preserve">
+    <value>Глобальные дата-центры</value>
+  </data>
+  <data name="ServerCatalog" xml:space="preserve">
+    <value>Каталог серверов</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="OurAdvantages" xml:space="preserve">
+    <value>Наши преимущества</value>
+  </data>
+  <data name="EnterpriseSecurity" xml:space="preserve">
+    <value>Корпоративная безопасность</value>
+  </data>
+  <data name="EnterpriseSecurityDesc" xml:space="preserve">
+    <value>Передовые протоколы безопасности и шифрование для защиты ваших данных</value>
+  </data>
+  <data name="EasyScaling" xml:space="preserve">
+    <value>Простое масштабирование</value>
+  </data>
+  <data name="EasyScalingDesc" xml:space="preserve">
+    <value>Масштабируйте инфраструктуру вверх или вниз в зависимости от ваших потребностей</value>
+  </data>
+  <data name="CompetitivePricing" xml:space="preserve">
+    <value>Конкурентные цены</value>
+  </data>
+  <data name="CompetitivePricingDesc" xml:space="preserve">
+    <value>Прозрачное ценообразование без скрытых комиссий</value>
+  </data>
+  <data name="FullControl" xml:space="preserve">
+    <value>Полный контроль</value>
+  </data>
+  <data name="FullControlDesc" xml:space="preserve">
+    <value>Полная панель управления и инструменты под рукой</value>
+  </data>
+  <data name="ReadyToStart" xml:space="preserve">
+    <value>Готовы начать?</value>
+  </data>
+  <data name="ReadyToStartDesc" xml:space="preserve">
+    <value>Выберите идеальное решение для вашего бизнеса</value>
+  </data>
+  <data name="BrowseServices" xml:space="preserve">
+    <value>Просмотреть услуги</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Связаться с нами</value>
+  </data>
+</root>
+

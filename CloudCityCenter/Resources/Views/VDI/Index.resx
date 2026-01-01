@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VDI Hosting</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>VDI Hosting</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>Virtual Desktop Infrastructure (VDI) provides secure remote access to virtualized desktop environments. Access your Windows desktop from anywhere, on any device, with enterprise-grade security and performance.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Virtual Desktop</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Cloud Access</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Secure</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Multi-Device</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Remote access from anywhere</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Scalable resources &amp; flexible plans</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>24/7 expert support</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>VDI Plans</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Choose the perfect VDI solution for your needs</value>
+  </data>
+  <data name="VDIPlansForOnePerson" xml:space="preserve">
+    <value>VDI for 1 person</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Choose a plan that suits your tasks</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Traffic</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="PlanStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="PlanStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="PlanPro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Netherlands</value>
+  </data>
+  <data name="RegionEurope" xml:space="preserve">
+    <value>Germany/France/Poland</value>
+  </data>
+  <data name="RegionUSAsia" xml:space="preserve">
+    <value>USA/Canada/Asia</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>core</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="VDIPlansForThreePersons" xml:space="preserve">
+    <value>VDI for 3 persons</value>
+  </data>
+  <data name="VDIPlansForFivePersons" xml:space="preserve">
+    <value>VDI for 5 persons</value>
+  </data>
+  <data name="VDIPlansForTenPersons" xml:space="preserve">
+    <value>VDI for 10 persons</value>
+  </data>
+  <data name="VDIPlansForTwentyPersons" xml:space="preserve">
+    <value>VDI for 20 persons</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>All Countries</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Persons</value>
+  </data>
+</root>
+

@@ -1,6 +1,6 @@
 @model IEnumerable<CloudCityCenter.Models.Product>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 @await Html.PartialAsync("_Hero")
@@ -8,5 +8,7 @@
 @await Html.PartialAsync("_Partners")
 @await Html.PartialAsync("_About")
 @await Html.PartialAsync("_Services", Model)
+@await Html.PartialAsync("_Payments")
+@await Html.PartialAsync("_GlobalDataCenters")
 @await Html.PartialAsync("_Testimonials")
 

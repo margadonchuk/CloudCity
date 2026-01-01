@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Usługi</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Usługi</value>
+  </data>
+  <data name="OurServices" xml:space="preserve">
+    <value>Nasze Usługi</value>
+  </data>
+  <data name="ServicesDescription1" xml:space="preserve">
+    <value>W CloudCity Center oferujemy kompleksową gamę zaawansowanych usług hostingowych i IT zaprojektowanych do wspierania firm na każdym etapie wzrostu. Nasza infrastruktura jest zbudowana na sprzęcie klasy korporacyjnej i najnowocześniejszych technologiach, zapewniając maksymalną wydajność, stabilność i bezpieczeństwo.</value>
+  </data>
+  <data name="ServicesDescription2" xml:space="preserve">
+    <value>Dzięki bezpiecznemu tunelowaniu VPN i globalnym centrom danych strategicznie zlokalizowanym w Europie, Stanach Zjednoczonych i Azji, gwarantujemy szybkie i stabilne połączenia dla użytkowników na całym świecie.</value>
+  </data>
+  <data name="Service1Title" xml:space="preserve">
+    <value>Usługa Wsparcia Serwerów 24/7</value>
+  </data>
+  <data name="Service1Description" xml:space="preserve">
+    <value>Zapewnij płynne działanie dzięki usłudze wsparcia serwerów CloudCity Center 24/7. Nasz dedykowany zespół jest zawsze dostępny do monitorowania i rozwiązywania problemów z serwerami, gwarantując optymalną wydajność. Dzięki monitorowaniu w czasie rzeczywistym i proaktywnej konserwacji zapewniamy bezproblemowe wsparcie dostosowane do potrzeb Twojej firmy. Zaufaj CloudCity Center, aby utrzymać Twoje serwery w płynnym działaniu.</value>
+  </data>
+  <data name="Service2Title" xml:space="preserve">
+    <value>Tworzenie Niestandardowych Stron Internetowych</value>
+  </data>
+  <data name="Service2Description" xml:space="preserve">
+    <value>Ożyj swoją wizję dzięki profesjonalnym usługom tworzenia stron internetowych CloudCity Center. Projektujemy i tworzymy niestandardowe strony internetowe, które łączą oszałamiającą wizualizację z nienaganną funkcjonalnością. Czy potrzebujesz strony korporacyjnej, platformy e-commerce czy niestandardowej aplikacji internetowej, nasz zespół dostarcza rozwiązania, które odzwierciedlają Twoją markę i przynoszą rezultaty. Używając najnowszych technologii, w tym C#, Python, PHP i najlepszych konstruktorów stron internetowych, zapewniamy szybkie, bezpieczne i responsywne strony internetowe zoptymalizowane pod wszystkie urządzenia.</value>
+  </data>
+  <data name="Service3Title" xml:space="preserve">
+    <value>Pełna Anonimowość Klienta i Danych</value>
+  </data>
+  <data name="Service3Description" xml:space="preserve">
+    <value>W CloudCity Center Twoja prywatność jest naszym priorytetem. Zapewniamy pełną anonimowość zarówno Twojej tożsamości, jak i danych poprzez zaawansowane technologie szyfrowania i bezpieczne tunelowanie VPN. Nasze usługi są zaprojektowane, aby chronić Twoje wrażliwe informacje przed nieautoryzowanym dostępem, zapewniając, że Twoje działania pozostają poufne. Zaufaj CloudCity Center, aby zapewnić bezpieczne i prywatne środowisko dla Twoich operacji biznesowych, chroniąc Twoją reputację i spokój ducha.</value>
+  </data>
+  <data name="Service4Title" xml:space="preserve">
+    <value>Usługa Przechowywania w Chmurze</value>
+  </data>
+  <data name="Service4Description" xml:space="preserve">
+    <value>Zachowaj swoje dane bezpieczne, dostępne i chronione dzięki rozwiązaniom przechowywania w chmurze CloudCity Center. Nasze wysokowydajne, ultraszybkie systemy przechowywania są zaprojektowane dla firm i osób prywatnych, które potrzebują niezawodnego, nieograniczonego dostępu do plików bez limitów prędkości. Dzięki zaawansowanemu szyfrowaniu i redundantnym kopiom zapasowym, Twoje informacje pozostają chronione przed utratą lub nieautoryzowanym dostępem. Czy przechowujesz dokumenty, pliki multimedialne czy krytyczne dane biznesowe, CloudCity Center oferuje bezproblemowe, skalowalne doświadczenie przechowywania, zapewniając, że Twoje pliki są zawsze o jedno kliknięcie.</value>
+  </data>
+  <data name="Service5Title" xml:space="preserve">
+    <value>Usługa Ochrony DDoS</value>
+  </data>
+  <data name="Service5Description" xml:space="preserve">
+    <value>Doświadcz niezrównanego bezpieczeństwa dzięki zaawansowanej ochronie DDoS CloudCity Center. Nasza najnowocześniejsza technologia skutecznie chroni Twoje serwery przed szerokim zakresem złośliwego ruchu, zapewniając nieprzerwane działanie i najwyższe bezpieczeństwo Twoich cennych danych. Dzięki monitorowaniu w czasie rzeczywistym i solidnym, wielowarstwowym mechanizmom obronnym, zapewniamy niezawodne i bezpieczne środowisko dostosowane do Twoich operacji biznesowych. Nasz dedykowany zespół pracuje przez całą dobę, aby zapewnić ciągłą ochronę przed ewoluującymi zagrożeniami.</value>
+  </data>
+  <data name="Service6Title" xml:space="preserve">
+    <value>Usługa Hostingu Stron Internetowych</value>
+  </data>
+  <data name="Service6Description" xml:space="preserve">
+    <value>Uprość swoją obecność online dzięki premium rozwiązaniom hostingu stron internetowych CloudCity Center. Zaprojektowane pod kątem szybkości, bezpieczeństwa i łatwości użytkowania, nasze plany hostingu zapewniają, że Twoja strona internetowa jest zawsze online i działa najlepiej. Zapewniamy solidną infrastrukturę serwerową, zoptymalizowaną przepustowość i potężne panele kontrolne, ułatwiając zarządzanie Twoją stroną z pewnością. Od małych stron biznesowych po platformy o wysokim ruchu, nasz hosting dostosowuje się do Twoich potrzeb.</value>
+  </data>
+  <data name="Service7Title" xml:space="preserve">
+    <value>Rozwiązania Serwerowe Oparte na Cyberbezpieczeństwie</value>
+  </data>
+  <data name="Service7Description" xml:space="preserve">
+    <value>W CloudCity Center łączymy najnowocześniejsze środki cyberbezpieczeństwa z solidną technologią serwerową, aby zapewnić niezrównaną ochronę Twoich danych i operacji. Nasze serwery są wzmocnione zaawansowanymi zaporami ogniowymi, zaszyfrowanymi strumieniami danych i monitorowaniem zagrożeń w czasie rzeczywistym, zapewniając, że Twoja firma pozostaje bezpieczna przed cyberatakami. Bezproblemowo integrując cyberbezpieczeństwo w każdy aspekt naszych rozwiązań serwerowych, gwarantujemy bezpieczne, niezawodne i wydajne środowisko dla potrzeb Twojej firmy.</value>
+  </data>
+  <data name="Service8Title" xml:space="preserve">
+    <value>Usługa Hostingu VPS</value>
+  </data>
+  <data name="Service8Description" xml:space="preserve">
+    <value>Doświadcz niezrównanej elastyczności i wydajności dzięki hostingu VPS CloudCity Center. Nasze wirtualne serwery prywatne zapewniają dedykowane zasoby, pełny dostęp root i skalowalne konfiguracje dostosowane do Twoich rozwijających się potrzeb biznesowych. Dzięki sprzętowi klasy korporacyjnej i pamięci SSD zapewniamy błyskawiczną wydajność i wyjątkową niezawodność. Czy uruchamiasz aplikacje, hostujesz strony internetowe czy zarządzasz bazami danych, nasze rozwiązania VPS dają Ci pełną kontrolę i swobodę dostosowywania.</value>
+  </data>
+  <data name="Service9Title" xml:space="preserve">
+    <value>Usługa Ludzkiej Zapory</value>
+  </data>
+  <data name="Service9Description" xml:space="preserve">
+    <value>Chroń swoje dane dzięki usłudze Ludzkiej Zapory CloudCity Center. Z wysokotechnologicznym symbolem tarczy humanoida i zamka, nasza usługa neutralizuje zagrożenia takie jak złośliwe oprogramowanie i ataki DDoS. Dzięki zaawansowanej technologii i zarządzaniu w czasie rzeczywistym utrzymujemy Twoją firmę bezpieczną i operacyjną. Doświadcz solidnego cyberbezpieczeństwa z CloudCity Center.</value>
+  </data>
+  <data name="Service10Title" xml:space="preserve">
+    <value>Usługa Tunelowania VPN</value>
+  </data>
+  <data name="Service10Description" xml:space="preserve">
+    <value>Zabezpiecz swoją aktywność online i zwiększ swoją prywatność dzięki wyjątkowej usłudze tunelowania VPN CloudCity Center. Nasze kompleksowe rozwiązanie zapewnia zaszyfrowane połączenia, skutecznie chroniąc Twoje wrażliwe dane podczas przeglądania internetu. Dzięki naszemu VPN możesz cieszyć się globalnym dostępem do treści i usług, wspieranym solidnymi protokołami bezpieczeństwa, które zapewniają spokój ducha. Czy do użytku osobistego czy wymagań biznesowych, nasz VPN gwarantuje bezpieczne i chronione połączenie dla wszystkich Twoich działań online.</value>
+  </data>
+  <data name="Service11Title" xml:space="preserve">
+    <value>Kopia Zapasowa i Przywracanie</value>
+  </data>
+  <data name="Service11Description" xml:space="preserve">
+    <value>Kopia zapasowa serwera to niezawodny sposób na zachowanie bezpieczeństwa Twoich danych. Oferujemy usługę regularnego tworzenia kopii zapasowych danych z Twojego serwera, zapewniając ochronę przed awariami i utratą danych. Wszystkie kopie zapasowe są przechowywane na bezpiecznych serwerach z wysokim poziomem bezpieczeństwa, a w razie potrzeby możesz szybko przywrócić swoje dane. Z nami Twoje dane są zawsze chronione!</value>
+  </data>
+  <data name="Service12Title" xml:space="preserve">
+    <value>Konfiguracja Fizycznego Sprzętu Sieciowego</value>
+  </data>
+  <data name="Service12Description" xml:space="preserve">
+    <value>Usługa konfiguracji i optymalizacji sprzętu sieciowego, w tym routerów WiFi, Mikrotik, Fortinet i Cisco. Obejmuje konfigurację sieci, konfigurację dostępu bezprzewodowego, routing, zapory ogniowe i systemy bezpieczeństwa. Zapewnia stabilność połączenia, kontrolę ruchu, równoważenie obciążenia i wdrożenie mechanizmów ochrony cyberbezpieczeństwa. Konfiguracja jest wykonywana zgodnie z wymaganiami infrastruktury i standardami bezpieczeństwa.</value>
+  </data>
+  <data name="Service13Title" xml:space="preserve">
+    <value>Usługa Hostingu VDI</value>
+  </data>
+  <data name="Service13Description" xml:space="preserve">
+    <value>Przekształć swoje operacje biznesowe dzięki usłudze hostingu infrastruktury wirtualnych pulpitów (VDI) CloudCity Center. Nasze rozwiązania VDI zapewniają bezpieczne, skalowalne i elastyczne środowiska wirtualnych pulpitów dostępne z dowolnego miejsca, na dowolnym urządzeniu. Dzięki infrastrukturze klasy korporacyjnej i zaawansowanym protokołom bezpieczeństwa dostarczamy wysokowydajne wirtualne pulpity, które umożliwiają pracę zdalną, zwiększają produktywność i obniżają koszty IT. Doświadcz płynnego dostępu do swoich aplikacji i danych dzięki naszemu niezawodnemu hostingu VDI, zaprojektowanemu zgodnie z wymaganiami nowoczesnych firm.</value>
+  </data>
+  <data name="ViewAllServers" xml:space="preserve">
+    <value>Zobacz Wszystkie Serwery</value>
+  </data>
+</root>

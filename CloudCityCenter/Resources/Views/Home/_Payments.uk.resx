@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Payments" xml:space="preserve">
+    <value>Платежі</value>
+  </data>
+  <data name="ChooseYourWay" xml:space="preserve">
+    <value>Виберіть свій спосіб</value>
+  </data>
+  <data name="ToPay" xml:space="preserve">
+    <value>оплати</value>
+  </data>
+  <data name="PaymentsDescription" xml:space="preserve">
+    <value>У CloudCity Center ми знаємо, наскільки важливо залишатися гнучкими в питаннях оплати. Тому ми підтримуємо кілька варіантів: банківський переказ, кредитна картка, PayPal або криптовалюта — включаючи BTC, ETH, USDT, Doge та багато інших.</value>
+  </data>
+</root>
+

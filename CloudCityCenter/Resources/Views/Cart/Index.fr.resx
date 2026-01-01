@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Panier d'achat</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>Panier d'achat</value>
+  </data>
+  <data name="ReviewItems" xml:space="preserve">
+    <value>Vérifiez vos articles et procédez au paiement</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prix :</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="ContinueShopping" xml:space="preserve">
+    <value>Continuer les achats</value>
+  </data>
+  <data name="ClearCart" xml:space="preserve">
+    <value>Vider le panier</value>
+  </data>
+  <data name="ClearCartConfirm" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir vider votre panier ?</value>
+  </data>
+  <data name="OrderSummary" xml:space="preserve">
+    <value>Résumé de la commande</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Articles :</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total :</value>
+  </data>
+  <data name="ProceedToCheckout" xml:space="preserve">
+    <value>Procéder au paiement</value>
+  </data>
+  <data name="PleaseSignIn" xml:space="preserve">
+    <value>Veuillez</value>
+  </data>
+  <data name="ToCheckout" xml:space="preserve">
+    <value>pour passer à la caisse</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>vous connecter</value>
+  </data>
+  <data name="SignInToCheckout" xml:space="preserve">
+    <value>Se connecter pour passer à la caisse</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Votre panier est vide</value>
+  </data>
+  <data name="CartEmptyDescription" xml:space="preserve">
+    <value>Il semble que vous n'ayez pas encore ajouté d'articles à votre panier.</value>
+  </data>
+  <data name="StartShopping" xml:space="preserve">
+    <value>Commencer les achats</value>
+  </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Ajout...</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Ajouté!</value>
+  </data>
+  <data name="ProductAddedToCart" xml:space="preserve">
+    <value>Produit ajouté au panier avec succès!</value>
+  </data>
+  <data name="ErrorAddingToCart" xml:space="preserve">
+    <value>Erreur lors de l'ajout du produit au panier</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Une erreur s'est produite. Veuillez réessayer.</value>
+  </data>
+  <data name="OneTimePayment" xml:space="preserve">
+    <value>Paiement unique</value>
+  </data>
+  <data name="OneTimePaymentDescription" xml:space="preserve">
+    <value>Il s'agit d'un paiement unique pour le service de configuration et d'installation</value>
+  </data>
+</root>
+

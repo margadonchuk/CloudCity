@@ -1,7 +1,8 @@
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @using Microsoft.AspNetCore.Http
+@using System.Globalization
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@CultureInfo.CurrentCulture.Name">
 <head>
     
     <meta charset="utf-8" />
@@ -11,8 +12,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CloudCityCenter.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" />
     @RenderSection("Styles", required: false)
 
 
@@ -21,15 +20,24 @@
 <body>
     @{
         var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
-        var cartJson = Context.Session.GetString("Cart");
         var cartCount = 0;
-        if (!string.IsNullOrEmpty(cartJson))
+        try
         {
-            var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CloudCityCenter.Models.OrderItem>>(cartJson);
-            cartCount = cartItems?.Count ?? 0;
+            var cartJson = Context.Session?.GetString("Cart");
+            if (!string.IsNullOrEmpty(cartJson))
+            {
+                var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CloudCityCenter.Models.OrderItem>>(cartJson);
+                cartCount = cartItems?.Count ?? 0;
+            }
+        }
+        catch
+        {
+            // Игнорируем ошибки сессии
+            cartCount = 0;
         }
     }
     <header>
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-lg navbar-light bg-white mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -48,64 +56,298 @@
                                 Telegram Bot
                             </a>
                         </li>
+=======
+        <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo">
+                </a>
 
+                <!-- Telegram Bot для мобильной версии -->
+                <a class="nav-link telegram-bot-link-mobile d-lg-none" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+                    <div class="telegram-bot-wrapper-mobile">
+                        <i class="bi bi-telegram telegram-icon-mobile"></i>
+                        <span class="telegram-bot-text-mobile">Telegram</span>
+                    </div>
+                </a>
+
+                <!-- Cart для мобильной версии -->
+                <a class="nav-link cart-link-mobile d-lg-none position-relative" asp-controller="Cart" asp-action="Index">
+                    <i class="bi bi-cart3"></i>
+                    <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                </a>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+>>>>>>> apply-admin-panel
+
+                <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
+                    <!-- Left Navigation -->
+                    <ul class="navbar-nav navbar-nav-left">
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">@Localizer["Servers"]</a>
+                            <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index">
+                                <i class="bi bi-server me-1"></i>@Localizer["Servers"]
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">@Localizer["Hosting"]</a>
+                            <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index">
+                                <i class="bi bi-globe me-1"></i>@Localizer["Hosting"]
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">@Localizer["VPN"]</a>
+                            <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index">
+                                <i class="bi bi-shield-lock me-1"></i>@Localizer["VPN"]
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">@Localizer["VPS"]</a>
+                            <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index">
+                                <i class="bi bi-hdd-stack me-1"></i>@Localizer["VPS"]
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">@Localizer["Services"]</a>
+                            <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index">
+                                <i class="bi bi-display me-1"></i>@Localizer["VDI"]
+                            </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
-                        </li>-->
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">@Localizer["About"]</a>
+                            <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index">
+                                <i class="bi bi-gear me-1"></i>@Localizer["Services"]
+                            </a>
                         </li>
-                       <li class="nav-item">
-                           <a class="nav-link text-dark @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">@Localizer["Contact"]</a>
-                       </li>
-                      <!-- <li class="nav-item">
-                           <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                       </li>-->
-                       @if (User.IsInRole("Admin"))
-                       {
-                           <li class="nav-item">
-                               <a class="nav-link text-dark" asp-area="Admin" asp-controller="Products" asp-action="Index">Admin</a>
-                           </li>
-                       }
-                   </ul>
-                   <ul class="navbar-nav ms-auto">
-                       <li class="nav-item position-relative">
-                           <a class="nav-link" asp-controller="Cart" asp-action="Index">
-                               <i class="bi bi-cart"></i>
-                               <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
-                           </a>
-                       </li>
-                       @if (User.Identity?.IsAuthenticated ?? false)
-                       {
+                    </ul>
+
+                    <!-- Center - Telegram Bot -->
+                    <div class="navbar-center d-none d-lg-flex">
+                        <a class="nav-link telegram-bot-link" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+                            <div class="telegram-bot-wrapper">
+                                <i class="bi bi-telegram telegram-icon"></i>
+                                <span class="telegram-bot-text">Telegram</span>
+                                <i class="bi bi-box-arrow-up-right telegram-bot-arrow"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Right Navigation -->
+                    <ul class="navbar-nav navbar-nav-right">
+                        @{
+                            var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+                            var cultureNames = new Dictionary<string, string>
+                            {
+                                { "en", "English" },
+                                { "uk", "Українська" },
+                                { "ru", "Русский" },
+                                { "fr", "Français" },
+                                { "de", "Deutsch" },
+                                { "es", "Español" },
+                                { "pl", "Polski" }
+                            };
+                            var currentLanguage = cultureNames.ContainsKey(currentCulture) ? cultureNames[currentCulture] : "English";
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index">
+                                <i class="bi bi-info-circle me-1"></i>@Localizer["About"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index">
+                                <i class="bi bi-envelope me-1"></i>@Localizer["Contact"]
+                            </a>
+                        </li>
+                        <!-- Language Switcher -->
+                        <li class="nav-item dropdown language-switcher d-none d-lg-block">
+                            <a class="nav-link language-switcher-btn" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                <i class="bi bi-globe"></i>
+                                <span class="language-text">@currentLanguage</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropdown">
+                                @foreach (var lang in cultureNames)
+                                {
+                                    <li>
+                                        <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="culture" value="@lang.Key" />
+                                            <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                                            <button type="submit" class="dropdown-item language-option @(currentCulture == lang.Key ? "active" : "")" data-language-code="@lang.Key">
+                                                <span class="language-name">@lang.Value</span>
+                                                @if (currentCulture == lang.Key)
+                                                {
+                                                    <i class="bi bi-check-lg ms-auto text-primary"></i>
+                                                }
+                                            </button>
+                                        </form>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link cart-link" asp-controller="Cart" asp-action="Index">
+                                <i class="bi bi-cart3 cart-icon-large"></i>
+                                <span class="cart-label">@Localizer["Cart"]</span>
+                                <span id="cart-count" class="cart-badge" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                            </a>
+                        </li>
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
                             <li class="nav-item">
-                                <a class="nav-link text-dark @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">@Localizer["Profile"]</a>
+                                <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile">
+                                    <i class="bi bi-person-circle me-1"></i>@Localizer["Profile"]
+                                </a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">@Localizer["Register"]</a>
+                                <a class="nav-link login-link @(currentController == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")" asp-controller="Account" asp-action="Login">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>@Localizer["Login"]
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link register-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register">
+                                    <i class="bi bi-person-plus me-1"></i>@Localizer["Register"]
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link admin-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                    <i class="bi bi-shield-check me-1"></i>Admin
+                                </a>
                             </li>
                         }
                     </ul>
                 </div>
             </div>
         </nav>
+        
+        <!-- Mobile Offcanvas Menu -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+            <div class="offcanvas-header border-bottom">
+                <div class="offcanvas-header-content d-flex align-items-center w-100 gap-2">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" data-offcanvas-close>
+                        <img src="~/images/logo.png" alt="CloudCityCenter Logo" class="navbar-logo" style="height: 32px;">
+                    </a>
+                    <a class="nav-link telegram-bot-link-offcanvas" href="https://t.me/CloudCityCenter_Bot" target="_blank">
+                        <div class="telegram-bot-wrapper-mobile">
+                            <i class="bi bi-telegram telegram-icon-mobile"></i>
+                            <span class="telegram-bot-text-mobile">Telegram</span>
+                        </div>
+                    </a>
+                    <a class="nav-link cart-link-offcanvas position-relative" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-offcanvas" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                    </a>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="offcanvas-body p-0">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-info-circle me-2"></i>@Localizer["About"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Services" ? "active" : "")" asp-area="" asp-controller="Services" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-gear me-2"></i>@Localizer["Services"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Servers" ? "active" : "")" asp-area="" asp-controller="Servers" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-server me-2"></i>@Localizer["Servers"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Hosting" ? "active" : "")" asp-area="" asp-controller="Hosting" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-globe me-2"></i>@Localizer["Hosting"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(string.Equals(currentController, "VPN", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vpn" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-shield-lock me-2"></i>@Localizer["VPN"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(string.Equals(currentController, "VPS", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="Vps" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-hdd-stack me-2"></i>@Localizer["VPS"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-display me-2"></i>@Localizer["VDI"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-envelope me-2"></i>@Localizer["Contact"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cart-link-mobile-menu d-flex align-items-center justify-content-between" asp-controller="Cart" asp-action="Index" data-offcanvas-close>
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-cart3 me-2"></i>@Localizer["Cart"]
+                            </span>
+                            <span id="cart-count-mobile" class="cart-badge-inline" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                        </a>
+                    </li>
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Profile" data-offcanvas-close>
+                                <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")" asp-controller="Account" asp-action="Login" data-offcanvas-close>
+                                <i class="bi bi-box-arrow-in-right me-2"></i>@Localizer["Login"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-controller="Account" asp-action="Register" data-offcanvas-close>
+                                <i class="bi bi-person-plus me-2"></i>@Localizer["Register"]
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link admin-link" asp-area="Admin" asp-controller="Servers" asp-action="Index" data-offcanvas-close>
+                                <i class="bi bi-shield-check me-2"></i>Admin
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item mt-auto pt-3 border-top">
+                        <div class="language-mobile-header px-3 py-2 mb-2" style="font-weight: 600; color: #0d6efd; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <i class="bi bi-globe me-2"></i>@Localizer["Language"]
+                            </div>
+                            <i class="bi bi-chevron-down language-chevron" style="transition: transform 0.3s ease;"></i>
+                        </div>
+                        <div class="language-mobile-list" style="display: none;">
+                            @foreach (var lang in cultureNames)
+                            {
+                                <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form-mobile">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="culture" value="@lang.Key" />
+                                    <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                                    <button type="submit" class="nav-link language-mobile-item @(currentCulture == lang.Key ? "active" : "")" style="padding-left: 40px !important;">
+                                        <span class="language-name">@lang.Value</span>
+                                        @if (currentCulture == lang.Key)
+                                        {
+                                            <i class="bi bi-check-lg ms-auto text-primary"></i>
+                                        }
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
     @{
     var isContactPage = Context.Request.Path.Value?.ToLower().Contains("/contact") ?? false;
@@ -130,6 +372,20 @@ else
     @await Html.PartialAsync("_Footer")
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    @inject Microsoft.Extensions.Localization.IStringLocalizerFactory LocalizerFactory
+    @{
+        var cartLocalizer = LocalizerFactory.Create("Views.Cart.Index", "CloudCityCenter");
+    }
+    <script>
+        // Передаем локализованные строки в JavaScript
+        window.cartLocalization = {
+            adding: '@Html.Raw(cartLocalizer["Adding"].Value.Replace("'", "\\'"))',
+            added: '@Html.Raw(cartLocalizer["Added"].Value.Replace("'", "\\'"))',
+            productAddedToCart: '@Html.Raw(cartLocalizer["ProductAddedToCart"].Value.Replace("'", "\\'"))',
+            errorAddingToCart: '@Html.Raw(cartLocalizer["ErrorAddingToCart"].Value.Replace("'", "\\'"))',
+            errorOccurred: '@Html.Raw(cartLocalizer["ErrorOccurred"].Value.Replace("'", "\\'"))'
+        };
+    </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
@@ -174,6 +430,116 @@ else
     t = setTimeout(recalc, 120);
   });
 })();
+</script>
+
+<script>
+  // Функция для переключения меню языков
+  function toggleLanguageMenu(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const header = event ? event.currentTarget : event;
+    const switcher = header.closest('.language-switcher-mobile');
+    const chevron = header.querySelector('.language-chevron');
+    if (switcher) {
+      switcher.classList.toggle('active');
+      if (chevron) {
+        chevron.classList.toggle('bi-chevron-down');
+        chevron.classList.toggle('bi-chevron-up');
+      }
+    }
+    return false;
+  }
+  
+  // Инициализация аккордеона языков при загрузке
+  document.addEventListener('DOMContentLoaded', function() {
+    const languageHeaders = document.querySelectorAll('.language-mobile-header');
+    languageHeaders.forEach(function(header) {
+      header.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const list = header.nextElementSibling;
+        const chevron = header.querySelector('.language-chevron');
+        
+        if (list) {
+          const isHidden = list.style.display === 'none' || !list.style.display;
+          list.style.display = isHidden ? 'block' : 'none';
+          
+          if (chevron) {
+            if (isHidden) {
+              chevron.classList.remove('bi-chevron-down');
+              chevron.classList.add('bi-chevron-up');
+            } else {
+              chevron.classList.remove('bi-chevron-up');
+              chevron.classList.add('bi-chevron-down');
+            }
+          }
+        }
+      }, true);
+    });
+  });
+  
+  // Обработка переключения языков в мобильной версии (offcanvas)
+  (function() {
+    function initLanguageSwitcher() {
+      const mobileMenu = document.querySelector('#mobileMenu');
+      const languageFormsMobile = document.querySelectorAll('form.language-form-mobile');
+      
+      if (!mobileMenu || languageFormsMobile.length === 0) return;
+      
+      // Обрабатываем клики на кнопки переключения языков в мобильной версии
+      languageFormsMobile.forEach(function(form) {
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        if (submitButton) {
+          submitButton.addEventListener('click', function(e) {
+            // Останавливаем всплытие, но не предотвращаем submit
+            e.stopPropagation();
+            
+            // Закрываем offcanvas меню после небольшой задержки
+            if (mobileMenu && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+              setTimeout(function() {
+                const bsOffcanvas = bootstrap.Offcanvas.getInstance(mobileMenu);
+                if (bsOffcanvas) {
+                  bsOffcanvas.hide();
+                }
+              }, 100);
+            }
+          }, true);
+        }
+      });
+    }
+    
+    // Инициализируем после полной загрузки
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+      setTimeout(initLanguageSwitcher, 100);
+    }
+  })();
+  
+  // Исправление проблемы с неработающими ссылками в offcanvas меню
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.querySelector('#mobileMenu');
+    if (mobileMenu && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+      // Обрабатываем клики на все ссылки с атрибутом data-offcanvas-close
+      const offcanvasLinks = mobileMenu.querySelectorAll('a[data-offcanvas-close]');
+      offcanvasLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          // Не предотвращаем переход по ссылке
+          // Закрываем меню сразу, но не мешаем переходу
+          const bsOffcanvas = bootstrap.Offcanvas.getInstance(mobileMenu);
+          if (bsOffcanvas) {
+            // Закрываем меню асинхронно, чтобы не мешать переходу
+            setTimeout(function() {
+              bsOffcanvas.hide();
+            }, 10);
+          }
+        });
+      });
+    }
+  });
 </script>
 
 

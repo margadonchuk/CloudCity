@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Alojamiento VDI</value>
+  </data>
+  <data name="VDI" xml:space="preserve">
+    <value>VDI</value>
+  </data>
+  <data name="VDIHosting" xml:space="preserve">
+    <value>Alojamiento VDI</value>
+  </data>
+  <data name="VDIDescription" xml:space="preserve">
+    <value>La infraestructura de escritorio virtual (VDI) proporciona acceso remoto seguro a entornos de escritorio virtualizados. Acceda a su escritorio Windows desde cualquier lugar, en cualquier dispositivo, con seguridad y rendimiento de nivel empresarial.</value>
+  </data>
+  <data name="VirtualDesktop" xml:space="preserve">
+    <value>Escritorio virtual</value>
+  </data>
+  <data name="CloudAccess" xml:space="preserve">
+    <value>Acceso en la nube</value>
+  </data>
+  <data name="Secure" xml:space="preserve">
+    <value>Seguro</value>
+  </data>
+  <data name="MultiDevice" xml:space="preserve">
+    <value>Multi-dispositivo</value>
+  </data>
+  <data name="RemoteAccess" xml:space="preserve">
+    <value>Acceso remoto desde cualquier lugar</value>
+  </data>
+  <data name="ScalableResources" xml:space="preserve">
+    <value>Recursos escalables y planes flexibles</value>
+  </data>
+  <data name="ExpertSupport" xml:space="preserve">
+    <value>Soporte experto 24/7</value>
+  </data>
+  <data name="VDIPlans" xml:space="preserve">
+    <value>Planes VDI</value>
+  </data>
+  <data name="ChooseVDISolution" xml:space="preserve">
+    <value>Elija la solución VDI perfecta para sus necesidades</value>
+  </data>
+  <data name="VDIPlansForOnePerson" xml:space="preserve">
+    <value>VDI para 1 persona</value>
+  </data>
+  <data name="ChoosePlanForYourTasks" xml:space="preserve">
+    <value>Elija un plan que se adapte a sus tareas</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Tráfico</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Pedir</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>mes</value>
+  </data>
+  <data name="PlanStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="PlanStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="PlanPro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="RegionNetherlands" xml:space="preserve">
+    <value>Países Bajos</value>
+  </data>
+  <data name="RegionEurope" xml:space="preserve">
+    <value>Alemania/Francia/Polonia</value>
+  </data>
+  <data name="RegionUSAsia" xml:space="preserve">
+    <value>EE.UU./Canadá/Asia</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>núcleo</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="VDIPlansForThreePersons" xml:space="preserve">
+    <value>VDI para 3 personas</value>
+  </data>
+  <data name="VDIPlansForFivePersons" xml:space="preserve">
+    <value>VDI para 5 personas</value>
+  </data>
+  <data name="VDIPlansForTenPersons" xml:space="preserve">
+    <value>VDI para 10 personas</value>
+  </data>
+  <data name="VDIPlansForTwentyPersons" xml:space="preserve">
+    <value>VDI para 20 personas</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="AllCountries" xml:space="preserve">
+    <value>Todos los países</value>
+  </data>
+  <data name="AllPersons" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Personas</value>
+  </data>
+</root>
+

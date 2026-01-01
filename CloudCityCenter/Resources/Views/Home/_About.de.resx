@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OurStory" xml:space="preserve">
+    <value>Unsere Geschichte</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="AboutText1" xml:space="preserve">
+    <value>Bei CloudCity Center bieten wir zuverlässige, leistungsstarke Serverlösungen für Unternehmen jeder Größe. Mit Rechenzentren in Europa, den USA und Asien gewährleisten wir höchste Sicherheit, einschließlich erweiterter Firewalls, DDoS-Schutz und VPN-Tunneling.</value>
+  </data>
+  <data name="AboutText2" xml:space="preserve">
+    <value>Unsere Mission ist es, nahtloses, sicheres Hosting bereitzustellen, das Ihr Wachstum fördert. Unterstützt von Hardware auf Unternehmensniveau und 24/7-Experten-Support sind wir hier, um Ihr Geschäft reibungslos am Laufen zu halten. Wählen Sie CloudCity Center für zuverlässige Server, denen Sie vertrauen können.</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Mehr erfahren</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Kunden</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Länder</value>
+  </data>
+</root>
+

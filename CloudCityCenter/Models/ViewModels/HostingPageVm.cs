@@ -8,4 +8,7 @@ public class HostingPageVm
     public IEnumerable<ProductCardVm> WebsiteProducts { get; set; } = new List<ProductCardVm>();
     public IEnumerable<ProductCardVm> VpsProducts { get; set; } = new List<ProductCardVm>();
     public IEnumerable<ProductCardVm> VpnProducts { get; set; } = new List<ProductCardVm>();
+    public IEnumerable<ProductCardVm> StorageProducts { get; set; } = new List<ProductCardVm>();
+    public IEnumerable<ProductCardVm> WebsiteBuilderProducts { get; set; } = new List<ProductCardVm>();
+    public IEnumerable<ProductCardVm> WebsiteCodeProducts { get; set; } = new List<ProductCardVm>();
 }

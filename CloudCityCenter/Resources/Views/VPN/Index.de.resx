@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VPN-Tunneling</value>
+  </data>
+  <data name="VPN" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="VPNTunneling" xml:space="preserve">
+    <value>VPN-Tunneling</value>
+  </data>
+  <data name="VPNDescription" xml:space="preserve">
+    <value>Ein VPN (virtuelles privates Netzwerk) ist eine Technologie, die eine sichere Verbindung über das Internet bietet. Es verbirgt Ihre echte IP-Adresse, verschlüsselt den gesamten Datenverkehr und ermöglicht es Ihnen, sicher zu arbeiten, auch in öffentlichen Wi-Fi-Netzwerken. Ein VPN ist notwendig, um persönliche Daten zu schützen, Blockaden zu umgehen, die Privatsphäre zu wahren und die Geschäftssicherheit zu gewährleisten.</value>
+  </data>
+  <data name="EncryptedTraffic" xml:space="preserve">
+    <value>Ende-zu-Ende verschlüsselter Datenverkehr</value>
+  </data>
+  <data name="StableConnectivity" xml:space="preserve">
+    <value>Stabile regionsübergreifende Konnektivität</value>
+  </data>
+  <data name="EasyManagement" xml:space="preserve">
+    <value>Einfache Verwaltung und Überwachung</value>
+  </data>
+  <data name="VPNPlans" xml:space="preserve">
+    <value>VPN-Pläne</value>
+  </data>
+  <data name="ChooseVPNSolution" xml:space="preserve">
+    <value>Wählen Sie die perfekte VPN-Lösung für Ihre Bedürfnisse</value>
+  </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Konfiguration von CHR, MikroTik und Fortinet für Ihr Unternehmen</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>Wir verbinden, konfigurieren und gewährleisten den stabilen Betrieb Ihres Netzwerks — vom Cloud-CHR bis zum physischen MikroTik oder Corporate Fortinet. Ohne unnötige Komplexität und mit Unterstützung in jeder Phase.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>CHR (Cloud Hosted Router) Konfiguration</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>Was enthalten ist:</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Installation/Aktualisierung von RouterOS auf virtuellem Server</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>VPN-Einrichtung (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, Port-Weiterleitung</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Routing, Monitoring, grundlegende Zugriffsrichtlinien</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Optimierung für Kundennetzwerk</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Konfiguration physischer MikroTik-Ausrüstung</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Konfiguration physischer Fortinet-Ausrüstung</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet ist Netzwerksicherheitsausrüstung auf Unternehmensebene, komplexer als MikroTik, und ihre Konfiguration erfordert mehr Zeit und Erfahrung. Fortinet erfordert fortgeschrittene Zertifizierung und Zeit (oft 4-8 Stunden oder mehr), daher sind die Tarife überdurchschnittlich.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Bestellen</value>
+  </data>
+  <data name="CHRBasic" xml:space="preserve">
+    <value>CHR Basic</value>
+  </data>
+  <data name="CHRBasicDesc" xml:space="preserve">
+    <value>Grundlegende CHR-Einrichtung (VPN, Firewall, NAT)</value>
+  </data>
+  <data name="CHRStandard" xml:space="preserve">
+    <value>CHR Standard</value>
+  </data>
+  <data name="CHRStandardDesc" xml:space="preserve">
+    <value>Erweiterte Sicherheitsregeln + Überwachung</value>
+  </data>
+  <data name="CHRPro" xml:space="preserve">
+    <value>CHR Pro</value>
+  </data>
+  <data name="CHRProDesc" xml:space="preserve">
+    <value>Vollständige Einrichtung mit Backups, Fehlertoleranz</value>
+  </data>
+  <data name="MikroTikBasic" xml:space="preserve">
+    <value>MikroTik Basic</value>
+  </data>
+  <data name="MikroTikBasicDesc" xml:space="preserve">
+    <value>WAN/LAN-Verbindung, NAT, DHCP, grundlegende Firewall</value>
+  </data>
+  <data name="MikroTikAdvanced" xml:space="preserve">
+    <value>MikroTik Advanced</value>
+  </data>
+  <data name="MikroTikAdvancedDesc" xml:space="preserve">
+    <value>VPN/IPsec/L2TP, VLAN, Provider-Redundanz</value>
+  </data>
+  <data name="MikroTikPro" xml:space="preserve">
+    <value>MikroTik Pro</value>
+  </data>
+  <data name="MikroTikProDesc" xml:space="preserve">
+    <value>WiFi CAPsMAN, umfassende Netzwerklösung, Überwachung</value>
+  </data>
+  <data name="FortinetBasic" xml:space="preserve">
+    <value>Fortinet Basic</value>
+  </data>
+  <data name="FortinetBasicDesc" xml:space="preserve">
+    <value>Grundlegende Regelkonfiguration, Schnittstellen, Firewall</value>
+  </data>
+  <data name="FortinetSecurity" xml:space="preserve">
+    <value>Fortinet Security</value>
+  </data>
+  <data name="FortinetSecurityDesc" xml:space="preserve">
+    <value>VPN (IPsec/SSL), hochwertige Verschlüsselung, IPS</value>
+  </data>
+  <data name="FortinetEnterprise" xml:space="preserve">
+    <value>Fortinet Enterprise</value>
+  </data>
+  <data name="FortinetEnterpriseDesc" xml:space="preserve">
+    <value>Vollständiges Netzwerk-UTM, Segmentierung, HA, Protokollierung</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Traffic</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>Betriebssystem</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Technologie</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Geräte</value>
+  </data>
+  <data name="Encryption" xml:space="preserve">
+    <value>Verschlüsselung</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Speicher</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Zugriff</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Sicherheit</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Sicherung</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Bandwidth" xml:space="preserve">
+    <value>Bandbreite</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Kern</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Niederlande</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Deutschland</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Frankreich</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Polen</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Niederlande/Deutschland/Frankreich</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Unbegrenzt</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+</root>
+

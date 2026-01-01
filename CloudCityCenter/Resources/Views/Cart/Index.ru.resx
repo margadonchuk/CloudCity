@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Корзина покупок</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>Корзина покупок</value>
+  </data>
+  <data name="ReviewItems" xml:space="preserve">
+    <value>Проверьте ваши товары и перейдите к оформлению заказа</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена:</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ContinueShopping" xml:space="preserve">
+    <value>Продолжить покупки</value>
+  </data>
+  <data name="ClearCart" xml:space="preserve">
+    <value>Очистить корзину</value>
+  </data>
+  <data name="ClearCartConfirm" xml:space="preserve">
+    <value>Вы уверены, что хотите очистить корзину?</value>
+  </data>
+  <data name="OrderSummary" xml:space="preserve">
+    <value>Сводка заказа</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Товары:</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Итого:</value>
+  </data>
+  <data name="ProceedToCheckout" xml:space="preserve">
+    <value>Перейти к оформлению</value>
+  </data>
+  <data name="PleaseSignIn" xml:space="preserve">
+    <value>Пожалуйста,</value>
+  </data>
+  <data name="ToCheckout" xml:space="preserve">
+    <value>для оформления заказа</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>войдите</value>
+  </data>
+  <data name="SignInToCheckout" xml:space="preserve">
+    <value>Войти для оформления</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Ваша корзина пуста</value>
+  </data>
+  <data name="CartEmptyDescription" xml:space="preserve">
+    <value>Похоже, вы еще не добавили товары в корзину.</value>
+  </data>
+  <data name="StartShopping" xml:space="preserve">
+    <value>Начать покупки</value>
+  </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Добавление...</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Добавлено!</value>
+  </data>
+  <data name="ProductAddedToCart" xml:space="preserve">
+    <value>Товар успешно добавлен в корзину!</value>
+  </data>
+  <data name="ErrorAddingToCart" xml:space="preserve">
+    <value>Ошибка при добавлении товара в корзину</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Произошла ошибка. Попробуйте еще раз.</value>
+  </data>
+  <data name="WindowsServerSetupService" xml:space="preserve">
+    <value>Настройка и установка Windows Server</value>
+  </data>
+  <data name="OneTimePayment" xml:space="preserve">
+    <value>Единоразовая оплата</value>
+  </data>
+  <data name="OneTimePaymentDescription" xml:space="preserve">
+    <value>Это единоразовая оплата за услугу настройки и установки</value>
+  </data>
+</root>
+

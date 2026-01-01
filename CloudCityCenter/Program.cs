@@ -5,8 +5,16 @@ using CloudCityCenter.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Добавляем поддержку systemd для Type=notify (если на Linux)
+if (System.OperatingSystem.IsLinux())
+{
+    builder.Host.UseSystemd();
+}
 
 // Read environment before configuring EF
 var env = builder.Environment;
@@ -64,38 +72,135 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=")))
+// Добавляем глобальный обработчик необработанных исключений
+AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+{
+    var exception = e.ExceptionObject as Exception;
+    Console.Error.WriteLine($"CRITICAL: Unhandled exception: {exception?.Message}");
+    Console.Error.WriteLine($"Stack trace: {exception?.StackTrace}");
+    if (exception?.InnerException != null)
+    {
+        Console.Error.WriteLine($"Inner exception: {exception.InnerException.Message}");
+    }
+};
+
+// Обработчик необработанных исключений для async операций
+TaskScheduler.UnobservedTaskException += (sender, e) =>
+{
+    Console.Error.WriteLine($"CRITICAL: Unobserved task exception: {e.Exception.Message}");
+    Console.Error.WriteLine($"Stack trace: {e.Exception.StackTrace}");
+    e.SetObserved();
+};
+
+if (args.Any(a => a == "--seed" || a.StartsWith("--seed-admin=") || a == "--migrate-data"))
 {
     // Ensure connection string is provided via configuration/environment
     var cs = app.Configuration.GetConnectionString("DefaultConnection");
     if (string.IsNullOrEmpty(cs))
+    {
+        Console.WriteLine("❌ ОШИБКА: ConnectionStrings__DefaultConnection не установлена.");
+        Console.WriteLine("Установите строку подключения через:");
+        Console.WriteLine("  - appsettings.Production.json");
+        Console.WriteLine("  - Переменную окружения: export ConnectionStrings__DefaultConnection=\"...\"");
         throw new InvalidOperationException("ConnectionStrings__DefaultConnection is not set.");
+    }
+
+    Console.WriteLine($"✓ Строка подключения найдена: {cs.Substring(0, Math.Min(50, cs.Length))}...");
 
     using var scope = app.Services.CreateScope();
     var serviceProvider = scope.ServiceProvider;
     var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
-    if (context.Database.IsRelational())
-        await context.Database.MigrateAsync();
-
-    var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
-    var adminEmail = adminArg?.Split('=', 2)[1];
-
-    await SeedData.RunAsync(serviceProvider, adminEmail);
-
-    if (args.Contains("--seed") && !context.Products.Any())
+    try
     {
-        SeedData.Initialize(context);
+        Console.WriteLine("Проверка подключения к базе данных...");
+        if (context.Database.IsRelational())
+        {
+            var canConnect = await context.Database.CanConnectAsync();
+            if (!canConnect)
+            {
+                Console.WriteLine("❌ Не удалось подключиться к базе данных!");
+                Console.WriteLine("Проверьте:");
+                Console.WriteLine("  1. Доступность SQL Server на 10.151.10.8");
+                Console.WriteLine("  2. Правильность логина и пароля");
+                Console.WriteLine("  3. Существование базы данных CloudCityDB");
+                throw new InvalidOperationException("Cannot connect to database");
+            }
+            Console.WriteLine("✓ Подключение к базе данных успешно");
+
+            Console.WriteLine("Применение миграций...");
+            await context.Database.MigrateAsync();
+            Console.WriteLine("✓ Миграции применены");
+        }
+        else
+        {
+            Console.WriteLine("⚠ Используется нереляционная база данных");
+        }
+
+        var adminArg = args.FirstOrDefault(a => a.StartsWith("--seed-admin="));
+        var adminEmail = adminArg?.Split('=', 2)[1];
+
+        Console.WriteLine("Создание ролей...");
+        await SeedData.RunAsync(serviceProvider, adminEmail);
+        Console.WriteLine("✓ Роли созданы");
+
+        if (args.Contains("--seed") || args.Contains("--migrate-data"))
+        {
+            Console.WriteLine("Проверка существующих товаров...");
+            var existingProductsCount = await context.Products.CountAsync();
+            Console.WriteLine($"Найдено товаров в базе: {existingProductsCount}");
+
+            if (existingProductsCount == 0)
+            {
+                Console.WriteLine("Загрузка товаров и услуг в базу данных...");
+                SeedData.Initialize(context);
+                var productsCount = await context.Products.CountAsync();
+                var variantsCount = await context.ProductVariants.CountAsync();
+                var featuresCount = await context.ProductFeatures.CountAsync();
+                Console.WriteLine($"✓ Загрузка завершена:");
+                Console.WriteLine($"  - Товаров: {productsCount}");
+                Console.WriteLine($"  - Вариантов: {variantsCount}");
+                Console.WriteLine($"  - Характеристик: {featuresCount}");
+            }
+            else
+            {
+                Console.WriteLine($"⚠ Товары уже загружены в базу данных ({existingProductsCount} товаров).");
+                Console.WriteLine("Для перезагрузки удалите товары из базы данных.");
+            }
+        }
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ ОШИБКА при миграции: {ex.Message}");
+        Console.WriteLine($"Детали: {ex}");
+        throw;
+    }
+    
+    Console.WriteLine("\n✅ Миграция данных успешно завершена!");
     return;
 }
 
-var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("ru") };
+var supportedCultures = new[] 
+{ 
+    new CultureInfo("en"),  // English
+    new CultureInfo("uk"),  // Ukrainian
+    new CultureInfo("ru"),  // Russian
+    new CultureInfo("fr"),  // French
+    new CultureInfo("de"),  // German
+    new CultureInfo("es"),  // Spanish
+    new CultureInfo("pl")   // Polish
+};
 var localizationOptions = new RequestLocalizationOptions
 {
     DefaultRequestCulture = new RequestCulture("en"),
     SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures
+    SupportedUICultures = supportedCultures,
+    RequestCultureProviders = new List<IRequestCultureProvider>
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    }
 };
 using (var scope = app.Services.CreateScope())
 {
@@ -123,9 +228,58 @@ using (var scope = app.Services.CreateScope())
         
         if (context.Database.IsRelational())
         {
-            logger.LogInformation("Applying migrations to relational database...");
-            context.Database.Migrate();
-            logger.LogInformation("Migrations applied successfully.");
+            var providerName = context.Database.ProviderName;
+            logger.LogInformation($"Database provider: {providerName}");
+            
+            // Проверяем, что это SQL Server, а не SQLite
+            if (providerName != null && providerName.Contains("SqlServer"))
+            {
+                // Проверяем, существуют ли уже таблицы (пробуем выполнить простой запрос)
+                bool productsTableExists = false;
+                try
+                {
+                    await context.Products.CountAsync();
+                    productsTableExists = true;
+                }
+                catch
+                {
+                    // Если не удалось, значит таблицы нет
+                    productsTableExists = false;
+                }
+                
+                if (!productsTableExists)
+                {
+                    logger.LogInformation("Tables not found. Attempting to apply migrations...");
+                    try
+                    {
+                        await context.Database.MigrateAsync();
+                        logger.LogInformation("Migrations applied successfully");
+                    }
+                    catch (Exception migEx)
+                    {
+                        logger.LogWarning(migEx, "Could not apply migrations (migrations might be for SQLite).");
+                        logger.LogWarning("Solution: Create tables manually using create_database_sqlserver.sql script in SQL Server Management Studio.");
+                        logger.LogWarning("The application will continue, but database operations may fail until tables are created.");
+                    }
+                }
+                else
+                {
+                    logger.LogInformation("Tables already exist. Skipping migrations.");
+                }
+            }
+            else
+            {
+                logger.LogInformation("Applying migrations for non-SQL Server database...");
+                try
+                {
+                    await context.Database.MigrateAsync();
+                    logger.LogInformation("Migrations applied successfully.");
+                }
+                catch
+                {
+                    // Игнорируем ошибки миграций для не-SQL Server баз
+                }
+            }
         }
         else
         {
@@ -133,11 +287,18 @@ using (var scope = app.Services.CreateScope())
             context.Database.EnsureCreated();
         }
         
-        if (!context.Products.Any())
+        // Загружаем данные только если товаров нет
+        var productsCount = await context.Products.CountAsync();
+        if (productsCount == 0)
         {
             logger.LogInformation("Database is empty, seeding initial data...");
             SeedData.Initialize(context);
-            logger.LogInformation("Initial data seeded successfully.");
+            productsCount = await context.Products.CountAsync();
+            logger.LogInformation($"Initial data seeded successfully. Seeded {productsCount} products");
+        }
+        else
+        {
+            logger.LogInformation($"Database already contains {productsCount} products");
         }
     }
     catch (Exception ex)
@@ -148,6 +309,14 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+// Use forwarded headers FIRST before other middleware (for nginx reverse proxy)
+// This must be called before UseHttpsRedirection
+app.UseForwardedHeaders();
+
+// Check if we're behind a reverse proxy (nginx)
+var useReverseProxy = app.Configuration.GetValue<bool>("UseReverseProxy", false) || 
+                      Environment.GetEnvironmentVariable("USE_REVERSE_PROXY") == "true";
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -158,7 +327,12 @@ else
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+// Completely disable HTTPS redirection when behind reverse proxy (nginx handles HTTPS)
+// This prevents ERR_TOO_MANY_REDIRECTS errors
+if (!useReverseProxy)
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseStaticFiles();
 

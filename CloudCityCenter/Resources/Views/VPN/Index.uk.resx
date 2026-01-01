@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>VPN тунелювання</value>
+  </data>
+  <data name="VPN" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="VPNTunneling" xml:space="preserve">
+    <value>VPN тунелювання</value>
+  </data>
+  <data name="VPNDescription" xml:space="preserve">
+    <value>VPN (віртуальна приватна мережа) — це технологія, яка забезпечує безпечне підключення через Інтернет. Вона приховує вашу реальну IP-адресу, шифрує весь трафік і дозволяє безпечно працювати навіть у публічних Wi-Fi мережах. VPN необхідний для захисту особистих даних, обходу блокувань, підтримки конфіденційності та забезпечення безпеки бізнесу.</value>
+  </data>
+  <data name="EncryptedTraffic" xml:space="preserve">
+    <value>Шифрування трафіку від початку до кінця</value>
+  </data>
+  <data name="StableConnectivity" xml:space="preserve">
+    <value>Стабільне міжрегіональне підключення</value>
+  </data>
+  <data name="EasyManagement" xml:space="preserve">
+    <value>Просте управління та моніторинг</value>
+  </data>
+  <data name="VPNPlans" xml:space="preserve">
+    <value>Тарифи VPN</value>
+  </data>
+  <data name="ChooseVPNSolution" xml:space="preserve">
+    <value>Виберіть ідеальне VPN рішення для ваших потреб</value>
+  </data>
+  <data name="ConfigurationServicesTitle" xml:space="preserve">
+    <value>Налаштування CHR, MikroTik та Fortinet під ваш бізнес</value>
+  </data>
+  <data name="ConfigurationServicesDescription" xml:space="preserve">
+    <value>Підключимо, налаштуємо та забезпечимо стабільну роботу вашої мережі — від хмарного CHR до фізичного MikroTik або корпоративного Fortinet. Без зайвої складності та з підтримкою на кожному етапі.</value>
+  </data>
+  <data name="CHRConfigurationTitle" xml:space="preserve">
+    <value>Налаштування CHR (Cloud Hosted Router)</value>
+  </data>
+  <data name="CHRWhatIncluded" xml:space="preserve">
+    <value>Що входить:</value>
+  </data>
+  <data name="CHRFeature1" xml:space="preserve">
+    <value>Встановлення/оновлення RouterOS на віртуальному сервері</value>
+  </data>
+  <data name="CHRFeature2" xml:space="preserve">
+    <value>Налаштування VPN (WireGuard, IPsec, OpenVPN)</value>
+  </data>
+  <data name="CHRFeature3" xml:space="preserve">
+    <value>Firewall, NAT, проброс портів</value>
+  </data>
+  <data name="CHRFeature4" xml:space="preserve">
+    <value>Маршрутизація, моніторинг, базові політики доступу</value>
+  </data>
+  <data name="CHRFeature5" xml:space="preserve">
+    <value>Оптимізація під мережу клієнта</value>
+  </data>
+  <data name="MikroTikConfigurationTitle" xml:space="preserve">
+    <value>Налаштування фізичного обладнання MikroTik</value>
+  </data>
+  <data name="FortinetConfigurationTitle" xml:space="preserve">
+    <value>Налаштування фізичного обладнання Fortinet</value>
+  </data>
+  <data name="FortinetDescription" xml:space="preserve">
+    <value>Fortinet — це техніка рівня корпоративної мережевої безпеки, складніша за MikroTik, і її налаштування потребує більше часу та досвіду. Fortinet потребує просунутої сертифікації та часу (часто 4–8 годин і більше), тому тарифи вище середнього рівня.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Замовити</value>
+  </data>
+  <data name="CHRBasic" xml:space="preserve">
+    <value>CHR Basic</value>
+  </data>
+  <data name="CHRBasicDesc" xml:space="preserve">
+    <value>Базова налаштування CHR (VPN, Firewall, NAT)</value>
+  </data>
+  <data name="CHRStandard" xml:space="preserve">
+    <value>CHR Standard</value>
+  </data>
+  <data name="CHRStandardDesc" xml:space="preserve">
+    <value>Розширені правила безпеки + моніторинг</value>
+  </data>
+  <data name="CHRPro" xml:space="preserve">
+    <value>CHR Pro</value>
+  </data>
+  <data name="CHRProDesc" xml:space="preserve">
+    <value>Повна налаштування з резервами, відмовостійкістю</value>
+  </data>
+  <data name="MikroTikBasic" xml:space="preserve">
+    <value>MikroTik Basic</value>
+  </data>
+  <data name="MikroTikBasicDesc" xml:space="preserve">
+    <value>WAN/LAN підключення, NAT, DHCP, базовий Firewall</value>
+  </data>
+  <data name="MikroTikAdvanced" xml:space="preserve">
+    <value>MikroTik Advanced</value>
+  </data>
+  <data name="MikroTikAdvancedDesc" xml:space="preserve">
+    <value>VPN/IPsec/L2TP, VLAN, резервування провайдерів</value>
+  </data>
+  <data name="MikroTikPro" xml:space="preserve">
+    <value>MikroTik Pro</value>
+  </data>
+  <data name="MikroTikProDesc" xml:space="preserve">
+    <value>WiFi CAPsMAN, комплексне мережеве рішення, моніторинг</value>
+  </data>
+  <data name="FortinetBasic" xml:space="preserve">
+    <value>Fortinet Basic</value>
+  </data>
+  <data name="FortinetBasicDesc" xml:space="preserve">
+    <value>Налаштування базових правил, інтерфейсів, Firewall</value>
+  </data>
+  <data name="FortinetSecurity" xml:space="preserve">
+    <value>Fortinet Security</value>
+  </data>
+  <data name="FortinetSecurityDesc" xml:space="preserve">
+    <value>VPN (IPsec/SSL), високорівневе шифрування, IPS</value>
+  </data>
+  <data name="FortinetEnterprise" xml:space="preserve">
+    <value>Fortinet Enterprise</value>
+  </data>
+  <data name="FortinetEnterpriseDesc" xml:space="preserve">
+    <value>Повний мережевий UTM, сегментація, HA, логування</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>Процесор</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>ОЗП</value>
+  </data>
+  <data name="SSD" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="Traffic" xml:space="preserve">
+    <value>Трафік</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Країна</value>
+  </data>
+  <data name="OS" xml:space="preserve">
+    <value>ОС</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Технологія</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Пристрої</value>
+  </data>
+  <data name="Encryption" xml:space="preserve">
+    <value>Шифрування</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Сховище</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Доступ</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Безпека</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Резервне копіювання</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="Bandwidth" xml:space="preserve">
+    <value>Пропускна здатність</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Ядро</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>ГБ</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Місяць</value>
+  </data>
+  <data name="Netherlands" xml:space="preserve">
+    <value>Нідерланди</value>
+  </data>
+  <data name="Germany" xml:space="preserve">
+    <value>Німеччина</value>
+  </data>
+  <data name="France" xml:space="preserve">
+    <value>Франція</value>
+  </data>
+  <data name="Poland" xml:space="preserve">
+    <value>Польща</value>
+  </data>
+  <data name="Netherlands/Germany/France" xml:space="preserve">
+    <value>Нідерланди/Німеччина/Франція</value>
+  </data>
+  <data name="Unlimited" xml:space="preserve">
+    <value>Безлімітний</value>
+  </data>
+  <data name="Linux" xml:space="preserve">
+    <value>Linux</value>
+  </data>
+</root>
+

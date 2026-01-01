@@ -1,38 +1,59 @@
-@model IEnumerable<CloudCityCenter.Models.ViewModels.ProductCardVm>
+@model CloudCityCenter.Models.ViewModels.VPNPageVm
 @{
-    ViewData["Title"] = "VPN Tunneling";
+    ViewData["Title"] = Localizer["Title"];
 }
 
-<section id="vpn-hero">
-  <!-- Картинка сверху -->
-  <div class="vpn-hero-img">
-    <img src="/images/vpnhero.png" alt="VPN Tunneling" class="img-fluid w-100">
-  </div>
-
-  <!-- Текст -->
-  <div class="container py-5">
-    <h1 class="fw-bold mb-4">VPN Tunneling</h1>
-    <p class="lead text-muted">
-      A VPN (Virtual Private Network) is a technology that provides a secure connection over the Internet. 
-      It hides your real IP address, encrypts all traffic, and allows you to work safely even on public Wi-Fi networks. 
-      A VPN is necessary to protect personal data, bypass blocks, maintain privacy, and ensure business security.
-    </p>
-
-    <h3 class="mt-5">Highlights</h3>
-    <ul>
-      <li>Encrypted traffic end-to-end</li>
-      <li>Stable cross-region connectivity</li>
-      <li>Easy management & monitoring</li>
-    </ul>
+<!-- HERO SECTION -->
+<section class="vpn-page-hero py-5 position-relative">
+  <div class="vpn-page-background"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-left">
+        <div class="section-badge mb-3">
+          <span class="badge-text">@Localizer["VPN"]</span>
+        </div>
+        <h1 class="display-4 fw-bold mb-4 vpn-page-title">
+          <span class="text-gradient-2">@Localizer["VPNTunneling"]</span>
+        </h1>
+        <p class="vpn-page-text mb-4" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          @Localizer["VPNDescription"]
+        </p>
+        <div class="vpn-features mb-4">
+          <div class="vpn-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["EncryptedTraffic"]</span>
+          </div>
+          <div class="vpn-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["StableConnectivity"]</span>
+          </div>
+          <div class="vpn-feature-item">
+            <i class="bi bi-check-circle-fill text-success me-2"></i>
+            <span>@Localizer["EasyManagement"]</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 animate-on-scroll" data-animation="fade-in-right">
+        <div class="vpn-page-image-wrapper">
+          <img src="/images/vpnhero.png" alt="VPN Tunneling" class="vpn-page-image" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- VPN PLANS SECTION -->
 <section class="container py-5">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+      <h2 class="display-5 fw-bold mb-3">@Localizer["VPNPlans"]</h2>
+      <p class="lead text-muted">@Localizer["ChooseVPNSolution"]</p>
+    </div>
     <div class="row g-4 justify-content-center">
-        @foreach (var item in Model)
+        @foreach (var item in Model.VPNProducts)
         {
-            <div class="col-12 col-md-6">
-                <div class="card h-100 shadow text-center">
+            <div class="col-12 col-md-6 col-lg-4 animate-on-scroll" data-animation="fade-in-up">
+                <div class="card h-100 vpn-product-card shadow text-center">
                     @await Html.PartialAsync("_ProductCard", item)
                 </div>
             </div>
@@ -40,37 +61,180 @@
     </div>
 </section>
 
-<!-- Payments section -->
-<section id="payments" class="container py-5">
-  <h2 class="text-center fw-bold display-6 mb-3">Choose Your Way to Pay</h2>
+<!-- CONFIGURATION SERVICES SECTION -->
+<section class="container py-5 mt-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 60px 40px !important;">
+    <div class="text-center mb-5 animate-on-scroll" data-animation="fade-in-up">
+        <h2 class="display-5 fw-bold mb-3 text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); color: #ffffff !important;">@Localizer["ConfigurationServicesTitle"]</h2>
+        <p class="lead" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: #ffffff !important; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); font-weight: 400;">
+            @Localizer["ConfigurationServicesDescription"]
+        </p>
+    </div>
 
-  <p class="lead text-muted text-center mb-4 mx-auto" style="max-width: 980px;">
-    At CloudCity Center we know how important it is to stay flexible when it comes to payments.
-    That’s why we support multiple options: Bank transfer, credit card, PayPal, or cryptocurrency —
-    including BTC, ETH, USDT, Doge, and many more.
-  </p>
-
-  <!-- Icons -->
-<section class="container py-4">
-  <div class="payment-logos">
-    <div class="pay-badge"><img src="/images/paypal.png"   alt="PayPal"></div>
-    <div class="pay-badge"><img src="/images/card.png"     alt="Card"></div>
-    <div class="pay-badge"><img src="/images/bitcoin.png"  alt="Bitcoin"></div>
-    <div class="pay-badge"><img src="/images/ethereum.png" alt="Ethereum"></div>
-    <div class="pay-badge"><img src="/images/bank.png"     alt="Bank transfer"></div>
-    <div class="pay-badge"><img src="/images/tether.png"   alt="Tether"></div>
-  </div>
-</section>
-
-<section id="datacenter-map" class="container-fluid py-5">
-  <h2 class="text-center fw-bold mb-4">Our Global Data Centers</h2>
-
-
-  <div class="text-center">
-    <!-- Карта будет на всю ширину -->
-    <img src="/images/worldmap.png" alt="CloudCity Center Data Centers Map" 
-         class="img-fluid w-100">
-  </div>
+    @foreach (var category in Model.ConfigurationServices)
+    {
+        <div class="mb-5 animate-on-scroll" data-animation="fade-in-up">
+            <div class="card shadow-lg border-0" style="background: rgba(255, 255, 255, 0.98); border-radius: 15px; overflow: hidden;">
+                <div class="card-header" style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); border: none; padding: 30px;">
+                    <h3 class="h4 mb-3 fw-bold" style="color: #ffffff !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-size: 1.4rem;">
+                        @if (category.CategoryName.Contains("CHR"))
+                        {
+                            @Localizer["CHRConfigurationTitle"]
+                        }
+                        else if (category.CategoryName.Contains("MikroTik"))
+                        {
+                            @Localizer["MikroTikConfigurationTitle"]
+                        }
+                        else if (category.CategoryName.Contains("Fortinet"))
+                        {
+                            @Localizer["FortinetConfigurationTitle"]
+                        }
+                        else
+                        {
+                            @category.CategoryName
+                        }
+                    </h3>
+                    @if (!string.IsNullOrEmpty(category.CategoryDescription))
+                    {
+                        <p class="mb-0" style="font-size: 1rem; color: #f7fafc !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); line-height: 1.6;">
+                            @if (category.CategoryName.Contains("CHR"))
+                            {
+                                <span style="font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 8px;">@Localizer["CHRWhatIncluded"]</span>
+                                <span style="display: block; margin-bottom: 6px;">✔️ @Localizer["CHRFeature1"]</span>
+                                <span style="display: block; margin-bottom: 6px;">✔️ @Localizer["CHRFeature2"]</span>
+                                <span style="display: block; margin-bottom: 6px;">✔️ @Localizer["CHRFeature3"]</span>
+                                <span style="display: block; margin-bottom: 6px;">✔️ @Localizer["CHRFeature4"]</span>
+                                <span style="display: block;">✔️ @Localizer["CHRFeature5"]</span>
+                            }
+                            else if (category.CategoryName.Contains("Fortinet"))
+                            {
+                                @Localizer["FortinetDescription"]
+                            }
+                            else
+                            {
+                                @category.CategoryDescription
+                            }
+                        </p>
+                    }
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        @foreach (var service in category.Services)
+                        {
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.1)';">
+                                    @if (!string.IsNullOrEmpty(service.ImageUrl))
+                                    {
+                                        <img src="@service.ImageUrl" class="card-img-top" alt="@service.Name" style="width: 100%; height: auto; max-height: 250px; object-fit: contain; border-radius: 15px 15px 0 0; padding: 15px; background-color: #f8f9fa;" />
+                                    }
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title fw-bold mb-3" style="color: #667eea;">
+                                            @if (service.Name == "CHR Basic")
+                                            {
+                                                @Localizer["CHRBasic"]
+                                            }
+                                            else if (service.Name == "CHR Standard")
+                                            {
+                                                @Localizer["CHRStandard"]
+                                            }
+                                            else if (service.Name == "CHR Pro")
+                                            {
+                                                @Localizer["CHRPro"]
+                                            }
+                                            else if (service.Name == "MikroTik Basic")
+                                            {
+                                                @Localizer["MikroTikBasic"]
+                                            }
+                                            else if (service.Name == "MikroTik Advanced")
+                                            {
+                                                @Localizer["MikroTikAdvanced"]
+                                            }
+                                            else if (service.Name == "MikroTik Pro")
+                                            {
+                                                @Localizer["MikroTikPro"]
+                                            }
+                                            else if (service.Name == "Fortinet Basic")
+                                            {
+                                                @Localizer["FortinetBasic"]
+                                            }
+                                            else if (service.Name == "Fortinet Security")
+                                            {
+                                                @Localizer["FortinetSecurity"]
+                                            }
+                                            else if (service.Name == "Fortinet Enterprise")
+                                            {
+                                                @Localizer["FortinetEnterprise"]
+                                            }
+                                            else
+                                            {
+                                                @service.Name
+                                            }
+                                        </h5>
+                                        <p class="card-text text-muted flex-grow-1 mb-3">
+                                            @if (service.Name == "CHR Basic")
+                                            {
+                                                @Localizer["CHRBasicDesc"]
+                                            }
+                                            else if (service.Name == "CHR Standard")
+                                            {
+                                                @Localizer["CHRStandardDesc"]
+                                            }
+                                            else if (service.Name == "CHR Pro")
+                                            {
+                                                @Localizer["CHRProDesc"]
+                                            }
+                                            else if (service.Name == "MikroTik Basic")
+                                            {
+                                                @Localizer["MikroTikBasicDesc"]
+                                            }
+                                            else if (service.Name == "MikroTik Advanced")
+                                            {
+                                                @Localizer["MikroTikAdvancedDesc"]
+                                            }
+                                            else if (service.Name == "MikroTik Pro")
+                                            {
+                                                @Localizer["MikroTikProDesc"]
+                                            }
+                                            else if (service.Name == "Fortinet Basic")
+                                            {
+                                                @Localizer["FortinetBasicDesc"]
+                                            }
+                                            else if (service.Name == "Fortinet Security")
+                                            {
+                                                @Localizer["FortinetSecurityDesc"]
+                                            }
+                                            else if (service.Name == "Fortinet Enterprise")
+                                            {
+                                                @Localizer["FortinetEnterpriseDesc"]
+                                            }
+                                            else
+                                            {
+                                                @service.Description
+                                            }
+                                        </p>
+                                        <div class="mt-auto">
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <span class="h4 fw-bold text-primary mb-0">$@service.Price.ToString("0")</span>
+                                            </div>
+                                            <form asp-controller="Cart" asp-action="AddConfigurationService" method="post" class="add-to-cart-form" data-ajax="true">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="serviceName" value="@service.Name" />
+                                                <input type="hidden" name="price" value="@service.Price" />
+                                                <input type="hidden" name="category" value="@service.Category" />
+                                                <input type="hidden" name="imageUrl" value="@service.ImageUrl" />
+                                                <button type="submit" class="btn btn-primary w-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                                    @Localizer["Order"]
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </section>
 
 
