@@ -56,15 +56,16 @@
                     </a>
                 </div>
 
-                <!-- Cart для мобильной версии -->
-                <a class="nav-link cart-link-mobile d-lg-none position-relative" asp-controller="Cart" asp-action="Index">
-                    <i class="bi bi-cart3"></i>
-                    <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
-                </a>
-
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <!-- Cart и Menu для мобильной версии -->
+                <div class="navbar-right-mobile d-lg-none">
+                    <a class="nav-link cart-link-mobile position-relative" asp-controller="Cart" asp-action="Index">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-mobile-header" class="cart-badge-mobile" @(cartCount == 0 ? "style=\"display:none;\"" : "")>@cartCount</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
                 <div class="navbar-collapse d-lg-flex" id="navbarNav">
                     <!-- Left Navigation -->
