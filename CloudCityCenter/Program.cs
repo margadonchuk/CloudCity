@@ -121,11 +121,25 @@ using (var scope = app.Services.CreateScope())
             logger.LogWarning("⚠️ WARNING: Using InMemory database! Data will not persist. Check ConnectionStrings__DefaultConnection environment variable.");
         }
         
+        // Проверяем, является ли это SQL Server
+        var isSqlServer = dbProvider.Contains("SqlServer", StringComparison.OrdinalIgnoreCase);
+        
         if (context.Database.IsRelational())
         {
-            logger.LogInformation("Applying migrations to relational database...");
-            context.Database.Migrate();
-            logger.LogInformation("Migrations applied successfully.");
+            if (isSqlServer)
+            {
+                // Для SQL Server не применяем миграции автоматически, так как база уже существует
+                // и миграции созданы для SQLite (TEXT вместо nvarchar)
+                logger.LogInformation("SQL Server database detected. Skipping automatic migrations to preserve existing data.");
+                logger.LogInformation("If you need to update schema, do it manually or create SQL Server-specific migrations.");
+            }
+            else
+            {
+                // Для SQLite применяем миграции
+                logger.LogInformation("Applying migrations to relational database...");
+                context.Database.Migrate();
+                logger.LogInformation("Migrations applied successfully.");
+            }
         }
         else
         {
