@@ -1,0 +1,173 @@
+/* Clouds Background for Hero Section */
+.clouds-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.cloud:before,
+.cloud:after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+}
+
+.cloud1 {
+  width: 200px;
+  height: 60px;
+  top: 20%;
+  left: -200px;
+  animation: cloud-move 30s linear infinite;
+}
+
+.cloud1:before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 10px;
+}
+
+.cloud1:after {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  right: 10px;
+}
+
+.cloud2 {
+  width: 250px;
+  height: 70px;
+  top: 40%;
+  left: -250px;
+  animation: cloud-move 35s linear infinite;
+  animation-delay: -5s;
+}
+
+.cloud2:before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud2:after {
+  width: 70px;
+  height: 70px;
+  top: -35px;
+  right: 20px;
+}
+
+.cloud3 {
+  width: 180px;
+  height: 55px;
+  top: 60%;
+  left: -180px;
+  animation: cloud-move 25s linear infinite;
+  animation-delay: -10s;
+}
+
+.cloud3:before {
+  width: 45px;
+  height: 45px;
+  top: -22px;
+  left: 15px;
+}
+
+.cloud3:after {
+  width: 55px;
+  height: 55px;
+  top: -27px;
+  right: 15px;
+}
+
+.cloud4 {
+  width: 220px;
+  height: 65px;
+  top: 10%;
+  left: -220px;
+  animation: cloud-move 40s linear infinite;
+  animation-delay: -15s;
+}
+
+.cloud4:before {
+  width: 55px;
+  height: 55px;
+  top: -27px;
+  left: 12px;
+}
+
+.cloud4:after {
+  width: 65px;
+  height: 65px;
+  top: -32px;
+  right: 12px;
+}
+
+.cloud5 {
+  width: 190px;
+  height: 58px;
+  top: 75%;
+  left: -190px;
+  animation: cloud-move 28s linear infinite;
+  animation-delay: -20s;
+}
+
+.cloud5:before {
+  width: 48px;
+  height: 48px;
+  top: -24px;
+  left: 18px;
+}
+
+.cloud5:after {
+  width: 58px;
+  height: 58px;
+  top: -29px;
+  right: 18px;
+}
+
+.cloud6 {
+  width: 240px;
+  height: 68px;
+  top: 50%;
+  left: -240px;
+  animation: cloud-move 32s linear infinite;
+  animation-delay: -25s;
+}
+
+.cloud6:before {
+  width: 58px;
+  height: 58px;
+  top: -29px;
+  left: 22px;
+}
+
+.cloud6:after {
+  width: 68px;
+  height: 68px;
+  top: -34px;
+  right: 22px;
+}
+
+@keyframes cloud-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100vw + 300px));
+  }
+}
+
