@@ -211,7 +211,7 @@ public class CartController : Controller
                     Configuration = $"Server Maintenance Service - {plan} plan for {persons} persons",
                     IsAvailable = true,
                     IsPublished = false, // Не показываем в каталоге
-                    ImageUrl = "/images/maintenance-service.png"
+                    ImageUrl = "/images/maintenance.png"
                 };
                 _context.Products.Add(maintenanceProduct);
                 await _context.SaveChangesAsync();
@@ -222,6 +222,13 @@ public class CartController : Controller
                 if (maintenanceProduct.PricePerMonth != price)
                 {
                     maintenanceProduct.PricePerMonth = price;
+                    await _context.SaveChangesAsync();
+                }
+                
+                // Обновляем изображение, если его нет
+                if (string.IsNullOrEmpty(maintenanceProduct.ImageUrl))
+                {
+                    maintenanceProduct.ImageUrl = "/images/maintenance.png";
                     await _context.SaveChangesAsync();
                 }
             }
@@ -236,7 +243,7 @@ public class CartController : Controller
             
             SaveCart(cart);
 
-            return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value });
+            return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value, itemsAdded = 1 });
         }
         catch (Exception ex)
         {

@@ -113,8 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Функция для показа toast-уведомления
-    function showToast(message, type = 'success') {
+    // Функция для показа toast-уведомления (глобальная)
+    window.showToast = function(message, type = 'success') {
         // Создаем контейнер для toast, если его еще нет
         let toastContainer = document.getElementById('toast-container');
         if (!toastContainer) {
