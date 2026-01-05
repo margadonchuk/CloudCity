@@ -69,5 +69,32 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Відправити повідомлення</value>
   </data>
+  <data name="OurSocialNetworks" xml:space="preserve">
+    <value>Наші соціальні мережі</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Слідкуйте за нами в соціальних мережах</value>
+  </data>
+  <data name="Instagram" xml:space="preserve">
+    <value>Інстаграм</value>
+  </data>
+  <data name="InstagramDesc" xml:space="preserve">
+    <value>Слідкуйте за нами в Instagram</value>
+  </data>
+  <data name="TelegramBot" xml:space="preserve">
+    <value>Телеграм Бот</value>
+  </data>
+  <data name="TelegramBotDesc" xml:space="preserve">
+    <value>Спілкуйтеся з нашим Telegram ботом</value>
+  </data>
+  <data name="WhatsApp" xml:space="preserve">
+    <value>Вотсап</value>
+  </data>
+  <data name="WhatsAppDesc" xml:space="preserve">
+    <value>Зв'яжіться з нами в WhatsApp</value>
+  </data>
+  <data name="OpenLink" xml:space="preserve">
+    <value>Відкрити</value>
+  </data>
 </root>
 

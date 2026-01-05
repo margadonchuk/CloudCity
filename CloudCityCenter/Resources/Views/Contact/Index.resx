@@ -69,5 +69,32 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Send Message</value>
   </data>
+  <data name="OurSocialNetworks" xml:space="preserve">
+    <value>Our Social Networks</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Follow us on social media</value>
+  </data>
+  <data name="Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="InstagramDesc" xml:space="preserve">
+    <value>Follow us on Instagram</value>
+  </data>
+  <data name="TelegramBot" xml:space="preserve">
+    <value>Telegram Bot</value>
+  </data>
+  <data name="TelegramBotDesc" xml:space="preserve">
+    <value>Chat with our Telegram bot</value>
+  </data>
+  <data name="WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+  </data>
+  <data name="WhatsAppDesc" xml:space="preserve">
+    <value>Contact us on WhatsApp</value>
+  </data>
+  <data name="OpenLink" xml:space="preserve">
+    <value>Open</value>
+  </data>
 </root>
 
