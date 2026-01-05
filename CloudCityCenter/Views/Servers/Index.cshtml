@@ -270,45 +270,58 @@
     <!-- Обслуживание серверов для 5-8 человек -->
     <div class="mt-5 pt-5 border-top">
         <div class="text-center mb-4">
-            <h3 class="display-6 fw-bold mb-3">Обслуживание серверов</h3>
-            <p class="lead text-muted mb-4">Что входит в обслуживание серверов?</p>
-            <div class="text-start mb-4" style="max-width: 800px; margin: 0 auto;">
-                <p class="mb-3">Обслуживание включает:</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🔧 Мониторинг и устранение технических проблем</li>
-                    <li class="mb-2">🔐 Обновления безопасности и патчи</li>
-                    <li class="mb-2">💾 Настройка резервного копирования</li>
-                    <li class="mb-2">🌐 Настройка сетевого трафика и Firewall</li>
-                    <li class="mb-2">🧰 Помощь с установкой и конфигурацией ПО</li>
-                    <li class="mb-2">⚙️ Администрирование баз данных (SQL, Mongo и др.)</li>
-                    <li class="mb-2">👥 Управление пользователями и доступами</li>
-                    <li class="mb-2">📈 Мониторинг ресурсов (CPU, RAM, HDD, трафик)</li>
-                    <li class="mb-2">📡 Настройка VPN, RDP, Proxy, портов и туннелей</li>
-                    <li class="mb-2">📁 Восстановление после сбоев, DDoS-атаки</li>
-                    <li class="mb-2">✍️ Консультации и техническая поддержка</li>
-                </ul>
+            <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
+            <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
+            <div class="text-start mb-4" style="max-width: 900px; margin: 0 auto;">
+                <p class="mb-3">@Localizer["MaintenanceIncludes"]</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">🔧 @Localizer["MonitoringAndTroubleshooting"]</li>
+                            <li class="mb-2">🔐 @Localizer["SecurityUpdatesAndPatches"]</li>
+                            <li class="mb-2">💾 @Localizer["BackupConfiguration"]</li>
+                            <li class="mb-2">🌐 @Localizer["NetworkTrafficAndFirewall"]</li>
+                            <li class="mb-2">🧰 @Localizer["SoftwareInstallationAndConfig"]</li>
+                            <li class="mb-2">⚙️ @Localizer["DatabaseAdministration"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">👥 @Localizer["UserAndAccessManagement"]</li>
+                            <li class="mb-2">📈 @Localizer["ResourceMonitoring"]</li>
+                            <li class="mb-2">📡 @Localizer["VPNRDPProxyConfiguration"]</li>
+                            <li class="mb-2">📁 @Localizer["RecoveryAfterFailures"]</li>
+                            <li class="mb-2">✍️ @Localizer["ConsultationsAndSupport"]</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="row g-4">
             <!-- Start тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔹 Start</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>4 часа в день<br>(с 9:00 до 13:00 или с 14:00 до 18:00, по выбору)</p>
-                        <p class="mb-3"><strong>Включено:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📊 Базовый мониторинг состояния сервера</li>
-                            <li class="mb-2">🔄 Обновления ОС и безопасности 1 раз в неделю</li>
-                            <li class="mb-2">🔒 Настройка Firewall, SSH, RDP и базовой защиты</li>
-                            <li class="mb-2">🧰 Установка 1–2 приложений/месяц</li>
-                            <li class="mb-2">🧑‍💻 Техподдержка по заявкам в рабочее время</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔹 @Localizer["Start"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["Included"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📊 @Localizer["BasicServerMonitoring"]</li>
+                            <li class="mb-2">🔄 @Localizer["WeeklyOSUpdates"]</li>
+                            <li class="mb-2">🔒 @Localizer["FirewallSSHRDPSetup"]</li>
+                            <li class="mb-2">🧰 @Localizer["Installation12AppsPerMonth"]</li>
+                            <li class="mb-2">🧑‍💻 @Localizer["TechSupportDuringHours"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Малый бизнес, стартапы, тестовые сервера</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">240$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">240$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="240" data-plan="Start" data-persons="5-8">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -316,22 +329,27 @@
             
             <!-- Standart тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔸 Standart</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>9 часов в день (с 9:00 до 18:00)</p>
-                        <p class="mb-3"><strong>Включено всё из Start, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📈 Продвинутый мониторинг и алерты</li>
-                            <li class="mb-2">📦 Помощь с деплоем и CI/CD пайплайнами</li>
-                            <li class="mb-2">🧑‍💼 До 5 заявок/действий в день</li>
-                            <li class="mb-2">🔁 Реакция на инциденты в течение 1 часа</li>
-                            <li class="mb-2">🔄 Оптимизация работы сервисов/БД</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔸 @Localizer["Standart"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StandartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📈 @Localizer["AdvancedMonitoringAndAlerts"]</li>
+                            <li class="mb-2">📦 @Localizer["DeploymentAndCICDHelp"]</li>
+                            <li class="mb-2">🧑‍💼 @Localizer["UpTo5RequestsPerDay"]</li>
+                            <li class="mb-2">🔁 @Localizer["IncidentResponse1Hour"]</li>
+                            <li class="mb-2">🔄 @Localizer["ServiceDBOptimization"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Компаниям со стабильной нагрузкой и бизнес-сервисами</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">320$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StandartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">320$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="320" data-plan="Standart" data-persons="5-8">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -339,24 +357,29 @@
             
             <!-- Pro тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔶 Pro</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>24/7 – круглосуточно</p>
-                        <p class="mb-3"><strong>Включено всё из Standart, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">🚨 Реакция на инциденты в режиме 24/7</li>
-                            <li class="mb-2">🧠 Персональный инженер/админ</li>
-                            <li class="mb-2">📡 Поддержка распределённых систем (VPN, кластеров)</li>
-                            <li class="mb-2">🔐 Расширенная защита (WAF, IDS, Fail2Ban)</li>
-                            <li class="mb-2">🗃️ Полное резервное копирование и восстановление</li>
-                            <li class="mb-2">🔁 Неограниченное количество задач</li>
-                            <li class="mb-2">📞 Приоритетная поддержка (чат, Telegram)</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔶 @Localizer["Pro"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["ProWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStandartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">🚨 @Localizer["IncidentResponse247"]</li>
+                            <li class="mb-2">🧠 @Localizer["PersonalEngineerAdmin"]</li>
+                            <li class="mb-2">📡 @Localizer["DistributedSystemsSupport"]</li>
+                            <li class="mb-2">🔐 @Localizer["AdvancedProtection"]</li>
+                            <li class="mb-2">🗃️ @Localizer["FullBackupAndRecovery"]</li>
+                            <li class="mb-2">🔁 @Localizer["UnlimitedTasks"]</li>
+                            <li class="mb-2">📞 @Localizer["PrioritySupport"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Миссии-критичные проекты, eCommerce, SaaS, финтех</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">400$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["ProSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">400$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="400" data-plan="Pro" data-persons="5-8">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -466,45 +489,58 @@
     <!-- Обслуживание серверов для 15 человек -->
     <div class="mt-5 pt-5 border-top">
         <div class="text-center mb-4">
-            <h3 class="display-6 fw-bold mb-3">Обслуживание серверов</h3>
-            <p class="lead text-muted mb-4">Что входит в обслуживание серверов?</p>
-            <div class="text-start mb-4" style="max-width: 800px; margin: 0 auto;">
-                <p class="mb-3">Обслуживание включает:</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🔧 Мониторинг и устранение технических проблем</li>
-                    <li class="mb-2">🔐 Обновления безопасности и патчи</li>
-                    <li class="mb-2">💾 Настройка резервного копирования</li>
-                    <li class="mb-2">🌐 Настройка сетевого трафика и Firewall</li>
-                    <li class="mb-2">🧰 Помощь с установкой и конфигурацией ПО</li>
-                    <li class="mb-2">⚙️ Администрирование баз данных (SQL, Mongo и др.)</li>
-                    <li class="mb-2">👥 Управление пользователями и доступами</li>
-                    <li class="mb-2">📈 Мониторинг ресурсов (CPU, RAM, HDD, трафик)</li>
-                    <li class="mb-2">📡 Настройка VPN, RDP, Proxy, портов и туннелей</li>
-                    <li class="mb-2">📁 Восстановление после сбоев, DDoS-атаки</li>
-                    <li class="mb-2">✍️ Консультации и техническая поддержка</li>
-                </ul>
+            <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
+            <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
+            <div class="text-start mb-4" style="max-width: 900px; margin: 0 auto;">
+                <p class="mb-3">@Localizer["MaintenanceIncludes"]</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">🔧 @Localizer["MonitoringAndTroubleshooting"]</li>
+                            <li class="mb-2">🔐 @Localizer["SecurityUpdatesAndPatches"]</li>
+                            <li class="mb-2">💾 @Localizer["BackupConfiguration"]</li>
+                            <li class="mb-2">🌐 @Localizer["NetworkTrafficAndFirewall"]</li>
+                            <li class="mb-2">🧰 @Localizer["SoftwareInstallationAndConfig"]</li>
+                            <li class="mb-2">⚙️ @Localizer["DatabaseAdministration"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">👥 @Localizer["UserAndAccessManagement"]</li>
+                            <li class="mb-2">📈 @Localizer["ResourceMonitoring"]</li>
+                            <li class="mb-2">📡 @Localizer["VPNRDPProxyConfiguration"]</li>
+                            <li class="mb-2">📁 @Localizer["RecoveryAfterFailures"]</li>
+                            <li class="mb-2">✍️ @Localizer["ConsultationsAndSupport"]</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="row g-4">
             <!-- Start тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔹 Start</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>4 часа в день<br>(с 9:00 до 13:00 или с 14:00 до 18:00, по выбору)</p>
-                        <p class="mb-3"><strong>Включено:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📊 Базовый мониторинг состояния сервера</li>
-                            <li class="mb-2">🔄 Обновления ОС и безопасности 1 раз в неделю</li>
-                            <li class="mb-2">🔒 Настройка Firewall, SSH, RDP и базовой защиты</li>
-                            <li class="mb-2">🧰 Установка 1–2 приложений/месяц</li>
-                            <li class="mb-2">🧑‍💻 Техподдержка по заявкам в рабочее время</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔹 @Localizer["Start"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["Included"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📊 @Localizer["BasicServerMonitoring"]</li>
+                            <li class="mb-2">🔄 @Localizer["WeeklyOSUpdates"]</li>
+                            <li class="mb-2">🔒 @Localizer["FirewallSSHRDPSetup"]</li>
+                            <li class="mb-2">🧰 @Localizer["Installation12AppsPerMonth"]</li>
+                            <li class="mb-2">🧑‍💻 @Localizer["TechSupportDuringHours"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Малый бизнес, стартапы, тестовые сервера</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">375$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">375$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="375" data-plan="Start" data-persons="15">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -512,22 +548,27 @@
             
             <!-- Standart тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔸 Standart</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>9 часов в день (с 9:00 до 18:00)</p>
-                        <p class="mb-3"><strong>Включено всё из Start, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📈 Продвинутый мониторинг и алерты</li>
-                            <li class="mb-2">📦 Помощь с деплоем и CI/CD пайплайнами</li>
-                            <li class="mb-2">🧑‍💼 До 5 заявок/действий в день</li>
-                            <li class="mb-2">🔁 Реакция на инциденты в течение 1 часа</li>
-                            <li class="mb-2">🔄 Оптимизация работы сервисов/БД</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔸 @Localizer["Standart"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StandartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📈 @Localizer["AdvancedMonitoringAndAlerts"]</li>
+                            <li class="mb-2">📦 @Localizer["DeploymentAndCICDHelp"]</li>
+                            <li class="mb-2">🧑‍💼 @Localizer["UpTo5RequestsPerDay"]</li>
+                            <li class="mb-2">🔁 @Localizer["IncidentResponse1Hour"]</li>
+                            <li class="mb-2">🔄 @Localizer["ServiceDBOptimization"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Компаниям со стабильной нагрузкой и бизнес-сервисами</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">525$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StandartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">525$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="525" data-plan="Standart" data-persons="15">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -535,24 +576,29 @@
             
             <!-- Pro тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔶 Pro</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>24/7 – круглосуточно</p>
-                        <p class="mb-3"><strong>Включено всё из Standart, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">🚨 Реакция на инциденты в режиме 24/7</li>
-                            <li class="mb-2">🧠 Персональный инженер/админ</li>
-                            <li class="mb-2">📡 Поддержка распределённых систем (VPN, кластеров)</li>
-                            <li class="mb-2">🔐 Расширенная защита (WAF, IDS, Fail2Ban)</li>
-                            <li class="mb-2">🗃️ Полное резервное копирование и восстановление</li>
-                            <li class="mb-2">🔁 Неограниченное количество задач</li>
-                            <li class="mb-2">📞 Приоритетная поддержка (чат, Telegram)</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔶 @Localizer["Pro"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["ProWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStandartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">🚨 @Localizer["IncidentResponse247"]</li>
+                            <li class="mb-2">🧠 @Localizer["PersonalEngineerAdmin"]</li>
+                            <li class="mb-2">📡 @Localizer["DistributedSystemsSupport"]</li>
+                            <li class="mb-2">🔐 @Localizer["AdvancedProtection"]</li>
+                            <li class="mb-2">🗃️ @Localizer["FullBackupAndRecovery"]</li>
+                            <li class="mb-2">🔁 @Localizer["UnlimitedTasks"]</li>
+                            <li class="mb-2">📞 @Localizer["PrioritySupport"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Миссии-критичные проекты, eCommerce, SaaS, финтех</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">675$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["ProSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">675$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="675" data-plan="Pro" data-persons="15">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -662,45 +708,58 @@
     <!-- Обслуживание серверов для 25 человек -->
     <div class="mt-5 pt-5 border-top">
         <div class="text-center mb-4">
-            <h3 class="display-6 fw-bold mb-3">Обслуживание серверов</h3>
-            <p class="lead text-muted mb-4">Что входит в обслуживание серверов?</p>
-            <div class="text-start mb-4" style="max-width: 800px; margin: 0 auto;">
-                <p class="mb-3">Обслуживание включает:</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🔧 Мониторинг и устранение технических проблем</li>
-                    <li class="mb-2">🔐 Обновления безопасности и патчи</li>
-                    <li class="mb-2">💾 Настройка резервного копирования</li>
-                    <li class="mb-2">🌐 Настройка сетевого трафика и Firewall</li>
-                    <li class="mb-2">🧰 Помощь с установкой и конфигурацией ПО</li>
-                    <li class="mb-2">⚙️ Администрирование баз данных (SQL, Mongo и др.)</li>
-                    <li class="mb-2">👥 Управление пользователями и доступами</li>
-                    <li class="mb-2">📈 Мониторинг ресурсов (CPU, RAM, HDD, трафик)</li>
-                    <li class="mb-2">📡 Настройка VPN, RDP, Proxy, портов и туннелей</li>
-                    <li class="mb-2">📁 Восстановление после сбоев, DDoS-атаки</li>
-                    <li class="mb-2">✍️ Консультации и техническая поддержка</li>
-                </ul>
+            <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
+            <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
+            <div class="text-start mb-4" style="max-width: 900px; margin: 0 auto;">
+                <p class="mb-3">@Localizer["MaintenanceIncludes"]</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">🔧 @Localizer["MonitoringAndTroubleshooting"]</li>
+                            <li class="mb-2">🔐 @Localizer["SecurityUpdatesAndPatches"]</li>
+                            <li class="mb-2">💾 @Localizer["BackupConfiguration"]</li>
+                            <li class="mb-2">🌐 @Localizer["NetworkTrafficAndFirewall"]</li>
+                            <li class="mb-2">🧰 @Localizer["SoftwareInstallationAndConfig"]</li>
+                            <li class="mb-2">⚙️ @Localizer["DatabaseAdministration"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">👥 @Localizer["UserAndAccessManagement"]</li>
+                            <li class="mb-2">📈 @Localizer["ResourceMonitoring"]</li>
+                            <li class="mb-2">📡 @Localizer["VPNRDPProxyConfiguration"]</li>
+                            <li class="mb-2">📁 @Localizer["RecoveryAfterFailures"]</li>
+                            <li class="mb-2">✍️ @Localizer["ConsultationsAndSupport"]</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="row g-4">
             <!-- Start тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔹 Start</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>4 часа в день<br>(с 9:00 до 13:00 или с 14:00 до 18:00, по выбору)</p>
-                        <p class="mb-3"><strong>Включено:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📊 Базовый мониторинг состояния сервера</li>
-                            <li class="mb-2">🔄 Обновления ОС и безопасности 1 раз в неделю</li>
-                            <li class="mb-2">🔒 Настройка Firewall, SSH, RDP и базовой защиты</li>
-                            <li class="mb-2">🧰 Установка 1–2 приложений/месяц</li>
-                            <li class="mb-2">🧑‍💻 Техподдержка по заявкам в рабочее время</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔹 @Localizer["Start"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["Included"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📊 @Localizer["BasicServerMonitoring"]</li>
+                            <li class="mb-2">🔄 @Localizer["WeeklyOSUpdates"]</li>
+                            <li class="mb-2">🔒 @Localizer["FirewallSSHRDPSetup"]</li>
+                            <li class="mb-2">🧰 @Localizer["Installation12AppsPerMonth"]</li>
+                            <li class="mb-2">🧑‍💻 @Localizer["TechSupportDuringHours"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Малый бизнес, стартапы, тестовые сервера</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">500$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">500$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="500" data-plan="Start" data-persons="25">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -708,22 +767,27 @@
             
             <!-- Standart тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔸 Standart</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>9 часов в день (с 9:00 до 18:00)</p>
-                        <p class="mb-3"><strong>Включено всё из Start, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📈 Продвинутый мониторинг и алерты</li>
-                            <li class="mb-2">📦 Помощь с деплоем и CI/CD пайплайнами</li>
-                            <li class="mb-2">🧑‍💼 До 5 заявок/действий в день</li>
-                            <li class="mb-2">🔁 Реакция на инциденты в течение 1 часа</li>
-                            <li class="mb-2">🔄 Оптимизация работы сервисов/БД</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔸 @Localizer["Standart"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StandartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📈 @Localizer["AdvancedMonitoringAndAlerts"]</li>
+                            <li class="mb-2">📦 @Localizer["DeploymentAndCICDHelp"]</li>
+                            <li class="mb-2">🧑‍💼 @Localizer["UpTo5RequestsPerDay"]</li>
+                            <li class="mb-2">🔁 @Localizer["IncidentResponse1Hour"]</li>
+                            <li class="mb-2">🔄 @Localizer["ServiceDBOptimization"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Компаниям со стабильной нагрузкой и бизнес-сервисами</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">750$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StandartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">750$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="750" data-plan="Standart" data-persons="25">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -731,24 +795,29 @@
             
             <!-- Pro тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔶 Pro</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>24/7 – круглосуточно</p>
-                        <p class="mb-3"><strong>Включено всё из Standart, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">🚨 Реакция на инциденты в режиме 24/7</li>
-                            <li class="mb-2">🧠 Персональный инженер/админ</li>
-                            <li class="mb-2">📡 Поддержка распределённых систем (VPN, кластеров)</li>
-                            <li class="mb-2">🔐 Расширенная защита (WAF, IDS, Fail2Ban)</li>
-                            <li class="mb-2">🗃️ Полное резервное копирование и восстановление</li>
-                            <li class="mb-2">🔁 Неограниченное количество задач</li>
-                            <li class="mb-2">📞 Приоритетная поддержка (чат, Telegram)</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔶 @Localizer["Pro"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["ProWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStandartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">🚨 @Localizer["IncidentResponse247"]</li>
+                            <li class="mb-2">🧠 @Localizer["PersonalEngineerAdmin"]</li>
+                            <li class="mb-2">📡 @Localizer["DistributedSystemsSupport"]</li>
+                            <li class="mb-2">🔐 @Localizer["AdvancedProtection"]</li>
+                            <li class="mb-2">🗃️ @Localizer["FullBackupAndRecovery"]</li>
+                            <li class="mb-2">🔁 @Localizer["UnlimitedTasks"]</li>
+                            <li class="mb-2">📞 @Localizer["PrioritySupport"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Миссии-критичные проекты, eCommerce, SaaS, финтех</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">1000$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["ProSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">1000$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="1000" data-plan="Pro" data-persons="25">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -858,45 +927,58 @@
     <!-- Обслуживание серверов для 35 человек -->
     <div class="mt-5 pt-5 border-top">
         <div class="text-center mb-4">
-            <h3 class="display-6 fw-bold mb-3">Обслуживание серверов</h3>
-            <p class="lead text-muted mb-4">Что входит в обслуживание серверов?</p>
-            <div class="text-start mb-4" style="max-width: 800px; margin: 0 auto;">
-                <p class="mb-3">Обслуживание включает:</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🔧 Мониторинг и устранение технических проблем</li>
-                    <li class="mb-2">🔐 Обновления безопасности и патчи</li>
-                    <li class="mb-2">💾 Настройка резервного копирования</li>
-                    <li class="mb-2">🌐 Настройка сетевого трафика и Firewall</li>
-                    <li class="mb-2">🧰 Помощь с установкой и конфигурацией ПО</li>
-                    <li class="mb-2">⚙️ Администрирование баз данных (SQL, Mongo и др.)</li>
-                    <li class="mb-2">👥 Управление пользователями и доступами</li>
-                    <li class="mb-2">📈 Мониторинг ресурсов (CPU, RAM, HDD, трафик)</li>
-                    <li class="mb-2">📡 Настройка VPN, RDP, Proxy, портов и туннелей</li>
-                    <li class="mb-2">📁 Восстановление после сбоев, DDoS-атаки</li>
-                    <li class="mb-2">✍️ Консультации и техническая поддержка</li>
-                </ul>
+            <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
+            <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
+            <div class="text-start mb-4" style="max-width: 900px; margin: 0 auto;">
+                <p class="mb-3">@Localizer["MaintenanceIncludes"]</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">🔧 @Localizer["MonitoringAndTroubleshooting"]</li>
+                            <li class="mb-2">🔐 @Localizer["SecurityUpdatesAndPatches"]</li>
+                            <li class="mb-2">💾 @Localizer["BackupConfiguration"]</li>
+                            <li class="mb-2">🌐 @Localizer["NetworkTrafficAndFirewall"]</li>
+                            <li class="mb-2">🧰 @Localizer["SoftwareInstallationAndConfig"]</li>
+                            <li class="mb-2">⚙️ @Localizer["DatabaseAdministration"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">👥 @Localizer["UserAndAccessManagement"]</li>
+                            <li class="mb-2">📈 @Localizer["ResourceMonitoring"]</li>
+                            <li class="mb-2">📡 @Localizer["VPNRDPProxyConfiguration"]</li>
+                            <li class="mb-2">📁 @Localizer["RecoveryAfterFailures"]</li>
+                            <li class="mb-2">✍️ @Localizer["ConsultationsAndSupport"]</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="row g-4">
             <!-- Start тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔹 Start</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>4 часа в день<br>(с 9:00 до 13:00 или с 14:00 до 18:00, по выбору)</p>
-                        <p class="mb-3"><strong>Включено:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📊 Базовый мониторинг состояния сервера</li>
-                            <li class="mb-2">🔄 Обновления ОС и безопасности 1 раз в неделю</li>
-                            <li class="mb-2">🔒 Настройка Firewall, SSH, RDP и базовой защиты</li>
-                            <li class="mb-2">🧰 Установка 1–2 приложений/месяц</li>
-                            <li class="mb-2">🧑‍💻 Техподдержка по заявкам в рабочее время</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔹 @Localizer["Start"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["Included"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📊 @Localizer["BasicServerMonitoring"]</li>
+                            <li class="mb-2">🔄 @Localizer["WeeklyOSUpdates"]</li>
+                            <li class="mb-2">🔒 @Localizer["FirewallSSHRDPSetup"]</li>
+                            <li class="mb-2">🧰 @Localizer["Installation12AppsPerMonth"]</li>
+                            <li class="mb-2">🧑‍💻 @Localizer["TechSupportDuringHours"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Малый бизнес, стартапы, тестовые сервера</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">630$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">630$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="630" data-plan="Start" data-persons="35">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -904,22 +986,27 @@
             
             <!-- Standart тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔸 Standart</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>9 часов в день (с 9:00 до 18:00)</p>
-                        <p class="mb-3"><strong>Включено всё из Start, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📈 Продвинутый мониторинг и алерты</li>
-                            <li class="mb-2">📦 Помощь с деплоем и CI/CD пайплайнами</li>
-                            <li class="mb-2">🧑‍💼 До 5 заявок/действий в день</li>
-                            <li class="mb-2">🔁 Реакция на инциденты в течение 1 часа</li>
-                            <li class="mb-2">🔄 Оптимизация работы сервисов/БД</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔸 @Localizer["Standart"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StandartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📈 @Localizer["AdvancedMonitoringAndAlerts"]</li>
+                            <li class="mb-2">📦 @Localizer["DeploymentAndCICDHelp"]</li>
+                            <li class="mb-2">🧑‍💼 @Localizer["UpTo5RequestsPerDay"]</li>
+                            <li class="mb-2">🔁 @Localizer["IncidentResponse1Hour"]</li>
+                            <li class="mb-2">🔄 @Localizer["ServiceDBOptimization"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Компаниям со стабильной нагрузкой и бизнес-сервисами</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">980$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StandartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">980$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="980" data-plan="Standart" data-persons="35">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -927,24 +1014,29 @@
             
             <!-- Pro тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔶 Pro</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>24/7 – круглосуточно</p>
-                        <p class="mb-3"><strong>Включено всё из Standart, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">🚨 Реакция на инциденты в режиме 24/7</li>
-                            <li class="mb-2">🧠 Персональный инженер/админ</li>
-                            <li class="mb-2">📡 Поддержка распределённых систем (VPN, кластеров)</li>
-                            <li class="mb-2">🔐 Расширенная защита (WAF, IDS, Fail2Ban)</li>
-                            <li class="mb-2">🗃️ Полное резервное копирование и восстановление</li>
-                            <li class="mb-2">🔁 Неограниченное количество задач</li>
-                            <li class="mb-2">📞 Приоритетная поддержка (чат, Telegram)</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔶 @Localizer["Pro"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["ProWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStandartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">🚨 @Localizer["IncidentResponse247"]</li>
+                            <li class="mb-2">🧠 @Localizer["PersonalEngineerAdmin"]</li>
+                            <li class="mb-2">📡 @Localizer["DistributedSystemsSupport"]</li>
+                            <li class="mb-2">🔐 @Localizer["AdvancedProtection"]</li>
+                            <li class="mb-2">🗃️ @Localizer["FullBackupAndRecovery"]</li>
+                            <li class="mb-2">🔁 @Localizer["UnlimitedTasks"]</li>
+                            <li class="mb-2">📞 @Localizer["PrioritySupport"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Миссии-критичные проекты, eCommerce, SaaS, финтех</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">1330$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["ProSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">1330$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="1330" data-plan="Pro" data-persons="35">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1054,45 +1146,58 @@
     <!-- Обслуживание серверов для 50 человек -->
     <div class="mt-5 pt-5 border-top">
         <div class="text-center mb-4">
-            <h3 class="display-6 fw-bold mb-3">Обслуживание серверов</h3>
-            <p class="lead text-muted mb-4">Что входит в обслуживание серверов?</p>
-            <div class="text-start mb-4" style="max-width: 800px; margin: 0 auto;">
-                <p class="mb-3">Обслуживание включает:</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2">🔧 Мониторинг и устранение технических проблем</li>
-                    <li class="mb-2">🔐 Обновления безопасности и патчи</li>
-                    <li class="mb-2">💾 Настройка резервного копирования</li>
-                    <li class="mb-2">🌐 Настройка сетевого трафика и Firewall</li>
-                    <li class="mb-2">🧰 Помощь с установкой и конфигурацией ПО</li>
-                    <li class="mb-2">⚙️ Администрирование баз данных (SQL, Mongo и др.)</li>
-                    <li class="mb-2">👥 Управление пользователями и доступами</li>
-                    <li class="mb-2">📈 Мониторинг ресурсов (CPU, RAM, HDD, трафик)</li>
-                    <li class="mb-2">📡 Настройка VPN, RDP, Proxy, портов и туннелей</li>
-                    <li class="mb-2">📁 Восстановление после сбоев, DDoS-атаки</li>
-                    <li class="mb-2">✍️ Консультации и техническая поддержка</li>
-                </ul>
+            <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
+            <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
+            <div class="text-start mb-4" style="max-width: 900px; margin: 0 auto;">
+                <p class="mb-3">@Localizer["MaintenanceIncludes"]</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">🔧 @Localizer["MonitoringAndTroubleshooting"]</li>
+                            <li class="mb-2">🔐 @Localizer["SecurityUpdatesAndPatches"]</li>
+                            <li class="mb-2">💾 @Localizer["BackupConfiguration"]</li>
+                            <li class="mb-2">🌐 @Localizer["NetworkTrafficAndFirewall"]</li>
+                            <li class="mb-2">🧰 @Localizer["SoftwareInstallationAndConfig"]</li>
+                            <li class="mb-2">⚙️ @Localizer["DatabaseAdministration"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">👥 @Localizer["UserAndAccessManagement"]</li>
+                            <li class="mb-2">📈 @Localizer["ResourceMonitoring"]</li>
+                            <li class="mb-2">📡 @Localizer["VPNRDPProxyConfiguration"]</li>
+                            <li class="mb-2">📁 @Localizer["RecoveryAfterFailures"]</li>
+                            <li class="mb-2">✍️ @Localizer["ConsultationsAndSupport"]</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="row g-4">
             <!-- Start тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔹 Start</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>4 часа в день<br>(с 9:00 до 13:00 или с 14:00 до 18:00, по выбору)</p>
-                        <p class="mb-3"><strong>Включено:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📊 Базовый мониторинг состояния сервера</li>
-                            <li class="mb-2">🔄 Обновления ОС и безопасности 1 раз в неделю</li>
-                            <li class="mb-2">🔒 Настройка Firewall, SSH, RDP и базовой защиты</li>
-                            <li class="mb-2">🧰 Установка 1–2 приложений/месяц</li>
-                            <li class="mb-2">🧑‍💻 Техподдержка по заявкам в рабочее время</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔹 @Localizer["Start"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["Included"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📊 @Localizer["BasicServerMonitoring"]</li>
+                            <li class="mb-2">🔄 @Localizer["WeeklyOSUpdates"]</li>
+                            <li class="mb-2">🔒 @Localizer["FirewallSSHRDPSetup"]</li>
+                            <li class="mb-2">🧰 @Localizer["Installation12AppsPerMonth"]</li>
+                            <li class="mb-2">🧑‍💻 @Localizer["TechSupportDuringHours"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Малый бизнес, стартапы, тестовые сервера</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">750$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">750$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="750" data-plan="Start" data-persons="50">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1100,22 +1205,27 @@
             
             <!-- Standart тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔸 Standart</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>9 часов в день (с 9:00 до 18:00)</p>
-                        <p class="mb-3"><strong>Включено всё из Start, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">📈 Продвинутый мониторинг и алерты</li>
-                            <li class="mb-2">📦 Помощь с деплоем и CI/CD пайплайнами</li>
-                            <li class="mb-2">🧑‍💼 До 5 заявок/действий в день</li>
-                            <li class="mb-2">🔁 Реакция на инциденты в течение 1 часа</li>
-                            <li class="mb-2">🔄 Оптимизация работы сервисов/БД</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔸 @Localizer["Standart"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["StandartWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">📈 @Localizer["AdvancedMonitoringAndAlerts"]</li>
+                            <li class="mb-2">📦 @Localizer["DeploymentAndCICDHelp"]</li>
+                            <li class="mb-2">🧑‍💼 @Localizer["UpTo5RequestsPerDay"]</li>
+                            <li class="mb-2">🔁 @Localizer["IncidentResponse1Hour"]</li>
+                            <li class="mb-2">🔄 @Localizer["ServiceDBOptimization"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Компаниям со стабильной нагрузкой и бизнес-сервисами</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">1250$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["StandartSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">1250$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="1250" data-plan="Standart" data-persons="50">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1123,24 +1233,29 @@
             
             <!-- Pro тариф -->
             <div class="col-12 col-md-4">
-                <div class="card h-100 servers-maintenance-card" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold mb-3 text-center">🔶 Pro</h4>
-                        <p class="mb-3"><strong>⏰ Время работы:</strong><br>24/7 – круглосуточно</p>
-                        <p class="mb-3"><strong>Включено всё из Standart, плюс:</strong></p>
-                        <ul class="list-unstyled mb-3">
-                            <li class="mb-2">🚨 Реакция на инциденты в режиме 24/7</li>
-                            <li class="mb-2">🧠 Персональный инженер/админ</li>
-                            <li class="mb-2">📡 Поддержка распределённых систем (VPN, кластеров)</li>
-                            <li class="mb-2">🔐 Расширенная защита (WAF, IDS, Fail2Ban)</li>
-                            <li class="mb-2">🗃️ Полное резервное копирование и восстановление</li>
-                            <li class="mb-2">🔁 Неограниченное количество задач</li>
-                            <li class="mb-2">📞 Приоритетная поддержка (чат, Telegram)</li>
+                <div class="card h-100 servers-maintenance-card d-flex flex-column" style="border: 2px solid #0d6efd; background: linear-gradient(135deg, #e7f1ff 0%, #cfe2ff 100%);">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h4 class="card-title fw-bold mb-3 text-center">🔶 @Localizer["Pro"]</h4>
+                        <p class="mb-3"><strong>⏰ @Localizer["WorkingHours"]:</strong><br>@Localizer["ProWorkingHours"]</p>
+                        <p class="mb-3"><strong>@Localizer["IncludedAllFromStandartPlus"]:</strong></p>
+                        <ul class="list-unstyled mb-3 flex-grow-1">
+                            <li class="mb-2">🚨 @Localizer["IncidentResponse247"]</li>
+                            <li class="mb-2">🧠 @Localizer["PersonalEngineerAdmin"]</li>
+                            <li class="mb-2">📡 @Localizer["DistributedSystemsSupport"]</li>
+                            <li class="mb-2">🔐 @Localizer["AdvancedProtection"]</li>
+                            <li class="mb-2">🗃️ @Localizer["FullBackupAndRecovery"]</li>
+                            <li class="mb-2">🔁 @Localizer["UnlimitedTasks"]</li>
+                            <li class="mb-2">📞 @Localizer["PrioritySupport"]</li>
                         </ul>
-                        <p class="mb-3"><strong>Кому подходит:</strong><br>Миссии-критичные проекты, eCommerce, SaaS, финтех</p>
-                        <div class="text-center mt-4">
-                            <span class="display-5 fw-bold text-primary">1750$</span>
-                            <span class="text-muted">/ @Localizer["Month"]</span>
+                        <p class="mb-3"><strong>@Localizer["SuitableFor"]:</strong><br>@Localizer["ProSuitableFor"]</p>
+                        <div class="mt-auto pt-3">
+                            <div class="text-center mb-3">
+                                <span class="display-5 fw-bold text-primary">1750$</span>
+                                <span class="text-muted">/ @Localizer["Month"]</span>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 maintenance-add-to-cart" data-price="1750" data-plan="Pro" data-persons="50">
+                                @Localizer["AddToCart"]
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1419,6 +1534,69 @@
                 }
                 form.dataset.includeSetup = 'false';
             }
+        });
+    });
+    
+    // Обработка кнопок добавления услуг обслуживания в корзину
+    document.querySelectorAll('.maintenance-add-to-cart').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const price = parseFloat(this.dataset.price || '0');
+            const plan = this.dataset.plan || '';
+            const persons = this.dataset.persons || '';
+            const buttonElement = this;
+            
+            // Получаем токен CSRF
+            const token = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (!token) {
+                alert('Ошибка безопасности. Пожалуйста, обновите страницу.');
+                return;
+            }
+            
+            // Отключаем кнопку на время запроса
+            buttonElement.disabled = true;
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = 'Добавление...';
+            
+            // Создаем данные для отправки
+            const formData = new FormData();
+            formData.append('__RequestVerificationToken', token.value);
+            formData.append('serviceName', 'Server Maintenance ' + plan + ' for ' + persons + ' persons');
+            formData.append('price', price);
+            formData.append('plan', plan);
+            formData.append('persons', persons);
+            
+            // Отправляем AJAX запрос
+            fetch('/Cart/AddMaintenanceService', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'RequestVerificationToken': token.value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Показываем уведомление об успехе
+                    alert(data.message || 'Услуга добавлена в корзину');
+                    // Можно обновить счетчик корзины, если он есть
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        const currentCount = parseInt(cartCount.textContent) || 0;
+                        cartCount.textContent = currentCount + 1;
+                    }
+                } else {
+                    alert(data.message || 'Ошибка при добавлении в корзину');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Произошла ошибка при добавлении в корзину');
+            })
+            .finally(() => {
+                // Восстанавливаем кнопку
+                buttonElement.disabled = false;
+                buttonElement.textContent = originalText;
+            });
         });
     });
 </script>

@@ -188,6 +188,63 @@ public class CartController : Controller
         }
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddMaintenanceService(string serviceName, decimal price, string plan, string persons)
+    {
+        try
+        {
+            // Создаем или находим продукт для услуги обслуживания
+            var slug = $"server-maintenance-{plan.ToLower()}-{persons.Replace("-", "")}";
+            var maintenanceProduct = await _context.Products
+                .FirstOrDefaultAsync(p => p.Slug == slug);
+
+            if (maintenanceProduct == null)
+            {
+                maintenanceProduct = new Product
+                {
+                    Name = serviceName,
+                    Slug = slug,
+                    Type = ProductType.VPN, // Используем VPN тип для услуг обслуживания
+                    Location = "Global",
+                    PricePerMonth = price,
+                    Configuration = $"Server Maintenance Service - {plan} plan for {persons} persons",
+                    IsAvailable = true,
+                    IsPublished = false, // Не показываем в каталоге
+                    ImageUrl = "/images/maintenance-service.png"
+                };
+                _context.Products.Add(maintenanceProduct);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                // Обновляем цену, если она изменилась
+                if (maintenanceProduct.PricePerMonth != price)
+                {
+                    maintenanceProduct.PricePerMonth = price;
+                    await _context.SaveChangesAsync();
+                }
+            }
+
+            var cart = GetCart();
+            cart.Add(new OrderItem 
+            { 
+                ProductId = maintenanceProduct.Id, 
+                ProductVariantId = null, 
+                Price = price 
+            });
+            
+            SaveCart(cart);
+
+            return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value });
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error adding maintenance service to cart: {ex.Message}");
+            return Json(new { success = false, message = GetLocalizer()["ErrorOccurred"].Value });
+        }
+    }
+
     private bool IsAjaxRequest()
     {
         return Request.Headers["X-Requested-With"] == "XMLHttpRequest" 
