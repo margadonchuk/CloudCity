@@ -268,7 +268,7 @@
     </div>
     
     <!-- Обслуживание серверов для 5-8 человек -->
-    <div class="mt-5 pt-5 border-top">
+    <div class="mt-5 pt-5 border-top servers-maintenance-section">
         <div class="text-center mb-4">
             <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
             <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
@@ -487,7 +487,7 @@
     </div>
     
     <!-- Обслуживание серверов для 15 человек -->
-    <div class="mt-5 pt-5 border-top">
+    <div class="mt-5 pt-5 border-top servers-maintenance-section">
         <div class="text-center mb-4">
             <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
             <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
@@ -706,7 +706,7 @@
     </div>
     
     <!-- Обслуживание серверов для 25 человек -->
-    <div class="mt-5 pt-5 border-top">
+    <div class="mt-5 pt-5 border-top servers-maintenance-section">
         <div class="text-center mb-4">
             <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
             <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
@@ -925,7 +925,7 @@
     </div>
     
     <!-- Обслуживание серверов для 35 человек -->
-    <div class="mt-5 pt-5 border-top">
+    <div class="mt-5 pt-5 border-top servers-maintenance-section">
         <div class="text-center mb-4">
             <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
             <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
@@ -1144,7 +1144,7 @@
     </div>
     
     <!-- Обслуживание серверов для 50 человек -->
-    <div class="mt-5 pt-5 border-top">
+    <div class="mt-5 pt-5 border-top servers-maintenance-section">
         <div class="text-center mb-4">
             <h3 class="display-6 fw-bold mb-3">@Localizer["ServerMaintenance"]</h3>
             <p class="lead text-muted mb-4">@Localizer["WhatIsIncludedInMaintenance"]</p>
@@ -1345,6 +1345,34 @@
     .servers-maintenance-card ul li {
         font-size: 0.95rem;
         line-height: 1.6;
+    }
+    
+    .servers-maintenance-section {
+        background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        margin-top: 3rem !important;
+        margin-bottom: 3rem !important;
+        box-shadow: 0 4px 15px rgba(13, 110, 253, 0.1);
+        border: 2px solid #d0e3ff !important;
+    }
+    
+    .servers-maintenance-section .border-top {
+        border-top: none !important;
+    }
+    
+    .servers-maintenance-section h3 {
+        color: #0d6efd;
+        margin-bottom: 1.5rem;
+    }
+    
+    .servers-maintenance-section .lead {
+        color: #495057;
+        font-weight: 500;
+    }
+    
+    .servers-maintenance-section ul li {
+        color: #495057;
     }
 </style>
 

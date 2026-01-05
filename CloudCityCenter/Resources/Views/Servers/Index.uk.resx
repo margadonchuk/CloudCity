@@ -123,5 +123,143 @@
   <data name="Reset" xml:space="preserve">
     <value>Скинути</value>
   </data>
+  <data name="ServerMaintenance" xml:space="preserve">
+    <value>Обслуговування серверів</value>
+  </data>
+  <data name="WhatIsIncludedInMaintenance" xml:space="preserve">
+    <value>Що входить в обслуговування серверів?</value>
+  </data>
+  <data name="MaintenanceIncludes" xml:space="preserve">
+    <value>Обслуговування включає:</value>
+  </data>
+  <data name="MonitoringAndTroubleshooting" xml:space="preserve">
+    <value>Моніторинг та усунення технічних проблем</value>
+  </data>
+  <data name="SecurityUpdatesAndPatches" xml:space="preserve">
+    <value>Оновлення безпеки та патчі</value>
+  </data>
+  <data name="BackupConfiguration" xml:space="preserve">
+    <value>Налаштування резервного копіювання</value>
+  </data>
+  <data name="NetworkTrafficAndFirewall" xml:space="preserve">
+    <value>Налаштування мережевого трафіку та Firewall</value>
+  </data>
+  <data name="SoftwareInstallationAndConfig" xml:space="preserve">
+    <value>Допомога з встановленням та конфігурацією ПЗ</value>
+  </data>
+  <data name="DatabaseAdministration" xml:space="preserve">
+    <value>Адміністрування баз даних (SQL, Mongo та ін.)</value>
+  </data>
+  <data name="UserAndAccessManagement" xml:space="preserve">
+    <value>Управління користувачами та доступами</value>
+  </data>
+  <data name="ResourceMonitoring" xml:space="preserve">
+    <value>Моніторинг ресурсів (CPU, RAM, HDD, трафік)</value>
+  </data>
+  <data name="VPNRDPProxyConfiguration" xml:space="preserve">
+    <value>Налаштування VPN, RDP, Proxy, портів та тунелів</value>
+  </data>
+  <data name="RecoveryAfterFailures" xml:space="preserve">
+    <value>Відновлення після збоїв, DDoS-атаки</value>
+  </data>
+  <data name="ConsultationsAndSupport" xml:space="preserve">
+    <value>Консультації та технічна підтримка</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Standart" xml:space="preserve">
+    <value>Standart</value>
+  </data>
+  <data name="Pro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="WorkingHours" xml:space="preserve">
+    <value>Час роботи:</value>
+  </data>
+  <data name="StartWorkingHours" xml:space="preserve">
+    <value>4 години на день (з 9:00 до 13:00 або з 14:00 до 18:00, на вибір)</value>
+  </data>
+  <data name="StandartWorkingHours" xml:space="preserve">
+    <value>9 годин на день (з 9:00 до 18:00)</value>
+  </data>
+  <data name="ProWorkingHours" xml:space="preserve">
+    <value>24/7 – цілодобово</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Включено:</value>
+  </data>
+  <data name="IncludedAllFromStartPlus" xml:space="preserve">
+    <value>Включено все з Start, плюс:</value>
+  </data>
+  <data name="IncludedAllFromStandartPlus" xml:space="preserve">
+    <value>Включено все з Standart, плюс:</value>
+  </data>
+  <data name="BasicServerMonitoring" xml:space="preserve">
+    <value>Базовий моніторинг стану сервера</value>
+  </data>
+  <data name="WeeklyOSUpdates" xml:space="preserve">
+    <value>Оновлення ОС та безпеки 1 раз на тиждень</value>
+  </data>
+  <data name="FirewallSSHRDPSetup" xml:space="preserve">
+    <value>Налаштування Firewall, SSH, RDP та базової захисту</value>
+  </data>
+  <data name="Installation12AppsPerMonth" xml:space="preserve">
+    <value>Встановлення 1–2 додатків/місяць</value>
+  </data>
+  <data name="TechSupportDuringHours" xml:space="preserve">
+    <value>Техпідтримка за заявками в робочий час</value>
+  </data>
+  <data name="AdvancedMonitoringAndAlerts" xml:space="preserve">
+    <value>Просунутий моніторинг та алерти</value>
+  </data>
+  <data name="DeploymentAndCICDHelp" xml:space="preserve">
+    <value>Допомога з деплоєм та CI/CD пайплайнами</value>
+  </data>
+  <data name="UpTo5RequestsPerDay" xml:space="preserve">
+    <value>До 5 заявок/дій на день</value>
+  </data>
+  <data name="IncidentResponse1Hour" xml:space="preserve">
+    <value>Реакція на інциденти протягом 1 години</value>
+  </data>
+  <data name="ServiceDBOptimization" xml:space="preserve">
+    <value>Оптимізація роботи сервісів/БД</value>
+  </data>
+  <data name="IncidentResponse247" xml:space="preserve">
+    <value>Реакція на інциденти в режимі 24/7</value>
+  </data>
+  <data name="PersonalEngineerAdmin" xml:space="preserve">
+    <value>Персональний інженер/адмін</value>
+  </data>
+  <data name="DistributedSystemsSupport" xml:space="preserve">
+    <value>Підтримка розподілених систем (VPN, кластерів)</value>
+  </data>
+  <data name="AdvancedProtection" xml:space="preserve">
+    <value>Розширений захист (WAF, IDS, Fail2Ban)</value>
+  </data>
+  <data name="FullBackupAndRecovery" xml:space="preserve">
+    <value>Повне резервне копіювання та відновлення</value>
+  </data>
+  <data name="UnlimitedTasks" xml:space="preserve">
+    <value>Необмежена кількість завдань</value>
+  </data>
+  <data name="PrioritySupport" xml:space="preserve">
+    <value>Пріоритетна підтримка (чат, Telegram)</value>
+  </data>
+  <data name="SuitableFor" xml:space="preserve">
+    <value>Кому підходить:</value>
+  </data>
+  <data name="StartSuitableFor" xml:space="preserve">
+    <value>Малий бізнес, стартапи, тестові сервери</value>
+  </data>
+  <data name="StandartSuitableFor" xml:space="preserve">
+    <value>Компаніям зі стабільним навантаженням та бізнес-сервісами</value>
+  </data>
+  <data name="ProSuitableFor" xml:space="preserve">
+    <value>Місії-критичні проекти, eCommerce, SaaS, фінтех</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Додати в кошик</value>
+  </data>
 </root>
 

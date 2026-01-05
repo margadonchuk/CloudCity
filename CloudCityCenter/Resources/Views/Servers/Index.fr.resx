@@ -123,5 +123,143 @@
   <data name="Reset" xml:space="preserve">
     <value>Réinitialiser</value>
   </data>
+  <data name="ServerMaintenance" xml:space="preserve">
+    <value>Maintenance du Serveur</value>
+  </data>
+  <data name="WhatIsIncludedInMaintenance" xml:space="preserve">
+    <value>Qu'est-ce qui est inclus dans la maintenance du serveur ?</value>
+  </data>
+  <data name="MaintenanceIncludes" xml:space="preserve">
+    <value>La maintenance comprend :</value>
+  </data>
+  <data name="MonitoringAndTroubleshooting" xml:space="preserve">
+    <value>Surveillance et résolution des problèmes techniques</value>
+  </data>
+  <data name="SecurityUpdatesAndPatches" xml:space="preserve">
+    <value>Mises à jour de sécurité et correctifs</value>
+  </data>
+  <data name="BackupConfiguration" xml:space="preserve">
+    <value>Configuration de sauvegarde</value>
+  </data>
+  <data name="NetworkTrafficAndFirewall" xml:space="preserve">
+    <value>Configuration du trafic réseau et du pare-feu</value>
+  </data>
+  <data name="SoftwareInstallationAndConfig" xml:space="preserve">
+    <value>Aide à l'installation et à la configuration de logiciels</value>
+  </data>
+  <data name="DatabaseAdministration" xml:space="preserve">
+    <value>Administration de bases de données (SQL, Mongo, etc.)</value>
+  </data>
+  <data name="UserAndAccessManagement" xml:space="preserve">
+    <value>Gestion des utilisateurs et des accès</value>
+  </data>
+  <data name="ResourceMonitoring" xml:space="preserve">
+    <value>Surveillance des ressources (CPU, RAM, HDD, trafic)</value>
+  </data>
+  <data name="VPNRDPProxyConfiguration" xml:space="preserve">
+    <value>Configuration VPN, RDP, Proxy, ports et tunnels</value>
+  </data>
+  <data name="RecoveryAfterFailures" xml:space="preserve">
+    <value>Récupération après pannes, attaques DDoS</value>
+  </data>
+  <data name="ConsultationsAndSupport" xml:space="preserve">
+    <value>Consultations et support technique</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Standart" xml:space="preserve">
+    <value>Standart</value>
+  </data>
+  <data name="Pro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="WorkingHours" xml:space="preserve">
+    <value>Heures de travail :</value>
+  </data>
+  <data name="StartWorkingHours" xml:space="preserve">
+    <value>4 heures par jour (de 9h00 à 13h00 ou de 14h00 à 18h00, au choix)</value>
+  </data>
+  <data name="StandartWorkingHours" xml:space="preserve">
+    <value>9 heures par jour (de 9h00 à 18h00)</value>
+  </data>
+  <data name="ProWorkingHours" xml:space="preserve">
+    <value>24/7 - 24 heures sur 24</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Inclus :</value>
+  </data>
+  <data name="IncludedAllFromStartPlus" xml:space="preserve">
+    <value>Tout de Start, plus :</value>
+  </data>
+  <data name="IncludedAllFromStandartPlus" xml:space="preserve">
+    <value>Tout de Standart, plus :</value>
+  </data>
+  <data name="BasicServerMonitoring" xml:space="preserve">
+    <value>Surveillance de base de l'état du serveur</value>
+  </data>
+  <data name="WeeklyOSUpdates" xml:space="preserve">
+    <value>Mises à jour du système d'exploitation et de sécurité une fois par semaine</value>
+  </data>
+  <data name="FirewallSSHRDPSetup" xml:space="preserve">
+    <value>Configuration du pare-feu, SSH, RDP et protection de base</value>
+  </data>
+  <data name="Installation12AppsPerMonth" xml:space="preserve">
+    <value>Installation de 1-2 applications/mois</value>
+  </data>
+  <data name="TechSupportDuringHours" xml:space="preserve">
+    <value>Support technique sur demande pendant les heures de travail</value>
+  </data>
+  <data name="AdvancedMonitoringAndAlerts" xml:space="preserve">
+    <value>Surveillance avancée et alertes</value>
+  </data>
+  <data name="DeploymentAndCICDHelp" xml:space="preserve">
+    <value>Aide au déploiement et aux pipelines CI/CD</value>
+  </data>
+  <data name="UpTo5RequestsPerDay" xml:space="preserve">
+    <value>Jusqu'à 5 demandes/actions par jour</value>
+  </data>
+  <data name="IncidentResponse1Hour" xml:space="preserve">
+    <value>Réponse aux incidents en 1 heure</value>
+  </data>
+  <data name="ServiceDBOptimization" xml:space="preserve">
+    <value>Optimisation des services/BD</value>
+  </data>
+  <data name="IncidentResponse247" xml:space="preserve">
+    <value>Réponse aux incidents en mode 24/7</value>
+  </data>
+  <data name="PersonalEngineerAdmin" xml:space="preserve">
+    <value>Ingénieur/administrateur personnel</value>
+  </data>
+  <data name="DistributedSystemsSupport" xml:space="preserve">
+    <value>Support pour systèmes distribués (VPN, clusters)</value>
+  </data>
+  <data name="AdvancedProtection" xml:space="preserve">
+    <value>Protection avancée (WAF, IDS, Fail2Ban)</value>
+  </data>
+  <data name="FullBackupAndRecovery" xml:space="preserve">
+    <value>Sauvegarde complète et récupération</value>
+  </data>
+  <data name="UnlimitedTasks" xml:space="preserve">
+    <value>Nombre illimité de tâches</value>
+  </data>
+  <data name="PrioritySupport" xml:space="preserve">
+    <value>Support prioritaire (chat, Telegram)</value>
+  </data>
+  <data name="SuitableFor" xml:space="preserve">
+    <value>Adapté pour :</value>
+  </data>
+  <data name="StartSuitableFor" xml:space="preserve">
+    <value>Petites entreprises, startups, serveurs de test</value>
+  </data>
+  <data name="StandartSuitableFor" xml:space="preserve">
+    <value>Entreprises avec charge stable et services métier</value>
+  </data>
+  <data name="ProSuitableFor" xml:space="preserve">
+    <value>Projets critiques, eCommerce, SaaS, FinTech</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Ajouter au panier</value>
+  </data>
 </root>
 
