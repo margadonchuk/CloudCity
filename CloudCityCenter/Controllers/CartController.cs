@@ -319,7 +319,7 @@ public class CartController : Controller
                     Configuration = $"IT Remote Support Service - {plan} plan",
                     IsAvailable = true,
                     IsPublished = false,
-                    ImageUrl = "/images/maintenance.png" // Use maintenance.png for IT Remote Support
+                    ImageUrl = "/images/itremote.png" // Use itremote.png for IT Remote Support
                 };
                 _context.Products.Add(itRemoteProduct);
             }
@@ -343,9 +343,9 @@ public class CartController : Controller
                     hasChanges = true;
                 }
                 // Always ensure the image is set
-                if (itRemoteProduct.ImageUrl != "/images/maintenance.png")
+                if (itRemoteProduct.ImageUrl != "/images/itremote.png")
                 {
-                    itRemoteProduct.ImageUrl = "/images/maintenance.png";
+                    itRemoteProduct.ImageUrl = "/images/itremote.png";
                     hasChanges = true;
                 }
 
