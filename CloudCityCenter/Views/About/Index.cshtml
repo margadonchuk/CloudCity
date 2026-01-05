@@ -326,8 +326,8 @@
 <section id="testimonial-carousel" style="padding: 60px 5%; background-color: #f9f9f9; border-radius: 20px;">
   <h2 style="text-align: center; font-size: 2.5rem;">@Localizer["WhatClientsSay"]</h2>
 
-  <div class="carousel-container" style="overflow: hidden; width: 100%;">
-    <div class="carousel-track" style="display: flex; transition: transform 0.5s ease;">
+  <div class="carousel-container" style="overflow: hidden; width: 100%; position: relative;">
+    <div class="carousel-track" style="display: flex; transition: transform 0.6s ease-in-out; will-change: transform;">
 
       <!-- Слайд 1 -->
       <div class="testimonial-slide" style="flex: 0 0 100%; display: flex; align-items: center; gap: 30px;">
@@ -415,34 +415,143 @@
 </section>
 
 <script>
-  const track = document.querySelector('#testimonial-carousel .carousel-track');
-  const slides = document.querySelectorAll('#testimonial-carousel .testimonial-slide');
-  let index = 0;
-
-  function updateCarousel() {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
-  }, 7000); // каждые 7 секунд
-</script>
-
-<!-- CAROUSEL SCRIPTS -->
-<script>
 document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector('.carousel-track');
-    const slides = document.querySelectorAll('.testimonial-slide');
-    let index = 0;
+    const track = document.querySelector('#testimonial-carousel .carousel-track');
+    const slides = document.querySelectorAll('#testimonial-carousel .testimonial-slide');
+    
     if (!track || slides.length === 0) return;
+    
+    let currentIndex = 0;
+    let intervalId = null;
+    let isPageVisible = true;
+    let lastUpdateTime = Date.now();
+    const slideInterval = 5000; // 5 секунд для более быстрой прокрутки
+    
+    // Функция обновления карусели
     function updateCarousel() {
-        track.style.transform = `translateX(-${index * 100}%)`;
+        if (!isPageVisible) return;
+        
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        lastUpdateTime = Date.now();
     }
-    setInterval(() => {
-        index = (index + 1) % slides.length;
+    
+    // Функция перехода к следующему слайду
+    function nextSlide() {
+        if (!isPageVisible) return;
+        
+        currentIndex = (currentIndex + 1) % slides.length;
         updateCarousel();
-    }, 7000); // Автопрокрутка каждые 7 секунд
+    }
+    
+    // Обработка видимости страницы
+    function handleVisibilityChange() {
+        if (document.hidden) {
+            isPageVisible = false;
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        } else {
+            isPageVisible = true;
+            // Восстанавливаем интервал и компенсируем потерянное время
+            const timeSinceLastUpdate = Date.now() - lastUpdateTime;
+            if (timeSinceLastUpdate >= slideInterval) {
+                nextSlide();
+            }
+            startCarousel();
+        }
+    }
+    
+    // Запуск карусели
+    function startCarousel() {
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+        intervalId = setInterval(() => {
+            if (isPageVisible) {
+                nextSlide();
+            }
+        }, slideInterval);
+    }
+    
+    // Инициализация
+    updateCarousel();
+    startCarousel();
+    
+    // Слушатели событий
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // Обработка фокуса окна (для мобильных устройств)
+    window.addEventListener('focus', () => {
+        isPageVisible = true;
+        const timeSinceLastUpdate = Date.now() - lastUpdateTime;
+        if (timeSinceLastUpdate >= slideInterval) {
+            nextSlide();
+        }
+        startCarousel();
+    });
+    
+    window.addEventListener('blur', () => {
+        isPageVisible = false;
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    });
+    
+    // Обработка паузы при наведении (опционально)
+    const carouselContainer = document.querySelector('#testimonial-carousel');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            if (isPageVisible) {
+                startCarousel();
+            }
+        });
+    }
+    
+    // Обработка touch событий для мобильных
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    if (track) {
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Свайп влево - следующий слайд
+                currentIndex = (currentIndex + 1) % slides.length;
+            } else {
+                // Свайп вправо - предыдущий слайд
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            }
+            updateCarousel();
+            
+            // Перезапускаем интервал после свайпа
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+            startCarousel();
+        }
+    }
 });
 </script>
 
