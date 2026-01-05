@@ -377,6 +377,7 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-Requested-With': 'XMLHttpRequest',
                             'RequestVerificationToken': token
                         },
                         body: new URLSearchParams({
@@ -384,36 +385,88 @@
                             price: price,
                             plan: plan,
                             __RequestVerificationToken: token
-                        })
+                        }),
+                        credentials: 'same-origin'
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Network response was not ok');
+                    })
                     .then(data => {
                         if (data.success) {
-                            if (window.showToast) {
-                                window.showToast(data.message, 'success');
+                            // Обновляем счетчики корзины (та же логика, что и для других товаров)
+                            const cartCountEl = document.getElementById('cart-count');
+                            const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
+                            const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
+                            const cartCountMobileMenuEl = document.getElementById('cart-count-mobile');
+                            
+                            const itemsAdded = data.itemsAdded || 1;
+                            
+                            if (cartCountEl) {
+                                let count = parseInt(cartCountEl.textContent || '0', 10);
+                                count += itemsAdded;
+                                cartCountEl.textContent = count;
+                                cartCountEl.style.display = count > 0 ? 'inline-block' : 'none';
                             }
                             
-                            // Обновляем счетчик корзины
-                            if (data.itemsAdded && data.itemsAdded > 0) {
-                                const cartCountElement = document.querySelector('.cart-count, [data-cart-count]');
-                                if (cartCountElement) {
-                                    const currentCount = parseInt(cartCountElement.textContent) || 0;
-                                    cartCountElement.textContent = currentCount + data.itemsAdded;
-                                }
+                            if (cartCountMobileEl) {
+                                let count = parseInt(cartCountMobileEl.textContent || '0', 10);
+                                count += itemsAdded;
+                                cartCountMobileEl.textContent = count;
+                                cartCountMobileEl.style.display = count > 0 ? 'inline-block' : 'none';
                             }
-                        } else {
+                            
+                            if (cartCountOffcanvasEl) {
+                                let count = parseInt(cartCountOffcanvasEl.textContent || '0', 10);
+                                count += itemsAdded;
+                                cartCountOffcanvasEl.textContent = count;
+                                cartCountOffcanvasEl.style.display = count > 0 ? 'inline-block' : 'none';
+                            }
+                            
+                            if (cartCountMobileMenuEl) {
+                                let count = parseInt(cartCountMobileMenuEl.textContent || '0', 10);
+                                count += itemsAdded;
+                                cartCountMobileMenuEl.textContent = count;
+                                cartCountMobileMenuEl.style.display = count > 0 ? 'inline-flex' : 'none';
+                            }
+                            
+                            // Показываем уведомление об успехе
+                            const successMessage = data.message || window.cartLocalization?.productAddedToCart || 'Product successfully added to cart!';
                             if (window.showToast) {
-                                window.showToast(data.message || '@Localizer["ErrorOccurred"]', 'error');
+                                window.showToast(successMessage, 'success');
                             }
+                            
+                            // Визуальная обратная связь на кнопке
+                            const addedText = window.cartLocalization?.added || 'Added!';
+                            buttonElement.innerHTML = '<i class="bi bi-check-circle me-2"></i>' + addedText;
+                            buttonElement.classList.remove('btn-primary');
+                            buttonElement.classList.add('btn-success');
+                            
+                            // Возвращаем исходное состояние через 2 секунды
+                            setTimeout(() => {
+                                buttonElement.innerHTML = originalText;
+                                buttonElement.classList.remove('btn-success');
+                                buttonElement.classList.add('btn-primary');
+                                buttonElement.disabled = false;
+                            }, 2000);
+                        } else {
+                            // Обработка ошибки
+                            const errorMessage = data.message || window.cartLocalization?.errorAddingToCart || '@Localizer["ErrorOccurred"]';
+                            if (window.showToast) {
+                                window.showToast(errorMessage, 'danger');
+                            }
+                            buttonElement.disabled = false;
+                            buttonElement.textContent = originalText;
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                        const errorMessage = window.cartLocalization?.errorOccurred || '@Localizer["ErrorOccurred"]';
                         if (window.showToast) {
-                            window.showToast('@Localizer["ErrorOccurred"]', 'error');
+                            window.showToast(errorMessage, 'danger');
                         }
-                    })
-                    .finally(() => {
                         buttonElement.disabled = false;
                         buttonElement.textContent = originalText;
                     });
