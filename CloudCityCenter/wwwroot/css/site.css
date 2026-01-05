@@ -3435,6 +3435,8 @@ body {
   justify-content: flex-start;
   display: flex;
   align-items: center;
+  overflow: visible;
+  flex-wrap: nowrap;
 }
 
 .navbar-nav-right {
@@ -8876,14 +8878,14 @@ body {
   justify-content: flex-start;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   min-width: 0;
-  flex-shrink: 1;
-  padding-right: 10px;
+  flex-shrink: 0;
+  padding-right: 8px;
   position: relative;
   z-index: 2;
-  overflow: hidden;
-  max-width: 38%;
+  overflow: visible;
+  max-width: 50%;
 }
 
 .navbar-nav-left .nav-item {
@@ -8892,9 +8894,10 @@ body {
 }
 
 .navbar-nav-left .nav-link {
-  padding: 8px 12px;
-  font-size: 0.85rem;
-  margin: 0 2px;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  margin: 0 1px;
+  white-space: nowrap;
 }
 
 /* Соцсети по центру (десктоп) */
