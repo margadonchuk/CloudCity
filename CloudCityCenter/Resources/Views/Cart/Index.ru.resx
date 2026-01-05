@@ -81,5 +81,11 @@
   <data name="OneTimePaymentDescription" xml:space="preserve">
     <value>Это единоразовая оплата за услугу настройки и установки</value>
   </data>
+  <data name="CartCleared" xml:space="preserve">
+    <value>Корзина успешно очищена</value>
+  </data>
+  <data name="Clearing" xml:space="preserve">
+    <value>Очистка...</value>
+  </data>
 </root>
 

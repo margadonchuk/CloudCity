@@ -98,9 +98,9 @@
                 <a asp-controller="Servers" asp-action="Index" class="btn btn-outline-primary btn-lg">
                   <i class="bi bi-arrow-left me-2"></i>@Localizer["ContinueShopping"]
                 </a>
-                <form asp-action="Clear" method="post" class="d-inline">
+                <form asp-action="Clear" method="post" class="d-inline clear-cart-form" data-ajax="true">
                   @Html.AntiForgeryToken()
-                  <button type="submit" class="btn btn-outline-danger btn-lg" onclick="return confirm('@Localizer["ClearCartConfirm"]');">
+                  <button type="submit" class="btn btn-outline-danger btn-lg">
                     <i class="bi bi-x-circle me-2"></i>@Localizer["ClearCart"]
                   </button>
                 </form>
@@ -169,3 +169,99 @@
     }
   </div>
 </section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработчик для формы очистки корзины
+            const clearCartForm = document.querySelector('.clear-cart-form');
+            if (clearCartForm && clearCartForm.dataset.ajax === 'true') {
+                clearCartForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const submitButton = clearCartForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton ? submitButton.innerHTML : '';
+                    
+                    // Отключаем кнопку и показываем индикатор загрузки
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>@Localizer["Clearing"]...';
+                    }
+                    
+                    try {
+                        const formData = new FormData(clearCartForm);
+                        
+                        const response = await fetch(clearCartForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+                            body: formData,
+                            credentials: 'same-origin'
+                        });
+                        
+                        if (response.ok) {
+                            const result = await response.json();
+                            
+                            // Обновляем счетчики корзины на 0
+                            const cartCountEl = document.getElementById('cart-count');
+                            const cartCountMobileEl = document.getElementById('cart-count-mobile-header');
+                            const cartCountOffcanvasEl = document.getElementById('cart-count-offcanvas');
+                            const cartCountMobileMenuEl = document.getElementById('cart-count-mobile');
+                            
+                            if (cartCountEl) {
+                                cartCountEl.textContent = '0';
+                                cartCountEl.style.display = 'none';
+                            }
+                            
+                            if (cartCountMobileEl) {
+                                cartCountMobileEl.textContent = '0';
+                                cartCountMobileEl.style.display = 'none';
+                            }
+                            
+                            if (cartCountOffcanvasEl) {
+                                cartCountOffcanvasEl.textContent = '0';
+                                cartCountOffcanvasEl.style.display = 'none';
+                            }
+                            
+                            if (cartCountMobileMenuEl) {
+                                cartCountMobileMenuEl.textContent = '0';
+                                cartCountMobileMenuEl.style.display = 'none';
+                            }
+                            
+                            // Показываем уведомление об успехе
+                            if (window.showToast) {
+                                window.showToast(result.message || '@Localizer["CartCleared"]', 'success');
+                            }
+                            
+                            // Обновляем страницу через небольшую задержку для показа уведомления
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 500);
+                        } else {
+                            // Обработка ошибки
+                            const errorMessage = window.cartLocalization?.errorOccurred || '@Localizer["ErrorOccurred"]';
+                            if (window.showToast) {
+                                window.showToast(errorMessage, 'danger');
+                            }
+                            if (submitButton) {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = originalButtonText;
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error clearing cart:', error);
+                        const errorMessage = window.cartLocalization?.errorOccurred || '@Localizer["ErrorOccurred"]';
+                        if (window.showToast) {
+                            window.showToast(errorMessage, 'danger');
+                        }
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = originalButtonText;
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}

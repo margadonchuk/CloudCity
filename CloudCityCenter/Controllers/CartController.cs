@@ -509,6 +509,13 @@ public class CartController : Controller
     public IActionResult Clear()
     {
         HttpContext.Session.Remove(CartSessionKey);
+        
+        // Проверяем, является ли это AJAX запросом
+        if (IsAjaxRequest())
+        {
+            return Json(new { success = true, message = GetLocalizer()["CartCleared"].Value });
+        }
+        
         return RedirectToAction(nameof(Index));
     }
 

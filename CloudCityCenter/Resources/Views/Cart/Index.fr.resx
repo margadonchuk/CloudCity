@@ -78,5 +78,11 @@
   <data name="OneTimePaymentDescription" xml:space="preserve">
     <value>Il s'agit d'un paiement unique pour le service de configuration et d'installation</value>
   </data>
+  <data name="CartCleared" xml:space="preserve">
+    <value>Panier vidé avec succès</value>
+  </data>
+  <data name="Clearing" xml:space="preserve">
+    <value>Vidage...</value>
+  </data>
 </root>
 
