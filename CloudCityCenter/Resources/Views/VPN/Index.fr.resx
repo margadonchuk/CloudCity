@@ -195,5 +195,134 @@
   <data name="Linux" xml:space="preserve">
     <value>Linux</value>
   </data>
+  <data name="ITRemoteSupport" xml:space="preserve">
+    <value>IT Remote Support</value>
+  </data>
+  <data name="ITRemoteSupportWhatIncluded" xml:space="preserve">
+    <value>🧩 Qu'est-ce qui est inclus dans le service IT Remote ?</value>
+  </data>
+  <data name="ITRemoteSupportFeature1" xml:space="preserve">
+    <value>🧑‍💻 Assistance à distance aux utilisateurs (via TeamViewer/Anydesk)</value>
+  </data>
+  <data name="ITRemoteSupportFeature2" xml:space="preserve">
+    <value>🛠️ Configuration de PC, imprimantes, scanners, logiciels, e-mail et clouds</value>
+  </data>
+  <data name="ITRemoteSupportFeature3" xml:space="preserve">
+    <value>🔐 Antivirus, sécurité, VPN, chiffrement, accès à distance</value>
+  </data>
+  <data name="ITRemoteSupportFeature4" xml:space="preserve">
+    <value>🧵 Gestion des droits utilisateurs, AD/LDAP, systèmes de fichiers</value>
+  </data>
+  <data name="ITRemoteSupportFeature5" xml:space="preserve">
+    <value>⚙️ Consultations et support technique : des tâches simples aux situations non standard</value>
+  </data>
+  <data name="ITRemoteSupportFeature6" xml:space="preserve">
+    <value>🧾 Gestion de la documentation, contrôle de l'inventaire des équipements</value>
+  </data>
+  <data name="ITRemoteSupportFeature7" xml:space="preserve">
+    <value>🔧 Diagnostic à distance des problèmes et dépannage</value>
+  </data>
+  <data name="ITRemoteSupportPlans" xml:space="preserve">
+    <value>💼 Tarifs :</value>
+  </data>
+  <data name="ITRemoteSupportStartSupportTime" xml:space="preserve">
+    <value>Lun-Ven, 4 heures par jour (de 9h00 à 13h00 ou 14h00 à 18h00)</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded1" xml:space="preserve">
+    <value>🧑‍💻 Support pour jusqu'à 5 employés</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded2" xml:space="preserve">
+    <value>🛠️ Jusqu'à 5 demandes par mois</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded3" xml:space="preserve">
+    <value>📥 Configuration de l'e-mail, impression, lecteurs réseau</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded4" xml:space="preserve">
+    <value>🔐 Aide avec VPN/accès au bureau à distance</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded5" xml:space="preserve">
+    <value>📄 Gestion simple de la documentation IT</value>
+  </data>
+  <data name="ITRemoteSupportStartSuitableFor" xml:space="preserve">
+    <value>Freelances, petits bureaux, startups</value>
+  </data>
+  <data name="ITRemoteSupportStandartSupportTime" xml:space="preserve">
+    <value>Lun-Ven, 9 heures (de 9h00 à 18h00)</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded1" xml:space="preserve">
+    <value>👥 Support pour jusqu'à 15 employés</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded2" xml:space="preserve">
+    <value>📡 Configuration de routeurs, NAS, téléphonie IP</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded3" xml:space="preserve">
+    <value>🧩 Intégrations avec Google Workspace, Microsoft 365</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded4" xml:space="preserve">
+    <value>💻 Installation et configuration de logiciels sur demande</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded5" xml:space="preserve">
+    <value>🧠 Formation des employés (de base)</value>
+  </data>
+  <data name="ITRemoteSupportStandartSuitableFor" xml:space="preserve">
+    <value>Bureaux jusqu'à 20 personnes, moyenne entreprise</value>
+  </data>
+  <data name="ITRemoteSupportProSupportTime" xml:space="preserve">
+    <value>24/7 - 24 heures sur 24, y compris les week-ends</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded1" xml:space="preserve">
+    <value>👥 Support illimité par nombre d'employés</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded2" xml:space="preserve">
+    <value>🧠 Support SLA et réponse prioritaire</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded3" xml:space="preserve">
+    <value>🔐 Connexion via tunnels sécurisés et VDI</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded4" xml:space="preserve">
+    <value>⚙️ Audit complet de l'infrastructure IT</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded5" xml:space="preserve">
+    <value>🧾 Gestion de l'inventaire des équipements, rapports réguliers</value>
+  </data>
+  <data name="ITRemoteSupportProSuitableFor" xml:space="preserve">
+    <value>Grandes entreprises nécessitant un fonctionnement ininterrompu 24/7</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Ajouter au panier</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Standart" xml:space="preserve">
+    <value>Standart</value>
+  </data>
+  <data name="Pro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="WorkingHours" xml:space="preserve">
+    <value>Heures de travail:</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Inclus:</value>
+  </data>
+  <data name="SuitableFor" xml:space="preserve">
+    <value>Adapté pour:</value>
+  </data>
+  <data name="ITRemoteSupportStart" xml:space="preserve">
+    <value>IT Remote Support Start</value>
+  </data>
+  <data name="ITRemoteSupportStandart" xml:space="preserve">
+    <value>IT Remote Support Standart</value>
+  </data>
+  <data name="ITRemoteSupportPro" xml:space="preserve">
+    <value>IT Remote Support Pro</value>
+  </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Ajout en cours...</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Une erreur s'est produite</value>
+  </data>
 </root>
 

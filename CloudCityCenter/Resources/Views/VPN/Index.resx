@@ -192,5 +192,134 @@
   <data name="Linux" xml:space="preserve">
     <value>Linux</value>
   </data>
+  <data name="ITRemoteSupport" xml:space="preserve">
+    <value>IT Remote Support</value>
+  </data>
+  <data name="ITRemoteSupportWhatIncluded" xml:space="preserve">
+    <value>What is included in IT Remote service?</value>
+  </data>
+  <data name="ITRemoteSupportFeature1" xml:space="preserve">
+    <value>Remote user assistance (via TeamViewer/Anydesk)</value>
+  </data>
+  <data name="ITRemoteSupportFeature2" xml:space="preserve">
+    <value>PC, printer, scanner, software, email and cloud setup</value>
+  </data>
+  <data name="ITRemoteSupportFeature3" xml:space="preserve">
+    <value>Antivirus, security, VPN, encryption, remote access</value>
+  </data>
+  <data name="ITRemoteSupportFeature4" xml:space="preserve">
+    <value>User rights management, AD/LDAP, file systems</value>
+  </data>
+  <data name="ITRemoteSupportFeature5" xml:space="preserve">
+    <value>Consultations and tech support: from simple tasks to non-standard situations</value>
+  </data>
+  <data name="ITRemoteSupportFeature6" xml:space="preserve">
+    <value>Documentation management, equipment inventory control</value>
+  </data>
+  <data name="ITRemoteSupportFeature7" xml:space="preserve">
+    <value>Remote problem diagnosis and troubleshooting</value>
+  </data>
+  <data name="ITRemoteSupportPlans" xml:space="preserve">
+    <value>Plans:</value>
+  </data>
+  <data name="ITRemoteSupportStartSupportTime" xml:space="preserve">
+    <value>Mon-Fri, 4 hours a day (from 9:00 to 13:00 or 14:00 to 18:00)</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded1" xml:space="preserve">
+    <value>Support for up to 5 employees</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded2" xml:space="preserve">
+    <value>Up to 5 requests per month</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded3" xml:space="preserve">
+    <value>Email, printing, network drives setup</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded4" xml:space="preserve">
+    <value>Help with VPN/remote desktop access</value>
+  </data>
+  <data name="ITRemoteSupportStartIncluded5" xml:space="preserve">
+    <value>Simple IT documentation management</value>
+  </data>
+  <data name="ITRemoteSupportStartSuitableFor" xml:space="preserve">
+    <value>Freelancers, small offices, startups</value>
+  </data>
+  <data name="ITRemoteSupportStandartSupportTime" xml:space="preserve">
+    <value>Mon-Fri, 9 hours (from 9:00 to 18:00)</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded1" xml:space="preserve">
+    <value>Support for up to 15 employees</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded2" xml:space="preserve">
+    <value>Router, NAS, IP telephony setup</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded3" xml:space="preserve">
+    <value>Integrations with Google Workspace, Microsoft 365</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded4" xml:space="preserve">
+    <value>Software installation and setup on request</value>
+  </data>
+  <data name="ITRemoteSupportStandartIncluded5" xml:space="preserve">
+    <value>Employee training (basic)</value>
+  </data>
+  <data name="ITRemoteSupportStandartSuitableFor" xml:space="preserve">
+    <value>Offices up to 20 people, medium business</value>
+  </data>
+  <data name="ITRemoteSupportProSupportTime" xml:space="preserve">
+    <value>24/7 - round the clock, including weekends</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded1" xml:space="preserve">
+    <value>Unlimited support by number of employees</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded2" xml:space="preserve">
+    <value>SLA support and priority response</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded3" xml:space="preserve">
+    <value>Connection via secure tunnels and VDI</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded4" xml:space="preserve">
+    <value>Full IT infrastructure audit</value>
+  </data>
+  <data name="ITRemoteSupportProIncluded5" xml:space="preserve">
+    <value>Equipment inventory management, regular reports</value>
+  </data>
+  <data name="ITRemoteSupportProSuitableFor" xml:space="preserve">
+    <value>Large companies that need uninterrupted 24/7 operation</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Add to Cart</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Standart" xml:space="preserve">
+    <value>Standart</value>
+  </data>
+  <data name="Pro" xml:space="preserve">
+    <value>Pro</value>
+  </data>
+  <data name="WorkingHours" xml:space="preserve">
+    <value>Working hours:</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Included:</value>
+  </data>
+  <data name="SuitableFor" xml:space="preserve">
+    <value>Suitable for:</value>
+  </data>
+  <data name="ITRemoteSupportStart" xml:space="preserve">
+    <value>IT Remote Support Start</value>
+  </data>
+  <data name="ITRemoteSupportStandart" xml:space="preserve">
+    <value>IT Remote Support Standart</value>
+  </data>
+  <data name="ITRemoteSupportPro" xml:space="preserve">
+    <value>IT Remote Support Pro</value>
+  </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Adding...</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
 </root>
 

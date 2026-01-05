@@ -292,6 +292,91 @@ public class CartController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddITRemoteSupport(string serviceName, decimal price, string plan)
+    {
+        try
+        {
+            var slug = $"it-remote-support-{plan.ToLower()}";
+            var itRemoteProduct = await _context.Products
+                .FirstOrDefaultAsync(p => p.Slug == slug);
+
+            if (itRemoteProduct == null)
+            {
+                // Fallback: try to find by name if slug doesn't exist (for older entries)
+                itRemoteProduct = await _context.Products
+                    .FirstOrDefaultAsync(p => p.Name == serviceName && p.Type == ProductType.VPN);
+            }
+
+            if (itRemoteProduct == null)
+            {
+                itRemoteProduct = new Product
+                {
+                    Name = serviceName,
+                    Slug = slug,
+                    Type = ProductType.VPN,
+                    Location = "Global",
+                    PricePerMonth = price,
+                    Configuration = $"IT Remote Support Service - {plan} plan",
+                    IsAvailable = true,
+                    IsPublished = false,
+                    ImageUrl = "/images/maintenance.png" // Use maintenance.png for IT Remote Support
+                };
+                _context.Products.Add(itRemoteProduct);
+            }
+            else
+            {
+                bool hasChanges = false;
+
+                if (itRemoteProduct.Slug != slug)
+                {
+                    itRemoteProduct.Slug = slug;
+                    hasChanges = true;
+                }
+                if (itRemoteProduct.Name != serviceName)
+                {
+                    itRemoteProduct.Name = serviceName;
+                    hasChanges = true;
+                }
+                if (itRemoteProduct.PricePerMonth != price)
+                {
+                    itRemoteProduct.PricePerMonth = price;
+                    hasChanges = true;
+                }
+                // Always ensure the image is set
+                if (itRemoteProduct.ImageUrl != "/images/maintenance.png")
+                {
+                    itRemoteProduct.ImageUrl = "/images/maintenance.png";
+                    hasChanges = true;
+                }
+
+                if (hasChanges)
+                {
+                    _context.Products.Update(itRemoteProduct);
+                }
+            }
+            await _context.SaveChangesAsync();
+
+            var cart = GetCart();
+            cart.Add(new OrderItem
+            {
+                ProductId = itRemoteProduct.Id,
+                ProductVariantId = null,
+                Price = price
+            });
+
+            SaveCart(cart);
+
+            return Json(new { success = true, message = GetLocalizer()["ProductAddedToCart"].Value, itemsAdded = 1 });
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error adding IT Remote Support service to cart: {ex.Message}");
+            return Json(new { success = false, message = GetLocalizer()["ErrorOccurred"].Value });
+        }
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddConfigurationService(string serviceName, decimal price, string category, string? imageUrl = null)
     {
         // Ищем или создаем продукт для услуги настройки
