@@ -196,8 +196,17 @@ public class CartController : Controller
         {
             // Создаем или находим продукт для услуги обслуживания
             var slug = $"server-maintenance-{plan.ToLower()}-{persons.Replace("-", "")}";
+            
+            // Сначала ищем по slug
             var maintenanceProduct = await _context.Products
                 .FirstOrDefaultAsync(p => p.Slug == slug);
+            
+            // Если не нашли по slug, ищем по имени (для совместимости со старыми записями)
+            if (maintenanceProduct == null)
+            {
+                maintenanceProduct = await _context.Products
+                    .FirstOrDefaultAsync(p => p.Name == serviceName && p.Type == ProductType.VPN);
+            }
 
             if (maintenanceProduct == null)
             {
@@ -218,17 +227,39 @@ public class CartController : Controller
             }
             else
             {
+                bool hasChanges = false;
+                
+                // Обновляем slug, если он не совпадает (для старых записей)
+                if (maintenanceProduct.Slug != slug)
+                {
+                    maintenanceProduct.Slug = slug;
+                    hasChanges = true;
+                }
+                
                 // Обновляем цену, если она изменилась
                 if (maintenanceProduct.PricePerMonth != price)
                 {
                     maintenanceProduct.PricePerMonth = price;
-                    await _context.SaveChangesAsync();
+                    hasChanges = true;
                 }
                 
-                // Обновляем изображение, если его нет
-                if (string.IsNullOrEmpty(maintenanceProduct.ImageUrl))
+                // Всегда обновляем изображение для услуг обслуживания
+                if (maintenanceProduct.ImageUrl != "/images/maintenance.png")
                 {
                     maintenanceProduct.ImageUrl = "/images/maintenance.png";
+                    hasChanges = true;
+                }
+                
+                // Обновляем имя, если оно изменилось
+                if (maintenanceProduct.Name != serviceName)
+                {
+                    maintenanceProduct.Name = serviceName;
+                    hasChanges = true;
+                }
+                
+                // Сохраняем изменения, если они есть
+                if (hasChanges)
+                {
                     await _context.SaveChangesAsync();
                 }
             }
