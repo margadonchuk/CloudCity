@@ -101,20 +101,57 @@ public class EmailService
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             }
             
-            await client.ConnectAsync(smtpHost, smtpPort, sslOption);
-            _logger.LogInformation("SMTP connection established");
-            
-            if (!string.IsNullOrEmpty(smtpUsername) && !string.IsNullOrEmpty(smtpPassword))
+            try
             {
-                _logger.LogInformation($"Authenticating as {smtpUsername}");
-                await client.AuthenticateAsync(smtpUsername, smtpPassword);
-                _logger.LogInformation("SMTP authentication successful");
+                _logger.LogInformation($"Attempting to connect to {smtpHost}:{smtpPort}...");
+                await client.ConnectAsync(smtpHost, smtpPort, sslOption);
+                _logger.LogInformation($"SMTP connection established. IsConnected: {client.IsConnected}, IsAuthenticated: {client.IsAuthenticated}");
+            }
+            catch (Exception connectEx)
+            {
+                _logger.LogError(connectEx, $"Failed to connect to SMTP server {smtpHost}:{smtpPort}. Error: {connectEx.Message}");
+                throw;
             }
             
-            _logger.LogInformation($"Sending email to {toEmail} with subject: {subject}");
-            await client.SendAsync(message);
-            await client.DisconnectAsync(true);
-            _logger.LogInformation("SMTP connection closed");
+            try
+            {
+                if (!string.IsNullOrEmpty(smtpUsername) && !string.IsNullOrEmpty(smtpPassword))
+                {
+                    _logger.LogInformation($"Authenticating as {smtpUsername}...");
+                    await client.AuthenticateAsync(smtpUsername, smtpPassword);
+                    _logger.LogInformation($"SMTP authentication successful. IsAuthenticated: {client.IsAuthenticated}");
+                }
+                else
+                {
+                    _logger.LogWarning("SMTP username or password is empty, skipping authentication");
+                }
+            }
+            catch (Exception authEx)
+            {
+                _logger.LogError(authEx, $"SMTP authentication failed for {smtpUsername}. Error: {authEx.Message}");
+                await client.DisconnectAsync(true);
+                throw;
+            }
+            
+            try
+            {
+                _logger.LogInformation($"Sending email to {toEmail} with subject: {subject}");
+                var response = await client.SendAsync(message);
+                _logger.LogInformation($"Email sent successfully. Response: {response}");
+            }
+            catch (Exception sendEx)
+            {
+                _logger.LogError(sendEx, $"Failed to send email. Error: {sendEx.Message}");
+                throw;
+            }
+            finally
+            {
+                if (client.IsConnected)
+                {
+                    await client.DisconnectAsync(true);
+                    _logger.LogInformation("SMTP connection closed");
+                }
+            }
 
             _logger.LogInformation($"Email sent successfully to {toEmail}");
             return true;
