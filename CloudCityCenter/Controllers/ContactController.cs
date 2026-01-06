@@ -31,26 +31,40 @@ namespace CloudCityCenter.Controllers
                     return RedirectToAction("Index");
                 }
 
-                var success = await _emailService.SendContactFormEmailAsync(
-                    name: Name,
-                    email: Email,
-                    phone: Phone,
-                    subject: null,
-                    serviceType: ServiceType,
-                    message: Message,
-                    sourcePage: "Contact"
-                );
+                // Отправляем email асинхронно (fire-and-forget), чтобы не блокировать ответ
+                // Это предотвращает 504 Gateway Time-out
+                _ = Task.Run(async () =>
+                {
+                    try
+                    {
+                        var success = await _emailService.SendContactFormEmailAsync(
+                            name: Name,
+                            email: Email,
+                            phone: Phone,
+                            subject: null,
+                            serviceType: ServiceType,
+                            message: Message,
+                            sourcePage: "Contact"
+                        );
 
-                if (success)
-                {
-                    TempData["Success"] = "Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.";
-                    _logger.LogInformation($"Contact form submitted successfully from {Name} ({Email})");
-                }
-                else
-                {
-                    TempData["Error"] = "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.";
-                    _logger.LogWarning($"Failed to send contact form email from {Name} ({Email})");
-                }
+                        if (success)
+                        {
+                            _logger.LogInformation($"Contact form email sent successfully from {Name} ({Email})");
+                        }
+                        else
+                        {
+                            _logger.LogWarning($"Failed to send contact form email from {Name} ({Email})");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Error sending contact form email from {Name} ({Email})");
+                    }
+                });
+
+                // Сразу возвращаем успешный ответ, не дожидаясь отправки email
+                TempData["Success"] = "Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.";
+                _logger.LogInformation($"Contact form submitted from {Name} ({Email}) - email sending in background");
             }
             catch (Exception ex)
             {

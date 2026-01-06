@@ -30,10 +30,15 @@ public class EmailService
             var useSsl = _configuration.GetValue<bool>("Email:UseSsl", true);
             var recipientEmail = _configuration["Email:RecipientEmail"] ?? "support@cloudcity.center";
 
+            // Детальное логирование конфигурации (без пароля)
+            _logger.LogInformation($"Email configuration: Host={smtpHost}, Port={smtpPort}, Username={smtpUsername}, SSL={useSsl}, PasswordSet={!string.IsNullOrEmpty(smtpPassword)}");
+
             // Проверка наличия обязательных параметров
             if (string.IsNullOrEmpty(smtpPassword))
             {
-                _logger.LogWarning("Email password not configured. Set Email__SmtpPassword environment variable.");
+                _logger.LogError("Email password not configured. Set Email__SmtpPassword environment variable.");
+                _logger.LogError("Available Email config keys: {Keys}", string.Join(", ", 
+                    _configuration.GetSection("Email").GetChildren().Select(c => c.Key)));
                 return false;
             }
 
@@ -72,33 +77,56 @@ public class EmailService
             // Отправка через SMTP Hostinger
             using var client = new SmtpClient();
             
+            _logger.LogInformation($"Connecting to SMTP server: {smtpHost}:{smtpPort}");
+            
             // Hostinger использует порт 465 с SSL (не StartTLS)
             SecureSocketOptions sslOption;
             if (smtpPort == 465)
             {
                 sslOption = SecureSocketOptions.SslOnConnect; // Прямое SSL соединение
+                _logger.LogInformation("Using SSL on connect (port 465)");
             }
             else
             {
                 sslOption = useSsl ? SecureSocketOptions.StartTls : SecureSocketOptions.None;
+                _logger.LogInformation($"Using {(useSsl ? "StartTLS" : "No SSL")} (port {smtpPort})");
+            }
+            
+            // Для диагностики можно временно отключить проверку сертификата
+            // ВНИМАНИЕ: Только для тестирования! В продакшене должно быть true
+            var checkCertificate = _configuration.GetValue<bool>("Email:CheckCertificate", true);
+            if (!checkCertificate)
+            {
+                _logger.LogWarning("SSL certificate validation is DISABLED. This should only be used for testing!");
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             }
             
             await client.ConnectAsync(smtpHost, smtpPort, sslOption);
+            _logger.LogInformation("SMTP connection established");
             
             if (!string.IsNullOrEmpty(smtpUsername) && !string.IsNullOrEmpty(smtpPassword))
             {
+                _logger.LogInformation($"Authenticating as {smtpUsername}");
                 await client.AuthenticateAsync(smtpUsername, smtpPassword);
+                _logger.LogInformation("SMTP authentication successful");
             }
             
+            _logger.LogInformation($"Sending email to {toEmail} with subject: {subject}");
             await client.SendAsync(message);
             await client.DisconnectAsync(true);
+            _logger.LogInformation("SMTP connection closed");
 
             _logger.LogInformation($"Email sent successfully to {toEmail}");
             return true;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Failed to send email to {toEmail}");
+            _logger.LogError(ex, $"Failed to send email to {toEmail}. Error: {ex.Message}");
+            _logger.LogError($"Stack trace: {ex.StackTrace}");
+            if (ex.InnerException != null)
+            {
+                _logger.LogError($"Inner exception: {ex.InnerException.Message}");
+            }
             return false;
         }
     }
