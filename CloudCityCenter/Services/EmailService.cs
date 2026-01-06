@@ -3,6 +3,7 @@ using MailKit.Security;
 using MimeKit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Threading;
 
 namespace CloudCityCenter.Services;
 
@@ -79,12 +80,17 @@ public class EmailService
             
             _logger.LogInformation($"Connecting to SMTP server: {smtpHost}:{smtpPort}");
             
-            // Hostinger использует порт 465 с SSL (не StartTLS)
+            // Hostinger может использовать порт 465 (SSL) или 587 (StartTLS)
             SecureSocketOptions sslOption;
             if (smtpPort == 465)
             {
                 sslOption = SecureSocketOptions.SslOnConnect; // Прямое SSL соединение
                 _logger.LogInformation("Using SSL on connect (port 465)");
+            }
+            else if (smtpPort == 587)
+            {
+                sslOption = SecureSocketOptions.StartTls; // StartTLS для порта 587
+                _logger.LogInformation("Using StartTLS (port 587)");
             }
             else
             {
@@ -104,12 +110,22 @@ public class EmailService
             try
             {
                 _logger.LogInformation($"Attempting to connect to {smtpHost}:{smtpPort}...");
-                await client.ConnectAsync(smtpHost, smtpPort, sslOption);
+                
+                // Устанавливаем таймаут для подключения (30 секунд)
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+                
+                await client.ConnectAsync(smtpHost, smtpPort, sslOption, cts.Token);
                 _logger.LogInformation($"SMTP connection established. IsConnected: {client.IsConnected}, IsAuthenticated: {client.IsAuthenticated}");
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogError($"Connection to {smtpHost}:{smtpPort} timed out after 30 seconds");
+                throw new TimeoutException($"SMTP connection timeout to {smtpHost}:{smtpPort}");
             }
             catch (Exception connectEx)
             {
                 _logger.LogError(connectEx, $"Failed to connect to SMTP server {smtpHost}:{smtpPort}. Error: {connectEx.Message}");
+                _logger.LogError($"Connection error type: {connectEx.GetType().Name}, Inner: {connectEx.InnerException?.Message}");
                 throw;
             }
             
@@ -118,7 +134,11 @@ public class EmailService
                 if (!string.IsNullOrEmpty(smtpUsername) && !string.IsNullOrEmpty(smtpPassword))
                 {
                     _logger.LogInformation($"Authenticating as {smtpUsername}...");
-                    await client.AuthenticateAsync(smtpUsername, smtpPassword);
+                    
+                    // Таймаут для аутентификации (15 секунд)
+                    using var authCts = new CancellationTokenSource(TimeSpan.FromSeconds(15));
+                    
+                    await client.AuthenticateAsync(smtpUsername, smtpPassword, authCts.Token);
                     _logger.LogInformation($"SMTP authentication successful. IsAuthenticated: {client.IsAuthenticated}");
                 }
                 else
@@ -126,9 +146,16 @@ public class EmailService
                     _logger.LogWarning("SMTP username or password is empty, skipping authentication");
                 }
             }
+            catch (OperationCanceledException)
+            {
+                _logger.LogError($"SMTP authentication timed out for {smtpUsername}");
+                await client.DisconnectAsync(true);
+                throw new TimeoutException($"SMTP authentication timeout");
+            }
             catch (Exception authEx)
             {
                 _logger.LogError(authEx, $"SMTP authentication failed for {smtpUsername}. Error: {authEx.Message}");
+                _logger.LogError($"Auth error type: {authEx.GetType().Name}, Inner: {authEx.InnerException?.Message}");
                 await client.DisconnectAsync(true);
                 throw;
             }
@@ -136,12 +163,22 @@ public class EmailService
             try
             {
                 _logger.LogInformation($"Sending email to {toEmail} with subject: {subject}");
-                var response = await client.SendAsync(message);
+                
+                // Таймаут для отправки (30 секунд)
+                using var sendCts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+                
+                var response = await client.SendAsync(message, sendCts.Token);
                 _logger.LogInformation($"Email sent successfully. Response: {response}");
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogError($"Sending email timed out");
+                throw new TimeoutException("SMTP send timeout");
             }
             catch (Exception sendEx)
             {
                 _logger.LogError(sendEx, $"Failed to send email. Error: {sendEx.Message}");
+                _logger.LogError($"Send error type: {sendEx.GetType().Name}, Inner: {sendEx.InnerException?.Message}");
                 throw;
             }
             finally
