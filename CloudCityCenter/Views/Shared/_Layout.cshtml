@@ -181,29 +181,18 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link profile-link-btn @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile">
-                                    <i class="bi bi-person-circle me-1"></i>@Localizer["Profile"]
+                                    <i class="bi bi-person-circle me-1"></i>
+                                    @{
+                                        var userName = User.Identity.Name;
+                                        // Показываем email или имя пользователя (первые 20 символов)
+                                        var displayName = !string.IsNullOrEmpty(userName) && userName.Length > 20 
+                                            ? userName.Substring(0, 20) + "..." 
+                                            : userName ?? @Localizer["Profile"];
+                                    }
+                                    <span class="d-none d-lg-inline">@displayName</span>
+                                    <span class="d-lg-none">@Localizer["Profile"]</span>
                                 </a>
                             </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["area"]?.ToString() == "Admin" ? "active" : "")" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-shield-check me-1"></i>Админ-панель
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
-                                        <li>
-                                            <a class="dropdown-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Servers" ? "active" : "")" asp-area="Admin" asp-controller="Servers" asp-action="Index">
-                                                <i class="bi bi-server me-2"></i>Серверы
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Messages" ? "active" : "")" asp-area="Admin" asp-controller="Messages" asp-action="Index">
-                                                <i class="bi bi-envelope-fill me-2"></i>Письма
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            }
                         }
                         else
                         {
@@ -298,7 +287,14 @@
                     {
                         <li class="nav-item">
                             <a class="nav-link @(currentController == "Account" ? "active" : "")" asp-area="" asp-controller="Account" asp-action="Profile" data-offcanvas-close>
-                                <i class="bi bi-person-circle me-2"></i>@Localizer["Profile"]
+                                <i class="bi bi-person-circle me-2"></i>
+                                @{
+                                    var mobileUserName = User.Identity.Name;
+                                    var mobileDisplayName = !string.IsNullOrEmpty(mobileUserName) && mobileUserName.Length > 15 
+                                        ? mobileUserName.Substring(0, 15) + "..." 
+                                        : mobileUserName ?? @Localizer["Profile"];
+                                }
+                                @mobileDisplayName
                             </a>
                         </li>
                     }
