@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<OrderItem> OrderItems { get; set; } = null!;
     public DbSet<Server> Servers { get; set; } = null!;
+    public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

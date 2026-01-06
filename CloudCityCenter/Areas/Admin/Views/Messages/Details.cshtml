@@ -1,0 +1,142 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CloudCityCenter.Models.ContactMessage
+
+@{
+    ViewData["Title"] = "Детали письма";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>
+                    <i class="bi bi-envelope-fill me-2"></i>Детали письма #@Model.Id
+                </h1>
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Назад к списку
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-@(Model.IsRead ? "success" : "warning") text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            @if (Model.IsRead)
+                            {
+                                <i class="bi bi-check-circle me-2"></i>Прочитано
+                            }
+                            else
+                            {
+                                <i class="bi bi-envelope me-2"></i>Новое письмо
+                            }
+                        </h5>
+                        <div>
+                            @if (!Model.IsRead)
+                            {
+                                <form asp-action="MarkAsRead" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@Model.Id" />
+                                    <button type="submit" class="btn btn-light btn-sm">
+                                        <i class="bi bi-check me-1"></i>Отметить как прочитанное
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-action="MarkAsUnread" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@Model.Id" />
+                                    <button type="submit" class="btn btn-light btn-sm">
+                                        <i class="bi bi-envelope me-1"></i>Отметить как непрочитанное
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6 class="text-muted">Информация о письме</h6>
+                            <hr />
+                            <dl class="row">
+                                <dt class="col-sm-4">ID:</dt>
+                                <dd class="col-sm-8">@Model.Id</dd>
+
+                                <dt class="col-sm-4">Страница источника:</dt>
+                                <dd class="col-sm-8">
+                                    <span class="badge bg-@(Model.SourcePage == "About" ? "info" : "primary")">
+                                        @Model.SourcePage
+                                    </span>
+                                </dd>
+
+                                <dt class="col-sm-4">Дата отправки:</dt>
+                                <dd class="col-sm-8">@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm:ss")</dd>
+
+                                @if (Model.IsRead && Model.ReadAt.HasValue)
+                                {
+                                    <dt class="col-sm-4">Прочитано:</dt>
+                                    <dd class="col-sm-8">@Model.ReadAt.Value.ToString("dd.MM.yyyy HH:mm:ss")</dd>
+                                }
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-muted">Контактная информация</h6>
+                            <hr />
+                            <dl class="row">
+                                <dt class="col-sm-4">Имя:</dt>
+                                <dd class="col-sm-8"><strong>@Model.Name</strong></dd>
+
+                                <dt class="col-sm-4">Email:</dt>
+                                <dd class="col-sm-8">
+                                    <a href="mailto:@Model.Email">@Model.Email</a>
+                                </dd>
+
+                                @if (!string.IsNullOrEmpty(Model.Phone))
+                                {
+                                    <dt class="col-sm-4">Телефон:</dt>
+                                    <dd class="col-sm-8">
+                                        <a href="tel:@Model.Phone">@Model.Phone</a>
+                                    </dd>
+                                }
+
+                                @if (!string.IsNullOrEmpty(Model.Subject))
+                                {
+                                    <dt class="col-sm-4">Тема:</dt>
+                                    <dd class="col-sm-8">@Model.Subject</dd>
+                                }
+
+                                @if (!string.IsNullOrEmpty(Model.ServiceType))
+                                {
+                                    <dt class="col-sm-4">Тип услуги:</dt>
+                                    <dd class="col-sm-8">@Model.ServiceType</dd>
+                                }
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted">Сообщение</h6>
+                        <hr />
+                        <div class="p-3 bg-light rounded">
+                            @Html.Raw(Model.Message.Replace("\n", "<br>"))
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>Назад к списку
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                            <i class="bi bi-trash me-1"></i>Удалить письмо
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

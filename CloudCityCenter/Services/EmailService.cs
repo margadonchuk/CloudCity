@@ -1,9 +1,13 @@
+using System;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading;
+using CloudCityCenter.Data;
+using CloudCityCenter.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudCityCenter.Services;
 
@@ -11,11 +15,13 @@ public class EmailService
 {
     private readonly IConfiguration _configuration;
     private readonly ILogger<EmailService> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public EmailService(IConfiguration configuration, ILogger<EmailService> logger)
+    public EmailService(IConfiguration configuration, ILogger<EmailService> logger, ApplicationDbContext context)
     {
         _configuration = configuration;
         _logger = logger;
+        _context = context;
     }
 
     public async Task<bool> SendEmailAsync(string toEmail, string subject, string body, string? fromName = null, string? fromEmail = null)
@@ -69,8 +75,8 @@ public class EmailService
                 _logger.LogInformation($"Reply-To set to: {fromEmail}");
             }
 
-            // Получатель
-            message.To.Add(new MailboxAddress("Support", toEmail));
+                // Получатель - всегда support@cloudcity.center
+                message.To.Add(new MailboxAddress("Support", toEmail));
 
             // Тема и тело
             message.Subject = subject;
@@ -227,6 +233,34 @@ public class EmailService
 
     public async Task<bool> SendContactFormEmailAsync(string name, string email, string? phone, string? subject, string? serviceType, string message, string sourcePage)
     {
+        // Сохраняем письмо в базу данных
+        var contactMessage = new ContactMessage
+        {
+            Name = name,
+            Email = email,
+            Phone = phone,
+            Subject = subject,
+            ServiceType = serviceType,
+            Message = message,
+            SourcePage = sourcePage,
+            CreatedAt = DateTime.UtcNow,
+            IsRead = false
+        };
+
+        try
+        {
+            _context.ContactMessages.Add(contactMessage);
+            await _context.SaveChangesAsync();
+            _logger.LogInformation($"Contact message saved to database with ID: {contactMessage.Id}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Failed to save contact message to database. Continuing with email send...");
+            // Продолжаем отправку email даже если сохранение в БД не удалось
+        }
+
+        // Письмо отправляется на support@cloudcity.center
+        // Email пользователя (7447diana@freesourcecodes.com) идет только в содержимое письма, не как получатель
         var emailSubject = $"Новая заявка с {sourcePage} - {subject ?? "Без темы"}";
         
         var emailBody = $@"
@@ -284,6 +318,8 @@ public class EmailService
 </body>
 </html>";
 
+        // Отправляем письмо на support@cloudcity.center
+        // Email пользователя (email) используется только в Reply-To и в содержимом письма
         return await SendEmailAsync("support@cloudcity.center", emailSubject, emailBody, name, email);
     }
 }
