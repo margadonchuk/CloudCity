@@ -17,6 +17,19 @@
                 }
             </h1>
 
+            <!-- Навигация по админ-панели -->
+            <div class="mb-3">
+                <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-primary">
+                    <i class="bi bi-box me-2"></i>Товары
+                </a>
+                <a asp-area="Admin" asp-controller="Users" asp-action="NewUsers" class="btn btn-info">
+                    <i class="bi bi-people me-2"></i>Новые пользователи
+                </a>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Customers" class="btn btn-success">
+                    <i class="bi bi-person-check me-2"></i>Клиенты
+                </a>
+            </div>
+
             <!-- Фильтры -->
             <div class="card mb-4">
                 <div class="card-body">
