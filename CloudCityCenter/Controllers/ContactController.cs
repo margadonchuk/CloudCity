@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using CloudCityCenter.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CloudCityCenter.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly EmailService _emailService;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<ContactController> _logger;
 
-        public ContactController(EmailService emailService, ILogger<ContactController> logger)
+        public ContactController(IServiceScopeFactory serviceScopeFactory, ILogger<ContactController> logger)
         {
-            _emailService = emailService;
+            _serviceScopeFactory = serviceScopeFactory;
             _logger = logger;
         }
 
@@ -35,11 +36,15 @@ namespace CloudCityCenter.Controllers
 
                 // Отправляем email асинхронно (fire-and-forget), чтобы не блокировать ответ
                 // Это предотвращает 504 Gateway Time-out
+                // Создаем новый scope для БД, так как Task.Run выполняется вне scope HTTP-запроса
                 _ = Task.Run(async () =>
                 {
+                    using var scope = _serviceScopeFactory.CreateScope();
+                    var emailService = scope.ServiceProvider.GetRequiredService<EmailService>();
+                    
                     try
                     {
-                        var success = await _emailService.SendContactFormEmailAsync(
+                        var success = await emailService.SendContactFormEmailAsync(
                             name: Name,
                             email: Email,
                             phone: Phone,
