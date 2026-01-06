@@ -21,7 +21,7 @@ namespace CloudCityCenter.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Submit(string Name, string Email, string Phone, string ServiceType, string Message)
+        public IActionResult Submit(string Name, string Email, string Phone, string ServiceType, string Message)
         {
             _logger.LogInformation($"Contact form Submit called. Name: {Name}, Email: {Email}, Phone: {Phone}, Message length: {Message?.Length ?? 0}");
             

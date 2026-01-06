@@ -12,7 +12,8 @@
     
     // Проверка, что ключ заменен
     if (WEB3FORMS_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        console.warn('⚠️ Web3Forms: Необходимо указать ваш API ключ в файле web3forms-handler.js');
+        console.error('❌ Web3Forms: API ключ не установлен! Получите ключ на https://web3forms.com и обновите web3forms-handler.js');
+        console.error('❌ Формы не будут работать до установки API ключа!');
     }
 
     // Инициализация всех форм с классом 'web3form'
@@ -82,13 +83,23 @@
             if (result.success) {
                 showMessage(form, 'success', 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.');
                 form.reset();
+                console.log('✅ Web3Forms: Письмо успешно отправлено');
             } else {
-                showMessage(form, 'error', 'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
-                console.error('Web3Forms error:', result);
+                const errorMsg = result.message || 'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.';
+                showMessage(form, 'error', errorMsg);
+                console.error('❌ Web3Forms error:', result);
+                console.error('Error details:', JSON.stringify(result, null, 2));
             }
-        } catch (error) {
-            showMessage(form, 'error', 'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
-            console.error('Form submission error:', error);
+        }         catch (error) {
+            const errorMsg = error.message || 'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.';
+            showMessage(form, 'error', errorMsg);
+            console.error('❌ Form submission error:', error);
+            console.error('Error stack:', error.stack);
+            
+            // Дополнительная диагностика
+            if (error.message && error.message.includes('Failed to fetch')) {
+                console.error('❌ Проблема с сетевым подключением к Web3Forms API');
+            }
         } finally {
             // Восстанавливаем кнопку
             if (submitButton) {

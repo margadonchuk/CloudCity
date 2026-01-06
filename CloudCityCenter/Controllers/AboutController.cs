@@ -21,7 +21,7 @@ public class AboutController : Controller
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Submit(string Name, string Email, string Subject, string Message)
+        public IActionResult Submit(string Name, string Email, string Subject, string Message)
         {
             try
             {

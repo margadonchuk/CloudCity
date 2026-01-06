@@ -631,7 +631,25 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <!-- Форма справа -->
-    <form class="web3form" data-source-page="About" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+    <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+      @if (TempData["Success"] != null)
+      {
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="padding: 12px; border-radius: 6px;">
+          <i class="bi bi-check-circle me-2"></i>@TempData["Success"]
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      }
+      
+      @if (TempData["Error"] != null)
+      {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="padding: 12px; border-radius: 6px;">
+          <i class="bi bi-exclamation-circle me-2"></i>@TempData["Error"]
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      }
+      
+      <form asp-controller="About" asp-action="Submit" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+      @Html.AntiForgeryToken()
       <input type="text" name="Name" placeholder="@Localizer["YourName"]" required
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
       <input type="email" name="Email" placeholder="@Localizer["YourEmail"]" required
@@ -643,7 +661,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <button type="submit" style="background-color: #0b1c49; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer;">
         @Localizer["SendMessage"]
       </button>
-    </form>
+      </form>
+    </div>
 
   </div>
 </section>
