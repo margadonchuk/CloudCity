@@ -51,18 +51,22 @@ public class EmailService
 
             var message = new MimeMessage();
             
-            // Отправитель
-            if (!string.IsNullOrEmpty(fromEmail) && !string.IsNullOrEmpty(fromName))
-            {
-                message.From.Add(new MailboxAddress(fromName, fromEmail));
-            }
-            else if (!string.IsNullOrEmpty(smtpUsername))
+            // Отправитель - ВСЕГДА используем SMTP username (support@cloudcity.center)
+            // Hostinger не позволяет отправлять от другого адреса
+            if (!string.IsNullOrEmpty(smtpUsername))
             {
                 message.From.Add(new MailboxAddress("CloudCity Center", smtpUsername));
             }
             else
             {
-                message.From.Add(new MailboxAddress("CloudCity Center", "noreply@cloudcity.center"));
+                message.From.Add(new MailboxAddress("CloudCity Center", "support@cloudcity.center"));
+            }
+
+            // Reply-To - здесь указываем email пользователя, если он указан
+            if (!string.IsNullOrEmpty(fromEmail))
+            {
+                message.ReplyTo.Add(new MailboxAddress(fromName ?? "User", fromEmail));
+                _logger.LogInformation($"Reply-To set to: {fromEmail}");
             }
 
             // Получатель
