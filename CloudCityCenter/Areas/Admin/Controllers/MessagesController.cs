@@ -26,7 +26,17 @@ public class MessagesController : Controller
     // GET: Admin/Messages
     public async Task<IActionResult> Index(string? sourcePage = null, bool? unreadOnly = null)
     {
-        var query = _context.ContactMessages.AsNoTracking().AsQueryable();
+        try
+        {
+            // Проверяем, существует ли таблица
+            if (!await _context.Database.CanConnectAsync())
+            {
+                _logger.LogError("Cannot connect to database");
+                ViewBag.Error = "Не удалось подключиться к базе данных. Проверьте строку подключения.";
+                return View(Enumerable.Empty<ContactMessage>());
+            }
+
+            var query = _context.ContactMessages.AsNoTracking().AsQueryable();
 
         // Фильтр по странице источника
         if (!string.IsNullOrEmpty(sourcePage))
@@ -46,11 +56,18 @@ public class MessagesController : Controller
             .ThenByDescending(m => m.CreatedAt)
             .ToListAsync();
 
-        ViewBag.SourcePage = sourcePage;
-        ViewBag.UnreadOnly = unreadOnly;
-        ViewBag.UnreadCount = await _context.ContactMessages.CountAsync(m => !m.IsRead);
+            ViewBag.SourcePage = sourcePage;
+            ViewBag.UnreadOnly = unreadOnly;
+            ViewBag.UnreadCount = await _context.ContactMessages.CountAsync(m => !m.IsRead);
 
-        return View(messages);
+            return View(messages);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading messages. Table might not exist. Apply migration: dotnet ef database update");
+            ViewBag.Error = $"Ошибка загрузки писем: {ex.Message}. Возможно, миграция не применена. Выполните: dotnet ef database update";
+            return View(Enumerable.Empty<ContactMessage>());
+        }
     }
 
     // GET: Admin/Messages/Details/5

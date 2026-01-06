@@ -11,11 +11,19 @@
         <div class="col-12">
             <h1 class="mb-4">
                 <i class="bi bi-envelope-fill me-2"></i>Письма
-                @if (ViewBag.UnreadCount > 0)
+                @if (ViewBag.UnreadCount != null && ViewBag.UnreadCount > 0)
                 {
                     <span class="badge bg-danger ms-2">@ViewBag.UnreadCount непрочитанных</span>
                 }
             </h1>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Ошибка:</strong> @ViewBag.Error
+                </div>
+            }
 
             <!-- Навигация по админ-панели -->
             <div class="mb-3">
