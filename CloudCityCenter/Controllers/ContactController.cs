@@ -1,9 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
+using CloudCityCenter.Services;
 
 namespace CloudCityCenter.Controllers
 {
     public class ContactController : Controller
     {
+        private readonly EmailService _emailService;
+        private readonly ILogger<ContactController> _logger;
+
+        public ContactController(EmailService emailService, ILogger<ContactController> logger)
+        {
+            _emailService = emailService;
+            _logger = logger;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -11,13 +21,44 @@ namespace CloudCityCenter.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Submit(string Name, string Email, string Message)
+        public async Task<IActionResult> Submit(string Name, string Email, string Phone, string ServiceType, string Message)
         {
-            // Обработка сообщения: можно отправить на почту или в базу
-            Console.WriteLine($"Received message from {Name} ({Email}): {Message}");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Message))
+                {
+                    TempData["Error"] = "Пожалуйста, заполните все обязательные поля.";
+                    return RedirectToAction("Index");
+                }
 
-            TempData["Success"] = "Message sent successfully!";
-            return RedirectToAction("Index", "Home"); // или нужная страница
+                var success = await _emailService.SendContactFormEmailAsync(
+                    name: Name,
+                    email: Email,
+                    phone: Phone,
+                    subject: null,
+                    serviceType: ServiceType,
+                    message: Message,
+                    sourcePage: "Contact"
+                );
+
+                if (success)
+                {
+                    TempData["Success"] = "Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.";
+                    _logger.LogInformation($"Contact form submitted successfully from {Name} ({Email})");
+                }
+                else
+                {
+                    TempData["Error"] = "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.";
+                    _logger.LogWarning($"Failed to send contact form email from {Name} ({Email})");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error processing contact form from {Name} ({Email})");
+                TempData["Error"] = "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.";
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

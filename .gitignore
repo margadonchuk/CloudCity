@@ -54,6 +54,9 @@ Thumbs.db
 appsettings.json
 appsettings.Development.json
 appsettings.*.json
+appsettings.Local.json
+.env
+.env.*
 
 
 CloudCityCenter/cloudcity.db

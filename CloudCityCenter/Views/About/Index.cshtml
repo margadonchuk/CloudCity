@@ -631,15 +631,27 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <!-- Форма справа -->
-    <form method="post" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+    <form method="post" asp-controller="About" asp-action="Submit" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
       @Html.AntiForgeryToken()
+      @if (TempData["Success"] != null)
+      {
+        <div style="padding: 12px; background-color: #d4edda; color: #155724; border-radius: 6px; margin-bottom: 10px;">
+          @TempData["Success"]
+        </div>
+      }
+      @if (TempData["Error"] != null)
+      {
+        <div style="padding: 12px; background-color: #f8d7da; color: #721c24; border-radius: 6px; margin-bottom: 10px;">
+          @TempData["Error"]
+        </div>
+      }
       <input type="text" name="Name" placeholder="@Localizer["YourName"]" required
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
       <input type="email" name="Email" placeholder="@Localizer["YourEmail"]" required
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
       <input type="text" name="Subject" placeholder="@Localizer["Subject"]"
              style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;">
-      <textarea name="Message" placeholder="@Localizer["YourMessage"]" rows="4"
+      <textarea name="Message" placeholder="@Localizer["YourMessage"]" rows="4" required
                 style="padding: 12px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
       <button type="submit" style="background-color: #0b1c49; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer;">
         @Localizer["SendMessage"]

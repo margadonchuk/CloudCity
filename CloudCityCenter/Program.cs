@@ -70,6 +70,9 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+// Register Email Service
+builder.Services.AddScoped<CloudCityCenter.Services.EmailService>();
+
 var app = builder.Build();
 
 // Добавляем глобальный обработчик необработанных исключений

@@ -157,7 +157,21 @@
             <h2 class="display-5 fw-bold mb-3">@Localizer["SendUsMessage"]</h2>
             <p class="text-muted">@Localizer["ContactFormDesc"]</p>
           </div>
-          <form asp-action="Submit" method="post" class="contact-form">
+          @if (TempData["Success"] != null)
+          {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              @TempData["Success"]
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          }
+          @if (TempData["Error"] != null)
+          {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              @TempData["Error"]
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          }
+          <form asp-controller="Contact" asp-action="Submit" method="post" class="contact-form">
             @Html.AntiForgeryToken()
             <div class="row g-3">
               <div class="col-md-6">
@@ -178,7 +192,7 @@
               </div>
               <div class="col-12">
                 <label class="form-label">@Localizer["Message"]</label>
-                <textarea name="Message" class="form-control contact-textarea" rows="5" placeholder="@Localizer["Message"]"></textarea>
+                <textarea name="Message" class="form-control contact-textarea" rows="5" placeholder="@Localizer["Message"]" required></textarea>
               </div>
               <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary btn-lg contact-submit-btn">
