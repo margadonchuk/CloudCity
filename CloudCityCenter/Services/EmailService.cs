@@ -122,13 +122,20 @@ public class EmailService
             
             try
             {
-                _logger.LogInformation($"Attempting to connect to {smtpHost}:{smtpPort}...");
+                _logger.LogInformation($"Attempting to connect to {smtpHost}:{smtpPort} with SSL option: {sslOption}...");
                 
-                // Устанавливаем таймаут для подключения (30 секунд)
-                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+                // Увеличиваем таймаут для подключения (60 секунд) - может быть медленная сеть
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
                 
+                // Для порта 465 используем прямой SSL, для 587 - StartTLS
                 await client.ConnectAsync(smtpHost, smtpPort, sslOption, cts.Token);
                 _logger.LogInformation($"SMTP connection established. IsConnected: {client.IsConnected}, IsAuthenticated: {client.IsAuthenticated}");
+                
+                // Проверяем возможности сервера
+                if (client.IsConnected)
+                {
+                    _logger.LogInformation($"SMTP server capabilities: {string.Join(", ", client.Capabilities)}");
+                }
             }
             catch (OperationCanceledException)
             {
