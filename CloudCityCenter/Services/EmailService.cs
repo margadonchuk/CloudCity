@@ -85,16 +85,25 @@ public class EmailService
             _logger.LogInformation($"Connecting to SMTP server: {smtpHost}:{smtpPort}");
             
             // Hostinger может использовать порт 465 (SSL) или 587 (StartTLS)
+            // Пробуем разные варианты в зависимости от порта
             SecureSocketOptions sslOption;
             if (smtpPort == 465)
             {
-                sslOption = SecureSocketOptions.SslOnConnect; // Прямое SSL соединение
+                // Порт 465 требует прямого SSL соединения
+                sslOption = SecureSocketOptions.SslOnConnect;
                 _logger.LogInformation("Using SSL on connect (port 465)");
             }
             else if (smtpPort == 587)
             {
-                sslOption = SecureSocketOptions.StartTls; // StartTLS для порта 587
+                // Порт 587 использует StartTLS (сначала обычное соединение, потом SSL)
+                sslOption = SecureSocketOptions.StartTls;
                 _logger.LogInformation("Using StartTLS (port 587)");
+            }
+            else if (smtpPort == 25)
+            {
+                // Порт 25 обычно без SSL (не рекомендуется, но может работать)
+                sslOption = SecureSocketOptions.None;
+                _logger.LogWarning("Using port 25 without SSL - not recommended!");
             }
             else
             {
