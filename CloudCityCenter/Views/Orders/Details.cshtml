@@ -1,4 +1,5 @@
 @model CloudCityCenter.Models.Order
+@using CloudCityCenter.Models
 
 @{
     ViewData["Title"] = "Order Details";
@@ -29,6 +30,12 @@
 </div>
 
 <div class="mt-3">
+    @if (Model.Status == OrderStatus.Pending)
+    {
+        <a asp-action="Pay" asp-route-id="@Model.Id" class="btn btn-success me-2">
+            <i class="bi bi-credit-card me-2"></i>Оплата
+        </a>
+    }
     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2">Edit</a>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>

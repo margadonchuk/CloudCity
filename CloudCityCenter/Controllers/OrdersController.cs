@@ -180,6 +180,55 @@ public class OrdersController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    // GET: Orders/Pay/5
+    public async Task<IActionResult> Pay(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var order = await _context.Orders
+            .Include(o => o.Items).ThenInclude(i => i.Product)
+            .Include(o => o.Items).ThenInclude(i => i.ProductVariant)
+            .Include(o => o.User)
+            .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
+        
+        if (order == null)
+        {
+            return NotFound();
+        }
+
+        // Формируем сообщение с данными заказа
+        var message = $"💳 *Заявка на оплату заказа*\n\n";
+        message += $"📋 *Номер заказа:* #{order.Id}\n";
+        message += $"👤 *Пользователь:* {order.User?.Email ?? "Не указан"}\n";
+        message += $"📅 *Дата создания:* {order.CreatedAt:dd.MM.yyyy HH:mm}\n";
+        message += $"💰 *Сумма:* ${order.Total:F2} {order.Currency}\n";
+        message += $"📊 *Статус:* {order.Status}\n\n";
+        message += $"*Товары:*\n";
+        
+        foreach (var item in order.Items)
+        {
+            message += $"• {item.Product?.Name ?? "Не указано"}";
+            if (item.ProductVariant != null)
+            {
+                message += $" - {item.ProductVariant.Name}";
+            }
+            message += $" - ${item.Price:F2}\n";
+        }
+        
+        message += $"\n🔗 *Ссылка на заказ:* https://cloudcitylife.com/Orders/Details/{order.Id}";
+
+        // URL-кодируем сообщение для Telegram
+        var encodedMessage = Uri.EscapeDataString(message);
+        var telegramUrl = $"https://t.me/finance_cloudcity?text={encodedMessage}";
+
+        // Перенаправляем на Telegram
+        return Redirect(telegramUrl);
+    }
+
     private bool OrderExists(int id)
     {
         return _context.Orders.Any(e => e.Id == id);
