@@ -47,6 +47,36 @@ public class ProductsController : Controller
         return View(product);
     }
 
+    // GET: Admin/Products/Create
+    public IActionResult Create()
+    {
+        return View(new Product());
+    }
+
+    // POST: Admin/Products/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("Name,Slug,Type,Location,PricePerMonth,Configuration,IsAvailable,IsPublished,ImageUrl")] Product product)
+    {
+        if (ModelState.IsValid)
+        {
+            // Проверяем уникальность slug
+            var productWithSameSlug = await _context.Products
+                .FirstOrDefaultAsync(p => p.Slug == product.Slug);
+                
+            if (productWithSameSlug != null)
+            {
+                ModelState.AddModelError("Slug", "Товар с таким slug уже существует.");
+                return View(product);
+            }
+
+            _context.Add(product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        return View(product);
+    }
+
     // GET: Admin/Products/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
