@@ -61,3 +61,20 @@ appsettings.Local.json
 
 
 CloudCityCenter/cloudcity.db
+
+## Диагностические и временные файлы (в корне проекта)
+/*.md
+!README.md
+/*.sh
+/*.sql
+/*.ps1
+/*.txt
+!LICENSE
+/*.conf
+!nginx.conf
+
+## Русские диагностические файлы
+/*[А-ЯЁ]*.md
+/*[А-ЯЁ]*.sh
+/*[А-ЯЁ]*.sql
+/*[А-ЯЁ]*.txt
