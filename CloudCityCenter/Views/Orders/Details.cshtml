@@ -1,15 +1,16 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @model CloudCityCenter.Models.Order
 @using CloudCityCenter.Models
 
 @{
-    ViewData["Title"] = "Order Details";
+    ViewData["Title"] = Localizer["Title"];
 }
 
-<h1 class="mb-4">Order Details</h1>
+<h1 class="mb-4">@Localizer["OrderDetails"]</h1>
 
 <div class="card mb-3">
     <div class="card-body">
-        <h5 class="card-title">Order #@Model.Id</h5>
+        <h5 class="card-title">@Localizer["Order"] #@Model.Id</h5>
         <p class="card-text"><small class="text-muted">@Model.CreatedAt</small></p>
         <ul class="list-group mb-3">
             @foreach (var item in Model.Items)
@@ -21,9 +22,9 @@
             }
         </ul>
         <dl class="row mb-0">
-            <dt class="col-sm-4">Total</dt>
+            <dt class="col-sm-4">@Localizer["Total"]</dt>
             <dd class="col-sm-8">$@Model.Total.ToString("F2")</dd>
-            <dt class="col-sm-4">Status</dt>
+            <dt class="col-sm-4">@Localizer["Status"]</dt>
             <dd class="col-sm-8">@Model.Status</dd>
         </dl>
     </div>
@@ -33,9 +34,9 @@
     @if (Model.Status == OrderStatus.Pending)
     {
         <a asp-action="Pay" asp-route-id="@Model.Id" class="btn btn-success me-2">
-            <i class="bi bi-credit-card me-2"></i>Оплата
+            <i class="bi bi-credit-card me-2"></i>@Localizer["Pay"]
         </a>
     }
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2">Edit</a>
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2">@Localizer["Edit"]</a>
+    <a asp-action="Index" class="btn btn-secondary">@Localizer["BackToList"]</a>
 </div>
