@@ -124,3 +124,4 @@ nano /home/siteadmin/cloudcity/CloudCityCenter/CloudCity/CloudCityCenter/wwwroot
 
 **Проверьте консоль браузера - там будет видна точная причина ошибки!**
 
+

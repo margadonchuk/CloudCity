@@ -170,3 +170,4 @@ Environment=Email__SmtpPassword=пароль
 2. Проверьте настройки в панели Hostinger
 3. Убедитесь, что почтовый ящик support@cloudcity.center создан и активен
 
+

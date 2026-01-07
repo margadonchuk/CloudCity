@@ -129,3 +129,4 @@ timeout 10 openssl s_client -connect smtp.hostinger.com:587 -starttls smtp
 
 **Скорее всего проблема в том, что Hostinger блокирует внешние SMTP подключения или требует порт 587 вместо 465.**
 
+
