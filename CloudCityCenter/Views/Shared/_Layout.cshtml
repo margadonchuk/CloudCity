@@ -266,7 +266,7 @@
                                         }
                                         else
                                         {
-                                            displayName = Localizer["Profile"].ToString();
+                                            displayName = Localizer["Profile"].Value ?? "Profile";
                                         }
                                     }
                                     <span class="d-none d-lg-inline">@displayName</span>
@@ -377,7 +377,7 @@
                                     }
                                     else
                                     {
-                                        mobileDisplayName = Localizer["Profile"].ToString();
+                                        mobileDisplayName = Localizer["Profile"].Value ?? "Profile";
                                     }
                                 }
                                 @mobileDisplayName
