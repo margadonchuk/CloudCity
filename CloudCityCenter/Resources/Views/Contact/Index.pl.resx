@@ -96,5 +96,14 @@
   <data name="OpenLink" xml:space="preserve">
     <value>Otwórz</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Skontaktuj się - Skontaktuj się z nami - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Skontaktuj się z CloudCityCenter w sprawie wynajmu serwerów na całym świecie. Nasi specjaliści pomogą wybrać odpowiedni VPS, VDI, VPN lub serwer dedykowany.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>kontakt, skontaktuj się, wsparcie klienta, konsultacja serwerów</value>
+  </data>
 </root>
 

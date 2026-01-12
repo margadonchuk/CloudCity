@@ -99,5 +99,14 @@
   <data name="Linux" xml:space="preserve">
     <value>Linux</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Serwery VPS - Wynajem VPS na całym świecie - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Wynajem serwerów VPS na całym świecie. Wirtualne serwery dedykowane z różnymi konfiguracjami CPU, RAM, SSD w centrach danych na całym świecie. Elastyczne stawki.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>wynajem VPS, serwery VPS, serwer wirtualny, wynajem VPS na świecie, hosting VPS, VPS w chmurze, dedykowane VPS</value>
+  </data>
 </root>
 

@@ -3,5 +3,14 @@
   <data name="Title" xml:space="preserve">
     <value>Página de inicio</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Alquiler de servidores en todo el mundo - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Alquiler de servidores en todo el mundo. VPS, VDI, VPN, alojamiento y servidores dedicados en centros de datos de todo el mundo. Infraestructura confiable y soporte 24/7.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>alquiler de servidores, alquiler VPS, alquiler VDI, alquiler VPN, hosting de servidores, alquiler de servidores mundial, servidores cloud, servidores dedicados, servidores en centros de datos, alquiler global de servidores</value>
+  </data>
 </root>
 

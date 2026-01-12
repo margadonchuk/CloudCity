@@ -324,5 +324,14 @@
   <data name="ErrorOccurred" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VPN-Server - VPN-Miete weltweit - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>VPN-Server-Miete weltweit. Sichere VPN-Verbindungen, Konfiguration von Netzwerkgeräten (MikroTik, Fortinet, CHR) in Rechenzentren weltweit.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>VPN-Miete, VPN-Server, VPN-Miete weltweit, VPN-Verbindung, VPN-Konfiguration, MikroTik-Konfiguration, Fortinet-Konfiguration, CHR-Konfiguration</value>
+  </data>
 </root>
 

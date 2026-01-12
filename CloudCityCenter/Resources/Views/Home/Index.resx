@@ -3,5 +3,14 @@
   <data name="Title" xml:space="preserve">
     <value>Home Page</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Server Rental Worldwide - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Server rental worldwide. VPS, VDI, VPN, hosting and dedicated servers in data centers worldwide. Reliable infrastructure and 24/7 support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>server rental, VPS rental, VDI rental, VPN rental, server hosting, server rental worldwide, cloud servers, dedicated servers, data center servers, global server rental</value>
+  </data>
 </root>
 

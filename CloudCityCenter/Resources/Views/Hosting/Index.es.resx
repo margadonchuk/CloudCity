@@ -336,5 +336,14 @@
   <data name="React" xml:space="preserve">
     <value>React</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Hosting y servicios web - Alquiler de hosting en todo el mundo - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Hosting, VPS, VPN, almacenamiento de datos y servicios web en todo el mundo. Hosting de sitios web confiable, almacenamiento en la nube, constructores de sitios en centros de datos de todo el mundo.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>hosting, alquiler de hosting, hosting web, almacenamiento en la nube, hosting VPS, hosting VPN, hosting mundial, hosting de sitios</value>
+  </data>
 </root>
 

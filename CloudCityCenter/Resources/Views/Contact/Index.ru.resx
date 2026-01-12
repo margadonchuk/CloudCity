@@ -96,5 +96,14 @@
   <data name="OpenLink" xml:space="preserve">
     <value>Открыть</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Контакты - Свяжитесь с нами - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Свяжитесь с CloudCityCenter для аренды серверов по всему миру. Наши специалисты помогут выбрать подходящий VPS, VDI, VPN или выделенный сервер.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>контакты, связаться с нами, поддержка клиентов, консультация по серверам</value>
+  </data>
 </root>
 

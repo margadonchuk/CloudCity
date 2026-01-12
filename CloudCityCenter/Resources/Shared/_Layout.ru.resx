@@ -39,4 +39,25 @@
   <data name="Cart" xml:space="preserve">
     <value>Корзина</value>
   </data>
+  <data name="DefaultSEOTitle" xml:space="preserve">
+    <value>CloudCityCenter - Аренда серверов по всему миру</value>
+  </data>
+  <data name="DefaultSEODescription" xml:space="preserve">
+    <value>Аренда серверов по всему миру. VPS, VDI, VPN, хостинг и выделенные серверы в дата-центрах по всему миру. Надежная инфраструктура и круглосуточная поддержка.</value>
+  </data>
+  <data name="DefaultSEOKeywords" xml:space="preserve">
+    <value>аренда серверов, аренда VPS, аренда VDI, аренда VPN, хостинг серверов, аренда серверов по миру, облачные серверы, выделенные серверы, серверы в дата-центрах</value>
+  </data>
+  <data name="DefaultServiceType" xml:space="preserve">
+    <value>Аренда серверов</value>
+  </data>
+  <data name="DefaultAreaName" xml:space="preserve">
+    <value>Весь мир</value>
+  </data>
+  <data name="DefaultCategory" xml:space="preserve">
+    <value>Облачная инфраструктура и аренда серверов</value>
+  </data>
+  <data name="DefaultOffersDescription" xml:space="preserve">
+    <value>Аренда серверов по всему миру: VPS, VDI, VPN, хостинг, выделенные серверы</value>
+  </data>
 </root>

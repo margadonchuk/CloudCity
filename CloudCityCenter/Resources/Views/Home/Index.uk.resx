@@ -3,5 +3,14 @@
   <data name="Title" xml:space="preserve">
     <value>Головна сторінка</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Оренда серверів по всьому світу - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Оренда серверів по всьому світу. VPS, VDI, VPN, хостинг та виділені сервери в дата-центрах по всьому світу. Надійна інфраструктура та цілодобова підтримка.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>оренда серверів, оренда VPS, оренда VDI, оренда VPN, хостинг серверів, оренда серверів по світу, хмарні сервери, виділені сервери, сервери в дата-центрах, оренда серверів по всьому світу</value>
+  </data>
 </root>
 

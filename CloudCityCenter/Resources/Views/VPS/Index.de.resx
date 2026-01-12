@@ -99,5 +99,14 @@
   <data name="Linux" xml:space="preserve">
     <value>Linux</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VPS-Server - VPS-Miete weltweit - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>VPS-Server-Miete weltweit. Virtuelle dedizierte Server mit verschiedenen CPU-, RAM- und SSD-Konfigurationen in Rechenzentren weltweit. Flexible Tarife.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>VPS-Miete, VPS-Server, virtueller Server, VPS-Miete weltweit, VPS-Hosting, Cloud-VPS, dedizierte VPS</value>
+  </data>
 </root>
 

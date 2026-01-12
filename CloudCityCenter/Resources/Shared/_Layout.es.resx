@@ -39,5 +39,26 @@
   <data name="Cart" xml:space="preserve">
     <value>Carrito</value>
   </data>
+  <data name="DefaultSEOTitle" xml:space="preserve">
+    <value>CloudCityCenter - Alquiler de servidores en todo el mundo</value>
+  </data>
+  <data name="DefaultSEODescription" xml:space="preserve">
+    <value>Alquiler de servidores en todo el mundo. VPS, VDI, VPN, alojamiento y servidores dedicados en centros de datos de todo el mundo. Infraestructura confiable y soporte 24/7.</value>
+  </data>
+  <data name="DefaultSEOKeywords" xml:space="preserve">
+    <value>alquiler de servidores, alquiler VPS, alquiler VDI, alquiler VPN, hosting de servidores, alquiler de servidores mundial, servidores cloud, servidores dedicados, servidores en centros de datos</value>
+  </data>
+  <data name="DefaultServiceType" xml:space="preserve">
+    <value>Alquiler de servidores</value>
+  </data>
+  <data name="DefaultAreaName" xml:space="preserve">
+    <value>Todo el mundo</value>
+  </data>
+  <data name="DefaultCategory" xml:space="preserve">
+    <value>Infraestructura cloud y alquiler de servidores</value>
+  </data>
+  <data name="DefaultOffersDescription" xml:space="preserve">
+    <value>Alquiler de servidores en todo el mundo: VPS, VDI, VPN, hosting, servidores dedicados</value>
+  </data>
 </root>
 

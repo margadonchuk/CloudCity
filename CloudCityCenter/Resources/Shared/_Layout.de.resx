@@ -39,5 +39,26 @@
   <data name="Cart" xml:space="preserve">
     <value>Warenkorb</value>
   </data>
+  <data name="DefaultSEOTitle" xml:space="preserve">
+    <value>CloudCityCenter - Server-Miete weltweit</value>
+  </data>
+  <data name="DefaultSEODescription" xml:space="preserve">
+    <value>Server-Miete weltweit. VPS, VDI, VPN, Hosting und dedizierte Server in Rechenzentren weltweit. Zuverlässige Infrastruktur und 24/7 Support.</value>
+  </data>
+  <data name="DefaultSEOKeywords" xml:space="preserve">
+    <value>Server-Miete, VPS-Miete, VDI-Miete, VPN-Miete, Server-Hosting, Server-Miete weltweit, Cloud-Server, dedizierte Server, Rechenzentrum-Server</value>
+  </data>
+  <data name="DefaultServiceType" xml:space="preserve">
+    <value>Server-Miete</value>
+  </data>
+  <data name="DefaultAreaName" xml:space="preserve">
+    <value>Weltweit</value>
+  </data>
+  <data name="DefaultCategory" xml:space="preserve">
+    <value>Cloud-Infrastruktur und Server-Miete</value>
+  </data>
+  <data name="DefaultOffersDescription" xml:space="preserve">
+    <value>Server-Miete weltweit: VPS, VDI, VPN, Hosting, dedizierte Server</value>
+  </data>
 </root>
 

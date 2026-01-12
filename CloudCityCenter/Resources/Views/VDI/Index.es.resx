@@ -120,5 +120,14 @@
   <data name="Persons" xml:space="preserve">
     <value>Personas</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VDI - Escritorios virtuales - Alquiler VDI en todo el mundo - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Alquiler VDI (escritorios virtuales) en todo el mundo. Infraestructura virtual para 1-20 usuarios en centros de datos de todo el mundo. Escritorio remoto.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>alquiler VDI, escritorio virtual, servidores VDI, alquiler VDI mundial, escritorio remoto, infraestructura virtual</value>
+  </data>
 </root>
 

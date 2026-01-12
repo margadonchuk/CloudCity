@@ -39,4 +39,25 @@
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>
+  <data name="DefaultSEOTitle" xml:space="preserve">
+    <value>CloudCityCenter - Server Rental Worldwide</value>
+  </data>
+  <data name="DefaultSEODescription" xml:space="preserve">
+    <value>Server rental worldwide. VPS, VDI, VPN, hosting and dedicated servers in data centers worldwide. Reliable infrastructure and 24/7 support.</value>
+  </data>
+  <data name="DefaultSEOKeywords" xml:space="preserve">
+    <value>server rental, VPS rental, VDI rental, VPN rental, server hosting, server rental worldwide, cloud servers, dedicated servers, data center servers</value>
+  </data>
+  <data name="DefaultServiceType" xml:space="preserve">
+    <value>Server Rental</value>
+  </data>
+  <data name="DefaultAreaName" xml:space="preserve">
+    <value>Worldwide</value>
+  </data>
+  <data name="DefaultCategory" xml:space="preserve">
+    <value>Cloud infrastructure and server rental</value>
+  </data>
+  <data name="DefaultOffersDescription" xml:space="preserve">
+    <value>Server rental worldwide: VPS, VDI, VPN, hosting, dedicated servers</value>
+  </data>
 </root>

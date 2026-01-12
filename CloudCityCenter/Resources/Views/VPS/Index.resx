@@ -99,5 +99,14 @@
   <data name="Linux" xml:space="preserve">
     <value>Linux</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VPS Servers - VPS Rental Worldwide - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>VPS server rental worldwide. Virtual dedicated servers with various CPU, RAM, SSD configurations in data centers worldwide. Flexible rates.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>VPS rental, VPS servers, virtual server, VPS rental worldwide, VPS hosting, cloud VPS, dedicated VPS</value>
+  </data>
 </root>
 

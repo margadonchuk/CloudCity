@@ -70,6 +70,10 @@ public class CartController : Controller
             Total = cart.Sum(i => i.Price)
         };
 
+        // SEO оптимизация для корзины
+        ViewData["Title"] = "Корзина покупок";
+        ViewData["Description"] = "Ваша корзина с выбранными услугами аренды серверов.";
+        
         return View(vm);
     }
 

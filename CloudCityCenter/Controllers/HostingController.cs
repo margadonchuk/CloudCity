@@ -5,16 +5,24 @@ using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
 public class HostingController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly IStringLocalizerFactory _localizerFactory;
 
-    public HostingController(ApplicationDbContext context)
+    public HostingController(ApplicationDbContext context, IStringLocalizerFactory localizerFactory)
     {
         _context = context;
+        _localizerFactory = localizerFactory;
+    }
+    
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.Hosting.Index", "CloudCityCenter");
     }
 
     public async Task<IActionResult> Index()
@@ -38,6 +46,12 @@ public class HostingController : Controller
             WebsiteCodeProducts = websiteCodeProducts
         };
 
+        // SEO оптимизация с локализацией
+        var localizer = GetLocalizer();
+        ViewData["Title"] = localizer["SEOTitle"].Value;
+        ViewData["Description"] = localizer["SEODescription"].Value;
+        ViewData["Keywords"] = localizer["SEOKeywords"].Value;
+        
         return View(vm);
     }
 

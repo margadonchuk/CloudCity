@@ -324,5 +324,14 @@
   <data name="ErrorOccurred" xml:space="preserve">
     <value>Une erreur s'est produite</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Serveurs VPN - Location VPN dans le monde entier - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Location de serveurs VPN dans le monde entier. Connexions VPN sécurisées, configuration d'équipements réseau (MikroTik, Fortinet, CHR) dans des centres de données du monde entier.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>location VPN, serveurs VPN, location VPN mondiale, connexion VPN, configuration VPN, configuration MikroTik, configuration Fortinet, configuration CHR</value>
+  </data>
 </root>
 

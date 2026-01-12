@@ -120,5 +120,14 @@
   <data name="Persons" xml:space="preserve">
     <value>Personen</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VDI - Virtuelle Desktops - VDI-Miete weltweit - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>VDI (virtuelle Desktop)-Miete weltweit. Virtuelle Infrastruktur für 1-20 Benutzer in Rechenzentren weltweit. Remote-Desktop.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>VDI-Miete, virtueller Desktop, VDI-Server, VDI-Miete weltweit, Remote-Desktop, virtuelle Infrastruktur</value>
+  </data>
 </root>
 

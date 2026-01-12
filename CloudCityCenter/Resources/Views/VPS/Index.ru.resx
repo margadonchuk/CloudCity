@@ -99,5 +99,14 @@
   <data name="Linux" xml:space="preserve">
     <value>Linux</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VPS серверы - Аренда VPS по всему миру - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Аренда VPS серверов по всему миру. Виртуальные выделенные серверы с различными конфигурациями CPU, RAM, SSD в дата-центрах по всему миру. Гибкие тарифы.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>аренда VPS, VPS серверы, виртуальный сервер, аренда VPS по миру, VPS хостинг, облачные VPS, выделенные VPS</value>
+  </data>
 </root>
 

@@ -7,16 +7,24 @@ using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
 public class VDIController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly IStringLocalizerFactory _localizerFactory;
 
-    public VDIController(ApplicationDbContext context)
+    public VDIController(ApplicationDbContext context, IStringLocalizerFactory localizerFactory)
     {
         _context = context;
+        _localizerFactory = localizerFactory;
+    }
+    
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.VDI.Index", "CloudCityCenter");
     }
 
     public async Task<IActionResult> Index()
@@ -282,6 +290,12 @@ public class VDIController : Controller
             AvailableSsdGb = allPlans.Select(p => p.SsdGb).Distinct().OrderBy(s => s).ToList()
         };
 
+        // SEO оптимизация с локализацией
+        var localizer = GetLocalizer();
+        ViewData["Title"] = localizer["SEOTitle"].Value;
+        ViewData["Description"] = localizer["SEODescription"].Value;
+        ViewData["Keywords"] = localizer["SEOKeywords"].Value;
+        
         return View(vm);
     }
 

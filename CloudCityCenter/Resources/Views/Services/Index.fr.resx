@@ -96,4 +96,13 @@
   <data name="ViewAllServers" xml:space="preserve">
     <value>Voir Tous les Serveurs</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Services de location de serveurs - Tous les services dans le monde entier - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Gamme complète de services de location de serveurs dans le monde entier: serveurs dédiés, VPS, VPN dans des centres de données du monde entier. Infrastructure fiable et support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>services de location de serveurs, location de serveurs, tous les services de serveurs, location de serveurs mondiale, services cloud</value>
+  </data>
 </root>

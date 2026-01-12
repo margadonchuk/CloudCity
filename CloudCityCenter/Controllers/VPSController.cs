@@ -7,16 +7,24 @@ using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
 public class VPSController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly IStringLocalizerFactory _localizerFactory;
 
-    public VPSController(ApplicationDbContext context)
+    public VPSController(ApplicationDbContext context, IStringLocalizerFactory localizerFactory)
     {
         _context = context;
+        _localizerFactory = localizerFactory;
+    }
+    
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.VPS.Index", "CloudCityCenter");
     }
 
     public async Task<IActionResult> Index()
@@ -58,6 +66,12 @@ public class VPSController : Controller
             AvailableTraffic = plans.Select(p => p.Traffic).Distinct().OrderBy(t => t).ToList()
         };
 
+        // SEO оптимизация с локализацией
+        var localizer = GetLocalizer();
+        ViewData["Title"] = localizer["SEOTitle"].Value;
+        ViewData["Description"] = localizer["SEODescription"].Value;
+        ViewData["Keywords"] = localizer["SEOKeywords"].Value;
+        
         return View(vm);
     }
 

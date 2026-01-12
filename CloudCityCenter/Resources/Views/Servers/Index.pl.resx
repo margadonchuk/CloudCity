@@ -261,5 +261,14 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Dodaj do koszyka</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Wynajem Windows Server - Serwery dedykowane na całym świecie - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Wynajem Windows Server na całym świecie. Serwery dedykowane dla 5-50 użytkowników w centrach danych na całym świecie. Niezawodna infrastruktura, wsparcie 24/7.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>wynajem Windows Server, serwery dedykowane, wynajem serwerów Windows, serwery biznesowe, wynajem serwerów na świecie, wynajem Windows Server</value>
+  </data>
 </root>
 

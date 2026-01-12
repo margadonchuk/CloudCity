@@ -261,5 +261,14 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Добавить в корзину</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Аренда Windows Server - Выделенные серверы по всему миру - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Аренда Windows Server по всему миру. Выделенные серверы для 5-50 пользователей в дата-центрах по всему миру. Надежная инфраструктура, круглосуточная поддержка.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>аренда Windows Server, выделенные серверы, аренда серверов Windows, серверы для бизнеса, аренда серверов по миру, Windows Server аренда</value>
+  </data>
 </root>
 

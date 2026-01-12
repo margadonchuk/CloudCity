@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using CloudCityCenter.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
@@ -8,15 +9,28 @@ public class AboutController : Controller
 {
     private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly ILogger<AboutController> _logger;
+    private readonly IStringLocalizerFactory _localizerFactory;
 
-    public AboutController(IServiceScopeFactory serviceScopeFactory, ILogger<AboutController> logger)
+    public AboutController(IServiceScopeFactory serviceScopeFactory, ILogger<AboutController> logger, IStringLocalizerFactory localizerFactory)
     {
         _serviceScopeFactory = serviceScopeFactory;
         _logger = logger;
+        _localizerFactory = localizerFactory;
+    }
+    
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.About.Index", "CloudCityCenter");
     }
 
     public IActionResult Index()
     {
+        // SEO оптимизация с локализацией
+        var localizer = GetLocalizer();
+        ViewData["Title"] = localizer["SEOTitle"].Value;
+        ViewData["Description"] = localizer["SEODescription"].Value;
+        ViewData["Keywords"] = localizer["SEOKeywords"].Value;
+        
         return View();
     }
 

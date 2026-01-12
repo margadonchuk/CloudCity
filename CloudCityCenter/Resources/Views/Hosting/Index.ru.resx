@@ -336,5 +336,14 @@
   <data name="React" xml:space="preserve">
     <value>React</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Хостинг и веб-сервисы - Аренда хостинга по всему миру - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Хостинг, VPS, VPN, хранилище данных и веб-сервисы по всему миру. Надежный хостинг сайтов, облачное хранилище, конструкторы сайтов в дата-центрах по всему миру.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>хостинг, аренда хостинга, веб-хостинг, облачное хранилище, VPS хостинг, VPN хостинг, хостинг по миру, хостинг сайтов</value>
+  </data>
 </root>
 

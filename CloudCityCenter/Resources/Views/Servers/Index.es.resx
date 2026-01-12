@@ -261,5 +261,14 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Añadir al carrito</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Alquiler Windows Server - Servidores dedicados en todo el mundo - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Alquiler Windows Server en todo el mundo. Servidores dedicados para 5-50 usuarios en centros de datos de todo el mundo. Infraestructura confiable, soporte 24/7.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>alquiler Windows Server, servidores dedicados, alquiler servidores Windows, servidores empresariales, alquiler servidores mundial, alquiler Windows Server</value>
+  </data>
 </root>
 

@@ -186,5 +186,14 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Відправити повідомлення</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Про нас - CloudCityCenter - Оренда серверів по всьому світу</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>CloudCityCenter - надійний провайдер послуг оренди серверів по всьому світу. VPS, VDI, VPN, хостинг та виділені сервери в дата-центрах по всьому світу.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>про нас, CloudCityCenter, провайдер серверів, оренда серверів, історія компанії</value>
+  </data>
 </root>
 

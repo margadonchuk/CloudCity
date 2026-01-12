@@ -39,5 +39,26 @@
   <data name="Cart" xml:space="preserve">
     <value>Panier</value>
   </data>
+  <data name="DefaultSEOTitle" xml:space="preserve">
+    <value>CloudCityCenter - Location de serveurs dans le monde entier</value>
+  </data>
+  <data name="DefaultSEODescription" xml:space="preserve">
+    <value>Location de serveurs dans le monde entier. VPS, VDI, VPN, hébergement et serveurs dédiés dans des centres de données du monde entier. Infrastructure fiable et support 24/7.</value>
+  </data>
+  <data name="DefaultSEOKeywords" xml:space="preserve">
+    <value>location de serveurs, location VPS, location VDI, location VPN, hébergement de serveurs, location de serveurs dans le monde, serveurs cloud, serveurs dédiés, serveurs de centres de données</value>
+  </data>
+  <data name="DefaultServiceType" xml:space="preserve">
+    <value>Location de serveurs</value>
+  </data>
+  <data name="DefaultAreaName" xml:space="preserve">
+    <value>Monde entier</value>
+  </data>
+  <data name="DefaultCategory" xml:space="preserve">
+    <value>Infrastructure cloud et location de serveurs</value>
+  </data>
+  <data name="DefaultOffersDescription" xml:space="preserve">
+    <value>Location de serveurs dans le monde entier: VPS, VDI, VPN, hébergement, serveurs dédiés</value>
+  </data>
 </root>
 

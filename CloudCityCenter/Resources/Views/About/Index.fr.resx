@@ -186,5 +186,14 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Envoyer le message</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>À propos de nous - CloudCityCenter - Location de serveurs dans le monde entier</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>CloudCityCenter - fournisseur fiable de services de location de serveurs dans le monde entier. VPS, VDI, VPN, hébergement et serveurs dédiés dans des centres de données du monde entier.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>à propos de nous, CloudCityCenter, fournisseur de serveurs, location de serveurs, histoire de l'entreprise</value>
+  </data>
 </root>
 

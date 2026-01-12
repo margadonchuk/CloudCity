@@ -120,5 +120,14 @@
   <data name="Persons" xml:space="preserve">
     <value>Осіб</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VDI - Віртуальні робочі столи - Оренда VDI по всьому світу - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Оренда VDI (віртуальних робочих столів) по всьому світу. Віртуальна інфраструктура для 1-20 користувачів в дата-центрах по всьому світу. Віддалений робочий стіл.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>оренда VDI, віртуальний робочий стіл, VDI сервери, оренда VDI по світу, віддалений робочий стіл, віртуальна інфраструктура</value>
+  </data>
 </root>
 

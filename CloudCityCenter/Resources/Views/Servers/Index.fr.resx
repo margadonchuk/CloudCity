@@ -261,5 +261,14 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Ajouter au panier</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Location Windows Server - Serveurs dédiés dans le monde entier - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Location Windows Server dans le monde entier. Serveurs dédiés pour 5-50 utilisateurs dans des centres de données du monde entier. Infrastructure fiable, support 24/7.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>location Windows Server, serveurs dédiés, location serveurs Windows, serveurs d'entreprise, location serveurs mondiale, location Windows Server</value>
+  </data>
 </root>
 

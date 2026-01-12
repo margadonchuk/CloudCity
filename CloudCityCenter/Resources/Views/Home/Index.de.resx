@@ -3,5 +3,14 @@
   <data name="Title" xml:space="preserve">
     <value>Startseite</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Server-Miete weltweit - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Server-Miete weltweit. VPS, VDI, VPN, Hosting und dedizierte Server in Rechenzentren weltweit. Zuverlässige Infrastruktur und 24/7 Support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>Server-Miete, VPS-Miete, VDI-Miete, VPN-Miete, Server-Hosting, Server-Miete weltweit, Cloud-Server, dedizierte Server, Rechenzentrum-Server, globale Server-Miete</value>
+  </data>
 </root>
 

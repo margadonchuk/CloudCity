@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
@@ -16,10 +17,17 @@ namespace CloudCityCenter.Controllers;
 public class ServersController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly IStringLocalizerFactory _localizerFactory;
 
-    public ServersController(ApplicationDbContext context)
+    public ServersController(ApplicationDbContext context, IStringLocalizerFactory localizerFactory)
     {
         _context = context;
+        _localizerFactory = localizerFactory;
+    }
+    
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.Servers.Index", "CloudCityCenter");
     }
 
     /// <summary>
@@ -229,6 +237,12 @@ public class ServersController : Controller
                 AvailableSsd = allPlans?.Select(p => p?.SSD ?? string.Empty).Where(s => !string.IsNullOrEmpty(s)).Distinct().OrderBy(s => s).ToList() ?? new List<string>()
             };
 
+            // SEO оптимизация с локализацией
+            var localizer = GetLocalizer();
+            ViewData["Title"] = localizer["SEOTitle"].Value;
+            ViewData["Description"] = localizer["SEODescription"].Value;
+            ViewData["Keywords"] = localizer["SEOKeywords"].Value;
+            
             return View(vm);
         }
         catch (Exception ex)

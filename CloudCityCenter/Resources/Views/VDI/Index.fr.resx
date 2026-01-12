@@ -120,5 +120,14 @@
   <data name="Persons" xml:space="preserve">
     <value>Personnes</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>VDI - Bureaux virtuels - Location VDI dans le monde entier - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Location VDI (bureaux virtuels) dans le monde entier. Infrastructure virtuelle pour 1-20 utilisateurs dans des centres de données du monde entier. Bureau à distance.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>location VDI, bureau virtuel, serveurs VDI, location VDI mondiale, bureau à distance, infrastructure virtuelle</value>
+  </data>
 </root>
 

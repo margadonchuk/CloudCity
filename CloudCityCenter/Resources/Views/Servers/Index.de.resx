@@ -261,5 +261,14 @@
   <data name="AddToCart" xml:space="preserve">
     <value>In den Warenkorb</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Windows Server Miete - Dedizierte Server weltweit - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Windows Server Miete weltweit. Dedizierte Server für 5-50 Benutzer in Rechenzentren weltweit. Zuverlässige Infrastruktur, 24/7 Support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>Windows Server Miete, dedizierte Server, Windows Server Miete, Business Server, Server Miete weltweit, Windows Server Miete</value>
+  </data>
 </root>
 

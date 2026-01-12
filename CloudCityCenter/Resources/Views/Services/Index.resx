@@ -96,4 +96,13 @@
   <data name="ViewAllServers" xml:space="preserve">
     <value>View All Servers</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Server Rental Services - All Services Worldwide - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Full range of server rental services worldwide: dedicated servers, VPS, VPN in data centers worldwide. Reliable infrastructure and support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>server rental services, server rental, all server services, server rental worldwide, cloud services</value>
+  </data>
 </root>

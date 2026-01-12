@@ -96,4 +96,13 @@
   <data name="ViewAllServers" xml:space="preserve">
     <value>Alle Server Anzeigen</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Server-Mietdienste - Alle Dienste weltweit - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Vollständiges Spektrum von Server-Mietdiensten weltweit: dedizierte Server, VPS, VPN in Rechenzentren weltweit. Zuverlässige Infrastruktur und Support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>Server-Mietdienste, Server-Miete, alle Server-Dienste, Server-Miete weltweit, Cloud-Dienste</value>
+  </data>
 </root>

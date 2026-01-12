@@ -39,5 +39,26 @@
   <data name="Cart" xml:space="preserve">
     <value>Koszyk</value>
   </data>
+  <data name="DefaultSEOTitle" xml:space="preserve">
+    <value>CloudCityCenter - Wynajem serwerów na całym świecie</value>
+  </data>
+  <data name="DefaultSEODescription" xml:space="preserve">
+    <value>Wynajem serwerów na całym świecie. VPS, VDI, VPN, hosting i serwery dedykowane w centrach danych na całym świecie. Niezawodna infrastruktura i wsparcie 24/7.</value>
+  </data>
+  <data name="DefaultSEOKeywords" xml:space="preserve">
+    <value>wynajem serwerów, wynajem VPS, wynajem VDI, wynajem VPN, hosting serwerów, wynajem serwerów na świecie, serwery chmurowe, serwery dedykowane, serwery w centrach danych</value>
+  </data>
+  <data name="DefaultServiceType" xml:space="preserve">
+    <value>Wynajem serwerów</value>
+  </data>
+  <data name="DefaultAreaName" xml:space="preserve">
+    <value>Cały świat</value>
+  </data>
+  <data name="DefaultCategory" xml:space="preserve">
+    <value>Infrastruktura chmurowa i wynajem serwerów</value>
+  </data>
+  <data name="DefaultOffersDescription" xml:space="preserve">
+    <value>Wynajem serwerów na całym świecie: VPS, VDI, VPN, hosting, serwery dedykowane</value>
+  </data>
 </root>
 

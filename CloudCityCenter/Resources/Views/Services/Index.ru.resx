@@ -96,4 +96,13 @@
   <data name="ViewAllServers" xml:space="preserve">
     <value>Просмотреть все серверы</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Услуги аренды серверов - Все услуги по всему миру - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Полный спектр услуг аренды серверов по всему миру: выделенные серверы, VPS, VPN в дата-центрах по всему миру. Надежная инфраструктура и поддержка.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>услуги аренды серверов, аренда серверов, все услуги серверов, аренда серверов по миру, облачные услуги</value>
+  </data>
 </root>

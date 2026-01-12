@@ -3,5 +3,14 @@
   <data name="Title" xml:space="preserve">
     <value>Strona główna</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Wynajem serwerów na całym świecie - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Wynajem serwerów na całym świecie. VPS, VDI, VPN, hosting i serwery dedykowane w centrach danych na całym świecie. Niezawodna infrastruktura i wsparcie 24/7.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>wynajem serwerów, wynajem VPS, wynajem VDI, wynajem VPN, hosting serwerów, wynajem serwerów na świecie, serwery chmurowe, serwery dedykowane, serwery w centrach danych, globalny wynajem serwerów</value>
+  </data>
 </root>
 

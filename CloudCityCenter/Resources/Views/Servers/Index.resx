@@ -261,5 +261,14 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Add to Cart</value>
   </data>
+  <data name="SEOTitle" xml:space="preserve">
+    <value>Windows Server Rental - Dedicated Servers Worldwide - CloudCityCenter</value>
+  </data>
+  <data name="SEODescription" xml:space="preserve">
+    <value>Windows Server rental worldwide. Dedicated servers for 5-50 users in data centers worldwide. Reliable infrastructure and 24/7 support.</value>
+  </data>
+  <data name="SEOKeywords" xml:space="preserve">
+    <value>Windows Server rental, dedicated servers, Windows Server rental, business servers, server rental worldwide, Windows Server rental</value>
+  </data>
 </root>
 

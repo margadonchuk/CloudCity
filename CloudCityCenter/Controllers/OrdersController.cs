@@ -28,6 +28,11 @@ public class OrdersController : Controller
             .Include(o => o.Items).ThenInclude(i => i.ProductVariant)
             .Where(o => o.UserId == userId)
             .ToListAsync();
+        
+        // SEO оптимизация (для заказов менее критично, так как требуется авторизация)
+        ViewData["Title"] = "Мои заказы";
+        ViewData["Description"] = "Ваши заказы на аренду серверов.";
+        
         return View(orders);
     }
 
@@ -49,6 +54,10 @@ public class OrdersController : Controller
             return NotFound();
         }
 
+        // SEO оптимизация
+        ViewData["Title"] = $"Детали заказа #{order.Id}";
+        ViewData["Description"] = "Детали вашего заказа на аренду серверов.";
+        
         return View(order);
     }
 

@@ -4,6 +4,7 @@ using CloudCityCenter.Models;
 using System.Threading.Tasks;
 using CloudCityCenter.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
@@ -11,11 +12,18 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly ApplicationDbContext _context;
+    private readonly IStringLocalizerFactory _localizerFactory;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IStringLocalizerFactory localizerFactory)
     {
         _logger = logger;
         _context = context;
+        _localizerFactory = localizerFactory;
+    }
+    
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.Home.Index", "CloudCityCenter");
     }
 
     public async Task<IActionResult> Index()
@@ -24,11 +32,23 @@ public class HomeController : Controller
             .AsNoTracking()
             .Where(p => p.IsAvailable && p.Type == ProductType.DedicatedServer)
             .ToListAsync();
+        
+        // SEO оптимизация для главной страницы с локализацией
+        var localizer = GetLocalizer();
+        ViewData["Title"] = localizer["SEOTitle"].Value;
+        ViewData["Description"] = localizer["SEODescription"].Value;
+        ViewData["Keywords"] = localizer["SEOKeywords"].Value;
+        
         return View(products);
     }
 
     public IActionResult Privacy()
     {
+        // SEO оптимизация
+        ViewData["Title"] = "Политика конфиденциальности";
+        ViewData["Description"] = "Политика конфиденциальности CloudCityCenter - аренда серверов по всему миру.";
+        ViewData["Keywords"] = "политика конфиденциальности, конфиденциальность";
+        
         return View();
     }
 
