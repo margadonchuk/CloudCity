@@ -4,6 +4,7 @@ using CloudCityCenter.Models;
 using System.Threading.Tasks;
 using CloudCityCenter.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
@@ -49,6 +50,17 @@ public class HomeController : Controller
         ViewData["Description"] = "Политика конфиденциальности CloudCityCenter - аренда серверов по всему миру.";
         ViewData["Keywords"] = "политика конфиденциальности, конфиденциальность";
         
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult StatusCode(int code)
+    {
+        ViewData["StatusCode"] = code;
+        ViewData["Title"] = code == StatusCodes.Status403Forbidden
+            ? "Form submission limit reached"
+            : "Something went wrong";
+
         return View();
     }
 
