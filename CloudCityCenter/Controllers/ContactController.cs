@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CloudCityCenter.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
+using System.Linq;
 
 namespace CloudCityCenter.Controllers
 {
@@ -26,6 +27,21 @@ namespace CloudCityCenter.Controllers
             return _localizerFactory.Create("Views.Contact.Index", "CloudCityCenter");
         }
 
+        private string GetClientIpAddress()
+        {
+            var forwardedFor = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(forwardedFor))
+            {
+                var firstForwarded = forwardedFor.Split(',').Select(entry => entry.Trim()).FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(firstForwarded))
+                {
+                    return firstForwarded;
+                }
+            }
+
+            return HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+        }
+
         public IActionResult Index()
         {
             // SEO оптимизация с локализацией
@@ -41,7 +57,7 @@ namespace CloudCityCenter.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Submit(string Name, string Email, string Phone, string ServiceType, string Message)
         {
-            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+            var ipAddress = GetClientIpAddress();
             if (await _formRateLimitService.RegisterSubmissionAsync(ipAddress))
             {
                 _logger.LogWarning("Blocked contact form submission from IP {IpAddress}", ipAddress);
