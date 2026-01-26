@@ -318,6 +318,8 @@ else
     app.UseDeveloperExceptionPage();
 }
 
+app.UseStatusCodePagesWithReExecute("/Home/StatusCode", "?code={0}");
+
 // Completely disable HTTPS redirection when behind reverse proxy (nginx handles HTTPS)
 // This prevents ERR_TOO_MANY_REDIRECTS errors
 if (!useReverseProxy)

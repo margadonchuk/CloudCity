@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Http
+@{
+    var statusCode = ViewData["StatusCode"] as int? ?? 0;
+    var isForbidden = statusCode == StatusCodes.Status403Forbidden;
+}
+
+<section class="py-5">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold mb-3">@ViewData["Title"]</h1>
+        @if (isForbidden)
+        {
+            <p class="lead mb-4">
+                You have reached the form submission limit. Access will be restored automatically after 24 hours.
+            </p>
+            <p class="text-muted">
+                If you need immediate assistance, please contact our support team.
+            </p>
+        }
+        else
+        {
+            <p class="lead mb-4">
+                We ran into an unexpected error. Please try again later.
+            </p>
+        }
+        <a class="btn btn-primary mt-3" href="@Url.Action("Index", "Home")">Return to Home</a>
+    </div>
+</section>
