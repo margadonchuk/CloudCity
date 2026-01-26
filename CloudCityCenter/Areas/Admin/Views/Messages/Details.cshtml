@@ -95,6 +95,12 @@
                                     <a href="mailto:@Model.Email">@Model.Email</a>
                                 </dd>
 
+                                @if (!string.IsNullOrEmpty(Model.IpAddress))
+                                {
+                                    <dt class="col-sm-4">IP адрес:</dt>
+                                    <dd class="col-sm-8">@Model.IpAddress</dd>
+                                }
+
                                 @if (!string.IsNullOrEmpty(Model.Phone))
                                 {
                                     <dt class="col-sm-4">Телефон:</dt>
@@ -139,4 +145,3 @@
         </div>
     </div>
 </div>
-

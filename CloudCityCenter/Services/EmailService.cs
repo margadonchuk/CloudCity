@@ -310,6 +310,11 @@ public class EmailService
                 <div class=""label"">Тип услуги:</div>
                 <div class=""value"">{serviceType}</div>
             </div>")}
+            {(string.IsNullOrEmpty(ipAddress) ? "" : $@"
+            <div class=""field"">
+                <div class=""label"">IP адрес:</div>
+                <div class=""value"">{ipAddress}</div>
+            </div>")}
             <div class=""field"">
                 <div class=""label"">Сообщение:</div>
                 <div class=""value"">{message.Replace("\n", "<br>")}</div>
