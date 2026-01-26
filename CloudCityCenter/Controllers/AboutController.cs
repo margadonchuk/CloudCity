@@ -73,7 +73,8 @@ public class AboutController : Controller
                             subject: Subject,
                             serviceType: null,
                             message: Message,
-                            sourcePage: "About"
+                            sourcePage: "About",
+                            ipAddress: ipAddress
                         );
 
                         if (success)
