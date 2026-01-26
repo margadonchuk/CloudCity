@@ -231,7 +231,7 @@ public class EmailService
         }
     }
 
-    public async Task<bool> SendContactFormEmailAsync(string name, string email, string? phone, string? subject, string? serviceType, string message, string sourcePage)
+    public async Task<bool> SendContactFormEmailAsync(string name, string email, string? phone, string? subject, string? serviceType, string message, string sourcePage, string? ipAddress)
     {
         // Сохраняем письмо в базу данных
         var contactMessage = new ContactMessage
@@ -241,6 +241,7 @@ public class EmailService
             Phone = phone,
             Subject = subject,
             ServiceType = serviceType,
+            IpAddress = ipAddress,
             Message = message,
             SourcePage = sourcePage,
             CreatedAt = DateTime.UtcNow,
@@ -323,4 +324,3 @@ public class EmailService
         return await SendEmailAsync("support@cloudcity.center", emailSubject, emailBody, name, email);
     }
 }
-

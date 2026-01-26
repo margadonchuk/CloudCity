@@ -26,6 +26,9 @@ public class ContactMessage
     [StringLength(100)]
     public string? ServiceType { get; set; }
 
+    [StringLength(45)]
+    public string? IpAddress { get; set; }
+
     [Required]
     public string Message { get; set; } = string.Empty;
 
@@ -39,4 +42,3 @@ public class ContactMessage
 
     public DateTime? ReadAt { get; set; }
 }
-
