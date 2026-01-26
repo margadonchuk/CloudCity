@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CloudCityCenter.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,13 +10,15 @@ namespace CloudCityCenter.Controllers
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<ContactController> _logger;
+        private readonly FormRateLimitService _formRateLimitService;
         private readonly IStringLocalizerFactory _localizerFactory;
 
-        public ContactController(IServiceScopeFactory serviceScopeFactory, ILogger<ContactController> logger, IStringLocalizerFactory localizerFactory)
+        public ContactController(IServiceScopeFactory serviceScopeFactory, ILogger<ContactController> logger, IStringLocalizerFactory localizerFactory, FormRateLimitService formRateLimitService)
         {
             _serviceScopeFactory = serviceScopeFactory;
             _logger = logger;
             _localizerFactory = localizerFactory;
+            _formRateLimitService = formRateLimitService;
         }
         
         private IStringLocalizer GetLocalizer()
@@ -36,8 +39,15 @@ namespace CloudCityCenter.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Submit(string Name, string Email, string Phone, string ServiceType, string Message)
+        public async Task<IActionResult> Submit(string Name, string Email, string Phone, string ServiceType, string Message)
         {
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+            if (await _formRateLimitService.RegisterSubmissionAsync(ipAddress))
+            {
+                _logger.LogWarning("Blocked contact form submission from IP {IpAddress}", ipAddress);
+                return StatusCode(StatusCodes.Status403Forbidden);
+            }
+
             _logger.LogInformation($"Contact form Submit called. Name: {Name}, Email: {Email}, Phone: {Phone}, Message length: {Message?.Length ?? 0}");
             
             try

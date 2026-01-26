@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Globalization;
 using CloudCityCenter.Data;
+using CloudCityCenter.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
@@ -40,6 +41,7 @@ else
 // Add services to the container.
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddControllersWithViews().AddViewLocalization();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 {
@@ -72,6 +74,7 @@ builder.Services.AddSession(options =>
 
 // Register Email Service
 builder.Services.AddScoped<CloudCityCenter.Services.EmailService>();
+builder.Services.AddSingleton<FormRateLimitService>();
 
 var app = builder.Build();
 

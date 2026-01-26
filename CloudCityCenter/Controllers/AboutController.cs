@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CloudCityCenter.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,13 +10,15 @@ public class AboutController : Controller
 {
     private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly ILogger<AboutController> _logger;
+    private readonly FormRateLimitService _formRateLimitService;
     private readonly IStringLocalizerFactory _localizerFactory;
 
-    public AboutController(IServiceScopeFactory serviceScopeFactory, ILogger<AboutController> logger, IStringLocalizerFactory localizerFactory)
+    public AboutController(IServiceScopeFactory serviceScopeFactory, ILogger<AboutController> logger, IStringLocalizerFactory localizerFactory, FormRateLimitService formRateLimitService)
     {
         _serviceScopeFactory = serviceScopeFactory;
         _logger = logger;
         _localizerFactory = localizerFactory;
+        _formRateLimitService = formRateLimitService;
     }
     
     private IStringLocalizer GetLocalizer()
@@ -36,8 +39,15 @@ public class AboutController : Controller
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Submit(string Name, string Email, string Subject, string Message)
+        public async Task<IActionResult> Submit(string Name, string Email, string Subject, string Message)
         {
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+            if (await _formRateLimitService.RegisterSubmissionAsync(ipAddress))
+            {
+                _logger.LogWarning("Blocked about form submission from IP {IpAddress}", ipAddress);
+                return StatusCode(StatusCodes.Status403Forbidden);
+            }
+
             try
             {
                 if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Message))
