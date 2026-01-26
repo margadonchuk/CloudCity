@@ -75,7 +75,8 @@ namespace CloudCityCenter.Controllers
                             subject: null,
                             serviceType: ServiceType,
                             message: Message,
-                            sourcePage: "Contact"
+                            sourcePage: "Contact",
+                            ipAddress: ipAddress
                         );
 
                         if (success)

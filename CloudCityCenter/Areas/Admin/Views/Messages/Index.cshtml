@@ -81,6 +81,7 @@
                                         <th>ID</th>
                                         <th>Имя</th>
                                         <th>Email</th>
+                                        <th>IP Address</th>
                                         <th>Телефон</th>
                                         <th>Страница</th>
                                         <th>Тема</th>
@@ -98,6 +99,7 @@
                                             <td>
                                                 <a href="mailto:@message.Email">@message.Email</a>
                                             </td>
+                                            <td>@(message.IpAddress ?? "-")</td>
                                             <td>@(message.Phone ?? "-")</td>
                                             <td>
                                                 <span class="badge bg-@(message.SourcePage == "About" ? "info" : "primary")">
@@ -141,4 +143,3 @@
         </div>
     </div>
 </div>
-
