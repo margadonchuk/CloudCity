@@ -54,7 +54,7 @@ public class HomeController : Controller
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult StatusCode(int code)
+    public new IActionResult StatusCode(int code)
     {
         ViewData["StatusCode"] = code;
         ViewData["Title"] = code == StatusCodes.Status403Forbidden
