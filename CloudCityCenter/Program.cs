@@ -237,54 +237,33 @@ using (var scope = app.Services.CreateScope())
             var providerName = context.Database.ProviderName;
             logger.LogInformation($"Database provider: {providerName}");
             
-            // Проверяем, что это SQL Server, а не SQLite
-            if (providerName != null && providerName.Contains("SqlServer"))
+            var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
+
+            if (pendingMigrations.Any())
             {
-                // Проверяем, существуют ли уже таблицы (пробуем выполнить простой запрос)
-                bool productsTableExists = false;
-                try
-                {
-                    await context.Products.CountAsync();
-                    productsTableExists = true;
-                }
-                catch
-                {
-                    // Если не удалось, значит таблицы нет
-                    productsTableExists = false;
-                }
-                
-                if (!productsTableExists)
-                {
-                    logger.LogInformation("Tables not found. Attempting to apply migrations...");
-                    try
-                    {
-                        await context.Database.MigrateAsync();
-                        logger.LogInformation("Migrations applied successfully");
-                    }
-                    catch (Exception migEx)
-                    {
-                        logger.LogWarning(migEx, "Could not apply migrations (migrations might be for SQLite).");
-                        logger.LogWarning("Solution: Create tables manually using create_database_sqlserver.sql script in SQL Server Management Studio.");
-                        logger.LogWarning("The application will continue, but database operations may fail until tables are created.");
-                    }
-                }
-                else
-                {
-                    logger.LogInformation("Tables already exist. Skipping migrations.");
-                }
-            }
-            else
-            {
-                logger.LogInformation("Applying migrations for non-SQL Server database...");
+                logger.LogInformation("Applying {Count} pending migrations...", pendingMigrations.Count());
                 try
                 {
                     await context.Database.MigrateAsync();
                     logger.LogInformation("Migrations applied successfully.");
                 }
-                catch
+                catch (Exception migEx)
                 {
-                    // Игнорируем ошибки миграций для не-SQL Server баз
+                    if (providerName != null && providerName.Contains("SqlServer"))
+                    {
+                        logger.LogWarning(migEx, "Could not apply migrations for SQL Server.");
+                        logger.LogWarning("Solution: Create/update tables manually using create_database_sqlserver.sql script in SQL Server Management Studio.");
+                        logger.LogWarning("The application will continue, but database operations may fail until tables are updated.");
+                    }
+                    else
+                    {
+                        logger.LogWarning(migEx, "Could not apply migrations for the configured database provider.");
+                    }
                 }
+            }
+            else
+            {
+                logger.LogInformation("No pending migrations. Skipping migrations.");
             }
         }
         else
