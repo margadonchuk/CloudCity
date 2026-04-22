@@ -29,10 +29,6 @@ namespace CloudCityCenter.Migrations
                         .HasColumnType("TEXT")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("IpAddress")
                         .IsRequired()
                         .HasMaxLength(45)
@@ -43,18 +39,13 @@ namespace CloudCityCenter.Migrations
                         .HasColumnType("INTEGER")
                         .HasDefaultValue(true);
 
-                    b.Property<string>("NormalizedIpAddress")
-                        .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Reason")
                         .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedIpAddress", "IsActive")
+                    b.HasIndex("IpAddress", "IsActive")
                         .IsUnique();
 
                     b.ToTable("BlockedIps");

@@ -83,29 +83,36 @@ public class ApplicationDbContext : IdentityDbContext
             .HasDefaultValue(9999);
 
 
-        builder.Entity<BlockedIp>()
-            .ToTable("BlockedIps");
-
-        builder.Entity<BlockedIp>()
-            .HasIndex(x => new { x.NormalizedIpAddress, x.IsActive })
-            .IsUnique();
-
-        builder.Entity<BlockedIp>()
-            .Property(x => x.IsActive)
-            .HasDefaultValue(true);
-
-        if (Database.IsSqlServer())
+        builder.Entity<BlockedIp>(entity =>
         {
-            builder.Entity<BlockedIp>()
-                .Property(x => x.CreatedAt)
-                .HasDefaultValueSql("GETUTCDATE()");
-        }
-        else
-        {
-            builder.Entity<BlockedIp>()
-                .Property(x => x.CreatedAt)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP");
-        }
+            entity.ToTable("BlockedIps");
+
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.IpAddress)
+                .IsRequired()
+                .HasMaxLength(45);
+
+            entity.Property(x => x.Reason)
+                .HasMaxLength(500);
+
+            entity.Property(x => x.IsActive)
+                .HasDefaultValue(true);
+
+            entity.HasIndex(x => new { x.IpAddress, x.IsActive })
+                .IsUnique();
+
+            if (Database.IsSqlServer())
+            {
+                entity.Property(x => x.CreatedAt)
+                    .HasDefaultValueSql("GETUTCDATE()");
+            }
+            else
+            {
+                entity.Property(x => x.CreatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            }
+        });
 
         if (Database.IsSqlServer())
         {
