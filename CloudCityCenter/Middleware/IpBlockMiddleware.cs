@@ -37,7 +37,7 @@ public class IpBlockMiddleware
             {
                 isBlocked = await dbContext.BlockedIps
                     .AsNoTracking()
-                    .AnyAsync(x => x.IsActive && x.NormalizedIpAddress == normalizedIp);
+                    .AnyAsync(x => x.IsActive && x.IpAddress == normalizedIp);
             }
             catch (Exception ex) when (IsTransientBlockedIpQueryFailure(ex))
             {

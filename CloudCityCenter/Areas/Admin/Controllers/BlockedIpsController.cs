@@ -5,6 +5,7 @@ using CloudCityCenter.Models.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
 namespace CloudCityCenter.Areas.Admin.Controllers;
 
@@ -24,10 +25,19 @@ public class BlockedIpsController : Controller
     [Route("admin/security/blockedips")]
     public async Task<IActionResult> Index()
     {
-        var blockedIps = await _context.BlockedIps
-            .OrderByDescending(x => x.IsActive)
-            .ThenByDescending(x => x.CreatedAt)
-            .ToListAsync();
+        List<BlockedIp> blockedIps;
+        try
+        {
+            blockedIps = await _context.BlockedIps
+                .OrderByDescending(x => x.IsActive)
+                .ThenByDescending(x => x.CreatedAt)
+                .ToListAsync();
+        }
+        catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
+        {
+            TempData["ErrorMessage"] = "Blocked IP list is temporarily unavailable because the BlockedIps table schema is out of sync.";
+            blockedIps = new List<BlockedIp>();
+        }
 
         return View(blockedIps);
     }
@@ -64,8 +74,17 @@ public class BlockedIpsController : Controller
             return View(model);
         }
 
-        var alreadyBlocked = await _context.BlockedIps
-            .AnyAsync(x => x.IsActive && x.NormalizedIpAddress == normalizedIp);
+        bool alreadyBlocked;
+        try
+        {
+            alreadyBlocked = await _context.BlockedIps
+                .AnyAsync(x => x.IsActive && x.IpAddress == normalizedIp);
+        }
+        catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
+        {
+            TempData["ErrorMessage"] = "Blocked IP list is temporarily unavailable because the BlockedIps table schema is out of sync.";
+            return RedirectToAction(nameof(Index));
+        }
 
         if (alreadyBlocked)
         {
@@ -81,16 +100,22 @@ public class BlockedIpsController : Controller
 
         var entity = new BlockedIp
         {
-            IpAddress = model.IpAddress.Trim(),
-            NormalizedIpAddress = normalizedIp,
+            IpAddress = normalizedIp,
             Reason = string.IsNullOrWhiteSpace(model.Reason) ? null : model.Reason.Trim(),
-            CreatedBy = User?.Identity?.Name,
             CreatedAt = DateTime.UtcNow,
             IsActive = true
         };
 
         _context.BlockedIps.Add(entity);
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
+        {
+            TempData["ErrorMessage"] = "Could not block IP because the BlockedIps table schema is out of sync.";
+            return RedirectToAction(nameof(Index));
+        }
 
         TempData["SuccessMessage"] = "IP address blocked successfully";
         return RedirectToAction(nameof(Index));
@@ -100,7 +125,16 @@ public class BlockedIpsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Unblock(int id)
     {
-        var entry = await _context.BlockedIps.FindAsync(id);
+        BlockedIp? entry;
+        try
+        {
+            entry = await _context.BlockedIps.FindAsync(id);
+        }
+        catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
+        {
+            TempData["ErrorMessage"] = "Could not update blocked IP because the BlockedIps table schema is out of sync.";
+            return RedirectToAction(nameof(Index));
+        }
         if (entry == null)
         {
             TempData["ErrorMessage"] = "Blocked IP was not found";
@@ -108,7 +142,15 @@ public class BlockedIpsController : Controller
         }
 
         entry.IsActive = false;
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
+        {
+            TempData["ErrorMessage"] = "Could not update blocked IP because the BlockedIps table schema is out of sync.";
+            return RedirectToAction(nameof(Index));
+        }
 
         TempData["SuccessMessage"] = "IP address removed from block list";
         return RedirectToAction(nameof(Index));
@@ -142,4 +184,9 @@ public class BlockedIpsController : Controller
         normalizedIp = ipAddress.ToString();
         return true;
     }
+
+    private static bool IsBlockedIpDataUnavailable(Exception exception) =>
+        exception is DbUpdateException
+            or InvalidOperationException
+            or DbException;
 }
