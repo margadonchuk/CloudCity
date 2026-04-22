@@ -140,8 +140,11 @@ Set the `ConnectionStrings__DefaultConnection` value in `CloudCityCenter/appsett
 Or supply it via the `ConnectionStrings__DefaultConnection` environment variable:
 
 ```bash
-export ConnectionStrings__DefaultConnection="Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;"
+export ConnectionStrings__DefaultConnection="Server=localhost\SQLEXPRESS;Database=CloudCityDB;Trusted_Connection=True;"
 ```
+⚠️ Используйте отдельную базу приложения (например, `CloudCityDB`), а не `master`.  
+⚠️ Use a dedicated app database (for example, `CloudCityDB`), not `master`.
+
 Или сохраните её в [секретах пользователя](https://learn.microsoft.com/aspnet/core/security/app-secrets) .NET:
 Or store it using .NET [user secrets](https://learn.microsoft.com/aspnet/core/security/app-secrets):
 
