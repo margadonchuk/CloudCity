@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -174,10 +175,51 @@ public class MessagesController : Controller
         {
             _context.ContactMessages.Remove(message);
             await _context.SaveChangesAsync();
-            _logger.LogInformation($"Message {id} deleted");
+            _logger.LogInformation("Message {MessageId} deleted", id);
         }
 
         return RedirectToAction(nameof(Index));
+    }
+
+    // POST: Admin/Messages/BulkDelete
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> BulkDelete(List<int>? selectedMessageIds, string? sourcePage = null, bool? unreadOnly = null)
+    {
+        if (selectedMessageIds == null || selectedMessageIds.Count == 0)
+        {
+            TempData["Error"] = "Please select at least one message.";
+            return RedirectToAction(nameof(Index), new { sourcePage, unreadOnly });
+        }
+
+        var normalizedIds = selectedMessageIds
+            .Where(id => id > 0)
+            .Distinct()
+            .ToList();
+
+        if (normalizedIds.Count == 0)
+        {
+            TempData["Error"] = "Please select at least one message.";
+            return RedirectToAction(nameof(Index), new { sourcePage, unreadOnly });
+        }
+
+        var messagesToDelete = await _context.ContactMessages
+            .Where(m => normalizedIds.Contains(m.Id))
+            .ToListAsync();
+
+        if (messagesToDelete.Count == 0)
+        {
+            TempData["Error"] = "No selected messages were found.";
+            return RedirectToAction(nameof(Index), new { sourcePage, unreadOnly });
+        }
+
+        _context.ContactMessages.RemoveRange(messagesToDelete);
+        await _context.SaveChangesAsync();
+
+        _logger.LogInformation("Bulk deleted {DeletedCount} messages", messagesToDelete.Count);
+        TempData["Success"] = "Selected messages deleted successfully";
+
+        return RedirectToAction(nameof(Index), new { sourcePage, unreadOnly });
     }
 }
 
