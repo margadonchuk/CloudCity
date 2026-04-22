@@ -18,7 +18,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<OrderItem> OrderItems { get; set; } = null!;
     public DbSet<Server> Servers { get; set; } = null!;
     public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
-    public DbSet<BlockedIpAddress> BlockedIpAddresses { get; set; } = null!;
+    public DbSet<BlockedIp> BlockedIps { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -83,23 +83,26 @@ public class ApplicationDbContext : IdentityDbContext
             .HasDefaultValue(9999);
 
 
-        builder.Entity<BlockedIpAddress>()
+        builder.Entity<BlockedIp>()
+            .ToTable("BlockedIps");
+
+        builder.Entity<BlockedIp>()
             .HasIndex(x => new { x.NormalizedIpAddress, x.IsActive })
             .IsUnique();
 
-        builder.Entity<BlockedIpAddress>()
+        builder.Entity<BlockedIp>()
             .Property(x => x.IsActive)
             .HasDefaultValue(true);
 
         if (Database.IsSqlServer())
         {
-            builder.Entity<BlockedIpAddress>()
+            builder.Entity<BlockedIp>()
                 .Property(x => x.CreatedAt)
                 .HasDefaultValueSql("GETUTCDATE()");
         }
         else
         {
-            builder.Entity<BlockedIpAddress>()
+            builder.Entity<BlockedIp>()
                 .Property(x => x.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
         }

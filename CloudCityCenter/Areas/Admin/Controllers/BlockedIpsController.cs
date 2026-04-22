@@ -24,7 +24,7 @@ public class BlockedIpsController : Controller
     [Route("admin/security/blockedips")]
     public async Task<IActionResult> Index()
     {
-        var blockedIps = await _context.BlockedIpAddresses
+        var blockedIps = await _context.BlockedIps
             .OrderByDescending(x => x.IsActive)
             .ThenByDescending(x => x.CreatedAt)
             .ToListAsync();
@@ -64,7 +64,7 @@ public class BlockedIpsController : Controller
             return View(model);
         }
 
-        var alreadyBlocked = await _context.BlockedIpAddresses
+        var alreadyBlocked = await _context.BlockedIps
             .AnyAsync(x => x.IsActive && x.NormalizedIpAddress == normalizedIp);
 
         if (alreadyBlocked)
@@ -79,7 +79,7 @@ public class BlockedIpsController : Controller
             return View(model);
         }
 
-        var entity = new BlockedIpAddress
+        var entity = new BlockedIp
         {
             IpAddress = model.IpAddress.Trim(),
             NormalizedIpAddress = normalizedIp,
@@ -89,7 +89,7 @@ public class BlockedIpsController : Controller
             IsActive = true
         };
 
-        _context.BlockedIpAddresses.Add(entity);
+        _context.BlockedIps.Add(entity);
         await _context.SaveChangesAsync();
 
         TempData["SuccessMessage"] = "IP address blocked successfully";
@@ -100,7 +100,7 @@ public class BlockedIpsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Unblock(int id)
     {
-        var entry = await _context.BlockedIpAddresses.FindAsync(id);
+        var entry = await _context.BlockedIps.FindAsync(id);
         if (entry == null)
         {
             TempData["ErrorMessage"] = "Blocked IP was not found";
