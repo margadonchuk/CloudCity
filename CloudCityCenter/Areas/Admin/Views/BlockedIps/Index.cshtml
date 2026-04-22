@@ -46,12 +46,11 @@
 <table class="table table-striped align-middle">
     <thead>
         <tr>
-            <th>IP address</th>
+            <th>IP Address</th>
             <th>Reason</th>
-            <th>Created</th>
-            <th>Created by</th>
+            <th>Created date</th>
             <th>Status</th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -61,7 +60,6 @@
             <td><code>@item.IpAddress</code></td>
             <td>@(string.IsNullOrWhiteSpace(item.Reason) ? "—" : item.Reason)</td>
             <td>@item.CreatedAt.ToString("u")</td>
-            <td>@(string.IsNullOrWhiteSpace(item.CreatedBy) ? "—" : item.CreatedBy)</td>
             <td>
                 @if (item.IsActive)
                 {
