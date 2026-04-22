@@ -7,17 +7,7 @@
 
 <h1>Клиенты</h1>
 
-<div class="mb-3">
-    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-primary">
-        <i class="bi bi-box me-2"></i>Товары
-    </a>
-    <a asp-area="Admin" asp-controller="Users" asp-action="NewUsers" class="btn btn-info">
-        <i class="bi bi-people me-2"></i>Новые пользователи
-    </a>
-    <a asp-area="Admin" asp-controller="Messages" asp-action="Index" class="btn btn-warning">
-        <i class="bi bi-envelope-fill me-2"></i>Письма
-    </a>
-</div>
+<partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
 
 <table class="table table-striped">
     <thead>

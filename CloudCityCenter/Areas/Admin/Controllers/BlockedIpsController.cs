@@ -19,6 +19,9 @@ public class BlockedIpsController : Controller
         _context = context;
     }
 
+    [HttpGet]
+    [Route("admin/blockedips")]
+    [Route("admin/security/blockedips")]
     public async Task<IActionResult> Index()
     {
         var blockedIps = await _context.BlockedIpAddresses
@@ -36,16 +39,28 @@ public class BlockedIpsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(BlockedIpCreateViewModel model)
+    public async Task<IActionResult> Create(BlockedIpCreateViewModel model, bool returnToIndex = false)
     {
         if (!ModelState.IsValid)
         {
+            if (returnToIndex)
+            {
+                TempData["ErrorMessage"] = "Invalid IP address";
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(model);
         }
 
         if (!TryNormalizeIp(model.IpAddress, out var normalizedIp))
         {
             ModelState.AddModelError(nameof(model.IpAddress), "Please enter a valid IPv4 or IPv6 address.");
+            if (returnToIndex)
+            {
+                TempData["ErrorMessage"] = "Invalid IP address";
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(model);
         }
 
@@ -56,6 +71,11 @@ public class BlockedIpsController : Controller
         {
             TempData["ErrorMessage"] = "IP address already exists";
             ModelState.AddModelError(nameof(model.IpAddress), "This IP address is already blocked.");
+            if (returnToIndex)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(model);
         }
 

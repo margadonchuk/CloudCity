@@ -7,6 +7,8 @@
 
 <h1>Block IP address</h1>
 
+<partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
+
 <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Create" method="post" class="mt-4">
     @Html.AntiForgeryToken()
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
