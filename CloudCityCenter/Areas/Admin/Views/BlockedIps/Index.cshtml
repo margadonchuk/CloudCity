@@ -7,13 +7,30 @@
 
 <h1>Blocked IP addresses</h1>
 
-<div class="mb-3 d-flex gap-2 flex-wrap">
-    <a asp-area="Admin" asp-controller="BlockedIps" asp-action="Create" class="btn btn-danger">
-        <i class="bi bi-shield-x me-2"></i>Block IP address
-    </a>
-    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-secondary">
-        <i class="bi bi-arrow-left me-2"></i>Back to admin panel
-    </a>
+<partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Block a new IP address</h5>
+        <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Create" method="post" class="row g-3">
+            @Html.AntiForgeryToken()
+            <div class="col-md-4">
+                <label for="IpAddress" class="form-label">IP address</label>
+                <input id="IpAddress" name="IpAddress" class="form-control" placeholder="e.g. 203.0.113.12 or 2001:db8::10" required />
+            </div>
+            <div class="col-md-6">
+                <label for="Reason" class="form-label">Reason (optional)</label>
+                <input id="Reason" name="Reason" class="form-control" maxlength="500" placeholder="Optional reason" />
+            </div>
+            <input type="hidden" name="returnToIndex" value="true" />
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-danger w-100">Block IP</button>
+            </div>
+        </form>
+        <div class="mt-2">
+            <a asp-area="Admin" asp-controller="BlockedIps" asp-action="Create" class="btn btn-link px-0">Open full add form</a>
+        </div>
+    </div>
 </div>
 
 @if (TempData["SuccessMessage"] != null)

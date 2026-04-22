@@ -1,0 +1,19 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-box me-2"></i>Products
+    </a>
+    <a asp-area="Admin" asp-controller="Users" asp-action="NewUsers" class="btn btn-info">
+        <i class="bi bi-people me-2"></i>New users
+    </a>
+    <a asp-area="Admin" asp-controller="Users" asp-action="Customers" class="btn btn-success">
+        <i class="bi bi-person-check me-2"></i>Customers
+    </a>
+    <a asp-area="Admin" asp-controller="Messages" asp-action="Index" class="btn btn-warning">
+        <i class="bi bi-envelope-fill me-2"></i>Messages
+    </a>
+    <a asp-area="Admin" asp-controller="BlockedIps" asp-action="Index" class="btn btn-danger">
+        <i class="bi bi-shield-x me-2"></i>Blocked IPs
+    </a>
+</div>
