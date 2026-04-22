@@ -58,7 +58,7 @@ public class HomeController : Controller
     {
         ViewData["StatusCode"] = code;
         ViewData["Title"] = code == StatusCodes.Status403Forbidden
-            ? "Form submission limit reached"
+            ? "Access denied"
             : "Something went wrong";
 
         return View();

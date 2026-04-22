@@ -3,6 +3,7 @@ using System.Linq;
 using System.Globalization;
 using CloudCityCenter.Data;
 using CloudCityCenter.Services;
+using CloudCityCenter.Middleware;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
@@ -320,6 +321,7 @@ else
 }
 
 app.UseStatusCodePagesWithReExecute("/Home/StatusCode", "?code={0}");
+app.UseMiddleware<IpBlockMiddleware>();
 
 // Completely disable HTTPS redirection when behind reverse proxy (nginx handles HTTPS)
 // This prevents ERR_TOO_MANY_REDIRECTS errors
