@@ -29,17 +29,27 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var products = await _context.Products
-            .AsNoTracking()
-            .Where(p => p.IsAvailable && p.Type == ProductType.DedicatedServer)
-            .ToListAsync();
-        
+        List<Product> products;
+
+        try
+        {
+            products = await _context.Products
+                .AsNoTracking()
+                .Where(p => p.IsAvailable && p.Type == ProductType.DedicatedServer)
+                .ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to load products for homepage. Returning an empty list to avoid HTTP 500.");
+            products = new List<Product>();
+        }
+
         // SEO оптимизация для главной страницы с локализацией
         var localizer = GetLocalizer();
         ViewData["Title"] = localizer["SEOTitle"].Value;
         ViewData["Description"] = localizer["SEODescription"].Value;
         ViewData["Keywords"] = localizer["SEOKeywords"].Value;
-        
+
         return View(products);
     }
 
