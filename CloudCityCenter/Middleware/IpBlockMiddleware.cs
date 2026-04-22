@@ -1,5 +1,6 @@
 using System.Net;
 using System.Data;
+using System.Data.Common;
 using CloudCityCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -30,9 +31,23 @@ public class IpBlockMiddleware
 
         if (TryNormalizeIp(context.Connection.RemoteIpAddress, out var normalizedIp))
         {
-            var isBlocked = await dbContext.BlockedIps
-                .AsNoTracking()
-                .AnyAsync(x => x.IsActive && x.NormalizedIpAddress == normalizedIp);
+            bool isBlocked;
+
+            try
+            {
+                isBlocked = await dbContext.BlockedIps
+                    .AsNoTracking()
+                    .AnyAsync(x => x.IsActive && x.NormalizedIpAddress == normalizedIp);
+            }
+            catch (Exception ex) when (IsTransientBlockedIpQueryFailure(ex))
+            {
+                _logger.LogWarning(ex,
+                    "Skipping blocked IP check for {IpAddress} because BlockedIps query failed.",
+                    normalizedIp);
+                _memoryCache.Set(BlockedIpsTableExistsCacheKey, false, TimeSpan.FromSeconds(30));
+                await _next(context);
+                return;
+            }
 
             if (isBlocked)
             {
@@ -60,10 +75,13 @@ public class IpBlockMiddleware
 
         try
         {
-            await using var connection = dbContext.Database.GetDbConnection();
+            var connection = dbContext.Database.GetDbConnection();
+            var openedByMiddleware = false;
+
             if (connection.State != ConnectionState.Open)
             {
                 await connection.OpenAsync();
+                openedByMiddleware = true;
             }
 
             await using var command = connection.CreateCommand();
@@ -86,6 +104,12 @@ public class IpBlockMiddleware
             var existsResult = await command.ExecuteScalarAsync();
             var exists = Convert.ToInt32(existsResult) == 1;
             _memoryCache.Set(BlockedIpsTableExistsCacheKey, exists, TimeSpan.FromSeconds(30));
+
+            if (openedByMiddleware)
+            {
+                await connection.CloseAsync();
+            }
+
             return exists;
         }
         catch (Exception ex)
@@ -95,6 +119,11 @@ public class IpBlockMiddleware
             return false;
         }
     }
+
+    private static bool IsTransientBlockedIpQueryFailure(Exception exception) =>
+        exception is DbException
+            or InvalidOperationException
+            or TimeoutException;
 
     private static bool TryNormalizeIp(IPAddress? ipAddress, out string normalizedIp)
     {
