@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -5,84 +6,41 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CloudCityCenter.Migrations
 {
     /// <inheritdoc />
-    public partial class AddBlockedIpAddresses : Migration
+    public partial class AddBlockedIps : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            if (ActiveProvider.Contains("SqlServer"))
-            {
-                migrationBuilder.Sql(
-                    """
-                    IF OBJECT_ID(N'[dbo].[BlockedIpAddresses]', N'U') IS NULL
-                    BEGIN
-                        CREATE TABLE [BlockedIpAddresses] (
-                            [Id] int NOT NULL IDENTITY,
-                            [IpAddress] nvarchar(45) NOT NULL,
-                            [NormalizedIpAddress] nvarchar(45) NOT NULL,
-                            [Reason] nvarchar(500) NULL,
-                            [CreatedAt] datetime2 NOT NULL DEFAULT GETUTCDATE(),
-                            [CreatedBy] nvarchar(256) NULL,
-                            [IsActive] bit NOT NULL DEFAULT CAST(1 AS bit),
-                            CONSTRAINT [PK_BlockedIpAddresses] PRIMARY KEY ([Id])
-                        );
-                    END
-                    """
-                );
+            migrationBuilder.CreateTable(
+                name: "BlockedIps",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IpAddress = table.Column<string>(type: "TEXT", maxLength: 45, nullable: false),
+                    NormalizedIpAddress = table.Column<string>(type: "TEXT", maxLength: 45, nullable: false),
+                    Reason = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    CreatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlockedIps", x => x.Id);
+                });
 
-                migrationBuilder.Sql(
-                    """
-                    IF NOT EXISTS (
-                        SELECT 1 FROM sys.indexes
-                        WHERE name = 'IX_BlockedIpAddresses_NormalizedIpAddress_IsActive'
-                          AND object_id = OBJECT_ID('BlockedIpAddresses')
-                    )
-                    CREATE UNIQUE INDEX [IX_BlockedIpAddresses_NormalizedIpAddress_IsActive]
-                        ON [BlockedIpAddresses] ([NormalizedIpAddress], [IsActive]);
-                    """
-                );
-
-                return;
-            }
-
-            migrationBuilder.Sql(
-                """
-                CREATE TABLE IF NOT EXISTS "BlockedIpAddresses" (
-                    "Id" INTEGER PRIMARY KEY AUTOINCREMENT,
-                    "IpAddress" TEXT NOT NULL,
-                    "NormalizedIpAddress" TEXT NOT NULL,
-                    "Reason" TEXT NULL,
-                    "CreatedAt" TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                    "CreatedBy" TEXT NULL,
-                    "IsActive" INTEGER NOT NULL DEFAULT 1
-                );
-                """
-            );
-
-            migrationBuilder.Sql(
-                """
-                CREATE UNIQUE INDEX IF NOT EXISTS "IX_BlockedIpAddresses_NormalizedIpAddress_IsActive"
-                    ON "BlockedIpAddresses" ("NormalizedIpAddress", "IsActive");
-                """
-            );
+            migrationBuilder.CreateIndex(
+                name: "IX_BlockedIps_NormalizedIpAddress_IsActive",
+                table: "BlockedIps",
+                columns: new[] { "NormalizedIpAddress", "IsActive" },
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            if (ActiveProvider.Contains("SqlServer"))
-            {
-                migrationBuilder.Sql(
-                    """
-                    IF OBJECT_ID(N'[dbo].[BlockedIpAddresses]', N'U') IS NOT NULL
-                        DROP TABLE [BlockedIpAddresses];
-                    """
-                );
-
-                return;
-            }
-
-            migrationBuilder.Sql("DROP TABLE IF EXISTS \"BlockedIpAddresses\";");
+            migrationBuilder.DropTable(
+                name: "BlockedIps");
         }
     }
 }

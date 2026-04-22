@@ -1,11 +1,9 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace CloudCityCenter.Models;
 
-public class BlockedIpAddress
+public class BlockedIp
 {
-    [Key]
     public int Id { get; set; }
 
     [Required]
@@ -20,7 +18,7 @@ public class BlockedIpAddress
     public string? Reason { get; set; }
 
     [Required]
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; }
 
     [StringLength(256)]
     public string? CreatedBy { get; set; }

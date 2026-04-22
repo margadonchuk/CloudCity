@@ -18,7 +18,7 @@ namespace CloudCityCenter.Migrations
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
 
-            modelBuilder.Entity("CloudCityCenter.Models.BlockedIpAddress", b =>
+            modelBuilder.Entity("CloudCityCenter.Models.BlockedIp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace CloudCityCenter.Migrations
                     b.HasIndex("NormalizedIpAddress", "IsActive")
                         .IsUnique();
 
-                    b.ToTable("BlockedIpAddresses");
+                    b.ToTable("BlockedIps");
                 });
 
             modelBuilder.Entity("CloudCityCenter.Models.ContactMessage", b =>
