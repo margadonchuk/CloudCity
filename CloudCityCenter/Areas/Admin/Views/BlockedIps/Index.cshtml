@@ -1,0 +1,70 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<CloudCityCenter.Models.BlockedIpAddress>
+@{
+    ViewData["Title"] = "Blocked IP addresses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Blocked IP addresses</h1>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <a asp-area="Admin" asp-controller="BlockedIps" asp-action="Create" class="btn btn-danger">
+        <i class="bi bi-shield-x me-2"></i>Block IP address
+    </a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-2"></i>Back to admin panel
+    </a>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>IP address</th>
+            <th>Reason</th>
+            <th>Created</th>
+            <th>Created by</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><code>@item.IpAddress</code></td>
+            <td>@(string.IsNullOrWhiteSpace(item.Reason) ? "—" : item.Reason)</td>
+            <td>@item.CreatedAt.ToString("u")</td>
+            <td>@(string.IsNullOrWhiteSpace(item.CreatedBy) ? "—" : item.CreatedBy)</td>
+            <td>
+                @if (item.IsActive)
+                {
+                    <span class="badge bg-danger">Active</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Inactive</span>
+                }
+            </td>
+            <td>
+                @if (item.IsActive)
+                {
+                    <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Unblock" asp-route-id="@item.Id" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-outline-success">Unblock</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -18,6 +18,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<OrderItem> OrderItems { get; set; } = null!;
     public DbSet<Server> Servers { get; set; } = null!;
     public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
+    public DbSet<BlockedIpAddress> BlockedIpAddresses { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -80,6 +81,28 @@ public class ApplicationDbContext : IdentityDbContext
         builder.Entity<Server>()
             .Property(s => s.Stock)
             .HasDefaultValue(9999);
+
+
+        builder.Entity<BlockedIpAddress>()
+            .HasIndex(x => new { x.NormalizedIpAddress, x.IsActive })
+            .IsUnique();
+
+        builder.Entity<BlockedIpAddress>()
+            .Property(x => x.IsActive)
+            .HasDefaultValue(true);
+
+        if (Database.IsSqlServer())
+        {
+            builder.Entity<BlockedIpAddress>()
+                .Property(x => x.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+        }
+        else
+        {
+            builder.Entity<BlockedIpAddress>()
+                .Property(x => x.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        }
 
         if (Database.IsSqlServer())
         {
