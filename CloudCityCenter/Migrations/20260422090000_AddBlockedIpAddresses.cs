@@ -11,21 +11,44 @@ namespace CloudCityCenter.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "BlockedIps",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    IpAddress = table.Column<string>(type: "TEXT", maxLength: 45, nullable: false),
-                    Reason = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BlockedIps", x => x.Id);
-                });
+            var isSqlServer = migrationBuilder.ActiveProvider.Contains("SqlServer", StringComparison.OrdinalIgnoreCase);
+
+            if (isSqlServer)
+            {
+                migrationBuilder.CreateTable(
+                    name: "BlockedIps",
+                    columns: table => new
+                    {
+                        Id = table.Column<int>(nullable: false)
+                            .Annotation("SqlServer:Identity", "1, 1"),
+                        IpAddress = table.Column<string>(maxLength: 45, nullable: false),
+                        Reason = table.Column<string>(maxLength: 500, nullable: true),
+                        CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GETUTCDATE()"),
+                        IsActive = table.Column<bool>(nullable: false, defaultValue: true)
+                    },
+                    constraints: table =>
+                    {
+                        table.PrimaryKey("PK_BlockedIps", x => x.Id);
+                    });
+            }
+            else
+            {
+                migrationBuilder.CreateTable(
+                    name: "BlockedIps",
+                    columns: table => new
+                    {
+                        Id = table.Column<int>(nullable: false)
+                            .Annotation("Sqlite:Autoincrement", true),
+                        IpAddress = table.Column<string>(maxLength: 45, nullable: false),
+                        Reason = table.Column<string>(maxLength: 500, nullable: true),
+                        CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                        IsActive = table.Column<bool>(nullable: false, defaultValue: true)
+                    },
+                    constraints: table =>
+                    {
+                        table.PrimaryKey("PK_BlockedIps", x => x.Id);
+                    });
+            }
 
             migrationBuilder.CreateIndex(
                 name: "IX_BlockedIps_IpAddress_IsActive",
