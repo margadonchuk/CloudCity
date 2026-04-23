@@ -1,5 +1,5 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model IEnumerable<CloudCityCenter.Models.BlockedIp>
+@model CloudCityCenter.Models.Admin.BlockedIpsIndexViewModel
 @{
     ViewData["Title"] = "Blocked IP addresses";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -43,43 +43,57 @@
     <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
 }
 
-<table class="table table-striped align-middle">
-    <thead>
-        <tr>
-            <th>IP Address</th>
-            <th>Reason</th>
-            <th>Created date</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td><code>@item.IpAddress</code></td>
-            <td>@(string.IsNullOrWhiteSpace(item.Reason) ? "—" : item.Reason)</td>
-            <td>@item.CreatedAt.ToString("u")</td>
-            <td>
-                @if (item.IsActive)
-                {
-                    <span class="badge bg-danger">Active</span>
-                }
-                else
-                {
-                    <span class="badge bg-secondary">Inactive</span>
-                }
-            </td>
-            <td>
-                @if (item.IsActive)
-                {
-                    <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Unblock" asp-route-id="@item.Id" method="post" class="d-inline">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-sm btn-outline-success">Unblock</button>
-                    </form>
-                }
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+@if (!Model.IsFeatureInitialized)
+{
+    <div class="alert alert-warning">@Model.FeatureMessage</div>
+}
+
+@if (Model.Items.Count == 0)
+{
+    <div class="alert alert-info">No blocked IP addresses found.</div>
+}
+else
+{
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Reason</th>
+                <th>Blocked At</th>
+                <th>Expires At</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td><code>@item.IpAddress</code></td>
+                <td>@(string.IsNullOrWhiteSpace(item.Reason) ? "—" : item.Reason)</td>
+                <td>@item.CreatedAt.ToString("u")</td>
+                <td>—</td>
+                <td>
+                    @if (item.IsActive)
+                    {
+                        <span class="badge bg-danger">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </td>
+                <td>
+                    @if (item.IsActive)
+                    {
+                        <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Unblock" asp-route-id="@item.Id" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-outline-success">Unblock</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

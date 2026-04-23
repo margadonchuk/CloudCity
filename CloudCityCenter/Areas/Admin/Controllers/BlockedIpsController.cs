@@ -14,10 +14,12 @@ namespace CloudCityCenter.Areas.Admin.Controllers;
 public class BlockedIpsController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly ILogger<BlockedIpsController> _logger;
 
-    public BlockedIpsController(ApplicationDbContext context)
+    public BlockedIpsController(ApplicationDbContext context, ILogger<BlockedIpsController> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -25,21 +27,32 @@ public class BlockedIpsController : Controller
     [Route("admin/security/blockedips")]
     public async Task<IActionResult> Index()
     {
-        List<BlockedIp> blockedIps;
         try
         {
-            blockedIps = await _context.BlockedIps
+            var blockedIps = await _context.BlockedIps
+                .AsNoTracking()
                 .OrderByDescending(x => x.IsActive)
                 .ThenByDescending(x => x.CreatedAt)
                 .ToListAsync();
+
+            return View(new BlockedIpsIndexViewModel
+            {
+                Items = blockedIps
+            });
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
-            TempData["ErrorMessage"] = "Blocked IP list is temporarily unavailable because the BlockedIps table schema is out of sync.";
-            blockedIps = new List<BlockedIp>();
-        }
+            _logger.LogWarning(ex,
+                "Blocked IP feature is unavailable for {Path}. Returning safe empty state.",
+                HttpContext.Request.Path);
 
-        return View(blockedIps);
+            return View(new BlockedIpsIndexViewModel
+            {
+                IsFeatureInitialized = false,
+                FeatureMessage = "Blocked IP feature is not initialized yet.",
+                Items = Array.Empty<BlockedIp>()
+            });
+        }
     }
 
     public IActionResult Create()
@@ -82,6 +95,8 @@ public class BlockedIpsController : Controller
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
+            _logger.LogWarning(ex,
+                "Could not validate blocked IP uniqueness because blocked IP data is unavailable.");
             TempData["ErrorMessage"] = "Blocked IP list is temporarily unavailable because the BlockedIps table schema is out of sync.";
             return RedirectToAction(nameof(Index));
         }
@@ -113,6 +128,8 @@ public class BlockedIpsController : Controller
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
+            _logger.LogWarning(ex,
+                "Could not save blocked IP entry because blocked IP data is unavailable.");
             TempData["ErrorMessage"] = "Could not block IP because the BlockedIps table schema is out of sync.";
             return RedirectToAction(nameof(Index));
         }
@@ -132,6 +149,9 @@ public class BlockedIpsController : Controller
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
+            _logger.LogWarning(ex,
+                "Could not load blocked IP entry {BlockedIpId} because blocked IP data is unavailable.",
+                id);
             TempData["ErrorMessage"] = "Could not update blocked IP because the BlockedIps table schema is out of sync.";
             return RedirectToAction(nameof(Index));
         }
@@ -148,6 +168,9 @@ public class BlockedIpsController : Controller
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
+            _logger.LogWarning(ex,
+                "Could not update blocked IP entry {BlockedIpId} because blocked IP data is unavailable.",
+                id);
             TempData["ErrorMessage"] = "Could not update blocked IP because the BlockedIps table schema is out of sync.";
             return RedirectToAction(nameof(Index));
         }
@@ -187,6 +210,11 @@ public class BlockedIpsController : Controller
 
     private static bool IsBlockedIpDataUnavailable(Exception exception) =>
         exception is DbUpdateException
+            or DbException
             or InvalidOperationException
-            or DbException;
+            or InvalidCastException
+            or FormatException
+            or OverflowException
+            or NullReferenceException
+        || (exception.InnerException is not null && IsBlockedIpDataUnavailable(exception.InnerException));
 }
