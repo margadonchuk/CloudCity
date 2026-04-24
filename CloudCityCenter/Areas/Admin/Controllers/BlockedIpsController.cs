@@ -27,12 +27,23 @@ public class BlockedIpsController : Controller
     [Route("admin/security/blockedips")]
     public async Task<IActionResult> Index()
     {
+        var requestPath = HttpContext.Request.Path.Value ?? "/admin/security/blockedips";
+        var userName = User?.Identity?.Name ?? "<anonymous>";
+
         try
         {
             var blockedIps = await _context.BlockedIps
                 .AsNoTracking()
+                .Select(x => new BlockedIpListItemViewModel
+                {
+                    Id = EF.Property<int>(x, nameof(BlockedIp.Id)),
+                    IpAddress = EF.Property<string?>(x, nameof(BlockedIp.IpAddress)) ?? "(unknown)",
+                    Reason = EF.Property<string?>(x, nameof(BlockedIp.Reason)),
+                    CreatedAtUtc = EF.Property<DateTime?>(x, nameof(BlockedIp.CreatedAt)),
+                    IsActive = EF.Property<bool?>(x, nameof(BlockedIp.IsActive)) ?? false
+                })
                 .OrderByDescending(x => x.IsActive)
-                .ThenByDescending(x => x.CreatedAt)
+                .ThenByDescending(x => x.CreatedAtUtc)
                 .ToListAsync();
 
             return View(new BlockedIpsIndexViewModel
@@ -40,17 +51,23 @@ public class BlockedIpsController : Controller
                 Items = blockedIps
             });
         }
-        catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
+        catch (Exception ex)
         {
-            _logger.LogWarning(ex,
-                "Blocked IP feature is unavailable for {Path}. Returning safe empty state.",
-                HttpContext.Request.Path);
+            _logger.LogError(ex,
+                "BlockedIps index failed for {Path}. User={UserName}. Message={Message}. StackTrace={StackTrace}. Inner={InnerMessage}",
+                requestPath,
+                userName,
+                ex.Message,
+                ex.StackTrace,
+                ex.InnerException?.Message);
 
             return View(new BlockedIpsIndexViewModel
             {
                 IsFeatureInitialized = false,
-                FeatureMessage = "Blocked IP feature is not initialized yet.",
-                Items = Array.Empty<BlockedIp>()
+                FeatureMessage = IsBlockedIpDataUnavailable(ex)
+                    ? "Blocked IP feature is not initialized yet."
+                    : "Blocked IP list is temporarily unavailable.",
+                Items = Array.Empty<BlockedIpListItemViewModel>()
             });
         }
     }
