@@ -1,19 +1,24 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    string AdminHref(string controller, string action, string fallback)
+    {
+        return Url.Action(action, controller, new { area = "Admin" }) ?? fallback;
+    }
+}
 
 <div class="mb-3 d-flex gap-2 flex-wrap">
-    <a asp-area="Admin" asp-controller="Products" asp-action="Create" class="btn btn-primary">
+    <a href="@AdminHref("Products", "Create", "/Admin/Products/Create")" class="btn btn-primary">
         <i class="bi bi-plus-circle me-2"></i>Создание товара
     </a>
-    <a asp-area="Admin" asp-controller="Users" asp-action="NewUsers" class="btn btn-info">
+    <a href="@AdminHref("Users", "NewUsers", "/Admin/Users/NewUsers")" class="btn btn-info">
         <i class="bi bi-people me-2"></i>Новые пользователи
     </a>
-    <a asp-area="Admin" asp-controller="Users" asp-action="Customers" class="btn btn-success">
+    <a href="@AdminHref("Users", "Customers", "/Admin/Users/Customers")" class="btn btn-success">
         <i class="bi bi-person-check me-2"></i>Клиенты
     </a>
-    <a asp-area="Admin" asp-controller="Messages" asp-action="Index" class="btn btn-warning">
+    <a href="@AdminHref("Messages", "Index", "/Admin/Messages")" class="btn btn-warning">
         <i class="bi bi-envelope-fill me-2"></i>Письма
     </a>
-    <a asp-area="Admin" asp-controller="BlockedIps" asp-action="Index" class="btn btn-danger">
+    <a href="@AdminHref("BlockedIps", "Index", "/admin/security/blockedips")" class="btn btn-danger">
         <i class="bi bi-shield-x me-2"></i>Заблокированные IP
     </a>
 </div>
