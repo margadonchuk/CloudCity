@@ -5,6 +5,7 @@ using CloudCityCenter.Models.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Data.Common;
 
 namespace CloudCityCenter.Areas.Admin.Controllers;
@@ -45,6 +46,7 @@ public class BlockedIpsController : Controller
         {
             var blockedIps = await _context.BlockedIps
                 .AsNoTracking()
+                .Where(x => x.IsActive)
                 .Select(x => new BlockedIpListItemViewModel
                 {
                     Id = EF.Property<int>(x, nameof(BlockedIp.Id)),
@@ -53,8 +55,7 @@ public class BlockedIpsController : Controller
                     CreatedAtUtc = EF.Property<DateTime?>(x, nameof(BlockedIp.CreatedAt)),
                     IsActive = EF.Property<bool?>(x, nameof(BlockedIp.IsActive)) ?? false
                 })
-                .OrderByDescending(x => x.IsActive)
-                .ThenByDescending(x => x.CreatedAtUtc)
+                .OrderByDescending(x => x.CreatedAtUtc)
                 .ToListAsync();
 
             return View(new BlockedIpsIndexViewModel
@@ -115,11 +116,11 @@ public class BlockedIpsController : Controller
             return View(model);
         }
 
-        bool alreadyBlocked;
+        BlockedIp? existingEntry;
         try
         {
-            alreadyBlocked = await _context.BlockedIps
-                .AnyAsync(x => x.IsActive && x.IpAddress == normalizedIp);
+            existingEntry = await _context.BlockedIps
+                .FirstOrDefaultAsync(x => x.IpAddress == normalizedIp);
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
@@ -129,7 +130,7 @@ public class BlockedIpsController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        if (alreadyBlocked)
+        if (existingEntry?.IsActive == true)
         {
             TempData["ErrorMessage"] = "IP address already exists";
             ModelState.AddModelError(nameof(model.IpAddress), "This IP address is already blocked.");
@@ -141,15 +142,26 @@ public class BlockedIpsController : Controller
             return View(model);
         }
 
-        var entity = new BlockedIp
+        var reason = string.IsNullOrWhiteSpace(model.Reason) ? null : model.Reason.Trim();
+        if (existingEntry is not null)
         {
-            IpAddress = normalizedIp,
-            Reason = string.IsNullOrWhiteSpace(model.Reason) ? null : model.Reason.Trim(),
-            CreatedAt = DateTime.UtcNow,
-            IsActive = true
-        };
+            existingEntry.IpAddress = normalizedIp;
+            existingEntry.Reason = reason;
+            existingEntry.CreatedAt = DateTime.UtcNow;
+            existingEntry.IsActive = true;
+        }
+        else
+        {
+            var entity = new BlockedIp
+            {
+                IpAddress = normalizedIp,
+                Reason = reason,
+                CreatedAt = DateTime.UtcNow,
+                IsActive = true
+            };
 
-        _context.BlockedIps.Add(entity);
+            _context.BlockedIps.Add(entity);
+        }
         try
         {
             await _context.SaveChangesAsync();
@@ -173,7 +185,7 @@ public class BlockedIpsController : Controller
         BlockedIp? entry;
         try
         {
-            entry = await _context.BlockedIps.FindAsync(id);
+            entry = await _context.BlockedIps.FirstOrDefaultAsync(x => x.Id == id);
         }
         catch (Exception ex) when (IsBlockedIpDataUnavailable(ex))
         {
@@ -230,21 +242,40 @@ public class BlockedIpsController : Controller
             }
 
             var provider = _context.Database.ProviderName ?? string.Empty;
+            await using var connection = _context.Database.GetDbConnection();
+            var openedLocally = false;
+
+            if (connection.State != ConnectionState.Open)
+            {
+                await connection.OpenAsync();
+                openedLocally = true;
+            }
+
+            await using var command = connection.CreateCommand();
+
             if (provider.Contains("SqlServer", StringComparison.OrdinalIgnoreCase))
             {
-                const string sql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM sys.tables WHERE name = 'BlockedIps' AND schema_id = SCHEMA_ID('dbo')) THEN 1 ELSE 0 END";
-                var result = await _context.Database.SqlQueryRaw<int>(sql).FirstOrDefaultAsync();
-                return result == 1;
+                command.CommandText = @"SELECT CASE WHEN EXISTS (
+                    SELECT 1
+                    FROM INFORMATION_SCHEMA.TABLES
+                    WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'BlockedIps'
+                ) THEN 1 ELSE 0 END";
             }
 
             if (provider.Contains("Sqlite", StringComparison.OrdinalIgnoreCase))
             {
-                const string sql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'BlockedIps') THEN 1 ELSE 0 END";
-                var result = await _context.Database.SqlQueryRaw<int>(sql).FirstOrDefaultAsync();
-                return result == 1;
+                command.CommandText = "SELECT CASE WHEN EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'BlockedIps') THEN 1 ELSE 0 END";
             }
 
-            return true;
+            var result = await command.ExecuteScalarAsync();
+            var exists = Convert.ToInt32(result) == 1;
+
+            if (openedLocally)
+            {
+                await connection.CloseAsync();
+            }
+
+            return exists;
         }
         catch
         {
