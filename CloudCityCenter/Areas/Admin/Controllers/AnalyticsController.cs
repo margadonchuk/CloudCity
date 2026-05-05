@@ -153,6 +153,39 @@ public class AnalyticsController : Controller
             .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
             .CountAsync();
 
+        var onlineThresholdUtc = DateTime.UtcNow.AddMinutes(-5);
+        var activeVisitorRows = await _context.VisitorSessions
+            .AsNoTracking()
+            .Where(x => x.LastSeenAt >= onlineThresholdUtc)
+            .OrderByDescending(x => x.LastSeenAt)
+            .Select(x => new
+            {
+                x.Id,
+                x.IpAddress,
+                x.FirstSeenAt,
+                x.LastSeenAt,
+                PagesCount = x.PageVisits.Count,
+                x.UserAgent
+            })
+            .ToListAsync();
+
+        var activeVisitors = activeVisitorRows
+            .Select(x =>
+            {
+                var hasNormalizedIp = ClientIpResolver.TryNormalizeIp(x.IpAddress, out var normalizedIp);
+                return new VisitorSessionListItemViewModel
+                {
+                    Id = x.Id,
+                    IpAddress = x.IpAddress,
+                    NormalizedIpAddress = hasNormalizedIp ? normalizedIp : string.Empty,
+                    FirstSeenAt = x.FirstSeenAt,
+                    LastSeenAt = x.LastSeenAt,
+                    PagesCount = x.PagesCount,
+                    UserAgent = x.UserAgent
+                };
+            })
+            .ToList();
+
         return View(new AnalyticsIndexViewModel
         {
             SelectedFilter = selectedRange,
@@ -160,6 +193,8 @@ public class AnalyticsController : Controller
             StartDateUtc = filterStart,
             EndDateUtc = filterEndExclusive.AddTicks(-1),
             TotalPageVisits = totalPageVisits,
+            OnlineNowCount = activeVisitors.Count,
+            ActiveVisitors = activeVisitors,
             Visitors = visitors,
             TopPages = topPages
         });
