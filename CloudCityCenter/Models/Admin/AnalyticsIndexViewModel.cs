@@ -3,6 +3,7 @@ namespace CloudCityCenter.Models.Admin;
 public sealed class AnalyticsIndexViewModel
 {
     public string SelectedFilter { get; init; } = "today";
+    public string SearchIpAddress { get; init; } = string.Empty;
     public DateTime? StartDateUtc { get; init; }
     public DateTime? EndDateUtc { get; init; }
     public int TotalPageVisits { get; init; }
