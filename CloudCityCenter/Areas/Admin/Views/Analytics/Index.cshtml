@@ -176,6 +176,59 @@
                 </div>
             </div>
 
+            <div class="row g-3 mb-3">
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Top Browsers</h5>
+                            @if (Model.TopBrowsers.Count == 0)
+                            {
+                                <div class="alert alert-info mb-0">No browser data found.</div>
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped mb-0">
+                                        <thead><tr><th>Browser</th><th>Sessions</th></tr></thead>
+                                        <tbody>
+                                        @foreach (var item in Model.TopBrowsers)
+                                        {
+                                            <tr><td>@item.Label</td><td>@item.Count</td></tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Devices Split</h5>
+                            @if (Model.DeviceSplit.Count == 0)
+                            {
+                                <div class="alert alert-info mb-0">No device data found.</div>
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped mb-0">
+                                        <thead><tr><th>Device</th><th>Sessions</th></tr></thead>
+                                        <tbody>
+                                        @foreach (var item in Model.DeviceSplit)
+                                        {
+                                            <tr><td>@item.Label</td><td>@item.Count</td></tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Visitor Sessions</h5>
@@ -201,6 +254,8 @@
                                         <th>First Seen UTC</th>
                                         <th>Last Seen UTC</th>
                                         <th>Pages Count</th>
+                                        <th>Browser</th>
+                                        <th>Device</th>
                                         <th>User-Agent</th>
                                         <th></th>
                                     </tr>
@@ -213,6 +268,8 @@
                                             <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.PagesCount</td>
+                                            <td>@visitor.Browser</td>
+                                            <td>@visitor.Device</td>
                                             <td><span title="@visitor.UserAgent">@FormatShortUserAgent(visitor.UserAgent)</span></td>
                                             <td class="text-end">
                                                 <a href="@Url.Action("Details", "Analytics", new { area = "Admin", id = visitor.Id })" class="btn btn-sm btn-primary">Details</a>
