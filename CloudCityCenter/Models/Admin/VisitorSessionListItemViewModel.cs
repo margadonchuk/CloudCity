@@ -9,5 +9,7 @@ public sealed class VisitorSessionListItemViewModel
     public DateTime LastSeenAt { get; init; }
     public int PagesCount { get; init; }
     public string? UserAgent { get; init; }
+    public string Browser { get; init; } = "Other";
+    public string Device { get; init; } = "Desktop";
     public bool IsIpBlocked { get; init; }
 }

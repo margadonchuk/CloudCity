@@ -11,4 +11,12 @@ public sealed class AnalyticsIndexViewModel
     public IReadOnlyList<VisitorSessionListItemViewModel> ActiveVisitors { get; init; } = Array.Empty<VisitorSessionListItemViewModel>();
     public IReadOnlyList<VisitorSessionListItemViewModel> Visitors { get; init; } = Array.Empty<VisitorSessionListItemViewModel>();
     public IReadOnlyList<TopPageVisitViewModel> TopPages { get; init; } = Array.Empty<TopPageVisitViewModel>();
+    public IReadOnlyList<AnalyticsBreakdownItemViewModel> TopBrowsers { get; init; } = Array.Empty<AnalyticsBreakdownItemViewModel>();
+    public IReadOnlyList<AnalyticsBreakdownItemViewModel> DeviceSplit { get; init; } = Array.Empty<AnalyticsBreakdownItemViewModel>();
+}
+
+public sealed class AnalyticsBreakdownItemViewModel
+{
+    public string Label { get; init; } = string.Empty;
+    public int Count { get; init; }
 }

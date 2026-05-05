@@ -87,6 +87,8 @@ public class AnalyticsController : Controller
             .Select(x =>
             {
                 var hasNormalizedIp = ClientIpResolver.TryNormalizeIp(x.IpAddress, out var normalizedIp);
+                var browser = DetectBrowser(x.UserAgent);
+                var device = DetectDevice(x.UserAgent);
                 return new VisitorSessionListItemViewModel
                 {
                     Id = x.Id,
@@ -95,9 +97,25 @@ public class AnalyticsController : Controller
                     FirstSeenAt = x.FirstSeenAt,
                     LastSeenAt = x.LastSeenAt,
                     PagesCount = x.PagesCount,
-                    UserAgent = x.UserAgent
+                    UserAgent = x.UserAgent,
+                    Browser = browser,
+                    Device = device
                 };
             })
+            .ToList();
+
+        var topBrowsers = visitors
+            .GroupBy(v => v.Browser)
+            .Select(g => new AnalyticsBreakdownItemViewModel { Label = g.Key, Count = g.Count() })
+            .OrderByDescending(x => x.Count)
+            .ThenBy(x => x.Label)
+            .ToList();
+
+        var deviceSplit = visitors
+            .GroupBy(v => v.Device)
+            .Select(g => new AnalyticsBreakdownItemViewModel { Label = g.Key, Count = g.Count() })
+            .OrderByDescending(x => x.Count)
+            .ThenBy(x => x.Label)
             .ToList();
 
         var normalizedIps = visitors
@@ -128,6 +146,8 @@ public class AnalyticsController : Controller
                 LastSeenAt = x.LastSeenAt,
                 PagesCount = x.PagesCount,
                 UserAgent = x.UserAgent,
+                Browser = x.Browser,
+                Device = x.Device,
                 IsIpBlocked = !string.IsNullOrWhiteSpace(x.NormalizedIpAddress) && blockedIpSet.Contains(x.NormalizedIpAddress)
             })
             .ToList();
@@ -181,7 +201,9 @@ public class AnalyticsController : Controller
                     FirstSeenAt = x.FirstSeenAt,
                     LastSeenAt = x.LastSeenAt,
                     PagesCount = x.PagesCount,
-                    UserAgent = x.UserAgent
+                    UserAgent = x.UserAgent,
+                    Browser = DetectBrowser(x.UserAgent),
+                    Device = DetectDevice(x.UserAgent)
                 };
             })
             .ToList();
@@ -196,8 +218,47 @@ public class AnalyticsController : Controller
             OnlineNowCount = activeVisitors.Count,
             ActiveVisitors = activeVisitors,
             Visitors = visitors,
-            TopPages = topPages
+            TopPages = topPages,
+            TopBrowsers = topBrowsers,
+            DeviceSplit = deviceSplit
         });
+    }
+
+    private static string DetectBrowser(string? userAgent)
+    {
+        if (string.IsNullOrWhiteSpace(userAgent))
+        {
+            return "Other";
+        }
+
+        if (userAgent.Contains("Edg/", StringComparison.OrdinalIgnoreCase)) return "Edge";
+        if (userAgent.Contains("Firefox/", StringComparison.OrdinalIgnoreCase)) return "Firefox";
+        if (userAgent.Contains("Chrome/", StringComparison.OrdinalIgnoreCase) &&
+            !userAgent.Contains("Chromium", StringComparison.OrdinalIgnoreCase)) return "Chrome";
+        if (userAgent.Contains("Safari/", StringComparison.OrdinalIgnoreCase) &&
+            !userAgent.Contains("Chrome/", StringComparison.OrdinalIgnoreCase) &&
+            !userAgent.Contains("Chromium", StringComparison.OrdinalIgnoreCase)) return "Safari";
+
+        return "Other";
+    }
+
+    private static string DetectDevice(string? userAgent)
+    {
+        if (string.IsNullOrWhiteSpace(userAgent))
+        {
+            return "Desktop";
+        }
+
+        if (userAgent.Contains("bot", StringComparison.OrdinalIgnoreCase) ||
+            userAgent.Contains("spider", StringComparison.OrdinalIgnoreCase) ||
+            userAgent.Contains("crawl", StringComparison.OrdinalIgnoreCase)) return "Bot";
+        if (userAgent.Contains("iPad", StringComparison.OrdinalIgnoreCase) ||
+            userAgent.Contains("Tablet", StringComparison.OrdinalIgnoreCase)) return "Tablet";
+        if (userAgent.Contains("Mobi", StringComparison.OrdinalIgnoreCase) ||
+            userAgent.Contains("Android", StringComparison.OrdinalIgnoreCase) ||
+            userAgent.Contains("iPhone", StringComparison.OrdinalIgnoreCase)) return "Mobile";
+
+        return "Desktop";
     }
 
     public async Task<IActionResult> Details(int id)
