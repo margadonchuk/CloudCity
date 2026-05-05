@@ -1,14 +1,18 @@
-@model IEnumerable<CloudCityCenter.Models.VisitorSession>
+@model CloudCityCenter.Models.Admin.AnalyticsIndexViewModel
 
 @{
     ViewData["Title"] = "Analytics";
-}
 
-@{
-    var analyticsModel = ViewData.Model as CloudCityCenter.Models.Admin.AnalyticsIndexViewModel;
-    var totalSessions = analyticsModel?.Visitors?.Count ?? 0;
-    var uniqueIpAddresses = analyticsModel?.Visitors?.Select(v => v.IpAddress).Where(ip => !string.IsNullOrWhiteSpace(ip)).Distinct(StringComparer.OrdinalIgnoreCase).Count() ?? 0;
-    var lastVisitorTime = analyticsModel?.Visitors?.OrderByDescending(v => v.LastSeenAt).FirstOrDefault()?.LastSeenAt;
+    var totalSessions = Model.Visitors.Count;
+    var uniqueIpAddresses = Model.Visitors
+        .Select(v => v.IpAddress)
+        .Where(ip => !string.IsNullOrWhiteSpace(ip))
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .Count();
+    var lastVisitorTime = Model.Visitors
+        .OrderByDescending(v => v.LastSeenAt)
+        .FirstOrDefault()
+        ?.LastSeenAt;
 }
 
 <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
@@ -48,7 +52,7 @@
     <div class="card-body">
         <h5 class="card-title">Top Pages</h5>
 
-        @if (analyticsModel?.TopPages is null || analyticsModel.TopPages.Count == 0)
+        @if (Model.TopPages.Count == 0)
         {
             <div class="alert alert-info mb-0">No page visits found.</div>
         }
@@ -64,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var page in analyticsModel.TopPages)
+                        @foreach (var page in Model.TopPages)
                         {
                             <tr>
                                 <td><code>@page.Path</code></td>
@@ -101,7 +105,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var visitor in analyticsModel?.Visitors ?? Array.Empty<CloudCityCenter.Models.Admin.VisitorSessionListItemViewModel>())
+                        @foreach (var visitor in Model.Visitors)
                         {
                             <tr>
                                 <td><code>@visitor.IpAddress</code></td>
