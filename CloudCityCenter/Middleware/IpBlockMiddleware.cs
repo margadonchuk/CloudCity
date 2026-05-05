@@ -1,9 +1,9 @@
-using System.Net;
 using System.Data;
 using System.Data.Common;
 using CloudCityCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using CloudCityCenter.Services;
 
 namespace CloudCityCenter.Middleware;
 
@@ -29,7 +29,16 @@ public class IpBlockMiddleware
             return;
         }
 
-        if (TryNormalizeIp(context.Connection.RemoteIpAddress, out var normalizedIp))
+        var normalizedIp = ClientIpResolver.ResolveNormalizedIp(context);
+        _logger.LogInformation("Detected client IP {IpAddress} for request {Path}", normalizedIp ?? "(unknown)", context.Request.Path);
+
+        if (!ShouldCheckBlocking(context))
+        {
+            await _next(context);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(normalizedIp))
         {
             bool isBlocked;
 
@@ -53,6 +62,7 @@ public class IpBlockMiddleware
             {
                 _logger.LogWarning("Blocked request from IP {IpAddress} to {Path}", normalizedIp, context.Request.Path);
                 context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                await context.Response.WriteAsync("Forbidden");
                 return;
             }
         }
@@ -120,25 +130,34 @@ public class IpBlockMiddleware
         }
     }
 
+    private static bool ShouldCheckBlocking(HttpContext context)
+    {
+        var path = context.Request.Path;
+
+        if (path.StartsWithSegments("/css")
+            || path.StartsWithSegments("/js")
+            || path.StartsWithSegments("/lib")
+            || path.StartsWithSegments("/images")
+            || path.StartsWithSegments("/favicon.ico")
+            || path.StartsWithSegments("/Home/StatusCode"))
+        {
+            return false;
+        }
+
+        if (context.User?.Identity?.IsAuthenticated == true
+            && context.User.IsInRole("Admin")
+            && path.StartsWithSegments("/admin/security/blockedips"))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     private static bool IsTransientBlockedIpQueryFailure(Exception exception) =>
         exception is DbException
             or InvalidOperationException
             or TimeoutException;
 
-    private static bool TryNormalizeIp(IPAddress? ipAddress, out string normalizedIp)
-    {
-        normalizedIp = string.Empty;
-        if (ipAddress == null)
-        {
-            return false;
-        }
 
-        if (ipAddress.IsIPv4MappedToIPv6)
-        {
-            ipAddress = ipAddress.MapToIPv4();
-        }
-
-        normalizedIp = ipAddress.ToString();
-        return true;
-    }
 }
