@@ -97,6 +97,18 @@ namespace CloudCityCenter.Migrations
                     b.Property<DateTime>("FirstSeenAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("City")
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CountryCode")
+                        .HasMaxLength(2)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("IpAddress")
                         .IsRequired()
                         .HasMaxLength(45)

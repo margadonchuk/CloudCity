@@ -22,5 +22,14 @@ public class VisitorSession
     [StringLength(2048)]
     public string? Referrer { get; set; }
 
+    [StringLength(128)]
+    public string? Country { get; set; }
+
+    [StringLength(128)]
+    public string? City { get; set; }
+
+    [StringLength(2)]
+    public string? CountryCode { get; set; }
+
     public ICollection<PageVisit> PageVisits { get; set; } = new List<PageVisit>();
 }

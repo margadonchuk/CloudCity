@@ -223,7 +223,7 @@
             </div>
 
             <div class="row g-3 mb-3">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Top Browsers</h5>
@@ -248,7 +248,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Top Countries</h5>
+                            @if (Model.TopCountries.Count == 0)
+                            {
+                                <div class="alert alert-info mb-0">No country data found.</div>
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped mb-0">
+                                        <thead><tr><th>Country</th><th>Sessions</th></tr></thead>
+                                        <tbody>
+                                        @foreach (var item in Model.TopCountries)
+                                        {
+                                            <tr><td>@item.Label</td><td>@item.Count</td></tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Devices Split</h5>
@@ -301,6 +326,8 @@
                                         <th>First Seen UTC</th>
                                         <th>Last Seen UTC</th>
                                         <th>Pages Count</th>
+                                        <th>Country</th>
+                                        <th>City</th>
                                         <th>Browser</th>
                                         <th>Device</th>
                                         <th>User-Agent</th>
@@ -321,6 +348,8 @@
                                             <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.PagesCount</td>
+                                            <td>@(!string.IsNullOrWhiteSpace(visitor.Country) ? visitor.Country : "—")</td>
+                                            <td>@(!string.IsNullOrWhiteSpace(visitor.City) ? visitor.City : "—")</td>
                                             <td>@visitor.Browser</td>
                                             <td>@visitor.Device</td>
                                             <td><span title="@visitor.UserAgent">@FormatShortUserAgent(visitor.UserAgent)</span></td>
