@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Analytics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
     var totalSessions = Model.Visitors.Count;
     var uniqueIpAddresses = Model.Visitors
@@ -15,111 +16,117 @@
         ?.LastSeenAt;
 }
 
-<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
-    <h1 class="mb-0">Analytics Dashboard</h1>
-</div>
+<div class="container py-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
+                <h1 class="h3 mb-0">Analytics Dashboard</h1>
+            </div>
 
-<partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
+            <partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
 
-<div class="row g-3 mb-4">
-    <div class="col-12 col-sm-6 col-lg-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h6 class="text-muted mb-2">Total visitor sessions</h6>
-                <p class="display-6 mb-0">@totalSessions</p>
+            <div class="row g-3 mb-4 mt-1">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-muted mb-2">Total visitor sessions</h6>
+                            <p class="display-6 mb-0">@totalSessions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-muted mb-2">Unique IP addresses</h6>
+                            <p class="display-6 mb-0">@uniqueIpAddresses</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="text-muted mb-2">Last visitor time</h6>
+                            <p class="mb-0 fs-5">@(lastVisitorTime?.ToString("yyyy-MM-dd HH:mm:ss") ?? "—")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Top Pages</h5>
+
+                    @if (Model.TopPages.Count == 0)
+                    {
+                        <div class="alert alert-info mb-0">No page visits found.</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Page path</th>
+                                        <th>Visits count</th>
+                                        <th>Last visit time (UTC)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var page in Model.TopPages)
+                                    {
+                                        <tr>
+                                            <td><code>@page.Path</code></td>
+                                            <td>@page.VisitsCount</td>
+                                            <td>@page.LastVisitAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Visitor Sessions</h5>
+
+                    @if (totalSessions == 0)
+                    {
+                        <div class="alert alert-info mb-0">No visitor sessions found.</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>IP Address</th>
+                                        <th>First Seen UTC</th>
+                                        <th>Last Seen UTC</th>
+                                        <th>Pages Count</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var visitor in Model.Visitors)
+                                    {
+                                        <tr>
+                                            <td><code>@visitor.IpAddress</code></td>
+                                            <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                            <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                            <td>@visitor.PagesCount</td>
+                                            <td class="text-end">
+                                                <a asp-action="Details" asp-route-id="@visitor.Id" class="btn btn-sm btn-primary">Details</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-12 col-sm-6 col-lg-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h6 class="text-muted mb-2">Unique IP addresses</h6>
-                <p class="display-6 mb-0">@uniqueIpAddresses</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h6 class="text-muted mb-2">Last visitor time</h6>
-                <p class="mb-0 fs-5">@(lastVisitorTime?.ToString("yyyy-MM-dd HH:mm:ss") ?? "—")</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Top Pages</h5>
-
-        @if (Model.TopPages.Count == 0)
-        {
-            <div class="alert alert-info mb-0">No page visits found.</div>
-        }
-        else
-        {
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle mb-0">
-                    <thead>
-                        <tr>
-                            <th>Page path</th>
-                            <th>Visits count</th>
-                            <th>Last visit time (UTC)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var page in Model.TopPages)
-                        {
-                            <tr>
-                                <td><code>@page.Path</code></td>
-                                <td>@page.VisitsCount</td>
-                                <td>@page.LastVisitAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
-    </div>
-</div>
-
-<div class="card mt-3">
-    <div class="card-body">
-        <h5 class="card-title">Visitor Sessions</h5>
-
-        @if (totalSessions == 0)
-        {
-            <div class="alert alert-info mb-0">No visitor sessions found.</div>
-        }
-        else
-        {
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle mb-0">
-                    <thead>
-                        <tr>
-                            <th>IP Address</th>
-                            <th>First Seen UTC</th>
-                            <th>Last Seen UTC</th>
-                            <th>Pages Count</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var visitor in Model.Visitors)
-                        {
-                            <tr>
-                                <td><code>@visitor.IpAddress</code></td>
-                                <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                                <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                                <td>@visitor.PagesCount</td>
-                                <td class="text-end">
-                                    <a asp-action="Details" asp-route-id="@visitor.Id" class="btn btn-sm btn-outline-primary">Details</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
     </div>
 </div>
