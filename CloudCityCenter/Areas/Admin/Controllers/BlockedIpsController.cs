@@ -1,7 +1,7 @@
-using System.Net;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models;
 using CloudCityCenter.Models.Admin;
+using CloudCityCenter.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -91,7 +91,7 @@ public class BlockedIpsController : Controller
             return View(model);
         }
 
-        if (!TryNormalizeIp(model.IpAddress, out var normalizedIp))
+        if (!ClientIpResolver.TryNormalizeIp(model.IpAddress, out var normalizedIp))
         {
             ModelState.AddModelError(nameof(model.IpAddress), "Please enter a valid IPv4 or IPv6 address.");
             if (returnToIndex)
@@ -204,36 +204,6 @@ public class BlockedIpsController : Controller
 
         TempData["SuccessMessage"] = "IP address removed from block list";
         return RedirectToAction(nameof(Index));
-    }
-
-    private static bool TryNormalizeIp(string? rawIp, out string normalizedIp)
-    {
-        normalizedIp = string.Empty;
-        if (string.IsNullOrWhiteSpace(rawIp))
-        {
-            return false;
-        }
-
-        return IPAddress.TryParse(rawIp.Trim(), out var parsedIp) &&
-               TryNormalizeIp(parsedIp, out normalizedIp);
-    }
-
-
-    private static bool TryNormalizeIp(IPAddress? ipAddress, out string normalizedIp)
-    {
-        normalizedIp = string.Empty;
-        if (ipAddress == null)
-        {
-            return false;
-        }
-
-        if (ipAddress.IsIPv4MappedToIPv6)
-        {
-            ipAddress = ipAddress.MapToIPv4();
-        }
-
-        normalizedIp = ipAddress.ToString();
-        return true;
     }
 
     private static bool IsBlockedIpDataUnavailable(Exception exception) =>

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CloudCityCenter.Data;
 using CloudCityCenter.Models.Admin;
+using CloudCityCenter.Models;
+using CloudCityCenter.Services;
 
 namespace CloudCityCenter.Areas.Admin.Controllers;
 
@@ -74,12 +76,41 @@ public class AnalyticsController : Controller
             {
                 Id = x.Id,
                 IpAddress = x.IpAddress,
+                NormalizedIpAddress = ClientIpResolver.TryNormalizeIp(x.IpAddress, out var normalizedIp) ? normalizedIp : string.Empty,
                 FirstSeenAt = x.FirstSeenAt,
                 LastSeenAt = x.LastSeenAt,
                 PagesCount = x.PageVisits.Count,
                 UserAgent = x.UserAgent
             })
             .ToListAsync();
+
+        var normalizedIps = visitors
+            .Select(x => x.NormalizedIpAddress)
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        var blockedIpSet = normalizedIps.Count == 0
+            ? new HashSet<string>(StringComparer.Ordinal)
+            : await _context.BlockedIps
+                .AsNoTracking()
+                .Where(x => x.IsActive && normalizedIps.Contains(x.IpAddress))
+                .Select(x => x.IpAddress)
+                .ToHashSetAsync(StringComparer.Ordinal);
+
+        visitors = visitors
+            .Select(x => new VisitorSessionListItemViewModel
+            {
+                Id = x.Id,
+                IpAddress = x.IpAddress,
+                NormalizedIpAddress = x.NormalizedIpAddress,
+                FirstSeenAt = x.FirstSeenAt,
+                LastSeenAt = x.LastSeenAt,
+                PagesCount = x.PagesCount,
+                UserAgent = x.UserAgent,
+                IsIpBlocked = !string.IsNullOrWhiteSpace(x.NormalizedIpAddress) && blockedIpSet.Contains(x.NormalizedIpAddress)
+            })
+            .ToList();
 
         var topPages = await _context.PageVisits
             .AsNoTracking()
@@ -146,5 +177,58 @@ public class AnalyticsController : Controller
         }
 
         return View(session);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> BlockIp(int visitorSessionId, string? range = "today", DateTime? startDate = null, DateTime? endDate = null, string? ipAddress = null)
+    {
+        var session = await _context.VisitorSessions
+            .AsNoTracking()
+            .Where(x => x.Id == visitorSessionId)
+            .Select(x => new { x.IpAddress })
+            .FirstOrDefaultAsync();
+
+        if (session is null || !ClientIpResolver.TryNormalizeIp(session.IpAddress, out var normalizedIp))
+        {
+            TempData["ErrorMessage"] = "Could not resolve IP address from this visitor session.";
+            return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
+        }
+
+        var currentAdminIp = ClientIpResolver.ResolveNormalizedIp(HttpContext);
+        var confirmSelfBlock = string.Equals(Request.Form["confirmSelfBlock"], "true", StringComparison.OrdinalIgnoreCase);
+        if (string.Equals(currentAdminIp, normalizedIp, StringComparison.Ordinal) && !confirmSelfBlock)
+        {
+            TempData["ErrorMessage"] = "You are trying to block your current admin IP. Submit again with confirmation.";
+            return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
+        }
+
+        var existingEntry = await _context.BlockedIps.FirstOrDefaultAsync(x => x.IpAddress == normalizedIp);
+        if (existingEntry?.IsActive == true)
+        {
+            TempData["InfoMessage"] = "Already blocked";
+            return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
+        }
+
+        if (existingEntry is null)
+        {
+            _context.BlockedIps.Add(new BlockedIp
+            {
+                IpAddress = normalizedIp,
+                Reason = "Blocked from Analytics",
+                CreatedAt = DateTime.UtcNow,
+                IsActive = true
+            });
+        }
+        else
+        {
+            existingEntry.IsActive = true;
+            existingEntry.CreatedAt = DateTime.UtcNow;
+            existingEntry.Reason = string.IsNullOrWhiteSpace(existingEntry.Reason) ? "Blocked from Analytics" : existingEntry.Reason;
+        }
+
+        await _context.SaveChangesAsync();
+        TempData["SuccessMessage"] = "IP address blocked successfully";
+        return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
     }
 }
