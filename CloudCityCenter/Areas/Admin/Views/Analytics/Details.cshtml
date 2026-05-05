@@ -24,6 +24,8 @@
             <dd class="col-sm-9">@Model.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
             <dt class="col-sm-3">Pages Count</dt>
             <dd class="col-sm-9">@Model.Visits.Count</dd>
+            <dt class="col-sm-3">User-Agent</dt>
+            <dd class="col-sm-9"><code class="text-wrap">@(string.IsNullOrWhiteSpace(Model.UserAgent) ? "—" : Model.UserAgent)</code></dd>
         </dl>
     </div>
 </div>

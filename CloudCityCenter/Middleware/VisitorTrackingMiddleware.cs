@@ -28,6 +28,7 @@ public class VisitorTrackingMiddleware
         if (!string.IsNullOrWhiteSpace(normalizedIp))
         {
             var nowUtc = DateTime.UtcNow;
+            var userAgent = ResolveUserAgent(context);
 
             try
             {
@@ -40,13 +41,19 @@ public class VisitorTrackingMiddleware
                     {
                         IpAddress = normalizedIp,
                         FirstSeenAt = nowUtc,
-                        LastSeenAt = nowUtc
+                        LastSeenAt = nowUtc,
+                        UserAgent = userAgent
                     };
                     dbContext.VisitorSessions.Add(existingSession);
                 }
                 else
                 {
                     existingSession.LastSeenAt = nowUtc;
+
+                    if (!string.IsNullOrWhiteSpace(userAgent))
+                    {
+                        existingSession.UserAgent = userAgent;
+                    }
                 }
 
                 if (ShouldTrackPageVisit(context.Request.Path))
@@ -73,6 +80,19 @@ public class VisitorTrackingMiddleware
         }
 
         await _next(context);
+    }
+
+    private static string? ResolveUserAgent(HttpContext context)
+    {
+        var userAgent = context.Request.Headers.UserAgent.ToString();
+        if (string.IsNullOrWhiteSpace(userAgent))
+        {
+            return null;
+        }
+
+        return userAgent.Length <= 1024
+            ? userAgent
+            : userAgent[..1024];
     }
 
     private static bool ShouldTrackPageVisit(PathString path)
