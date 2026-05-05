@@ -30,6 +30,17 @@ public class BlockedIpsController : Controller
         var requestPath = HttpContext.Request.Path.Value ?? "/admin/security/blockedips";
         var userName = User?.Identity?.Name ?? "<anonymous>";
 
+
+        if (!await IsBlockedIpsTableAvailableAsync())
+        {
+            return View(new BlockedIpsIndexViewModel
+            {
+                IsFeatureInitialized = false,
+                FeatureMessage = "Blocked IP feature is not initialized yet. Apply the latest database migrations.",
+                Items = Array.Empty<BlockedIpListItemViewModel>()
+            });
+        }
+
         try
         {
             var blockedIps = await _context.BlockedIps
@@ -206,6 +217,39 @@ public class BlockedIpsController : Controller
 
         return IPAddress.TryParse(rawIp.Trim(), out var parsedIp) &&
                TryNormalizeIp(parsedIp, out normalizedIp);
+    }
+
+
+    private async Task<bool> IsBlockedIpsTableAvailableAsync()
+    {
+        try
+        {
+            if (!_context.Database.IsRelational())
+            {
+                return true;
+            }
+
+            var provider = _context.Database.ProviderName ?? string.Empty;
+            if (provider.Contains("SqlServer", StringComparison.OrdinalIgnoreCase))
+            {
+                const string sql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM sys.tables WHERE name = 'BlockedIps' AND schema_id = SCHEMA_ID('dbo')) THEN 1 ELSE 0 END";
+                var result = await _context.Database.SqlQueryRaw<int>(sql).FirstOrDefaultAsync();
+                return result == 1;
+            }
+
+            if (provider.Contains("Sqlite", StringComparison.OrdinalIgnoreCase))
+            {
+                const string sql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'BlockedIps') THEN 1 ELSE 0 END";
+                var result = await _context.Database.SqlQueryRaw<int>(sql).FirstOrDefaultAsync();
+                return result == 1;
+            }
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static bool TryNormalizeIp(IPAddress? ipAddress, out string normalizedIp)
