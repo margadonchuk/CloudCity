@@ -19,6 +19,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Server> Servers { get; set; } = null!;
     public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
     public DbSet<BlockedIp> BlockedIps { get; set; } = null!;
+    public DbSet<VisitorSession> VisitorSessions { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

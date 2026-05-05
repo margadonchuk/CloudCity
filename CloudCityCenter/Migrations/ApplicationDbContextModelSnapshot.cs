@@ -51,6 +51,29 @@ namespace CloudCityCenter.Migrations
                     b.ToTable("BlockedIps");
                 });
 
+
+            modelBuilder.Entity("CloudCityCenter.Models.VisitorSession", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("FirstSeenAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IpAddress")
+                        .IsRequired()
+                        .HasMaxLength(45)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastSeenAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VisitorSessions");
+                });
+
             modelBuilder.Entity("CloudCityCenter.Models.ContactMessage", b =>
                 {
                     b.Property<int>("Id")
