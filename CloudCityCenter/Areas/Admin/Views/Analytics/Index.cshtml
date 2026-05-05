@@ -60,6 +60,8 @@
                             <th>IP Address</th>
                             <th>First Seen UTC</th>
                             <th>Last Seen UTC</th>
+                            <th>Pages Count</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +71,10 @@
                                 <td><code>@visitor.IpAddress</code></td>
                                 <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                 <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                <td>@visitor.PagesCount</td>
+                                <td class="text-end">
+                                    <a asp-action="Details" asp-route-id="@visitor.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                                </td>
                             </tr>
                         }
                     </tbody>

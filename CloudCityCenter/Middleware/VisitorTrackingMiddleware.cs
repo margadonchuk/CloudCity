@@ -7,6 +7,11 @@ namespace CloudCityCenter.Middleware;
 
 public class VisitorTrackingMiddleware
 {
+    private static readonly string[] StaticExtensions =
+    [
+        ".css", ".js", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp", ".avif", ".bmp", ".woff", ".woff2", ".ttf", ".eot", ".otf"
+    ];
+
     private readonly RequestDelegate _next;
     private readonly ILogger<VisitorTrackingMiddleware> _logger;
 
@@ -31,16 +36,29 @@ public class VisitorTrackingMiddleware
 
                 if (existingSession is null)
                 {
-                    dbContext.VisitorSessions.Add(new VisitorSession
+                    existingSession = new VisitorSession
                     {
                         IpAddress = normalizedIp,
                         FirstSeenAt = nowUtc,
                         LastSeenAt = nowUtc
-                    });
+                    };
+                    dbContext.VisitorSessions.Add(existingSession);
                 }
                 else
                 {
                     existingSession.LastSeenAt = nowUtc;
+                }
+
+                if (ShouldTrackPageVisit(context.Request.Path))
+                {
+                    dbContext.PageVisits.Add(new PageVisit
+                    {
+                        VisitorSession = existingSession,
+                        Path = context.Request.Path.Value ?? "/",
+                        QueryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value : null,
+                        HttpMethod = context.Request.Method,
+                        VisitedAt = nowUtc
+                    });
                 }
 
                 await dbContext.SaveChangesAsync();
@@ -55,5 +73,23 @@ public class VisitorTrackingMiddleware
         }
 
         await _next(context);
+    }
+
+    private static bool ShouldTrackPageVisit(PathString path)
+    {
+        var value = path.Value ?? string.Empty;
+
+        if (string.IsNullOrEmpty(value) || value.Equals("/", StringComparison.Ordinal))
+        {
+            return true;
+        }
+
+        if (value.StartsWith("/Admin/Analytics", StringComparison.OrdinalIgnoreCase) ||
+            value.Equals("/favicon.ico", StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        return !StaticExtensions.Any(ext => value.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
     }
 }
