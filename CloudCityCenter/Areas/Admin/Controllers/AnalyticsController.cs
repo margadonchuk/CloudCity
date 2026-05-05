@@ -70,19 +70,35 @@ public class AnalyticsController : Controller
                 .Where(x => x.IpAddress.Contains(searchIpAddress));
         }
 
-        var visitors = await visitorSessionsQuery
+        var visitorSessionRows = await visitorSessionsQuery
             .OrderByDescending(x => x.LastSeenAt)
-            .Select(x => new VisitorSessionListItemViewModel
+            .Select(x => new
             {
-                Id = x.Id,
-                IpAddress = x.IpAddress,
-                NormalizedIpAddress = ClientIpResolver.TryNormalizeIp(x.IpAddress, out var normalizedIp) ? normalizedIp : string.Empty,
-                FirstSeenAt = x.FirstSeenAt,
-                LastSeenAt = x.LastSeenAt,
+                x.Id,
+                x.IpAddress,
+                x.FirstSeenAt,
+                x.LastSeenAt,
                 PagesCount = x.PageVisits.Count,
-                UserAgent = x.UserAgent
+                x.UserAgent
             })
             .ToListAsync();
+
+        var visitors = visitorSessionRows
+            .Select(x =>
+            {
+                var hasNormalizedIp = ClientIpResolver.TryNormalizeIp(x.IpAddress, out var normalizedIp);
+                return new VisitorSessionListItemViewModel
+                {
+                    Id = x.Id,
+                    IpAddress = x.IpAddress,
+                    NormalizedIpAddress = hasNormalizedIp ? normalizedIp : string.Empty,
+                    FirstSeenAt = x.FirstSeenAt,
+                    LastSeenAt = x.LastSeenAt,
+                    PagesCount = x.PagesCount,
+                    UserAgent = x.UserAgent
+                };
+            })
+            .ToList();
 
         var normalizedIps = visitors
             .Select(x => x.NormalizedIpAddress)
@@ -90,13 +106,17 @@ public class AnalyticsController : Controller
             .Distinct(StringComparer.Ordinal)
             .ToList();
 
-        var blockedIpSet = normalizedIps.Count == 0
-            ? new HashSet<string>(StringComparer.Ordinal)
-            : await _context.BlockedIps
+        var blockedIpSet = new HashSet<string>(StringComparer.Ordinal);
+        if (normalizedIps.Count != 0)
+        {
+            var blockedIpList = await _context.BlockedIps
                 .AsNoTracking()
                 .Where(x => x.IsActive && normalizedIps.Contains(x.IpAddress))
                 .Select(x => x.IpAddress)
-                .ToHashSetAsync(StringComparer.Ordinal);
+                .ToListAsync();
+
+            blockedIpSet = blockedIpList.ToHashSet(StringComparer.Ordinal);
+        }
 
         visitors = visitors
             .Select(x => new VisitorSessionListItemViewModel
