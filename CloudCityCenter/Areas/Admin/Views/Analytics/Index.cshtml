@@ -34,6 +34,10 @@
             <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
                 <h1 class="h3 mb-0">Analytics Dashboard</h1>
             </div>
+            @if (TempData["InfoMessage"] is string infoMessage && !string.IsNullOrWhiteSpace(infoMessage))
+            {
+                <div class="alert alert-info mb-3">@infoMessage</div>
+            }
 
             <form method="get" class="card card-body mb-3">
                 <div class="row g-2 align-items-end">
@@ -170,6 +174,23 @@
                                             <td><span title="@visitor.UserAgent">@FormatShortUserAgent(visitor.UserAgent)</span></td>
                                             <td class="text-end">
                                                 <a href="@Url.Action("Details", "Analytics", new { area = "Admin", id = visitor.Id })" class="btn btn-sm btn-primary">Details</a>
+                                                @if (visitor.IsIpBlocked)
+                                                {
+                                                    <span class="badge bg-secondary ms-2">Already blocked</span>
+                                                }
+                                                else
+                                                {
+                                                    <form asp-area="Admin" asp-controller="Analytics" asp-action="BlockIp" method="post" class="d-inline ms-2 js-block-ip-form" data-is-current-admin-ip="@(CloudCityCenter.Services.ClientIpResolver.ResolveNormalizedIp(Context) == visitor.NormalizedIpAddress)">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="visitorSessionId" value="@visitor.Id" />
+                                                        <input type="hidden" name="range" value="@Model.SelectedFilter" />
+                                                        <input type="hidden" name="startDate" value="@Model.StartDateUtc?.ToString("yyyy-MM-dd")" />
+                                                        <input type="hidden" name="endDate" value="@Model.EndDateUtc?.ToString("yyyy-MM-dd")" />
+                                                        <input type="hidden" name="ipAddress" value="@Model.SearchIpAddress" />
+                                                        <input type="hidden" name="confirmSelfBlock" value="false" />
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger">Block IP</button>
+                                                    </form>
+                                                }
                                             </td>
                                         </tr>
                                     }
@@ -182,3 +203,18 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.js-block-ip-form').forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (form.getAttribute('data-is-current-admin-ip') !== 'True') return;
+            if (!window.confirm('This appears to be your current admin IP. Blocking it can lock you out. Continue?')) {
+                event.preventDefault();
+                return;
+            }
+            form.querySelector('input[name="confirmSelfBlock"]').value = 'true';
+        });
+    });
+});
+</script>
