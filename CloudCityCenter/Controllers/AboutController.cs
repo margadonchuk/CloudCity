@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using CloudCityCenter.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
-using System.Linq;
 
 namespace CloudCityCenter.Controllers;
 
@@ -29,17 +28,7 @@ public class AboutController : Controller
 
     private string GetClientIpAddress()
     {
-        var forwardedFor = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
-        if (!string.IsNullOrWhiteSpace(forwardedFor))
-        {
-            var firstForwarded = forwardedFor.Split(',').Select(entry => entry.Trim()).FirstOrDefault();
-            if (!string.IsNullOrWhiteSpace(firstForwarded))
-            {
-                return firstForwarded;
-            }
-        }
-
-        return HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+        return ClientIpResolver.ResolveNormalizedIp(HttpContext) ?? string.Empty;
     }
 
     public IActionResult Index()
