@@ -68,6 +68,12 @@ builder.Services
     .AddRoles<IdentityRole>()                // добавить
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddHttpClient<IGeoIpService, IpApiGeoIpService>(client =>
+{
+    client.BaseAddress = new Uri("http://ip-api.com/");
+    client.Timeout = TimeSpan.FromSeconds(3);
+});
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
