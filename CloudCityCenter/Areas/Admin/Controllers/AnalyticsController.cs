@@ -126,6 +126,7 @@ public class AnalyticsController : Controller
                 FirstSeenAt = x.FirstSeenAt,
                 LastSeenAt = x.LastSeenAt,
                 UserAgent = x.UserAgent,
+                Referrer = x.Referrer,
                 Visits = x.PageVisits
                     .OrderByDescending(p => p.VisitedAt)
                     .Select(p => new PageVisitTimelineItemViewModel

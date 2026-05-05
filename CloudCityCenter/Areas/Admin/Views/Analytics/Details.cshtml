@@ -26,6 +26,8 @@
             <dd class="col-sm-9">@Model.Visits.Count</dd>
             <dt class="col-sm-3">User-Agent</dt>
             <dd class="col-sm-9"><code class="text-wrap">@(string.IsNullOrWhiteSpace(Model.UserAgent) ? "—" : Model.UserAgent)</code></dd>
+            <dt class="col-sm-3">Referrer</dt>
+            <dd class="col-sm-9"><code class="text-wrap">@(string.IsNullOrWhiteSpace(Model.Referrer) ? "—" : Model.Referrer)</code></dd>
         </dl>
     </div>
 </div>

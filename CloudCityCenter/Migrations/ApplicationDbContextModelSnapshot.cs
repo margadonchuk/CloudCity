@@ -105,6 +105,10 @@ namespace CloudCityCenter.Migrations
                     b.Property<DateTime>("LastSeenAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Referrer")
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("UserAgent")
                         .HasMaxLength(1024)
                         .HasColumnType("TEXT");
