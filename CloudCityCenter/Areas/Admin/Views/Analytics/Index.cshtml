@@ -1,6 +1,38 @@
+@model CloudCityCenter.Models.Admin.AnalyticsIndexViewModel
+
 @{
     ViewData["Title"] = "Analytics";
 }
 
 <h1>Analytics</h1>
-<p>Analytics dashboard is working</p>
+
+<div class="table-responsive mt-4">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>FirstSeenAt (UTC)</th>
+                <th>LastSeenAt (UTC)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Visitors.Count == 0)
+            {
+                <tr>
+                    <td colspan="3" class="text-muted">No visitor sessions yet.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var visitor in Model.Visitors)
+                {
+                    <tr>
+                        <td><code>@visitor.IpAddress</code></td>
+                        <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

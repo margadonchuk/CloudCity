@@ -330,6 +330,7 @@ if (!useReverseProxy)
 app.UseStaticFiles();
 
 app.UseRequestLocalization(localizationOptions);
+app.UseMiddleware<VisitorTrackingMiddleware>();
 app.UseRouting();
 
 app.UseSession();
