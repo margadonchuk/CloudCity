@@ -17,9 +17,10 @@ public class AnalyticsController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index(string? range = "today", DateTime? startDate = null, DateTime? endDate = null)
+    public async Task<IActionResult> Index(string? range = "today", DateTime? startDate = null, DateTime? endDate = null, string? ipAddress = null)
     {
         var selectedRange = (range ?? "today").Trim().ToLowerInvariant();
+        var searchIpAddress = (ipAddress ?? string.Empty).Trim();
         var utcToday = DateTime.UtcNow.Date;
 
         DateTime filterStart;
@@ -57,9 +58,17 @@ public class AnalyticsController : Controller
             filterEndExclusive = utcToday.AddDays(1);
         }
 
-        var visitors = await _context.VisitorSessions
+        var visitorSessionsQuery = _context.VisitorSessions
             .AsNoTracking()
-            .Where(x => x.LastSeenAt >= filterStart && x.LastSeenAt < filterEndExclusive)
+            .Where(x => x.LastSeenAt >= filterStart && x.LastSeenAt < filterEndExclusive);
+
+        if (!string.IsNullOrWhiteSpace(searchIpAddress))
+        {
+            visitorSessionsQuery = visitorSessionsQuery
+                .Where(x => x.IpAddress.Contains(searchIpAddress));
+        }
+
+        var visitors = await visitorSessionsQuery
             .OrderByDescending(x => x.LastSeenAt)
             .Select(x => new VisitorSessionListItemViewModel
             {
@@ -95,6 +104,7 @@ public class AnalyticsController : Controller
         return View(new AnalyticsIndexViewModel
         {
             SelectedFilter = selectedRange,
+            SearchIpAddress = searchIpAddress,
             StartDateUtc = filterStart,
             EndDateUtc = filterEndExclusive.AddTicks(-1),
             TotalPageVisits = totalPageVisits,

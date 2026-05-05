@@ -39,6 +39,10 @@
                         <input class="form-control" type="date" id="endDate" name="endDate" value="@Model.EndDateUtc?.ToString("yyyy-MM-dd")" />
                     </div>
                     <div class="col-12 col-md-3">
+                        <label class="form-label" for="ipAddress">IP address</label>
+                        <input class="form-control" type="text" id="ipAddress" name="ipAddress" value="@Model.SearchIpAddress" placeholder="e.g. 203.0.113.10" />
+                    </div>
+                    <div class="col-12 col-md-3">
                         <button type="submit" class="btn btn-primary w-100">Apply filter</button>
                     </div>
                 </div>
@@ -116,7 +120,14 @@
 
                     @if (totalSessions == 0)
                     {
-                        <div class="alert alert-info mb-0">No visitor sessions found.</div>
+                        @if (!string.IsNullOrWhiteSpace(Model.SearchIpAddress))
+                        {
+                            <div class="alert alert-info mb-0">No visitor sessions found for IP address <code>@Model.SearchIpAddress</code>.</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info mb-0">No visitor sessions found.</div>
+                        }
                     }
                     else
                     {
