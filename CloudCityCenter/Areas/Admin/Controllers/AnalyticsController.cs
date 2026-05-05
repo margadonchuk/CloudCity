@@ -257,6 +257,107 @@ public class AnalyticsController : Controller
             .Take(10)
             .ToListAsync();
 
+
+        var funnelVisits = await _context.PageVisits
+            .AsNoTracking()
+            .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
+            .Select(x => new { x.VisitorSessionId, x.Path, x.VisitedAt })
+            .ToListAsync();
+
+        var funnelStepDefinitions = new[]
+        {
+            new { Name = "Home", Matches = new Func<string, bool>(path => string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) || string.Equals(path, "/Home", StringComparison.OrdinalIgnoreCase) || path.StartsWith("/Home/", StringComparison.OrdinalIgnoreCase)) },
+            new { Name = "Servers/VPS/VDI", Matches = new Func<string, bool>(path => path.StartsWith("/Servers", StringComparison.OrdinalIgnoreCase) || path.StartsWith("/VPS", StringComparison.OrdinalIgnoreCase) || path.StartsWith("/VDI", StringComparison.OrdinalIgnoreCase)) },
+            new { Name = "Cart/Checkout", Matches = new Func<string, bool>(path => path.StartsWith("/Cart", StringComparison.OrdinalIgnoreCase) || path.StartsWith("/Orders/Create", StringComparison.OrdinalIgnoreCase)) },
+            new { Name = "Contact/Order", Matches = new Func<string, bool>(path => path.StartsWith("/Contact", StringComparison.OrdinalIgnoreCase) || path.StartsWith("/Orders", StringComparison.OrdinalIgnoreCase)) }
+        };
+
+        var sessionSteps = new Dictionary<int, HashSet<int>>();
+        foreach (var visit in funnelVisits)
+        {
+            for (var index = 0; index < funnelStepDefinitions.Length; index++)
+            {
+                if (!funnelStepDefinitions[index].Matches(visit.Path))
+                {
+                    continue;
+                }
+
+                if (!sessionSteps.TryGetValue(visit.VisitorSessionId, out var reachedSteps))
+                {
+                    reachedSteps = new HashSet<int>();
+                    sessionSteps[visit.VisitorSessionId] = reachedSteps;
+                }
+
+                reachedSteps.Add(index);
+                break;
+            }
+        }
+
+        var funnelVisitorsByStep = new int[funnelStepDefinitions.Length];
+        var exitCountsByStep = new int[funnelStepDefinitions.Length];
+
+        foreach (var (_, reachedSteps) in sessionSteps)
+        {
+            for (var step = 0; step < funnelStepDefinitions.Length; step++)
+            {
+                var reachedCurrent = reachedSteps.Contains(step);
+                if (reachedCurrent)
+                {
+                    funnelVisitorsByStep[step]++;
+                }
+
+                if (!reachedCurrent)
+                {
+                    continue;
+                }
+
+                if (step == funnelStepDefinitions.Length - 1 || !reachedSteps.Contains(step + 1))
+                {
+                    exitCountsByStep[step]++;
+                }
+            }
+        }
+
+        var funnelSteps = new List<FunnelStepViewModel>(funnelStepDefinitions.Length);
+        for (var step = 0; step < funnelStepDefinitions.Length; step++)
+        {
+            var visitorsCount = funnelVisitorsByStep[step];
+            decimal dropOffPercentage;
+            if (step == funnelStepDefinitions.Length - 1)
+            {
+                dropOffPercentage = 0;
+            }
+            else if (visitorsCount == 0)
+            {
+                dropOffPercentage = 0;
+            }
+            else
+            {
+                var nextVisitors = funnelVisitorsByStep[step + 1];
+                dropOffPercentage = Math.Round((visitorsCount - nextVisitors) * 100m / visitorsCount, 2);
+            }
+
+            funnelSteps.Add(new FunnelStepViewModel
+            {
+                Name = funnelStepDefinitions[step].Name,
+                Visitors = visitorsCount,
+                DropOffPercentage = dropOffPercentage
+            });
+        }
+
+        var topExitStep = "—";
+        var maxExitCount = 0;
+        for (var step = 0; step < exitCountsByStep.Length; step++)
+        {
+            if (exitCountsByStep[step] <= maxExitCount)
+            {
+                continue;
+            }
+
+            maxExitCount = exitCountsByStep[step];
+            topExitStep = funnelStepDefinitions[step].Name;
+        }
+
         var totalPageVisits = await _context.PageVisits
             .AsNoTracking()
             .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
@@ -317,7 +418,9 @@ public class AnalyticsController : Controller
             TopPages = topPages,
             TopBrowsers = topBrowsers,
             TopCountries = topCountries,
-            DeviceSplit = deviceSplit
+            DeviceSplit = deviceSplit,
+            FunnelSteps = funnelSteps,
+            TopExitStep = topExitStep
         });
     }
 
