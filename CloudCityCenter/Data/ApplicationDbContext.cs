@@ -20,6 +20,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
     public DbSet<BlockedIp> BlockedIps { get; set; } = null!;
     public DbSet<VisitorSession> VisitorSessions { get; set; } = null!;
+    public DbSet<PageVisit> PageVisits { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -82,6 +83,27 @@ public class ApplicationDbContext : IdentityDbContext
         builder.Entity<Server>()
             .Property(s => s.Stock)
             .HasDefaultValue(9999);
+
+        builder.Entity<VisitorSession>()
+            .HasMany(v => v.PageVisits)
+            .WithOne(p => p.VisitorSession)
+            .HasForeignKey(p => p.VisitorSessionId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<PageVisit>()
+            .Property(p => p.Path)
+            .HasMaxLength(2048);
+
+        builder.Entity<PageVisit>()
+            .Property(p => p.QueryString)
+            .HasMaxLength(2048);
+
+        builder.Entity<PageVisit>()
+            .Property(p => p.HttpMethod)
+            .HasMaxLength(16);
+
+        builder.Entity<PageVisit>()
+            .HasIndex(p => p.VisitedAt);
 
 
         builder.Entity<BlockedIp>(entity =>

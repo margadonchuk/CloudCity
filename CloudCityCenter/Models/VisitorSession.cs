@@ -15,4 +15,6 @@ public class VisitorSession
 
     [Required]
     public DateTime LastSeenAt { get; set; }
+
+    public ICollection<PageVisit> PageVisits { get; set; } = new List<PageVisit>();
 }

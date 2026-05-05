@@ -52,6 +52,42 @@ namespace CloudCityCenter.Migrations
                 });
 
 
+
+            modelBuilder.Entity("CloudCityCenter.Models.PageVisit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("HttpMethod")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("QueryString")
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("VisitedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("VisitorSessionId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VisitedAt");
+
+                    b.HasIndex("VisitorSessionId");
+
+                    b.ToTable("PageVisits");
+                });
+
             modelBuilder.Entity("CloudCityCenter.Models.VisitorSession", b =>
                 {
                     b.Property<int>("Id")
@@ -127,6 +163,18 @@ namespace CloudCityCenter.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ContactMessages");
+                });
+
+
+            modelBuilder.Entity("CloudCityCenter.Models.PageVisit", b =>
+                {
+                    b.HasOne("CloudCityCenter.Models.VisitorSession", "VisitorSession")
+                        .WithMany("PageVisits")
+                        .HasForeignKey("VisitorSessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("VisitorSession");
                 });
 
             modelBuilder.Entity("CloudCityCenter.Models.Order", b =>
@@ -572,6 +620,18 @@ namespace CloudCityCenter.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+
+            modelBuilder.Entity("CloudCityCenter.Models.PageVisit", b =>
+                {
+                    b.HasOne("CloudCityCenter.Models.VisitorSession", "VisitorSession")
+                        .WithMany("PageVisits")
+                        .HasForeignKey("VisitorSessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("VisitorSession");
+                });
+
             modelBuilder.Entity("CloudCityCenter.Models.Order", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
@@ -681,10 +741,28 @@ namespace CloudCityCenter.Migrations
                         .IsRequired();
                 });
 
+
+            modelBuilder.Entity("CloudCityCenter.Models.PageVisit", b =>
+                {
+                    b.HasOne("CloudCityCenter.Models.VisitorSession", "VisitorSession")
+                        .WithMany("PageVisits")
+                        .HasForeignKey("VisitorSessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("VisitorSession");
+                });
+
             modelBuilder.Entity("CloudCityCenter.Models.Order", b =>
                 {
                     b.Navigation("Items");
                 });
+
+            modelBuilder.Entity("CloudCityCenter.Models.VisitorSession", b =>
+                {
+                    b.Navigation("PageVisits");
+                });
+
 
             modelBuilder.Entity("CloudCityCenter.Models.Product", b =>
                 {

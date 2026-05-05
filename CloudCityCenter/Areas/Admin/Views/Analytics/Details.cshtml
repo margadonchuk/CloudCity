@@ -1,0 +1,64 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CloudCityCenter.Models.Admin.AnalyticsDetailsViewModel
+
+@{
+    ViewData["Title"] = "Visitor Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
+    <h1 class="mb-0">Visitor Details</h1>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to Analytics</a>
+</div>
+
+<partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
+
+<div class="card mb-4">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">IP Address</dt>
+            <dd class="col-sm-9"><code>@Model.IpAddress</code></dd>
+            <dt class="col-sm-3">First Seen UTC</dt>
+            <dd class="col-sm-9">@Model.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+            <dt class="col-sm-3">Last Seen UTC</dt>
+            <dd class="col-sm-9">@Model.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Visited Pages Timeline</h5>
+
+        @if (!Model.Visits.Any())
+        {
+            <div class="alert alert-info mb-0">No page visits found for this visitor.</div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>VisitedAt UTC</th>
+                            <th>Method</th>
+                            <th>Path</th>
+                            <th>QueryString</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var visit in Model.Visits)
+                        {
+                            <tr>
+                                <td>@visit.VisitedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                <td><span class="badge text-bg-light">@visit.HttpMethod</span></td>
+                                <td><code>@visit.Path</code></td>
+                                <td><code>@(string.IsNullOrWhiteSpace(visit.QueryString) ? "—" : visit.QueryString)</code></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
