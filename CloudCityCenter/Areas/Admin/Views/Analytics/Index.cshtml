@@ -143,6 +143,52 @@
 
             <div class="card mb-3">
                 <div class="card-body">
+                    <h5 class="card-title">Suspicious Activity</h5>
+                    @if (Model.SuspiciousActivities.Count == 0)
+                    {
+                        <div class="alert alert-success mb-0">No suspicious activity detected in the selected time window.</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive mb-3">
+                            <table class="table table-striped table-hover table-bordered align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Detected UTC</th>
+                                        <th>IP</th>
+                                        <th>Reason</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var activity in Model.SuspiciousActivities)
+                                {
+                                    <tr>
+                                        <td>@activity.DetectedAtUtc.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td><code>@activity.IpAddress</code></td>
+                                        <td><span class="badge bg-warning text-dark">Suspicious</span> @activity.Reason</td>
+                                        <td class="text-end">
+                                            <a href="@Url.Action("Details", "Analytics", new { area = "Admin", id = activity.VisitorSessionId })" class="btn btn-sm btn-primary">Details</a>
+                                            @if (!activity.IsIpBlocked)
+                                            {
+                                                <form asp-area="Admin" asp-controller="Analytics" asp-action="BlockIp" method="post" class="d-inline ms-2 js-block-ip-form">
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="visitorSessionId" value="@activity.VisitorSessionId" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger">Block IP</button>
+                                                </form>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
                     <h5 class="card-title">Top Pages</h5>
 
                     @if (Model.TopPages.Count == 0)
@@ -251,6 +297,7 @@
                                 <thead>
                                     <tr>
                                         <th>IP Address</th>
+                                        <th>Status</th>
                                         <th>First Seen UTC</th>
                                         <th>Last Seen UTC</th>
                                         <th>Pages Count</th>
@@ -265,6 +312,12 @@
                                     {
                                         <tr>
                                             <td><code>@visitor.IpAddress</code></td>
+                                            <td>
+                                                @if (visitor.IsSuspicious)
+                                                {
+                                                    <span class="badge bg-warning text-dark">Suspicious</span>
+                                                }
+                                            </td>
                                             <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.PagesCount</td>

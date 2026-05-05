@@ -21,6 +21,7 @@ public class AnalyticsController : Controller
 
     public async Task<IActionResult> Index(string? range = "today", DateTime? startDate = null, DateTime? endDate = null, string? ipAddress = null)
     {
+        var suspiciousPaths = new[] { "/wp-admin", "/xmlrpc.php", "/.env", "/phpmyadmin" };
         var selectedRange = (range ?? "today").Trim().ToLowerInvariant();
         var searchIpAddress = (ipAddress ?? string.Empty).Trim();
         var utcToday = DateTime.UtcNow.Date;
@@ -83,6 +84,37 @@ public class AnalyticsController : Controller
             })
             .ToListAsync();
 
+        var suspiciousBurstRows = await _context.PageVisits
+            .AsNoTracking()
+            .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
+            .GroupBy(x => x.VisitorSessionId)
+            .Where(g => g.Count() > 100 && EF.Functions.DateDiffMinute(g.Min(p => p.VisitedAt), g.Max(p => p.VisitedAt)) <= 10)
+            .Select(g => new
+            {
+                VisitorSessionId = g.Key,
+                VisitsCount = g.Count(),
+                FirstVisitAt = g.Min(p => p.VisitedAt),
+                LastVisitAt = g.Max(p => p.VisitedAt)
+            })
+            .ToListAsync();
+
+        var suspiciousPathRows = await _context.PageVisits
+            .AsNoTracking()
+            .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
+            .Where(x => suspiciousPaths.Contains(x.Path))
+            .Select(x => new
+            {
+                x.VisitorSessionId,
+                x.Path,
+                x.VisitedAt
+            })
+            .ToListAsync();
+
+        var suspiciousVisitorIdSet = suspiciousBurstRows
+            .Select(x => x.VisitorSessionId)
+            .Concat(suspiciousPathRows.Select(x => x.VisitorSessionId))
+            .ToHashSet();
+
         var visitors = visitorSessionRows
             .Select(x =>
             {
@@ -99,7 +131,8 @@ public class AnalyticsController : Controller
                     PagesCount = x.PagesCount,
                     UserAgent = x.UserAgent,
                     Browser = browser,
-                    Device = device
+                    Device = device,
+                    IsSuspicious = suspiciousVisitorIdSet.Contains(x.Id)
                 };
             })
             .ToList();
@@ -148,9 +181,47 @@ public class AnalyticsController : Controller
                 UserAgent = x.UserAgent,
                 Browser = x.Browser,
                 Device = x.Device,
+                IsSuspicious = x.IsSuspicious,
                 IsIpBlocked = !string.IsNullOrWhiteSpace(x.NormalizedIpAddress) && blockedIpSet.Contains(x.NormalizedIpAddress)
             })
             .ToList();
+
+        var visitorById = visitors.ToDictionary(x => x.Id);
+
+        var suspiciousActivities = new List<SuspiciousActivityListItemViewModel>();
+        foreach (var burst in suspiciousBurstRows.OrderByDescending(x => x.LastVisitAt))
+        {
+            if (!visitorById.TryGetValue(burst.VisitorSessionId, out var visitor))
+            {
+                continue;
+            }
+
+            suspiciousActivities.Add(new SuspiciousActivityListItemViewModel
+            {
+                VisitorSessionId = burst.VisitorSessionId,
+                IpAddress = visitor.IpAddress,
+                Reason = $"{burst.VisitsCount} visits within 10 minutes",
+                DetectedAtUtc = burst.LastVisitAt,
+                IsIpBlocked = visitor.IsIpBlocked
+            });
+        }
+
+        foreach (var item in suspiciousPathRows.OrderByDescending(x => x.VisitedAt))
+        {
+            if (!visitorById.TryGetValue(item.VisitorSessionId, out var visitor))
+            {
+                continue;
+            }
+
+            suspiciousActivities.Add(new SuspiciousActivityListItemViewModel
+            {
+                VisitorSessionId = item.VisitorSessionId,
+                IpAddress = visitor.IpAddress,
+                Reason = $"Requested suspicious path {item.Path}",
+                DetectedAtUtc = item.VisitedAt,
+                IsIpBlocked = visitor.IsIpBlocked
+            });
+        }
 
         var topPages = await _context.PageVisits
             .AsNoTracking()
@@ -218,6 +289,7 @@ public class AnalyticsController : Controller
             OnlineNowCount = activeVisitors.Count,
             ActiveVisitors = activeVisitors,
             Visitors = visitors,
+            SuspiciousActivities = suspiciousActivities,
             TopPages = topPages,
             TopBrowsers = topBrowsers,
             DeviceSplit = deviceSplit

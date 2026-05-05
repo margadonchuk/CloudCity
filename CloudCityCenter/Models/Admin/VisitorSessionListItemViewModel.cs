@@ -11,5 +11,6 @@ public sealed class VisitorSessionListItemViewModel
     public string? UserAgent { get; init; }
     public string Browser { get; init; } = "Other";
     public string Device { get; init; } = "Desktop";
+    public bool IsSuspicious { get; init; }
     public bool IsIpBlocked { get; init; }
 }
