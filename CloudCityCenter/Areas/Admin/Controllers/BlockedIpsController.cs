@@ -5,7 +5,6 @@ using CloudCityCenter.Models.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 using System.Data.Common;
 
 namespace CloudCityCenter.Areas.Admin.Controllers;
@@ -32,30 +31,20 @@ public class BlockedIpsController : Controller
         var userName = User?.Identity?.Name ?? "<anonymous>";
 
 
-        if (!await IsBlockedIpsTableAvailableAsync())
-        {
-            return View(new BlockedIpsIndexViewModel
-            {
-                IsFeatureInitialized = false,
-                FeatureMessage = "Blocked IP feature is not initialized yet. Apply the latest database migrations.",
-                Items = Array.Empty<BlockedIpListItemViewModel>()
-            });
-        }
-
         try
         {
             var blockedIps = await _context.BlockedIps
                 .AsNoTracking()
                 .Where(x => x.IsActive)
+                .OrderByDescending(x => x.CreatedAt)
                 .Select(x => new BlockedIpListItemViewModel
                 {
-                    Id = EF.Property<int>(x, nameof(BlockedIp.Id)),
-                    IpAddress = EF.Property<string?>(x, nameof(BlockedIp.IpAddress)) ?? "(unknown)",
-                    Reason = EF.Property<string?>(x, nameof(BlockedIp.Reason)),
-                    CreatedAtUtc = EF.Property<DateTime?>(x, nameof(BlockedIp.CreatedAt)),
-                    IsActive = EF.Property<bool?>(x, nameof(BlockedIp.IsActive)) ?? false
+                    Id = x.Id,
+                    IpAddress = x.IpAddress ?? "(unknown)",
+                    Reason = x.Reason,
+                    CreatedAtUtc = x.CreatedAt,
+                    IsActive = x.IsActive
                 })
-                .OrderByDescending(x => x.CreatedAtUtc)
                 .ToListAsync();
 
             return View(new BlockedIpsIndexViewModel
@@ -76,9 +65,7 @@ public class BlockedIpsController : Controller
             return View(new BlockedIpsIndexViewModel
             {
                 IsFeatureInitialized = false,
-                FeatureMessage = IsBlockedIpDataUnavailable(ex)
-                    ? "Blocked IP feature is not initialized yet."
-                    : "Blocked IP list is temporarily unavailable.",
+                FeatureMessage = "Blocked IP list is temporarily unavailable.",
                 Items = Array.Empty<BlockedIpListItemViewModel>()
             });
         }
@@ -231,57 +218,6 @@ public class BlockedIpsController : Controller
                TryNormalizeIp(parsedIp, out normalizedIp);
     }
 
-
-    private async Task<bool> IsBlockedIpsTableAvailableAsync()
-    {
-        try
-        {
-            if (!_context.Database.IsRelational())
-            {
-                return true;
-            }
-
-            var provider = _context.Database.ProviderName ?? string.Empty;
-            await using var connection = _context.Database.GetDbConnection();
-            var openedLocally = false;
-
-            if (connection.State != ConnectionState.Open)
-            {
-                await connection.OpenAsync();
-                openedLocally = true;
-            }
-
-            await using var command = connection.CreateCommand();
-
-            if (provider.Contains("SqlServer", StringComparison.OrdinalIgnoreCase))
-            {
-                command.CommandText = @"SELECT CASE WHEN EXISTS (
-                    SELECT 1
-                    FROM INFORMATION_SCHEMA.TABLES
-                    WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'BlockedIps'
-                ) THEN 1 ELSE 0 END";
-            }
-
-            if (provider.Contains("Sqlite", StringComparison.OrdinalIgnoreCase))
-            {
-                command.CommandText = "SELECT CASE WHEN EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'BlockedIps') THEN 1 ELSE 0 END";
-            }
-
-            var result = await command.ExecuteScalarAsync();
-            var exists = Convert.ToInt32(result) == 1;
-
-            if (openedLocally)
-            {
-                await connection.CloseAsync();
-            }
-
-            return exists;
-        }
-        catch
-        {
-            return false;
-        }
-    }
 
     private static bool TryNormalizeIp(IPAddress? ipAddress, out string normalizedIp)
     {
