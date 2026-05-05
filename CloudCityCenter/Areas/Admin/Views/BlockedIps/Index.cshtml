@@ -86,8 +86,9 @@ else
                 <td>
                     @if (item.IsActive)
                     {
-                        <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Unblock" asp-route-id="@item.Id" method="post" class="d-inline">
+                        <form asp-area="Admin" asp-controller="BlockedIps" asp-action="Unblock" method="post" class="d-inline">
                             @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@item.Id" />
                             <button type="submit" class="btn btn-sm btn-outline-success">Unblock</button>
                         </form>
                     }
