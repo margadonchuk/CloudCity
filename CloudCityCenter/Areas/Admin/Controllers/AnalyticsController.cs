@@ -32,9 +32,25 @@ public class AnalyticsController : Controller
             })
             .ToListAsync();
 
+        var topPages = await _context.PageVisits
+            .AsNoTracking()
+            .Where(x => !x.Path.StartsWith("/Admin/Analytics"))
+            .GroupBy(x => x.Path)
+            .Select(x => new TopPageVisitViewModel
+            {
+                Path = x.Key,
+                VisitsCount = x.Count(),
+                LastVisitAt = x.Max(p => p.VisitedAt)
+            })
+            .OrderByDescending(x => x.VisitsCount)
+            .ThenBy(x => x.Path)
+            .Take(10)
+            .ToListAsync();
+
         return View(new AnalyticsIndexViewModel
         {
-            Visitors = visitors
+            Visitors = visitors,
+            TopPages = topPages
         });
     }
 
