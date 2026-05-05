@@ -10,10 +10,6 @@
         .Where(ip => !string.IsNullOrWhiteSpace(ip))
         .Distinct(StringComparer.OrdinalIgnoreCase)
         .Count();
-    var lastVisitorTime = Model.Visitors
-        .OrderByDescending(v => v.LastSeenAt)
-        .FirstOrDefault()
-        ?.LastSeenAt;
 }
 
 <div class="container py-4">
@@ -22,6 +18,31 @@
             <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
                 <h1 class="h3 mb-0">Analytics Dashboard</h1>
             </div>
+
+            <form method="get" class="card card-body mb-3">
+                <div class="row g-2 align-items-end">
+                    <div class="col-12 col-md-3">
+                        <label class="form-label" for="range">Date range</label>
+                        <select class="form-select" id="range" name="range">
+                            <option value="today" selected="@(Model.SelectedFilter == "today" ? "selected" : null)">Today</option>
+                            <option value="last7days" selected="@(Model.SelectedFilter == "last7days" ? "selected" : null)">Last 7 days</option>
+                            <option value="last30days" selected="@(Model.SelectedFilter == "last30days" ? "selected" : null)">Last 30 days</option>
+                            <option value="custom" selected="@(Model.SelectedFilter == "custom" ? "selected" : null)">Custom date range</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <label class="form-label" for="startDate">Start date (UTC)</label>
+                        <input class="form-control" type="date" id="startDate" name="startDate" value="@Model.StartDateUtc?.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <label class="form-label" for="endDate">End date (UTC)</label>
+                        <input class="form-control" type="date" id="endDate" name="endDate" value="@Model.EndDateUtc?.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <button type="submit" class="btn btn-primary w-100">Apply filter</button>
+                    </div>
+                </div>
+            </form>
 
             <partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
 
@@ -45,12 +66,14 @@
                 <div class="col-12 col-lg-4">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body">
-                            <h6 class="text-muted mb-2">Last visitor time</h6>
-                            <p class="mb-0 fs-5">@(lastVisitorTime?.ToString("yyyy-MM-dd HH:mm:ss") ?? "—")</p>
+                            <h6 class="text-muted mb-2">Total page visits</h6>
+                            <p class="display-6 mb-0">@Model.TotalPageVisits</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <p class="text-muted small">Filter window (UTC): @Model.StartDateUtc?.ToString("yyyy-MM-dd HH:mm:ss") to @Model.EndDateUtc?.ToString("yyyy-MM-dd HH:mm:ss")</p>
 
             <div class="card mb-3">
                 <div class="card-body">

@@ -17,10 +17,49 @@ public class AnalyticsController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string? range = "today", DateTime? startDate = null, DateTime? endDate = null)
     {
+        var selectedRange = (range ?? "today").Trim().ToLowerInvariant();
+        var utcToday = DateTime.UtcNow.Date;
+
+        DateTime filterStart;
+        DateTime filterEndExclusive;
+
+        if (selectedRange == "custom")
+        {
+            var resolvedStart = (startDate ?? utcToday).Date;
+            var resolvedEnd = (endDate ?? resolvedStart).Date;
+
+            if (resolvedEnd < resolvedStart)
+            {
+                (resolvedStart, resolvedEnd) = (resolvedEnd, resolvedStart);
+            }
+
+            filterStart = resolvedStart;
+            filterEndExclusive = resolvedEnd.AddDays(1);
+        }
+        else
+        {
+            switch (selectedRange)
+            {
+                case "last7days":
+                    filterStart = utcToday.AddDays(-6);
+                    break;
+                case "last30days":
+                    filterStart = utcToday.AddDays(-29);
+                    break;
+                default:
+                    selectedRange = "today";
+                    filterStart = utcToday;
+                    break;
+            }
+
+            filterEndExclusive = utcToday.AddDays(1);
+        }
+
         var visitors = await _context.VisitorSessions
             .AsNoTracking()
+            .Where(x => x.LastSeenAt >= filterStart && x.LastSeenAt < filterEndExclusive)
             .OrderByDescending(x => x.LastSeenAt)
             .Select(x => new VisitorSessionListItemViewModel
             {
@@ -34,6 +73,7 @@ public class AnalyticsController : Controller
 
         var topPages = await _context.PageVisits
             .AsNoTracking()
+            .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
             .Where(x => !x.Path.StartsWith("/Admin/Analytics"))
             .GroupBy(x => x.Path)
             .Select(x => new TopPageVisitViewModel
@@ -47,8 +87,17 @@ public class AnalyticsController : Controller
             .Take(10)
             .ToListAsync();
 
+        var totalPageVisits = await _context.PageVisits
+            .AsNoTracking()
+            .Where(x => x.VisitedAt >= filterStart && x.VisitedAt < filterEndExclusive)
+            .CountAsync();
+
         return View(new AnalyticsIndexViewModel
         {
+            SelectedFilter = selectedRange,
+            StartDateUtc = filterStart,
+            EndDateUtc = filterEndExclusive.AddTicks(-1),
+            TotalPageVisits = totalPageVisits,
             Visitors = visitors,
             TopPages = topPages
         });
