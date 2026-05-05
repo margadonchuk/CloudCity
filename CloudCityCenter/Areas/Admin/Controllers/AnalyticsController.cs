@@ -80,7 +80,10 @@ public class AnalyticsController : Controller
                 x.FirstSeenAt,
                 x.LastSeenAt,
                 PagesCount = x.PageVisits.Count,
-                x.UserAgent
+                x.UserAgent,
+                x.Country,
+                x.City,
+                x.CountryCode
             })
             .ToListAsync();
 
@@ -130,6 +133,9 @@ public class AnalyticsController : Controller
                     LastSeenAt = x.LastSeenAt,
                     PagesCount = x.PagesCount,
                     UserAgent = x.UserAgent,
+                    Country = x.Country,
+                    City = x.City,
+                    CountryCode = x.CountryCode,
                     Browser = browser,
                     Device = device,
                     IsSuspicious = suspiciousVisitorIdSet.Contains(x.Id)
@@ -149,6 +155,15 @@ public class AnalyticsController : Controller
             .Select(g => new AnalyticsBreakdownItemViewModel { Label = g.Key, Count = g.Count() })
             .OrderByDescending(x => x.Count)
             .ThenBy(x => x.Label)
+            .ToList();
+
+        var topCountries = visitors
+            .Where(v => !string.IsNullOrWhiteSpace(v.Country))
+            .GroupBy(v => v.Country!.Trim())
+            .Select(g => new AnalyticsBreakdownItemViewModel { Label = g.Key, Count = g.Count() })
+            .OrderByDescending(x => x.Count)
+            .ThenBy(x => x.Label)
+            .Take(10)
             .ToList();
 
         var normalizedIps = visitors
@@ -179,6 +194,9 @@ public class AnalyticsController : Controller
                 LastSeenAt = x.LastSeenAt,
                 PagesCount = x.PagesCount,
                 UserAgent = x.UserAgent,
+                Country = x.Country,
+                City = x.City,
+                CountryCode = x.CountryCode,
                 Browser = x.Browser,
                 Device = x.Device,
                 IsSuspicious = x.IsSuspicious,
@@ -256,7 +274,10 @@ public class AnalyticsController : Controller
                 x.FirstSeenAt,
                 x.LastSeenAt,
                 PagesCount = x.PageVisits.Count,
-                x.UserAgent
+                x.UserAgent,
+                x.Country,
+                x.City,
+                x.CountryCode
             })
             .ToListAsync();
 
@@ -273,6 +294,9 @@ public class AnalyticsController : Controller
                     LastSeenAt = x.LastSeenAt,
                     PagesCount = x.PagesCount,
                     UserAgent = x.UserAgent,
+                    Country = x.Country,
+                    City = x.City,
+                    CountryCode = x.CountryCode,
                     Browser = DetectBrowser(x.UserAgent),
                     Device = DetectDevice(x.UserAgent)
                 };
@@ -292,6 +316,7 @@ public class AnalyticsController : Controller
             SuspiciousActivities = suspiciousActivities,
             TopPages = topPages,
             TopBrowsers = topBrowsers,
+            TopCountries = topCountries,
             DeviceSplit = deviceSplit
         });
     }
