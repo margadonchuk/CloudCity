@@ -22,6 +22,8 @@
             <dd class="col-sm-9">@Model.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
             <dt class="col-sm-3">Last Seen UTC</dt>
             <dd class="col-sm-9">@Model.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+            <dt class="col-sm-3">Pages Count</dt>
+            <dd class="col-sm-9">@Model.Visits.Count</dd>
         </dl>
     </div>
 </div>

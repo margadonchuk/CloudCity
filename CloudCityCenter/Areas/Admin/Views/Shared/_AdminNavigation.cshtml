@@ -1,27 +1,38 @@
-@{
+@{ 
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+
     string AdminHref(string controller, string action, string fallback)
     {
         return Url.Action(action, controller, new { area = "Admin" }) ?? fallback;
     }
+
+    string NavButtonClass(string controller, string action, string defaultClass)
+    {
+        var isActive = string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(currentAction, action, StringComparison.OrdinalIgnoreCase);
+
+        return isActive ? "btn btn-dark" : $"btn {defaultClass}";
+    }
 }
 
 <div class="mb-3 d-flex gap-2 flex-wrap">
-    <a href="@AdminHref("Products", "Create", "/Admin/Products/Create")" class="btn btn-primary">
+    <a href="@AdminHref("Products", "Create", "/Admin/Products/Create")" class="@NavButtonClass("Products", "Create", "btn-primary")">
         <i class="bi bi-plus-circle me-2"></i>Создание товара
     </a>
-    <a href="@AdminHref("Users", "NewUsers", "/Admin/Users/NewUsers")" class="btn btn-info">
+    <a href="@AdminHref("Users", "NewUsers", "/Admin/Users/NewUsers")" class="@NavButtonClass("Users", "NewUsers", "btn-info")">
         <i class="bi bi-people me-2"></i>Новые пользователи
     </a>
-    <a href="@AdminHref("Users", "Customers", "/Admin/Users/Customers")" class="btn btn-success">
+    <a href="@AdminHref("Users", "Customers", "/Admin/Users/Customers")" class="@NavButtonClass("Users", "Customers", "btn-success")">
         <i class="bi bi-person-check me-2"></i>Клиенты
     </a>
-    <a href="@AdminHref("Messages", "Index", "/Admin/Messages")" class="btn btn-warning">
+    <a href="@AdminHref("Messages", "Index", "/Admin/Messages")" class="@NavButtonClass("Messages", "Index", "btn-warning")">
         <i class="bi bi-envelope-fill me-2"></i>Письма
     </a>
-    <a href="@AdminHref("Analytics", "Index", "/admin/analytics")" class="btn btn-secondary">
+    <a href="@AdminHref("Analytics", "Index", "/admin/analytics")" class="@NavButtonClass("Analytics", "Index", "btn-secondary")">
         <i class="bi bi-graph-up me-2"></i>Analytics
     </a>
-    <a href="@AdminHref("BlockedIps", "Index", "/admin/security/blockedips")" class="btn btn-danger">
+    <a href="@AdminHref("BlockedIps", "Index", "/admin/security/blockedips")" class="@NavButtonClass("BlockedIps", "Index", "btn-danger")">
         <i class="bi bi-shield-x me-2"></i>Заблокированные IP
     </a>
 </div>

@@ -117,7 +117,7 @@
                                             <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
                                             <td>@visitor.PagesCount</td>
                                             <td class="text-end">
-                                                <a asp-action="Details" asp-route-id="@visitor.Id" class="btn btn-sm btn-primary">Details</a>
+                                                <a href="@Url.Action("Details", "Analytics", new { area = "Admin", id = visitor.Id })" class="btn btn-sm btn-primary">Details</a>
                                             </td>
                                         </tr>
                                     }
