@@ -14,11 +14,13 @@ public class VisitorTrackingMiddleware
 
     private readonly RequestDelegate _next;
     private readonly ILogger<VisitorTrackingMiddleware> _logger;
+    private readonly IGeoIpService _geoIpService;
 
-    public VisitorTrackingMiddleware(RequestDelegate next, ILogger<VisitorTrackingMiddleware> logger)
+    public VisitorTrackingMiddleware(RequestDelegate next, ILogger<VisitorTrackingMiddleware> logger, IGeoIpService geoIpService)
     {
         _next = next;
         _logger = logger;
+        _geoIpService = geoIpService;
     }
 
     public async Task InvokeAsync(HttpContext context, ApplicationDbContext dbContext)
@@ -60,6 +62,17 @@ public class VisitorTrackingMiddleware
                     if (!string.IsNullOrWhiteSpace(referrer))
                     {
                         existingSession.Referrer = referrer;
+                    }
+                }
+
+                if (string.IsNullOrWhiteSpace(existingSession.Country))
+                {
+                    var geo = await _geoIpService.LookupAsync(normalizedIp, context.RequestAborted);
+                    if (geo is not null)
+                    {
+                        existingSession.Country = geo.Country;
+                        existingSession.CountryCode = geo.CountryCode;
+                        existingSession.City = geo.City;
                     }
                 }
 
