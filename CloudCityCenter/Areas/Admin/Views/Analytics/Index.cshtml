@@ -1,38 +1,79 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model CloudCityCenter.Models.Admin.AnalyticsIndexViewModel
 
 @{
-    ViewData["Title"] = "Analytics";
+    ViewData["Title"] = "Analytics Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var totalSessions = Model?.Visitors?.Count ?? 0;
+    var uniqueIpAddresses = Model?.Visitors?.Select(v => v.IpAddress).Where(ip => !string.IsNullOrWhiteSpace(ip)).Distinct(StringComparer.OrdinalIgnoreCase).Count() ?? 0;
+    var lastVisitorTime = Model?.Visitors?.OrderByDescending(v => v.LastSeenAt).FirstOrDefault()?.LastSeenAt;
 }
 
-<h1>Analytics</h1>
+<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
+    <h1 class="mb-0">Analytics Dashboard</h1>
+</div>
 
-<div class="table-responsive mt-4">
-    <table class="table table-striped table-hover align-middle">
-        <thead>
-            <tr>
-                <th>IP</th>
-                <th>FirstSeenAt (UTC)</th>
-                <th>LastSeenAt (UTC)</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model.Visitors.Count == 0)
-            {
-                <tr>
-                    <td colspan="3" class="text-muted">No visitor sessions yet.</td>
-                </tr>
-            }
-            else
-            {
-                foreach (var visitor in Model.Visitors)
-                {
-                    <tr>
-                        <td><code>@visitor.IpAddress</code></td>
-                        <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                        <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
+<partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
+
+<div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6 class="text-muted mb-2">Total visitor sessions</h6>
+                <p class="display-6 mb-0">@totalSessions</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6 class="text-muted mb-2">Unique IP addresses</h6>
+                <p class="display-6 mb-0">@uniqueIpAddresses</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6 class="text-muted mb-2">Last visitor time</h6>
+                <p class="mb-0 fs-5">@(lastVisitorTime?.ToString("yyyy-MM-dd HH:mm:ss") ?? "—")</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Visitor Sessions</h5>
+
+        @if (totalSessions == 0)
+        {
+            <div class="alert alert-info mb-0">No visitor sessions found.</div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>IP Address</th>
+                            <th>First Seen UTC</th>
+                            <th>Last Seen UTC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var visitor in Model?.Visitors ?? Array.Empty<CloudCityCenter.Models.Admin.VisitorSessionListItemViewModel>())
+                        {
+                            <tr>
+                                <td><code>@visitor.IpAddress</code></td>
+                                <td>@visitor.FirstSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                <td>@visitor.LastSeenAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
 </div>
