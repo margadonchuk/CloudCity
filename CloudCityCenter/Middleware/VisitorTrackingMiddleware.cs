@@ -29,6 +29,7 @@ public class VisitorTrackingMiddleware
         {
             var nowUtc = DateTime.UtcNow;
             var userAgent = ResolveUserAgent(context);
+            var referrer = ResolveReferrer(context);
 
             try
             {
@@ -42,7 +43,8 @@ public class VisitorTrackingMiddleware
                         IpAddress = normalizedIp,
                         FirstSeenAt = nowUtc,
                         LastSeenAt = nowUtc,
-                        UserAgent = userAgent
+                        UserAgent = userAgent,
+                        Referrer = referrer
                     };
                     dbContext.VisitorSessions.Add(existingSession);
                 }
@@ -53,6 +55,11 @@ public class VisitorTrackingMiddleware
                     if (!string.IsNullOrWhiteSpace(userAgent))
                     {
                         existingSession.UserAgent = userAgent;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(referrer))
+                    {
+                        existingSession.Referrer = referrer;
                     }
                 }
 
@@ -93,6 +100,20 @@ public class VisitorTrackingMiddleware
         return userAgent.Length <= 1024
             ? userAgent
             : userAgent[..1024];
+    }
+
+
+    private static string? ResolveReferrer(HttpContext context)
+    {
+        var referrer = context.Request.Headers["Referer"].ToString();
+        if (string.IsNullOrWhiteSpace(referrer))
+        {
+            return null;
+        }
+
+        return referrer.Length <= 2048
+            ? referrer
+            : referrer[..2048];
     }
 
     private static bool ShouldTrackPageVisit(PathString path)

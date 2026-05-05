@@ -19,5 +19,8 @@ public class VisitorSession
     [StringLength(1024)]
     public string? UserAgent { get; set; }
 
+    [StringLength(2048)]
+    public string? Referrer { get; set; }
+
     public ICollection<PageVisit> PageVisits { get; set; } = new List<PageVisit>();
 }
