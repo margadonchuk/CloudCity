@@ -6,5 +6,6 @@ public sealed class AnalyticsDetailsViewModel
     public string IpAddress { get; init; } = string.Empty;
     public DateTime FirstSeenAt { get; init; }
     public DateTime LastSeenAt { get; init; }
+    public string? UserAgent { get; init; }
     public IReadOnlyList<PageVisitTimelineItemViewModel> Visits { get; init; } = Array.Empty<PageVisitTimelineItemViewModel>();
 }

@@ -16,5 +16,8 @@ public class VisitorSession
     [Required]
     public DateTime LastSeenAt { get; set; }
 
+    [StringLength(1024)]
+    public string? UserAgent { get; set; }
+
     public ICollection<PageVisit> PageVisits { get; set; } = new List<PageVisit>();
 }

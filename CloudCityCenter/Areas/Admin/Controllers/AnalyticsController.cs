@@ -76,7 +76,8 @@ public class AnalyticsController : Controller
                 IpAddress = x.IpAddress,
                 FirstSeenAt = x.FirstSeenAt,
                 LastSeenAt = x.LastSeenAt,
-                PagesCount = x.PageVisits.Count
+                PagesCount = x.PageVisits.Count,
+                UserAgent = x.UserAgent
             })
             .ToListAsync();
 
@@ -124,6 +125,7 @@ public class AnalyticsController : Controller
                 IpAddress = x.IpAddress,
                 FirstSeenAt = x.FirstSeenAt,
                 LastSeenAt = x.LastSeenAt,
+                UserAgent = x.UserAgent,
                 Visits = x.PageVisits
                     .OrderByDescending(p => p.VisitedAt)
                     .Select(p => new PageVisitTimelineItemViewModel
