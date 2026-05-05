@@ -109,6 +109,41 @@
 
             <div class="card mb-3">
                 <div class="card-body">
+                    <h5 class="card-title">Conversion Funnel</h5>
+                    <p class="mb-3">Top exit step: <strong>@Model.TopExitStep</strong></p>
+                    @if (Model.FunnelSteps.Count == 0)
+                    {
+                        <div class="alert alert-info mb-0">No funnel data found for selected range.</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Step</th>
+                                        <th>Visitors</th>
+                                        <th>Drop-off</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var step in Model.FunnelSteps)
+                                {
+                                    <tr>
+                                        <td>@step.Name</td>
+                                        <td>@step.Visitors</td>
+                                        <td>@step.DropOffPercentage.ToString("0.##")%</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
                     <h5 class="card-title">Active Visitors (Last 5 Minutes)</h5>
                     @if (Model.ActiveVisitors.Count == 0)
                     {

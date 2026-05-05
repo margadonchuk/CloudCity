@@ -15,6 +15,15 @@ public sealed class AnalyticsIndexViewModel
     public IReadOnlyList<AnalyticsBreakdownItemViewModel> TopCountries { get; init; } = Array.Empty<AnalyticsBreakdownItemViewModel>();
     public IReadOnlyList<AnalyticsBreakdownItemViewModel> DeviceSplit { get; init; } = Array.Empty<AnalyticsBreakdownItemViewModel>();
     public IReadOnlyList<SuspiciousActivityListItemViewModel> SuspiciousActivities { get; init; } = Array.Empty<SuspiciousActivityListItemViewModel>();
+    public IReadOnlyList<FunnelStepViewModel> FunnelSteps { get; init; } = Array.Empty<FunnelStepViewModel>();
+    public string TopExitStep { get; init; } = "—";
+}
+
+public sealed class FunnelStepViewModel
+{
+    public string Name { get; init; } = string.Empty;
+    public int Visitors { get; init; }
+    public decimal DropOffPercentage { get; init; }
 }
 
 public sealed class AnalyticsBreakdownItemViewModel
