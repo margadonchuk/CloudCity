@@ -56,13 +56,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     {
         if (connectionString.Contains("Server=", StringComparison.OrdinalIgnoreCase))
             opt.UseSqlServer(connectionString);
-        else
-            opt.UseSqlite(connectionString);
     }
     else
     {
-        // Use InMemory database if no connection string is provided (for both Development and Production)
-        opt.UseInMemoryDatabase("CloudCity");
+        throw new InvalidOperationException("ConnectionStrings__DefaultConnection is required for relational database migrations and runtime.");
     }
 });
 

@@ -25,10 +25,7 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
             throw new InvalidOperationException("ConnectionStrings__DefaultConnection is not set. Configure it via environment variables, user secrets, or appsettings.Development.json.");
 
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        if (connectionString.Contains("Server=", StringComparison.OrdinalIgnoreCase))
-            optionsBuilder.UseSqlServer(connectionString);
-        else
-            optionsBuilder.UseSqlite(connectionString);
+        optionsBuilder.UseSqlServer(connectionString);
 
         return new ApplicationDbContext(optionsBuilder.Options);
     }
