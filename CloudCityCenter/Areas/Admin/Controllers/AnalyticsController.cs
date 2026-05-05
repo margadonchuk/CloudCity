@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using CloudCityCenter.Data;
+using CloudCityCenter.Models.Admin;
 
 namespace CloudCityCenter.Areas.Admin.Controllers;
 
@@ -7,8 +10,29 @@ namespace CloudCityCenter.Areas.Admin.Controllers;
 [Authorize(Roles = "Admin")]
 public class AnalyticsController : Controller
 {
-    public IActionResult Index()
+    private readonly ApplicationDbContext _context;
+
+    public AnalyticsController(ApplicationDbContext context)
     {
-        return View();
+        _context = context;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var visitors = await _context.VisitorSessions
+            .AsNoTracking()
+            .OrderByDescending(x => x.LastSeenAt)
+            .Select(x => new VisitorSessionListItemViewModel
+            {
+                IpAddress = x.IpAddress,
+                FirstSeenAt = x.FirstSeenAt,
+                LastSeenAt = x.LastSeenAt
+            })
+            .ToListAsync();
+
+        return View(new AnalyticsIndexViewModel
+        {
+            Visitors = visitors
+        });
     }
 }
