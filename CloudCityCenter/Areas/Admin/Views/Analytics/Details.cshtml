@@ -8,7 +8,14 @@
 
 <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
     <h1 class="mb-0">Visitor Details</h1>
-    <a asp-action="Index" class="btn btn-outline-secondary">Back to Analytics</a>
+    <div class="d-flex gap-2">
+        <form asp-area="Admin" asp-controller="Analytics" asp-action="BlockIp" method="post" class="d-inline">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="visitorSessionId" value="@Model.VisitorSessionId" />
+            <button type="submit" class="btn btn-danger">Block IP</button>
+        </form>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to Analytics</a>
+    </div>
 </div>
 
 <partial name="~/Areas/Admin/Views/Shared/_AdminNavigation.cshtml" />
