@@ -13,10 +13,12 @@ namespace CloudCityCenter.Areas.Admin.Controllers;
 public class AnalyticsController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly ILogger<AnalyticsController> _logger;
 
-    public AnalyticsController(ApplicationDbContext context)
+    public AnalyticsController(ApplicationDbContext context, ILogger<AnalyticsController> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Index(string? range = "today", DateTime? startDate = null, DateTime? endDate = null, string? ipAddress = null)
@@ -507,14 +509,16 @@ public class AnalyticsController : Controller
 
         if (session is null || !ClientIpResolver.TryNormalizeIp(session.IpAddress, out var normalizedIp))
         {
+            _logger.LogWarning("Could not block IP from analytics. VisitorSessionId={VisitorSessionId}, RawIpAddress={IpAddress}", visitorSessionId, session?.IpAddress);
             TempData["ErrorMessage"] = "Could not resolve IP address from this visitor session.";
-            return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
+            return RedirectToAction("Index", "BlockedIps", new { area = "Admin" });
         }
 
         var currentAdminIp = ClientIpResolver.ResolveNormalizedIp(HttpContext);
         var confirmSelfBlock = string.Equals(Request.Form["confirmSelfBlock"], "true", StringComparison.OrdinalIgnoreCase);
         if (string.Equals(currentAdminIp, normalizedIp, StringComparison.Ordinal) && !confirmSelfBlock)
         {
+            _logger.LogWarning("Self-block confirmation required. VisitorSessionId={VisitorSessionId}, IpAddress={IpAddress}", visitorSessionId, normalizedIp);
             TempData["ErrorMessage"] = "You are trying to block your current admin IP. Submit again with confirmation.";
             return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
         }
@@ -522,8 +526,9 @@ public class AnalyticsController : Controller
         var existingEntry = await _context.BlockedIps.FirstOrDefaultAsync(x => x.IpAddress == normalizedIp);
         if (existingEntry?.IsActive == true)
         {
-            TempData["InfoMessage"] = "Already blocked";
-            return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
+            _logger.LogInformation("IP already active in blocked list. VisitorSessionId={VisitorSessionId}, IpAddress={IpAddress}, Result=AlreadyActive", visitorSessionId, normalizedIp);
+            TempData["InfoMessage"] = "IP address is already blocked.";
+            return RedirectToAction("Index", "BlockedIps", new { area = "Admin" });
         }
 
         if (existingEntry is null)
@@ -535,16 +540,20 @@ public class AnalyticsController : Controller
                 CreatedAt = DateTime.UtcNow,
                 IsActive = true
             });
+
+            _logger.LogInformation("Blocked IP created from analytics. VisitorSessionId={VisitorSessionId}, IpAddress={IpAddress}, Result=Created", visitorSessionId, normalizedIp);
         }
         else
         {
             existingEntry.IsActive = true;
             existingEntry.CreatedAt = DateTime.UtcNow;
-            existingEntry.Reason = string.IsNullOrWhiteSpace(existingEntry.Reason) ? "Blocked from Analytics" : existingEntry.Reason;
+            existingEntry.Reason = "Blocked from Analytics";
+
+            _logger.LogInformation("Blocked IP reactivated from analytics. VisitorSessionId={VisitorSessionId}, IpAddress={IpAddress}, Result=Reactivated", visitorSessionId, normalizedIp);
         }
 
         await _context.SaveChangesAsync();
         TempData["SuccessMessage"] = "IP address blocked successfully";
-        return RedirectToAction(nameof(Index), new { range, startDate, endDate, ipAddress });
+        return RedirectToAction("Index", "BlockedIps", new { area = "Admin" });
     }
 }
