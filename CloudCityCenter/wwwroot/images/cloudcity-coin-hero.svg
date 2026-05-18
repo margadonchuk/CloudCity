@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#081633"/><stop offset="1" stop-color="#1a2d63"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#g)"/><circle cx="350" cy="220" r="210" fill="#2f69ff" opacity=".25"/><circle cx="890" cy="170" r="170" fill="#6a42ff" opacity=".28"/>
+<rect x="165" y="300" width="870" height="380" rx="26" fill="#0d224b" stroke="#74b8ff" opacity=".9"/>
+<g fill="#93cbff"><circle cx="300" cy="430" r="18"/><circle cx="450" cy="500" r="14"/><circle cx="620" cy="430" r="18"/><circle cx="790" cy="520" r="16"/><circle cx="930" cy="430" r="18"/></g>
+<path d="M300 430L450 500L620 430L790 520L930 430" stroke="#66f2ff" stroke-width="6" fill="none"/>
+<text x="600" y="390" fill="#d7ebff" text-anchor="middle" font-size="66" font-family="Arial" font-weight="700">CloudCity Coin</text>
+</svg>

@@ -4,67 +4,98 @@
 
 <div class="coin-page">
     <section class="coin-hero glass-panel">
-        <p class="coin-kicker"><i class="bi bi-hexagon"></i> CloudCity Ecosystem</p>
-        <h1>CloudCity Coin</h1>
-        <p class="coin-subtitle">The digital coin of the CloudCity ecosystem.</p>
-        <p class="coin-description">
-            CloudCity Coin is created as part of the CloudCity brand ecosystem and is planned to be used as an additional payment option for selected CloudCity services.
-        </p>
-        <div class="coin-hero-actions">
-            <a class="btn btn-primary coin-btn" href="@coinUrl" target="_blank" rel="noopener noreferrer">Buy CloudCity Coin</a>
-            <a class="btn btn-outline-light coin-btn" href="#how-to-buy">How to buy</a>
+        <div class="coin-hero-grid">
+            <div class="coin-hero-content">
+                <p class="coin-kicker"><i class="bi bi-clouds"></i> CloudCity Ecosystem</p>
+                <h1>CloudCity Coin</h1>
+                <p class="coin-subtitle">The digital coin of the CloudCity ecosystem.</p>
+                <p class="coin-description">Built for the next generation of cloud services, CloudCity Coin is designed to power future CloudCity payments with fast, modern, and flexible digital transactions.</p>
+                <div class="coin-hero-actions">
+                    <a class="btn btn-primary coin-btn" href="@coinUrl" target="_blank" rel="noopener noreferrer">Buy CloudCity Coin</a>
+                    <a class="btn btn-outline-light coin-btn" href="#how-to-buy">How to buy</a>
+                </div>
+            </div>
+            <div class="coin-hero-media">
+                <img src="~/images/cloudcity-coin-hero.svg" alt="CloudCity Coin cloud infrastructure network" loading="eager" />
+            </div>
         </div>
     </section>
 
     <section class="coin-section">
         <h2>Why CloudCity Coin</h2>
-        <div class="coin-grid">
-            <article class="coin-card">
-                <i class="bi bi-credit-card-2-front"></i>
-                <h3>Future payment option</h3>
-                <p>Planned to support payments for selected CloudCity services.</p>
-            </article>
-            <article class="coin-card">
-                <i class="bi bi-buildings"></i>
-                <h3>CloudCity ecosystem</h3>
-                <p>Developed as a natural part of the wider CloudCity company ecosystem.</p>
-            </article>
-            <article class="coin-card">
-                <i class="bi bi-people"></i>
-                <h3>Community focused</h3>
-                <p>Built for clients, partners, and supporters of the CloudCity community.</p>
-            </article>
-            <article class="coin-card">
-                <i class="bi bi-wallet2"></i>
-                <h3>Simple to buy</h3>
-                <p>Purchase on Pump.fun using a Solana wallet in just a few steps.</p>
-            </article>
+        <div class="coin-grid coin-value-grid">
+            <article class="coin-card"><i class="bi bi-credit-card-2-front"></i><h3>Pay for CloudCity services</h3><p>Planned as a practical payment rail for selected CloudCity products and services.</p></article>
+            <article class="coin-card"><i class="bi bi-buildings"></i><h3>Part of the CloudCity ecosystem</h3><p>Native to CloudCity’s infrastructure-first brand and service ecosystem.</p></article>
+            <article class="coin-card"><i class="bi bi-lightning-charge"></i><h3>Fast Solana-based transactions</h3><p>Built on Solana for speed, efficiency, and low-friction payments.</p></article>
+            <article class="coin-card"><i class="bi bi-people"></i><h3>Community-driven digital asset</h3><p>Created for clients, partners, and supporters in the CloudCity community.</p></article>
+            <article class="coin-card"><i class="bi bi-arrow-repeat"></i><h3>Future payment flexibility</h3><p>Expands how users can interact with CloudCity commerce in coming stages.</p></article>
+            <article class="coin-card"><i class="bi bi-wallet2"></i><h3>Easy purchase via Pump.fun</h3><p>Get started quickly with a compatible wallet and a simple buying flow.</p></article>
         </div>
     </section>
 
     <section id="how-to-buy" class="coin-section">
-        <h2>How to buy CloudCity Coin</h2>
-        <div class="coin-steps">
-            <div class="coin-step"><span>1</span><div><h3>Install Phantom Wallet</h3><p>Set up a Solana-compatible wallet such as Phantom.</p></div></div>
-            <div class="coin-step"><span>2</span><div><h3>Add SOL to your wallet</h3><p>You need SOL to buy the coin and pay Solana network fees.</p></div></div>
-            <div class="coin-step"><span>3</span><div><h3>Open the CloudCity Coin page on Pump.fun</h3><p><a href="@coinUrl" target="_blank" rel="noopener noreferrer">@coinUrl</a></p></div></div>
-            <div class="coin-step"><span>4</span><div><h3>Connect wallet</h3><p>Connect your wallet to Pump.fun on the coin page.</p></div></div>
-            <div class="coin-step"><span>5</span><div><h3>Enter amount and buy</h3><p>Choose how much SOL you want to spend and confirm the transaction.</p></div></div>
-            <div class="coin-step"><span>6</span><div><h3>Keep the coin in your wallet</h3><p>After purchase, your CloudCity Coin balance will be visible in the wallet.</p></div></div>
+        <div class="coin-section-head">
+            <h2>How to buy CloudCity Coin</h2>
+            <img src="~/images/wallet-buy-guide.svg" alt="Wallet buying guide" loading="lazy" />
         </div>
+        <div class="coin-steps">
+            <div class="coin-step"><span>1</span><div><h3>Install Phantom Wallet</h3><p>Download and set up Phantom or another Solana-compatible wallet.</p></div></div>
+            <div class="coin-step"><span>2</span><div><h3>Add SOL to your wallet</h3><p>Fund your wallet with SOL to purchase and cover network fees.</p></div></div>
+            <div class="coin-step"><span>3</span><div><h3>Open CloudCity Coin on Pump.fun</h3><p><a href="@coinUrl" target="_blank" rel="noopener noreferrer">Open purchase page</a></p></div></div>
+            <div class="coin-step"><span>4</span><div><h3>Connect your wallet</h3><p>Authorize connection on Pump.fun to enable the trade flow.</p></div></div>
+            <div class="coin-step"><span>5</span><div><h3>Choose amount and buy</h3><p>Select your SOL amount and confirm the transaction securely.</p></div></div>
+            <div class="coin-step"><span>6</span><div><h3>Keep your coin in your wallet</h3><p>Your CloudCity Coin balance appears in your wallet after purchase.</p></div></div>
+        </div>
+    </section>
+
+    <section class="coin-section coin-image-strip">
+        <img src="~/images/crypto-payment.svg" alt="Crypto digital payment" loading="lazy" />
+        <img src="~/images/blockchain-cloud.svg" alt="Blockchain cloud security" loading="lazy" />
     </section>
 
     <section class="coin-section">
         <div class="coin-payment-box glass-panel">
-            <h2>Pay for CloudCity services with CloudCity Coin</h2>
-            <p>CloudCity Coin is planned to become an additional payment option for selected CloudCity services. This allows clients and supporters of the CloudCity ecosystem to hold and use the coin inside the company’s service model.</p>
-            <a class="btn btn-primary coin-btn" asp-controller="Contact" asp-action="Index">Contact us to pay with CloudCity Coin</a>
+            <h2>Payment utility for real CloudCity services</h2>
+            <p>CloudCity Coin is intended as an additional payment option for selected CloudCity offerings, connecting digital assets with real cloud and infrastructure services.</p>
+            <div class="coin-hero-actions">
+                <a class="btn btn-primary coin-btn" href="@coinUrl" target="_blank" rel="noopener noreferrer">Use Coin for Services</a>
+                <a class="btn btn-outline-light coin-btn" asp-controller="Contact" asp-action="Index">Contact CloudCity</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="coin-section">
+        <h2>Trust & security focus</h2>
+        <div class="coin-grid">
+            <article class="coin-card"><i class="bi bi-shield-lock"></i><h3>Secure wallet-based access</h3><p>Users control their own wallets and approve every transaction directly.</p></article>
+            <article class="coin-card"><i class="bi bi-diagram-3"></i><h3>Transparent on-chain activity</h3><p>Blockchain records provide verifiable movement and transaction history.</p></article>
+            <article class="coin-card"><i class="bi bi-hdd-network"></i><h3>Infrastructure mindset</h3><p>CloudCity applies reliability-first thinking from hosting and server operations.</p></article>
+        </div>
+    </section>
+
+    <section class="coin-section">
+        <h2>FAQ</h2>
+        <div class="coin-faq">
+            <details class="coin-card"><summary>What is CloudCity Coin?</summary><p>CloudCity Coin is the digital coin developed for the CloudCity ecosystem.</p></details>
+            <details class="coin-card"><summary>Can I use it to pay for CloudCity services?</summary><p>It is planned as an additional payment option for selected CloudCity services.</p></details>
+            <details class="coin-card"><summary>Where can I buy it?</summary><p>You can buy it on Pump.fun via the official CloudCity Coin page.</p></details>
+            <details class="coin-card"><summary>Do I need a crypto wallet?</summary><p>Yes. You need a Solana-compatible wallet such as Phantom.</p></details>
+            <details class="coin-card"><summary>Is CloudCity Coin an investment?</summary><p>No guarantees are made. Treat it as a crypto asset and do your own research.</p></details>
+            <details class="coin-card"><summary>Is there any risk?</summary><p>Yes. Crypto assets can be volatile and prices can change significantly.</p></details>
         </div>
     </section>
 
     <section class="coin-disclaimer">
-        <p>
-            CloudCity Coin is a crypto asset and may be highly volatile. This page is for informational purposes only and is not financial advice. Please do your own research before buying.
-        </p>
+        <p>CloudCity Coin is a crypto asset and may be volatile. This page is for informational purposes only and is not financial advice. Please do your own research before buying.</p>
+    </section>
+
+    <section class="coin-section coin-final-cta glass-panel">
+        <h2>Join the CloudCity Coin ecosystem</h2>
+        <p>Start with a wallet, get CloudCity Coin, and stay connected with CloudCity services.</p>
+        <div class="coin-hero-actions">
+            <a class="btn btn-primary coin-btn" href="@coinUrl" target="_blank" rel="noopener noreferrer">Buy CloudCity Coin</a>
+            <a class="btn btn-outline-light coin-btn" asp-controller="Contact" asp-action="Index">Contact CloudCity</a>
+            <a class="btn btn-outline-info coin-btn" href="#how-to-buy">How to buy</a>
+        </div>
     </section>
 </div>
