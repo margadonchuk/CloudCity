@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="HeroBadge" xml:space="preserve"><value>Écosystème CloudCity</value></data>
+  <data name="HeroTitle" xml:space="preserve"><value>CloudCity Coin</value></data>
+  <data name="HeroSubtitle" xml:space="preserve"><value>Actif de paiement numérique pour l’écosystème CloudCity</value></data>
+  <data name="HeroDescription" xml:space="preserve"><value>CloudCity Coin relie les paiements natifs Web3 à des services d’infrastructure cloud pratiques, aidant les clients à passer de la crypto à la puissance de calcul dans un écosystème moderne unique.</value></data>
+  <data name="HeroPrimaryCta" xml:space="preserve"><value>Acheter CloudCity Coin</value></data>
+  <data name="HeroSecondaryCta" xml:space="preserve"><value>Comment acheter</value></data>
+  <data name="WhyTitle" xml:space="preserve"><value>Pourquoi CloudCity Coin</value></data>
+  <data name="WhyCard1Title" xml:space="preserve"><value>Paiements rapides</value></data>
+  <data name="WhyCard1Description" xml:space="preserve"><value>Transactions Solana rapides pour le commerce cloud moderne.</value></data>
+  <data name="WhyCard2Title" xml:space="preserve"><value>Natif de l’écosystème</value></data>
+  <data name="WhyCard2Description" xml:space="preserve"><value>Aligné avec la croissance de l’infrastructure et des services CloudCity.</value></data>
+  <data name="WhyCard3Title" xml:space="preserve"><value>Flux sécurisé</value></data>
+  <data name="WhyCard3Description" xml:space="preserve"><value>Transactions signées par portefeuille et enregistrements on-chain transparents.</value></data>
+  <data name="EcosystemTitle" xml:space="preserve"><value>Utilité dans l’écosystème de services</value></data>
+  <data name="ServiceCard1Title" xml:space="preserve"><value>VPS</value></data>
+  <data name="ServiceCard1Description" xml:space="preserve"><value>Instances de calcul pour des charges de travail évolutives.</value></data>
+  <data name="ServiceCard2Title" xml:space="preserve"><value>VDI</value></data>
+  <data name="ServiceCard2Description" xml:space="preserve"><value>Postes de travail cloud pour les équipes distribuées.</value></data>
+  <data name="ServiceCard3Title" xml:space="preserve"><value>Windows Server</value></data>
+  <data name="ServiceCard3Description" xml:space="preserve"><value>Couches d’infrastructure Windows gérées.</value></data>
+  <data name="ServiceCard4Title" xml:space="preserve"><value>VPN</value></data>
+  <data name="ServiceCard4Description" xml:space="preserve"><value>Tunnel réseau privé sécurisé.</value></data>
+  <data name="ServiceCard5Title" xml:space="preserve"><value>Hébergement Web</value></data>
+  <data name="ServiceCard5Description" xml:space="preserve"><value>Hébergement web fiable avec des options de stack modernes.</value></data>
+  <data name="ServiceCard6Title" xml:space="preserve"><value>Sécurité</value></data>
+  <data name="ServiceCard6Description" xml:space="preserve"><value>Architecture et supervision orientées protection avant tout.</value></data>
+  <data name="HowToBuyTitle" xml:space="preserve"><value>Comment acheter</value></data>
+  <data name="Step1Title" xml:space="preserve"><value>Installer Phantom Wallet</value></data>
+  <data name="Step1Description" xml:space="preserve"><value>Installez et créez votre portefeuille en toute sécurité.</value></data>
+  <data name="Step2Title" xml:space="preserve"><value>Ajouter SOL</value></data>
+  <data name="Step2Description" xml:space="preserve"><value>Approvisionnez votre portefeuille en SOL pour l’achat + les frais réseau.</value></data>
+  <data name="Step3Title" xml:space="preserve"><value>Ouvrir la page Pump.fun</value></data>
+  <data name="Step3LinkText" xml:space="preserve"><value>Lien officiel d’achat CloudCity Coin</value></data>
+  <data name="Step4Title" xml:space="preserve"><value>Connecter le portefeuille</value></data>
+  <data name="Step4Description" xml:space="preserve"><value>Autorisez la connexion du portefeuille dans Pump.fun.</value></data>
+  <data name="Step5Title" xml:space="preserve"><value>Acheter la pièce</value></data>
+  <data name="Step5Description" xml:space="preserve"><value>Sélectionnez le montant et confirmez la transaction.</value></data>
+  <data name="Step6Title" xml:space="preserve"><value>Conserver dans le portefeuille</value></data>
+  <data name="Step6Description" xml:space="preserve"><value>Les tokens restent visibles et sous votre contrôle dans votre portefeuille.</value></data>
+  <data name="UseCasesTitle" xml:space="preserve"><value>Cas d’usage des paiements</value></data>
+  <data name="UseCase1Title" xml:space="preserve"><value>Commandes d’infrastructure</value></data>
+  <data name="UseCase1Description" xml:space="preserve"><value>Utilisez les paiements en coin pour les commandes éligibles de calcul ou d’hébergement.</value></data>
+  <data name="UseCase2Title" xml:space="preserve"><value>Support des abonnements</value></data>
+  <data name="UseCase2Description" xml:space="preserve"><value>Flux de tokens prêt pour l’avenir des services cloud récurrents.</value></data>
+  <data name="UseCase3Title" xml:space="preserve"><value>Écosystème partenaire</value></data>
+  <data name="UseCase3Description" xml:space="preserve"><value>Utilité dans les offres et campagnes alignées CloudCity.</value></data>
+  <data name="FaqTitle" xml:space="preserve"><value>FAQ</value></data>
+  <data name="Faq1Question" xml:space="preserve"><value>Qu’est-ce que CloudCity Coin ?</value></data>
+  <data name="Faq1Answer" xml:space="preserve"><value>Un actif de paiement numérique conçu pour l’utilité de l’écosystème CloudCity.</value></data>
+  <data name="Faq2Question" xml:space="preserve"><value>Où puis-je l’acheter ?</value></data>
+  <data name="Faq2Answer" xml:space="preserve"><value>Sur la page officielle Pump.fun liée ci-dessus.</value></data>
+  <data name="Faq3Question" xml:space="preserve"><value>Ai-je besoin de Phantom ?</value></data>
+  <data name="Faq3Answer" xml:space="preserve"><value>Vous avez besoin de n’importe quel portefeuille compatible Solana ; Phantom est le plus courant.</value></data>
+  <data name="FinalCtaTitle" xml:space="preserve"><value>Rejoignez l’écosystème CloudCity Coin</value></data>
+  <data name="FinalCtaDescription" xml:space="preserve"><value>Entrez dans un environnement premium cloud + crypto conçu pour les paiements digital-first.</value></data>
+  <data name="RiskDisclaimer" xml:space="preserve"><value>Avertissement sur les risques : Les actifs numériques sont volatils. Faites toujours vos propres recherches avant tout achat.</value></data>
+  <data name="FinalPrimaryCta" xml:space="preserve"><value>Acheter CloudCity Coin</value></data>
+  <data name="FinalSecondaryCta" xml:space="preserve"><value>Contacter CloudCity</value></data>
+  <data name="SEOTitle" xml:space="preserve"><value>CloudCity Coin - CloudCityCenter</value></data>
+  <data name="SEODescription" xml:space="preserve"><value>CloudCity Coin est un actif de paiement numérique dans l’écosystème CloudCity, avec une utilité dans certains services d’infrastructure et cloud.</value></data>
+  <data name="SEOKeywords" xml:space="preserve"><value>CloudCity Coin, crypto CloudCity, pièce Solana, actif de paiement cloud</value></data>
+</root>
