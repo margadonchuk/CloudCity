@@ -1,18 +1,32 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace CloudCityCenter.Controllers;
 
 [AllowAnonymous]
 public class CoinController : Controller
 {
+    private readonly IStringLocalizerFactory _localizerFactory;
+
+    public CoinController(IStringLocalizerFactory localizerFactory)
+    {
+        _localizerFactory = localizerFactory;
+    }
+
+    private IStringLocalizer GetLocalizer()
+    {
+        return _localizerFactory.Create("Views.Coin.Index", "CloudCityCenter");
+    }
+
     [HttpGet("coin")]
     [HttpGet("cloudcity-coin")]
     public IActionResult Index()
     {
-        ViewData["Title"] = "CloudCity Coin";
-        ViewData["Description"] = "CloudCity Coin is the digital coin of the CloudCity ecosystem and a planned additional payment option for selected CloudCity services.";
-        ViewData["Keywords"] = "CloudCity Coin, CloudCity crypto, Solana coin, CloudCity payment option";
+        var localizer = GetLocalizer();
+        ViewData["Title"] = localizer["SEOTitle"].Value;
+        ViewData["Description"] = localizer["SEODescription"].Value;
+        ViewData["Keywords"] = localizer["SEOKeywords"].Value;
 
         return View();
     }
