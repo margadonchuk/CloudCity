@@ -175,6 +175,11 @@
                                 <i class="bi bi-gear me-1"></i>@Localizer["Services"]
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Coin" ? "active" : "")" asp-area="" asp-controller="Coin" asp-action="Index">
+                                <i class="bi bi-currency-bitcoin me-1"></i>CloudCity Coin
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Center - Social Media Icons -->
@@ -348,6 +353,11 @@
                     <li class="nav-item">
                         <a class="nav-link @(string.Equals(currentController, "VDI", StringComparison.OrdinalIgnoreCase) ? "active" : "")" asp-area="" asp-controller="VDI" asp-action="Index" data-offcanvas-close>
                             <i class="bi bi-display me-2"></i>@Localizer["VDI"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Coin" ? "active" : "")" asp-area="" asp-controller="Coin" asp-action="Index" data-offcanvas-close>
+                            <i class="bi bi-currency-bitcoin me-2"></i>CloudCity Coin
                         </a>
                     </li>
                     <li class="nav-item">
