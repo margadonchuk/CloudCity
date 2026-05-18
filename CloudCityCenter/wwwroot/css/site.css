@@ -11812,3 +11812,40 @@ li.dropdown.show .dropdown-menu {
 .btn-register-mobile:hover i {
   transform: scale(1.2) rotate(10deg);
 }
+
+/* CloudCity Coin landing page */
+.coin-page { padding: 2rem 0 4rem; color: #f3f7ff; }
+.coin-section { margin-top: 2.5rem; }
+.glass-panel {
+    background: linear-gradient(145deg, rgba(13, 27, 56, 0.85), rgba(12, 19, 43, 0.72));
+    border: 1px solid rgba(120, 184, 255, 0.24);
+    border-radius: 1.2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+.coin-hero { padding: 2.5rem 1.5rem; text-align: center; }
+.coin-kicker { color: #8fc3ff; letter-spacing: .06em; text-transform: uppercase; font-size: .85rem; font-weight: 600; }
+.coin-hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 800; margin-bottom: .6rem; }
+.coin-subtitle { font-size: clamp(1.1rem, 3vw, 1.4rem); color: #c6dcff; margin-bottom: .8rem; }
+.coin-description { max-width: 760px; margin: 0 auto; color: #deebff; }
+.coin-hero-actions { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+.coin-btn { border-radius: 999px; padding: .75rem 1.25rem; font-weight: 600; }
+.coin-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+.coin-card { background: rgba(11, 21, 43, 0.78); border: 1px solid rgba(119, 182, 255, 0.2); border-radius: 1rem; padding: 1.1rem; }
+.coin-card i { font-size: 1.4rem; color: #7ab8ff; }
+.coin-card h3 { margin-top: .55rem; font-size: 1.1rem; }
+.coin-card p { color: #d6e6ff; margin-bottom: 0; }
+.coin-steps { margin-top: 1rem; display: grid; gap: .9rem; }
+.coin-step { display: grid; grid-template-columns: 42px 1fr; gap: .8rem; align-items: start; background: rgba(10, 19, 39, 0.75); border: 1px solid rgba(98, 168, 250, 0.2); border-radius: .9rem; padding: .95rem; }
+.coin-step span { width: 42px; height: 42px; border-radius: 50%; background: #1f6feb; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+.coin-step h3 { margin: .1rem 0 .3rem; font-size: 1.05rem; }
+.coin-step p { color: #d8e7ff; margin-bottom: 0; }
+.coin-step a { color: #8bc1ff; word-break: break-all; }
+.coin-payment-box { padding: 1.7rem 1.2rem; }
+.coin-payment-box p { color: #d7e7ff; }
+.coin-disclaimer { margin-top: 2rem; padding: 1rem 1.1rem; border-left: 3px solid #66aaff; background: rgba(18, 26, 52, 0.65); border-radius: .5rem; color: #cfe2ff; }
+
+@media (min-width: 768px) {
+    .coin-hero { padding: 3.2rem 2.5rem; }
+    .coin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .coin-payment-box { padding: 2.2rem; }
+}
